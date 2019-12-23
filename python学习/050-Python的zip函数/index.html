@@ -1757,7 +1757,7 @@
 
 <span class="n">xyz</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">xyz</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">xyz</span><span class="p">))</span>
 </pre></div>
 执行结果
 <div class="codehilite"><pre><span></span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
@@ -1767,8 +1767,8 @@
 <p><div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 <span class="n">xy</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">xy</span><span class="p">))</span>
-<span class="n">运行的结果是</span><span class="err">：</span>
+<span class="k">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">xy</span><span class="p">))</span>
+<span class="err">运行的结果是：</span>
 
 <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
 </pre></div>
@@ -1776,15 +1776,15 @@
 <h1 id="33">3.示例3：<a class="headerlink" href="#33" title="Permanent link">&para;</a></h1>
 <p><div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">运行的结果是</span><span class="err">：</span>
+<span class="k">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="err">运行的结果是：</span>
 
 <span class="p">[(</span><span class="mi">1</span><span class="p">,),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)]</span>
 </pre></div>
 从这个结果可以看出zip函数在只有一个参数时运作的方式。</p>
 <h1 id="44">4.示例4：<a class="headerlink" href="#44" title="Permanent link">&para;</a></h1>
 <p><div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">()</span>
-<span class="nb">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 运行的结果是：
 <div class="codehilite"><pre><span></span><span class="p">[]</span>
@@ -1801,18 +1801,18 @@
 
 <span class="n">u</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">xyz</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
 </pre></div>
 运行的结果是：就是解压缩的过程
 <div class="codehilite"><pre><span></span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
 
-<span class="n">一般认为这是一个unzip的过程</span><span class="err">，</span><span class="n">它的运行机制是这样的</span><span class="err">：</span>
+<span class="err">一般认为这是一个</span><span class="n">unzip的过程</span><span class="err">，它的运行机制是这样的：</span>
 
-<span class="n">在运行zip</span><span class="p">(</span><span class="o">*</span><span class="n">xyz</span><span class="p">)</span><span class="n">之前</span><span class="err">，</span><span class="n">xyz的值是</span><span class="err">：</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
+<span class="err">在运行</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">xyz</span><span class="p">)</span><span class="err">之前，</span><span class="n">xyz的值是</span><span class="err">：</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
 
-<span class="n">那么</span><span class="err">，</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">xyz</span><span class="p">)</span> <span class="n">等价于</span> <span class="nb">zip</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="err">那么，</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">xyz</span><span class="p">)</span> <span class="err">等价于</span> <span class="nb">zip</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
-<span class="n">所以</span><span class="err">，</span><span class="n">运行结果是</span><span class="err">：</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
+<span class="err">所以，运行结果是：</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
 </pre></div></p>
 <blockquote>
 <p>注：在函数调用中使用*list/tuple的方式表示将list/tuple分开，作为位置参数传递给对应函数（前提是对应函数支持不定个数的位置参数）</p>
@@ -1820,18 +1820,18 @@
 <h1 id="66">6.示例6：<a class="headerlink" href="#66" title="Permanent link">&para;</a></h1>
 <p><div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">r</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 </pre></div>
 运行的结果是：
 <div class="codehilite"><pre><span></span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 
-<span class="n">它的运行机制是这样的</span><span class="err">：</span>
+<span class="err">它的运行机制是这样的：</span>
 
-<span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="n">生成一个列表的列表</span><span class="err">，</span><span class="n">它只有一个元素x</span>
+<span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="err">生成一个列表的列表，它只有一个元素</span><span class="n">x</span>
 
-<span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="n">生成一个列表的列表</span><span class="err">，</span><span class="n">它有3个元素</span><span class="err">，</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
+<span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="err">生成一个列表的列表，它有</span><span class="mi">3</span><span class="err">个元素，</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
 
-<span class="nb">zip</span><span class="p">(</span><span class="o">*</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span><span class="n">的意思就明确了</span><span class="err">，</span><span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">zip</span><span class="p">(</span><span class="o">*</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span><span class="err">的意思就明确了，</span><span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div></p>
                 
                   

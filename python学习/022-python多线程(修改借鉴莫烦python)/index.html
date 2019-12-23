@@ -1910,19 +1910,19 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;当前的线程数: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">threading</span><span class="o">.</span><span class="n">active_count</span><span class="p">())</span> <span class="c1">#查看已经激活的线程数</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;查看所有的线程信息: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">threading</span><span class="o">.</span><span class="n">enumerate</span><span class="p">())</span> <span class="c1">#查看所有线程信息</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;当前线程:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">())</span>  <span class="c1">#查看当前线程</span>
+   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;当前的线程数: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">threading</span><span class="o">.</span><span class="n">active_count</span><span class="p">())</span> <span class="c1">#查看已经激活的线程数</span>
+   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;查看所有的线程信息: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">threading</span><span class="o">.</span><span class="n">enumerate</span><span class="p">())</span> <span class="c1">#查看所有线程信息</span>
+   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;当前线程:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">())</span>  <span class="c1">#查看当前线程</span>
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>   <span class="c1">#判断是不是在当前程序下执行,是就执行主方法</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 执行结果:
-<div class="codehilite"><pre><span></span><span class="n">当前的线程数</span><span class="p">:</span> 
+<div class="codehilite"><pre><span></span><span class="err">当前的线程数</span><span class="p">:</span> 
  <span class="mi">5</span>
-<span class="n">查看所有的线程信息</span><span class="p">:</span> 
+<span class="err">查看所有的线程信息</span><span class="p">:</span> 
  <span class="p">[</span><span class="o">&lt;</span><span class="n">_MainThread</span><span class="p">(</span><span class="n">MainThread</span><span class="p">,</span> <span class="n">started</span> <span class="mi">14952</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Thread</span><span class="p">(</span><span class="n">Thread</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="n">started</span> <span class="n">daemon</span> <span class="mi">15264</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Heartbeat</span><span class="p">(</span><span class="n">Thread</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">started</span> <span class="n">daemon</span> <span class="mi">11884</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">HistorySavingThread</span><span class="p">(</span><span class="n">IPythonHistorySavingThread</span><span class="p">,</span> <span class="n">started</span> <span class="mi">2320</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">GarbageCollectorThread</span><span class="p">(</span><span class="n">Thread</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">started</span> <span class="n">daemon</span> <span class="mi">7112</span><span class="p">)</span><span class="o">&gt;</span><span class="p">]</span>
-<span class="n">当前线程</span><span class="p">:</span>
+<span class="err">当前线程</span><span class="p">:</span>
  <span class="o">&lt;</span><span class="n">_MainThread</span><span class="p">(</span><span class="n">MainThread</span><span class="p">,</span> <span class="n">started</span> <span class="mi">14952</span><span class="p">)</span><span class="o">&gt;</span>
 </pre></div></p>
 <blockquote>
@@ -1936,12 +1936,12 @@ threading.enumerate()
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="k">def</span> <span class="nf">thread_job</span><span class="p">():</span> <span class="c1">#定义线程任务(功能就是打印当前的线程任务)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This is a thread of </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;This is a thread of </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">())</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;创建一个线程任务&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;创建一个线程任务&quot;</span><span class="p">)</span>
     <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">thread_job</span><span class="p">,)</span>   <span class="c1"># 定义线程 </span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># 让线程开始工作</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -1962,17 +1962,17 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="k">def</span> <span class="nf">thread_job</span><span class="p">():</span> <span class="c1">#定义线程任务</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#打印我开始做了</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#打印我开始做了</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="c1">#休息0.1秒</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 stop</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="c1">#打印我做完了</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 stop</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="c1">#打印我做完了</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;创建一个线程任务&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;创建一个线程任务&quot;</span><span class="p">)</span>
     <span class="n">added_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">thread_job</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">)</span>   <span class="c1"># 定义线程 name是线程定义的名字</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">added_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># 让线程开始工作</span>
     <span class="c1">#如果是单线程会顺序执行完上面的函数,多线程的情况下是什么样子的呢?</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;alldone</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;alldone</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
@@ -1982,7 +1982,7 @@ threading.enumerate()
 <span class="nb">all</span> <span class="n">done</span>
 </pre></div>
 但实际却是：
-<div class="codehilite"><pre><span></span><span class="n">创建一个线程任务</span>
+<div class="codehilite"><pre><span></span><span class="err">创建一个线程任务</span>
 <span class="n">____________________________________________________________________________________________________</span>
 <span class="n">T1</span> <span class="n">start</span>
 <span class="n">alldone</span>
@@ -1997,7 +1997,7 @@ threading.enumerate()
 <p>线程任务还未完成便输出all done。如果要遵循顺序，可以在启动线程后对它调用join：
 <div class="codehilite"><pre><span></span><span class="n">added_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="n">added_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 总的程序:
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
@@ -2009,24 +2009,24 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="k">def</span> <span class="nf">thread_job</span><span class="p">():</span> <span class="c1">#定义线程任务</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#打印我开始做了</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">#打印我开始做了</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="c1">#休息0.1秒</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 stop</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="c1">#打印我做完了</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 stop</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="c1">#打印我做完了</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;创建一个线程任务&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;创建一个线程任务&quot;</span><span class="p">)</span>
     <span class="n">added_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">thread_job</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">)</span>   <span class="c1"># 定义线程 name是线程定义的名字</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 
     <span class="n">added_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># 让线程开始工作</span>
     <span class="n">added_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>   <span class="c1">#让线程执行完在执行下面的语句</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;alldone</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;alldone</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 执行结果:
-<div class="codehilite"><pre><span></span><span class="n">创建一个线程任务</span>
+<div class="codehilite"><pre><span></span><span class="err">创建一个线程任务</span>
 <span class="n">____________________________________________________________________________________________________</span>
 <span class="n">T1</span> <span class="n">start</span>
 
@@ -2046,20 +2046,20 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="k">def</span> <span class="nf">T1_job</span><span class="p">():</span>  <span class="c1">#执行的速度慢</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">T2_job</span><span class="p">():</span>  <span class="c1">#执行的速度快</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">thread_1</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T1_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">)</span>  <span class="c1">#创建线程1</span>
 <span class="n">thread_2</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T2_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">)</span>  <span class="c1">#创建线程2</span>
 <span class="n">thread_1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># 开启T1</span>
 <span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># 开启T2</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 执行结果:
 <div class="codehilite"><pre><span></span><span class="n">T1</span> <span class="n">start</span>
@@ -2083,21 +2083,21 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="k">def</span> <span class="nf">T1_job</span><span class="p">():</span>  <span class="c1">#执行的速度慢</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">T2_job</span><span class="p">():</span>  <span class="c1">#执行的速度快</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">thread_1</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T1_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">)</span>  <span class="c1">#创建线程1</span>
 <span class="n">thread_2</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T2_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">)</span>  <span class="c1">#创建线程2</span>
 <span class="n">thread_1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># 开启T1</span>
 <span class="n">thread_1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1">#等线程T1执行完再执行别的线程</span>
 <span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># 开启T2(由于T1在T2任务开启之前就加了join因此T2需要等待T1线程执行完才能开启)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 执行结果:
 <div class="codehilite"><pre><span></span><span class="n">T1</span> <span class="n">start</span>
@@ -2120,14 +2120,14 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="k">def</span> <span class="nf">T1_job</span><span class="p">():</span>  <span class="c1">#执行的速度慢</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">T2_job</span><span class="p">():</span>  <span class="c1">#执行的速度快</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">thread_1</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T1_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">)</span>  <span class="c1">#创建线程1</span>
 <span class="n">thread_2</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T2_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">)</span>  <span class="c1">#创建线程2</span>
@@ -2136,7 +2136,7 @@ threading.enumerate()
 <span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># 开启T2</span>
 <span class="n">thread_1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1">#等线程T1执行完再执行别的线程</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 执行结果:
 <div class="codehilite"><pre><span></span><span class="n">T1</span> <span class="n">start</span>
@@ -2155,7 +2155,7 @@ threading.enumerate()
 <span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># start T2</span>
 <span class="n">thread_2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1"># join for T2</span>
 <span class="n">thread_1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1"># join for T1</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">T1 start</span>
@@ -2175,14 +2175,14 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="k">def</span> <span class="nf">T1_job</span><span class="p">():</span>  <span class="c1">#执行的速度慢</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">T2_job</span><span class="p">():</span>  <span class="c1">#执行的速度快</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">thread_1</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T1_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">)</span>  <span class="c1">#创建线程1</span>
 <span class="n">thread_2</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T2_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">)</span>  <span class="c1">#创建线程2</span>
@@ -2190,7 +2190,7 @@ threading.enumerate()
 <span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># 开启T2</span>
 <span class="n">thread_2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1">#等线程T2执行完再执行别的线程</span>
 <span class="n">thread_1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1">#等线程T1执行完再执行别的线程</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 执行结果:
 <div class="codehilite"><pre><span></span><span class="n">T1</span> <span class="n">start</span>
@@ -2216,14 +2216,14 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="k">def</span> <span class="nf">T1_job</span><span class="p">():</span>  <span class="c1">#执行的速度慢</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">T2_job</span><span class="p">():</span>  <span class="c1">#执行的速度快</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">thread_1</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T1_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">)</span>  <span class="c1">#创建线程1</span>
 <span class="n">thread_2</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T2_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">)</span>  <span class="c1">#创建线程2</span>
@@ -2232,7 +2232,7 @@ threading.enumerate()
 <span class="n">thread_1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1">#等线程T1执行完再执行alldone</span>
 <span class="n">thread_2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1">#等线程T2执行完再执行alldone</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 执行结果:
 <div class="codehilite"><pre><span></span><span class="n">T1</span> <span class="n">start</span>
@@ -2256,14 +2256,14 @@ threading.enumerate()
 <span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="k">def</span> <span class="nf">T1_job</span><span class="p">():</span>  <span class="c1">#执行的速度慢</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T1 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">T2_job</span><span class="p">():</span>  <span class="c1">#执行的速度快</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 start</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;T2 finish</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">thread_1</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T1_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">)</span>  <span class="c1">#创建线程1</span>
 <span class="n">thread_2</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">T2_job</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">)</span>  <span class="c1">#创建线程2</span>
@@ -2272,7 +2272,7 @@ threading.enumerate()
 <span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1"># 开启T2</span>
 <span class="n">thread_2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1">#等线程T2执行完再执行别的线程</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;all done</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 执行结果:
 <div class="codehilite"><pre><span></span><span class="n">T1</span> <span class="n">start</span>
@@ -2323,7 +2323,7 @@ threading.enumerate()
 <div class="codehilite"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>  <span class="c1">#q.get()按顺序从q中拿出一个值</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 完整的代码
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
@@ -2357,7 +2357,7 @@ threading.enumerate()
     <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
         <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">())</span> <span class="c1">#从q中取值;传了四次拿四次.队列先进先出</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">multithreading</span><span class="p">()</span>
@@ -2404,20 +2404,20 @@ threading.enumerate()
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#初始一个值</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
         <span class="n">total</span> <span class="o">+=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="c1">#取出所有的结果</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>  <span class="c1">#打印结果</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>  <span class="c1">#打印结果</span>
 
 <span class="k">def</span> <span class="nf">normal</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">))</span> 
     <span class="n">s_t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#获取当前时间</span>
     <span class="n">normal</span><span class="p">(</span><span class="n">l</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;normal: &#39;</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">s_t</span><span class="p">)</span>  <span class="c1">#得到执行时间</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;normal: &#39;</span><span class="p">,</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">s_t</span><span class="p">)</span>  <span class="c1">#得到执行时间</span>
     <span class="n">s_t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">multithreading</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multithreading: &#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">s_t</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multithreading: &#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">s_t</span><span class="p">)</span>
 </pre></div>
 如果你成功运行整套程序, 你大概会有这样的输出. 我们的运算结果没错, 所以程序 threading 和 Normal 运行了一样多次的运算. 但是我们发现 threading 却没有快多少, 按理来说, 我们预期会要快3-4倍, 因为有建立4个线程, 但是并没有. 这就是其中的 GIL 在作怪.
 执行结果:
@@ -2442,14 +2442,14 @@ threading.enumerate()
     <span class="k">global</span> <span class="n">A</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">A</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;job1&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;job1&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 函数二：全局变量A的值每次加10，循环10次，并打印
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">job2</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">A</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">A</span><span class="o">+=</span><span class="mi">10</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;job2&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;job2&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 主函数：定义两个线程，分别执行函数一和函数二</p>
 <p><div class="codehilite"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -2475,13 +2475,13 @@ threading.enumerate()
     <span class="k">global</span> <span class="n">A</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">A</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;job1&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;job1&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">job2</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">A</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">A</span><span class="o">+=</span><span class="mi">10</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;job2&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;job2&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">lock</span><span class="o">=</span><span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
@@ -2524,7 +2524,7 @@ lock在不同线程使用同一共享内存时，能够确保线程之间互不�
     <span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">A</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;job1&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;job1&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
     <span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">job2</span><span class="p">():</span>
@@ -2532,7 +2532,7 @@ lock在不同线程使用同一共享内存时，能够确保线程之间互不�
     <span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">A</span><span class="o">+=</span><span class="mi">10</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;job2&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;job2&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
     <span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 </pre></div>
 主函数中定义一个Lock
@@ -2561,7 +2561,7 @@ lock在不同线程使用同一共享内存时，能够确保线程之间互不�
     <span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>   <span class="c1">#获得锁</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">A</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;job1&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;job1&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
     <span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>  <span class="c1">#释放锁  ,别的进程可以开始执行了</span>
 
 <span class="k">def</span> <span class="nf">job2</span><span class="p">():</span>
@@ -2569,7 +2569,7 @@ lock在不同线程使用同一共享内存时，能够确保线程之间互不�
     <span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">A</span><span class="o">+=</span><span class="mi">10</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;job2&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;job2&#39;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
     <span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

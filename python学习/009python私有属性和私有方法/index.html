@@ -1828,7 +1828,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__age</span> <span class="o">=</span> <span class="mi">18</span>
 
     <span class="k">def</span> <span class="nf">__secret</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我的年龄是 </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我的年龄是 </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">)</span>
 
 
 <span class="n">xiaofang</span> <span class="o">=</span> <span class="n">Women</span><span class="p">(</span><span class="s2">&quot;小芳&quot;</span><span class="p">)</span>
@@ -1849,7 +1849,7 @@
 
     <span class="k">def</span> <span class="nf">secret</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># 在对象的方法内部，是可以访问对象的私有属性的</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 的年龄是 </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 的年龄是 </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">))</span>
 
 
 <span class="n">xiaofang</span> <span class="o">=</span> <span class="n">Women</span><span class="p">(</span><span class="s2">&quot;小芳&quot;</span><span class="p">)</span>
@@ -1871,14 +1871,14 @@
 <li><strong>处理方式</strong>：在 <strong>名称</strong> 前面加上 <code>_类名</code> =&gt; <code>_类名__名称</code></li>
 </ul>
 <p><div class="codehilite"><pre><span></span><span class="c1"># 私有属性，外部不能直接访问到</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">xiaofang</span><span class="o">.</span><span class="n">_Women__age</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">xiaofang</span><span class="o">.</span><span class="n">_Women__age</span><span class="p">)</span>
 
 <span class="c1"># 私有方法，外部不能直接调用</span>
 <span class="n">xiaofang</span><span class="o">.</span><span class="n">_Women__secret</span><span class="p">()</span>
 </pre></div>
 执行结果:
 <div class="codehilite"><pre><span></span><span class="mi">18</span>
-<span class="n">小芳</span> <span class="n">的年龄是</span> <span class="mi">18</span>
+<span class="err">小芳</span> <span class="err">的年龄是</span> <span class="mi">18</span>
 </pre></div></p>
                 
                   

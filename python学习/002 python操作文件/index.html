@@ -2383,14 +2383,14 @@
 </li>
 <li><strong>注意</strong>：<code>read</code> 方法执行后，会把 <strong>文件指针</strong> 移动到 <strong>文件的末尾</strong>
 <div class="codehilite"><pre><span></span><span class="c1"># 1. 打开 - 文件名需要注意大小写</span>
-<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;README&quot;</span><span class="p">)</span>  <span class="c1">#默认是只读</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;README&quot;</span><span class="p">)</span>  <span class="c1">#默认是只读</span>
 
 <span class="c1"># 2. 读取</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
 <span class="c1"># 3. 关闭</span>
-<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div></li>
 </ul>
 <p><strong>提示</strong></p>
@@ -2417,21 +2417,21 @@
 </ul>
 <h3 id="_5">例如:读取文件后指针会改变<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><div class="codehilite"><pre><span></span><span class="c1"># 1. 打开文件</span>
-<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;README&quot;</span><span class="p">)</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;README&quot;</span><span class="p">)</span>
 
 <span class="c1"># 2. 读取文件内容</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="n">text</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="n">text</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
 
 <span class="c1"># 3. 关闭文件</span>
-<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 执行结果:第二次读取的时候变成了空是因为指针移动到了文件的末尾
 <div class="codehilite"><pre><span></span><span class="n">hello</span> <span class="mi">1</span>
@@ -2511,21 +2511,21 @@
 </ul>
 <p><strong>读取大文件的正确姿势</strong></p>
 <div class="codehilite"><pre><span></span><span class="c1"># 打开文件</span>
-<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;README&quot;</span><span class="p">)</span>  <span class="c1">#首选打开文件</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;README&quot;</span><span class="p">)</span>  <span class="c1">#首选打开文件</span>
 
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="c1"># 读取一行内容</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 
     <span class="c1"># 判断是否读到内容</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>  
         <span class="k">break</span>  <span class="c1">#跳出循环</span>
 
     <span class="c1"># 每读取一行的末尾已经有了一个 `\n`</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="c1"># 关闭文件</span>
-<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 <h3 id="26">2.6 文件读写案例 —— 复制文件<a class="headerlink" href="#26" title="Permanent link">&para;</a></h3>
@@ -2558,7 +2558,7 @@
 <span class="n">file_write</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;README[复件]&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
 
 <span class="c1"># 2. 读取并写入文件</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="c1"># 每次读取一行</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">file_read</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 
@@ -2578,8 +2578,8 @@
 <p>read([size])方法从文件当前位置起读取size个字节(注意)，若无参数size，则表示读取至文件结束为止，它范围为字符串对象
 <div class="codehilite"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;a.txt&quot;</span><span class="p">)</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span> <span class="n">lines</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">lines</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 输出结果：
@@ -2592,9 +2592,9 @@
 <p>从字面意思可以看出，该方法每次读出一行内容，所以，读取时占用内存小，比较适合大文件，该方法返回一个字符串对象。
 <div class="codehilite"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;a.txt&quot;</span><span class="p">)</span>
 <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
 <span class="k">while</span> <span class="n">line</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="n">line</span><span class="p">,</span>
+    <span class="k">print</span> <span class="n">line</span><span class="p">,</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -2607,9 +2607,9 @@
 三、readlines()方法读取整个文件所有行，保存在一个列表(list)变量中，每行作为一个元素，但读取大文件会比较占内存
 <div class="codehilite"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;a.txt&quot;</span><span class="p">)</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 输出结果：
@@ -2622,7 +2622,7 @@
 <p>当然，有特殊需求还可以用linecache模块，比如你要输出某个文件的第n行：
 <div class="codehilite"><pre><span></span><span class="c1"># 输出第2行</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">linecache</span><span class="o">.</span><span class="n">getline</span><span class="p">(</span><span class="err">‘</span><span class="n">a</span><span class="o">.</span><span class="n">txt</span><span class="s1">&#39;,2)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </pre></div></p>
 <h2 id="03">03. 文件/目录的常用管理操作<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2729,23 +2729,23 @@
 <span class="kn">import</span> <span class="nn">os</span>  <span class="c1">#导入os包</span>
 <span class="k">def</span> <span class="nf">list_name</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>  <span class="c1">#path是需要获取目录文件名的路径</span>
     <span class="n">list_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>  <span class="c1">#获取这个路径下的文件名存储到列表中</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;文件列表: &#39;</span><span class="p">,</span><span class="n">list_name</span><span class="p">)</span> <span class="c1">#打印这个列表</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;类型: &#39;</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">list_name</span><span class="p">))</span> <span class="c1">#打印这个类型</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;文件列表: &#39;</span><span class="p">,</span><span class="n">list_name</span><span class="p">)</span> <span class="c1">#打印这个列表</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;类型: &#39;</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">list_name</span><span class="p">))</span> <span class="c1">#打印这个类型</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_name</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;文件名: &#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;文件名: &#39;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
 <span class="n">path</span><span class="o">=</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">zangz</span><span class="se">\\</span><span class="s1">Desktop</span><span class="se">\\</span><span class="s1">汉字转拼音&#39;</span>
 <span class="n">list_name</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 执行结果:
-<div class="codehilite"><pre><span></span><span class="n">文件列表</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;.ipynb_checkpoints&#39;</span><span class="p">,</span> <span class="s1">&#39;std总.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;拼音.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;文件名.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;汉字拼音的一些参考代码.ipynb&#39;</span><span class="p">,</span> <span class="s1">&#39;汉字转拼音.ipynb&#39;</span><span class="p">,</span> <span class="s1">&#39;读取文件名中所有文件进行合并.py&#39;</span><span class="p">]</span>
-<span class="n">类型</span><span class="p">:</span>  <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">list</span><span class="s1">&#39;&gt;</span>
-<span class="n">文件名</span><span class="p">:</span>  <span class="o">.</span><span class="n">ipynb_checkpoints</span>
-<span class="n">文件名</span><span class="p">:</span>  <span class="n">std总</span><span class="o">.</span><span class="n">txt</span>
-<span class="n">文件名</span><span class="p">:</span>  <span class="n">拼音</span><span class="o">.</span><span class="n">txt</span>
-<span class="n">文件名</span><span class="p">:</span>  <span class="n">文件名</span><span class="o">.</span><span class="n">txt</span>
-<span class="n">文件名</span><span class="p">:</span>  <span class="n">汉字拼音的一些参考代码</span><span class="o">.</span><span class="n">ipynb</span>
-<span class="n">文件名</span><span class="p">:</span>  <span class="n">汉字转拼音</span><span class="o">.</span><span class="n">ipynb</span>
-<span class="n">文件名</span><span class="p">:</span>  <span class="n">读取文件名中所有文件进行合并</span><span class="o">.</span><span class="n">py</span>
+<div class="codehilite"><pre><span></span><span class="err">文件列表</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;.ipynb_checkpoints&#39;</span><span class="p">,</span> <span class="s1">&#39;std总.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;拼音.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;文件名.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;汉字拼音的一些参考代码.ipynb&#39;</span><span class="p">,</span> <span class="s1">&#39;汉字转拼音.ipynb&#39;</span><span class="p">,</span> <span class="s1">&#39;读取文件名中所有文件进行合并.py&#39;</span><span class="p">]</span>
+<span class="err">类型</span><span class="p">:</span>  <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">list</span><span class="s1">&#39;&gt;</span>
+<span class="err">文件名</span><span class="p">:</span>  <span class="o">.</span><span class="n">ipynb_checkpoints</span>
+<span class="err">文件名</span><span class="p">:</span>  <span class="n">std总</span><span class="o">.</span><span class="n">txt</span>
+<span class="err">文件名</span><span class="p">:</span>  <span class="err">拼音</span><span class="o">.</span><span class="n">txt</span>
+<span class="err">文件名</span><span class="p">:</span>  <span class="err">文件名</span><span class="o">.</span><span class="n">txt</span>
+<span class="err">文件名</span><span class="p">:</span>  <span class="err">汉字拼音的一些参考代码</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="err">文件名</span><span class="p">:</span>  <span class="err">汉字转拼音</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="err">文件名</span><span class="p">:</span>  <span class="err">读取文件名中所有文件进行合并</span><span class="o">.</span><span class="n">py</span>
 </pre></div></p>
 </blockquote>
 <h2 id="04">04. 文本文件的编码格式（科普）<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
@@ -2801,10 +2801,10 @@ Python 3.x 默认使用 <code>UTF-8</code> 编码格式</p>
 <span class="c1"># 在字符串前，增加一个 `u` 表示这个字符串是一个 utf8 字符串</span>
 <span class="n">hello_str</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;你好世界&quot;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">hello_str</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hello_str</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">hello_str</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
                 
                   

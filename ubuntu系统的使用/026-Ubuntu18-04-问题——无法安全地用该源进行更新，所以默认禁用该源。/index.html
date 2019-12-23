@@ -1731,9 +1731,9 @@
                 <p><strong>问题</strong></p>
 <p>在添加仓库 <code>add-apt-repository</code> 或者更新 <code>apt-get update</code>命令显示错误 </p>
 <p>如：</p>
-<p><img alt="image" src="https://upload-images.jianshu.io/upload_images/14555448-0e85b2bf025c4fb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image" src="../026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。.image/14555448-0e85b2bf025c4fb7.png" /></p>
 <p>即便修改了下载源也是错误，只是IP 不同，那就是仓库问题了</p>
-<p><img alt="image" src="https://upload-images.jianshu.io/upload_images/14555448-a518909c1f68c1e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image" src="../026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。.image/14555448-a518909c1f68c1e5.png" /></p>
 <p>这个下载自的源。 对应文件是/etc/apt/sources.list       #这个目录下的文件都带有.save的备份</p>
 <p>错误:28 <a href="http://ppa.launchpad.net/n-muench/burg/ubuntu">http://ppa.launchpad.net/n-muench/burg/ubuntu</a> bionic Release 404 Not Found [IP: 91.189.95.83 80] 错误:29 <a href="http://ppa.launchpad.net/shawn-p-huang/ppa/ubuntu">http://ppa.launchpad.net/shawn-p-huang/ppa/ubuntu</a> bionic Release 404 Not Found [IP: 91.189.95.83 80]</p>
 <p>这些错误是说add-apt-repository的远程仓库没有这个文件，这个IP也是ping不通的。</p>

@@ -1750,47 +1750,47 @@
                 <p>sys</p>
 <p>sys模块主要是针对与Python解释器相关的变量和方法，不是主机操作系统。</p>
 <p>导入方式：import sys
-<div class="codehilite"><pre><span></span><span class="n">属性及方法</span>           <span class="n">使用说明</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">argv</span>            <span class="n">获取命令行参数列表</span><span class="err">，</span><span class="n">第一个元素是程序本身</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>         <span class="n">退出Python程序</span><span class="err">，</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="n">表示正常退出</span><span class="err">。</span><span class="n">当参数非0时</span><span class="err">，</span><span class="n">会引发一个SystemExit异常</span><span class="err">，</span><span class="n">可以在程序中捕获该异常</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">version</span>         <span class="n">获取Python解释程器的版本信息</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>         <span class="n">最大的Int值</span><span class="err">，</span><span class="mi">64</span><span class="n">位平台是2</span><span class="o">**</span><span class="mi">63</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span>            <span class="n">返回模块的搜索路径</span><span class="err">，</span><span class="n">初始化时使用PYTHONPATH环境变量的值</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">platform</span>        <span class="n">返回操作系统平台名称</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">stdin</span>           <span class="n">输入相关</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>          <span class="n">输出相关</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>          <span class="n">错误相关</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>      <span class="n">返回异常信息三元元组</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getdefaultencoding</span><span class="p">()</span>    <span class="n">获取系统当前编码</span><span class="err">，</span><span class="n">默认为utf</span><span class="o">-</span><span class="mi">8</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">()</span>    <span class="n">设置系统的默认编码</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getfilesystemencoding</span><span class="p">()</span>     <span class="n">获取文件系统使用编码方式</span><span class="err">，</span><span class="n">默认是utf</span><span class="o">-</span><span class="mi">8</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">modules</span>         <span class="n">以字典的形式返回所有当前Python环境中已经导入的模块</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">builtin_module_names</span>    <span class="n">返回一个列表</span><span class="err">，</span><span class="n">包含所有已经编译到Python解释器里的模块的名字</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">copyright</span>       <span class="n">当前Python的版权信息</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">flags</span>           <span class="n">命令行标识状态信息列表</span><span class="err">。</span><span class="n">只读</span><span class="err">。</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>     <span class="n">返回对象的引用数量</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getrecursionlimit</span><span class="p">()</span>     <span class="n">返回Python最大递归深度</span><span class="err">，</span><span class="n">默认1000</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="nb">object</span><span class="p">[,</span> <span class="n">default</span><span class="p">])</span>    <span class="n">返回对象的大小</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getswitchinterval</span><span class="p">()</span>     <span class="n">返回线程切换时间间隔</span><span class="err">，</span><span class="n">默认0</span><span class="o">.</span><span class="mi">005</span><span class="n">秒</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">setswitchinterval</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>     <span class="n">设置线程切换的时间间隔</span><span class="err">，</span><span class="n">单位秒</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getwindowsversion</span><span class="p">()</span>     <span class="n">返回当前windwos系统的版本信息</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">hash_info</span>           <span class="n">返回Python默认的哈希方法的参数</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">implementation</span>      <span class="n">当前正在运行的Python解释器的具体实现</span><span class="err">，</span><span class="n">比如CPython</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">thread_info</span>         <span class="n">当前线程信息</span>
+<div class="codehilite"><pre><span></span><span class="err">属性及方法</span>           <span class="err">使用说明</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">argv</span>            <span class="err">获取命令行参数列表，第一个元素是程序本身</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>         <span class="err">退出</span><span class="n">Python程序</span><span class="err">，</span><span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="err">表示正常退出。当参数非</span><span class="mi">0</span><span class="err">时，会引发一个</span><span class="n">SystemExit异常</span><span class="err">，可以在程序中捕获该异常</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">version</span>         <span class="err">获取</span><span class="n">Python解释程器的版本信息</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>         <span class="err">最大的</span><span class="n">Int值</span><span class="err">，</span><span class="mi">64</span><span class="err">位平台是</span><span class="mi">2</span><span class="o">**</span><span class="mi">63</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span>            <span class="err">返回模块的搜索路径，初始化时使用</span><span class="n">PYTHONPATH环境变量的值</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">platform</span>        <span class="err">返回操作系统平台名称</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdin</span>           <span class="err">输入相关</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>          <span class="err">输出相关</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>          <span class="err">错误相关</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>      <span class="err">返回异常信息三元元组</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getdefaultencoding</span><span class="p">()</span>    <span class="err">获取系统当前编码，默认为</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">()</span>    <span class="err">设置系统的默认编码</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getfilesystemencoding</span><span class="p">()</span>     <span class="err">获取文件系统使用编码方式，默认是</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">modules</span>         <span class="err">以字典的形式返回所有当前</span><span class="n">Python环境中已经导入的模块</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">builtin_module_names</span>    <span class="err">返回一个列表，包含所有已经编译到</span><span class="n">Python解释器里的模块的名字</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">copyright</span>       <span class="err">当前</span><span class="n">Python的版权信息</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">flags</span>           <span class="err">命令行标识状态信息列表。只读。</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>     <span class="err">返回对象的引用数量</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getrecursionlimit</span><span class="p">()</span>     <span class="err">返回</span><span class="n">Python最大递归深度</span><span class="err">，默认</span><span class="mi">1000</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="nb">object</span><span class="p">[,</span> <span class="n">default</span><span class="p">])</span>    <span class="err">返回对象的大小</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getswitchinterval</span><span class="p">()</span>     <span class="err">返回线程切换时间间隔，默认</span><span class="mf">0.005</span><span class="err">秒</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">setswitchinterval</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>     <span class="err">设置线程切换的时间间隔，单位秒</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getwindowsversion</span><span class="p">()</span>     <span class="err">返回当前</span><span class="n">windwos系统的版本信息</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">hash_info</span>           <span class="err">返回</span><span class="n">Python默认的哈希方法的参数</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">implementation</span>      <span class="err">当前正在运行的</span><span class="n">Python解释器的具体实现</span><span class="err">，比如</span><span class="n">CPython</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">thread_info</span>         <span class="err">当前线程信息</span>
 </pre></div></p>
 <h1 id="sysargv">sys.argv<a class="headerlink" href="#sysargv" title="Permanent link">&para;</a></h1>
 <p>sys.argv是一个脚本执行参数列表，列表的第一个元素是脚本名称，从第二个元素开始才是真正的参数。
 <div class="codehilite"><pre><span></span><span class="c1"># test.py</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;第</span><span class="si">%d</span><span class="s2">个参数是： </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">arg</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;第</span><span class="si">%d</span><span class="s2">个参数是： </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">arg</span><span class="p">))</span>
 <span class="c1">#这里是命令行的输入</span>
-<span class="n">运行python</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="err">，</span><span class="n">结果</span><span class="err">：</span>
-<span class="n">第0个参数是</span><span class="err">：</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span>
-<span class="n">第1个参数是</span><span class="err">：</span> <span class="mi">1</span>
-<span class="n">第2个参数是</span><span class="err">：</span> <span class="mi">2</span>
-<span class="n">第3个参数是</span><span class="err">：</span> <span class="mi">3</span>
-<span class="n">第4个参数是</span><span class="err">：</span> <span class="mi">4</span> 
+<span class="err">运行</span><span class="n">python</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="err">，结果：</span>
+<span class="err">第</span><span class="mi">0</span><span class="err">个参数是：</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span>
+<span class="err">第</span><span class="mi">1</span><span class="err">个参数是：</span> <span class="mi">1</span>
+<span class="err">第</span><span class="mi">2</span><span class="err">个参数是：</span> <span class="mi">2</span>
+<span class="err">第</span><span class="mi">3</span><span class="err">个参数是：</span> <span class="mi">3</span>
+<span class="err">第</span><span class="mi">4</span><span class="err">个参数是：</span> <span class="mi">4</span> 
 </pre></div></p>
 <h1 id="sysgetrefcountobject">sys.getrefcount(object)<a class="headerlink" href="#sysgetrefcountobject" title="Permanent link">&para;</a></h1>
 <p>我们都知道Python有自动的垃圾回收机制，让我们不用费力去进行内存管理。
@@ -1818,31 +1818,31 @@ Python使用<code>‘引用计数’</code>的方式，追踪每个对象 的引
 <span class="mi">902</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <span class="mi">36</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="mi">581</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
 <span class="mi">6918</span>
-<span class="mi">1</span><span class="err">、</span><span class="s2">&quot;a&quot;</span><span class="err">、</span><span class="kc">True</span><span class="err">、</span><span class="kc">None</span><span class="err">，</span><span class="n">Python内部环境运行过程中已经引用了它们很多次</span><span class="err">，</span><span class="n">None甚至被使用了6918次</span>
+<span class="mi">1</span><span class="err">、</span><span class="s2">&quot;a&quot;</span><span class="err">、</span><span class="bp">True</span><span class="err">、</span><span class="bp">None</span><span class="err">，</span><span class="n">Python内部环境运行过程中已经引用了它们很多次</span><span class="err">，</span><span class="n">None甚至被使用了6918次</span>
 </pre></div></p>
 <h1 id="sysmodules">sys.modules<a class="headerlink" href="#sysmodules" title="Permanent link">&para;</a></h1>
 <p><code>sys.modules</code>保存有当前Python环境中已经导入的模块记录，这是一个全局字典，当Python启动后就加载在内存中。每当导入新的模块，<code>sys.modules</code>将自动记录该模块，当第二次试图再次导入该模块时，Python会先到这个字典中查找是否曾经导入过该模块。</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
 <span class="p">{</span><span class="s1">&#39;builtins&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;builtins&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;sys&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;_frozen_importlib&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;importlib._bootstrap&#39;</span> <span class="p">(</span><span class="n">frozen</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;_imp&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;_imp&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;_warnings&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;_warnings&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;_thread&#39;</span><span class="p">:</span> 
-<span class="o">.......</span><span class="n">截取部分</span>
+<span class="o">.......</span><span class="err">截取部分</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;builtins&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;_frozen_importlib&#39;</span><span class="p">,</span> <span class="s1">&#39;_imp&#39;</span><span class="p">,</span> <span class="s1">&#39;_warnings&#39;</span><span class="p">,</span> <span class="s1">&#39;_thread&#39;</span><span class="p">,</span> <span class="s1">&#39;_weakref&#39;</span><span class="p">,</span> <span class="s1">&#39;_frozen_importlib_external&#39;</span><span class="p">,</span> <span class="s1">&#39;_io&#39;</span><span class="p">,</span> <span class="s1">&#39;marshal&#39;</span><span class="p">,</span> <span class="s1">&#39;nt&#39;</span><span class="p">,</span> <span class="s1">&#39;winreg&#39;</span><span class="p">,</span> <span class="s1">&#39;zipimport&#39;</span><span class="p">,</span> <span class="s1">&#39;encodings&#39;</span><span class="p">,</span> <span class="s1">&#39;codecs&#39;</span><span class="p">,</span> <span class="s1">&#39;_codecs&#39;</span><span class="p">,</span> <span class="s1">&#39;encodings.aliases&#39;</span><span class="p">,</span> 
-<span class="o">...</span><span class="n">截取部分</span>
+<span class="o">...</span><span class="err">截取部分</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 <span class="n">dict_values</span><span class="p">([</span><span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;builtins&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;sys&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;importlib._bootstrap&#39;</span> <span class="p">(</span><span class="n">frozen</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;_imp&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;_warnings&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;_thread&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;_weakref&#39;</span> <span class="n">module</span> <span class="s1">&#39;urllib.parse&#39;</span> <span class="kn">from</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Python36</span><span class="se">\\</span><span class="s1">lib</span><span class="se">\\</span><span class="s1">urllib</span><span class="se">\\</span><span class="s1">parse.py&#39;</span><span class="o">&gt;</span><span class="p">])</span>
-<span class="o">.......</span><span class="n">截取部分</span>
+<span class="o">.......</span><span class="err">截取部分</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;sys&#39;</span><span class="p">]</span>
 <span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;sys&#39;</span> <span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span>
 </pre></div>
 
 <h1 id="sysplatform">sys.platform<a class="headerlink" href="#sysplatform" title="Permanent link">&para;</a></h1>
 <p>获取当前执行环境的平台名称，不同的平台返回值如下表所示：
-<div class="codehilite"><pre><span></span><span class="n">操作系统</span>    <span class="n">返回值</span>
+<div class="codehilite"><pre><span></span><span class="err">操作系统</span>    <span class="err">返回值</span>
 <span class="n">Linux</span>           <span class="s1">&#39;linux&#39;</span>
 <span class="n">Windows</span>         <span class="s1">&#39;win32&#39;</span>
 <span class="n">Windows</span><span class="o">/</span><span class="n">Cygwin</span>  <span class="s1">&#39;cygwin&#39;</span>

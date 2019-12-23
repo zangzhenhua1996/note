@@ -1796,7 +1796,7 @@
 举一个例子来说明一下，假设我们有一个 const.py 文件，内容如下：
 <div class="codehilite"><pre><span></span><span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;PI:&quot;</span><span class="p">,</span> <span class="n">PI</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;PI:&quot;</span><span class="p">,</span> <span class="n">PI</span><span class="p">)</span>
 
 <span class="n">main</span><span class="p">()</span>
 </pre></div>
@@ -1808,7 +1808,7 @@
 <span class="k">def</span> <span class="nf">calc_round_area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">PI</span> <span class="o">*</span> <span class="p">(</span><span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;round area: &quot;</span><span class="p">,</span> <span class="n">calc_round_area</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;round area: &quot;</span><span class="p">,</span> <span class="n">calc_round_area</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">main</span><span class="p">()</span>
 </pre></div>
 运行 <code>area.py</code>，输出结果：
@@ -1818,7 +1818,7 @@
 可以看到，const 中的 main 函数也被运行了，实际上我们是不希望它被运行，提供 main 也只是为了对常量定义进行下测试。这时，<code>if name == 'main'</code> 就派上了用场。把 <code>const.py</code> 改一下：
 <div class="codehilite"><pre><span></span><span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;PI:&quot;</span><span class="p">,</span> <span class="n">PI</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;PI:&quot;</span><span class="p">,</span> <span class="n">PI</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -1855,7 +1855,7 @@ Python 的 -m 参数用于将一个模块或者包作为一个脚本运行，而
 首先我们需要来看看 python xxx.py 与 python -m xxx.py 的区别。两种运行 Python 程序的方式的不同点在于，一种是直接运行，一种是当做模块来运行。
 先来看一个简单的例子，假设有一个 Python 文件 run.py，其内容如下：
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 我们用直接运行的方式启动（python run.py），输出结果(为了说明问题，输出结果只截取了重要部分，下同)：
 ['/home/huoty/aboutme/pythonstudy/main', ...]</p>

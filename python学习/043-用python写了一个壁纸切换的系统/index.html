@@ -1749,34 +1749,34 @@
                 
                 <h1 id="windows">程序员换壁纸还是用程序比较好啊,谁让windows切换壁纸的功能那么的垃圾呢<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h1>
 <h1 id="1">功能如下,这是使用的功能1,初始使用的情况<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="n">欢迎使用壁纸切换系统</span>
+<div class="codehilite"><pre><span></span><span class="err">欢迎使用壁纸切换系统</span>
 
-<span class="n">使用上次的文件夹路径请输入</span><span class="p">:</span><span class="mi">1</span>
+<span class="err">使用上次的文件夹路径请输入</span><span class="p">:</span><span class="mi">1</span>
 
-<span class="n">在使用上次的文件夹路径的基础上追加路径</span><span class="p">:</span><span class="mi">2</span>
+<span class="err">在使用上次的文件夹路径的基础上追加路径</span><span class="p">:</span><span class="mi">2</span>
 
-<span class="n">重新定义新的文件夹路径请输入</span><span class="p">:</span><span class="mi">3</span>
+<span class="err">重新定义新的文件夹路径请输入</span><span class="p">:</span><span class="mi">3</span>
 
-<span class="n">请输入选项</span><span class="p">:</span> <span class="mi">1</span>
+<span class="err">请输入选项</span><span class="p">:</span> <span class="mi">1</span>
 
-<span class="n">壁纸路径不存在</span><span class="p">,</span><span class="n">请重新定义新的文件夹路径</span>
+<span class="err">壁纸路径不存在</span><span class="p">,</span><span class="err">请重新定义新的文件夹路径</span>
 
-<span class="n">还要添加文件路径吗</span><span class="err">?</span>
-<span class="n">是请输入</span><span class="p">:</span><span class="mi">1</span>
-<span class="n">否请输入</span><span class="p">:</span><span class="mi">2</span>
+<span class="err">还要添加文件路径吗?</span>
+<span class="err">是请输入</span><span class="p">:</span><span class="mi">1</span>
+<span class="err">否请输入</span><span class="p">:</span><span class="mi">2</span>
 
-<span class="n">请输入选项</span><span class="p">:</span> <span class="mi">1</span>
+<span class="err">请输入选项</span><span class="p">:</span> <span class="mi">1</span>
 
-<span class="n">还要添加文件路径吗</span><span class="err">?</span>
-<span class="n">是请输入</span><span class="p">:</span><span class="mi">1</span>
-<span class="n">否请输入</span><span class="p">:</span><span class="mi">2</span>
+<span class="err">还要添加文件路径吗?</span>
+<span class="err">是请输入</span><span class="p">:</span><span class="mi">1</span>
+<span class="err">否请输入</span><span class="p">:</span><span class="mi">2</span>
 
-<span class="n">请输入选项</span><span class="p">:</span> <span class="mi">2</span>
+<span class="err">请输入选项</span><span class="p">:</span> <span class="mi">2</span>
 
-<span class="n">请输入切换的时间间隔</span><span class="p">:</span> <span class="mi">3</span>
+<span class="err">请输入切换的时间间隔</span><span class="p">:</span> <span class="mi">3</span>
 
-<span class="n">死鬼</span>
-<span class="n">想要结束系统请使用快捷键</span><span class="p">:</span><span class="n">Ctrl</span> <span class="o">+</span> <span class="n">C</span>
+<span class="err">死鬼</span>
+<span class="err">想要结束系统请使用快捷键</span><span class="p">:</span><span class="n">Ctrl</span> <span class="o">+</span> <span class="n">C</span>
 </pre></div>
 
 <h1 id="_1">可以设置壁纸切换的多个路径<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
@@ -1797,71 +1797,71 @@
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="kn">as</span> <span class="nn">tk</span>
 <span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 
 <span class="c1"># path = &quot;E:\\私密文件\\壁纸\\横屏壁纸收集\\sex\\&quot; #存储图片的文件夹</span>
 
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;欢迎使用壁纸切换系统&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;查看当前壁纸路径吗?&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;查看请输入:1&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;欢迎使用壁纸切换系统&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;查看当前壁纸路径吗?&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;查看请输入:1&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
 <span class="n">look_lujing</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入选项: &quot;</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">look_lujing</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
     <span class="n">exists</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>  <span class="c1">#判断这个文件存在与否,返回值为True或者False</span>
     <span class="k">if</span> <span class="n">exists</span><span class="p">:</span>  <span class="c1">#存在的话就直接读取路径</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;当前壁纸路径有:&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="n">file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>    
+        <span class="k">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;当前壁纸路径有:&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="nb">file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>    
             <span class="n">curLine</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">curLine</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请选择您要进行的操作:&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">curLine</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请选择您要进行的操作:&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;当前壁纸路径不存在&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请选择您要进行的操作:&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;当前壁纸路径不存在&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请选择您要进行的操作:&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
 
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请选择您要进行的操作:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;使用上次的文件夹路径请输入:1&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;在使用上次的文件夹路径的基础上追加路径:2&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;重新定义新的文件夹路径请输入:3&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请选择您要进行的操作:&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;使用上次的文件夹路径请输入:1&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;在使用上次的文件夹路径的基础上追加路径:2&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;重新定义新的文件夹路径请输入:3&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
 <span class="n">num</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入选项: &quot;</span><span class="p">))</span>
 
 
 <span class="k">if</span> <span class="n">num</span> <span class="o">==</span><span class="mi">1</span><span class="p">:</span>  <span class="c1">#进入的是使用存在的路径</span>
     <span class="n">exists</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>  <span class="c1">#判断这个文件存在与否,返回值为True或者False</span>
     <span class="k">if</span> <span class="n">exists</span><span class="p">:</span>  <span class="c1">#存在的话就直接读取路径</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;壁纸路径存在&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;壁纸路径存在&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;壁纸路径不存在,请重新定义新的文件夹路径&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;壁纸路径不存在,请重新定义新的文件夹路径&quot;</span><span class="p">)</span>
         <span class="n">exists</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>  <span class="c1">#判断这个文件存在与否,返回值为True或者False</span>
         <span class="k">if</span> <span class="n">exists</span><span class="p">:</span>  <span class="c1">#冗余代码懒得删</span>
             <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">pass</span>
-        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;还要添加文件路径吗?&quot;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s2">&quot;是请输入:1&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">()</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;还要添加文件路径吗?&quot;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s2">&quot;是请输入:1&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">()</span>
             <span class="n">a</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入选项: &quot;</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
@@ -1874,8 +1874,8 @@
                 <span class="k">break</span>
     <span class="c1">#最后都要从本地的文件中读取路径</span>
     <span class="n">path_list</span><span class="o">=</span><span class="p">[]</span>
-    <span class="n">file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>    
+    <span class="nb">file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>    
         <span class="n">curLine</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="n">path_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curLine</span><span class="p">)</span>  
 
@@ -1883,10 +1883,10 @@
 <span class="k">elif</span> <span class="n">num</span> <span class="o">==</span><span class="mi">2</span><span class="p">:</span>
     <span class="n">exists</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>  <span class="c1">#判断这个文件存在与否,返回值为True或者False</span>
     <span class="k">if</span> <span class="n">exists</span><span class="p">:</span>  <span class="c1">#如果存在就继续添加路径</span>
-        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;还要添加文件路径吗?&quot;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s2">&quot;是请输入:1&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">()</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;还要添加文件路径吗?&quot;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s2">&quot;是请输入:1&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">()</span>
             <span class="n">a</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入选项: &quot;</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
@@ -1899,16 +1899,16 @@
                 <span class="k">break</span>
 
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;壁纸路径不存在,请重新定义新的文件夹路径&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;壁纸路径不存在,请重新定义新的文件夹路径&quot;</span><span class="p">)</span>
         <span class="n">exists</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>  <span class="c1">#判断这个文件存在与否,返回值为True或者False</span>
         <span class="k">if</span> <span class="n">exists</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">pass</span>
-        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;还要添加文件路径吗?&quot;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s2">&quot;是请输入:1&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">()</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;还要添加文件路径吗?&quot;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s2">&quot;是请输入:1&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">()</span>
             <span class="n">a</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入选项: &quot;</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
@@ -1921,8 +1921,8 @@
                 <span class="k">break</span>
 
     <span class="n">path_list</span><span class="o">=</span><span class="p">[]</span>
-    <span class="n">file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>    
+    <span class="nb">file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>    
         <span class="n">curLine</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="n">path_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curLine</span><span class="p">)</span>  
 
@@ -1938,10 +1938,10 @@
         <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">pass</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;还要添加文件路径吗?&quot;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s2">&quot;是请输入:1&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;还要添加文件路径吗?&quot;</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s2">&quot;是请输入:1&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;否请输入:2&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
         <span class="n">a</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入选项: &quot;</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
@@ -1954,29 +1954,29 @@
             <span class="k">break</span>
 
     <span class="n">path_list</span><span class="o">=</span><span class="p">[]</span>
-    <span class="n">file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>    
+    <span class="nb">file</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;壁纸路径.txt&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>    
         <span class="n">curLine</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="n">path_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curLine</span><span class="p">)</span>  
 <span class="k">else</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;你是傻逼吗?&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;你是傻逼吗?&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;你是傻逼吗?&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;你是傻逼吗?&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;你是傻逼吗?&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;你是傻逼吗?&quot;</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span> <span class="c1">#睡眠时间</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;老子不跟你玩了,再见!&quot;</span><span class="p">)</span>
-    <span class="n">exit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;老子不跟你玩了,再见!&quot;</span><span class="p">)</span>
+    <span class="nb">exit</span><span class="p">()</span>
+<span class="k">print</span><span class="p">()</span>
 <span class="n">sleepTime</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入切换的时间间隔: &quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;死鬼&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;想要结束系统请使用快捷键:Ctrl + C&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;死鬼&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;想要结束系统请使用快捷键:Ctrl + C&quot;</span><span class="p">)</span>
 
 
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>  
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>  
     <span class="n">index</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">path_list</span><span class="p">))</span>
     <span class="n">path</span><span class="o">=</span><span class="n">path_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    <span class="n">file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>   <span class="c1">#打开存储图片文件夹中的图片目录</span>
-    <span class="n">filepath</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="c1">#随机选取某张图片，建立绝对地址</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>   <span class="c1">#打开存储图片文件夹中的图片目录</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span> <span class="c1">#随机选取某张图片，建立绝对地址</span>
     <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">user32</span><span class="o">.</span><span class="n">SystemParametersInfoW</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">filepath</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># 设置桌面壁纸</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleepTime</span><span class="p">)</span> <span class="c1">#睡眠时间</span>
 

@@ -2032,9 +2032,9 @@
 <li>捕获异常最简单的语法格式：</li>
 </ul>
 <div class="codehilite"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">尝试执行的代码</span>
+    <span class="err">尝试执行的代码</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="n">出现错误的处理</span>
+    <span class="err">出现错误的处理</span>
 </pre></div>
 
 <ul>
@@ -2046,7 +2046,7 @@
     <span class="c1"># 提示用户输入一个数字</span>
     <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入数字：&quot;</span><span class="p">))</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请输入正确的数字&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请输入正确的数字&quot;</span><span class="p">)</span>
 </pre></div>
 
 <h3 id="22">2.2 错误类型捕获<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
@@ -2061,14 +2061,14 @@
 <div class="codehilite"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="c1"># 尝试执行的代码</span>
     <span class="k">pass</span>
-<span class="k">except</span> <span class="n">错误类型1</span><span class="p">:</span>
+<span class="k">except</span> <span class="err">错误类型</span><span class="mi">1</span><span class="p">:</span>
     <span class="c1"># 针对错误类型1，对应的代码处理</span>
     <span class="k">pass</span>
-<span class="k">except</span> <span class="p">(</span><span class="n">错误类型2</span><span class="p">,</span> <span class="n">错误类型3</span><span class="p">):</span>
+<span class="k">except</span> <span class="p">(</span><span class="err">错误类型</span><span class="mi">2</span><span class="p">,</span> <span class="err">错误类型</span><span class="mi">3</span><span class="p">):</span>
     <span class="c1"># 针对错误类型2 和 3，对应的代码处理</span>
     <span class="k">pass</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未知错误 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;未知错误 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
 </pre></div>
 
 <ul>
@@ -2083,11 +2083,11 @@
 <div class="codehilite"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入整数：&quot;</span><span class="p">))</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">/</span> <span class="n">num</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请输入正确的整数&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请输入正确的整数&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;除 0 错误&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;除 0 错误&quot;</span><span class="p">)</span>
 </pre></div>
 
 <blockquote>
@@ -2102,7 +2102,7 @@
 </ul>
 <p>语法如下：</p>
 <div class="codehilite"><pre><span></span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未知错误 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;未知错误 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
 </pre></div>
 
 <h3 id="23">2.3 异常捕获完整语法<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
@@ -2119,24 +2119,24 @@
 <div class="codehilite"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="c1"># 尝试执行的代码</span>
     <span class="k">pass</span>
-<span class="k">except</span> <span class="n">错误类型1</span><span class="p">:</span>
+<span class="k">except</span> <span class="err">错误类型</span><span class="mi">1</span><span class="p">:</span>
     <span class="c1"># 针对错误类型1，对应的代码处理</span>
     <span class="k">pass</span>
-<span class="k">except</span> <span class="n">错误类型2</span><span class="p">:</span>
+<span class="k">except</span> <span class="err">错误类型</span><span class="mi">2</span><span class="p">:</span>
     <span class="c1"># 针对错误类型2，对应的代码处理</span>
     <span class="k">pass</span>
-<span class="k">except</span> <span class="p">(</span><span class="n">错误类型3</span><span class="p">,</span> <span class="n">错误类型4</span><span class="p">):</span>
+<span class="k">except</span> <span class="p">(</span><span class="err">错误类型</span><span class="mi">3</span><span class="p">,</span> <span class="err">错误类型</span><span class="mi">4</span><span class="p">):</span>
     <span class="c1"># 针对错误类型3 和 4，对应的代码处理</span>
     <span class="k">pass</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
     <span class="c1"># 打印错误信息</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># 没有异常才会执行的代码</span>
     <span class="k">pass</span>
 <span class="k">finally</span><span class="p">:</span>
     <span class="c1"># 无论是否有异常，都会执行的代码</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;无论是否有异常，都会执行的代码&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;无论是否有异常，都会执行的代码&quot;</span><span class="p">)</span>
 </pre></div>
 
 <ul>
@@ -2151,17 +2151,17 @@
 <div class="codehilite"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入整数：&quot;</span><span class="p">))</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">/</span> <span class="n">num</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请输入正确的整数&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请输入正确的整数&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;除 0 错误&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;除 0 错误&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未知错误 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;未知错误 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正常执行&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;正常执行&quot;</span><span class="p">)</span>
 <span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;执行完成，但是不保证正确&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;执行完成，但是不保证正确&quot;</span><span class="p">)</span>
 </pre></div>
 
 <h2 id="03">03. 异常的传递<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -2191,11 +2191,11 @@
     <span class="k">return</span> <span class="n">demo1</span><span class="p">()</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">demo2</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">demo2</span><span class="p">())</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请输入正确的整数&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请输入正确的整数&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未知错误 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;未知错误 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
 </pre></div>
 
 <h2 id="04-raise">04. 抛出 <code>raise</code> 异常<a class="headerlink" href="#04-raise" title="Permanent link">&para;</a></h2>
@@ -2248,9 +2248,9 @@
 
 <span class="k">try</span><span class="p">:</span>
     <span class="n">user_pwd</span> <span class="o">=</span> <span class="n">input_password</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">user_pwd</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">user_pwd</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;发现错误：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;发现错误：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">result</span><span class="p">)</span>
 </pre></div>
                 
                   

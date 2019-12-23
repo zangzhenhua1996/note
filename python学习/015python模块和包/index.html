@@ -2256,14 +2256,14 @@
 </ul>
 <h3 id="12">1.2 模块的两种导入方式<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
 <h4 id="1import">1）import 导入<a class="headerlink" href="#1import" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">模块名1</span><span class="o">,</span> <span class="nn">模块名2</span> 
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="err">模块名</span><span class="mi">1</span><span class="p">,</span> <span class="err">模块名</span><span class="mi">2</span> 
 </pre></div>
 
 <blockquote>
 <p>提示：在导入模块时，每个导入应该独占一行</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">模块名1</span>
-<span class="kn">import</span> <span class="nn">模块名2</span> 
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="err">模块名</span><span class="mi">1</span>
+<span class="kn">import</span> <span class="err">模块名</span><span class="mi">2</span> 
 </pre></div>
 
 <ul>
@@ -2276,7 +2276,7 @@
 <blockquote>
 <p><strong>如果模块的名字太长</strong>，可以使用 <code>as</code> 指定模块的名称，以方便在代码中的使用</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">模块名1</span> <span class="k">as</span> <span class="nn">模块别名</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="err">模块名</span><span class="mi">1</span> <span class="k">as</span> <span class="err">模块别名</span>
 </pre></div>
 
 <blockquote>
@@ -2288,7 +2288,7 @@
 <li><code>import 模块名</code> 是 <strong>一次性</strong> 把模块中 <strong>所有工具全部导入</strong>，并且通过 <strong>模块名/别名</strong> 访问</li>
 </ul>
 <div class="codehilite"><pre><span></span><span class="c1"># 从 模块 导入 某一个工具</span>
-<span class="kn">from</span> <span class="nn">模块名1</span> <span class="kn">import</span> <span class="n">工具名</span>
+<span class="kn">from</span> <span class="err">模块名</span><span class="mi">1</span> <span class="kn">import</span> <span class="err">工具名</span>
 </pre></div>
 
 <ul>
@@ -2308,7 +2308,7 @@
 </ul>
 <h5 id="fromimport">from...import *（知道）<a class="headerlink" href="#fromimport" title="Permanent link">&para;</a></h5>
 <div class="codehilite"><pre><span></span><span class="c1"># 从 模块 导入 所有工具</span>
-<span class="kn">from</span> <span class="nn">模块名1</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="err">模块名</span><span class="mi">1</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 
 <p><strong>注意</strong></p>
@@ -2327,11 +2327,11 @@
 <p><code>Python</code> 中每一个模块都有一个内置属性 <code>__file__</code> 可以 <strong>查看模块</strong> 的 <strong>完整路径</strong></p>
 <p><strong>示例</strong></p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>    <span class="c1">#打印这个包的所在文件路径</span>
+<span class="k">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>    <span class="c1">#打印这个包的所在文件路径</span>
 <span class="c1"># 生成一个 0～10 的数字</span>
 <span class="n">rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">rand</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">rand</span><span class="p">)</span>
 </pre></div>
 
 <blockquote>
@@ -2384,21 +2384,21 @@
 
 
 <span class="k">def</span> <span class="nf">say_hello</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;你好你好，我是 say hello&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;你好你好，我是 say hello&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># 如果直接执行模块，__main__</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
     <span class="c1"># 文件被导入时，能够直接执行的代码不需要被执行！</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;小明开发的模块&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;小明开发的模块&quot;</span><span class="p">)</span>
     <span class="n">say_hello</span><span class="p">()</span>
 </pre></div>
 直接执行时执行结果:
 <div class="codehilite"><pre><span></span><span class="n">__main__</span>
-<span class="n">小明开发的模块</span>
-<span class="n">你好你好</span><span class="err">，</span><span class="n">我是</span> <span class="n">say</span> <span class="n">hello</span>
+<span class="err">小明开发的模块</span>
+<span class="err">你好你好，我是</span> <span class="n">say</span> <span class="n">hello</span>
 </pre></div></p>
 <blockquote>
 <p>别的文件中导入:
@@ -2452,7 +2452,7 @@ receive_message.py文件:
 </pre></div>
 send_message.py文件:
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正在发送 </span><span class="si">%s</span><span class="s2">...&quot;</span> <span class="o">%</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;正在发送 </span><span class="si">%s</span><span class="s2">...&quot;</span> <span class="o">%</span> <span class="n">text</span><span class="p">)</span>
 </pre></div>
 导包:
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">hm_message</span>
@@ -2460,7 +2460,7 @@ send_message.py文件:
 <span class="n">hm_message</span><span class="o">.</span><span class="n">send_message</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span><span class="c1">#包名.模块名.函数名</span>
 
 <span class="n">txt</span> <span class="o">=</span> <span class="n">hm_message</span><span class="o">.</span><span class="n">receive_message</span><span class="o">.</span><span class="n">receive</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
 </pre></div></p>
 </blockquote>
 <h2 id="03">03. 发布模块（知道）<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
