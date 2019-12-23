@@ -1,0 +1,2994 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/python学习/054 python多任务多进程/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>054 python多任务多进程 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#6-" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                054 python多任务多进程
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../001 jupyter notebook快捷键/" class="md-tabs__link md-tabs__link--active">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        054 python多任务多进程
+      </label>
+    
+    <a href="./" title="054 python多任务多进程" class="md-nav__link md-nav__link--active">
+      054 python多任务多进程
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1. 进程以及状态
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    进程以及状态
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 进程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 进程的状态
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-multiprocessing" class="md-nav__link">
+    6.2. 进程的创建-multiprocessing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-multiprocessing" class="md-nav__link">
+    进程的创建-multiprocessing
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-2while" class="md-nav__link">
+    1. 2个while循环一起执行
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    多进程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pid" class="md-nav__link">
+    2. 进程pid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-process" class="md-nav__link">
+    3. Process语法结构如下：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 给子进程指定的函数传递参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-nums" class="md-nav__link">
+    5. 进程间不同享全局变量(子进程都会拷贝主进程的一份资源,因此输出的使用nums都是单独的资源)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    运行结果:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    6.3. 进程、线程对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    进程、线程对比
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    定义的不同
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    优缺点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-queue" class="md-nav__link">
+    6.4. 进程间通信-Queue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-queue" class="md-nav__link">
+    进程间通信-Queue
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#146-queue" class="md-nav__link">
+    1. Queue的使用
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#246-queue" class="md-nav__link">
+    2. Queue实例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-pool" class="md-nav__link">
+    6.5. 进程的创建-进程池Pool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pool" class="md-nav__link">
+    进程池Pool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queue" class="md-nav__link">
+    进程池中的Queue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-copy" class="md-nav__link">
+    6.6. 案例：文件夹copy器（多进程版）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy" class="md-nav__link">
+    应用：文件夹copy器（多进程版）
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1. 进程以及状态
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    进程以及状态
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 进程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 进程的状态
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-multiprocessing" class="md-nav__link">
+    6.2. 进程的创建-multiprocessing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-multiprocessing" class="md-nav__link">
+    进程的创建-multiprocessing
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-2while" class="md-nav__link">
+    1. 2个while循环一起执行
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    多进程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pid" class="md-nav__link">
+    2. 进程pid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-process" class="md-nav__link">
+    3. Process语法结构如下：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 给子进程指定的函数传递参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-nums" class="md-nav__link">
+    5. 进程间不同享全局变量(子进程都会拷贝主进程的一份资源,因此输出的使用nums都是单独的资源)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    运行结果:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    6.3. 进程、线程对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    进程、线程对比
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    定义的不同
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    优缺点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-queue" class="md-nav__link">
+    6.4. 进程间通信-Queue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-queue" class="md-nav__link">
+    进程间通信-Queue
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#146-queue" class="md-nav__link">
+    1. Queue的使用
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#246-queue" class="md-nav__link">
+    2. Queue实例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-pool" class="md-nav__link">
+    6.5. 进程的创建-进程池Pool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pool" class="md-nav__link">
+    进程池Pool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queue" class="md-nav__link">
+    进程池中的Queue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-copy" class="md-nav__link">
+    6.6. 案例：文件夹copy器（多进程版）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy" class="md-nav__link">
+    应用：文件夹copy器（多进程版）
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="6-">6. 多任务-进程<a class="headerlink" href="#6-" title="Permanent link">&para;</a></h1>
+<h2 id="61">6.1. 进程以及状态<a class="headerlink" href="#61" title="Permanent link">&para;</a></h2>
+<h2 id="_1">进程以及状态<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 进程<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>程序：例如xxx.py这是程序，是一个静态的</p>
+<p>进程：一个程序运行起来后，代码+用到的资源 称之为进程，它是操作系统分配资源的基本单元。</p>
+<p>不仅可以通过线程完成多任务，进程也是可以的</p>
+<h3 id="2">2. 进程的状态<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>工作中，任务数往往大于cpu的核数，即一定有一些任务正在执行，而另外一些任务在等待cpu进行执行，因此导致了有了不同的状态</p>
+<p><img alt="image.png" src="../054 python多任务多进程.image/14555448-69f0dd2aaab5017a.png" /></p>
+<ul>
+<li>就绪态：运行的条件都已经满足，正在等在cpu执行</li>
+<li>执行态：cpu正在执行其功能</li>
+<li>等待态：等待某些条件满足，例如一个程序sleep了，此时就处于等待态</li>
+</ul>
+<h2 id="62-multiprocessing">6.2. 进程的创建-multiprocessing<a class="headerlink" href="#62-multiprocessing" title="Permanent link">&para;</a></h2>
+<h2 id="-multiprocessing">进程的创建-multiprocessing<a class="headerlink" href="#-multiprocessing" title="Permanent link">&para;</a></h2>
+<p>multiprocessing模块就是跨平台版本的多进程模块，提供了一个Process类来代表一个进程对象，这个对象可以理解为是一个独立的进程，可以执行另外的事情</p>
+<h3 id="1-2while">1. 2个while循环一起执行<a class="headerlink" href="#1-2while" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span> <span class="c1">#使用的是多进程的Process类</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">def</span> <span class="nf">run_proc</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;子进程要执行的代码&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----2----&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_proc</span><span class="p">)</span> <span class="c1">#创建一个进程</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1">#开启进程</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----1----&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="_2">说明<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>创建子进程时，只需要传入一个执行函数和函数的参数，创建一个Process实例，用start()方法启动</li>
+</ul>
+<h4 id="_3">多进程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1--------&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2--------&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+ <span class="c1">#    t1 = threading.Thread(target=test1)</span>
+ <span class="c1">#    t2 = threading.Thread(target=test2)</span>
+ <span class="c1">#    t1.start()</span>
+ <span class="c1">#    t2.start()</span>
+
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">test1</span><span class="p">)</span>  <span class="c1">#threading.Thread() #跟进程的区分一下</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">test2</span><span class="p">)</span>
+    <span class="n">p1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">p2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<p><img alt="image.png" src="../054 python多任务多进程.image/14555448-a1a0557e94cccb6b.png" /></p>
+<p>进程开的越多,资源占用的越多,进程越来越多,效率会降低.一开始是快的不过是占用内存.但是进程越来越多的时候就挤不开了.</p>
+<p>子进程是要复制一份主进程的资源,但是代码是共享的,因此会又占用一部分内存这也是耗费资源多的一个原因.</p>
+<p><img alt="image.png" src="../054 python多任务多进程.image/14555448-8074e0cd858b8278.png" /></p>
+<h3 id="2-pid">2. 进程pid<a class="headerlink" href="#2-pid" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="c1">#系统的操作</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">run_proc</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;子进程要执行的代码&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;子进程运行中，pid=</span><span class="si">%d</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>  <span class="c1"># os.getpid获取当前进程的进程号</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;子进程将要结束...&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;父进程pid: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>  <span class="c1"># os.getpid获取当前进程的进程号</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_proc</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+
+<h3 id="3-process">3. Process语法结构如下：<a class="headerlink" href="#3-process" title="Permanent link">&para;</a></h3>
+<p>Process([group [, target [, name [, args [, kwargs]]]]])</p>
+<ul>
+<li>target：如果传递了函数的引用，可以任务这个子进程就执行这里的代码</li>
+<li>args：给target指定的函数传递的参数，以元组的方式传递</li>
+<li>kwargs：给target指定的函数传递命名参数</li>
+<li>name：给进程设定一个名字，可以不设定</li>
+<li>group：指定进程组，大多数情况下用不到</li>
+</ul>
+<p>Process创建的实例对象的常用方法：</p>
+<ul>
+<li>start()：启动子进程实例（创建子进程）</li>
+<li>is_alive()：判断进程子进程是否还在活着</li>
+<li>join([timeout])：是否等待子进程执行结束，或等待多少秒</li>
+<li>terminate()：不管任务是否完成，立即终止子进程</li>
+</ul>
+<p>Process创建的实例对象的常用属性：</p>
+<ul>
+<li>name：当前进程的别名，默认为Process-N，N为从1开始递增的整数</li>
+<li>pid：当前进程的pid（进程号）</li>
+</ul>
+<h3 id="4">4. 给子进程指定的函数传递参数<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+
+<span class="k">def</span> <span class="nf">run_proc</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;子进程运行中，name= </span><span class="si">%s</span><span class="s1">,age=</span><span class="si">%d</span><span class="s1"> ,pid=</span><span class="si">%d</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_proc</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;m&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">})</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 1秒中之后，立即结束子进程</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+
+<p>运行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+</pre></div>
+
+<h3 id="5-nums">5. 进程间不同享全局变量(子进程都会拷贝主进程的一份资源,因此输出的使用nums都是单独的资源)<a class="headerlink" href="#5-nums" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">work1</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;子进程要执行的代码&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in process1 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">nums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in process1 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">work2</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;子进程要执行的代码&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in process2 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">work1</span><span class="p">)</span>
+    <span class="n">p1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">p1</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">work2</span><span class="p">)</span>
+    <span class="n">p2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+
+<h4 id="_4">运行结果:<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="ow">in</span> <span class="n">process1</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11349</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
+<span class="ow">in</span> <span class="n">process1</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11349</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="ow">in</span> <span class="n">process1</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11349</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="ow">in</span> <span class="n">process1</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11349</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="ow">in</span> <span class="n">process2</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11350</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
+</pre></div>
+
+<h2 id="63">6.3. 进程、线程对比<a class="headerlink" href="#63" title="Permanent link">&para;</a></h2>
+<h2 id="_5">进程、线程对比<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">功能<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>进程(一坨资源及代码的总称)，能够完成多任务，比如 在一台电脑上能够同时运行多个QQ</li>
+<li>线程，能够完成多任务，比如 一个QQ中的多个聊天窗口</li>
+</ul>
+<p><img alt="image.png" src="../054 python多任务多进程.image/14555448-a17648a507f0a300.png" /></p>
+<h3 id="_7">定义的不同<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>进程是系统进行资源分配和调度的一个独立单位.</li>
+<li>线程是进程的一个实体,是CPU调度和分派的基本单位,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),<strong>但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源.</strong></li>
+</ul>
+<h3 id="_8">区别<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>一个程序至少有一个进程,一个进程至少有一个线程.</li>
+<li>线程的划分尺度小于进程(资源比进程少)，使得多线程程序的并发性高。</li>
+<li>进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率</li>
+<li><img alt="image.png" src="../054 python多任务多进程.image/14555448-db05340a5c6a571d.png" /></li>
+<li>线线程不能够独立执行，必须依存在进程中</li>
+<li>可以将进程理解为工厂中的一条流水线，而其中的线程就是这个流水线上的工人</li>
+</ul>
+<p><img alt="image.png" src="../054 python多任务多进程.image/14555448-78012dcb43c8e11d.png" /></p>
+<h3 id="_9">优缺点<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>线程和进程在使用上各有优缺点：线程执行开销小，但不利于资源的管理和保护；而进程正相反。</p>
+<h2 id="64-queue">6.4. 进程间通信-Queue<a class="headerlink" href="#64-queue" title="Permanent link">&para;</a></h2>
+<h2 id="-queue">进程间通信-Queue<a class="headerlink" href="#-queue" title="Permanent link">&para;</a></h2>
+<p>Process之间有时需要通信，操作系统提供了很多机制来实现进程间的通信。</p>
+<h3 id="146-queue">1. Queue的使用<a class="headerlink" href="#146-queue" title="Permanent link">&para;</a></h3>
+<p>可以使用multiprocessing模块的Queue实现多进程之间的数据传递，Queue本身是一个消息列队程序，首先用一个小实例来演示一下Queue的工作原理：</p>
+<div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Queue</span>
+<span class="n">q</span><span class="o">=</span><span class="n">Queue</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#初始化一个Queue对象，最多可接收三条put消息</span>
+<span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息1&quot;</span><span class="p">)</span> 
+<span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">full</span><span class="p">())</span>  <span class="c1">#False</span>
+<span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">full</span><span class="p">())</span> <span class="c1">#True</span>
+
+<span class="c1">#因为消息列队已满下面的try都会抛出异常，第一个try会等待2秒后再抛出异常，第二个Try会立刻抛出异常</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息4&quot;</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#等两秒再存消息</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;消息列队已满，现有消息数量:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="s2">&quot;消息4&quot;</span><span class="p">)</span>  <span class="c1">#不想等直接就要往里存消息</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;消息列队已满，现有消息数量:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span>
+
+<span class="c1">#推荐的方式，先判断消息列队是否已满，再写入</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">full</span><span class="p">():</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="s2">&quot;消息4&quot;</span><span class="p">)</span>
+
+<span class="c1">#读取消息时，先判断消息列队是否为空，再读取</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">())</span>
+</pre></div>
+
+<p>运行结果:</p>
+<div class="codehilite"><pre><span></span><span class="kc">False</span>
+<span class="kc">True</span>
+<span class="n">消息列队已满</span><span class="err">，</span><span class="n">现有消息数量</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">消息列队已满</span><span class="err">，</span><span class="n">现有消息数量</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">消息1</span>
+<span class="n">消息2</span>
+<span class="n">消息3</span>
+</pre></div>
+
+<h5 id="_10">说明<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<p>初始化Queue()对象时（例如：q=Queue()），若括号中没有指定最大可接收的消息数量，或数量为负值，那么就代表可接受的消息数量没有上限（直到内存的尽头）；</p>
+<ul>
+<li>
+<p>Queue.qsize()：返回当前队列包含的消息数量；</p>
+</li>
+<li>
+<p>Queue.empty()：如果队列为空，返回True，反之False ；</p>
+</li>
+<li>
+<p>Queue.full()：如果队列满了，返回True,反之False；</p>
+</li>
+<li>
+<p>Queue.get([block[, timeout]])：获取队列中的一条消息，然后将其从列队中移除，block默认值为True；</p>
+</li>
+</ul>
+<p>1）如果block使用默认值，且没有设置timeout（单位秒），消息列队如果为空，此时程序将被阻塞（停在读取状态），直到从消息列队读到消息为止，如果设置了timeout，则会等待timeout秒，若还没读取到任何消息，则抛出"Queue.Empty"异常；</p>
+<p>2）如果block值为False，消息列队如果为空，则会立刻抛出"Queue.Empty"异常；</p>
+<ul>
+<li>
+<p>Queue.get_nowait()：相当Queue.get(False)；</p>
+</li>
+<li>
+<p>Queue.put(item,[block[, timeout]])：将item消息写入队列，block默认值为True；</p>
+</li>
+</ul>
+<p>1）如果block使用默认值，且没有设置timeout（单位秒），消息列队如果已经没有空间可写入，此时程序将被阻塞（停在写入状态），直到从消息列队腾出空间为止，如果设置了timeout，则会等待timeout秒，若还没空间，则抛出"Queue.Full"异常；</p>
+<p>2）如果block值为False，消息列队如果没有空间可写入，则会立刻抛出"Queue.Full"异常；</p>
+<ul>
+<li>Queue.put_nowait(item)：相当Queue.put(item, False)；</li>
+</ul>
+<h3 id="246-queue">2. Queue实例<a class="headerlink" href="#246-queue" title="Permanent link">&para;</a></h3>
+<p>我们以Queue为例，在父进程中创建两个子进程，一个往Queue里写数据，一个从Queue里读数据：</p>
+<p>简单的做法</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">一个进程向Queue中写入数据，另外一个进程从Queue中获取数据，</span>
+<span class="sd">通过Queue完成了 多个需要配合的进程间的数据共享，从而能够 起到 解耦的作用</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">download_from_web</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;下载数据&quot;&quot;&quot;</span>
+    <span class="c1"># 模拟从网上下载的数据</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+
+    <span class="c1"># 向队列中写入数据（只管往里放）</span>
+    <span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---下载器已经下载完了数据并且存入到队列中----&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">analysis_data</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;数据处理&quot;&quot;&quot;</span>
+    <span class="n">waitting_analysis_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># 从队列中获取数据</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1">#取数据</span>
+        <span class="n">waitting_analysis_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#存储数据</span>
+
+        <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span><span class="c1">#队列空了就结束循环</span>
+            <span class="k">break</span>
+
+    <span class="c1"># 模拟数据处理</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">waitting_analysis_data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 1. 创建一个队列</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>   <span class="c1">#在创建子进程之前就把队列先创建好</span>
+
+    <span class="c1"># 2. 创建多个进程，将队列的引用当做实参进行传递到里面</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">download_from_web</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,))</span> <span class="c1">#args=（q，）#表示是一个元祖，超过两个参数后面就不用再加多余的一个逗号</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">analysis_data</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,))</span> <span class="c1">#传递的都是同一个队列的引用，先进先出</span>
+    <span class="n">p1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">p2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<p>更系统的做法</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Queue</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">random</span>
+
+<span class="c1"># 写数据进程执行的代码:</span>
+<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Put </span><span class="si">%s</span><span class="s1"> to queue...&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+
+<span class="c1"># 读数据进程执行的代码:</span>
+<span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Get </span><span class="si">%s</span><span class="s1"> from queue.&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># 父进程创建Queue，并传给各个子进程：</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+    <span class="n">pw</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">write</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,))</span>
+    <span class="n">pr</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">read</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,))</span>
+    <span class="c1"># 启动子进程pw，写入:</span>
+    <span class="n">pw</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>    
+    <span class="c1"># 等待pw结束:</span>
+    <span class="n">pw</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="c1"># 启动子进程pr，读取:</span>
+    <span class="n">pr</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">pr</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="c1"># pr进程里是死循环，无法等待其结束，只能强行终止:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;所有数据都写入并且读完&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>运行结果：</p>
+<p><img alt="13123123123123126.gif" src="../054 python多任务多进程.image/14555448-90f8caa6718feace.gif" /></p>
+<h2 id="65-pool">6.5. 进程的创建-进程池Pool<a class="headerlink" href="#65-pool" title="Permanent link">&para;</a></h2>
+<h2 id="pool">进程池Pool<a class="headerlink" href="#pool" title="Permanent link">&para;</a></h2>
+<p>当需要创建的子进程数量不多时，可以直接利用multiprocessing中的Process动态成生多个进程，但如果是上百甚至上千个目标，手动的去创建进程的工作量巨大，此时就可以用到multiprocessing模块提供的Pool方法。</p>
+<p>初始化Pool时，可以指定一个最大进程数，当有新的请求提交到Pool中时，如果池还没有满，那么就会创建一个新的进程用来执行该请求；但如果池中的进程数已经达到指定的最大值，那么该请求就会等待，直到池中有进程结束，才会用之前的进程来执行新的任务，请看下面的实例：</p>
+<div class="codehilite"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span> <span class="c1">#导入进程池</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">开始执行,进程号为</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
+    <span class="c1"># random.random()随机生成0~1之间的浮点数</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> 
+    <span class="n">t_stop</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="s2">&quot;执行完毕，耗时</span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_stop</span><span class="o">-</span><span class="n">t_start</span><span class="p">))</span>
+
+<span class="n">po</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 定义一个进程池，最大进程数3</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>  <span class="c1">#会把所有的进程任务全部添加,但是执行的只有Pool最大的数量,会慢慢的把添加的任务分配到进程池里进行执行</span>
+    <span class="c1"># Pool().apply_async(要调用的目标,(传递给目标的参数元祖,))</span>
+    <span class="c1"># 每次循环将会用空闲出来的子进程去调用目标</span>
+    <span class="n">po</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">worker</span><span class="p">,(</span><span class="n">i</span><span class="p">,))</span> <span class="c1">#worker 函数名,(i,) 参数</span>
+<span class="c1">#使用pool创建的任务,主进程不会等待子进程的任务执行完,会继续往下执行,因此需要一个join函数进行堵塞,等待子进程的执行完毕</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----start----&quot;</span><span class="p">)</span>
+<span class="n">po</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># 关闭进程池，关闭后po不再接收新的请求,会继续向下执行,需要对主进程进行堵塞</span>
+<span class="n">po</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>  <span class="c1"># 等待po中所有子进程执行完成，必须放在close语句之后</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----end-----&quot;</span><span class="p">)</span>
+</pre></div>
+
+<p><img alt="图片.png" src="../054 python多任务多进程.image/14555448-9d6390c19c8ee9b3.png" /></p>
+<p>运行结果:</p>
+<div class="codehilite"><pre><span></span><span class="o">----</span><span class="n">start</span><span class="o">----</span>
+<span class="mi">0</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21466</span>
+<span class="mi">1</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21468</span>
+<span class="mi">2</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21467</span>
+<span class="mi">0</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">01</span>
+<span class="mi">3</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21466</span>
+<span class="mi">2</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">24</span>
+<span class="mi">4</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21467</span>
+<span class="mi">3</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时0</span><span class="o">.</span><span class="mi">56</span>
+<span class="mi">5</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21466</span>
+<span class="mi">1</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">68</span>
+<span class="mi">6</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21468</span>
+<span class="mi">4</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时0</span><span class="o">.</span><span class="mi">67</span>
+<span class="mi">7</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21467</span>
+<span class="mi">5</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时0</span><span class="o">.</span><span class="mi">83</span>
+<span class="mi">8</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21466</span>
+<span class="mi">6</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时0</span><span class="o">.</span><span class="mi">75</span>
+<span class="mi">9</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21468</span>
+<span class="mi">7</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">03</span>
+<span class="mi">8</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">05</span>
+<span class="mi">9</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">69</span>
+<span class="o">-----</span><span class="n">end</span><span class="o">-----</span>
+</pre></div>
+
+<p>multiprocessing.Pool常用函数解析：</p>
+<ul>
+<li>apply_async(func[, args[, kwds]]) ：使用非阻塞方式调用func（并行执行，堵塞方式必须等待上一个进程退出才能执行下一个进程），args为传递给func的参数列表，kwds为传递给func的关键字参数列表；</li>
+<li>close()：关闭Pool，使其不再接受新的任务；</li>
+<li>terminate()：不管任务是否完成，立即终止；</li>
+<li>join()：主进程阻塞，等待子进程的退出， 必须在close或terminate之后使用；</li>
+</ul>
+<h2 id="queue">进程池中的Queue<a class="headerlink" href="#queue" title="Permanent link">&para;</a></h2>
+<p>如果要使用Pool创建进程，就需要使用multiprocessing.Manager()中的Queue()，而不是multiprocessing.Queue()，否则会得到一条如下的错误信息：</p>
+<p>RuntimeError: Queue objects should only be shared between processes through inheritance.</p>
+<p>下面的实例演示了进程池中的进程如何通信：</p>
+<div class="codehilite"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
+
+<span class="c1"># 修改import中的Queue为Manager</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Manager</span><span class="p">,</span><span class="n">Pool</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">time</span><span class="o">,</span><span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">reader</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reader启动(</span><span class="si">%s</span><span class="s2">),父进程为(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reader从Queue获取到消息：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">writer</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;writer启动(</span><span class="si">%s</span><span class="s2">),父进程为(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s2">&quot;itcast&quot;</span><span class="p">:</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">) start&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>  <span class="c1"># 使用Manager中的Queue</span>
+    <span class="n">po</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">()</span>
+    <span class="n">po</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="p">(</span><span class="n">q</span><span class="p">,))</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 先让上面的任务向Queue存入数据，然后再让下面的任务开始从中取数据</span>
+
+    <span class="n">po</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="p">(</span><span class="n">q</span><span class="p">,))</span>
+    <span class="n">po</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">po</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">) End&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+</pre></div>
+
+<p>运行结果:</p>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">11095</span><span class="p">)</span> <span class="n">start</span>
+<span class="n">writer启动</span><span class="p">(</span><span class="mi">11097</span><span class="p">),</span><span class="n">父进程为</span><span class="p">(</span><span class="mi">11095</span><span class="p">)</span>
+<span class="n">reader启动</span><span class="p">(</span><span class="mi">11098</span><span class="p">),</span><span class="n">父进程为</span><span class="p">(</span><span class="mi">11095</span><span class="p">)</span>
+<span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">i</span>
+<span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">t</span>
+<span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">c</span>
+<span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">a</span>
+<span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">s</span>
+<span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">t</span>
+<span class="p">(</span><span class="mi">11095</span><span class="p">)</span> <span class="n">End</span>
+</pre></div>
+
+<h2 id="66-copy">6.6. 案例：文件夹copy器（多进程版）<a class="headerlink" href="#66-copy" title="Permanent link">&para;</a></h2>
+<h2 id="copy">应用：文件夹copy器（多进程版）<a class="headerlink" href="#copy" title="Permanent link">&para;</a></h2>
+<p>初始版本</p>
+<p><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+
+<span class="k">def</span> <span class="nf">copy_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">old_folder_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;完成文件的复制&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;======&gt;模拟copy文件：从</span><span class="si">%s</span><span class="s2">---&gt;到</span><span class="si">%s</span><span class="s2"> 文件名是:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">old_folder_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+    <span class="n">old_f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">old_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">old_f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">old_f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">new_f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">new_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+    <span class="n">new_f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="n">new_f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 1. 获取用户要copy的文件夹的名字</span>
+    <span class="n">old_folder_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入要copy的文件夹的名字：&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 2. 创建一个新的文件夹使用try的好处就是已经存在的话就不用二次创建导致报错了</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_folder_name</span> <span class="o">=</span> <span class="n">old_folder_name</span> <span class="o">+</span> <span class="s2">&quot;[复件]&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">new_folder_name</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># 3. 获取文件夹的所有的待copy的文件名字  listdir()</span>
+    <span class="n">file_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">old_folder_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file_names</span><span class="p">)</span>
+
+    <span class="c1"># 4. 创建进程池</span>
+    <span class="n">po</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># 5. 向进程池中添加 copy文件的任务</span>
+    <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">file_names</span><span class="p">:</span>
+        <span class="n">po</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">copy_file</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">old_folder_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">))</span>
+
+    <span class="n">po</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1">#关闭进程池不再像进程池中存储任务</span>
+    <span class="n">po</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+打印进度版本
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+
+<span class="k">def</span> <span class="nf">copy_file</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">old_folder_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;完成文件的复制&quot;&quot;&quot;</span>
+    <span class="c1"># print(&quot;======&gt;模拟copy文件：从%s---&gt;到%s 文件名是:%s&quot; % (old_folder_name, new_folder_name, file_name))</span>
+    <span class="n">old_f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">old_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">old_f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">old_f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">new_f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">new_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+    <span class="n">new_f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="n">new_f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># 如果拷贝完了文件，那么就向队列中写入一个消息，表示已经完成</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 1. 获取用户要copy的文件夹的名字</span>
+    <span class="n">old_folder_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入要copy的文件夹的名字：&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 2. 创建一个新的文件夹</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_folder_name</span> <span class="o">=</span> <span class="n">old_folder_name</span> <span class="o">+</span> <span class="s2">&quot;[复件]&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">new_folder_name</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># 3. 获取文件夹的所有的待copy的文件名字  listdir()</span>
+    <span class="n">file_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">old_folder_name</span><span class="p">)</span>
+   <span class="c1"># print(file_names)</span>
+
+    <span class="c1"># 4. 创建进程池</span>
+    <span class="n">po</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># 5. 创建一个队列</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Manager</span><span class="p">()</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span> <span class="c1">#这里必须使用的是Manager的队列</span>
+
+    <span class="c1"># 6. 向进程池中添加 copy文件的任务</span>
+    <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">file_names</span><span class="p">:</span>
+        <span class="n">po</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">copy_file</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">old_folder_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">))</span>
+
+    <span class="n">po</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="c1"># po.join()</span>
+    <span class="n">all_file_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_names</span><span class="p">)</span>  <span class="c1"># 测一下所有的文件个数</span>
+    <span class="n">copy_ok_num</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#拷贝完的文件的个数进行初始化</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1">#往外取拷贝完了的文件名,获取到了就加一</span>
+        <span class="c1"># print(&quot;已经完成copy：%s&quot; % file_name)</span>
+        <span class="n">copy_ok_num</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">拷贝的进度为：</span><span class="si">%.2f</span><span class="s2"> </span><span class="si">%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">copy_ok_num</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="n">all_file_num</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">copy_ok_num</span> <span class="o">&gt;=</span> <span class="n">all_file_num</span><span class="p">:</span><span class="c1">#个数相等就说明拷贝完了就结束循环</span>
+            <span class="k">break</span>
+
+
+    <span class="nb">print</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div></p>
+<p>多进程拷贝文件,输入原始路径及需要拷贝到的路径</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="k">def</span> <span class="nf">copy_file</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span><span class="n">source_folder_name</span><span class="p">,</span>  <span class="n">dest_folder_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;copy文件到指定的路径&quot;&quot;&quot;</span>
+    <span class="n">f_read</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="n">f_write</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">f_read</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+            <span class="n">f_write</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="n">f_read</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">f_write</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># 发送已经拷贝完毕的文件名字</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 获取要复制的文件夹</span>
+    <span class="n">source_folder_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入要复制文件夹名字:&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 整理目标文件夹</span>
+    <span class="n">dest_folder_name</span> <span class="o">=</span> <span class="n">source_folder_name</span> <span class="o">+</span> <span class="s2">&quot;[副本]&quot;</span>
+
+    <span class="c1"># 创建目标文件夹</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">dest_folder_name</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># 如果文件夹已经存在，那么创建会失败</span>
+
+    <span class="c1"># 获取这个文件夹中所有的普通文件名</span>
+    <span class="n">file_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">source_folder_name</span><span class="p">)</span>
+
+    <span class="c1"># 创建Queue</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Manager</span><span class="p">()</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+
+    <span class="c1"># 创建进程池</span>
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">file_names</span><span class="p">:</span>
+        <span class="c1"># 向进程池中添加任务</span>
+        <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">copy_file</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">source_folder_name</span><span class="p">,</span> <span class="n">dest_folder_name</span><span class="p">))</span>
+
+    <span class="c1"># 主进程显示进度</span>
+    <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">all_file_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_names</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">file_names</span><span class="p">:</span>
+            <span class="n">file_names</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+        <span class="n">copy_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_file_num</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">file_names</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="n">all_file_num</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">%.2f</span><span class="s2">...(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">copy_rate</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">copy_rate</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+    <hr>
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>
