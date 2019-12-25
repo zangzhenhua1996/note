@@ -1730,10 +1730,11 @@
                 
                 <p><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Created on Tue Aug  6 09:57:31 2019</span>
+<span class="sd">Created on Wed Dec 25 09:00:09 2019</span>
 
-<span class="sd">@author: zangz</span>
+<span class="sd">@author: admin</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
@@ -1754,7 +1755,7 @@
     <span class="k">return</span> <span class="n">list1</span>
 <span class="c1">#</span>
 <span class="c1">#path = input(&#39;请输入路径：&#39;).strip()  #.strip()去除首尾的空格</span>
-<span class="n">path</span><span class="o">=</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">zangz</span><span class="se">\\</span><span class="s1">Desktop</span><span class="se">\\</span><span class="s1">33742840&#39;</span>
+<span class="n">path</span><span class="o">=</span><span class="s1">&#39;26776802&#39;</span>  <span class="c1">#需要每次修改的</span>
 <span class="n">file_path_list</span><span class="o">=</span><span class="n">get_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
 <span class="c1">#筛选后缀函数,传入包含所有后缀名的列表,以及需要筛选的后缀(默认筛选txt文件)</span>
@@ -1778,27 +1779,35 @@
 
 
 
+
 <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">num</span><span class="o">=</span><span class="p">[]</span>
 <span class="k">for</span> <span class="n">path_json</span> <span class="ow">in</span> <span class="n">json_list</span><span class="p">:</span>   
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_json</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">load_dict</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>    <span class="c1">#将json文件转换成字典</span>
-        <span class="n">list_split</span><span class="o">=</span><span class="n">path_json</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#将路径进行切分</span>
-        <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">list_split</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="c1">#这个是文件夹编号的名字,为了把全部视频按编号进行排序</span>
-        <span class="n">str1</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-        <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-            <span class="n">str1</span><span class="o">=</span><span class="s1">&#39;00&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">:</span>
-            <span class="n">str1</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">str1</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">load_dict</span><span class="p">[</span><span class="s1">&#39;page_data&#39;</span><span class="p">][</span><span class="s1">&#39;part&#39;</span><span class="p">]</span> <span class="c1">#获取本来应该的文件名</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;entry.json&quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">path_json</span><span class="p">)</span> <span class="c1">#获取取出json文件名的路径</span>
-        <span class="n">old_name</span><span class="o">=</span><span class="n">ret</span><span class="o">+</span><span class="s1">&#39;lua.flv720.bili2api.64</span><span class="se">\\</span><span class="s1">0.blv&#39;</span> <span class="c1">#得到原始的路径</span>
-        <span class="n">new_name</span><span class="o">=</span><span class="n">ret</span><span class="o">+</span><span class="s1">&#39;lua.flv720.bili2api.64</span><span class="se">\\</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">str1</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span> <span class="n">title</span><span class="o">+</span><span class="s1">&#39;.mp4&#39;</span> <span class="c1">#新的文件名</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">old_name</span><span class="p">,</span><span class="n">new_name</span><span class="p">)</span> <span class="c1">#进行重命名操作</span>
-        <span class="n">num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path_json</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;entry.json&quot;</span><span class="p">):</span>  <span class="c1">#只要包含这个文件信息的json文件</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_json</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">load_dict</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>    <span class="c1">#将json文件转换成字典</span>
+            <span class="n">list_split</span><span class="o">=</span><span class="n">path_json</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#将路径进行切分</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">list_split</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">#这个是文件夹编号的名字,为了把全部视频按编号进行排序</span>
+            <span class="n">str1</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">str1</span><span class="o">=</span><span class="s1">&#39;00&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">:</span>
+                <span class="n">str1</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">str1</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+            <span class="c1"># file_num = load_dict[&#39;page_data&#39;][&#39;page&#39;]</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">load_dict</span><span class="p">[</span><span class="s1">&#39;page_data&#39;</span><span class="p">][</span><span class="s1">&#39;part&#39;</span><span class="p">]</span> <span class="c1">#获取本来应该的文件名</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;entry.json&quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">path_json</span><span class="p">)</span> <span class="c1">#获取取出json文件名的路径</span>
+
+            <span class="n">old_name_origin</span><span class="o">=</span><span class="n">ret</span><span class="o">+</span><span class="s1">&#39;lua.flv720.bili2api.64&#39;</span> <span class="c1">#得到原始的路径</span>
+            <span class="n">file_path_list1</span><span class="o">=</span><span class="n">get_file</span><span class="p">(</span><span class="n">old_name_origin</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">qq</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_path_list1</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">)):</span>
+                <span class="n">old_name</span><span class="o">=</span><span class="n">old_name_origin</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">qq</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.blv&#39;</span>     <span class="c1">#得到原始的路径</span>
+                <span class="n">new_name</span><span class="o">=</span><span class="n">ret</span><span class="o">+</span><span class="s1">&#39;lua.flv720.bili2api.64</span><span class="se">\\</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">str1</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span> <span class="n">title</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">qq</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.mp4&#39;</span> <span class="c1">#新的文件名</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">old_name</span><span class="p">,</span><span class="n">new_name</span><span class="p">)</span> <span class="c1">#进行重命名操作</span>
+                <span class="n">num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
 </pre></div>
 最后使用搜索将后缀为mp4的文件给保存到一个新的文件夹中就好了
 <img alt="image.png" src="../057 B站缓存视频重命名.image/14555448-d20db2d5d64d7dc9.png" /></p>
