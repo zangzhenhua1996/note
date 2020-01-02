@@ -1,0 +1,2593 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/python-web/013-天天生鲜项目简略上/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>013 天天生鲜项目简略上 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                013 天天生鲜项目简略上
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/001 jupyter notebook快捷键/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../001-网络udp/" class="md-tabs__link md-tabs__link--active">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        013 天天生鲜项目简略上
+      </label>
+    
+    <a href="./" title="013 天天生鲜项目简略上" class="md-nav__link md-nav__link--active">
+      013 天天生鲜项目简略上
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.项目架构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 数据库表结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3.项目框架搭建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-celery" class="md-nav__link">
+    22 celery使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-session-httpsdjango-redis-chsreadthedocsiozh_cnlatest" class="md-nav__link">
+    24 记录session缓存  https://django-redis-chs.readthedocs.io/zh_CN/latest/
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-" class="md-nav__link">
+    26 用户中心-父模板页抽象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fastdfs" class="md-nav__link">
+    FastDFS文件系统简介
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#32-fastdfs" class="md-nav__link">
+    32 FastDFS文件系统简介(具体的查看文档) 真的是按照教程以及文档自己搞废了时间勒
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    创建管理员
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.项目架构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 数据库表结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3.项目框架搭建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-celery" class="md-nav__link">
+    22 celery使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-session-httpsdjango-redis-chsreadthedocsiozh_cnlatest" class="md-nav__link">
+    24 记录session缓存  https://django-redis-chs.readthedocs.io/zh_CN/latest/
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-" class="md-nav__link">
+    26 用户中心-父模板页抽象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fastdfs" class="md-nav__link">
+    FastDFS文件系统简介
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#32-fastdfs" class="md-nav__link">
+    32 FastDFS文件系统简介(具体的查看文档) 真的是按照教程以及文档自己搞废了时间勒
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    创建管理员
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>013 天天生鲜项目简略上</h1>
+                
+                <h4 id="1">1.项目架构<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-1ae90ba51dd51c2f.png" /></p>
+<h4 id="2">2. 数据库表结构<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-e79ab93b27297298.png" /></p>
+<h4 id="3">3.项目框架搭建<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p>1.创建项目
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-ef2cf08484cce205.png" /></p>
+<p>2.创建多个应用
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-15ea8e07e017e973.png" /></p>
+<ol>
+<li>使用idea打开项目,然后将建立的多个应用放到一个包中
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-5747e157e6ab417e.png" /></li>
+<li>注册应用
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-aa15ba980dff3246.png" />
+    这样在后面路由的配置的时候也是需要进行添加包名的
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-6e7c6821af42a935.png" /></li>
+</ol>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;apps&#39;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-7db93c2c39207b7c.png" /></p>
+<ol>
+<li>创建模板文件
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-7fe0ed9ed13b1394.png" /></li>
+<li>配置模板文件的路径
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-588c80fe3973bc2a.png" /></li>
+<li>配置数据库
+    创建数据库
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-385d9c0de1531886.png" />
+    settings 配置
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-d6af349bb7c270ef.png" />
+    __init__文件导入mysql数据库</li>
+</ol>
+<div class="codehilite"><pre><span></span>import pymysql
+pymysql.install_as_MySQLdb()
+</pre></div>
+
+<p>数据库的迁移</p>
+<ol>
+<li>语言时区的更改
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-ec311992a2d5f601.png" />
+    9.静态文件的配置
+    首先创建一个static文件在
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-21cebed082e3dfc8.png" />
+    静态文件目录的配置
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-2164e769b1e2e198.png" /></li>
+<li>主路由的配置
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-fbd5fd11c2a998b8.png" />
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-6f9eda9ef7020be3.png" />
+    添加namespace 主要是在进行动态的解析时,防止频繁变更名字.</li>
+<li>子路由的复制与配置(每一个应用都要进行赋值)
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-8ca37efd9b1002c0.png" /></li>
+<li>basemodel的创建,让所有的应用的模型类继承这个basemodel</li>
+</ol>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-06cb816ebe411a6b.png" />
+创建一个base_model文件
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-205a99550149601b.png" /></p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;模型抽象类&#39;&#39;&#39;</span>
+    <span class="n">create_time</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;创建时间&#39;</span><span class="p">)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;更新时间&#39;</span><span class="p">)</span>
+    <span class="n">is_delete</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;删除标记&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="c1">#说明这是个抽象模型类</span>
+        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
+<ol>
+<li>其它models模型类的创建
+    user 中的models ....
+    14 由于使用了富文本编辑器,所以进行富文本编辑器的注册
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-a208638e08986e47.png" /></li>
+</ol>
+<div class="codehilite"><pre><span></span><span class="n">TINYMCE_DEFAULT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="s1">&#39;advanced&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+    <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>3）在test6/urls.py中配置编辑器url。</p>
+<div class="codehilite"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^tinymce/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;tinymce.urls&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+
+<p>15 . 指定自己的认证系统
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f42223b8a2bf17bc.png" /></p>
+<blockquote>
+<p>注意： AUTH_USER_MODEL配置参数要在第一次迁移数据库之前配置，否则可能django的认证系统工作不正常</p>
+</blockquote>
+<ol>
+<li>进行数据库文件的迁移
+    <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f83d958945011772.png" /></li>
+</ol>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b7efe69b2446ff26.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-ab739fc0b96aa192.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-1e502933ce2718bc.png" />
+17 静态页面
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-9bdb4a88984681d9.png" /></p>
+<p>18 注册页面的设计(register)
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-fdaa5054f0aed40e.png" />
+在user的view中写一个函数进行显示
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b98187df20c16a48.png" />
+路由的配置
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b62a320f6c2c2e67.png" />
+网页的显示
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-7b8ee5ef18b74893.png" />
+没有正常的图片
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-ed11072af142f531.png" />
+表单提交的设置
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-a43d714a755057cc.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b9224f742a9cfa9f.png" />
+提交表单以后 的处理
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-92871d2d43d4b13e.png" />
+view中register_handle函数编写
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-3201009c1d39f40c.png" /></p>
+<p>路由的配置(以后不再加这一项的详细)
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-864841717598be4e.png" />
+首页的设置
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-23b4b03cf3b442eb.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-0986468502955ffb.png" />
+注册完成后的页面跳转
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-57719a7ebb1559dd.png" />
+数据库的变化
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-1f6415292230ca73.png" />
+19 一般视图函数有时候不能满足我们的要求,因此呢需要进行类视图的定义
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f314dd5dcb877d08.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-4856f4b52d00ea6b.png" />
+20 激活邮件
+使用 itsdangerous 加密用户的身份信息
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-49bc218d7a76ac09.png" /></p>
+<p>过期的加密解密会报异常
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-3c1f113fd9147607.png" /></p>
+<p>激活邮件发送,接受,然后进行激活(专门的激活类视图),激活以后跳转到登录页面</p>
+<blockquote>
+<p>注册总结:
+接收数据
+数据校验
+发送激活邮件
+跳转到首页
+激活
+跳转到登录页面
+21 邮件发送是阻塞类型,在发送到smtp服务器的时间会长时间阻塞影响用户体验,因此呢使用celery代替此函数发送邮件(看课件celery)</p>
+</blockquote>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-1eab1d857d038076.png" /></p>
+<h4 id="22-celery">22 celery使用<a class="headerlink" href="#22-celery" title="Permanent link">&para;</a></h4>
+<p>在项目目录中单独新建一个文件存放耗时较长的任务
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-fb79efcba984f8d8.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-fe042648f29ee212.png" />
+将项目复制到另一个文件夹中
+然后取消注释
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-69fbdc62f4d200c3.png" />
+ 这里使用一些安装包注意版本
+django是1.8.2
+pip install celery==3.1.18
+pip install redis==2.10.6
+关于redis的使用看课件但是注意如何启动redis的服务端(windows下)
+<code>redis-server.exe redis.windows.conf</code>(到安装redis的文件目录下使用cmd)
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-68bd1d08090f9921.png" />
+在新复制的项目中进入到dailyfresh这个文件夹,启动cmd窗口
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-5ccd40183caefc58.png" />
+<code>celery -A celery_tasks.tasks worker -l info</code>进行启动就可以了(-l info 是设置显示的信息)
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-8213202b3c62b263.png" />
+需要注意的是可以不用复制一份新的项目到别的文件夹中,复制到别的文件夹是因为可能是需要两台电脑的时候得操作,不需要复制的时候,也需要注意的是必须把注释的那部分取消,不然也是找不到配置的,毕竟是两个不同的cmd窗口启动,然后还是同样的操作步骤即可.</p>
+<blockquote>
+<p>如果不在同一个电脑中,必须能够进行通信</p>
+</blockquote>
+<p>23 登录函数
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-2132a018466dddaf.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-a4c7d6a370f67a64.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-2e08a288642a9f79.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-08f3ad181f3751f6.png" /></p>
+<h4 id="24-session-httpsdjango-redis-chsreadthedocsiozh_cnlatest">24 记录session缓存  <a href="https://django-redis-chs.readthedocs.io/zh_CN/latest/">https://django-redis-chs.readthedocs.io/zh_CN/latest/</a><a class="headerlink" href="#24-session-httpsdjango-redis-chsreadthedocsiozh_cnlatest" title="Permanent link">&para;</a></h4>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-6523dbd1b5c95ef1.png" />
+安装使用<code>pip install django-redis==4.4.2</code>   否则会跟Django版本不匹配</p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-d1e42746f50f3aa9.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-41b9b54b5b480fd9.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-964e4c7ce36d60de.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f603385c4d8d6b87.png" />
+25 cookie的设置
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-7dcf6a3801a23ba7.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-be2adaa78822940d.png" /></p>
+<h4 id="26-">26 用户中心-父模板页抽象<a class="headerlink" href="#26-" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>页面相同的抽象成一个父模板,不同的地方预留一个block块,不能不预留,因此不预留就没法在别的地方写
+继承的页面在预留的块中书写就ok了</p>
+</blockquote>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-9483ffa97b451d67.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b48cc68a7ac6cd1c.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-50e232989537d2ea.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-add28e34f61d6dd5.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-d64d2367b18bb7cf.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-509dfec7c4adfe4a.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-daf99c170dda11be.png" /></p>
+<p>27 用户中心页面显示</p>
+<blockquote>
+<p>继承的是base_user_center.html 父模板</p>
+</blockquote>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b2646f6e37f067c5.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-988621da38541db1.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-966c15291fc20e9c.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-7f44f64e1a55aa40.png" />
+没有登录进行登录的地址返回
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-6fd0a078d2470d14.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-ec61573a21ed67a6.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-ebc9e2355bfcecbe.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-8bcd81ecc3a472b3.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f98ae8629110c38c.png" />
+28 from django.contrib.auth.decorators import login_required 包裹url地址看起来太复杂怎么办?
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-0669c8d2b9c6c8ac.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-37e2b2a02fc1e444.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-3925cef307b5644a.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-974c204fcc4fca26.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-e83752c01ba92ca1.png" />
+继承这个类会在创建实例对象的时候返回的是包装好的类
+但是需要注意的是继承类的顺序,要先调用LoginRequiredMixin的as_view()函数</p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-42f37614a8571b12.png" />
+29 如何通过判断用户是否登录显示不同的界面
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-8806b5085bf47ab6.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-626ad4b7457bc340.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-76e16d37469334e2.png" />
+这里跟上面login_required 装饰其实功能类似(login_required(必须是内置的认证系统才能用) 不登录不能显示,如果这个页面没有加它那么这个29就可以起作用了,自己体会一下就好了,一个是不登录就不能显示,一个是根据登录与否显示不同的信息)</p>
+<p>29 退出
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-7f35a6bce37fe9ba.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-8656b0e0495ff28c.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-6936fc84327df903.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-29a9e7c06c2ecd69.png" />
+30 用户中心地址页
+使用get获取页面
+post提交信息
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-4d2394b6e8714f95.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-767e70f5eb2818f1.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-d6a9f1f0371217e3.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-42c6d5936fa6f4ff.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-30d360610960fe53.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-021a7352713dec4d.png" /></p>
+<p>这一个获取默认地址使用的是Django内置的查询方式
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-8346d9214682c151.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-9fa0ce063eaec4db.png" /></p>
+<p>而上面使用的函数是我们自己定义的,在model类中定义的管理类
+在调用的时候其实self就是Address.object </p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-faa76a02d86ad63e.png" />
+31 用户中心_个人信息页
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-32a50fc0a773cce2.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-15f9d7892fcd3a80.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-3b2d452921f68058.png" />
+32 历史记录存储格式设计
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-6a55c41f36f68324.png" /></p>
+<p>redis存储历史浏览记录分析
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-cefb1c1fa80ec4bf.png" />
+一个用户对应一个list(键(用户名):值(历史数据))</p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-e5ea4256aa01c6f9.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-829f73d5bae2082b.png" />
+这是原来数据库redis与python交互的使用方法(查看redis课件)
+但是Django_redis内置了获取redis数据的方法
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-d51f9ec0453e7f36.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-c0e479bac68f0f4d.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-e88bc3c8e7ac87d1.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-25797bfe86676a2c.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-a7a2325b4a1b3491.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-5bf826c8b82bd520.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f6e60e93377e1bde.png" /></p>
+<h3 id="fastdfs">FastDFS文件系统简介<a class="headerlink" href="#fastdfs" title="Permanent link">&para;</a></h3>
+<h4 id="32-fastdfs">32 FastDFS文件系统简介(具体的查看文档) 真的是按照教程以及文档自己搞废了时间勒<a class="headerlink" href="#32-fastdfs" title="Permanent link">&para;</a></h4>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-a3f08c8c66fd1cb6.png" />
+解决内容重复使用的是hash值,重复文件只是返回了地址
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-bca5a5f81db17768.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b72ab7ebc306a231.png" />
+33 .启动FastDFS的方法，需要的操作：</p>
+<div class="codehilite"><pre><span></span>1.   修改如下的配置文件  （在/etc/fdfs目录中）(课程给了个虚拟机,我是自己实体机搭建的)
+![image.png](011-天天生鲜项目简略上.image/14555448-2716c6028eab8a3b.png)
+`tracker_server=自己的ip地址:22122`
+2. 启动`tracker、storage、nginx`服务：
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>fdfs_trackerd /etc/fdfs/tracker.conf start
+fdfs_storaged /etc/fdfs/storage.conf start
+sudo /usr/local/nginx/sbin/nginx
+</pre></div>
+
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-bfe977d8c327ef07.png" />
+要加路径(上面的是对的,这个图片是没加路径时候的错误信息)
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b0573dc4f1d0b906.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-203d180d8945337a.png" />
+    3. 执行如下命令测试是否成功
+<code>fdfs_upload_file /etc/fdfs/client.conf 要上传的图片文件</code>
+如果返回类似<code>group1/M00/00/00/wKh8Kl2u066AZHnrABYlnmXXzNA082.jpg</code>的文件id则说明文件上传成功
+在浏览器中可以用   127.0.0.1:8888/返回的文件id <br />
+访问图片
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-fc413fbebb2eaa01.png" />
+详细的配置看上一篇文章就好了</p>
+<p>34 项目中上传和使用图片的流程
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-5c965f7370529870.png" /></p>
+<blockquote>
+<p>海量存储，存储容量扩展方便。
+文件内容重复。
+结合nginx提高网站访问图片的效率。</p>
+</blockquote>
+<p>35 Django二次开发对接FastDFS
+<a href="https://yiyibooks.cn/xx/django_182/ref/files/storage.html">https://yiyibooks.cn/xx/django_182/ref/files/storage.html</a>
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-6f1334395c401331.png" />
+默认的文件上传使用的类
+我们使用fastdfs就不能使用默认的,需要自己进行定义存储系统
+<a href="https://yiyibooks.cn/xx/django_182/howto/custom-file-storage.html">https://yiyibooks.cn/xx/django_182/howto/custom-file-storage.html</a>
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-241bab04091adacf.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-107204d5e58e3865.png" /></p>
+<p>需要的配置文件
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-5ef9c0e9d47c5f24.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-7a0e7a03d7a8166c.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-84e57dc95282aa96.png" /></p>
+<blockquote>
+<p>后面在测试的时候发现给的这个client.conf文件是有问题的,然后直接拷贝的etc中的client.conf
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-d4293583348f81ed.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-826cb756f7f97350.png" /></p>
+</blockquote>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-e76ec4be849e80e6.png" /></p>
+<blockquote>
+<p>这里的配置太low 后面会进行配置</p>
+</blockquote>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-4f0dffa2cb501f18.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-e01acfc4c47d6f19.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f5eefa4884e5da7e.png" />
+进行配置处理
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-4281efb6c981e55d.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-524588d63fda67e9.png" />
+指定自己的上传类,进行配置(指定我们自己的文件)
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f4da41b8fded4cdf.png" /></p>
+<p>优化配置,动态处理
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-95293bb5fe23523d.png" />
+这里的FDFS_URL最好是写成自己的ip地址,因为你用127....别的电脑后面就访问不了了
+nginx一般是127. 以及自己的ip都可以进行访问,但是后面会生成静态的index.html,使用127,别的电脑就访问不到了.
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b4f86e058ecc9669.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-d8f9f0eb2531e4ec.png" />
+这里为什么需要返回url呢? 是这样的
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-948d39af021e0ad2.png" /></p>
+<p>但是我们最终需要访问的是下面这样的格式,因此需要加上我们的base_url才行</p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-00b6b1a347a476e2.png" />
+最后我们需要的img地址应该是上面这样的
+可以看下后面需要生成静态index.html时的调用
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-934ec6afa4fbe97b.png" /></p>
+<p>进行图片上传的测试
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-8e8f6658a9338ccb.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-bc74b6e5c6be71ba.png" /></p>
+<h3 id="_1">创建管理员<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-86653cc2fd6baae1.png" /></p>
+<p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-abad51d36feb3573.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f110a04147236017.png" />
+<img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f5e8b41a19800e95.png" /></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                012 分布式图片服务器FastDFS
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                013 天天生鲜项目简略中
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

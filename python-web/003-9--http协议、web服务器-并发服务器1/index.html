@@ -1,0 +1,3340 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/python-web/003-9--http协议、web服务器-并发服务器1/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>003 9--http协议、web服务器-并发服务器1 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#91-http" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                003 9--http协议、web服务器-并发服务器1
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/001 jupyter notebook快捷键/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../001-网络udp/" class="md-tabs__link md-tabs__link--active">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        003 9--http协议、web服务器-并发服务器1
+      </label>
+    
+    <a href="./" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link md-nav__link--active">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    HTTP协议简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146" class="md-nav__link">
+    1. 使用谷歌/火狐浏览器分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#246-http" class="md-nav__link">
+    2. http协议的分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 浏览器请求
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 服务器响应
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    浏览器解析过程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#346" class="md-nav__link">
+    3. 总结
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-http" class="md-nav__link">
+    3.1 HTTP请求
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-1http" class="md-nav__link">
+    3.1.1 步骤1：浏览器首先向服务器发送HTTP请求，请求包括：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-2http" class="md-nav__link">
+    3.1.1 步骤2：服务器向浏览器返回HTTP响应，响应包括：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-3http12" class="md-nav__link">
+    3.1.1 步骤3：如果浏览器还需要继续向服务器请求其他资源，比如图片，就再次发出HTTP请求，重复步骤1、2。
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-http" class="md-nav__link">
+    3.2 HTTP格式
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-http-get" class="md-nav__link">
+    3.2.1 HTTP GET请求的格式：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-http-post" class="md-nav__link">
+    3.2.2 HTTP POST请求的格式：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-http" class="md-nav__link">
+    3.2.3 HTTP响应的格式：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    HTTP协议简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146" class="md-nav__link">
+    1. 使用谷歌/火狐浏览器分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#246-http" class="md-nav__link">
+    2. http协议的分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 浏览器请求
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 服务器响应
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    浏览器解析过程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#346" class="md-nav__link">
+    3. 总结
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-http" class="md-nav__link">
+    3.1 HTTP请求
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-1http" class="md-nav__link">
+    3.1.1 步骤1：浏览器首先向服务器发送HTTP请求，请求包括：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-2http" class="md-nav__link">
+    3.1.1 步骤2：服务器向浏览器返回HTTP响应，响应包括：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-3http12" class="md-nav__link">
+    3.1.1 步骤3：如果浏览器还需要继续向服务器请求其他资源，比如图片，就再次发出HTTP请求，重复步骤1、2。
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-http" class="md-nav__link">
+    3.2 HTTP格式
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-http-get" class="md-nav__link">
+    3.2.1 HTTP GET请求的格式：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-http-post" class="md-nav__link">
+    3.2.2 HTTP POST请求的格式：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-http" class="md-nav__link">
+    3.2.3 HTTP响应的格式：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="91-http">9.1. http协议<a class="headerlink" href="#91-http" title="Permanent link">&para;</a></h1>
+<h2 id="http">HTTP协议简介<a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
+<h2 id="146">1. 使用谷歌/火狐浏览器分析<a class="headerlink" href="#146" title="Permanent link">&para;</a></h2>
+<p>在Web应用中，服务器把网页传给浏览器，实际上就是把网页的HTML代码发送给浏览器，让浏览器显示出来。而浏览器和服务器之间的传输协议是HTTP，所以：</p>
+<ul>
+<li>
+<p>HTML是一种用来定义网页的文本，会HTML，就可以编写网页；</p>
+</li>
+<li>
+<p>HTTP是在网络上传输HTML的协议，用于浏览器和服务器的通信。</p>
+</li>
+</ul>
+<p>Chrome浏览器提供了一套完整地调试工具，非常适合Web开发。</p>
+<p>安装好Chrome浏览器后，打开Chrome，在菜单中选择“视图”，“开发者”，“开发者工具”，就可以显示开发者工具：</p>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-aa53adf6a2df8057.png" /></p>
+<h4 id="_1">说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Elements显示网页的结构</li>
+<li>Network显示浏览器和服务器的通信</li>
+</ul>
+<p>我们点Network，确保第一个小红灯亮着，Chrome就会记录所有浏览器和服务器之间的通信：</p>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-8dd501ff14078c12.png" /></p>
+<h2 id="246-http">2. http协议的分析<a class="headerlink" href="#246-http" title="Permanent link">&para;</a></h2>
+<p>当我们在地址栏输入www.sina.com时，浏览器将显示新浪的首页。在这个过程中，浏览器都干了哪些事情呢？通过Network的记录，我们就可以知道。在Network中，找到www.sina.com那条记录，点击，右侧将显示Request Headers，点击右侧的view source，我们就可以看到浏览器发给新浪服务器的请求：</p>
+<h3 id="21">2.1 浏览器请求<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-d7f4ef4e29594367.png" /></p>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-ca2fa462ba5e945a.png" /></p>
+<h4 id="_2">说明<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>最主要的头两行分析如下，第一行：</p>
+<div class="codehilite"><pre><span></span>    GET / HTTP/1.1
+</pre></div>
+
+<p>GET表示一个读取请求，将从服务器获得网页数据，/表示URL的路径，URL总是以/开头，/就表示首页，最后的HTTP/1.1指示采用的HTTP协议版本是1.1。目前HTTP协议的版本就是1.1，但是大部分服务器也支持1.0版本，主要区别在于1.1版本允许多个HTTP请求复用一个TCP连接，以加快传输速度。</p>
+<p>从第二行开始，每一行都类似于Xxx: abcdefg：</p>
+<div class="codehilite"><pre><span></span>    Host: www.sina.com
+</pre></div>
+
+<p>表示请求的域名是www.sina.com。如果一台服务器有多个网站，服务器就需要通过Host来区分浏览器请求的是哪个网站。</p>
+<h3 id="22">2.2 服务器响应<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>继续往下找到Response Headers，点击view source，显示服务器返回的原始响应数据：</p>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-5afe3c7fa3fc09a8.png" /></p>
+<p>HTTP响应分为Header和Body两部分（Body是可选项），我们在Network中看到的Header最重要的几行如下：</p>
+<div class="codehilite"><pre><span></span>    HTTP/1.1 200 OK
+</pre></div>
+
+<p>200表示一个成功的响应，后面的OK是说明。</p>
+<p>如果返回的不是200，那么往往有其他的功能，例如</p>
+<ul>
+<li>失败的响应有404 Not Found：网页不存在</li>
+<li>500 Internal Server Error：服务器内部出错</li>
+<li>...等等...</li>
+</ul>
+<div class="codehilite"><pre><span></span>    Content-Type: text/html
+</pre></div>
+
+<p>Content-Type指示响应的内容，这里是text/html表示HTML网页。</p>
+<blockquote>
+<p>请注意，浏览器就是依靠Content-Type来判断响应的内容是网页还是图片，是视频还是音乐。浏览器并不靠URL来判断响应的内容，所以，即使URL是<code>http://www.baidu.com/meimei.jpg</code>，它也不一定就是图片。</p>
+</blockquote>
+<p>HTTP响应的Body就是HTML源码，我们在菜单栏选择“视图”，“开发者”，“查看网页源码”就可以在浏览器中直接查看HTML源码：</p>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-1a6dfd8b57fb9655.png" /></p>
+<h4 id="_3">浏览器解析过程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p><strong>当浏览器读取到新浪首页的HTML源码后，它会解析HTML，显示页面，然后，根据HTML里面的各种链接，再发送HTTP请求给新浪服务器，拿到相应的图片、视频、Flash、JavaScript脚本、CSS等各种资源，最终显示出一个完整的页面。所以我们在Network下面能看到很多额外的HTTP请求。</strong></p>
+</blockquote>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-523b5e50516c2ca8.png" /></p>
+<h2 id="346">3. 总结<a class="headerlink" href="#346" title="Permanent link">&para;</a></h2>
+<h3 id="31-http">3.1 HTTP请求<a class="headerlink" href="#31-http" title="Permanent link">&para;</a></h3>
+<p>跟踪了新浪的首页，我们来总结一下HTTP请求的流程：</p>
+<h4 id="311-1http">3.1.1 步骤1：浏览器首先向服务器发送HTTP请求，请求包括：<a class="headerlink" href="#311-1http" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>方法：GET还是POST，GET仅请求资源，POST会附带用户数据；</p>
+<p>路径：/full/url/path；</p>
+<p>域名：由Host头指定：Host: <a href="http://www.sina.com">www.sina.com</a></p>
+<p>以及其他相关的Header；</p>
+<p>如果是POST，那么请求还包括一个Body，包含用户数据</p>
+</blockquote>
+<h4 id="311-2http">3.1.1 步骤2：服务器向浏览器返回HTTP响应，响应包括：<a class="headerlink" href="#311-2http" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>响应代码：200表示成功，3xx表示重定向，4xx表示客户端发送的请求有错误，5xx表示服务器端处理时发生了错误；</p>
+<p>响应类型：由Content-Type指定；</p>
+<p>以及其他相关的Header；</p>
+<p>通常服务器的HTTP响应会携带内容，也就是有一个Body，包含响应的内容，网页的HTML源码就在Body中。</p>
+</blockquote>
+<h4 id="311-3http12">3.1.1 步骤3：如果浏览器还需要继续向服务器请求其他资源，比如图片，就再次发出HTTP请求，重复步骤1、2。<a class="headerlink" href="#311-3http12" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Web采用的HTTP协议采用了非常简单的请求-响应模式，从而大大简化了开发。当我们编写一个页面时，我们只需要在HTTP请求中把HTML发送出去，不需要考虑如何附带图片、视频等，浏览器如果需要请求图片和视频，它会发送另一个HTTP请求，因此，一个HTTP请求只处理一个资源(此时就可以理解为TCP协议中的短连接，每个链接只获取一个资源，如需要多个就需要建立多个链接)</p>
+</blockquote>
+<p>HTTP协议同时具备极强的扩展性，虽然浏览器请求的是<code>http://www.sina.com</code>的首页，但是新浪在HTML中可以链入其他服务器的资源，比如<code>&lt;img src="http://i1.sinaimg.cn/home/2013/1008/U8455P30DT20131008135420.png"&gt;</code>，从而将请求压力分散到各个服务器上，并且，一个站点可以链接到其他站点，无数个站点互相链接起来，就形成了World Wide Web，简称WWW。</p>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-ceffa8a510c3a6c4.png" /></p>
+<h3 id="32-http">3.2 HTTP格式<a class="headerlink" href="#32-http" title="Permanent link">&para;</a></h3>
+<p>每个HTTP请求和响应都遵循相同的格式，一个HTTP包含Header和Body两部分，其中Body是可选的。</p>
+<p>HTTP协议是一种文本协议，所以，它的格式也非常简单。</p>
+<h4 id="321-http-get">3.2.1 HTTP GET请求的格式：<a class="headerlink" href="#321-http-get" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>    GET /path HTTP/1.1
+    Header1: Value1
+    Header2: Value2
+    Header3: Value3
+</pre></div>
+
+<p>每个Header一行一个，换行符是\r\n。</p>
+<h4 id="322-http-post">3.2.2 HTTP POST请求的格式：<a class="headerlink" href="#322-http-post" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>    POST /path HTTP/1.1
+    Header1: Value1
+    Header2: Value2
+    Header3: Value3
+
+    body data goes here...
+</pre></div>
+
+<p>当遇到连续两个\r\n(有一个空行)时，Header部分结束，后面的数据全部是Body。</p>
+<h4 id="323-http">3.2.3 HTTP响应的格式：<a class="headerlink" href="#323-http" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>    200 OK
+    Header1: Value1
+    Header2: Value2
+    Header3: Value3
+
+    body data goes here...
+</pre></div>
+
+<p>HTTP响应如果包含body，也是通过\r\n\r\n来分隔的。</p>
+<p>请再次注意，Body的数据类型由Content-Type头来确定，如果是网页，Body就是文本，如果是图片，Body就是图片的二进制数据。</p>
+<p>当存在Content-Encoding时，Body数据是被压缩的，最常见的压缩方式是gzip，所以，看到Content-Encoding: gzip时，需要将Body数据先解压缩，才能得到真正的数据。压缩的目的在于减少Body的大小，加快网络传输。</p>
+<div class="codehilite"><pre><span></span>浏览器----&gt;服务器发送的请求格式如下：
+    GET / HTTP/1.1   //请求的时候必须有
+    Host: 127.0.0.1:8080
+    Connection: keep-alive
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    Upgrade-Insecure-Requests: 1
+    User-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36
+    Accept-Encoding: gzip, deflate, sdch
+    Accept-Language: zh-CN,zh;q=0.8
+
+服务器---&gt;浏览器回送的数据格式如下:
+    HTTP/1.1 200 OK  //返回必须要有
+    Bdpagetype: 1
+    Bdqid: 0xe87cb3f700023783
+    Bduserid: 0
+    Cache-Control: private
+    Connection: Keep-Alive
+    Content-Encoding: gzip
+    Content-Type: text/html; charset=utf-8
+    Cxy_all: baidu+55617f8533383cbe48d5d2b7dc84b7f0
+    Date: Fri, 20 Oct 2017 00:59:55 GMT
+    Expires: Fri, 20 Oct 2017 00:59:11 GMT
+    Server: BWS/1.1
+    Set-Cookie: BDSVRTM=0; path=/
+    Set-Cookie: BD_HOME=0; path=/
+    Set-Cookie: H_PS_PSSID=1463_21080_17001_20929; path=/; domain=.baidu.com
+    Strict-Transport-Security: max-age=172800
+    Vary: Accept-Encoding
+    X-Powered-By: HPHP
+    X-Ua-Compatible: IE=Edge,chrome=1
+    Transfer-Encoding: chunked
+
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>haha<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span> //这是返回的内容
+</pre></div>
+
+<h1 id="92-web-1-">9.2. Web静态服务器-1-显示固定的页面<a class="headerlink" href="#92-web-1-" title="Permanent link">&para;</a></h1>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-7c8f02eebc5bb988.png" /></p>
+<h2 id="web-1-">Web静态服务器-1-显示固定的页面<a class="headerlink" href="#web-1-" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+
+<span class="k">def</span> <span class="nf">handle_client</span><span class="p">(</span><span class="n">client_socket</span><span class="p">):</span>
+    <span class="s2">&quot;为一个客户端进行服务&quot;</span>
+    <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">request_header_lines</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">request_header_lines</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="c1"># 组织相应 头信息(header)</span>
+    <span class="n">response_headers</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>  <span class="c1"># 200表示找到这个资源</span>
+    <span class="n">response_headers</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>  <span class="c1"># 用一个空的行与body进行隔开</span>
+    <span class="c1"># 组织 内容(body)</span>
+    <span class="n">response_body</span> <span class="o">=</span> <span class="s2">&quot;hello world&quot;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">response_headers</span> <span class="o">+</span> <span class="n">response_body</span>
+    <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="s2">&quot;作为程序的主控制入口&quot;</span>
+
+    <span class="n">server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="c1"># 设置当服务器先close 即服务器端4次挥手之后资源能够立即释放，这样就保证了，下次运行程序时 可以立即绑定7788端口</span>
+    <span class="n">server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7788</span><span class="p">))</span>
+    <span class="n">server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="n">handle_client</span><span class="p">(</span><span class="n">client_socket</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<h3 id="_4">服务器端<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-fc37838f2d009359.png" /></p>
+<h3 id="_5">客户端<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="图片" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-ab656ae91aadc018.png" /></p>
+<p>手敲代码:</p>
+<div class="codehilite"><pre><span></span> <span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="k">def</span> <span class="nf">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;为客户端返回数据&quot;&quot;&quot;</span>
+    <span class="c1"># 1.接收浏览器发送过来的请求,即http请求</span>
+    <span class="c1"># GET / HTTP/1.1</span>
+    <span class="c1"># ....</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">new_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="c1">#接收客户端的数据</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="c1"># 2.返回http格式的数据</span>
+    <span class="c1"># 2.1准备给浏览器发送的数据 --header</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">response</span> <span class="o">+=</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="c1"># 2.2 准备给浏览器发送的数据 --boday</span>
+    <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;hehe&quot;</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;gbk&quot;</span><span class="p">))</span> <span class="c1">#数据的返回</span>
+    <span class="c1">#关闭套接字</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;用来进行整体的控制&quot;&quot;&quot;</span>
+    <span class="c1"># 1.创建套接字</span>
+    <span class="n">tcp_server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="c1">#AF_INET ipv4  stream时流的意思</span>
+     <span class="c1"># 设置当服务器先close 即服务器端4次挥手之后资源能够立即释放，这样就保证了，下次运行程序时 可以立即绑定7890端口</span>
+    <span class="n">server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># 2. 绑定</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="mi">7890</span><span class="p">))</span> <span class="c1">#绑定默认的ip以及端口号</span>
+    <span class="c1"># 3. 变为监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># 4. 等待新客户端的链接</span>
+        <span class="n">new_socket</span><span class="p">,</span><span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="c1"># 5. 为这个客户端进行服务</span>
+        <span class="n">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">)</span> <span class="c1">#将接收到的客户对象进行接收</span>
+    <span class="c1"># 关闭监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<h1 id="93-web-2-">9.3. Web静态服务器-2-显示需要的页面<a class="headerlink" href="#93-web-2-" title="Permanent link">&para;</a></h1>
+<h2 id="web-2-">Web静态服务器-2-显示需要的页面<a class="headerlink" href="#web-2-" title="Permanent link">&para;</a></h2>
+<p>03-返回inde.html页面.py</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="k">def</span> <span class="nf">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;为这个客户端返回数据&quot;&quot;&quot;</span>
+
+    <span class="c1"># 1. 接收浏览器发送过来的请求 ，即http请求  </span>
+    <span class="c1"># GET / HTTP/1.1</span>
+    <span class="c1"># .....</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">new_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt;&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+    <span class="c1"># 2. 返回http格式的数据，给浏览器</span>
+    <span class="c1"># 2.1 准备发送给浏览器的数据---header</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="c1"># 2.2 准备发送给浏览器的数据---boy</span>
+    <span class="c1"># response += &quot;hahahhah&quot;</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./html/index.html&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># 将response header发送给浏览器</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="c1"># 将response body发送给浏览器</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
+
+    <span class="c1"># 关闭套接</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;用来完成整体的控制&quot;&quot;&quot;</span>
+    <span class="c1"># 1. 创建套接字</span>
+    <span class="n">tcp_server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 2. 绑定</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7890</span><span class="p">))</span>
+
+    <span class="c1"># 3. 变为监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># 4. 等待新客户端的链接</span>
+        <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+
+        <span class="c1"># 5. 为这个客户端服务</span>
+        <span class="n">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">)</span>
+
+    <span class="c1"># 关闭监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<h3 id="_6">服务器端<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-0e29fbf11273604d.png" /></p>
+<h3 id="_7">客户端<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-dd196465148ff0d5.png" /></p>
+<p>04-根据用户的需求返回相应的页面.py</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="k">def</span> <span class="nf">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;为这个客户端返回数据&quot;&quot;&quot;</span>
+
+    <span class="c1"># 1. 接收浏览器发送过来的请求 ，即http请求  </span>
+    <span class="c1"># GET / HTTP/1.1</span>
+    <span class="c1"># .....</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">new_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>  <span class="c1">#对接收的数据进行解码</span>
+    <span class="c1"># print(&quot;&gt;&gt;&gt;&quot;*50)</span>
+    <span class="c1"># print(request)</span>
+
+    <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>  <span class="c1">#将字符串每一行切割成一个字符串</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+
+    <span class="c1"># GET /index.html HTTP/1.1</span>
+    <span class="c1"># get post put del</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">request_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1">#[^/]+匹配不是/有多个,[^ ]* 匹配非空格字符零个或多个</span>
+   <span class="c1">#如果匹配到了数据的话那么就使用这个数据</span>
+    <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># print(&quot;*&quot;*50, file_name)</span>
+        <span class="k">if</span> <span class="n">file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/index.html&quot;</span>
+
+
+
+
+    <span class="c1"># 2. 返回http格式的数据，给浏览器</span>
+    <span class="c1">#尝试打开这个文件</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./html&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span> <span class="c1">#try不能正常的执行就是说明没有这个文件的话就返回404</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 404 NOT FOUND</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;------file not found-----&quot;</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+
+    <span class="k">else</span><span class="p">:</span> <span class="c1">#else执行的条件是try能够正常执行 #finally是一定会执行</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># 2.1 准备发送给浏览器的数据---header</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="c1"># 2.2 准备发送给浏览器的数据---boy</span>
+        <span class="c1"># response += &quot;hahahhah&quot;</span>
+
+        <span class="c1"># 将response header发送给浏览器</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+        <span class="c1"># 将response body发送给浏览器</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
+
+
+    <span class="c1"># 关闭套接</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;用来完成整体的控制&quot;&quot;&quot;</span>
+    <span class="c1"># 1. 创建套接字</span>
+    <span class="n">tcp_server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 2. 绑定</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7890</span><span class="p">))</span>
+
+    <span class="c1"># 3. 变为监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># 4. 等待新客户端的链接</span>
+        <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+
+        <span class="c1"># 5. 为这个客户端服务</span>
+        <span class="n">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">)</span>
+
+    <span class="c1"># 关闭监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<p>更详细的代码</p>
+<div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="k">def</span> <span class="nf">handle_client</span><span class="p">(</span><span class="n">client_socket</span><span class="p">):</span>
+    <span class="s2">&quot;为一个客户端进行服务&quot;</span>
+    <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="n">request_header_lines</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">request_header_lines</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="n">http_request_line</span> <span class="o">=</span> <span class="n">request_header_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">http_request_line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span>  <span class="c1"># for test</span>
+
+    <span class="c1"># 如果没有指定访问哪个页面。例如index.html</span>
+    <span class="c1"># GET / HTTP/1.1</span>
+    <span class="k">if</span> <span class="n">get_file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+        <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/index.html&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="n">get_file_name</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1">#for test</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">get_file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="c1"># 404表示没有这个页面</span>
+        <span class="n">response_headers</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 404 not found</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response_headers</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response_body</span> <span class="o">=</span> <span class="s2">&quot;====sorry ,file not found====&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">response_headers</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response_headers</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response_body</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="c1"># 因为头信息在组织的时候，是按照字符串组织的，不能与以二进制打开文件读取的数据合并，因此分开发送</span>
+        <span class="c1"># 先发送response的头信息</span>
+        <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response_headers</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+        <span class="c1"># 再发送body</span>
+        <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+        <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="s2">&quot;作为程序的主控制入口&quot;</span>
+    <span class="n">server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7788</span><span class="p">))</span>
+    <span class="n">server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">client_socket</span><span class="p">,</span> <span class="n">clien_cAddr</span> <span class="o">=</span> <span class="n">server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="n">handle_client</span><span class="p">(</span><span class="n">client_socket</span><span class="p">)</span>
+
+
+<span class="c1">#这里配置服务器</span>
+<span class="n">DOCUMENTS_ROOT</span> <span class="o">=</span> <span class="s2">&quot;./html&quot;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<h1 id="94-web-3-">9.4. Web静态服务器-3-多进程<a class="headerlink" href="#94-web-3-" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>  <span class="c1">#导入多进程的包</span>
+
+
+<span class="k">def</span> <span class="nf">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;为这个客户端返回数据&quot;&quot;&quot;</span>
+
+    <span class="c1"># 1. 接收浏览器发送过来的请求 ，即http请求  </span>
+    <span class="c1"># GET / HTTP/1.1</span>
+    <span class="c1"># .....</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">new_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="c1"># print(&quot;&gt;&gt;&gt;&quot;*50)</span>
+    <span class="c1"># print(request)</span>
+
+    <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+
+    <span class="c1"># GET /index.html HTTP/1.1</span>
+    <span class="c1"># get post put del</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">request_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># print(&quot;*&quot;*50, file_name)</span>
+        <span class="k">if</span> <span class="n">file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/index.html&quot;</span>
+
+
+
+
+    <span class="c1"># 2. 返回http格式的数据，给浏览器</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./html&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 404 NOT FOUND</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;------file not found-----&quot;</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># 2.1 准备发送给浏览器的数据---header</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="c1"># 2.2 准备发送给浏览器的数据---boy</span>
+        <span class="c1"># response += &quot;hahahhah&quot;</span>
+
+        <span class="c1"># 将response header发送给浏览器</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+        <span class="c1"># 将response body发送给浏览器</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
+
+
+    <span class="c1"># 关闭套接</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;用来完成整体的控制&quot;&quot;&quot;</span>
+    <span class="c1"># 1. 创建套接字</span>
+    <span class="n">tcp_server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 2. 绑定</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7890</span><span class="p">))</span>
+
+    <span class="c1"># 3. 变为监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># 4. 等待新客户端的链接</span>
+        <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+
+        <span class="c1"># 5. 为这个客户端服务</span>
+        <span class="c1">#创建一个进程,目标是service_client函数,传入的参数是新的客户端,注意的是后面有一个,</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">service_client</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">new_socket</span><span class="p">,))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1">#这里一定要进行客户端的关闭,因为子进程复制了一份父进程(new_socket)所以先把父的关了,后面子进程关闭的时候才能关闭</span>
+
+
+    <span class="c1"># 关闭监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<p>为什么父进程也要进行客户端的关闭,是因为子进程父进程都会指向这个客户端,父进程关闭不会真的关了客户端只用子进程关闭了之后才会真的关闭这个客户端进行四次挥手的操作.</p>
+<p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-54659e7140af923c.png" /></p>
+<p>更加详细的代码</p>
+<div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+
+<span class="k">class</span> <span class="nc">WSGIServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_address</span><span class="p">):</span>
+        <span class="c1"># 创建一个tcp套接字</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+        <span class="c1"># 允许立即使用上次绑定的port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># 绑定</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">server_address</span><span class="p">)</span>
+        <span class="c1"># 变为被动，并制定队列的长度</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">serve_forever</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;循环运行web服务器，等待客户端的链接并为客户端服务&quot;</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="c1"># 等待新客户端到来</span>
+            <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">client_address</span><span class="p">)</span>  <span class="c1"># for test</span>
+            <span class="n">new_process</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">handleRequest</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,))</span>
+            <span class="n">new_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+            <span class="c1"># 因为子进程已经复制了父进程的套接字等资源，所以父进程调用close不会将他们对应的这个链接关闭的</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_socket</span><span class="p">):</span>
+        <span class="s2">&quot;用一个新的进程，为一个客户端进行服务&quot;</span>
+        <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">)</span>
+        <span class="n">requestHeaderLines</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">requestHeaderLines</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="n">request_line</span> <span class="o">=</span> <span class="n">requestHeaderLines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">request_line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
+
+        <span class="k">if</span> <span class="n">get_file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+            <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/index.html&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="n">get_file_name</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">get_file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+            <span class="n">response_header</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 404 not found</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+            <span class="n">response_header</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+            <span class="n">response_body</span> <span class="o">=</span> <span class="s2">&quot;====sorry ,file not found====&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">response_header</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+            <span class="n">response_header</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+            <span class="n">response_body</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response_header</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="c1"># 设定服务器的端口</span>
+<span class="n">SERVER_ADDR</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">8888</span>
+<span class="c1"># 设置服务器服务静态资源时的路径</span>
+<span class="n">DOCUMENTS_ROOT</span> <span class="o">=</span> <span class="s2">&quot;./html&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">httpd</span> <span class="o">=</span> <span class="n">WSGIServer</span><span class="p">(</span><span class="n">SERVER_ADDR</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;web Server: Serving HTTP on port </span><span class="si">%d</span><span class="s2"> ...</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">PORT</span><span class="p">)</span>
+    <span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<h1 id="95-web-4-">9.5. Web静态服务器-4-多线程<a class="headerlink" href="#95-web-4-" title="Permanent link">&para;</a></h1>
+<h2 id="web-4-">Web静态服务器-4-多线程<a class="headerlink" href="#web-4-" title="Permanent link">&para;</a></h2>
+<p>使用线程的时候是不用在主代码中进行客户端的关闭,直接在线程中进行关闭就好了</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">threading</span> <span class="c1">#导入的是多线程的包</span>
+
+
+<span class="k">def</span> <span class="nf">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;为这个客户端返回数据&quot;&quot;&quot;</span>
+
+    <span class="c1"># 1. 接收浏览器发送过来的请求 ，即http请求  </span>
+    <span class="c1"># GET / HTTP/1.1</span>
+    <span class="c1"># .....</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">new_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="c1"># print(&quot;&gt;&gt;&gt;&quot;*50)</span>
+    <span class="c1"># print(request)</span>
+
+    <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+
+    <span class="c1"># GET /index.html HTTP/1.1</span>
+    <span class="c1"># get post put del</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">request_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># print(&quot;*&quot;*50, file_name)</span>
+        <span class="k">if</span> <span class="n">file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/index.html&quot;</span>
+
+
+
+
+    <span class="c1"># 2. 返回http格式的数据，给浏览器</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./html&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 404 NOT FOUND</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;------file not found-----&quot;</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># 2.1 准备发送给浏览器的数据---header</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="c1"># 2.2 准备发送给浏览器的数据---boy</span>
+        <span class="c1"># response += &quot;hahahhah&quot;</span>
+
+        <span class="c1"># 将response header发送给浏览器</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+        <span class="c1"># 将response body发送给浏览器</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
+
+
+    <span class="c1"># 关闭套接</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;用来完成整体的控制&quot;&quot;&quot;</span>
+    <span class="c1"># 1. 创建套接字</span>
+    <span class="n">tcp_server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 2. 绑定</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7890</span><span class="p">))</span>
+
+    <span class="c1"># 3. 变为监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># 4. 等待新客户端的链接</span>
+        <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+
+        <span class="c1"># 5. 为这个客户端服务</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">service_client</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">new_socket</span><span class="p">,))</span>  <span class="c1">#创建一个线程跟进程传递的参数都是一样的</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="c1"># new_socket.close()  #线程不需要进行客户端的关闭,线程里进行关闭就好了,跟进程进行区分</span>
+
+
+    <span class="c1"># 关闭监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<p>更加详细的代码</p>
+<div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+
+<span class="k">class</span> <span class="nc">WSGIServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_address</span><span class="p">):</span>
+        <span class="c1"># 创建一个tcp套接字</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+        <span class="c1"># 允许立即使用上次绑定的port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># 绑定</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">server_address</span><span class="p">)</span>
+        <span class="c1"># 变为被动，并制定队列的长度</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">serve_forever</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;循环运行web服务器，等待客户端的链接并为客户端服务&quot;</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="c1"># 等待新客户端到来</span>
+            <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">client_address</span><span class="p">)</span>
+            <span class="n">new_process</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">handleRequest</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,))</span>
+            <span class="n">new_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+            <span class="c1"># 因为线程是共享同一个套接字，所以主线程不能关闭，否则子线程就不能再使用这个套接字了</span>
+            <span class="c1"># client_socket.close() </span>
+
+    <span class="k">def</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_socket</span><span class="p">):</span>
+        <span class="s2">&quot;用一个新的进程，为一个客户端进行服务&quot;</span>
+        <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">)</span>
+        <span class="n">requestHeaderLines</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">requestHeaderLines</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="n">request_line</span> <span class="o">=</span> <span class="n">requestHeaderLines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">request_line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
+
+        <span class="k">if</span> <span class="n">get_file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+            <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/index.html&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="n">get_file_name</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">get_file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+            <span class="n">response_header</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 404 not found</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+            <span class="n">response_header</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+            <span class="n">response_body</span> <span class="o">=</span> <span class="s2">&quot;====sorry ,file not found====&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">response_header</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+            <span class="n">response_header</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+            <span class="n">response_body</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response_header</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response_body</span><span class="p">)</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="c1"># 设定服务器的端口</span>
+<span class="n">SERVER_ADDR</span> <span class="o">=</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">)</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">8888</span>
+<span class="c1"># 设置服务器服务静态资源时的路径</span>
+<span class="n">DOCUMENTS_ROOT</span> <span class="o">=</span> <span class="s2">&quot;./html&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">httpd</span> <span class="o">=</span> <span class="n">WSGIServer</span><span class="p">(</span><span class="n">SERVER_ADDR</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;web Server: Serving HTTP on port </span><span class="si">%d</span><span class="s2"> ...</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">PORT</span><span class="p">)</span>
+    <span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+<h2 id="_8">协程的实现<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">gevent</span>  <span class="c1">#导入协程的包</span>
+<span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
+
+<span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">service_client</span><span class="p">(</span><span class="n">new_socket</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;为这个客户端返回数据&quot;&quot;&quot;</span>
+
+    <span class="c1"># 1. 接收浏览器发送过来的请求 ，即http请求  </span>
+    <span class="c1"># GET / HTTP/1.1</span>
+    <span class="c1"># .....</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">new_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="c1"># print(&quot;&gt;&gt;&gt;&quot;*50)</span>
+    <span class="c1"># print(request)</span>
+
+    <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+
+    <span class="c1"># GET /index.html HTTP/1.1</span>
+    <span class="c1"># get post put del</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">request_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># print(&quot;*&quot;*50, file_name)</span>
+        <span class="k">if</span> <span class="n">file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/index.html&quot;</span>
+
+
+
+
+    <span class="c1"># 2. 返回http格式的数据，给浏览器</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./html&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 404 NOT FOUND</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;------file not found-----&quot;</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># 2.1 准备发送给浏览器的数据---header</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="c1"># 2.2 准备发送给浏览器的数据---boy</span>
+        <span class="c1"># response += &quot;hahahhah&quot;</span>
+
+        <span class="c1"># 将response header发送给浏览器</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+        <span class="c1"># 将response body发送给浏览器</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
+
+
+    <span class="c1"># 关闭套接</span>
+    <span class="n">new_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;用来完成整体的控制&quot;&quot;&quot;</span>
+    <span class="c1"># 1. 创建套接字</span>
+    <span class="n">tcp_server_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 2. 绑定</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7890</span><span class="p">))</span>
+
+    <span class="c1"># 3. 变为监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># 4. 等待新客户端的链接</span>
+        <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+
+        <span class="c1"># 5. 为这个客户端服务</span>
+        <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">service_client</span><span class="p">,</span> <span class="n">new_socket</span><span class="p">)</span>  <span class="c1">#协程的实现这里实现的跟线程和进程还是不一样的,直接传递函数跟客户端</span>
+
+        <span class="c1"># new_socket.close() #协程跟线程都是共享的因此不用进行关闭</span>
+
+
+    <span class="c1"># 关闭监听套接字</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../002-网络tcp/" title="002 网络tcp" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                002 网络tcp
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                004  10-web服务器-并发服务器2
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

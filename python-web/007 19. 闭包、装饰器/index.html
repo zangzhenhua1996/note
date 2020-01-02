@@ -1,0 +1,3816 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/python-web/007 19. 闭包、装饰器/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>007 19. 闭包、装饰器 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                007 19. 闭包、装饰器
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/001 jupyter notebook快捷键/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../001-网络udp/" class="md-tabs__link md-tabs__link--active">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        007 19. 闭包、装饰器
+      </label>
+    
+    <a href="./" title="007 19. 闭包、装饰器" class="md-nav__link md-nav__link--active">
+      007 19. 闭包、装饰器
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    闭包
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 函数引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 什么是闭包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 看一个闭包的实际例子：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 修改外部函数中的变量
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python3" class="md-nav__link">
+    python3的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python2" class="md-nav__link">
+    python2的方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    修改闭包中的数据
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    装饰器
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1、先明白这段代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2、需求来了
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#low-b" class="md-nav__link">
+    老大把工作交给 Low B，他是这么做的：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-bb" class="md-nav__link">
+    老大把工作交给 Low BB，他是这么做的：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-bbb" class="md-nav__link">
+    老大把工作交给 Low BBB，他是这么做的：
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    老大说：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w1" class="md-nav__link">
+    上例@w1内部会执行一下操作：
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#w1_1" class="md-nav__link">
+    执行w1函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w1_2" class="md-nav__link">
+    w1的返回值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    装饰器的一个演示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-py" class="md-nav__link">
+    04-装饰器的实现过程.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-py" class="md-nav__link">
+    05-装饰器的作用-来统计一个函数的运行时间.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-py" class="md-nav__link">
+    06-对没有参数、没有返回值的函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-py" class="md-nav__link">
+    07-对有参数、无返回值的函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 再议装饰器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-decorator" class="md-nav__link">
+    4. 装饰器(decorator)功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 装饰器示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    例1:无参数的函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    例2:被装饰的函数有参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-py" class="md-nav__link">
+    08-通一个装饰器对多个函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-py" class="md-nav__link">
+    09-装饰器在没有调用函数之前已经装饰了.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    例3:被装饰的函数有不定长参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-py" class="md-nav__link">
+    10-对不定长参数的函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4returnfuncreturn" class="md-nav__link">
+    例4:装饰器中的return(要将func的返回值继续返回加一个return就可以了)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-py" class="md-nav__link">
+    11-对带有返回值的函数进行装饰.py
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    总结：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-py" class="md-nav__link">
+    12-多个装饰器对同一个函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-py" class="md-nav__link">
+    13-应用：多个装饰器多同一个函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    例5:装饰器带参数,在原有装饰器的基础上，设置外部变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    例6：类装饰器（扩展，非重点）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-py" class="md-nav__link">
+    14-使用类当做装饰器.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    闭包
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 函数引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 什么是闭包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 看一个闭包的实际例子：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 修改外部函数中的变量
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python3" class="md-nav__link">
+    python3的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python2" class="md-nav__link">
+    python2的方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    修改闭包中的数据
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    装饰器
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1、先明白这段代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2、需求来了
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#low-b" class="md-nav__link">
+    老大把工作交给 Low B，他是这么做的：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-bb" class="md-nav__link">
+    老大把工作交给 Low BB，他是这么做的：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-bbb" class="md-nav__link">
+    老大把工作交给 Low BBB，他是这么做的：
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    老大说：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w1" class="md-nav__link">
+    上例@w1内部会执行一下操作：
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#w1_1" class="md-nav__link">
+    执行w1函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w1_2" class="md-nav__link">
+    w1的返回值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    装饰器的一个演示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-py" class="md-nav__link">
+    04-装饰器的实现过程.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-py" class="md-nav__link">
+    05-装饰器的作用-来统计一个函数的运行时间.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-py" class="md-nav__link">
+    06-对没有参数、没有返回值的函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-py" class="md-nav__link">
+    07-对有参数、无返回值的函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 再议装饰器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-decorator" class="md-nav__link">
+    4. 装饰器(decorator)功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 装饰器示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    例1:无参数的函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    例2:被装饰的函数有参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-py" class="md-nav__link">
+    08-通一个装饰器对多个函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-py" class="md-nav__link">
+    09-装饰器在没有调用函数之前已经装饰了.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    例3:被装饰的函数有不定长参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-py" class="md-nav__link">
+    10-对不定长参数的函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4returnfuncreturn" class="md-nav__link">
+    例4:装饰器中的return(要将func的返回值继续返回加一个return就可以了)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-py" class="md-nav__link">
+    11-对带有返回值的函数进行装饰.py
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    总结：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-py" class="md-nav__link">
+    12-多个装饰器对同一个函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-py" class="md-nav__link">
+    13-应用：多个装饰器多同一个函数进行装饰.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    例5:装饰器带参数,在原有装饰器的基础上，设置外部变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    例6：类装饰器（扩展，非重点）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-py" class="md-nav__link">
+    14-使用类当做装饰器.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>007 19. 闭包、装饰器</h1>
+                
+                <h2 id="_1">闭包<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 函数引用<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;--- in test1 func----&quot;</span><span class="p">)</span>
+
+<span class="c1"># 调用函数</span>
+<span class="n">test1</span><span class="p">()</span>
+
+<span class="c1"># 引用函数</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">test1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">test1</span><span class="p">))</span>
+
+<span class="c1">#通过引用调用函数</span>
+<span class="n">ret</span><span class="p">()</span>
+</pre></div>
+
+<p>运行结果:</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span> <span class="ow">in</span> <span class="n">test1</span> <span class="n">func</span><span class="o">----</span>
+<span class="mi">140212571149040</span>
+<span class="mi">140212571149040</span>
+<span class="o">---</span> <span class="ow">in</span> <span class="n">test1</span> <span class="n">func</span><span class="o">----</span>
+</pre></div>
+
+<h3 id="2">2. 什么是闭包<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># 定义一个函数</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+
+    <span class="c1"># 在函数内部再定义一个函数，并且这个函数用到了外边函数的变量，那么将这个函数以及用到的一些变量称之为闭包</span>
+    <span class="k">def</span> <span class="nf">test_in</span><span class="p">(</span><span class="n">number_in</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;in test_in 函数, number_in is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">number_in</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">number</span><span class="o">+</span><span class="n">number_in</span>
+    <span class="c1"># 其实这里返回的就是闭包的结果</span>
+    <span class="k">return</span> <span class="n">test_in</span>
+
+
+<span class="c1"># 给test函数赋值，这个20就是给参数number</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># 注意这里的100其实给参数number_in</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="c1">#注 意这里的200其实给参数number_in</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+</pre></div>
+
+<p>运行结果：</p>
+<div class="codehilite"><pre><span></span><span class="ow">in</span> <span class="n">test_in</span> <span class="err">函数</span><span class="p">,</span> <span class="n">number_in</span> <span class="ow">is</span> <span class="mi">100</span>
+<span class="mi">120</span>
+
+<span class="ow">in</span> <span class="n">test_in</span> <span class="err">函数</span><span class="p">,</span> <span class="n">number_in</span> <span class="ow">is</span> <span class="mi">200</span>
+<span class="mi">220</span>
+</pre></div>
+
+<h3 id="3">3. 看一个闭包的实际例子：<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">line_conf</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">line</span>
+
+<span class="n">line1</span> <span class="o">=</span> <span class="n">line_conf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">line2</span> <span class="o">=</span> <span class="n">line_conf</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">line1</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">line2</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+<p>这个例子中，函数line与变量a,b构成闭包。在创建闭包的时候，我们通过line_conf的参数a,b说明了这两个变量的取值，这样，我们就确定了函数的最终形式(y = x + 1和y = 4x + 5)。我们只需要变换参数a,b，就可以获得不同的直线表达函数。由此，我们可以看到，闭包也具有提高代码可复用性的作用。</p>
+<p>如果没有闭包，我们需要每次创建直线函数的时候同时说明a,b,x。这样，我们就需要更多的参数传递，也减少了代码的可移植性。</p>
+<p>注意点:</p>
+<p>由于闭包引用了外部函数的局部变量，则外部函数的局部变量没有及时释放，消耗内存</p>
+<h3 id="4">4. 修改外部函数中的变量<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<h4 id="python3">python3的方法<a class="headerlink" href="#python3" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">incr</span><span class="p">():</span>
+        <span class="n">nonlocal</span> <span class="n">start</span>
+        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">start</span>
+    <span class="k">return</span> <span class="n">incr</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">counter</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
+
+<span class="n">c2</span> <span class="o">=</span> <span class="n">counter</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
+</pre></div>
+
+<h4 id="python2">python2的方法<a class="headerlink" href="#python2" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">count</span><span class="o">=</span><span class="p">[</span><span class="n">start</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">incr</span><span class="p">():</span>
+        <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">incr</span>
+
+<span class="n">c1</span> <span class="o">=</span> <span class="n">closeure</span><span class="o">.</span><span class="n">counter</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>  <span class="c1"># 6</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>  <span class="c1"># 7</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">closeure</span><span class="o">.</span><span class="n">counter</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>  <span class="c1"># 101</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>  <span class="c1"># 102</span>
+</pre></div>
+
+<p>讲课的代码</p>
+<div class="codehilite"><pre><span></span><span class="c1"># 问题：初中里学过函数，例如 y=kx+b, y=ax^2 + bx + c</span>
+<span class="c1"># 以y=kx+b为例，请计算一条线上的过个点 即 给x值 计算出y值</span>
+
+<span class="c1"># 第1种</span>
+<span class="c1"># k = 1</span>
+<span class="c1"># b = 2</span>
+<span class="c1"># y = k*x+b</span>
+<span class="c1"># 缺点：如果需要多次计算，那么就的写多次y = k*x+b这样的式子</span>
+
+<span class="c1"># 第2种</span>
+<span class="k">def</span> <span class="nf">line_2</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">line_2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">line_2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">line_2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 缺点：如果想要计算多次这条线上的y值，那么每次都需要传递k，b的值，麻烦</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+
+<span class="c1"># 第3种: 全局变量(不修改变量的话是可以直接用的不用声明变量)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">def</span> <span class="nf">line_3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">line_3</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">line_3</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line_3</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">line_3</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">line_3</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line_3</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 缺点：如果要计算多条线上的y值，那么需要每次对全局变量进行修改，代码会增多，麻烦</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># 第4种：缺省参数</span>
+<span class="k">def</span> <span class="nf">line_4</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">line_4</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">line_4</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line_4</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">line_4</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">line_4</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">line_4</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="c1"># 优点：比全局变量的方式好在：k, b是函数line_4的一部分 而不是全局变量，因为全局变量可以任意的被其他函数所修改</span>
+<span class="c1"># 缺点：如果要计算多条线上的y值，那么需要在调用的时候进行传递参数，麻烦</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># 第5种：实例对象</span>
+<span class="k">class</span> <span class="nc">Line5</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="c1">#call魔法属性可以传递很多的不定长的参数</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+
+
+<span class="n">line_5_1</span> <span class="o">=</span> <span class="n">Line5</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 对象.方法()</span>
+<span class="c1"># 对象()</span>
+<span class="n">line_5_1</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">line_5_1</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line_5_1</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">line_5_2</span> <span class="o">=</span> <span class="n">Line5</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">line_5_2</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">line_5_2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line_5_2</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 缺点：为了计算多条线上的y值，所以需要保存多个k, b的值，因此用了很多个实例对象， 浪费资源</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># 第6种：闭包</span>
+
+<span class="k">def</span> <span class="nf">line_6</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_y</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">create_y</span>
+
+
+<span class="n">line_6_1</span> <span class="o">=</span> <span class="n">line_6</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">line_6_1</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">line_6_1</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line_6_1</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">line_6_2</span> <span class="o">=</span> <span class="n">line_6</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">line_6_2</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">line_6_2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">line_6_2</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+
+<span class="c1"># 思考：函数、匿名函数、闭包、对象 当做实参时 有什么区别？</span>
+<span class="c1"># 1. 匿名函数能够完成基本的简单功能，，，传递是这个函数的引用 只有功能</span>
+<span class="c1"># 2. 普通函数能够完成较为复杂的功能，，，传递是这个函数的引用 只有功能</span>
+<span class="c1"># 3. 闭包能够将较为复杂的功能，，，传递是这个闭包中的函数以及数据，因此传递是功能+数据</span>
+<span class="c1"># 4. 对象能够完成最为复杂的功能，，，传递是很多数据+很多功能，因此传递是功能+数据</span>
+</pre></div>
+
+<h2 id="_2">修改闭包中的数据<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
+        <span class="n">nonlocal</span> <span class="n">x</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----1----x=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1">#使用nolocal对闭包中的变量进行类似global的声明</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----2----x=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">test2</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">test1</span><span class="p">()</span>
+<span class="n">t1</span><span class="p">()</span>
+</pre></div>
+
+<p>执行结果</p>
+<div class="codehilite"><pre><span></span><span class="o">----</span><span class="mi">1</span><span class="o">----</span><span class="n">x</span><span class="o">=</span><span class="mi">200</span>
+<span class="o">----</span><span class="mi">2</span><span class="o">----</span><span class="n">x</span><span class="o">=</span><span class="mi">100</span>
+</pre></div>
+
+<h2 id="_3">装饰器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>装饰器是程序开发中经常会用到的一个功能，用好了装饰器，开发效率如虎添翼，所以这也是Python面试中必问的问题，但对于好多初次接触这个知识的人来讲，这个功能有点绕，自学时直接绕过去了，然后面试问到了就挂了，因为装饰器是程序开发的基础知识，这个都不会，别跟人家说你会Python, 看了下面的文章，保证你学会装饰器。</p>
+<h3 id="1_1">1、先明白这段代码<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1">#### 第一波 ####</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+
+<span class="n">foo</span>  <span class="c1"># 表示是函数</span>
+<span class="n">foo</span><span class="p">()</span>  <span class="c1"># 表示执行foo函数</span>
+
+<span class="c1">#### 第二波 ####</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">foo</span><span class="p">()</span>  <span class="c1"># 执行lambda表达式，而不再是原来的foo函数，因为foo这个名字被重新指向了另外一个匿名函数</span>
+</pre></div>
+
+<p>函数名仅仅是个变量，只不过指向了定义的函数而已，所以才能通过 函数名()调用，如果 函数名=xxx被修改了，那么当在执行 函数名()时，调用的就不知之前的那个函数了</p>
+<h3 id="2_1">2、需求来了<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>初创公司有N个业务部门，基础平台部门负责提供底层的功能，如：数据库操作、redis调用、监控API等功能。业务部门使用基础功能时，只需调用基础平台提供的功能即可。如下：</p>
+<div class="codehilite"><pre><span></span><span class="c1">############### 基础平台提供的功能如下 ###############</span>
+
+<span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f3</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f4</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+
+<span class="c1">############### 业务部门A 调用基础平台提供的功能 ###############</span>
+
+<span class="n">f1</span><span class="p">()</span>
+<span class="n">f2</span><span class="p">()</span>
+<span class="n">f3</span><span class="p">()</span>
+<span class="n">f4</span><span class="p">()</span>
+
+<span class="c1">############### 业务部门B 调用基础平台提供的功能 ###############</span>
+
+<span class="n">f1</span><span class="p">()</span>
+<span class="n">f2</span><span class="p">()</span>
+<span class="n">f3</span><span class="p">()</span>
+<span class="n">f4</span><span class="p">()</span>
+</pre></div>
+
+<p>目前公司有条不紊的进行着，但是，以前基础平台的开发人员在写代码时候没有关注验证相关的问题，即：基础平台的提供的功能可以被任何人使用。现在需要对基础平台的所有功能进行重构，为平台提供的所有功能添加验证机制，即：执行功能前，先进行验证。</p>
+<h4 id="low-b">老大把工作交给 Low B，他是这么做的：<a class="headerlink" href="#low-b" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>跟每个业务部门交涉，每个业务部门自己写代码，调用基础平台的功能之前先验证。诶，这样一来基础平台就不需要做任何修改了。太棒了，有充足的时间泡妹子...</p>
+</blockquote>
+<p>当天Low B 被开除了…</p>
+<h4 id="low-bb">老大把工作交给 Low BB，他是这么做的：<a class="headerlink" href="#low-bb" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="c1">############### 基础平台提供的功能如下 ############### </span>
+
+<span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
+    <span class="c1"># 验证1</span>
+    <span class="c1"># 验证2</span>
+    <span class="c1"># 验证3</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
+    <span class="c1"># 验证1</span>
+    <span class="c1"># 验证2</span>
+    <span class="c1"># 验证3</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f3</span><span class="p">():</span>
+    <span class="c1"># 验证1</span>
+    <span class="c1"># 验证2</span>
+    <span class="c1"># 验证3</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f4</span><span class="p">():</span>
+    <span class="c1"># 验证1</span>
+    <span class="c1"># 验证2</span>
+    <span class="c1"># 验证3</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+
+<span class="c1">############### 业务部门不变 ############### </span>
+<span class="c1">### 业务部门A 调用基础平台提供的功能### </span>
+
+<span class="n">f1</span><span class="p">()</span>
+<span class="n">f2</span><span class="p">()</span>
+<span class="n">f3</span><span class="p">()</span>
+<span class="n">f4</span><span class="p">()</span>
+
+<span class="c1">### 业务部门B 调用基础平台提供的功能 ### </span>
+
+<span class="n">f1</span><span class="p">()</span>
+<span class="n">f2</span><span class="p">()</span>
+<span class="n">f3</span><span class="p">()</span>
+<span class="n">f4</span><span class="p">()</span>
+</pre></div>
+
+<p>过了一周 Low BB 被开除了…</p>
+<h4 id="low-bbb">老大把工作交给 Low BBB，他是这么做的：<a class="headerlink" href="#low-bbb" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>只对基础平台的代码进行重构，其他业务部门无需做任何修改</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><span class="c1">############### 基础平台提供的功能如下 ############### </span>
+
+<span class="k">def</span> <span class="nf">check_login</span><span class="p">():</span>
+    <span class="c1"># 验证1</span>
+    <span class="c1"># 验证2</span>
+    <span class="c1"># 验证3</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
+
+    <span class="n">check_login</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
+
+    <span class="n">check_login</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f3</span><span class="p">():</span>
+
+    <span class="n">check_login</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f4</span><span class="p">():</span>
+
+    <span class="n">check_login</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>老大看了下Low BBB 的实现，嘴角漏出了一丝的欣慰的笑，语重心长的跟Low BBB聊了个天：</p>
+<h5 id="_4">老大说：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<p>写代码要遵循<code>开放封闭</code>原则，虽然在这个原则是用的面向对象开发，但是也适用于函数式编程，简单来说，它规定已经实现的功能代码不允许被修改，但可以被扩展，即：</p>
+<ul>
+<li>封闭：已实现的功能代码块</li>
+<li>开放：对扩展开发</li>
+</ul>
+<p>如果将开放封闭原则应用在上述需求中，那么就不允许在函数 f1 、f2、f3、f4的内部进行修改代码，老板就给了Low BBB一个实现方案：</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">w1</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+        <span class="c1"># 验证1</span>
+        <span class="c1"># 验证2</span>
+        <span class="c1"># 验证3</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="nd">@w1</span>
+<span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+<span class="nd">@w1</span>
+<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
+<span class="nd">@w1</span>
+<span class="k">def</span> <span class="nf">f3</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
+<span class="nd">@w1</span>
+<span class="k">def</span> <span class="nf">f4</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>对于上述代码，也是仅仅对基础平台的代码进行修改，就可以实现在其他人调用函数 f1 f2 f3 f4 之前都进行【验证】操作，并且其他业务部门无需做任何操作。</p>
+<p>Low BBB心惊胆战的问了下，这段代码的内部执行原理是什么呢？</p>
+<p>老大正要生气，突然Low BBB的手机掉到地上，恰巧屏保就是Low BBB的女友照片，老大一看一紧一抖，喜笑颜开，决定和Low BBB交个好朋友。</p>
+<p>详细的开始讲解了：</p>
+<p>单独以f1为例：</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">w1</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+        <span class="c1"># 验证1</span>
+        <span class="c1"># 验证2</span>
+        <span class="c1"># 验证3</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="nd">@w1</span>
+<span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>python解释器就会从上到下解释代码，步骤如下：</p>
+<ol>
+<li>def w1(func): ==&gt;将w1函数加载到内存</li>
+<li>@w1</li>
+</ol>
+<p>没错， 从表面上看解释器仅仅会解释这两句代码，因为函数在 没有被调用之前其内部代码不会被执行。</p>
+<p>从表面上看解释器着实会执行这两句，但是 @w1 这一句代码里却有大文章， @函数名 是python的一种语法糖。</p>
+<h3 id="w1">上例@w1内部会执行一下操作：<a class="headerlink" href="#w1" title="Permanent link">&para;</a></h3>
+<h4 id="w1_1">执行w1函数<a class="headerlink" href="#w1_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>执行w1函数 ，并将 @w1 下面的函数作为w1函数的参数，即：<strong>@w1 等价于 w1(f1)</strong> 所以，内部就会去执行：</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">inner</span><span class="p">():</span> 
+<span class="c1">#验证 1</span>
+<span class="c1">#验证 2</span>
+<span class="c1">#验证 3</span>
+<span class="n">f1</span><span class="p">()</span>    <span class="c1"># func是参数，此时 func 等于 f1 </span>
+<span class="k">return</span> <span class="n">inner</span><span class="c1"># 返回的 inner，inner代表的是函数，非执行函数 ,其实就是将原来的 f1 函数塞进另外一个函数中</span>
+</pre></div>
+
+</blockquote>
+<h4 id="w1_2">w1的返回值<a class="headerlink" href="#w1_2" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>将执行完的w1函数返回值 赋值 给@w1下面的函数的函数名f1 即将w1的返回值再重新赋值给 f1，即：</p>
+<div class="codehilite"><pre><span></span><span class="err">新</span><span class="n">f1</span> <span class="o">=</span> <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span> 
+      <span class="c1">#验证 1</span>
+      <span class="c1">#验证 2</span>
+      <span class="c1">#验证 3</span>
+      <span class="err">原来</span><span class="n">f1</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">inner</span>
+</pre></div>
+
+<p>所以，以后业务部门想要执行 f1 函数时，就会执行 新f1 函数，在新f1 函数内部先执行验证，再执行原来的f1函数，然后将原来f1 函数的返回值返回给了业务调用者。</p>
+</blockquote>
+<p>如此一来， 即执行了验证的功能，又执行了原来f1函数的内容，并将原f1函数返回值 返回给业务调用着</p>
+<p>Low BBB 你明白了吗？要是没明白的话，我晚上去你家帮你解决吧！！！</p>
+<h3 id="_5">装饰器的一个演示<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+<span class="nd">@set_func</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
+
+
+<span class="n">test1</span><span class="p">()</span>
+</pre></div>
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span>
+</pre></div>
+
+<h3 id="04-py">04-装饰器的实现过程.py<a class="headerlink" href="#04-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+<span class="nd">@set_func</span>  <span class="c1"># 等价于test1 = set_func(test1) </span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
+
+<span class="c1">#这两行就是实现的过程</span>
+<span class="c1"># ret = set_func(test1)</span>
+<span class="c1"># ret()</span>
+
+<span class="c1"># test1 = set_func(test1) </span>
+<span class="n">test1</span><span class="p">()</span>
+
+<span class="n">test1</span><span class="p">()</span>
+</pre></div>
+
+<p><img alt="image.png" src="../007 19. 闭包、装饰器.image/14555448-aed3e5d935e0367b.png" /></p>
+<h3 id="05-py">05-装饰器的作用-来统计一个函数的运行时间.py<a class="headerlink" href="#05-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span> <span class="c1">#闭包</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#开始的执行时间</span>
+        <span class="n">func</span><span class="p">()</span>
+        <span class="n">stop_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#终止的执行时间</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;alltimeis </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">stop_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+<span class="nd">@set_func</span>  <span class="c1"># 等价于test1 = set_func(test1) </span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+
+<span class="c1"># ret = set_func(test1)</span>
+<span class="c1"># ret()</span>
+
+<span class="c1"># test1 = set_func(test1) </span>
+<span class="n">test1</span><span class="p">()</span>
+
+<span class="n">test1</span><span class="p">()</span>
+</pre></div>
+
+<p>执行结果</p>
+<div class="codehilite"><pre><span></span><span class="o">-----</span><span class="n">test1</span><span class="o">----</span>
+<span class="n">alltimeis</span> <span class="mf">0.000999</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span>
+<span class="n">alltimeis</span> <span class="mf">0.000000</span>
+</pre></div>
+
+<h3 id="06-py">06-对没有参数、没有返回值的函数进行装饰.py<a class="headerlink" href="#06-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+<span class="nd">@set_func</span>  <span class="c1"># 等价于test1 = set_func(test1) </span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ret = set_func(test1)</span>
+<span class="c1"># ret()</span>
+
+<span class="c1"># test1 = set_func(test1) </span>
+<span class="n">test1</span><span class="p">()</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span>
+</pre></div>
+
+<h3 id="07-py">07-对有参数、无返回值的函数进行装饰.py<a class="headerlink" href="#07-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="c1">#这里也需要加参数,因为要把参数在传递给func(a)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">#这里需要加参数</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+
+<span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+
+
+<span class="n">test1</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">test1</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1">#跟使用装饰器是一样的</span>
+<span class="c1">#xx = set_func(test1)</span>
+<span class="c1">#xx(100)</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">200</span>
+</pre></div>
+
+<p><img alt="image.png" src="../007 19. 闭包、装饰器.image/14555448-e82925ffe98c003d.png" /></p>
+<p><img alt="image.png" src="../007 19. 闭包、装饰器.image/14555448-7c5b262ca37e03e2.png" /></p>
+<h3 id="3_1">3. 再议装饰器<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># 定义函数：完成包裹数据</span>
+<span class="k">def</span> <span class="nf">makeBold</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;b&gt;&quot;</span> <span class="o">+</span> <span class="n">fn</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;&lt;/b&gt;&quot;</span>
+    <span class="k">return</span> <span class="n">wrapped</span>
+
+<span class="c1"># 定义函数：完成包裹数据</span>
+<span class="k">def</span> <span class="nf">makeItalic</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;i&gt;&quot;</span> <span class="o">+</span> <span class="n">fn</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;&lt;/i&gt;&quot;</span>
+    <span class="k">return</span> <span class="n">wrapped</span>
+
+<span class="nd">@makeBold</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;hello world-1&quot;</span>
+
+<span class="nd">@makeItalic</span>
+<span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;hello world-2&quot;</span>
+
+<span class="nd">@makeBold</span>
+<span class="nd">@makeItalic</span>
+<span class="k">def</span> <span class="nf">test3</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;hello world-3&quot;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">test1</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">test2</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">test3</span><span class="p">())</span>
+</pre></div>
+
+<p>运行结果:</p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>hello world-1<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>hello world-2<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">i</span><span class="p">&gt;</span>hello world-3<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>
+</pre></div>
+
+<h3 id="4-decorator">4. 装饰器(decorator)功能<a class="headerlink" href="#4-decorator" title="Permanent link">&para;</a></h3>
+<ol>
+<li>引入日志</li>
+<li>函数执行时间统计</li>
+<li>执行函数前预备处理</li>
+<li>执行函数后清理功能</li>
+<li>权限校验等场景</li>
+<li>缓存</li>
+</ol>
+<h3 id="5">5. 装饰器示例<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<h3 id="1_2">例1:无参数的函数<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">wrapped_func</span>
+
+<span class="nd">@timefun</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">()</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">()</span>
+</pre></div>
+
+<p>上面代码理解装饰器执行行为可理解成</p>
+<div class="codehilite"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="n">timefun</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+<span class="c1"># foo先作为参数赋值给func后,foo接收指向timefun返回的wrapped_func</span>
+<span class="n">foo</span><span class="p">()</span>
+<span class="c1"># 调用foo(),即等价调用wrapped_func()</span>
+<span class="c1"># 内部函数wrapped_func被引用，所以外部函数的func变量(自由变量)并没有释放</span>
+<span class="c1"># func里保存的是原foo函数对象</span>
+</pre></div>
+
+<h3 id="2_2">例2:被装饰的函数有参数<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapped_func</span>
+
+<span class="nd">@timefun</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="08-py">08-通一个装饰器对多个函数进行装饰.py<a class="headerlink" href="#08-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+
+<span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+
+
+<span class="nd">@set_func</span>  <span class="c1"># 相当于 test2 = set_func(test2)</span>
+<span class="k">def</span> <span class="nf">test2</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test2----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+
+
+<span class="n">test1</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">test2</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test2</span><span class="o">----</span><span class="mi">200</span>
+</pre></div>
+
+<h3 id="09-py">09-装饰器在没有调用函数之前已经装饰了.py<a class="headerlink" href="#09-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+
+<span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+
+
+<span class="nd">@set_func</span>  <span class="c1"># 相当于 test2 = set_func(test2)</span>
+<span class="k">def</span> <span class="nf">test2</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test2----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+
+<span class="c1"># 装饰器在调用函数之前，已经被python解释器执行了，所以要牢记 当调用函数之前 其实已经装饰好了，尽管调用就可以了</span>
+<span class="c1"># test1(100)</span>
+<span class="c1"># test2(200)</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">开始进行装饰</span>
+<span class="o">---</span><span class="err">开始进行装饰</span>
+</pre></div>
+
+<h3 id="3_2">例3:被装饰的函数有不定长参数<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
+        <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapped_func</span>
+
+<span class="nd">@timefun</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="10-py">10-对不定长参数的函数进行装饰.py<a class="headerlink" href="#10-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="c1"># func(args, kwargs)  # 不行，相当于传递了2个参数 ：1个元组，1个字典</span>
+        <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># 拆包(多余的参数给元祖,多余的关键字给字典)</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+
+<span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># *args元祖,**kwargs 字典</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">,</span><span class="n">num1</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="c1">#test1(100)</span>
+<span class="n">test1</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">test1</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="n">mm</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">开始进行装饰</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span> <span class="mi">200</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">()</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">{}</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span> <span class="mi">200</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">(</span><span class="mi">300</span><span class="p">,)</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">{</span><span class="s1">&#39;mm&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+</pre></div>
+
+<h3 id="4returnfuncreturn">例4:装饰器中的return(要将func的返回值继续返回加一个return就可以了)<a class="headerlink" href="#4returnfuncreturn" title="Permanent link">&para;</a></h3>
+<p><img alt="image.png" src="../007 19. 闭包、装饰器.image/14555448-768bc8ecfb8c5c37.png" /></p>
+<h3 id="11-py">11-对带有返回值的函数进行装饰.py<a class="headerlink" href="#11-py" title="Permanent link">&para;</a></h3>
+<p>通用的装饰器</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="c1"># func(args, kwargs)  # 不行，相当于传递了2个参数 ：1个元组，1个字典</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># 拆包</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+
+<span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;ok&quot;</span>
+
+
+<span class="nd">@set_func</span>
+<span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">ret</span> <span class="o">=</span> <span class="n">test1</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+
+<span class="n">ret</span> <span class="o">=</span> <span class="n">test2</span><span class="p">()</span> <span class="c1">#没有返回值那么就返回none,return没有什么影响</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">开始进行装饰</span>
+<span class="o">---</span><span class="err">开始进行装饰</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">()</span>
+<span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">{}</span>
+<span class="n">ok</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="bp">None</span>
+</pre></div>
+
+<p>课件的代码</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
+        <span class="n">func</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">wrapped_func</span>
+
+<span class="nd">@timefun</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
+
+<span class="nd">@timefun</span>
+<span class="k">def</span> <span class="nf">getInfo</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;----hahah---&#39;</span>
+
+<span class="n">foo</span><span class="p">()</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">()</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">getInfo</span><span class="p">())</span>
+</pre></div>
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">foo</span> <span class="n">called</span> <span class="n">at</span> <span class="n">Fri</span> <span class="n">Nov</span>  <span class="mi">4</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">35</span> <span class="mi">2016</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">foo</span>
+<span class="n">foo</span> <span class="n">called</span> <span class="n">at</span> <span class="n">Fri</span> <span class="n">Nov</span>  <span class="mi">4</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">37</span> <span class="mi">2016</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">foo</span>
+<span class="n">getInfo</span> <span class="n">called</span> <span class="n">at</span> <span class="n">Fri</span> <span class="n">Nov</span>  <span class="mi">4</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">37</span> <span class="mi">2016</span>
+<span class="bp">None</span>
+</pre></div>
+
+<p>如果修改装饰器为<code>return func()</code>，则运行结果：</p>
+<div class="codehilite"><pre><span></span><span class="n">foo</span> <span class="n">called</span> <span class="n">at</span> <span class="n">Fri</span> <span class="n">Nov</span>  <span class="mi">4</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">57</span> <span class="mi">2016</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">foo</span>
+<span class="n">foo</span> <span class="n">called</span> <span class="n">at</span> <span class="n">Fri</span> <span class="n">Nov</span>  <span class="mi">4</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">59</span> <span class="mi">2016</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">foo</span>
+<span class="n">getInfo</span> <span class="n">called</span> <span class="n">at</span> <span class="n">Fri</span> <span class="n">Nov</span>  <span class="mi">4</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">59</span> <span class="mi">2016</span>
+<span class="o">----</span><span class="n">hahah</span><span class="o">---</span>
+</pre></div>
+
+<h4 id="_6">总结：<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>一般情况下为了让装饰器更通用，可以有return</li>
+</ul>
+<h3 id="12-py">12-多个装饰器对同一个函数进行装饰.py<a class="headerlink" href="#12-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">add_qx</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰权限1的功能---&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+
+<span class="k">def</span> <span class="nf">add_xx</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰xxx的功能---&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是xxx的功能----&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+
+<span class="nd">@add_qx</span> <span class="c1">#想装但是下面不是函数等下面的装饰器完事了在装</span>
+<span class="nd">@add_xx</span>
+<span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;------test1------&quot;</span><span class="p">)</span>
+
+
+<span class="n">test1</span><span class="p">()</span>
+
+
+<span class="c1">#结果  类似于使用栈,靠近函数的先进栈,(装饰)执行的时候先进的后出,或者是执行的时候是按照顺序执行代码的</span>
+<span class="o">---</span><span class="err">开始进行装饰</span><span class="n">xxx的功能</span><span class="o">---</span>
+<span class="o">---</span><span class="err">开始进行装饰权限</span><span class="mi">1</span><span class="err">的功能</span><span class="o">---</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是</span><span class="n">xxx的功能</span><span class="o">----</span>
+<span class="o">------</span><span class="n">test1</span><span class="o">------</span>
+</pre></div>
+
+<p><img alt="image.png" src="../007 19. 闭包、装饰器.image/14555448-0d0577a790b6e4f5.png" /></p>
+<h3 id="13-py">13-应用：多个装饰器多同一个函数进行装饰.py<a class="headerlink" href="#13-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func_1</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
+        <span class="c1"># &quot;&lt;h1&gt;haha&lt;/h1&gt;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;h1&gt;&quot;</span> <span class="o">+</span> <span class="n">func</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;&lt;/h1&gt;&quot;</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+<span class="k">def</span> <span class="nf">set_func_2</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">+</span> <span class="n">func</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span>
+    <span class="k">return</span> <span class="n">call_func</span>
+
+
+<span class="nd">@set_func_1</span>
+<span class="nd">@set_func_2</span>
+<span class="k">def</span> <span class="nf">get_str</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;haha&quot;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">get_str</span><span class="p">())</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">haha</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</pre></div>
+
+<p><img alt="image.png" src="../007 19. 闭包、装饰器.image/14555448-b8a7b62ac176a85b.png" /></p>
+<h3 id="5_1">例5:装饰器带参数,在原有装饰器的基础上，设置外部变量<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1">#decorator2.py</span>
+
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">ctime</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="k">def</span> <span class="nf">timefun_arg</span><span class="p">(</span><span class="n">pre</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">():</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">(),</span> <span class="n">pre</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">wrapped_func</span>
+    <span class="k">return</span> <span class="n">timefun</span>
+
+<span class="c1"># 下面的装饰过程</span>
+<span class="c1"># 1. 调用timefun_arg(&quot;itcast&quot;)</span>
+<span class="c1"># 2. 将步骤1得到的返回值，即time_fun返回， 然后time_fun(foo)</span>
+<span class="c1"># 3. 将time_fun(foo)的结果返回，即wrapped_func</span>
+<span class="c1"># 4. 让foo = wrapped_fun，即foo现在指向wrapped_func</span>
+<span class="nd">@timefun_arg</span><span class="p">(</span><span class="s2">&quot;itcast&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
+
+<span class="nd">@timefun_arg</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">too</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am too&quot;</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">()</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">()</span>
+
+<span class="n">too</span><span class="p">()</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">too</span><span class="p">()</span>
+</pre></div>
+
+<p>可以理解为</p>
+<div class="codehilite"><pre><span></span><span class="n">foo</span><span class="p">()</span><span class="o">==</span><span class="n">timefun_arg</span><span class="p">(</span><span class="s2">&quot;itcast&quot;</span><span class="p">)(</span><span class="n">foo</span><span class="p">)()</span>
+</pre></div>
+
+<h3 id="6">例6：类装饰器（扩展，非重点）<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>装饰器函数其实是这样一个接口约束，它必须接受一个callable对象作为参数，然后返回一个callable对象。在Python中一般callable对象都是函数，但也有例外。只要某个对象重写了 <code>__call__()</code> 方法，那么这个对象就是callable的。</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Test</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;call me!&#39;</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">Test</span><span class="p">()</span>
+<span class="n">t</span><span class="p">()</span>  <span class="c1"># call me</span>
+</pre></div>
+
+<p>类装饰器demo</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---初始化---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;func name is </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__func</span> <span class="o">=</span> <span class="n">func</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---装饰器中的功能---&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__func</span><span class="p">()</span>
+<span class="c1">#说明：</span>
+<span class="c1">#1. 当用Test来装作装饰器对test函数进行装饰的时候，首先会创建Test的实例对象</span>
+<span class="c1">#   并且会把test这个函数名当做参数传递到__init__方法中</span>
+<span class="c1">#   即在__init__方法中的属性__func指向了test指向的函数</span>
+<span class="c1">#</span>
+<span class="c1">#2. test指向了用Test创建出来的实例对象</span>
+<span class="c1">#</span>
+<span class="c1">#3. 当在使用test()进行调用时，就相当于让这个对象()，因此会调用这个对象的__call__方法</span>
+<span class="c1">#</span>
+<span class="c1">#4. 为了能够在__call__方法中调用原来test指向的函数体，所以在__init__方法中就需要一个实例属性来保存这个函数体的引用</span>
+<span class="c1">#   所以才有了self.__func = func这句代码，从而在调用__call__方法中能够调用到test之前的函数体</span>
+<span class="nd">@Test</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----test---&quot;</span><span class="p">)</span>
+<span class="n">test</span><span class="p">()</span>
+<span class="n">showpy</span><span class="p">()</span><span class="c1">#如果把这句话注释，重新运行程序，依然会看到&quot;--初始化--&quot;</span>
+</pre></div>
+
+<p>运行结果如下：</p>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">初始化</span><span class="o">---</span>
+<span class="n">func</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">test</span>
+<span class="o">---</span><span class="err">装饰器中的功能</span><span class="o">---</span>
+<span class="o">----</span><span class="n">test</span><span class="o">---</span>
+</pre></div>
+
+<h3 id="14-py">14-使用类当做装饰器.py<a class="headerlink" href="#14-py" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># def set_func_1(func):</span>
+<span class="c1">#   def call_func():</span>
+<span class="c1">#       # &quot;&lt;h1&gt;haha&lt;/h1&gt;&quot;</span>
+<span class="c1">#       return &quot;&lt;h1&gt;&quot; + func() + &quot;&lt;/h1&gt;&quot;</span>
+<span class="c1">#   return call_func</span>
+
+
+<span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;这里是装饰器添加的功能.....&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">()</span>
+
+
+<span class="nd">@Test</span>  <span class="c1"># 相当于get_str = Test(get_str)</span>
+<span class="k">def</span> <span class="nf">get_str</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;haha&quot;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">get_str</span><span class="p">())</span>
+</pre></div>
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="err">这里是装饰器添加的功能</span><span class="o">.....</span>
+<span class="n">haha</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                006 18. WSGI、mini-web框架
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../008-12--python提高-1/" title="008 12--python提高-1" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                008 12--python提高-1
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>
