@@ -3069,7 +3069,7 @@
 </pre></div>
 
 <p>可以理解为，一些常用的功能使用的号码是估计的，好比 电话号码110、10086、10010一样
-<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-10e34895a9f68dee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<img alt="image.png" src="../001-网络udp.image/14555448-10e34895a9f68dee-1578050796565.png" /></p>
 <p>一般情况下，如果一个程序需要使用知名端口的需要有root权限</p>
 <h4 id="32-dynamic-ports">3.2 动态端口（Dynamic Ports）<a class="headerlink" href="#32-dynamic-ports" title="Permanent link">&para;</a></h4>
 <p>动态端口的范围是从1024到65535</p>
@@ -3101,9 +3101,9 @@
 <p>socket(简称 <code>套接字</code>) 是进程间通信的一种方式，它与其他进程间通信的一个主要不同是：</p>
 <p>它能实现不同主机间的进程间通信，我们网络上各种各样的服务大多都是基于 Socket 来完成通信的</p>
 <p>例如我们每天浏览网页、QQ 聊天、收发 email 等等
-<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-f9bc82a51f8ba830.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
-<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-5cdae24fe74df2ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
-<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-8db419198203882b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<img alt="image.png" src="../001-网络udp.image/14555448-f9bc82a51f8ba830-1578050801635.png" />
+<img alt="image.png" src="../001-网络udp.image/14555448-5cdae24fe74df2ad-1578050804723.png" />
+<img alt="image.png" src="../001-网络udp.image/14555448-8db419198203882b-1578050807506.png" /></p>
 <h3 id="3-socket">3. 创建socket<a class="headerlink" href="#3-socket" title="Permanent link">&para;</a></h3>
 <p>在 Python 中 使用socket 模块的函数 socket 就可以完成：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
@@ -3157,7 +3157,7 @@
 <li>发送/接收数据</li>
 <li>关闭套接字</li>
 </ol>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-1513f99aeb885a7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image.png" src="../001-网络udp.image/14555448-1513f99aeb885a7a-1578050811487.png" /></p>
 <p>代码如下：</p>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 
@@ -3183,9 +3183,9 @@
 
 <p>运行现象：</p>
 <p>在Ubuntu中运行脚本：</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-b6949ad5d249681b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image.png" src="../001-网络udp.image/14555448-b6949ad5d249681b-1578050815892.png" /></p>
 <p>在windows中运行“网络调试助手”：</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-7bb28c877612f77a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image.png" src="../001-网络udp.image/14555448-7bb28c877612f77a-1578050818846.png" /></p>
 <h3 id="246-udp-">2. udp网络程序-发送、接收数据<a class="headerlink" href="#246-udp-" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 
@@ -3218,9 +3218,9 @@
 </pre></div>
 
 <p>python脚本：
-<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-fe8e6ee4eb76c73a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<img alt="image.png" src="../001-网络udp.image/14555448-fe8e6ee4eb76c73a-1578050822630.png" /></p>
 <p>网络调试助手截图：</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-136b274674f84ad1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image.png" src="../001-网络udp.image/14555448-136b274674f84ad1-1578050825510.png" /></p>
 <h2 id="37python3">3.7python3编码转换<a class="headerlink" href="#37python3" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="nb">str</span><span class="o">-&gt;</span><span class="nb">bytes</span><span class="p">:</span><span class="n">encode编码</span>
 <span class="nb">bytes</span><span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span><span class="n">decode解码</span>
@@ -3265,7 +3265,7 @@
 <li>会变的端口号</li>
 </ul>
 <p>重新运行多次脚本，然后在“网络调试助手”中，看到的现象如下：
-<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-6791fc527af4bd25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<img alt="image.png" src="../001-网络udp.image/14555448-6791fc527af4bd25-1578050830111.png" /></p>
 <p>说明：</p>
 <ul>
 <li>每重新运行一次网络程序，上图中红圈中的数字，不一样的原因在于，这个数字标识这个网络程序，当重新运行时，如果没有确定到底用哪个，系统默认会随机分配</li>
@@ -3276,7 +3276,7 @@
 <p>一般情况下，在一台电脑上运行的网络程序有很多，为了不与其他的网络程序占用同一个端口号，往往在编程中，udp的端口号一般不绑定</p>
 <p>但是如果需要做成一个服务器端的程序的话，是需要绑定的，想想看这又是为什么呢？</p>
 <p>如果报警电话每天都在变，想必世界就会乱了，所以一般服务性的程序，往往需要一个固定的端口号，这就是所谓的端口绑定</p>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-917601cd6223ad70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image.png" src="../001-网络udp.image/14555448-917601cd6223ad70-1578050833678.png" /></p>
 <h4 id="2">&lt;2&gt;. 绑定示例<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span>#coding=utf-8
 
@@ -3300,14 +3300,14 @@ udp_socket.close()
 </pre></div>
 
 <h4 id="_7">运行结果：<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-376d3796d6f91863.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image.png" src="../001-网络udp.image/14555448-376d3796d6f91863-1578050837095.png" /></p>
 <h4 id="3">&lt;3&gt;. 总结<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
 <ul>
 <li>一个udp网络程序，可以不绑定，此时操作系统会随机进行分配一个端口，如果重新运行此程序端口可能会发生变化</li>
 <li>一个udp网络程序，也可以绑定信息（ip地址，端口号），如果绑定成功，那么操作系统用这个端口号来进行区别收到的网络数据是否是此进程的</li>
 </ul>
 <h2 id="39">3.9网络通信过程(简单版)<a class="headerlink" href="#39" title="Permanent link">&para;</a></h2>
-<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-b396a3b67ed40b72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<p><img alt="image.png" src="../001-网络udp.image/14555448-b396a3b67ed40b72-1578050840269.png" /></p>
 <h3 id="_8">说明<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>网络通信过程中，之所需要ip、port等，就是为了能够将一个复杂的通信过程进行任务划分，从而保证数据准确无误的传递</li>
