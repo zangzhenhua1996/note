@@ -3696,10 +3696,12 @@
 <div class="codehilite"><pre><span></span>    GET / HTTP/1.1
 </pre></div>
 
+
 <p>GET表示一个读取请求，将从服务器获得网页数据，/表示URL的路径，URL总是以/开头，/就表示首页，最后的HTTP/1.1指示采用的HTTP协议版本是1.1。目前HTTP协议的版本就是1.1，但是大部分服务器也支持1.0版本，主要区别在于1.1版本允许多个HTTP请求复用一个TCP连接，以加快传输速度。</p>
 <p>从第二行开始，每一行都类似于Xxx: abcdefg：</p>
 <div class="codehilite"><pre><span></span>    Host: www.sina.com
 </pre></div>
+
 
 <p>表示请求的域名是www.sina.com。如果一台服务器有多个网站，服务器就需要通过Host来区分浏览器请求的是哪个网站。</p>
 <h3 id="22">2.2 服务器响应<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
@@ -3708,6 +3710,7 @@
 <p>HTTP响应分为Header和Body两部分（Body是可选项），我们在Network中看到的Header最重要的几行如下：</p>
 <div class="codehilite"><pre><span></span>    HTTP/1.1 200 OK
 </pre></div>
+
 
 <p>200表示一个成功的响应，后面的OK是说明。</p>
 <p>如果返回的不是200，那么往往有其他的功能，例如</p>
@@ -3718,6 +3721,7 @@
 </ul>
 <div class="codehilite"><pre><span></span>    Content-Type: text/html
 </pre></div>
+
 
 <p>Content-Type指示响应的内容，这里是text/html表示HTML网页。</p>
 <blockquote>
@@ -3764,6 +3768,7 @@
     Header3: Value3
 </pre></div>
 
+
 <p>每个Header一行一个，换行符是\r\n。</p>
 <h4 id="322-http-post">3.2.2 HTTP POST请求的格式：<a class="headerlink" href="#322-http-post" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span>    POST /path HTTP/1.1
@@ -3774,6 +3779,7 @@
     body data goes here...
 </pre></div>
 
+
 <p>当遇到连续两个\r\n(有一个空行)时，Header部分结束，后面的数据全部是Body。</p>
 <h4 id="323-http">3.2.3 HTTP响应的格式：<a class="headerlink" href="#323-http" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span>    200 OK
@@ -3783,6 +3789,7 @@
 
     body data goes here...
 </pre></div>
+
 
 <p>HTTP响应如果包含body，也是通过\r\n\r\n来分隔的。</p>
 <p>请再次注意，Body的数据类型由Content-Type头来确定，如果是网页，Body就是文本，如果是图片，Body就是图片的二进制数据。</p>
@@ -3822,6 +3829,7 @@
     <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>haha<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span> //这是返回的内容
 </pre></div>
 
+
 <h1 id="92-web-1-">9.2. Web静态服务器-1-显示固定的页面<a class="headerlink" href="#92-web-1-" title="Permanent link">&para;</a></h1>
 <p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-7c8f02eebc5bb988.png" /></p>
 <h2 id="web-1-">Web静态服务器-1-显示固定的页面<a class="headerlink" href="#web-1-" title="Permanent link">&para;</a></h2>
@@ -3834,7 +3842,7 @@
     <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
     <span class="n">request_header_lines</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">request_header_lines</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
     <span class="c1"># 组织相应 头信息(header)</span>
     <span class="n">response_headers</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>  <span class="c1"># 200表示找到这个资源</span>
@@ -3855,7 +3863,7 @@
     <span class="n">server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7788</span><span class="p">))</span>
     <span class="n">server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="n">handle_client</span><span class="p">(</span><span class="n">client_socket</span><span class="p">)</span>
 
@@ -3863,6 +3871,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <h3 id="_4">服务器端<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-fc37838f2d009359.png" /></p>
@@ -3878,7 +3887,7 @@
     <span class="c1"># GET / HTTP/1.1</span>
     <span class="c1"># ....</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">new_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="c1">#接收客户端的数据</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
     <span class="c1"># 2.返回http格式的数据</span>
     <span class="c1"># 2.1准备给浏览器发送的数据 --header</span>
     <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
@@ -3898,7 +3907,7 @@
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="mi">7890</span><span class="p">))</span> <span class="c1">#绑定默认的ip以及端口号</span>
     <span class="c1"># 3. 变为监听套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 4. 等待新客户端的链接</span>
         <span class="n">new_socket</span><span class="p">,</span><span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="c1"># 5. 为这个客户端进行服务</span>
@@ -3909,6 +3918,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <h1 id="93-web-2-">9.3. Web静态服务器-2-显示需要的页面<a class="headerlink" href="#93-web-2-" title="Permanent link">&para;</a></h1>
 <h2 id="web-2-">Web静态服务器-2-显示需要的页面<a class="headerlink" href="#web-2-" title="Permanent link">&para;</a></h2>
@@ -3922,8 +3932,8 @@
     <span class="c1"># GET / HTTP/1.1</span>
     <span class="c1"># .....</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">new_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt;&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt;&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 
     <span class="c1"># 2. 返回http格式的数据，给浏览器</span>
     <span class="c1"># 2.1 准备发送给浏览器的数据---header</span>
@@ -3957,7 +3967,7 @@
     <span class="c1"># 3. 变为监听套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 4. 等待新客户端的链接</span>
         <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
@@ -3971,6 +3981,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <h3 id="_6">服务器端<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-0e29fbf11273604d.png" /></p>
@@ -3992,9 +4003,9 @@
     <span class="c1"># print(request)</span>
 
     <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>  <span class="c1">#将字符串每一行切割成一个字符串</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
 
     <span class="c1"># GET /index.html HTTP/1.1</span>
     <span class="c1"># get post put del</span>
@@ -4051,7 +4062,7 @@
     <span class="c1"># 3. 变为监听套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 4. 等待新客户端的链接</span>
         <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
@@ -4066,6 +4077,7 @@
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
+
 <p>更详细的代码</p>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 <span class="kn">import</span> <span class="nn">socket</span>
@@ -4077,11 +4089,11 @@
     <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
     <span class="n">request_header_lines</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">request_header_lines</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
     <span class="n">http_request_line</span> <span class="o">=</span> <span class="n">request_header_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">http_request_line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span>  <span class="c1"># for test</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span>  <span class="c1"># for test</span>
 
     <span class="c1"># 如果没有指定访问哪个页面。例如index.html</span>
     <span class="c1"># GET / HTTP/1.1</span>
@@ -4090,7 +4102,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="n">get_file_name</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1">#for test</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1">#for test</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">get_file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
@@ -4119,7 +4131,7 @@
     <span class="n">server_socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">server_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7788</span><span class="p">))</span>
     <span class="n">server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">client_socket</span><span class="p">,</span> <span class="n">clien_cAddr</span> <span class="o">=</span> <span class="n">server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="n">handle_client</span><span class="p">(</span><span class="n">client_socket</span><span class="p">)</span>
 
@@ -4130,6 +4142,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <h1 id="94-web-3-">9.4. Web静态服务器-3-多进程<a class="headerlink" href="#94-web-3-" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
@@ -4148,9 +4161,9 @@
     <span class="c1"># print(request)</span>
 
     <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
 
     <span class="c1"># GET /index.html HTTP/1.1</span>
     <span class="c1"># get post put del</span>
@@ -4205,7 +4218,7 @@
     <span class="c1"># 3. 变为监听套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 4. 等待新客户端的链接</span>
         <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
@@ -4224,6 +4237,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <p>为什么父进程也要进行客户端的关闭,是因为子进程父进程都会指向这个客户端,父进程关闭不会真的关了客户端只用子进程关闭了之后才会真的关闭这个客户端进行四次挥手的操作.</p>
 <p><img alt="image.png" src="../003-9--http协议、web服务器-并发服务器1.image/14555448-54659e7140af923c.png" /></p>
@@ -4248,10 +4262,10 @@
 
     <span class="k">def</span> <span class="nf">serve_forever</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="s2">&quot;循环运行web服务器，等待客户端的链接并为客户端服务&quot;</span>
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="c1"># 等待新客户端到来</span>
             <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">client_address</span><span class="p">)</span>  <span class="c1"># for test</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">client_address</span><span class="p">)</span>  <span class="c1"># for test</span>
             <span class="n">new_process</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">handleRequest</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,))</span>
             <span class="n">new_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
@@ -4261,21 +4275,21 @@
     <span class="k">def</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_socket</span><span class="p">):</span>
         <span class="s2">&quot;用一个新的进程，为一个客户端进行服务&quot;</span>
         <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">)</span>
         <span class="n">requestHeaderLines</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">requestHeaderLines</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
         <span class="n">request_line</span> <span class="o">=</span> <span class="n">requestHeaderLines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">request_line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
 
         <span class="k">if</span> <span class="n">get_file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
             <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/index.html&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="n">get_file_name</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">get_file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
@@ -4302,12 +4316,13 @@
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">httpd</span> <span class="o">=</span> <span class="n">WSGIServer</span><span class="p">(</span><span class="n">SERVER_ADDR</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;web Server: Serving HTTP on port </span><span class="si">%d</span><span class="s2"> ...</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">PORT</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;web Server: Serving HTTP on port </span><span class="si">%d</span><span class="s2"> ...</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">PORT</span><span class="p">)</span>
     <span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <h1 id="95-web-4-">9.5. Web静态服务器-4-多线程<a class="headerlink" href="#95-web-4-" title="Permanent link">&para;</a></h1>
 <h2 id="web-4-">Web静态服务器-4-多线程<a class="headerlink" href="#web-4-" title="Permanent link">&para;</a></h2>
@@ -4328,9 +4343,9 @@
     <span class="c1"># print(request)</span>
 
     <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
 
     <span class="c1"># GET /index.html HTTP/1.1</span>
     <span class="c1"># get post put del</span>
@@ -4385,7 +4400,7 @@
     <span class="c1"># 3. 变为监听套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 4. 等待新客户端的链接</span>
         <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
@@ -4403,6 +4418,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <p>更加详细的代码</p>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
@@ -4425,10 +4441,10 @@
 
     <span class="k">def</span> <span class="nf">serve_forever</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="s2">&quot;循环运行web服务器，等待客户端的链接并为客户端服务&quot;</span>
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="c1"># 等待新客户端到来</span>
             <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listen_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">client_address</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">client_address</span><span class="p">)</span>
             <span class="n">new_process</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">handleRequest</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,))</span>
             <span class="n">new_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
@@ -4438,21 +4454,21 @@
     <span class="k">def</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_socket</span><span class="p">):</span>
         <span class="s2">&quot;用一个新的进程，为一个客户端进行服务&quot;</span>
         <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">)</span>
         <span class="n">requestHeaderLines</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">requestHeaderLines</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
         <span class="n">request_line</span> <span class="o">=</span> <span class="n">requestHeaderLines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[^/]+(/[^ ]*)&quot;</span><span class="p">,</span> <span class="n">request_line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file name is ===&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
 
         <span class="k">if</span> <span class="n">get_file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
             <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/index.html&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">get_file_name</span> <span class="o">=</span> <span class="n">DOCUMENTS_ROOT</span> <span class="o">+</span> <span class="n">get_file_name</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file name is ===2&gt;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">get_file_name</span><span class="p">)</span> <span class="c1"># for test</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">get_file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
@@ -4479,12 +4495,13 @@
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">httpd</span> <span class="o">=</span> <span class="n">WSGIServer</span><span class="p">(</span><span class="n">SERVER_ADDR</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;web Server: Serving HTTP on port </span><span class="si">%d</span><span class="s2"> ...</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">PORT</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;web Server: Serving HTTP on port </span><span class="si">%d</span><span class="s2"> ...</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">PORT</span><span class="p">)</span>
     <span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <h2 id="_8">协程的实现<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
@@ -4506,9 +4523,9 @@
     <span class="c1"># print(request)</span>
 
     <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
 
     <span class="c1"># GET /index.html HTTP/1.1</span>
     <span class="c1"># get post put del</span>
@@ -4563,7 +4580,7 @@
     <span class="c1"># 3. 变为监听套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 4. 等待新客户端的链接</span>
         <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
@@ -4636,11 +4653,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -4669,6 +4686,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

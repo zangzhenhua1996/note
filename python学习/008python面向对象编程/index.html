@@ -3757,14 +3757,15 @@
 <li>在 <code>Python</code> 中要定义一个只包含方法的类，语法格式如下：</li>
 </ul>
 </blockquote>
-<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="err">类名:</span>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">类名</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="err">方法</span><span class="mi">1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="err">参数列表</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">方法1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">参数列表</span><span class="p">):</span>
         <span class="k">pass</span>
 
-    <span class="k">def</span> <span class="err">方法</span><span class="mi">2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="err">参数列表</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">方法2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">参数列表</span><span class="p">):</span>
         <span class="k">pass</span>
 </pre></div>
+
 
 <ul>
 <li><strong>方法</strong> 的定义格式和之前学习过的**函数** 几乎一样</li>
@@ -3796,13 +3797,13 @@
 </li>
 </ol>
 <p><img alt="004_Cat类1.png" src="../008python面向对象编程.image/14555448-45a7ae326513f038.png" /></p>
-<p><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;小猫爱吃鱼&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;小猫爱吃鱼&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;小猫要喝水&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;小猫要喝水&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># 创建猫对象</span>
@@ -3811,17 +3812,21 @@
 <span class="n">tom</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
 <span class="n">tom</span><span class="o">.</span><span class="n">drink</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
 
 <span class="n">addr</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>   <span class="c1">#这个对象在内存的地址</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%x</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">addr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%x</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">addr</span><span class="p">)</span>
 </pre></div>
-执行结果:
+
+
+<p>执行结果:</p>
 <div class="codehilite"><pre><span></span>小猫爱吃鱼
 小猫要喝水
 &lt;__main__.Cat object at 0x000001734D4F9748&gt;
 1734d4f9748
-</pre></div></p>
+</pre></div>
+
+
 <h4 id="_7">引用概念的强调<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>在面向对象开发中，**引用**的概念是同样适用的！</p>
@@ -3858,10 +3863,10 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;小猫爱吃鱼&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;小猫爱吃鱼&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;小猫要喝水&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;小猫要喝水&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># 创建猫对象</span>
@@ -3870,7 +3875,7 @@
 <span class="n">tom</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
 <span class="n">tom</span><span class="o">.</span><span class="n">drink</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
 
 <span class="c1"># 再创建一个猫对象</span>
 <span class="n">lazy_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">()</span>
@@ -3878,25 +3883,28 @@
 <span class="n">lazy_cat</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
 <span class="n">lazy_cat</span><span class="o">.</span><span class="n">drink</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">lazy_cat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lazy_cat</span><span class="p">)</span>
 
 <span class="n">lazy_cat2</span> <span class="o">=</span> <span class="n">lazy_cat</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">lazy_cat2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lazy_cat2</span><span class="p">)</span>
 </pre></div>
+
 
 <blockquote>
 <p>提问：<code>tom</code> 和 <code>lazy_cat</code> 是同一个对象吗？
-执行结果:不是一个对象
-<div class="codehilite"><pre><span></span><span class="err">小猫爱吃鱼</span>
-<span class="err">小猫要喝水</span>
-<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cat</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001734D4F9860</span><span class="o">&gt;</span>
-<span class="err">小猫爱吃鱼</span>
-<span class="err">小猫要喝水</span>
-<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cat</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001734D4F95C0</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cat</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001734D4F95C0</span><span class="o">&gt;</span>
-</pre></div></p>
+执行结果:不是一个对象</p>
 </blockquote>
+<div class="codehilite"><pre><span></span><span class="n">小猫爱吃鱼</span>
+<span class="n">小猫要喝水</span>
+<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cat</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001734D4F9860</span><span class="o">&gt;</span>
+<span class="n">小猫爱吃鱼</span>
+<span class="n">小猫要喝水</span>
+<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cat</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001734D4F95C0</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cat</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001734D4F95C0</span><span class="o">&gt;</span>
+</pre></div>
+
+
 <h2 id="0346-self">03. 方法中的 <code>self</code> 参数<a class="headerlink" href="#0346-self" title="Permanent link">&para;</a></h2>
 <h3 id="31_1">3.1 案例改造 —— 给对象增加属性<a class="headerlink" href="#31_1" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3911,13 +3919,15 @@
 </li>
 </ul>
 <blockquote>
-<p>注意：这种方式虽然简单，但是不推荐使用！
+<p>注意：这种方式虽然简单，但是不推荐使用！</p>
+</blockquote>
 <div class="codehilite"><pre><span></span><span class="n">tom</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Tom&quot;</span>
 <span class="o">...</span>
 <span class="err">​</span>
 <span class="n">lazy_cat</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;大懒猫&quot;</span>
-</pre></div></p>
-</blockquote>
+</pre></div>
+
+
 <h3 id="32-self">3.2 使用 <code>self</code> 在方法内部输出每一只猫的名字<a class="headerlink" href="#32-self" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>由 <strong>哪一个对象</strong> 调用的方法，方法内的 <code>self</code> 就是 <strong>哪一个对象的引用</strong></p>
@@ -3941,15 +3951,17 @@
 </ul>
 </li>
 <li>
-<p>改造代码如下：
+<p>改造代码如下：</p>
+</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># 哪一个对象调用的方法，self就是哪一个对象的引用</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 爱吃鱼&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 爱吃鱼&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 要喝水&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 要喝水&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
 
 <span class="c1"># 创建猫对象</span>
@@ -3961,7 +3973,7 @@
 <span class="n">tom</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
 <span class="n">tom</span><span class="o">.</span><span class="n">drink</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
 
 <span class="c1"># 再创建一个猫对象</span>
 <span class="n">lazy_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">()</span>
@@ -3971,19 +3983,21 @@
 <span class="n">lazy_cat</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
 <span class="n">lazy_cat</span><span class="o">.</span><span class="n">drink</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">lazy_cat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lazy_cat</span><span class="p">)</span>
 <span class="c1">#%s  string型  表示格式化一个对象为字符</span>
 </pre></div>
-执行结果:
-<div class="codehilite"><pre><span></span><span class="n">Tom</span> <span class="err">爱吃鱼</span>
-<span class="n">Tom</span> <span class="err">要喝水</span>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">Tom</span> <span class="n">爱吃鱼</span>
+<span class="n">Tom</span> <span class="n">要喝水</span>
 <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cat</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001734D549198</span><span class="o">&gt;</span>
-<span class="err">大懒猫</span> <span class="err">爱吃鱼</span>
-<span class="err">大懒猫</span> <span class="err">要喝水</span>
+<span class="n">大懒猫</span> <span class="n">爱吃鱼</span>
+<span class="n">大懒猫</span> <span class="n">要喝水</span>
 <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Cat</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x000001734D4F9A58</span><span class="o">&gt;</span>
-</pre></div></p>
-</li>
-</ul>
+</pre></div>
+
+
 <p><img alt="005_方法中的self.png" src="../008python面向对象编程.image/14555448-0025fe31d34a9781.png" /></p>
 <ul>
 <li>
@@ -3996,18 +4010,24 @@
 <h2 id="0446">04. 初始化方法<a class="headerlink" href="#0446" title="Permanent link">&para;</a></h2>
 <h3 id="41">4.1 之前代码存在的问题 —— 在类的外部给对象增加属性<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
 <ul>
-<li>将案例代码进行调整，<strong>先调用方法 再设置属性</strong>，观察一下执行效果
+<li>将案例代码进行调整，<strong>先调用方法 再设置属性</strong>，观察一下执行效果</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="n">tom</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">()</span>
 <span class="n">tom</span><span class="o">.</span><span class="n">drink</span><span class="p">()</span>
 <span class="n">tom</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
 <span class="n">tom</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Tom&quot;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
-</pre></div></li>
-<li>程序执行报错如下：
-<div class="codehilite"><pre><span></span><span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;Cat&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;name&#39;</span>
-<span class="err">属性错误：</span><span class="s1">&#39;Cat&#39;</span> <span class="err">对象没有</span> <span class="s1">&#39;name&#39;</span> <span class="err">属性</span>
-</pre></div></li>
+<span class="nb">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>程序执行报错如下：</li>
 </ul>
+<div class="codehilite"><pre><span></span><span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;Cat&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;name&#39;</span>
+<span class="n">属性错误</span><span class="err">：</span><span class="s1">&#39;Cat&#39;</span> <span class="n">对象没有</span> <span class="s1">&#39;name&#39;</span> <span class="n">属性</span>
+</pre></div>
+
+
 <p><strong>提示</strong></p>
 <ul>
 <li>
@@ -4040,43 +4060,47 @@
 <blockquote>
 <p><code>__init__</code> 方法是 <strong>专门</strong> 用来定义一个类 <strong>具有哪些属性的方法</strong>！</p>
 </blockquote>
-<p>在 <code>Cat</code> 中增加 <code>__init__</code> 方法，验证该方法在创建对象时会被自动调用
+<p>在 <code>Cat</code> 中增加 <code>__init__</code> 方法，验证该方法在创建对象时会被自动调用</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
  <span class="sd">&quot;&quot;&quot;这是一个猫类&quot;&quot;&quot;</span>
 <span class="err">​</span>
      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;初始化方法&quot;</span><span class="p">)</span>
-</pre></div></p>
+         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;初始化方法&quot;</span><span class="p">)</span>
+</pre></div>
+
+
 <h3 id="43">4.3 在初始化方法内部定义属性<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>在 <code>__init__</code> 方法内部使用 <code>self.属性名 = 属性的初始值</code> 就可以 <strong>定义属性</strong></p>
 </li>
 <li>
-<p>定义属性之后，再使用 <code>Cat</code> 类创建的对象，都会拥有该属性
+<p>定义属性之后，再使用 <code>Cat</code> 类创建的对象，都会拥有该属性</p>
+</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_name</span><span class="p">):</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;这是一个初始化方法&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;这是一个初始化方法&quot;</span><span class="p">)</span>
 
         <span class="c1"># self.属性名 = 属性的初始值</span>
         <span class="c1"># self.name = &quot;Tom&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">new_name</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 爱吃鱼&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 爱吃鱼&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="c1"># 使用类名()创建对象的时候，会自动调用初始化方法 __init__</span>
 <span class="n">tom</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;Tom&quot;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">tom</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tom</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="n">lazy_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;大懒猫&quot;</span><span class="p">)</span>
 <span class="n">lazy_cat</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
-</pre></div></p>
-</li>
-</ul>
+</pre></div>
+
+
 <h3 id="44">4.4 改造初始化方法 —— 初始化的同时设置初始值<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
@@ -4089,11 +4113,15 @@
 <p>在方法内部使用 <code>self.属性 = 形参</code> 接收外部传递的参数</p>
 </li>
 <li>
-<p>在创建对象时，使用 <code>类名(属性1, 属性2...)</code> 调用
+<p>在创建对象时，使用 <code>类名(属性1, 属性2...)</code> 调用</p>
+</li>
+</ol>
+</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span>
 <span class="err">​</span>
  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
- <span class="k">print</span><span class="p">(</span><span class="s2">&quot;初始化方法 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;初始化方法 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
  <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
  <span class="o">...</span>
 
@@ -4102,11 +4130,9 @@
 <span class="err">​</span>
 <span class="n">lazy_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;大懒猫&quot;</span><span class="p">)</span>
 <span class="o">...</span>
-</pre></div></p>
-</li>
-</ol>
-</li>
-</ul>
+</pre></div>
+
+
 <h2 id="0546">05. 内置方法和属性<a class="headerlink" href="#0546" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4166,7 +4192,11 @@
 <p>一个对象的 <code>__del__</code> 方法一旦被调用，生命周期结束</p>
 </li>
 <li>
-<p>在对象的生命周期内，可以访问对象属性，或者让对象调用方法
+<p>在对象的生命周期内，可以访问对象属性，或者让对象调用方法</p>
+</li>
+</ul>
+</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Created on Wed Apr 17 21:56:22 2019</span>
@@ -4179,25 +4209,23 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">new_name</span>
 
-         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 来了&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 来了&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 我去了&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 我去了&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="c1"># tom 是一个全局变量</span>
 <span class="n">tom</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;Tom&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">tom</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tom</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="c1"># del 关键字可以删除一个对象</span>
 <span class="k">del</span> <span class="n">tom</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
-</pre></div></p>
-</li>
-</ul>
-</li>
-</ul>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+
 <h3 id="52-__str__">5.2 <code>__str__</code> 方法<a class="headerlink" href="#52-__str__" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
@@ -4216,11 +4244,11 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">new_name</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 来了&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 来了&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 我去了&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 我去了&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -4229,8 +4257,9 @@
 
 <span class="c1"># tom 是一个全局变量</span>
 <span class="n">tom</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;Tom&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tom</span><span class="p">)</span>
 </pre></div>
+
 
 <h1 id="_8">面向对象封装案例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
 <h2 id="_9">目标<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
@@ -4275,13 +4304,13 @@
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;跑步&quot;&quot;&quot;</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 爱跑步，跑步锻炼身体&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 爱跑步，跑步锻炼身体&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">-=</span> <span class="mf">0.5</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;吃东西&quot;&quot;&quot;</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 是吃货，吃完这顿再减肥&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 是吃货，吃完这顿再减肥&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">+=</span> <span class="mi">1</span>
 
 
@@ -4291,8 +4320,9 @@
 <span class="n">xiaoming</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
 <span class="n">xiaoming</span><span class="o">.</span><span class="n">eat</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">xiaoming</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">xiaoming</span><span class="p">)</span>
 </pre></div>
+
 
 <h3 id="21_1">2.1 小明爱跑步扩展 —— 小美也爱跑步<a class="headerlink" href="#21_1" title="Permanent link">&para;</a></h3>
 <p><strong>需求</strong></p>
@@ -4359,10 +4389,11 @@
 <span class="n">chest</span> <span class="o">=</span> <span class="n">HouseItem</span><span class="p">(</span><span class="s2">&quot;衣柜&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">HouseItem</span><span class="p">(</span><span class="s2">&quot;餐桌&quot;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">bed</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">chest</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chest</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 </pre></div>
+
 
 <p><strong>小结</strong></p>
 <ol>
@@ -4395,7 +4426,7 @@
 
     <span class="k">def</span> <span class="nf">add_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;要添加 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;要添加 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
 
 <span class="o">...</span>
 
@@ -4406,8 +4437,9 @@
 <span class="n">my_home</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">chest</span><span class="p">)</span>
 <span class="n">my_home</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">my_home</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_home</span><span class="p">)</span>
 </pre></div>
+
 
 <p><strong>小结</strong></p>
 <ol>
@@ -4423,12 +4455,12 @@
 <li>2&gt; 将 <strong>家具的名称</strong> 追加到 <strong>家具名称列表</strong> 中</li>
 <li>3&gt; 用 <strong>房子的剩余面积</strong> - <strong>家具面积</strong></li>
 </ul>
-<p><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;要添加 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;要添加 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
         <span class="c1"># 1. 判断家具面积是否大于剩余面积</span>
         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">area</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_area</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 的面积太大，不能添加到房子中&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 的面积太大，不能添加到房子中&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
             <span class="k">return</span>
 
@@ -4438,7 +4470,9 @@
         <span class="c1"># 3. 计算剩余面积</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">free_area</span> <span class="o">-=</span> <span class="n">item</span><span class="o">.</span><span class="n">area</span>
 </pre></div>
-最后的程序
+
+
+<p>最后的程序</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">HouseItem</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
@@ -4473,10 +4507,10 @@
 
     <span class="k">def</span> <span class="nf">add_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;要添加 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;要添加 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
         <span class="c1"># 1. 判断家具的面积</span>
         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">area</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_area</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 的面积太大了，无法添加&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 的面积太大了，无法添加&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
             <span class="k">return</span>
 
@@ -4492,9 +4526,9 @@
 <span class="n">chest</span> <span class="o">=</span> <span class="n">HouseItem</span><span class="p">(</span><span class="s2">&quot;衣柜&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">HouseItem</span><span class="p">(</span><span class="s2">&quot;餐桌&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">bed</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">chest</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chest</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 
 <span class="c1"># 2. 创建房子对象</span>
 <span class="n">my_home</span> <span class="o">=</span> <span class="n">House</span><span class="p">(</span><span class="s2">&quot;两室一厅&quot;</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
@@ -4503,8 +4537,10 @@
 <span class="n">my_home</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">chest</span><span class="p">)</span>
 <span class="n">my_home</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">my_home</span><span class="p">)</span>
-</pre></div></p>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_home</span><span class="p">)</span>
+</pre></div>
+
+
 <h3 id="34">3.4 小结<a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
 <ul>
 <li>主程序只负责创建 <strong>房子</strong> 对象和 <strong>家具</strong> 对象</li>
@@ -4560,20 +4596,21 @@
 
         <span class="c1"># 判断是否还有子弹</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bullet_count</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;没有子弹了...&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;没有子弹了...&quot;</span><span class="p">)</span>
 
             <span class="k">return</span>
 
         <span class="c1"># 发射一颗子弹</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bullet_count</span> <span class="o">-=</span> <span class="mi">1</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 发射子弹[</span><span class="si">%d</span><span class="s2">]...&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bullet_count</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 发射子弹[</span><span class="si">%d</span><span class="s2">]...&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bullet_count</span><span class="p">))</span>
 
 <span class="c1"># 创建枪对象</span>
 <span class="n">ak47</span> <span class="o">=</span> <span class="n">Gun</span><span class="p">(</span><span class="s2">&quot;ak47&quot;</span><span class="p">)</span>
 <span class="n">ak47</span><span class="o">.</span><span class="n">add_bullet</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">ak47</span><span class="o">.</span><span class="n">shoot</span><span class="p">()</span>
 </pre></div>
+
 
 <h3 id="12_2">1.2 开发士兵类<a class="headerlink" href="#12_2" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -4593,25 +4630,25 @@
 <li>3&gt; 装填子弹</li>
 <li>4&gt; 射击</li>
 </ul>
-<p><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Soldier</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Soldier</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 
         <span class="c1"># 姓名</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="c1"># 枪，士兵初始没有枪 None 关键字表示什么都没有</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gun</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gun</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="c1"># 1. 判断士兵是否有枪</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gun</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] 还没有枪...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gun</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] 还没有枪...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
             <span class="k">return</span>
 
         <span class="c1"># 2. 高喊口号</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;冲啊...[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;冲啊...[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
         <span class="c1"># 3. 让枪装填子弹</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gun</span><span class="o">.</span><span class="n">add_bullet</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
@@ -4619,7 +4656,9 @@
         <span class="c1"># 4. 让枪发射子弹</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gun</span><span class="o">.</span><span class="n">shoot</span><span class="p">()</span>
 </pre></div>
-整个的程序代码:
+
+
+<p>整个的程序代码:</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Gun</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
@@ -4638,7 +4677,7 @@
 
         <span class="c1"># 1. 判断子弹数量</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bullet_count</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] 没有子弹了...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] 没有子弹了...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
 
             <span class="k">return</span>
 
@@ -4646,7 +4685,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bullet_count</span> <span class="o">-=</span> <span class="mi">1</span>
 
         <span class="c1"># 3. 提示发射信息</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] 突突突... [</span><span class="si">%d</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bullet_count</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] 突突突... [</span><span class="si">%d</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bullet_count</span><span class="p">))</span>
 
 
 <span class="k">class</span> <span class="nc">Soldier</span><span class="p">:</span>
@@ -4657,19 +4696,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
         <span class="c1"># 2. 枪 - 新兵没有枪</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gun</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gun</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="c1"># 1. 判断士兵是否有枪</span>
         <span class="c1"># if self.gun == None:</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gun</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] 还没有枪...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gun</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">] 还没有枪...&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
             <span class="k">return</span>
 
         <span class="c1"># 2. 高喊口号</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;冲啊...[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;冲啊...[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
         <span class="c1"># 3. 让枪装填子弹</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gun</span><span class="o">.</span><span class="n">add_bullet</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
@@ -4686,8 +4725,10 @@
 <span class="n">xusanduo</span><span class="o">.</span><span class="n">gun</span> <span class="o">=</span> <span class="n">ak47</span>  <span class="c1">#将对象传递给这个self.gun使用这个对象中的函数方法</span>
 <span class="n">xusanduo</span><span class="o">.</span><span class="n">fire</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">xusanduo</span><span class="o">.</span><span class="n">gun</span><span class="p">)</span>
-</pre></div></p>
+<span class="nb">print</span><span class="p">(</span><span class="n">xusanduo</span><span class="o">.</span><span class="n">gun</span><span class="p">)</span>
+</pre></div>
+
+
 <p><strong>小结</strong></p>
 <ol>
 <li>创建了一个 <strong>士兵类</strong>，使用到 <code>__init__</code> 内置方法</li>
@@ -4726,9 +4767,9 @@
 <div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="ow">is</span> <span class="n">a</span> 
-<span class="bp">False</span>
+<span class="kc">False</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">==</span> <span class="n">a</span>
-<span class="bp">True</span>
+<span class="kc">True</span>
 </pre></div>
                 
                   
@@ -4786,11 +4827,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -4819,6 +4860,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

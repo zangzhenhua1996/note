@@ -3653,14 +3653,16 @@
                   <h1>011 Django框架使用步骤</h1>
                 
                 <h3 id="1">1.创建项目<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="err">项目名称</span>
-<span class="err">例：</span>
+<div class="codehilite"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">项目名称</span>
+<span class="n">例</span><span class="err">：</span>
 <span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">test1</span>
 </pre></div>
+
 
 <h3 id="2">2. 创建应用<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">booktest</span>
 </pre></div>
+
 
 <h3 id="3">3.安装应用]<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p><img alt="image.png" src="../011-Django框架使用步骤.image/14555448-98ce01f489685b85.png" /></p>
@@ -3721,6 +3723,7 @@
 )
 </pre></div>
 
+
 <p><img alt="image.png" src="../011-Django框架使用步骤.image/14555448-d011e1a3702dbebc.png" /></p>
 <p>2）在test6/settings.py中添加编辑器配置。</p>
 <div class="codehilite"><pre><span></span>TINYMCE_DEFAULT_CONFIG = {
@@ -3730,6 +3733,7 @@
 }
 </pre></div>
 
+
 <p><img alt="image.png" src="../011-Django框架使用步骤.image/14555448-4158ed2ca6071fcf.png" /></p>
 <p>3）在test6/urls.py中配置编辑器url。</p>
 <div class="codehilite"><pre><span></span>urlpatterns = [
@@ -3737,6 +3741,7 @@
     url(r&#39;^tinymce/&#39;, include(&#39;tinymce.urls&#39;)),
 ]
 </pre></div>
+
 
 <p><img alt="image.png" src="../011-Django框架使用步骤.image/14555448-54df95c64acbe006.png" /></p>
 <p>接下来介绍在Admin页面、自定义表单页面的使用方式。</p>
@@ -3820,11 +3825,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3853,6 +3858,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

@@ -3303,6 +3303,7 @@
 2.  2 阶
 </pre></div>
 
+
 <p>示例 2：</p>
 <div class="codehilite"><pre><span></span>输入： 3
 输出： 3
@@ -3311,6 +3312,7 @@
 2.  1 阶 + 2 阶
 3.  2 阶 + 1 阶
 </pre></div>
+
 
 <p><img alt="image.png" src="../033-力扣刷题-70--爬楼梯.image/14555448-fa70938383d3c6cb.png" /></p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3324,6 +3326,7 @@
             <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
         <span class="k">return</span> <span class="n">b</span><span class="c1">#返回最后b就是组合的种数</span>
 </pre></div>
+
 
 <p>分类计数原理，也就是加法原理：如果完成一件事的方法分为（不重不漏的）两类，第一类有x种方法，第二类有y种方法，那么完成这件事的方法共有x+y种。这个很好理解，谁都想得通。 到本题，假设走到第n层楼梯的方法数为f(n)。走到第n层楼梯的方法可以分为两类：第一类，先走到第n-1层，然后走一级楼梯，这类方法有f(n-1)种；第二类，先走到第n-2层，然后走两级楼梯，这类方法有f(n-2)种。仔细想想，这两类方法覆盖了到达第n层楼梯的所有方法，且彼此没有重复，那么根据加法计数原理：f(n)=f(n-1)+f(n-2)。</p>
                 
@@ -3382,11 +3385,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3415,6 +3418,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

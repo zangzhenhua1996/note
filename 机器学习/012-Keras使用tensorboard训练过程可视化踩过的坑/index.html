@@ -3417,6 +3417,7 @@
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>  <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>  
 </pre></div>
 
+
 <h4 id="valueerror-to-visualize-embeddings-embeddings_data-must-be-provided">问题三：ValueError: To visualize embeddings, embeddings_data must be provided.<a class="headerlink" href="#valueerror-to-visualize-embeddings-embeddings_data-must-be-provided" title="Permanent link">&para;</a></h4>
 <p>啰唆：字面意思应该是回掉的TensorBoard类中没有指定
 embeddings_data的值，按理说这么经典的书应该不会出这种问题，可能是版本的差异吧。
@@ -3479,11 +3480,11 @@ embeddings_data的值，按理说这么经典的书应该不会出这种问题�
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3512,6 +3513,10 @@ embeddings_data的值，按理说这么经典的书应该不会出这种问题�
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

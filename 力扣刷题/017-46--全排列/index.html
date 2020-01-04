@@ -3317,6 +3317,7 @@
         <span class="k">return</span> <span class="n">answer</span>
 </pre></div>
 
+
 <p>测试</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">permute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
@@ -3325,14 +3326,15 @@
         <span class="n">answer</span><span class="o">=</span><span class="p">[]</span> <span class="c1">#存储最后的结果</span>
         <span class="k">for</span> <span class="n">i</span> <span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>   <span class="c1">#迭代器,i是index,num是元素</span>
             <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="c1">#刨除了i位置元素的剩余的所有的元素</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;num:&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num:&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1">#进行递归调用,在递归的时候单个这种[3]是一开始的判断返回的千万要注意,自己好好想想调试一下流程</span>
                 <span class="c1"># print(num)</span>
-                <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;y:&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+                <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;y:&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
                 <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">num</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
-                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span><span class="n">answer</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span><span class="n">answer</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">answer</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span><span class="n">num</span><span class="p">:</span> <span class="mi">1</span> <span class="c1">#进入for循环</span>
 <span class="n">num</span><span class="p">:</span> <span class="mi">2</span> <span class="c1">#递归进入循环</span>
@@ -3424,11 +3426,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3457,6 +3459,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

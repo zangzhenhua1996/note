@@ -3320,11 +3320,12 @@
             <span class="c1"># 找到一个最小的因数时,就跳出for in循环,开始下一次循环,每次循环都是对当前数的乘法的分解</span>
             <span class="k">break</span>
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="s1">&#39;1 ×&#39;</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="s1">&#39;1 ×&#39;</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;×&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
+
 
 <p>连质因数我都不会求,感觉受到了重大的打击,唉.</p>
                 
@@ -3383,11 +3384,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3416,6 +3417,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

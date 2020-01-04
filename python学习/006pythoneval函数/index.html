@@ -3403,6 +3403,7 @@
 <span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nb">dict</span>
 </pre></div>
 
+
 <h2 id="-">案例 - 计算器<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
 <p><strong>需求</strong></p>
 <ol>
@@ -3411,8 +3412,9 @@
 </ol>
 <div class="codehilite"><pre><span></span><span class="n">input_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入一个算术题：&quot;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">input_str</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">input_str</span><span class="p">))</span>
 </pre></div>
+
 
 <h2 id="eval_1">不要滥用 <code>eval</code><a class="headerlink" href="#eval_1" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -3420,6 +3422,7 @@
 </blockquote>
 <div class="codehilite"><pre><span></span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">)</span>
 </pre></div>
+
 
 <ul>
 <li>等价代码</li>
@@ -3429,12 +3432,13 @@
 <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;终端命令&quot;</span><span class="p">)</span>
 </pre></div>
 
+
 <ul>
 <li>执行成功，返回 0</li>
 <li>执行失败，返回错误信息</li>
 </ul>
 <h2 id="eval12-34-56a1-b2-c312-34-56">eval函数还可以把字符串转换成列表（[[1,2], [3,4], [5,6]]）、字典（{'a':1, 'b':2, 'c':3}）和元组（([1,2], [3,4], [5,6])）类型<a class="headerlink" href="#eval12-34-56a1-b2-c312-34-56" title="Permanent link">&para;</a></h2>
-<p>例如
+<p>例如</p>
 <div class="codehilite"><pre><span></span><span class="n">pu</span><span class="o">=</span><span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
@@ -3455,7 +3459,7 @@
 
 <span class="n">pu</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">}</span>
-</pre></div></p>
+</pre></div>
                 
                   
                 
@@ -3512,11 +3516,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3545,6 +3549,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

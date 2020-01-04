@@ -1,0 +1,4580 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/java学习/019-day17--hashset/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>总结 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                总结
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python-web/015-python项目离线部署/" class="md-tabs__link">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../机器学习/013 进入tensorboard/" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../力扣刷题/066-质因数/" class="md-tabs__link">
+          每天一道力扣题
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" class="md-tabs__link">
+          windows10系统使用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" title="067 Pycharm 运行程序后如何 如何查看变量的值" class="md-nav__link">
+      067 Pycharm 运行程序后如何 如何查看变量的值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/066-spyder升级4.0全新版本/" title="066 spyder升级4.0全新版本" class="md-nav__link">
+      066 spyder升级4.0全新版本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/065-Jupyter Notebook 远程访问配置/" title="065 Jupyter_Notebook 远程访问配置" class="md-nav__link">
+      065 Jupyter_Notebook 远程访问配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/015-python项目离线部署/" title="015 python项目离线部署" class="md-nav__link">
+      015 python项目离线部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/013 进入tensorboard/" title="013 进入tensorboard" class="md-nav__link">
+      013 进入tensorboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/012-Keras使用tensorboard训练过程可视化踩过的坑/" title="012-Keras使用tensorboard训练过程可视化踩过的坑" class="md-nav__link">
+      012-Keras使用tensorboard训练过程可视化踩过的坑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/011-关于交叉验证与偏差-方差的一连串理解/" title="011-关于交叉验证与偏差-方差的一连串理解" class="md-nav__link">
+      011-关于交叉验证与偏差-方差的一连串理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/010-统计学习方法--统计学习方法概论要点加代码/" title="010-统计学习方法--统计学习方法概论要点加代码" class="md-nav__link">
+      010-统计学习方法--统计学习方法概论要点加代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/009-统计学习方法--统计学习方法概论详细/" title="009-统计学习方法--统计学习方法概论详细" class="md-nav__link">
+      009-统计学习方法--统计学习方法概论详细
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线/" title="008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线" class="md-nav__link">
+      008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/007-机器学习中的维数灾难/" title="007-机器学习中的维数灾难" class="md-nav__link">
+      007-机器学习中的维数灾难
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/006-sklearn模型的保存加载/" title="006-sklearn模型的保存加载" class="md-nav__link">
+      006-sklearn模型的保存加载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/005-sklearn之交叉验证/" title="005-sklearn之交叉验证" class="md-nav__link">
+      005-sklearn之交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/004-sklearn：特征提取，常用模型，交叉验证/" title="004-sklearn：特征提取，常用模型，交叉验证" class="md-nav__link">
+      004-sklearn：特征提取，常用模型，交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据/" title="003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据" class="md-nav__link">
+      003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/002-预处理数据的方法总结（使用sklearn-preprocessing）/" title="002-预处理数据的方法总结（使用sklearn-preprocessing）" class="md-nav__link">
+      002-预处理数据的方法总结（使用sklearn-preprocessing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/001-sklearn-安装，获取数据，数据预处理/" title="001-sklearn-安装，获取数据，数据预处理" class="md-nav__link">
+      001-sklearn-安装，获取数据，数据预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      每天一道力扣题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        每天一道力扣题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/066-质因数/" title="066-质因数" class="md-nav__link">
+      066-质因数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/065-完全数的求解/" title="065-完全数的求解" class="md-nav__link">
+      065-完全数的求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/064-刷题过程中慎用-[]-is-None/" title="064-刷题过程中慎用-[]-is-None" class="md-nav__link">
+      064-刷题过程中慎用-[]-is-None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/063-LRU缓存算法的python实现/" title="063-LRU缓存算法的python实现" class="md-nav__link">
+      063-LRU缓存算法的python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/062-力扣刷题-344--反转字符串/" title="062-力扣刷题-344--反转字符串" class="md-nav__link">
+      062-力扣刷题-344--反转字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/061-力扣刷题-23--合并K个排序链表/" title="061-力扣刷题-23--合并K个排序链表" class="md-nav__link">
+      061-力扣刷题-23--合并K个排序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/060-力扣刷题-232--用栈实现队列/" title="060-力扣刷题-232--用栈实现队列" class="md-nav__link">
+      060-力扣刷题-232--用栈实现队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/059-力扣刷题-102--二叉树的层次遍历/" title="059-力扣刷题-102--二叉树的层次遍历" class="md-nav__link">
+      059-力扣刷题-102--二叉树的层次遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/058-力扣刷题-226--翻转二叉树/" title="058-力扣刷题-226--翻转二叉树" class="md-nav__link">
+      058-力扣刷题-226--翻转二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/057-力扣刷题-237删除链表中的节点/" title="057-力扣刷题-237删除链表中的节点" class="md-nav__link">
+      057-力扣刷题-237删除链表中的节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/056-力扣刷题-206--反转链表/" title="056-力扣刷题-206--反转链表" class="md-nav__link">
+      056-力扣刷题-206--反转链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/055-力扣刷题-1004--最大连续1的个数-III/" title="055-力扣刷题-1004--最大连续1的个数-III" class="md-nav__link">
+      055-力扣刷题-1004--最大连续1的个数-III
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/054-小球反弹的总路程/" title="054-小球反弹的总路程" class="md-nav__link">
+      054-小球反弹的总路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/053-力扣刷题-235--二叉搜索树的最近公共祖先/" title="053-力扣刷题-235--二叉搜索树的最近公共祖先" class="md-nav__link">
+      053-力扣刷题-235--二叉搜索树的最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/052-力扣刷题-162--寻找峰值/" title="052-力扣刷题-162--寻找峰值" class="md-nav__link">
+      052-力扣刷题-162--寻找峰值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/051-力扣刷题-136--只出现一次的数字/" title="051-力扣刷题-136--只出现一次的数字" class="md-nav__link">
+      051-力扣刷题-136--只出现一次的数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/050-二维生物的旅行-754--到达终点数字/" title="050-二维生物的旅行-754--到达终点数字" class="md-nav__link">
+      050-二维生物的旅行-754--到达终点数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/049--力扣刷题459--重复的子字符串-pin2字符串构造/" title="049--力扣刷题459--重复的子字符串-pin2字符串构造" class="md-nav__link">
+      049--力扣刷题459--重复的子字符串-pin2字符串构造
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/048-pin题目1/" title="048-pin题目1" class="md-nav__link">
+      048-pin题目1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/047-力扣刷题-845--数组中的最长山脉/" title="047-力扣刷题-845--数组中的最长山脉" class="md-nav__link">
+      047-力扣刷题-845--数组中的最长山脉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/046-力扣刷题-125--验证回文串/" title="046-力扣刷题-125--验证回文串" class="md-nav__link">
+      046-力扣刷题-125--验证回文串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/045-力扣刷题-122--买卖股票的最佳时机-II/" title="045-力扣刷题-122--买卖股票的最佳时机-II" class="md-nav__link">
+      045-力扣刷题-122--买卖股票的最佳时机-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/044-力扣刷题-119--杨辉三角-II/" title="044-力扣刷题-119--杨辉三角-II" class="md-nav__link">
+      044-力扣刷题-119--杨辉三角-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/043-力扣刷题-121--买卖股票的最佳时机/" title="043-力扣刷题-121--买卖股票的最佳时机" class="md-nav__link">
+      043-力扣刷题-121--买卖股票的最佳时机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/042-力扣刷题-8--字符串转换整数-(atoi)/" title="042-力扣刷题-8--字符串转换整数-(atoi)" class="md-nav__link">
+      042-力扣刷题-8--字符串转换整数-(atoi)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/041-力扣刷题-118--杨辉三角/" title="041-力扣刷题-118--杨辉三角" class="md-nav__link">
+      041-力扣刷题-118--杨辉三角
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/040-力扣刷题-535--TinyURL-的加密与解密/" title="040-力扣刷题-535--TinyURL-的加密与解密" class="md-nav__link">
+      040-力扣刷题-535--TinyURL-的加密与解密
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/039-力扣刷题-112--路径总和/" title="039-力扣刷题-112--路径总和" class="md-nav__link">
+      039-力扣刷题-112--路径总和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/038-力扣刷题-98--验证二叉搜索树/" title="038-力扣刷题-98--验证二叉搜索树" class="md-nav__link">
+      038-力扣刷题-98--验证二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/037-力扣刷题-110--平衡二叉树--重点进行理解/" title="037-力扣刷题-110--平衡二叉树--重点进行理解" class="md-nav__link">
+      037-力扣刷题-110--平衡二叉树--重点进行理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/036-力扣刷题-166--分数到小数/" title="036-力扣刷题-166--分数到小数" class="md-nav__link">
+      036-力扣刷题-166--分数到小数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/035-字节跳动题目-小球往返路程/" title="035-字节跳动题目-小球往返路程" class="md-nav__link">
+      035-字节跳动题目-小球往返路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/034-力扣刷题-88--合并两个有序数组/" title="034-力扣刷题-88--合并两个有序数组" class="md-nav__link">
+      034-力扣刷题-88--合并两个有序数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/033-力扣刷题-70--爬楼梯/" title="033-力扣刷题-70--爬楼梯" class="md-nav__link">
+      033-力扣刷题-70--爬楼梯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/032-力扣刷题-83--删除排序链表中的重复元素/" title="032-力扣刷题-83--删除排序链表中的重复元素" class="md-nav__link">
+      032-力扣刷题-83--删除排序链表中的重复元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/031-力扣刷题-101--对称二叉树/" title="031-力扣刷题-101--对称二叉树" class="md-nav__link">
+      031-力扣刷题-101--对称二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/030-力扣刷题-111--二叉树的最小深度/" title="030-力扣刷题-111--二叉树的最小深度" class="md-nav__link">
+      030-力扣刷题-111--二叉树的最小深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/029-力扣刷题-104--二叉树的最大深度/" title="029-力扣刷题-104--二叉树的最大深度" class="md-nav__link">
+      029-力扣刷题-104--二叉树的最大深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/028-力扣刷题107--二叉树的层次遍历-II/" title="028-力扣刷题107--二叉树的层次遍历-II" class="md-nav__link">
+      028-力扣刷题107--二叉树的层次遍历-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/027-字节跳动笔试题-循环链表实现约瑟夫环/" title="027-字节跳动笔试题-循环链表实现约瑟夫环" class="md-nav__link">
+      027-字节跳动笔试题-循环链表实现约瑟夫环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/026-力扣刷题-108--将有序数组转换为二叉搜索树/" title="026-力扣刷题-108--将有序数组转换为二叉搜索树" class="md-nav__link">
+      026-力扣刷题-108--将有序数组转换为二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/025-力扣刷题-100-相同的树/" title="025-力扣刷题-100-相同的树" class="md-nav__link">
+      025-力扣刷题-100-相同的树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/024-力扣刷题-66--加一/" title="024-力扣刷题-66--加一" class="md-nav__link">
+      024-力扣刷题-66--加一
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/023-力扣刷题-69--x-的平方根/" title="023-力扣刷题-69--x-的平方根" class="md-nav__link">
+      023-力扣刷题-69--x-的平方根
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/022-力扣刷题-二进制求和/" title="022-力扣刷题-二进制求和" class="md-nav__link">
+      022-力扣刷题-二进制求和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/021-力扣刷题151--翻转字符串里的单词/" title="021-力扣刷题151--翻转字符串里的单词" class="md-nav__link">
+      021-力扣刷题151--翻转字符串里的单词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/020-力扣刷题-58--最后一个单词的长度/" title="020-力扣刷题-58--最后一个单词的长度" class="md-nav__link">
+      020-力扣刷题-58--最后一个单词的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/019-力扣刷题53--最大子序和/" title="019-力扣刷题53--最大子序和" class="md-nav__link">
+      019-力扣刷题53--最大子序和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/018-力扣刷题-38--报数/" title="018-力扣刷题-38--报数" class="md-nav__link">
+      018-力扣刷题-38--报数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/017-46--全排列/" title="017-46--全排列" class="md-nav__link">
+      017-46--全排列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/016-力扣刷题873--最长的斐波那契子序列的长度/" title="016-力扣刷题873--最长的斐波那契子序列的长度" class="md-nav__link">
+      016-力扣刷题873--最长的斐波那契子序列的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/015-力扣刷题35--搜索插入位置/" title="015-力扣刷题35--搜索插入位置" class="md-nav__link">
+      015-力扣刷题35--搜索插入位置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/014-力扣刷题9--回文数/" title="014-力扣刷题9--回文数" class="md-nav__link">
+      014-力扣刷题9--回文数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/013-力扣刷题7--整数反转/" title="013-力扣刷题7--整数反转" class="md-nav__link">
+      013-力扣刷题7--整数反转
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/012-力扣刷题14--最长公共前缀/" title="012-力扣刷题14--最长公共前缀" class="md-nav__link">
+      012-力扣刷题14--最长公共前缀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/011-力扣刷题21--合并两个有序链表/" title="011-力扣刷题21--合并两个有序链表" class="md-nav__link">
+      011-力扣刷题21--合并两个有序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/010-力扣刷题27--移除元素/" title="010-力扣刷题27--移除元素" class="md-nav__link">
+      010-力扣刷题27--移除元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/009-力扣刷题28--实现strStr()/" title="009-力扣刷题28--实现strStr()" class="md-nav__link">
+      009-力扣刷题28--实现strStr()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/008-力扣刷题20--有效的括号/" title="008-力扣刷题20--有效的括号" class="md-nav__link">
+      008-力扣刷题20--有效的括号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/007-力扣刷题26--删除排序数组中的重复项/" title="007-力扣刷题26--删除排序数组中的重复项" class="md-nav__link">
+      007-力扣刷题26--删除排序数组中的重复项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/006-力扣刷题22--括号生成/" title="006-力扣刷题22--括号生成" class="md-nav__link">
+      006-力扣刷题22--括号生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/005-力扣刷题13--罗马数字转整数/" title="005-力扣刷题13--罗马数字转整数" class="md-nav__link">
+      005-力扣刷题13--罗马数字转整数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/004-力扣刷题4--寻找两个有序数组的中位数/" title="004-力扣刷题4--寻找两个有序数组的中位数" class="md-nav__link">
+      004-力扣刷题4--寻找两个有序数组的中位数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/003-力扣刷题3不含有重复字符的-最长子串-的长度/" title="003-力扣刷题3不含有重复字符的-最长子串-的长度" class="md-nav__link">
+      003-力扣刷题3不含有重复字符的-最长子串-的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/002-力扣刷题2-两数相加/" title="002-力扣刷题2-两数相加" class="md-nav__link">
+      002-力扣刷题2-两数相加
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/001-力扣刷题1--两数之和/" title="001-力扣刷题1--两数之和" class="md-nav__link">
+      001-力扣刷题1--两数之和
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      windows10系统使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        windows10系统使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" title="022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装" class="md-nav__link">
+      022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/021win系统新增新建右键Markdown文件及默认UTF-8编码格式/" title="021win系统新增新建右键Markdown文件及默认UTF-8编码格式" class="md-nav__link">
+      021win系统新增新建右键Markdown文件及默认UTF-8编码格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/020-删除关机等按钮/" title="020-删除关机等按钮" class="md-nav__link">
+      020-删除关机等按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/019-windows1809-系统最近的更新出现了bug/" title="019-windows1809-系统最近的更新出现了bug" class="md-nav__link">
+      019-windows1809-系统最近的更新出现了bug
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/018--win10卸载自带的应用/" title="018--win10卸载自带的应用" class="md-nav__link">
+      018--win10卸载自带的应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/017-笔记本软件/" title="017-笔记本软件" class="md-nav__link">
+      017-笔记本软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/016-Java添加环境变量/" title="016-Java添加环境变量" class="md-nav__link">
+      016-Java添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/015-anaconda-添加环境变量/" title="015-anaconda-添加环境变量" class="md-nav__link">
+      015-anaconda-添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）/" title="014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）" class="md-nav__link">
+      014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/013-win10取消应用弹框/" title="013-win10取消应用弹框" class="md-nav__link">
+      013-win10取消应用弹框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/012--win10系统怎么禁用defender/" title="012--win10系统怎么禁用defender" class="md-nav__link">
+      012--win10系统怎么禁用defender
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b/" title="011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b" class="md-nav__link">
+      011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/010-Axmath破解安装使用/" title="010-Axmath破解安装使用" class="md-nav__link">
+      010-Axmath破解安装使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式/" title="007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式" class="md-nav__link">
+      007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/006-picgo图床使用/" title="006-picgo图床使用" class="md-nav__link">
+      006-picgo图床使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/005-win10开机提示用户名和密码不正确的解决办法/" title="005-win10开机提示用户名和密码不正确的解决办法" class="md-nav__link">
+      005-win10开机提示用户名和密码不正确的解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/004-windows下安装pandoc并通过Typora导出pdf和word/" title="004-windows下安装pandoc并通过Typora导出pdf和word" class="md-nav__link">
+      004-windows下安装pandoc并通过Typora导出pdf和word
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/002-几何画板迷你增强版/" title="002-几何画板迷你增强版" class="md-nav__link">
+      002-几何画板迷你增强版
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/001-开机启动项的存储位置/" title="001-开机启动项的存储位置" class="md-nav__link">
+      001-开机启动项的存储位置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">总结<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><span class="mi">1</span><span class="p">:</span><span class="n">登录注册案例</span><span class="p">(</span><span class="n">理解</span><span class="p">)</span>
+
+<span class="mi">2</span><span class="p">:</span><span class="n">Set集合</span><span class="p">(</span><span class="n">理解</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="n">Set集合的特点</span>
+        <span class="n">无序</span><span class="p">,</span><span class="n">唯一</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="n">HashSet集合</span><span class="p">(</span><span class="n">掌握</span><span class="p">)</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">底层数据结构是哈希表</span><span class="p">(</span><span class="n">是一个元素为链表的数组</span><span class="p">)</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">哈希表底层依赖两个方法</span><span class="err">：</span><span class="n">hashCode</span><span class="p">()</span><span class="n">和equals</span><span class="p">()</span>
+          <span class="n">执行顺序</span><span class="err">：</span>
+            <span class="n">首先比较哈希值是否相同</span>
+                <span class="n">相同</span><span class="err">：</span><span class="n">继续执行equals</span><span class="p">()</span><span class="n">方法</span>
+                    <span class="n">返回true</span><span class="err">：</span><span class="n">元素重复了</span><span class="err">，</span><span class="n">不添加</span>
+                    <span class="n">返回false</span><span class="err">：</span><span class="n">直接把元素添加到集合</span>
+                <span class="n">不同</span><span class="err">：</span><span class="n">就直接把元素添加到集合</span>
+        <span class="n">C</span><span class="p">:</span><span class="n">如何保证元素唯一性的呢</span><span class="o">?</span>
+            <span class="n">由hashCode</span><span class="p">()</span><span class="n">和equals</span><span class="p">()</span><span class="n">保证的</span>
+        <span class="n">D</span><span class="p">:</span><span class="n">开发的时候</span><span class="err">，</span><span class="n">代码非常的简单</span><span class="err">，</span><span class="n">自动生成即可</span><span class="err">。</span>
+        <span class="n">E</span><span class="p">:</span><span class="n">HashSet存储字符串并遍历</span>
+        <span class="n">F</span><span class="p">:</span><span class="n">HashSet存储自定义对象并遍历</span><span class="p">(</span><span class="n">对象的成员变量值相同即为同一个元素</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="n">TreeSet集合</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">底层数据结构是红黑树</span><span class="p">(</span><span class="n">是一个自平衡的二叉树</span><span class="p">)</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">保证元素的排序方式</span>
+            <span class="n">a</span><span class="p">:</span><span class="n">自然排序</span><span class="p">(</span><span class="n">元素具备比较性</span><span class="p">)</span>
+                <span class="n">让元素所属的类实现Comparable接口</span>
+            <span class="n">b</span><span class="p">:</span><span class="n">比较器排序</span><span class="p">(</span><span class="n">集合具备比较性</span><span class="p">)</span>
+                <span class="n">让集合构造方法接收Comparator的实现类对象</span>
+        <span class="n">C</span><span class="p">:</span><span class="n">把我们讲过的代码看一遍即可</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="n">案例</span><span class="err">：</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">获取无重复的随机数</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">键盘录入学生按照总分从高到底输出</span>
+
+<span class="mi">3</span><span class="p">:</span><span class="n">Collection集合总结</span><span class="p">(</span><span class="n">掌握</span><span class="p">)</span>
+    <span class="n">Collection</span>
+        <span class="o">|--</span><span class="n">List</span> <span class="n">有序</span><span class="p">,</span><span class="n">可重复</span>
+            <span class="o">|--</span><span class="n">ArrayList</span>
+                <span class="n">底层数据结构是数组</span><span class="err">，</span><span class="n">查询快</span><span class="err">，</span><span class="n">增删慢</span><span class="err">。</span>
+                <span class="n">线程不安全</span><span class="err">，</span><span class="n">效率高</span>
+            <span class="o">|--</span><span class="n">Vector</span>
+                <span class="n">底层数据结构是数组</span><span class="err">，</span><span class="n">查询快</span><span class="err">，</span><span class="n">增删慢</span><span class="err">。</span>
+                <span class="n">线程安全</span><span class="err">，</span><span class="n">效率低</span>
+            <span class="o">|--</span><span class="n">LinkedList</span>
+                <span class="n">底层数据结构是链表</span><span class="err">，</span><span class="n">查询慢</span><span class="err">，</span><span class="n">增删快</span><span class="err">。</span>
+                <span class="n">线程不安全</span><span class="err">，</span><span class="n">效率高</span>
+        <span class="o">|--</span><span class="n">Set</span>  <span class="n">无序</span><span class="p">,</span><span class="n">唯一</span>
+            <span class="o">|--</span><span class="n">HashSet</span>
+                <span class="n">底层数据结构是哈希表</span><span class="err">。</span>
+                <span class="n">如何保证元素唯一性的呢</span><span class="o">?</span>
+                    <span class="n">依赖两个方法</span><span class="err">：</span><span class="n">hashCode</span><span class="p">()</span><span class="n">和equals</span><span class="p">()</span>
+                    <span class="n">开发中自动生成这两个方法即可</span>
+                <span class="o">|--</span><span class="n">LinkedHashSet</span>
+                    <span class="n">底层数据结构是链表和哈希表</span>
+                    <span class="n">由链表保证元素有序</span>
+                    <span class="n">由哈希表保证元素唯一</span>
+            <span class="o">|--</span><span class="n">TreeSet</span>
+                <span class="n">底层数据结构是红黑树</span><span class="err">。</span>
+                <span class="n">如何保证元素排序的呢</span><span class="o">?</span>
+                    <span class="n">自然排序</span>
+                    <span class="n">比较器排序</span>
+                <span class="n">如何保证元素唯一性的呢</span><span class="o">?</span>
+                    <span class="n">根据比较的返回值是否是0来决定</span>
+
+<span class="mi">4</span><span class="p">:</span><span class="n">针对Collection集合我们到底使用谁呢</span><span class="o">?</span><span class="p">(</span><span class="n">掌握</span><span class="p">)</span>
+    <span class="n">唯一吗</span><span class="o">?</span>
+        <span class="n">是</span><span class="err">：</span><span class="n">Set</span>
+            <span class="n">排序吗</span><span class="o">?</span>
+                <span class="n">是</span><span class="err">：</span><span class="n">TreeSet</span>
+                <span class="n">否</span><span class="err">：</span><span class="n">HashSet</span>
+        <span class="n">如果你知道是Set</span><span class="err">，</span><span class="n">但是不知道是哪个Set</span><span class="err">，</span><span class="n">就用HashSet</span><span class="err">。</span>
+
+        <span class="n">否</span><span class="err">：</span><span class="n">List</span>
+            <span class="n">要安全吗</span><span class="o">?</span>
+                <span class="n">是</span><span class="err">：</span><span class="n">Vector</span>
+                <span class="n">否</span><span class="err">：</span><span class="n">ArrayList或者LinkedList</span>
+                    <span class="n">查询多</span><span class="err">：</span><span class="n">ArrayList</span>
+                    <span class="n">增删多</span><span class="err">：</span><span class="n">LinkedList</span>
+        <span class="n">如果你知道是List</span><span class="err">，</span><span class="n">但是不知道是哪个List</span><span class="err">，</span><span class="n">就用ArrayList</span><span class="err">。</span>
+
+    <span class="n">如果你知道是Collection集合</span><span class="err">，</span><span class="n">但是不知道使用谁</span><span class="err">，</span><span class="n">就用ArrayList</span><span class="err">。</span>
+
+    <span class="n">如果你知道用集合</span><span class="err">，</span><span class="n">就用ArrayList</span><span class="err">。</span>
+
+<span class="mi">5</span><span class="p">:</span><span class="n">在集合中常见的数据结构</span><span class="p">(</span><span class="n">掌握</span><span class="p">)</span>
+    <span class="n">ArrayXxx</span><span class="p">:</span><span class="n">底层数据结构是数组</span><span class="err">，</span><span class="n">查询快</span><span class="err">，</span><span class="n">增删慢</span>
+    <span class="n">LinkedXxx</span><span class="p">:</span><span class="n">底层数据结构是链表</span><span class="err">，</span><span class="n">查询慢</span><span class="err">，</span><span class="n">增删快</span>
+    <span class="n">HashXxx</span><span class="p">:</span><span class="n">底层数据结构是哈希表</span><span class="err">。</span><span class="n">依赖两个方法</span><span class="err">：</span><span class="n">hashCode</span><span class="p">()</span><span class="n">和equals</span><span class="p">()</span>
+    <span class="n">TreeXxx</span><span class="p">:</span><span class="n">底层数据结构是二叉树</span><span class="err">。</span><span class="n">两种方式排序</span><span class="err">：</span><span class="n">自然排序和比较器排序</span>
+</pre></div>
+
+
+<h1 id="_2">用户注册的案例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-110b0df19b9498b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
+分析</p>
+<div class="codehilite"><pre><span></span><span class="n">需求</span><span class="err">：</span><span class="n">用户登录注册案例</span><span class="err">。</span>
+
+<span class="n">按照如下的操作</span><span class="err">，</span><span class="n">可以让我们更符号面向对象思想</span>
+    <span class="n">A</span><span class="p">:</span><span class="n">有哪些类呢</span><span class="err">?</span>
+    <span class="n">B</span><span class="p">:</span><span class="n">每个类有哪些东西呢</span><span class="err">?</span>
+    <span class="n">C</span><span class="p">:</span><span class="n">类与类之间的关系是什么呢</span><span class="err">?</span>
+
+<span class="n">分析</span><span class="err">：</span>
+    <span class="n">A</span><span class="p">:</span><span class="n">有哪些类呢</span><span class="err">?</span>
+        <span class="n">用户类</span>
+        <span class="n">测试类</span>
+    <span class="n">B</span><span class="p">:</span><span class="n">每个类有哪些东西呢</span><span class="err">?</span>
+        <span class="n">用户类</span><span class="err">：</span>
+            <span class="n">成员变量</span><span class="err">：</span><span class="n">用户名</span><span class="err">，</span><span class="n">密码</span>
+            <span class="n">构造方法</span><span class="err">：</span><span class="n">无参构造</span>
+            <span class="n">成员方法</span><span class="err">：</span><span class="n">getXxx</span><span class="p">()</span><span class="o">/</span><span class="n">setXxx</span><span class="p">()</span>
+                       <span class="n">登录</span><span class="err">，</span><span class="n">注册</span>
+
+            <span class="n">假如用户类的内容比较对</span><span class="err">，</span><span class="n">将来维护起来就比较麻烦</span><span class="err">，</span><span class="n">为了更清晰的分类</span><span class="err">，</span><span class="n">我们就把用户又划分成了两类</span>
+                <span class="n">用户基本描述类</span>
+                    <span class="n">成员变量</span><span class="err">：</span><span class="n">用户名</span><span class="err">，</span><span class="n">密码</span>
+                    <span class="n">构造方法</span><span class="err">：</span><span class="n">无参构造</span>
+                    <span class="n">成员方法</span><span class="err">：</span><span class="n">getXxx</span><span class="p">()</span><span class="o">/</span><span class="n">setXxx</span><span class="p">()</span>
+                <span class="n">用户操作类</span>
+                    <span class="n">登录</span><span class="err">，</span><span class="n">注册</span>
+        <span class="n">测试类</span><span class="err">：</span>
+            <span class="n">main方法</span><span class="err">。</span>
+    <span class="n">C</span><span class="p">:</span><span class="n">类与类之间的关系是什么呢</span><span class="err">?</span>
+        <span class="n">在测试类中创建用户操作类和用户基本描述类的对象</span><span class="err">，</span><span class="n">并使用其功能</span><span class="err">。</span>
+
+<span class="n">分包</span><span class="err">：</span>
+    <span class="n">A</span><span class="p">:</span><span class="n">功能划分</span>
+    <span class="n">B</span><span class="p">:</span><span class="n">模块划分</span>
+    <span class="n">C</span><span class="p">:</span><span class="n">先按模块划分</span><span class="err">，</span><span class="n">再按功能划分</span>
+
+<span class="n">今天我们选择按照功能划分</span><span class="err">：</span>
+    <span class="n">用户基本描述类包</span> <span class="n">cn</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">pojo</span>
+    <span class="n">用户操作接口</span> <span class="n">cn</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">dao</span>
+    <span class="n">用户操作类包</span> <span class="n">cn</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">dao</span><span class="o">.</span><span class="n">impl</span>
+        <span class="n">今天是集合实现</span><span class="err">，</span><span class="n">过几天是IO实现</span><span class="err">，</span><span class="n">再过几天是GUI实现</span><span class="err">，</span><span class="n">就业班我们就是数据库实现</span>
+    <span class="n">用户测试类</span> <span class="n">cn</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">test</span>
+</pre></div>
+
+
+<p>用户描述基本类</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast.pojo</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 这是用户基本描述类</span>
+<span class="cm"> * </span>
+<span class="cm"> * @author 风清扬</span>
+<span class="cm"> * @version V1.0</span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="c1">// 用户名</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="p">;</span>
+    <span class="c1">// 密码</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">User</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getUsername</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">username</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUsername</span><span class="p">(</span><span class="n">String</span> <span class="n">username</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">username</span> <span class="o">=</span> <span class="n">username</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getPassword</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">password</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPassword</span><span class="p">(</span><span class="n">String</span> <span class="n">password</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>用户操作接口</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast.dao</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">cn.itcast.pojo.User</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 这是针对用户进行操作的接口</span>
+<span class="cm"> * </span>
+<span class="cm"> * @author 风清扬</span>
+<span class="cm"> * @version V1.0</span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserDao</span> <span class="p">{</span>  <span class="c1">//interface接口</span>
+    <span class="cm">/**</span>
+<span class="cm">     * 这是用户登录功能</span>
+<span class="cm">     * </span>
+<span class="cm">     * @param username</span>
+<span class="cm">     *            用户名</span>
+<span class="cm">     * @param password</span>
+<span class="cm">     *            密码</span>
+<span class="cm">     * @return 返回登录是否成功</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">boolean</span> <span class="nf">isLogin</span><span class="p">(</span><span class="n">String</span> <span class="n">username</span><span class="p">,</span> <span class="n">String</span> <span class="n">password</span><span class="p">);</span> <span class="c1">//后期都是要重写方法的</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * 这是用户注册功能</span>
+<span class="cm">     * </span>
+<span class="cm">     * @param user</span>
+<span class="cm">     *            要注册的用户信息</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">regist</span><span class="p">(</span><span class="n">User</span> <span class="n">user</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>用户操作类包 cn.itcast.dao.impl</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast.dao.impl</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">cn.itcast.dao.UserDao</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">cn.itcast.pojo.User</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 这是用户操作的具体实现类(集合版)</span>
+<span class="cm"> * </span>
+<span class="cm"> * @author 风清扬</span>
+<span class="cm"> * @version V1.0</span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDaoImpl</span> <span class="kd">implements</span> <span class="n">UserDao</span> <span class="p">{</span>  <span class="c1">//使用前面定义好的接口</span>
+    <span class="c1">// 为了让多个方法能够使用同一个集合，就把集合定义为成员变量</span>
+    <span class="c1">// 为了不让外人看到，用private</span>
+    <span class="c1">// 为了让多个对象共享同一个成员变量，用static</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">();</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isLogin</span><span class="p">(</span><span class="n">String</span> <span class="n">username</span><span class="p">,</span> <span class="n">String</span> <span class="n">password</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">//重写方法</span>
+        <span class="c1">// 遍历集合，获取每一个用户，并判断该用户的用户名和密码是否和传递过来的匹配</span>
+        <span class="kt">boolean</span> <span class="n">flag</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="n">User</span> <span class="n">u</span> <span class="p">:</span> <span class="n">array</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">.</span><span class="na">getUsername</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+                    <span class="o">&amp;&amp;</span> <span class="n">u</span><span class="p">.</span><span class="na">getPassword</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="n">password</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">flag</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">regist</span><span class="p">(</span><span class="n">User</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">//重写注册的方法</span>
+        <span class="c1">// 把用户信息存储集合</span>
+        <span class="c1">// ArrayList&lt;User&gt; array = new ArrayList&lt;User&gt;();</span>
+        <span class="n">array</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>测试类:</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast.test</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">cn.itcast.dao.UserDao</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">cn.itcast.dao.impl.UserDaoImpl</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">cn.itcast.game.GuessNumber</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">cn.itcast.pojo.User</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 用户测试类</span>
+<span class="cm"> * </span>
+<span class="cm"> * @author 风清扬</span>
+<span class="cm"> * @version V1.0</span>
+<span class="cm"> * </span>
+<span class="cm"> *          新增加了两个小问题 A:多个对象共享同一个成员变量，用静态</span>
+<span class="cm"> *          B:循环里面如果有switch，并且在switch里面有break，那么结束的不是循环，而是switch语句</span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserTest</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 为了能够回来</span>
+        <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 欢迎界面，给出选择项</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------欢迎光临--------------&quot;</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;1 登录&quot;</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;2 注册&quot;</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;3 退出&quot;</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入你的选择:&quot;</span><span class="p">);</span>
+            <span class="c1">// 键盘录入选择，根据选择做不同的操作</span>
+            <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+            <span class="c1">// 为了后面的录入信息的方便，我所有的数据录入全部用字符接收</span>
+            <span class="n">String</span> <span class="n">choiceString</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+            <span class="c1">// switch语句的多个地方要使用，我就定义到外面</span>
+            <span class="n">UserDao</span> <span class="n">ud</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserDaoImpl</span><span class="p">();</span>
+
+            <span class="c1">// 经过简单的思考，我选择了switch</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="n">choiceString</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="s">&quot;1&quot;</span><span class="p">:</span>
+                <span class="c1">// 登录界面，请输入用户名和密码</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------登录界面--------------&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入用户名：&quot;</span><span class="p">);</span>
+                <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入密码：&quot;</span><span class="p">);</span>
+                <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+                <span class="c1">// 调用登录功能</span>
+                <span class="c1">// UserDao ud = new UserDaomImpl();</span>
+
+                <span class="kt">boolean</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">ud</span><span class="p">.</span><span class="na">isLogin</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">flag</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;登录成功,可以开始玩游戏了&quot;</span><span class="p">);</span>
+
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;你玩吗?y/n&quot;</span><span class="p">);</span>
+                    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">String</span> <span class="n">resultString</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">resultString</span><span class="p">.</span><span class="na">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">))</span> <span class="p">{</span>
+                            <span class="c1">// 玩游戏</span>
+                            <span class="n">GuessNumber</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+                            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;你还玩吗?y/n&quot;</span><span class="p">);</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;谢谢使用，欢迎下次再来&quot;</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+                    <span class="c1">// break; //这里写break，结束的是switch</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;用户名或者密码有误,登录失败&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s">&quot;2&quot;</span><span class="p">:</span>
+                <span class="c1">// 欢迎界面，请输入用户名和密码</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------注册界面--------------&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入用户名：&quot;</span><span class="p">);</span>
+                <span class="n">String</span> <span class="n">newUsername</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入密码：&quot;</span><span class="p">);</span>
+                <span class="n">String</span> <span class="n">newPassword</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+                <span class="c1">// 把用户名和密码封装到一个对象中</span>
+                <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="p">();</span>
+                <span class="n">user</span><span class="p">.</span><span class="na">setUsername</span><span class="p">(</span><span class="n">newUsername</span><span class="p">);</span>
+                <span class="n">user</span><span class="p">.</span><span class="na">setPassword</span><span class="p">(</span><span class="n">newPassword</span><span class="p">);</span>
+
+                <span class="c1">// 调用注册功能</span>
+                <span class="c1">// 多态</span>
+                <span class="c1">// UserDao ud = new UserDaoImpl();</span>
+                <span class="c1">// 具体类使用</span>
+                <span class="c1">// UserDaoImpl udi = new UserDaoImpl();</span>
+
+                <span class="n">ud</span><span class="p">.</span><span class="na">regist</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;注册成功&quot;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s">&quot;3&quot;</span><span class="p">:</span>
+            <span class="k">default</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;谢谢使用，欢迎下次再来&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="set">Set接口概述<a class="headerlink" href="#set" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Set接口概述</li>
+</ul>
+<p>•    一个不包含重复元素的 collection。</p>
+<ul>
+<li>Set案例</li>
+</ul>
+<p>•    存储字符串并遍历</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_01</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Collection</span>
+<span class="cm"> *      |--List</span>
+<span class="cm"> *          有序(存储顺序和取出顺序一致),可重复</span>
+<span class="cm"> *      |--Set</span>
+<span class="cm"> *          无序(存储顺序和取出顺序不一致),唯一</span>
+<span class="cm"> * </span>
+<span class="cm"> * HashSet：它不保证 set 的迭代顺序；特别是它不保证该顺序恒久不变。</span>
+<span class="cm"> * 注意：虽然Set集合的元素无序，但是，作为集合来说，它肯定有它自己的存储顺序，</span>
+<span class="cm"> * 而你的顺序恰好和它的存储顺序一致，这代表不了有序，你可以多存储一些数据，就能看到效果。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SetDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建集合对象</span>
+        <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span> <span class="c1">// 创建一个HashSet是set的子类</span>
+
+        <span class="c1">// 创建并添加元素</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;java&quot;</span><span class="p">);</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">);</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;java&quot;</span><span class="p">);</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 增强for</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">s</span> <span class="p">:</span> <span class="n">set</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="n">hello</span>
+<span class="n">java</span>
+<span class="n">world</span>
+</pre></div>
+
+
+<p>•    存储自定义对象并遍历
+重写student类的hashcode和equal方法</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @author Administrator</span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="p">(</span><span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="n">age</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="p">((</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">name</span><span class="p">.</span><span class="na">hashCode</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">getClass</span><span class="p">()</span> <span class="o">!=</span> <span class="n">obj</span><span class="p">.</span><span class="na">getClass</span><span class="p">())</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="n">Student</span> <span class="n">other</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="p">)</span> <span class="n">obj</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">age</span> <span class="o">!=</span> <span class="n">other</span><span class="p">.</span><span class="na">age</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// @Override</span>
+    <span class="c1">// public int hashCode() {</span>
+    <span class="c1">// // return 0;</span>
+    <span class="c1">// // 因为成员变量值影响了哈希值，所以我们把成员变量值相加即可</span>
+    <span class="c1">// // return this.name.hashCode() + this.age;</span>
+    <span class="c1">// // 看下面</span>
+    <span class="c1">// // s1:name.hashCode()=40,age=30</span>
+    <span class="c1">// // s2:name.hashCode()=20,age=50</span>
+    <span class="c1">// // 尽可能的区分,我们可以把它们乘以一些整数</span>
+    <span class="c1">// return this.name.hashCode() + this.age * 15;</span>
+    <span class="c1">// }</span>
+    <span class="c1">//</span>
+    <span class="c1">// @Override</span>
+    <span class="c1">// public boolean equals(Object obj) {</span>
+    <span class="c1">// // System.out.println(this + &quot;---&quot; + obj);</span>
+    <span class="c1">// if (this == obj) {</span>
+    <span class="c1">// return true;</span>
+    <span class="c1">// }</span>
+    <span class="c1">//</span>
+    <span class="c1">// if (!(obj instanceof Student)) {</span>
+    <span class="c1">// return false;</span>
+    <span class="c1">// }</span>
+    <span class="c1">//</span>
+    <span class="c1">// Student s = (Student) obj;</span>
+    <span class="c1">// return this.name.equals(s.name) &amp;&amp; this.age == s.age;</span>
+    <span class="c1">// }</span>
+    <span class="c1">//</span>
+    <span class="c1">// @Override</span>
+    <span class="c1">// public String toString() {</span>
+    <span class="c1">// return &quot;Student [name=&quot; + name + &quot;, age=&quot; + age + &quot;]&quot;;</span>
+    <span class="c1">// }</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>测试:</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 需求：存储自定义对象，并保证元素的唯一性</span>
+<span class="cm"> * 要求：如果两个对象的成员变量值都相同，则为同一个元素。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 目前是不符合我的要求的：因为我们知道HashSet底层依赖的是hashCode()和equals()方法。</span>
+<span class="cm"> * 而这两个方法我们在学生类中没有重写，所以，默认使用的是Object类。</span>
+<span class="cm"> * 这个时候，他们的哈希值是不会一样的，根本就不会继续判断，执行了添加操作。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashSetDemo2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建集合对象</span>
+        <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">hs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// 创建学生对象</span>
+        <span class="n">Student</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;林青霞&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;柳岩&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;王祖贤&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;林青霞&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;林青霞&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s6</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;范冰冰&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">);</span>
+
+        <span class="c1">// 添加元素</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s3</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s4</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s5</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s6</span><span class="p">);</span>
+
+        <span class="c1">// 遍历集合</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Student</span> <span class="n">s</span> <span class="p">:</span> <span class="n">hs</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;---&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="n">王祖贤</span><span class="o">---</span><span class="mi">30</span>
+<span class="n">范冰冰</span><span class="o">---</span><span class="mi">22</span>
+<span class="n">柳岩</span><span class="o">---</span><span class="mi">22</span>
+<span class="n">林青霞</span><span class="o">---</span><span class="mi">27</span>
+<span class="n">林青霞</span><span class="o">---</span><span class="mi">20</span>
+</pre></div>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-58641402aeb36fc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<h1 id="hashset">HashSet类概述<a class="headerlink" href="#hashset" title="Permanent link">&para;</a></h1>
+<ul>
+<li>HashSet类概述</li>
+</ul>
+<p>•    不保证 set 的迭代顺序</p>
+<p>•    特别是它不保证该顺序恒久不变。</p>
+<ul>
+<li>HashSet如何保证元素唯一性</li>
+</ul>
+<p>•    底层数据结构是哈希表(元素是链表的数组)</p>
+<p>•    哈希表依赖于哈希值存储</p>
+<p>•    添加功能底层依赖两个方法：</p>
+<p>•    int hashCode()</p>
+<p>•    boolean equals(Object obj)</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * HashSet:存储字符串并遍历</span>
+<span class="cm"> * 问题：为什么存储字符串的时候，字符串内容相同的只存储了一个呢?</span>
+<span class="cm"> * 通过查看add方法的源码，我们知道这个方法底层依赖 两个方法：hashCode()和equals()。</span>
+<span class="cm"> * 步骤：</span>
+<span class="cm"> *      首先比较哈希值</span>
+<span class="cm"> *      如果相同，继续走，比较地址值或者走equals()</span>
+<span class="cm"> *      如果不同,就直接添加到集合中  </span>
+<span class="cm"> * 按照方法的步骤来说：   </span>
+<span class="cm"> *      先看hashCode()值是否相同</span>
+<span class="cm"> *          相同:继续走equals()方法</span>
+<span class="cm"> *              返回true： 说明元素重复，就不添加</span>
+<span class="cm"> *              返回false：说明元素不重复，就添加到集合</span>
+<span class="cm"> *          不同：就直接把元素添加到集合</span>
+<span class="cm"> * 如果类没有重写这两个方法，默认使用的Object()。一般来说不同相同。</span>
+<span class="cm"> * 而String类重写了hashCode()和equals()方法，所以，它就可以把内容相同的字符串去掉。只留下一个。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashSetDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建集合对象</span>
+        <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">hs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// 创建并添加元素</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;java&quot;</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 遍历集合</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">s</span> <span class="p">:</span> <span class="n">hs</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>dog类,方法都自动生成就好了</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">color</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">char</span> <span class="n">sex</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Dog</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">Dog</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">,</span> <span class="n">String</span> <span class="n">color</span><span class="p">,</span> <span class="kt">char</span> <span class="n">sex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="p">(</span><span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getColor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">color</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setColor</span><span class="p">(</span><span class="n">String</span> <span class="n">color</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">char</span> <span class="nf">getSex</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">sex</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSex</span><span class="p">(</span><span class="kt">char</span> <span class="n">sex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="n">age</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="p">((</span><span class="n">color</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">color</span><span class="p">.</span><span class="na">hashCode</span><span class="p">());</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="p">((</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">name</span><span class="p">.</span><span class="na">hashCode</span><span class="p">());</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="n">sex</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">getClass</span><span class="p">()</span> <span class="o">!=</span> <span class="n">obj</span><span class="p">.</span><span class="na">getClass</span><span class="p">())</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="n">Dog</span> <span class="n">other</span> <span class="o">=</span> <span class="p">(</span><span class="n">Dog</span><span class="p">)</span> <span class="n">obj</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">age</span> <span class="o">!=</span> <span class="n">other</span><span class="p">.</span><span class="na">age</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">color</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">color</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">color</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">color</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sex</span> <span class="o">!=</span> <span class="n">other</span><span class="p">.</span><span class="na">sex</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>测试</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * HashSet集合存储自定义对象并遍历。如果对象的成员变量值相同即为同一个对象</span>
+<span class="cm"> * </span>
+<span class="cm"> * 注意了：</span>
+<span class="cm"> *      你使用的是HashSet集合，这个集合的底层是哈希表结构。</span>
+<span class="cm"> *      而哈希表结构底层依赖:hashCode()和equals()方法。</span>
+<span class="cm"> *      如果你认为对象的成员变量值相同即为同一个对象的话，你就应该重写这两个方法。</span>
+<span class="cm"> *      如何重写呢?不同担心，自动生成即可。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DogDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建集合对象</span>
+        <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;</span> <span class="n">hs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// 创建狗对象</span>
+        <span class="n">Dog</span> <span class="n">d1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;秦桧&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s">&quot;红色&quot;</span><span class="p">,</span> <span class="sc">&#39;男&#39;</span><span class="p">);</span>
+        <span class="n">Dog</span> <span class="n">d2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;高俅&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="s">&quot;黑色&quot;</span><span class="p">,</span> <span class="sc">&#39;女&#39;</span><span class="p">);</span>
+        <span class="n">Dog</span> <span class="n">d3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;秦桧&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s">&quot;红色&quot;</span><span class="p">,</span> <span class="sc">&#39;男&#39;</span><span class="p">);</span>
+        <span class="n">Dog</span> <span class="n">d4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;秦桧&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;红色&quot;</span><span class="p">,</span> <span class="sc">&#39;女&#39;</span><span class="p">);</span>
+        <span class="n">Dog</span> <span class="n">d5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;魏忠贤&quot;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="s">&quot;白色&quot;</span><span class="p">,</span> <span class="sc">&#39;男&#39;</span><span class="p">);</span>
+        <span class="n">Dog</span> <span class="n">d6</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;李莲英&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;黄色&quot;</span><span class="p">,</span> <span class="sc">&#39;女&#39;</span><span class="p">);</span>
+        <span class="n">Dog</span> <span class="n">d7</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;李莲英&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;黄色&quot;</span><span class="p">,</span> <span class="sc">&#39;女&#39;</span><span class="p">);</span>
+        <span class="n">Dog</span> <span class="n">d8</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;李莲英&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;黄色&quot;</span><span class="p">,</span> <span class="sc">&#39;男&#39;</span><span class="p">);</span>
+
+        <span class="c1">// 添加元素</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d1</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d2</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d3</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d4</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d5</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d6</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d7</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">d8</span><span class="p">);</span>
+
+        <span class="c1">// 遍历</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Dog</span> <span class="n">d</span> <span class="p">:</span> <span class="n">hs</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;---&quot;</span> <span class="o">+</span> <span class="n">d</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;---&quot;</span>
+                    <span class="o">+</span> <span class="n">d</span><span class="p">.</span><span class="na">getColor</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;---&quot;</span> <span class="o">+</span> <span class="n">d</span><span class="p">.</span><span class="na">getSex</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="linkedhashset">LinkedHashSet类概述<a class="headerlink" href="#linkedhashset" title="Permanent link">&para;</a></h1>
+<ul>
+<li>LinkedHashSet类概述</li>
+</ul>
+<p>•    元素有序唯一</p>
+<p>•    由链表保证元素有序</p>
+<p>•    由哈希表保证元素唯一</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_04</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.LinkedHashSet</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * LinkedHashSet:底层数据结构由哈希表和链表组成。</span>
+<span class="cm"> * 哈希表保证元素的唯一性。</span>
+<span class="cm"> * 链表保证元素有素。(存储和取出是一致)</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedHashSetDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建集合对象</span>
+        <span class="n">LinkedHashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">hs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// 创建并添加元素</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;java&quot;</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">);</span>
+        <span class="n">hs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;java&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 遍历</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">s</span> <span class="p">:</span> <span class="n">hs</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="treeset">TreeSet类概述<a class="headerlink" href="#treeset" title="Permanent link">&para;</a></h1>
+<ul>
+<li>TreeSet类概述</li>
+</ul>
+<p>•    使用元素的自然顺序对元素进行排序</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_05</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.TreeSet</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * TreeSet：能够对元素按照某种规则进行排序。</span>
+<span class="cm"> * 排序有两种方式</span>
+<span class="cm"> * A:自然排序</span>
+<span class="cm"> * B:比较器排序</span>
+<span class="cm"> * </span>
+<span class="cm"> * TreeSet集合的特点：排序和唯一</span>
+<span class="cm"> * </span>
+<span class="cm"> * 通过观察TreeSet的add()方法，我们知道最终要看TreeMap的put()方法。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TreeSetDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建集合对象</span>
+        <span class="c1">// 自然顺序进行排序</span>
+        <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// 创建元素并添加</span>
+        <span class="c1">// 20,18,23,22,17,24,19,18,24</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">23</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">22</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">24</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">24</span><span class="p">);</span>
+
+        <span class="c1">// 遍历</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Integer</span> <span class="n">i</span> <span class="p">:</span> <span class="n">ts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行:</p>
+<div class="codehilite"><pre><span></span><span class="mi">17</span>
+<span class="mi">18</span>
+<span class="mi">19</span>
+<span class="mi">20</span>
+<span class="mi">22</span>
+<span class="mi">23</span>
+<span class="mi">24</span>
+</pre></div>
+
+
+<p>•    或者根据创建 set 时提供的 Comparator 进行排序</p>
+<p>•    具体取决于使用的构造方法。</p>
+<ul>
+<li>TreeSet是如何保证元素的排序和唯一性的</li>
+</ul>
+<p>•    底层数据结构是红黑树(红黑树是一种自平衡的二叉</p>
+<p>树)
+<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-ed4b837fedde377f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<h1 id="set_1">Set集合练习<a class="headerlink" href="#set_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>HashSet集合存储自定义对象并遍历。</li>
+</ul>
+<p>•    如果对象的成员变量值相同即为同一个对象</p>
+<ul>
+<li>TreeSet集合存储自定义对象并遍历</li>
+</ul>
+<p>•    如果对象的成员变量值相同即为同一个对象</p>
+<p>•    按照年龄进行从大到小进行排序
+student类</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_05</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 如果一个类的元素要想能够进行自然排序，就必须实现自然排序接口</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="p">(</span><span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="p">(</span><span class="n">Student</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// return 0;</span>
+        <span class="c1">// return 1;</span>
+        <span class="c1">// return -1;</span>
+
+        <span class="c1">// 这里返回什么，其实应该根据我的排序规则来做</span>
+        <span class="c1">// 按照年龄排序,主要条件</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">age</span><span class="p">;</span>
+        <span class="c1">// 次要条件</span>
+        <span class="c1">// 年龄相同的时候，还得去看姓名是否也相同</span>
+        <span class="c1">// 如果年龄和姓名都相同，才是同一个元素</span>
+        <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">name</span><span class="p">)</span> <span class="p">:</span> <span class="n">num</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">num2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>测试</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_05</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.TreeSet</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * TreeSet存储自定义对象并保证排序和唯一。</span>
+<span class="cm"> * </span>
+<span class="cm"> * A:你没有告诉我们怎么排序</span>
+<span class="cm"> *      自然排序，按照年龄从小到大排序</span>
+<span class="cm"> * B:元素什么情况算唯一你也没告诉我</span>
+<span class="cm"> *      成员变量值都相同即为同一个元素</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TreeSetDemo2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建集合对象</span>
+        <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// 创建元素</span>
+        <span class="n">Student</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;linqingxia&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;zhangguorong&quot;</span><span class="p">,</span> <span class="mi">29</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;wanglihong&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;linqingxia&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;liushishi&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s6</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;wuqilong&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s7</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;fengqingy&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">);</span>
+
+        <span class="c1">// 添加元素</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s3</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s4</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s5</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s6</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s7</span><span class="p">);</span>
+
+        <span class="c1">// 遍历</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Student</span> <span class="n">s</span> <span class="p">:</span> <span class="n">ts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;---&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="n">fengqingy</span><span class="o">---</span><span class="mi">22</span>
+<span class="n">liushishi</span><span class="o">---</span><span class="mi">22</span>
+<span class="n">wanglihong</span><span class="o">---</span><span class="mi">23</span>
+<span class="n">linqingxia</span><span class="o">---</span><span class="mi">27</span>
+<span class="n">zhangguorong</span><span class="o">---</span><span class="mi">29</span>
+<span class="n">wuqilong</span><span class="o">---</span><span class="mi">40</span>
+</pre></div>
+
+
+<p>第二个例子
+student类</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_06</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 如果一个类的元素要想能够进行自然排序，就必须实现自然排序接口</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="p">(</span><span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="p">(</span><span class="n">Student</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 主要条件 姓名的长度</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+        <span class="c1">// 姓名的长度相同，不代表姓名的内容相同</span>
+        <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">name</span><span class="p">)</span> <span class="p">:</span> <span class="n">num</span><span class="p">;</span>
+        <span class="c1">// 姓名的长度和内容相同，不代表年龄相同，所以还得继续判断年龄</span>
+        <span class="kt">int</span> <span class="n">num3</span> <span class="o">=</span> <span class="n">num2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">age</span> <span class="p">:</span> <span class="n">num2</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">num3</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>测试类</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_05</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.TreeSet</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * TreeSet存储自定义对象并保证排序和唯一。</span>
+<span class="cm"> * </span>
+<span class="cm"> * A:你没有告诉我们怎么排序</span>
+<span class="cm"> *      自然排序，按照年龄从小到大排序</span>
+<span class="cm"> * B:元素什么情况算唯一你也没告诉我</span>
+<span class="cm"> *      成员变量值都相同即为同一个元素</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TreeSetDemo2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建集合对象</span>
+        <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// 创建元素</span>
+        <span class="n">Student</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;linqingxia&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;zhangguorong&quot;</span><span class="p">,</span> <span class="mi">29</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;wanglihong&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;linqingxia&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;liushishi&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s6</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;wuqilong&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+        <span class="n">Student</span> <span class="n">s7</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">(</span><span class="s">&quot;fengqingy&quot;</span><span class="p">,</span> <span class="mi">22</span><span class="p">);</span>
+
+        <span class="c1">// 添加元素</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s3</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s4</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s5</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s6</span><span class="p">);</span>
+        <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s7</span><span class="p">);</span>
+
+        <span class="c1">// 遍历</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Student</span> <span class="n">s</span> <span class="p">:</span> <span class="n">ts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;---&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="n">fengqingy</span><span class="o">---</span><span class="mi">22</span>
+<span class="n">liushishi</span><span class="o">---</span><span class="mi">22</span>
+<span class="n">wanglihong</span><span class="o">---</span><span class="mi">23</span>
+<span class="n">linqingxia</span><span class="o">---</span><span class="mi">27</span>
+<span class="n">zhangguorong</span><span class="o">---</span><span class="mi">29</span>
+<span class="n">wuqilong</span><span class="o">---</span><span class="mi">40</span>
+</pre></div>
+
+
+<ul>
+<li>编写一个程序，获取10个1至20的随机数，要求随机数不能重复。</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_08</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 编写一个程序，获取10个1至20的随机数，要求随机数不能重复。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:创建随机数对象</span>
+<span class="cm"> *      B:创建一个HashSet集合</span>
+<span class="cm"> *      C:判断集合的长度是不是小于10</span>
+<span class="cm"> *          是：就创建一个随机数添加</span>
+<span class="cm"> *          否：不搭理它</span>
+<span class="cm"> *      D:遍历HashSet集合</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashSetDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建随机数对象</span>
+        <span class="n">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">();</span> <span class="c1">// 创建一个随机数对象</span>
+
+        <span class="c1">// 创建一个Set集合</span>
+        <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span> <span class="c1">// 创建一个hashset集合</span>
+
+        <span class="c1">// 判断集合的长度是不是小于10</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">ts</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 遍历Set集合</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Integer</span> <span class="n">i</span> <span class="p">:</span> <span class="n">ts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>键盘录入5个学生信息(姓名,语文成绩,数学成绩,英语成绩),按照总分从高到低输出到控制台
+student类</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_08</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="p">{</span>
+    <span class="c1">// 姓名</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="c1">// 语文成绩</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">chinese</span><span class="p">;</span>
+    <span class="c1">// 数学成绩</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">math</span><span class="p">;</span>
+    <span class="c1">// 英语成绩</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">english</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">chinese</span><span class="p">,</span> <span class="kt">int</span> <span class="n">math</span><span class="p">,</span> <span class="kt">int</span> <span class="n">english</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">chinese</span> <span class="o">=</span> <span class="n">chinese</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">math</span> <span class="o">=</span> <span class="n">math</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">english</span> <span class="o">=</span> <span class="n">english</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getChinese</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">chinese</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setChinese</span><span class="p">(</span><span class="kt">int</span> <span class="n">chinese</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">chinese</span> <span class="o">=</span> <span class="n">chinese</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMath</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">math</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMath</span><span class="p">(</span><span class="kt">int</span> <span class="n">math</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">math</span> <span class="o">=</span> <span class="n">math</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getEnglish</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">english</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEnglish</span><span class="p">(</span><span class="kt">int</span> <span class="n">english</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">english</span> <span class="o">=</span> <span class="n">english</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSum</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">chinese</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">math</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">english</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="collection">Collection集合总结<a class="headerlink" href="#collection" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Collection</li>
+</ul>
+<p>•    List</p>
+<p>•    ArrayList</p>
+<p>•    Vector</p>
+<p>•    LinkedList</p>
+<p>•    Set</p>
+<p>•    HashSet</p>
+<p>•    TreeSet</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

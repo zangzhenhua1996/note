@@ -3298,24 +3298,26 @@
 <p><strong>2. 搜索 matplotlib 字体的安装位置</strong></p>
 <p><code>$locate -b '\mpl-data'</code></p>
 <p>会得到 这个路径<code>/usr/share/matplotlib/mpl-data</code>下面有<code>fonts/ttf</code>这个目录，进入这个目录，把刚才下载的simhei.ttf 字体复制到这个目录下，注意权限和归属是否与其它字体一致，我的是归于<a href="https://www.baidu.com/s?wd=root&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">root</a>用户的，所以用root 用户复制过来。</p>
-<p><strong>3. 删除当前用户matplotlib 的缓冲文件（如果没有直接进入第四步）</strong>
+<p><strong>3. 删除当前用户matplotlib 的缓冲文件（如果没有直接进入第四步）</strong></p>
 <div class="codehilite"><pre><span></span><span class="nv">$cd</span> ~/.cache/matplotlib
  <span class="nv">$rm</span> -rf *.*
 </pre></div>
-<strong>4.代码中调整字体</strong>
+
+
+<p><strong>4.代码中调整字体</strong></p>
 <div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env  python</span>
 
 <span class="c1">#coding:utf-8</span>
 
 <span class="sd">&quot;&quot;&quot;a demo  of matplotlib&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span>  <span class="n">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span>  <span class="nn">mpl</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span>  <span class="kn">import</span> <span class="nn">pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span>  <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="sa">u</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;simhei&#39;</span><span class="p">]</span>
 
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1950</span><span class="p">,</span> <span class="mi">1960</span><span class="p">,</span>  <span class="mi">1970</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span>  <span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span>  <span class="mi">2010</span><span class="p">]</span>
 
@@ -3334,7 +3336,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;十亿美元&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></p>
+</pre></div>
+
+
 <ul>
 <li>
 <p>其中<code>#coding:utf-8</code>说明文件编码格式</p>
@@ -3405,11 +3409,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3438,6 +3442,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

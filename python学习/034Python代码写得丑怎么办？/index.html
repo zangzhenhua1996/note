@@ -3294,23 +3294,26 @@
                 
                 <p>一、Jupyter notebook 篇Jupyter notebook的代码要想写得规范，推荐用<code>Code prettify</code>插件。安装插件首先插件Nbextensions执行以下命令  </p>
 <div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter_contrib_nbextensions</span>
-<span class="sb">````</span>
+<span class="err">````</span>
 
 <span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;</span>
 
-<span class="err">无报错再执行：</span>
+<span class="n">无报错再执行</span><span class="err">：</span>
 
 <span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;</span>
 
-<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="err">```</span><span class="n">python</span>
 <span class="n">jupyter</span> <span class="n">contrib</span> <span class="n">nbextension</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span>
 </pre></div>
 
+
 <p>选取<code>Code prettify</code>模块
 <em>备注：需要安装 yapf模块</em></p>
-<p><div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
+<div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
 </pre></div>
-安装完成后打开jupyter notebook
+
+
+<p>安装完成后打开jupyter notebook
 1 打开编辑
 <img alt="image.png" src="../034Python代码写得丑怎么办？.image/14555448-7334d65f6a994eb0.png" />
 2 点开 nbxtensions config
@@ -3382,11 +3385,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3415,6 +3418,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

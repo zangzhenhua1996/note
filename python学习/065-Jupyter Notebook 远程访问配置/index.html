@@ -3320,14 +3320,17 @@
 <div class="codehilite"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">jupyter</span> <span class="n">notebook</span>
 </pre></div>
 
+
 <h1 id="_2">生成默认配置文件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <div class="codehilite"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">config</span>
 </pre></div>
+
 
 <p>将会在用户主目录下生成.jupyter文件夹，其中jupyter_notebook_config.py就是刚刚生成的配置文件</p>
 <div class="codehilite"><pre><span></span><span class="n">Overwrite</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">admin</span>\<span class="o">.</span><span class="n">jupyter</span>\<span class="n">jupyter_notebook_config</span><span class="o">.</span><span class="n">py</span> <span class="k">with</span> <span class="n">default</span> <span class="n">config</span><span class="err">?</span> <span class="p">[</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">]</span><span class="n">y</span>
 <span class="n">Writing</span> <span class="n">default</span> <span class="n">config</span> <span class="n">to</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">admin</span>\<span class="o">.</span><span class="n">jupyter</span>\<span class="n">jupyter_notebook_config</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
+
 
 <h1 id="_3">生成秘钥<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
 <p>输入 ipython，进入ipyhon命令行
@@ -3337,11 +3340,13 @@
 In [2]: passwd()
 </pre></div>
 
+
 <p>这里要求你输入以后登录使用的密码，然后生成一个秘钥，记得保存好秘钥，以免丢失。</p>
 <div class="codehilite"><pre><span></span>Enter password: 
 Verify password: 
 Out[2]: &#39;sha1:a1c94af2c269:37341b47e0fbbec5890d6aa29e80c226183d3ff0&#39;
 </pre></div>
+
 
 <h1 id="_4">修改配置文件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
 <p>修改用户主目录下<code>~/.jupyter/jupyter_notebook_config.py</code>文件
@@ -3349,11 +3354,13 @@ Out[2]: &#39;sha1:a1c94af2c269:37341b47e0fbbec5890d6aa29e80c226183d3ff0&#39;
 <div class="codehilite"><pre><span></span>c.NotebookApp.password = &#39;sha1:a1c94af2c269:37341b47e0fbbec5890d6aa29e80c226183d3ff0&#39;
 </pre></div>
 
+
 <p>取消下面几项注释，并注释修改ip、端口、不自动打开浏览器</p>
 <div class="codehilite"><pre><span></span>c.NotebookApp.ip=&#39;*&#39;#×允许任何ip访问
 c.NotebookApp.open_browser = False
 c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
 </pre></div>
+
 
 <p>如果是比较老的jupyter notebook版本还会有 allow_remote_access之类的一个设置，记得改成True并取消注释。
 大功告成</p>
@@ -3368,6 +3375,7 @@ c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
 <div class="codehilite"><pre><span></span>jupyter notebook
 </pre></div>
 
+
 <p>有如下提示</p>
 <div class="codehilite"><pre><span></span>(tf1.12) yep@yepdlpc:~$ jupyter notebook
 [I 00:10:58.671 NotebookApp] Writing notebook server cookie secret to /run/user/1000/jupyter/notebook_cookie_secret
@@ -3377,6 +3385,7 @@ c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
 [I 00:10:58.998 NotebookApp] The Jupyter Notebook is running at: http://[all ip addresses on your system]:8888/
 [I 00:10:58.998 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 </pre></div>
+
 
 <p>在笔记本浏览器输入<code>192.168.199.219:8888</code>.
 成功远程访问服务器的jupyter notebook</p>
@@ -3388,6 +3397,7 @@ c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
 <div class="codehilite"><pre><span></span>nohup jupyter notebook&amp;
 </pre></div>
 
+
 <p>这样shell关闭也不会有问题啦</p>
 <p><img alt="image" src="../065-Jupyter Notebook 远程访问配置.image/4064394-91190cd781bca208.webp" /></p>
 <h2 id="_7">如果修改一开始启动的文件路径<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
@@ -3396,22 +3406,28 @@ c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
 <h1 id="_8">第二种<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
 <p>先设置密码
 <code>jupyter notebook password</code></p>
-<p>然后在远程的电脑中开启cmd终端
+<p>然后在远程的电脑中开启cmd终端</p>
 <div class="codehilite"><pre><span></span>activate GPU #激活环境
 jupyter notebook --no-browser --port=8898
 </pre></div>
-<img alt="image.png" src="../065-Jupyter Notebook 远程访问配置.image/14555448-6084186571641d0a.png" />
+
+
+<p><img alt="image.png" src="../065-Jupyter Notebook 远程访问配置.image/14555448-6084186571641d0a.png" />
 最后进行端口的映射</p>
-<p>在自己的本机电脑开启cmd命令窗口
+<p>在自己的本机电脑开启cmd命令窗口</p>
 <div class="codehilite"><pre><span></span>ssh -N -f -L 127.0.0.1:8897:127.0.0.1:8897 -p 11103 g3650c@10.8.128.129 -X
-</pre></div></p>
+</pre></div>
+
+
 <blockquote>
 <p>局域网内不用加端口映射的端口号</p>
 </blockquote>
-<p>在浏览器输入
+<p>在浏览器输入</p>
 <div class="codehilite"><pre><span></span>127.0.0.1:8897 
 </pre></div>
-就可以远程访问了</p>
+
+
+<p>就可以远程访问了</p>
                 
                   
                 
@@ -3468,11 +3484,11 @@ jupyter notebook --no-browser --port=8898
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3501,6 +3517,10 @@ jupyter notebook --no-browser --port=8898
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

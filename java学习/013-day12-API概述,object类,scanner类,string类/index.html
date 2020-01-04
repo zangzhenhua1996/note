@@ -1,0 +1,4819 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/java学习/013-day12-API概述,object类,scanner类,string类/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>本章内容 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                本章内容
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python-web/015-python项目离线部署/" class="md-tabs__link">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../机器学习/013 进入tensorboard/" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../力扣刷题/066-质因数/" class="md-tabs__link">
+          每天一道力扣题
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" class="md-tabs__link">
+          windows10系统使用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" title="067 Pycharm 运行程序后如何 如何查看变量的值" class="md-nav__link">
+      067 Pycharm 运行程序后如何 如何查看变量的值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/066-spyder升级4.0全新版本/" title="066 spyder升级4.0全新版本" class="md-nav__link">
+      066 spyder升级4.0全新版本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/065-Jupyter Notebook 远程访问配置/" title="065 Jupyter_Notebook 远程访问配置" class="md-nav__link">
+      065 Jupyter_Notebook 远程访问配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/015-python项目离线部署/" title="015 python项目离线部署" class="md-nav__link">
+      015 python项目离线部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/013 进入tensorboard/" title="013 进入tensorboard" class="md-nav__link">
+      013 进入tensorboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/012-Keras使用tensorboard训练过程可视化踩过的坑/" title="012-Keras使用tensorboard训练过程可视化踩过的坑" class="md-nav__link">
+      012-Keras使用tensorboard训练过程可视化踩过的坑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/011-关于交叉验证与偏差-方差的一连串理解/" title="011-关于交叉验证与偏差-方差的一连串理解" class="md-nav__link">
+      011-关于交叉验证与偏差-方差的一连串理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/010-统计学习方法--统计学习方法概论要点加代码/" title="010-统计学习方法--统计学习方法概论要点加代码" class="md-nav__link">
+      010-统计学习方法--统计学习方法概论要点加代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/009-统计学习方法--统计学习方法概论详细/" title="009-统计学习方法--统计学习方法概论详细" class="md-nav__link">
+      009-统计学习方法--统计学习方法概论详细
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线/" title="008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线" class="md-nav__link">
+      008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/007-机器学习中的维数灾难/" title="007-机器学习中的维数灾难" class="md-nav__link">
+      007-机器学习中的维数灾难
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/006-sklearn模型的保存加载/" title="006-sklearn模型的保存加载" class="md-nav__link">
+      006-sklearn模型的保存加载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/005-sklearn之交叉验证/" title="005-sklearn之交叉验证" class="md-nav__link">
+      005-sklearn之交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/004-sklearn：特征提取，常用模型，交叉验证/" title="004-sklearn：特征提取，常用模型，交叉验证" class="md-nav__link">
+      004-sklearn：特征提取，常用模型，交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据/" title="003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据" class="md-nav__link">
+      003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/002-预处理数据的方法总结（使用sklearn-preprocessing）/" title="002-预处理数据的方法总结（使用sklearn-preprocessing）" class="md-nav__link">
+      002-预处理数据的方法总结（使用sklearn-preprocessing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/001-sklearn-安装，获取数据，数据预处理/" title="001-sklearn-安装，获取数据，数据预处理" class="md-nav__link">
+      001-sklearn-安装，获取数据，数据预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      每天一道力扣题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        每天一道力扣题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/066-质因数/" title="066-质因数" class="md-nav__link">
+      066-质因数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/065-完全数的求解/" title="065-完全数的求解" class="md-nav__link">
+      065-完全数的求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/064-刷题过程中慎用-[]-is-None/" title="064-刷题过程中慎用-[]-is-None" class="md-nav__link">
+      064-刷题过程中慎用-[]-is-None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/063-LRU缓存算法的python实现/" title="063-LRU缓存算法的python实现" class="md-nav__link">
+      063-LRU缓存算法的python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/062-力扣刷题-344--反转字符串/" title="062-力扣刷题-344--反转字符串" class="md-nav__link">
+      062-力扣刷题-344--反转字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/061-力扣刷题-23--合并K个排序链表/" title="061-力扣刷题-23--合并K个排序链表" class="md-nav__link">
+      061-力扣刷题-23--合并K个排序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/060-力扣刷题-232--用栈实现队列/" title="060-力扣刷题-232--用栈实现队列" class="md-nav__link">
+      060-力扣刷题-232--用栈实现队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/059-力扣刷题-102--二叉树的层次遍历/" title="059-力扣刷题-102--二叉树的层次遍历" class="md-nav__link">
+      059-力扣刷题-102--二叉树的层次遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/058-力扣刷题-226--翻转二叉树/" title="058-力扣刷题-226--翻转二叉树" class="md-nav__link">
+      058-力扣刷题-226--翻转二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/057-力扣刷题-237删除链表中的节点/" title="057-力扣刷题-237删除链表中的节点" class="md-nav__link">
+      057-力扣刷题-237删除链表中的节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/056-力扣刷题-206--反转链表/" title="056-力扣刷题-206--反转链表" class="md-nav__link">
+      056-力扣刷题-206--反转链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/055-力扣刷题-1004--最大连续1的个数-III/" title="055-力扣刷题-1004--最大连续1的个数-III" class="md-nav__link">
+      055-力扣刷题-1004--最大连续1的个数-III
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/054-小球反弹的总路程/" title="054-小球反弹的总路程" class="md-nav__link">
+      054-小球反弹的总路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/053-力扣刷题-235--二叉搜索树的最近公共祖先/" title="053-力扣刷题-235--二叉搜索树的最近公共祖先" class="md-nav__link">
+      053-力扣刷题-235--二叉搜索树的最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/052-力扣刷题-162--寻找峰值/" title="052-力扣刷题-162--寻找峰值" class="md-nav__link">
+      052-力扣刷题-162--寻找峰值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/051-力扣刷题-136--只出现一次的数字/" title="051-力扣刷题-136--只出现一次的数字" class="md-nav__link">
+      051-力扣刷题-136--只出现一次的数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/050-二维生物的旅行-754--到达终点数字/" title="050-二维生物的旅行-754--到达终点数字" class="md-nav__link">
+      050-二维生物的旅行-754--到达终点数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/049--力扣刷题459--重复的子字符串-pin2字符串构造/" title="049--力扣刷题459--重复的子字符串-pin2字符串构造" class="md-nav__link">
+      049--力扣刷题459--重复的子字符串-pin2字符串构造
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/048-pin题目1/" title="048-pin题目1" class="md-nav__link">
+      048-pin题目1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/047-力扣刷题-845--数组中的最长山脉/" title="047-力扣刷题-845--数组中的最长山脉" class="md-nav__link">
+      047-力扣刷题-845--数组中的最长山脉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/046-力扣刷题-125--验证回文串/" title="046-力扣刷题-125--验证回文串" class="md-nav__link">
+      046-力扣刷题-125--验证回文串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/045-力扣刷题-122--买卖股票的最佳时机-II/" title="045-力扣刷题-122--买卖股票的最佳时机-II" class="md-nav__link">
+      045-力扣刷题-122--买卖股票的最佳时机-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/044-力扣刷题-119--杨辉三角-II/" title="044-力扣刷题-119--杨辉三角-II" class="md-nav__link">
+      044-力扣刷题-119--杨辉三角-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/043-力扣刷题-121--买卖股票的最佳时机/" title="043-力扣刷题-121--买卖股票的最佳时机" class="md-nav__link">
+      043-力扣刷题-121--买卖股票的最佳时机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/042-力扣刷题-8--字符串转换整数-(atoi)/" title="042-力扣刷题-8--字符串转换整数-(atoi)" class="md-nav__link">
+      042-力扣刷题-8--字符串转换整数-(atoi)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/041-力扣刷题-118--杨辉三角/" title="041-力扣刷题-118--杨辉三角" class="md-nav__link">
+      041-力扣刷题-118--杨辉三角
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/040-力扣刷题-535--TinyURL-的加密与解密/" title="040-力扣刷题-535--TinyURL-的加密与解密" class="md-nav__link">
+      040-力扣刷题-535--TinyURL-的加密与解密
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/039-力扣刷题-112--路径总和/" title="039-力扣刷题-112--路径总和" class="md-nav__link">
+      039-力扣刷题-112--路径总和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/038-力扣刷题-98--验证二叉搜索树/" title="038-力扣刷题-98--验证二叉搜索树" class="md-nav__link">
+      038-力扣刷题-98--验证二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/037-力扣刷题-110--平衡二叉树--重点进行理解/" title="037-力扣刷题-110--平衡二叉树--重点进行理解" class="md-nav__link">
+      037-力扣刷题-110--平衡二叉树--重点进行理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/036-力扣刷题-166--分数到小数/" title="036-力扣刷题-166--分数到小数" class="md-nav__link">
+      036-力扣刷题-166--分数到小数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/035-字节跳动题目-小球往返路程/" title="035-字节跳动题目-小球往返路程" class="md-nav__link">
+      035-字节跳动题目-小球往返路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/034-力扣刷题-88--合并两个有序数组/" title="034-力扣刷题-88--合并两个有序数组" class="md-nav__link">
+      034-力扣刷题-88--合并两个有序数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/033-力扣刷题-70--爬楼梯/" title="033-力扣刷题-70--爬楼梯" class="md-nav__link">
+      033-力扣刷题-70--爬楼梯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/032-力扣刷题-83--删除排序链表中的重复元素/" title="032-力扣刷题-83--删除排序链表中的重复元素" class="md-nav__link">
+      032-力扣刷题-83--删除排序链表中的重复元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/031-力扣刷题-101--对称二叉树/" title="031-力扣刷题-101--对称二叉树" class="md-nav__link">
+      031-力扣刷题-101--对称二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/030-力扣刷题-111--二叉树的最小深度/" title="030-力扣刷题-111--二叉树的最小深度" class="md-nav__link">
+      030-力扣刷题-111--二叉树的最小深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/029-力扣刷题-104--二叉树的最大深度/" title="029-力扣刷题-104--二叉树的最大深度" class="md-nav__link">
+      029-力扣刷题-104--二叉树的最大深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/028-力扣刷题107--二叉树的层次遍历-II/" title="028-力扣刷题107--二叉树的层次遍历-II" class="md-nav__link">
+      028-力扣刷题107--二叉树的层次遍历-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/027-字节跳动笔试题-循环链表实现约瑟夫环/" title="027-字节跳动笔试题-循环链表实现约瑟夫环" class="md-nav__link">
+      027-字节跳动笔试题-循环链表实现约瑟夫环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/026-力扣刷题-108--将有序数组转换为二叉搜索树/" title="026-力扣刷题-108--将有序数组转换为二叉搜索树" class="md-nav__link">
+      026-力扣刷题-108--将有序数组转换为二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/025-力扣刷题-100-相同的树/" title="025-力扣刷题-100-相同的树" class="md-nav__link">
+      025-力扣刷题-100-相同的树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/024-力扣刷题-66--加一/" title="024-力扣刷题-66--加一" class="md-nav__link">
+      024-力扣刷题-66--加一
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/023-力扣刷题-69--x-的平方根/" title="023-力扣刷题-69--x-的平方根" class="md-nav__link">
+      023-力扣刷题-69--x-的平方根
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/022-力扣刷题-二进制求和/" title="022-力扣刷题-二进制求和" class="md-nav__link">
+      022-力扣刷题-二进制求和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/021-力扣刷题151--翻转字符串里的单词/" title="021-力扣刷题151--翻转字符串里的单词" class="md-nav__link">
+      021-力扣刷题151--翻转字符串里的单词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/020-力扣刷题-58--最后一个单词的长度/" title="020-力扣刷题-58--最后一个单词的长度" class="md-nav__link">
+      020-力扣刷题-58--最后一个单词的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/019-力扣刷题53--最大子序和/" title="019-力扣刷题53--最大子序和" class="md-nav__link">
+      019-力扣刷题53--最大子序和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/018-力扣刷题-38--报数/" title="018-力扣刷题-38--报数" class="md-nav__link">
+      018-力扣刷题-38--报数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/017-46--全排列/" title="017-46--全排列" class="md-nav__link">
+      017-46--全排列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/016-力扣刷题873--最长的斐波那契子序列的长度/" title="016-力扣刷题873--最长的斐波那契子序列的长度" class="md-nav__link">
+      016-力扣刷题873--最长的斐波那契子序列的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/015-力扣刷题35--搜索插入位置/" title="015-力扣刷题35--搜索插入位置" class="md-nav__link">
+      015-力扣刷题35--搜索插入位置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/014-力扣刷题9--回文数/" title="014-力扣刷题9--回文数" class="md-nav__link">
+      014-力扣刷题9--回文数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/013-力扣刷题7--整数反转/" title="013-力扣刷题7--整数反转" class="md-nav__link">
+      013-力扣刷题7--整数反转
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/012-力扣刷题14--最长公共前缀/" title="012-力扣刷题14--最长公共前缀" class="md-nav__link">
+      012-力扣刷题14--最长公共前缀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/011-力扣刷题21--合并两个有序链表/" title="011-力扣刷题21--合并两个有序链表" class="md-nav__link">
+      011-力扣刷题21--合并两个有序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/010-力扣刷题27--移除元素/" title="010-力扣刷题27--移除元素" class="md-nav__link">
+      010-力扣刷题27--移除元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/009-力扣刷题28--实现strStr()/" title="009-力扣刷题28--实现strStr()" class="md-nav__link">
+      009-力扣刷题28--实现strStr()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/008-力扣刷题20--有效的括号/" title="008-力扣刷题20--有效的括号" class="md-nav__link">
+      008-力扣刷题20--有效的括号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/007-力扣刷题26--删除排序数组中的重复项/" title="007-力扣刷题26--删除排序数组中的重复项" class="md-nav__link">
+      007-力扣刷题26--删除排序数组中的重复项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/006-力扣刷题22--括号生成/" title="006-力扣刷题22--括号生成" class="md-nav__link">
+      006-力扣刷题22--括号生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/005-力扣刷题13--罗马数字转整数/" title="005-力扣刷题13--罗马数字转整数" class="md-nav__link">
+      005-力扣刷题13--罗马数字转整数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/004-力扣刷题4--寻找两个有序数组的中位数/" title="004-力扣刷题4--寻找两个有序数组的中位数" class="md-nav__link">
+      004-力扣刷题4--寻找两个有序数组的中位数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/003-力扣刷题3不含有重复字符的-最长子串-的长度/" title="003-力扣刷题3不含有重复字符的-最长子串-的长度" class="md-nav__link">
+      003-力扣刷题3不含有重复字符的-最长子串-的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/002-力扣刷题2-两数相加/" title="002-力扣刷题2-两数相加" class="md-nav__link">
+      002-力扣刷题2-两数相加
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/001-力扣刷题1--两数之和/" title="001-力扣刷题1--两数之和" class="md-nav__link">
+      001-力扣刷题1--两数之和
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      windows10系统使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        windows10系统使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" title="022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装" class="md-nav__link">
+      022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/021win系统新增新建右键Markdown文件及默认UTF-8编码格式/" title="021win系统新增新建右键Markdown文件及默认UTF-8编码格式" class="md-nav__link">
+      021win系统新增新建右键Markdown文件及默认UTF-8编码格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/020-删除关机等按钮/" title="020-删除关机等按钮" class="md-nav__link">
+      020-删除关机等按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/019-windows1809-系统最近的更新出现了bug/" title="019-windows1809-系统最近的更新出现了bug" class="md-nav__link">
+      019-windows1809-系统最近的更新出现了bug
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/018--win10卸载自带的应用/" title="018--win10卸载自带的应用" class="md-nav__link">
+      018--win10卸载自带的应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/017-笔记本软件/" title="017-笔记本软件" class="md-nav__link">
+      017-笔记本软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/016-Java添加环境变量/" title="016-Java添加环境变量" class="md-nav__link">
+      016-Java添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/015-anaconda-添加环境变量/" title="015-anaconda-添加环境变量" class="md-nav__link">
+      015-anaconda-添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）/" title="014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）" class="md-nav__link">
+      014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/013-win10取消应用弹框/" title="013-win10取消应用弹框" class="md-nav__link">
+      013-win10取消应用弹框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/012--win10系统怎么禁用defender/" title="012--win10系统怎么禁用defender" class="md-nav__link">
+      012--win10系统怎么禁用defender
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b/" title="011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b" class="md-nav__link">
+      011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/010-Axmath破解安装使用/" title="010-Axmath破解安装使用" class="md-nav__link">
+      010-Axmath破解安装使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式/" title="007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式" class="md-nav__link">
+      007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/006-picgo图床使用/" title="006-picgo图床使用" class="md-nav__link">
+      006-picgo图床使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/005-win10开机提示用户名和密码不正确的解决办法/" title="005-win10开机提示用户名和密码不正确的解决办法" class="md-nav__link">
+      005-win10开机提示用户名和密码不正确的解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/004-windows下安装pandoc并通过Typora导出pdf和word/" title="004-windows下安装pandoc并通过Typora导出pdf和word" class="md-nav__link">
+      004-windows下安装pandoc并通过Typora导出pdf和word
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/002-几何画板迷你增强版/" title="002-几何画板迷你增强版" class="md-nav__link">
+      002-几何画板迷你增强版
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/001-开机启动项的存储位置/" title="001-开机启动项的存储位置" class="md-nav__link">
+      001-开机启动项的存储位置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">本章内容<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="api">API概述<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<h2 id="_2">常用类<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>•     Object类/Scanner类</p>
+<p>•     String类/StringBuffer类/StringBuilder类</p>
+<p>•     数组高级和Arrays类</p>
+<p>•     基本类型包装类(Integer,Character)</p>
+<p>•     正则表达式(Pattern,Matcher)</p>
+<p>•     Math类/Random类/System类</p>
+<p>•     BigInteger类/BigDecimal类</p>
+<p>•     Date类/DateFormat类/Calendar类</p>
+<h1 id="api_1">API概述<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h1>
+<h2 id="apiapplication-programming-interface">API(Application Programming Interface)<a class="headerlink" href="#apiapplication-programming-interface" title="Permanent link">&para;</a></h2>
+<p>•     应用程序编程接口</p>
+<p>•     编写一个机器人程序去控制机器人踢足球，程序就需要向机器人发出向前跑、向后跑、射门、抢球等各种命令，没有编过程序的人很难想象这样的程序如何编写。但是对于有经验的开发人员来说，知道机器人厂商一定会提供一些用于控制机器人的Java类，这些类中定义好了操作机器人各种动作的方法。其实，这些 Java类就是机器人厂商提供给应用程序编程的接口，大家把这些类称为Xxx Robot API。本章涉及的Java </p>
+<p>API指的就是JDK中提供的各种功能的Java类。</p>
+<h2 id="_3">学习汉语和学习编程的异同点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>相同点</li>
+</ul>
+<p>•     基本语法</p>
+<p>•     大量成语</p>
+<p>•     写文章的手法和技巧</p>
+<ul>
+<li>不同点</li>
+</ul>
+<p>•     学习汉语 必须先学后用</p>
+<p>•     学习编程 可以现用现学</p>
+<h2 id="object">**Object**类概述及其构造方法<a class="headerlink" href="#object" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Object类概述</li>
+</ul>
+<p>•     类层次结构的根类</p>
+<p>•     所有类都直接或者间接的继承自该类</p>
+<ul>
+<li>构造方法</li>
+</ul>
+<p>•     public Object()</p>
+<p>•     回想面向对象中为什么说：</p>
+<p>•     子类的构造方法默认访问的是父类的无参构造方法</p>
+<h1 id="object_1">Object类的成员方法<a class="headerlink" href="#object_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>public int hashCode()</p>
+</li>
+<li>
+<p>public final Class getClass()</p>
+</li>
+<li>
+<p>public String toString()</p>
+</li>
+<li>
+<p>public boolean equals(Object obj)</p>
+</li>
+<li>
+<p>protected void finalize()</p>
+</li>
+<li>
+<p>protected Object clone()</p>
+</li>
+</ul>
+<h2 id="scanner">**Scanner**类概述及其构造方法<a class="headerlink" href="#scanner" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Scanner类概述</li>
+</ul>
+<p>•     JDK5以后用于获取用户的键盘输入</p>
+<ul>
+<li>构造方法</li>
+</ul>
+<p>•     public Scanner(InputStream source)</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_01</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Scanner:用于接收键盘录入数据。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 前面的时候：</span>
+<span class="cm"> *      A:导包</span>
+<span class="cm"> *      B:创建对象</span>
+<span class="cm"> *      C:调用方法</span>
+<span class="cm"> * </span>
+<span class="cm"> * System类下有一个静态的字段：</span>
+<span class="cm"> *      public static final InputStream in; 标准的输入流，对应着键盘录入。</span>
+<span class="cm"> * </span>
+<span class="cm"> *      InputStream is = System.in;  System.in是input类型</span>
+<span class="cm"> * </span>
+<span class="cm"> * class Demo {</span>
+<span class="cm"> *      public static final int x = 10;</span>
+<span class="cm"> *      public static final Student s = new Student();</span>
+<span class="cm"> * }</span>
+<span class="cm"> * int y = Demo.x;  demo.s是int类型</span>
+<span class="cm"> * Student s = Demo.s;  demo.s 是对象</span>
+<span class="cm"> * </span>
+<span class="cm"> * </span>
+<span class="cm"> * 构造方法：</span>
+<span class="cm"> *      Scanner(InputStream source)</span>
+<span class="cm"> */</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScannerDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建对象</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;x:&quot;</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="scanner_1">Scanner类的成员方法<a class="headerlink" href="#scanner_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>基本格式</li>
+</ul>
+<p>•     hasNextXxx()  判断是否还有下一个输入项,其中Xxx 可以是Int,Double等。如果需要判断是否包含下一个字符串，则可以省略Xxx</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 基本格式：</span>
+<span class="cm"> *      public boolean hasNextXxx():判断是否是某种类型的元素</span>
+<span class="cm"> *      public Xxx nextXxx():获取该元素</span>
+<span class="cm"> * </span>
+<span class="cm"> * 举例：用int类型的方法举例</span>
+<span class="cm"> *      public boolean hasNextInt()</span>
+<span class="cm"> *      public int nextInt()</span>
+<span class="cm"> * </span>
+<span class="cm"> * 注意：</span>
+<span class="cm"> *      InputMismatchException：输入的和你想要的不匹配</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScannerDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建对象</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;請輸入一個整數&quot;</span><span class="p">);</span>
+        <span class="c1">// 获取数据</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="na">hasNextInt</span><span class="p">())</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;x:&quot;</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;你输入的数据有误&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>•     nextXxx()  获取下一个输入项。Xxx的含义和上个方法中的Xxx相同</p>
+<p>•     默认情况下，Scanner使用空格，回车等作为分隔符</p>
+<ul>
+<li>常用方法</li>
+</ul>
+<p>•     public int nextInt()</p>
+<p>•     public String nextLine()</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 常用的两个方法：</span>
+<span class="cm"> *      public int nextInt():获取一个int类型的值</span>
+<span class="cm"> *      public String nextLine():获取一个String类型的值</span>
+<span class="cm"> * </span>
+<span class="cm"> * 出现问题了：</span>
+<span class="cm"> *      先获取一个数值，在获取一个字符串，会出现问题。</span>
+<span class="cm"> *      主要原因：就是那个换行符号的问题。</span>
+<span class="cm"> * 如何解决呢?</span>
+<span class="cm"> *      A:先获取一个数值后，在创建一个新的键盘录入对象获取字符串。</span>
+<span class="cm"> *      B:把所有的数据都先按照字符串获取，然后要什么，你就对应的转换为什么。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScannerDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="c1">// 创建对象</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+        <span class="c1">// 获取两个int类型的值,只是整数的时候不会出问题</span>
+        <span class="c1">// int a = sc.nextInt();</span>
+        <span class="c1">// int b = sc.nextInt();</span>
+        <span class="c1">// System.out.println(&quot;a:&quot; + a + &quot;,b:&quot; + b);</span>
+        <span class="c1">// System.out.println(&quot;-------------------&quot;);</span>
+
+        <span class="c1">// 获取两个String类型的值只是字符串的时候不会出问题</span>
+        <span class="c1">// String s1 = sc.nextLine();</span>
+        <span class="c1">// String s2 = sc.nextLine();</span>
+        <span class="c1">// System.out.println(&quot;s1:&quot; + s1 + &quot;,s2:&quot; + s2);</span>
+        <span class="c1">// System.out.println(&quot;-------------------&quot;);</span>
+
+        <span class="c1">// 先获取一个字符串，在获取一个int值,不会出问题</span>
+        <span class="c1">// String s1 = sc.nextLine();</span>
+        <span class="c1">// int b = sc.nextInt();</span>
+        <span class="c1">// System.out.println(&quot;s1:&quot; + s1 + &quot;,b:&quot; + b);</span>
+        <span class="c1">// System.out.println(&quot;-------------------&quot;);</span>
+
+        <span class="c1">// 先获取一个int值，在获取一个字符串,数值类型的只会把数值截掉给int  /r/n 给下面的字符串</span>
+        <span class="c1">// int a = sc.nextInt();</span>
+        <span class="c1">// String s2 = sc.nextLine();</span>
+        <span class="c1">// System.out.println(&quot;a:&quot; + a + &quot;,s2:&quot; + s2);</span>
+        <span class="c1">// System.out.println(&quot;-------------------&quot;);</span>
+
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>  <span class="c1">//使用两个键盘输入,但是键盘输入多了就很麻烦</span>
+        <span class="n">Scanner</span> <span class="n">sc2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sc2</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;a:&quot;</span> <span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="s">&quot;,s:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="string">**String**类概述及其构造方法<a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
+<ul>
+<li>String类概述</li>
+</ul>
+<p>•     字符串是由多个字符组成的一串数据(字符序列)</p>
+<p>•     字符串可以看成是字符数组</p>
+<ul>
+<li>构造方法</li>
+</ul>
+<p>•     public String()</p>
+<p>•     public String(byte[] bytes)</p>
+<p>•     public String(byte[] bytes,int offset,int length)</p>
+<p>•     public String(char[] value)</p>
+<p>•     public String(char[] value,int offset,int count)</p>
+<p>•     public String(String original)</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_01</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 字符串：就是由多个字符组成的一串数据。也可以看成是一个字符数组。</span>
+<span class="cm"> * 通过查看API，我们可以知道</span>
+<span class="cm"> *      A:字符串字面值&quot;abc&quot;也可以看成是一个字符串对象。</span>
+<span class="cm"> *      B:字符串是常量，一旦被赋值，就不能被改变。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 构造方法：</span>
+<span class="cm"> *      public String():空构造</span>
+<span class="cm"> *      public String(byte[] bytes):把字节数组转成字符串,byte[] bys 字节数组</span>
+<span class="cm"> *      public String(byte[] bytes,int index,int length):把字节数组的一部分转成字符串</span>
+<span class="cm"> *      public String(char[] value):把字符数组转成字符串</span>
+<span class="cm"> *      public String(char[] value,int index,int count):把字符数组的一部分转成字符串</span>
+<span class="cm"> *      public String(String original):把字符串常量值转成字符串</span>
+<span class="cm"> *</span>
+<span class="cm"> * 字符串的方法：</span>
+<span class="cm"> *      public int length()：返回此字符串的长度。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// public String():空构造</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s1:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s1.length():&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">length</span><span class="p">());</span> <span class="c1">// s1.length(),字符串的长度</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// public String(byte[] bytes):把字节数组转成字符串</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bys</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span> <span class="p">};</span> <span class="c1">// 字节数组</span>
+        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">bys</span><span class="p">);</span> <span class="c1">// 将字节数组转换成字符串 abcde</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s2:&quot;</span> <span class="o">+</span> <span class="n">s2</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s2.length():&quot;</span> <span class="o">+</span> <span class="n">s2</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// public String(byte[] bytes,int index,int length):把字节数组的一部分转成字符串</span>
+        <span class="c1">// 我想得到字符串&quot;bcd&quot;</span>
+        <span class="n">String</span> <span class="n">s3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">bys</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">//转换的是从1开始,转换3个</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s3:&quot;</span> <span class="o">+</span> <span class="n">s3</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s3.length():&quot;</span> <span class="o">+</span> <span class="n">s3</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// public String(char[] value):把字符数组转成字符串</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">chs</span> <span class="o">=</span> <span class="p">{</span> <span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">,</span> <span class="sc">&#39;爱&#39;</span><span class="p">,</span> <span class="sc">&#39;林&#39;</span><span class="p">,</span> <span class="sc">&#39;亲&#39;</span> <span class="p">};</span>
+        <span class="n">String</span> <span class="n">s4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">chs</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s4:&quot;</span> <span class="o">+</span> <span class="n">s4</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s4.length():&quot;</span> <span class="o">+</span> <span class="n">s4</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// public String(char[] value,int index,int count):把字符数组的一部分转成字符串</span>
+        <span class="n">String</span> <span class="n">s5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">chs</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s5:&quot;</span> <span class="o">+</span> <span class="n">s5</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s5.length():&quot;</span> <span class="o">+</span> <span class="n">s5</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// public String(String original):把字符串常量值转成字符串</span>
+        <span class="n">String</span> <span class="n">s6</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="s">&quot;abcde&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s6:&quot;</span> <span class="o">+</span> <span class="n">s6</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s6.length():&quot;</span> <span class="o">+</span> <span class="n">s6</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--------------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 字符串字面值&quot;abc&quot;也可以看成是一个字符串对象。一般选的是这一个</span>
+        <span class="n">String</span> <span class="n">s7</span> <span class="o">=</span> <span class="s">&quot;abcde&quot;</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s7:&quot;</span> <span class="o">+</span> <span class="n">s7</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s7.length():&quot;</span> <span class="o">+</span> <span class="n">s7</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="string_1">**String**类的特点及面试题<a class="headerlink" href="#string_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>字符串是常量,它的值在创建之后不能更改</li>
+</ul>
+<p>•     String s = “hello”; s += “world”; 问s的结果是多少?</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 字符串的特点：一旦被赋值，就不能改变。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;world&quot;</span><span class="p">;</span> <span class="c1">// 这里只是连接</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">);</span> <span class="c1">// helloworld</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-0b299eef988c2de0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<blockquote>
+<p>值不能变但是,地址值可以改变,引用的是地址值</p>
+</blockquote>
+<ul>
+<li>面试题</li>
+</ul>
+<p>•     String s = new String(“hello”)和String s = “hello”;的区别?</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * String s = new String(“hello”)和String s = “hello”;的区别?</span>
+<span class="cm"> * 有。前者会创建2个对象，后者创建1个对象。</span>
+<span class="cm"> * </span>
+<span class="cm"> * ==:比较引用类型比较的是地址值是否相同</span>
+<span class="cm"> * equals:比较引用类型默认也是比较地址值是否相同，而String类重写了equals()方法，比较的是内容是否相同。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span><span class="p">);</span><span class="c1">// false,比较的是地址值是否相同</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span><span class="c1">// true,重写了方法比较的是内容是否相同</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-5b869a59aa815045.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<blockquote>
+<p>创建了两个对象  new出来需要到堆中找</p>
+</blockquote>
+<p><img alt="image" src="http://upload-images.jianshu.io/upload_images/14555448-418488bdedc4f0ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<blockquote>
+<p>前者创建了一个对象  直接到常量池查找</p>
+</blockquote>
+<p>•     字符串比较之看程序写结果</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 看程序写结果</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo3</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span><span class="p">);</span><span class="c1">// false  地址值是不同的</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span><span class="c1">// true  内容相同</span>
+
+        <span class="n">String</span> <span class="n">s3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">s4</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s3</span> <span class="o">==</span> <span class="n">s4</span><span class="p">);</span><span class="c1">// false</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s3</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">s4</span><span class="p">));</span><span class="c1">// true</span>
+
+        <span class="n">String</span> <span class="n">s5</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s6</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s5</span> <span class="o">==</span> <span class="n">s6</span><span class="p">);</span><span class="c1">// true  都是直接在常量池拿的,所以地址值是一样的</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s5</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">s6</span><span class="p">));</span><span class="c1">// true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>•     字符串拼接之看程序写结果</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 看程序写结果</span>
+<span class="cm"> * 字符串如果是变量相加，先开空间，在拼接。</span>
+<span class="cm"> * 字符串如果是常量相加，是先加，然后在常量池找，如果有就直接返回，否则，就创建。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo4</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">&quot;world&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s3</span> <span class="o">=</span> <span class="s">&quot;helloworld&quot;</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s3</span> <span class="o">==</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">);</span><span class="c1">// false   字符串如果是变量相加，先开空间，在拼接</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s3</span><span class="p">.</span><span class="na">equals</span><span class="p">((</span><span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">)));</span><span class="c1">// true  </span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s3</span> <span class="o">==</span> <span class="s">&quot;hello&quot;</span> <span class="o">+</span> <span class="s">&quot;world&quot;</span><span class="p">);</span><span class="c1">// false 这个我们错了，应该是true &quot;hello&quot; + &quot;world&quot;  加起来是个常量,因为在常量池里有就直接拿过来,两个地址就是一样的</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s3</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;hello&quot;</span> <span class="o">+</span> <span class="s">&quot;world&quot;</span><span class="p">));</span><span class="c1">// true</span>
+
+        <span class="c1">// 通过反编译看源码，我们知道这里已经做好了处理。</span>
+        <span class="c1">// System.out.println(s3 == &quot;helloworld&quot;);</span>
+        <span class="c1">// System.out.println(s3.equals(&quot;helloworld&quot;));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="string_2">String类的判断功能<a class="headerlink" href="#string_2" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>boolean equals(Object obj)</p>
+</li>
+<li>
+<p>boolean equalsIgnoreCase(String str)</p>
+</li>
+<li>
+<p>boolean contains(String str)</p>
+</li>
+<li>
+<p>boolean startsWith(String str)</p>
+</li>
+<li>
+<p>boolean endsWith(String str)</p>
+</li>
+<li>
+<p>boolean isEmpty()</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * String类的判断功能：</span>
+<span class="cm"> * boolean equals(Object obj):比较字符串的内容是否相同,区分大小写,重写了方法的比较的是内容</span>
+<span class="cm"> * boolean equalsIgnoreCase(String str):比较字符串的内容是否相同,忽略大小写  IgnoreCase忽略大小写</span>
+<span class="cm"> * boolean contains(String str):判断大字符串中是否包含小字符串</span>
+<span class="cm"> * boolean startsWith(String str):判断字符串是否以某个指定的字符串开头</span>
+<span class="cm"> * boolean endsWith(String str):判断字符串是否以某个指定的字符串结尾  startsWith以什么开头</span>
+<span class="cm"> * boolean isEmpty():判断字符串是否为空。 isEmpty是否为空</span>
+<span class="cm"> * </span>
+<span class="cm"> * 注意：</span>
+<span class="cm"> *      字符串内容为空和字符串对象为空。</span>
+<span class="cm"> *      String s = &quot;&quot;;   字符串内容为空</span>
+<span class="cm"> *      String s = null;  字符串对象为空</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建字符串对象</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">&quot;helloworld&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">&quot;helloworld&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s3</span> <span class="o">=</span> <span class="s">&quot;HelloWorld&quot;</span><span class="p">;</span>
+
+        <span class="c1">// boolean equals(Object obj):比较字符串的内容是否相同,区分大小写</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;equals:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span> <span class="c1">// True</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;equals:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">s3</span><span class="p">));</span> <span class="c1">// False</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;-----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// boolean equalsIgnoreCase(String str):比较字符串的内容是否相同,忽略大小写</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;equals:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">equalsIgnoreCase</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span> <span class="c1">// True</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;equals:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">equalsIgnoreCase</span><span class="p">(</span><span class="n">s3</span><span class="p">));</span> <span class="c1">// True</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;-----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// boolean contains(String str):判断大字符串中是否包含小字符串</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;contains:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">));</span> <span class="c1">// True</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;contains:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;hw&quot;</span><span class="p">));</span> <span class="c1">// False得是连续的</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;-----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// boolean startsWith(String str):判断字符串是否以某个指定的字符串开头</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;startsWith:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;h&quot;</span><span class="p">));</span> <span class="c1">// True</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;startsWith:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">));</span> <span class="c1">// 字符串开头</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;startsWith:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">));</span> <span class="c1">// 这个不是在开头的位置</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;-----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 练习：boolean endsWith(String str):判断字符串是否以某个指定的字符串结尾这个自己玩</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;endsWith:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;h&quot;</span><span class="p">));</span> <span class="c1">// False</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;endsWith:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">));</span> <span class="c1">// False</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;endsWith:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">));</span> <span class="c1">// True</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;-----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// boolean isEmpty():判断字符串是否为空。</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;isEmpty:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">());</span> <span class="c1">//false</span>
+
+        <span class="n">String</span> <span class="n">s4</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s5</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;isEmpty:&quot;</span> <span class="o">+</span> <span class="n">s4</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">());</span>  <span class="c1">//true</span>
+        <span class="c1">// NullPointerException</span>
+        <span class="c1">// s5对象都不存在，所以不能调用方法，空指针异常</span>
+        <span class="c1">// System.out.println(&quot;isEmpty:&quot; + s5.isEmpty());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>测试:模拟登录</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 模拟登录,给三次机会,并提示还有几次。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:定义用户名和密码。已存在的。</span>
+<span class="cm"> *      B:键盘录入用户名和密码。</span>
+<span class="cm"> *      C:比较用户名和密码。</span>
+<span class="cm"> *          如果都相同，则登录成功</span>
+<span class="cm"> *          如果有一个不同，则登录失败</span>
+<span class="cm"> *      D:给三次机会，用循环改进，最好用for循环。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义用户名和密码。已存在的。</span>
+        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="s">&quot;admin&quot;</span><span class="p">;</span>  <span class="c1">//局部</span>
+        <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">&quot;admin&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 给三次机会，用循环改进，最好用for循环。</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// x=0,1,2</span>
+            <span class="c1">// 键盘录入用户名和密码。</span>
+            <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入用户名：&quot;</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入密码：&quot;</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">pwd</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+            <span class="c1">// 比较用户名和密码。</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">pwd</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">password</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// 如果都相同，则登录成功</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;登录成功&quot;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// 如果有一个不同，则登录失败</span>
+                <span class="c1">// 2,1,0</span>
+                <span class="c1">// 如果是第0次，应该换一种提示</span>
+                <span class="k">if</span> <span class="p">((</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;帐号被锁定，请与班长联系&quot;</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;登录失败，你还有&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;次机会&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 模拟登录,给三次机会,并提示还有几次。如果登录成功，就可以玩猜数字小游戏了。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:定义用户名和密码。已存在的。</span>
+<span class="cm"> *      B:键盘录入用户名和密码。</span>
+<span class="cm"> *      C:比较用户名和密码。</span>
+<span class="cm"> *          如果都相同，则登录成功</span>
+<span class="cm"> *          如果有一个不同，则登录失败</span>
+<span class="cm"> *      D:给三次机会，用循环改进，最好用for循环。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义用户名和密码。已存在的。</span>
+        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="s">&quot;admin&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">&quot;admin&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 给三次机会，用循环改进，最好用for循环。</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// x=0,1,2</span>
+            <span class="c1">// 键盘录入用户名和密码。</span>
+            <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入用户名：&quot;</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入密码：&quot;</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">pwd</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+            <span class="c1">// 比较用户名和密码。</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">pwd</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">password</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// 如果都相同，则登录成功</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;登录成功,开始玩游戏&quot;</span><span class="p">);</span>
+                <span class="c1">// 猜数字游戏</span>
+                <span class="n">GuessNumberGame</span><span class="p">.</span><span class="na">start</span><span class="p">();</span> <span class="c1">// 自己包里的类的函数直接调用</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// 如果有一个不同，则登录失败</span>
+                <span class="c1">// 2,1,0</span>
+                <span class="c1">// 如果是第0次，应该换一种提示</span>
+                <span class="k">if</span> <span class="p">((</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;帐号被锁定，请与班长联系&quot;</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;登录失败，你还有&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;次机会&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>猜数字小游戏的代码</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 这时猜数字小游戏的代码</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuessNumberGame</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="nf">GuessNumberGame</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 产生一个随机数</span>
+        <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 键盘录入数据</span>
+            <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入你要猜的数据(1-100)：&quot;</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">guessNumber</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+
+            <span class="c1">// 判断</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">guessNumber</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;你猜的数据&quot;</span> <span class="o">+</span> <span class="n">guessNumber</span> <span class="o">+</span> <span class="s">&quot;大了&quot;</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">guessNumber</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;你猜的数据&quot;</span> <span class="o">+</span> <span class="n">guessNumber</span> <span class="o">+</span> <span class="s">&quot;小了&quot;</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;恭喜你，猜中了&quot;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="string_3">String类的获取功能<a class="headerlink" href="#string_3" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>int length() </p>
+</li>
+<li>
+<p>char charAt(int index)</p>
+</li>
+<li>
+<p>int indexOf(int ch)</p>
+</li>
+<li>
+<p>int indexOf(String str)</p>
+</li>
+<li>
+<p>int indexOf(int ch,int fromIndex)</p>
+</li>
+<li>
+<p>int indexOf(String str,int fromIndex)</p>
+</li>
+<li>
+<p>String substring(int start)</p>
+</li>
+<li>
+<p>String substring(int start,int end)</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_04</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * String类的获取功能</span>
+<span class="cm"> * int length():获取字符串的长度。 </span>
+<span class="cm"> * char charAt(int index):获取指定索引位置的字符   charAt字符在..</span>
+<span class="cm"> * int indexOf(int ch):返回指定字符在此字符串中第一次出现处的索引。</span>
+<span class="cm"> *      为什么这里是int类型，而不是char类型?</span>
+<span class="cm"> *      原因是：&#39;a&#39;和97其实都可以代表&#39;a&#39;</span>
+<span class="cm"> * int indexOf(String str):返回指定字符串在此字符串中第一次出现处的索引。</span>
+<span class="cm"> * int indexOf(int ch,int fromIndex):返回指定字符在此字符串中从指定位置后第一次出现处的索引。</span>
+<span class="cm"> * int indexOf(String str,int fromIndex):返回指定字符串在此字符串中从指定位置后第一次出现处的索引。</span>
+<span class="cm"> * String substring(int start):从指定位置开始截取字符串,默认到末尾。substring截取字符串</span>
+<span class="cm"> * String substring(int start,int end):从指定位置开始到指定位置结束截取字符串。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义一个字符串对象</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;helloworld&quot;</span><span class="p">;</span>
+
+        <span class="c1">// int length():获取字符串的长度。</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s.length:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// char charAt(int index):获取指定索引位置的字符</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;charAt:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="mi">7</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// int indexOf(int ch):返回指定字符在此字符串中第一次出现处的索引。</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;indexOf:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="sc">&#39;l&#39;</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// int indexOf(String str):返回指定字符串在此字符串中第一次出现处的索引。</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;indexOf:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="s">&quot;owo&quot;</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// int indexOf(int ch,int fromIndex):返回指定字符在此字符串中从指定位置后第一次出现处的索引。</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;indexOf:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;indexOf:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="sc">&#39;k&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span> <span class="c1">// -1</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;indexOf:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span> <span class="c1">// -1</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 自己练习：int indexOf(String str,int</span>
+        <span class="c1">// fromIndex):返回指定字符串在此字符串中从指定位置后第一次出现处的索引。</span>
+
+        <span class="c1">// String substring(int start):从指定位置开始截取字符串,默认到末尾。包含start这个索引</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;substring:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;substring:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;----------------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// String substring(int start,int</span>
+        <span class="c1">// end):从指定位置开始到指定位置结束截取字符串。包括start索引但是不包end索引</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;substring:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;substring:&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">:</span><span class="mi">10</span>
+<span class="o">----------------------</span>
+<span class="nl">charAt:</span><span class="n">r</span>
+<span class="o">----------------------</span>
+<span class="nl">indexOf:</span><span class="mi">2</span>
+<span class="o">----------------------</span>
+<span class="nl">indexOf:</span><span class="mi">4</span>
+<span class="o">----------------------</span>
+<span class="nl">indexOf:</span><span class="mi">8</span>
+<span class="nl">indexOf:</span><span class="o">-</span><span class="mi">1</span>
+<span class="nl">indexOf:</span><span class="o">-</span><span class="mi">1</span>
+<span class="o">----------------------</span>
+<span class="nl">substring:</span><span class="n">world</span>
+<span class="nl">substring:</span><span class="n">helloworld</span>
+<span class="o">----------------------</span>
+<span class="nl">substring:</span><span class="n">lowor</span>
+<span class="nl">substring:</span><span class="n">helloworld</span>
+</pre></div>
+
+
+<p>遍历获取打印所有的字符</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_04</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 需求：遍历获取字符串中的每一个字符</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:如何能够拿到每一个字符呢?</span>
+<span class="cm"> *          char charAt(int index)</span>
+<span class="cm"> *      B:我怎么知道字符到底有多少个呢?</span>
+<span class="cm"> *          int length()</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义字符串</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;helloworld&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 原始版本</span>
+        <span class="c1">// System.out.println(s.charAt(0));</span>
+        <span class="c1">// System.out.println(s.charAt(1));</span>
+        <span class="c1">// System.out.println(s.charAt(2));</span>
+        <span class="c1">// System.out.println(s.charAt(3));</span>
+        <span class="c1">// System.out.println(s.charAt(4));</span>
+        <span class="c1">// System.out.println(s.charAt(5));</span>
+        <span class="c1">// System.out.println(s.charAt(6));</span>
+        <span class="c1">// System.out.println(s.charAt(7));</span>
+        <span class="c1">// System.out.println(s.charAt(8));</span>
+        <span class="c1">// System.out.println(s.charAt(9));</span>
+
+        <span class="c1">// 只需要我们从0取到9</span>
+        <span class="c1">// for (int x = 0; x &lt; 10; x++) {</span>
+        <span class="c1">// System.out.println(s.charAt(x));</span>
+        <span class="c1">// }</span>
+
+        <span class="c1">// 如果长度特别长，我不可能去数，所以我们要用长度功能</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// char ch = s.charAt(x);</span>
+            <span class="c1">// System.out.println(ch);</span>
+            <span class="c1">// 仅仅是输出，我就直接输出了</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>需求：统计一个字符串中大写字母字符，小写字母字符，数字字符出现的次数。(不考虑其他字符)</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_04</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 需求：统计一个字符串中大写字母字符，小写字母字符，数字字符出现的次数。(不考虑其他字符)</span>
+<span class="cm"> * 举例：</span>
+<span class="cm"> *      &quot;Hello123World&quot;</span>
+<span class="cm"> * 结果：</span>
+<span class="cm"> *      大写字符：2个</span>
+<span class="cm"> *      小写字符：8个</span>
+<span class="cm"> *      数字字符：3个</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      前提：字符串要存在</span>
+<span class="cm"> *      A:定义三个统计变量</span>
+<span class="cm"> *          bigCount=0</span>
+<span class="cm"> *          smallCount=0</span>
+<span class="cm"> *          numberCount=0</span>
+<span class="cm"> *      B:遍历字符串，得到每一个字符。</span>
+<span class="cm"> *          length()和charAt()结合</span>
+<span class="cm"> *      C:判断该字符到底是属于那种类型的</span>
+<span class="cm"> *          大：bigCount++</span>
+<span class="cm"> *          小：smallCount++</span>
+<span class="cm"> *          数字：numberCount++</span>
+<span class="cm"> * </span>
+<span class="cm"> *          这道题目的难点就是如何判断某个字符是大的，还是小的，还是数字的。</span>
+<span class="cm"> *          ASCII码表：</span>
+<span class="cm"> *              0   48  数字是最小的</span>
+<span class="cm"> *              A   65</span>
+<span class="cm"> *              a   97</span>
+<span class="cm"> *          虽然，我们按照数字的这种比较是可以的，但是想多了，有比这还简单的</span>
+<span class="cm"> *              char ch = s.charAt(x);</span>
+<span class="cm"> * </span>
+<span class="cm"> *              if(ch&gt;=&#39;0&#39; &amp;&amp; ch&lt;=&#39;9&#39;) numberCount++</span>
+<span class="cm"> *              if(ch&gt;=&#39;a&#39; &amp;&amp; ch&lt;=&#39;z&#39;) smallCount++</span>
+<span class="cm"> *              if(ch&gt;=&#39;A&#39; &amp;&amp; ch&lt;=&#39;Z&#39;) bigCount++</span>
+<span class="cm"> *      D:输出结果。</span>
+<span class="cm"> *</span>
+<span class="cm"> * 练习：把给定字符串的方式，改进为键盘录入字符串的方式。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//定义一个字符串</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Hello123World&quot;</span><span class="p">;</span>
+
+        <span class="c1">//定义三个统计变量</span>
+        <span class="kt">int</span> <span class="n">bigCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">smallCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">numberCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="c1">//遍历字符串，得到每一个字符。</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span> <span class="n">x</span><span class="o">++</span><span class="p">){</span>
+            <span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+
+            <span class="c1">//判断该字符到底是属于那种类型的</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="o">&gt;=</span><span class="sc">&#39;a&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">ch</span><span class="o">&lt;=</span><span class="sc">&#39;z&#39;</span><span class="p">){</span>
+                <span class="n">smallCount</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="o">&gt;=</span><span class="sc">&#39;A&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">ch</span><span class="o">&lt;=</span><span class="sc">&#39;Z&#39;</span><span class="p">){</span>
+                <span class="n">bigCount</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="o">&gt;=</span><span class="sc">&#39;0&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">ch</span><span class="o">&lt;=</span><span class="sc">&#39;9&#39;</span><span class="p">){</span>
+                <span class="n">numberCount</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">//输出结果。</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;大写字母&quot;</span><span class="o">+</span><span class="n">bigCount</span><span class="o">+</span><span class="s">&quot;个&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;小写字母&quot;</span><span class="o">+</span><span class="n">smallCount</span><span class="o">+</span><span class="s">&quot;个&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;数字&quot;</span><span class="o">+</span><span class="n">numberCount</span><span class="o">+</span><span class="s">&quot;个&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="string_4">String类的转换功能<a class="headerlink" href="#string_4" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>byte[] getBytes()</p>
+</li>
+<li>
+<p>char[] toCharArray()</p>
+</li>
+<li>
+<p>static String valueOf(char[] chs)</p>
+</li>
+<li>
+<p>static String valueOf(int i)</p>
+</li>
+<li>
+<p>String toLowerCase() l String toUpperCase()</p>
+</li>
+<li>
+<p>String concat(String str)</p>
+</li>
+</ul>
+<p><code>java
+  package cn.itcast_05;</code></p>
+<p>/*
+ * String的转换功能：
+ * byte[] getBytes():把字符串转换为字节数组。
+ * char[] toCharArray():把字符串转换为字符数组。
+ * static String valueOf(char[] chs):把字符数组转成字符串。
+ * static String valueOf(int i):把int类型的数据转成字符串。
+ *      注意：String类的valueOf方法可以把任意类型的数据转成字符串。
+ * String toLowerCase():把字符串转成小写。
+ * String toUpperCase():把字符串转成大写。
+ * String concat(String str):把字符串拼接。
+ */
+public class StringDemo {
+    public static void main(String[] args) {
+        // 定义一个字符串对象
+        String s = "JavaSE";</p>
+<div class="codehilite"><pre><span></span>    // byte[] getBytes():把字符串转换为字节数组。
+    byte[] bys = s.getBytes(); // 字节数组
+    for (int x = 0; x &lt; bys.length; x++) {
+        System.out.println(bys[x]); // 打印字节数组中的字符,输出的是数字
+    }
+    System.out.println(&quot;----------------&quot;);
+
+    // char[] toCharArray():把字符串转换为字符数组。
+    char[] chs = s.toCharArray();
+    for (int x = 0; x &lt; chs.length; x++) {
+        System.out.println(chs[x]);
+    }
+    System.out.println(&quot;----------------&quot;);
+
+    // static String valueOf(char[] chs):把字符数组转成字符串。
+    String ss = String.valueOf(chs);
+    System.out.println(ss);
+    System.out.println(&quot;----------------&quot;);
+
+    // static String valueOf(int i):把int类型的数据转成字符串。
+    int i = 100;
+    String sss = String.valueOf(i);
+    System.out.println(sss);
+    System.out.println(&quot;----------------&quot;);
+
+    // String toLowerCase():把字符串转成小写。
+    System.out.println(&quot;toLowerCase:&quot; + s.toLowerCase());  //产生的是新的字符串,原来的是不变的
+    System.out.println(&quot;s:&quot; + s);
+    // System.out.println(&quot;----------------&quot;);
+    // String toUpperCase():把字符串转成大写。
+    System.out.println(&quot;toUpperCase:&quot; + s.toUpperCase());
+    System.out.println(&quot;----------------&quot;);
+
+    // String concat(String str):把字符串拼接。
+    String s1 = &quot;hello&quot;;
+    String s2 = &quot;world&quot;;
+    String s3 = s1 + s2;  //这个更方便
+    String s4 = s1.concat(s2);  //就是装逼
+    System.out.println(&quot;s3:&quot; + s3);
+    System.out.println(&quot;s4:&quot; + s4);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>```</p>
+<p>执行结果:</p>
+<p>​```java
+74
+97
+118
+97
+83
+69</p>
+<hr />
+<p>J
+a
+v
+a
+S
+E</p>
+<hr />
+<h2 id="javase">JavaSE<a class="headerlink" href="#javase" title="Permanent link">&para;</a></h2>
+<h2 id="100">100<a class="headerlink" href="#100" title="Permanent link">&para;</a></h2>
+<p>toLowerCase:javase
+s:JavaSE
+toUpperCase:JAVASE</p>
+<hr />
+<p>s3:helloworld
+s4:helloworld</p>
+<p>```</p>
+<p>把一个字符串的首字母转成大写，其余为小写。(只考虑英文大小写字母字符)</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_05</span><span class="p">;</span> <span class="c1">//包</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 需求：把一个字符串的首字母转成大写，其余为小写。(只考虑英文大小写字母字符)</span>
+<span class="cm"> * 举例：</span>
+<span class="cm"> *      helloWORLD</span>
+<span class="cm"> * 结果：</span>
+<span class="cm"> *      Helloworld</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:先获取第一个字符</span>
+<span class="cm"> *      B:获取除了第一个字符以外的字符</span>
+<span class="cm"> *      C:把A转成大写</span>
+<span class="cm"> *      D:把B转成小写</span>
+<span class="cm"> *      E:C拼接D</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义一个字符串</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;helloWORLD&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 先获取第一个字符</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="c1">// 获取除了第一个字符以外的字符</span>
+        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="c1">// 把A转成大写</span>
+        <span class="n">String</span> <span class="n">s3</span> <span class="o">=</span> <span class="n">s1</span><span class="p">.</span><span class="na">toUpperCase</span><span class="p">();</span>
+        <span class="c1">// 把B转成小写</span>
+        <span class="n">String</span> <span class="n">s4</span> <span class="o">=</span> <span class="n">s2</span><span class="p">.</span><span class="na">toLowerCase</span><span class="p">();</span>
+        <span class="c1">// C拼接D</span>
+        <span class="n">String</span> <span class="n">s5</span> <span class="o">=</span> <span class="n">s3</span><span class="p">.</span><span class="na">concat</span><span class="p">(</span><span class="n">s4</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s5</span><span class="p">);</span>
+
+        <span class="c1">// 优化后的代码</span>
+        <span class="c1">// 链式编程</span>
+        <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="na">toUpperCase</span><span class="p">()</span>
+                <span class="p">.</span><span class="na">concat</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="na">toLowerCase</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">Helloworld</span>
+<span class="n">Helloworld</span>
+</pre></div>
+
+
+<h1 id="string_5">String类的其他功能<a class="headerlink" href="#string_5" title="Permanent link">&para;</a></h1>
+<ul>
+<li>替换功能</li>
+</ul>
+<p>•String replace(char old,char new)</p>
+<p>•String replace(String old,String new)</p>
+<ul>
+<li>去除字符串两空格</li>
+</ul>
+<p>•String trim()</p>
+<ul>
+<li>按字典顺序比较两个字符串</li>
+</ul>
+<p>•int compareTo(String str)</p>
+<p>•int compareToIgnoreCase(String str) </p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_06</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * String类的其他功能：</span>
+<span class="cm"> * </span>
+<span class="cm"> * 替换功能：</span>
+<span class="cm"> * String replace(char old,char new)</span>
+<span class="cm"> * String replace(String old,String new)</span>
+<span class="cm"> *</span>
+<span class="cm"> * 去除字符串两空格 </span>
+<span class="cm"> * String trim()</span>
+<span class="cm"> * </span>
+<span class="cm"> * 按字典顺序比较两个字符串  </span>
+<span class="cm"> * int compareTo(String str)  //区分大小写</span>
+<span class="cm"> * int compareToIgnoreCase(String str)  //不区分大小写</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 替换功能</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">&quot;helloworld&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">s1</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;k&#39;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">s3</span> <span class="o">=</span> <span class="n">s1</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="s">&quot;owo&quot;</span><span class="p">,</span> <span class="s">&quot;ak47&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s1:&quot;</span> <span class="o">+</span> <span class="n">s1</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s2:&quot;</span> <span class="o">+</span> <span class="n">s2</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s3:&quot;</span> <span class="o">+</span> <span class="n">s3</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;---------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 去除字符串两端空格</span>
+        <span class="n">String</span> <span class="n">s4</span> <span class="o">=</span> <span class="s">&quot; hello world  &quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s5</span> <span class="o">=</span> <span class="n">s4</span><span class="p">.</span><span class="na">trim</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s4:&quot;</span> <span class="o">+</span> <span class="n">s4</span> <span class="o">+</span> <span class="s">&quot;---&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s5:&quot;</span> <span class="o">+</span> <span class="n">s5</span> <span class="o">+</span> <span class="s">&quot;---&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 按字典顺序比较两个字符串</span>
+        <span class="n">String</span> <span class="n">s6</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s7</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s8</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s9</span> <span class="o">=</span> <span class="s">&quot;xyz&quot;</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s6</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">s7</span><span class="p">));</span><span class="c1">// 0</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s6</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">s8</span><span class="p">));</span><span class="c1">// 7  h-a=7</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s6</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">s9</span><span class="p">));</span><span class="c1">// -16 h-x=-16  ,第一个相同则比较后面的</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="nl">s1:</span><span class="n">helloworld</span>
+<span class="nl">s2:</span><span class="n">hekkoworkd</span>
+<span class="nl">s3:</span><span class="n">hellak47rld</span>
+<span class="o">---------------</span>
+<span class="nl">s4:</span> <span class="n">hello</span> <span class="n">world</span>  <span class="o">---</span>
+<span class="nl">s5:</span><span class="n">hello</span> <span class="n">world</span><span class="o">---</span>
+<span class="mi">0</span>
+<span class="mi">7</span>
+<span class="o">-</span><span class="mi">16</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_06</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 如果我们看到问题了，看怎么办呢?</span>
+<span class="cm"> * 看源码。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">&quot;hel&quot;</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span> <span class="c1">// 2  为什么是2?</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>源码的查看:</p>
+<div class="codehilite"><pre><span></span>  <span class="kd">private</span> <span class="kd">final</span> <span class="kt">char</span> <span class="n">value</span><span class="o">[]</span><span class="p">;</span>
+
+    <span class="n">字符串会自动转换为一个字符数组</span><span class="err">。</span>
+
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="p">(</span><span class="n">String</span> <span class="n">anotherString</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//this -- s1 -- &quot;hello&quot;</span>
+        <span class="c1">//anotherString -- s2 -- &quot;hel&quot;</span>
+
+        <span class="kt">int</span> <span class="n">len1</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="c1">//this.value.length--s1.toCharArray().length--5</span>
+        <span class="kt">int</span> <span class="n">len2</span> <span class="o">=</span> <span class="n">anotherString</span><span class="p">.</span><span class="na">value</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="c1">//s2.value.length -- s2.toCharArray().length--3</span>
+        <span class="kt">int</span> <span class="n">lim</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">len1</span><span class="p">,</span> <span class="n">len2</span><span class="p">);</span> <span class="c1">//Math.min(5,3); -- lim=3;</span>
+        <span class="kt">char</span> <span class="n">v1</span><span class="o">[]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span> <span class="c1">//s1.toCharArray()</span>
+        <span class="kt">char</span> <span class="n">v2</span><span class="o">[]</span> <span class="o">=</span> <span class="n">anotherString</span><span class="p">.</span><span class="na">value</span><span class="p">;</span>
+
+        <span class="c1">//char v1[] = {&#39;h&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;};</span>
+        <span class="c1">//char v2[] = {&#39;h&#39;,&#39;e&#39;,&#39;l&#39;};</span>
+
+        <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="n">lim</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">v1</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="p">;</span> <span class="c1">//c1=&#39;h&#39;,&#39;e&#39;,&#39;l&#39;</span>
+            <span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">v2</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="p">;</span> <span class="c1">//c2=&#39;h&#39;,&#39;e&#39;,&#39;l&#39;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c1</span> <span class="o">!=</span> <span class="n">c2</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">c1</span> <span class="o">-</span> <span class="n">c2</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">len1</span> <span class="o">-</span> <span class="n">len2</span><span class="p">;</span> <span class="c1">//5-3=2;  //当比较完了全部相同的那么就返回的是两个字符串的长度相减</span>
+   <span class="p">}</span>
+
+   <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+   <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">&quot;hel&quot;</span><span class="p">;</span>
+   <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span> <span class="c1">// 2</span>
+</pre></div>
+
+
+<h1 id="string_6">String类练习<a class="headerlink" href="#string_6" title="Permanent link">&para;</a></h1>
+<ul>
+<li>把数组中的数据按照指定个格式拼接成一个字符串</li>
+</ul>
+<p>•     举例：int[] arr = {1,2,3};  输出结果：[1, 2, 3] </p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_07</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 需求：把数组中的数据按照指定个格式拼接成一个字符串</span>
+<span class="cm"> * 举例：</span>
+<span class="cm"> *      int[] arr = {1,2,3};    </span>
+<span class="cm"> * 输出结果：</span>
+<span class="cm"> *      &quot;[1, 2, 3]&quot;</span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:定义一个字符串对象，只不过内容为空</span>
+<span class="cm"> *      B:先把字符串拼接一个&quot;[&quot;</span>
+<span class="cm"> *      C:遍历int数组，得到每一个元素</span>
+<span class="cm"> *      D:先判断该元素是否为最后一个</span>
+<span class="cm"> *          是：就直接拼接元素和&quot;]&quot;</span>
+<span class="cm"> *          不是：就拼接元素和逗号以及空格</span>
+<span class="cm"> *      E:输出拼接后的字符串</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 前提是数组已经存在</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+
+        <span class="c1">// 定义一个字符串对象，只不过内容为空</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 先把字符串拼接一个&quot;[&quot;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;[&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 遍历int数组，得到每一个元素</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 先判断该元素是否为最后一个</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// 就直接拼接元素和&quot;]&quot;</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="p">;</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;]&quot;</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// 就拼接元素和逗号以及空格</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="p">;</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 输出拼接后的字符串</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;最终的字符串是：&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>定义成函数功能:</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_07</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 需求：把数组中的数据按照指定个格式拼接成一个字符串</span>
+<span class="cm"> * 举例：</span>
+<span class="cm"> *      int[] arr = {1,2,3};    </span>
+<span class="cm"> * 输出结果：</span>
+<span class="cm"> *      &quot;[1, 2, 3]&quot;</span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:定义一个字符串对象，只不过内容为空</span>
+<span class="cm"> *      B:先把字符串拼接一个&quot;[&quot;</span>
+<span class="cm"> *      C:遍历int数组，得到每一个元素</span>
+<span class="cm"> *      D:先判断该元素是否为最后一个</span>
+<span class="cm"> *          是：就直接拼接元素和&quot;]&quot;</span>
+<span class="cm"> *          不是：就拼接元素和逗号以及空格</span>
+<span class="cm"> *      E:输出拼接后的字符串</span>
+<span class="cm"> * </span>
+<span class="cm"> * 把代码用功能实现。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 前提是数组已经存在</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+
+        <span class="c1">// 写一个功能，实现结果</span>
+        <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">arrayToString</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>  <span class="c1">//将数组转换成字符串</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;最终结果是：&quot;</span> <span class="o">+</span> <span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 两个明确： 返回值类型：String 参数列表：int[] arr</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">arrayToString</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义一个字符串</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 先把字符串拼接一个&quot;[&quot;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;[&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 遍历int数组，得到每一个元素</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 先判断该元素是否为最后一个</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// 就直接拼接元素和&quot;]&quot;</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="p">;</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;]&quot;</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// 就拼接元素和逗号以及空格</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="p">;</span>
+                <span class="n">s</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>字符串反转</li>
+</ul>
+<p>•     举例：键盘录入”abc”  输出结果：”cba”</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_07</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 字符串反转</span>
+<span class="cm"> * 举例：键盘录入”abc”     </span>
+<span class="cm"> * 输出结果：”cba”</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:键盘录入一个字符串</span>
+<span class="cm"> *      B:定义一个新字符串</span>
+<span class="cm"> *      C:倒着遍历字符串，得到每一个字符</span>
+<span class="cm"> *          a:length()和charAt()结合</span>
+<span class="cm"> *          b:把字符串转成字符数组</span>
+<span class="cm"> *      D:用新字符串把每一个字符拼接起来</span>
+<span class="cm"> *      E:输出新串</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest3</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 键盘录入一个字符串</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span> 
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入一个字符串：&quot;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+        <span class="cm">/*</span>
+<span class="cm">        // 定义一个新字符串</span>
+<span class="cm">        String result = &quot;&quot;;</span>
+
+<span class="cm">        // 把字符串转成字符数组</span>
+<span class="cm">        char[] chs = line.toCharArray();</span>
+
+<span class="cm">        // 倒着遍历字符串，得到每一个字符</span>
+<span class="cm">        for (int x = chs.length - 1; x &gt;= 0; x--) {</span>
+<span class="cm">            // 用新字符串把每一个字符拼接起来</span>
+<span class="cm">            result += chs[x];</span>
+<span class="cm">        }</span>
+
+<span class="cm">        // 输出新串</span>
+<span class="cm">        System.out.println(&quot;反转后的结果是：&quot; + result);</span>
+<span class="cm">        */</span>
+
+        <span class="c1">// 改进为功能实现</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">myReverse</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;实现功能后的结果是：&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 两个明确： 返回值类型：String 参数列表：String</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">myReverse</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义一个新字符串</span>
+        <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 把字符串转成字符数组</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">chs</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">();</span>
+
+        <span class="c1">// 倒着遍历字符串，得到每一个字符</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">chs</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 用新字符串把每一个字符拼接起来</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">chs</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>统计大串中小串出现的次数</li>
+</ul>
+<p>•     举例：在字符串” </p>
+<p>woaijavawozhenaijavawozhendeaijavawozhendehe naijavaxinbuxinwoaijavagun”中java出现了5次</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_07</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 统计大串中小串出现的次数</span>
+<span class="cm"> * 举例：</span>
+<span class="cm"> *      在字符串&quot;woaijavawozhenaijavawozhendeaijavawozhendehenaijavaxinbuxinwoaijavagun&quot;</span>
+<span class="cm"> * 结果：</span>
+<span class="cm"> *      java出现了5次</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      前提：是已经知道了大串和小串。</span>
+<span class="cm"> * </span>
+<span class="cm"> *      A:定义一个统计变量，初始化值是0</span>
+<span class="cm"> *      B:先在大串中查找一次小串第一次出现的位置</span>
+<span class="cm"> *          a:索引是-1，说明不存在了，就返回统计变量</span>
+<span class="cm"> *          b:索引不是-1，说明存在，统计变量++</span>
+<span class="cm"> *      C:把刚才的索引+小串的长度作为开始位置截取上一次的大串，返回一个新的字符串，并把该字符串的值重新赋值给大串</span>
+<span class="cm"> *      D:回到B</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest4</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义大串</span>
+        <span class="n">String</span> <span class="n">maxString</span> <span class="o">=</span> <span class="s">&quot;woaijavawozhenaijavawozhendeaijavawozhendehenaijavaxinbuxinwoaijavagun&quot;</span><span class="p">;</span>
+        <span class="c1">// 定义小串</span>
+        <span class="n">String</span> <span class="n">minString</span> <span class="o">=</span> <span class="s">&quot;java&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 写功能实现</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">getCount</span><span class="p">(</span><span class="n">maxString</span><span class="p">,</span> <span class="n">minString</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Java在大串中出现了：&quot;</span> <span class="o">+</span> <span class="n">count</span> <span class="o">+</span> <span class="s">&quot;次&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 两个明确： 返回值类型：int 参数列表：两个字符串</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="p">(</span><span class="n">String</span> <span class="n">maxString</span><span class="p">,</span> <span class="n">String</span> <span class="n">minString</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义一个统计变量，初始化值是0</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="c1">// 先在大串中查找一次小串第一次出现的位置</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">maxString</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">minString</span><span class="p">);</span>
+
+        <span class="c1">// 索引不是-1，说明存在，统计变量++</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+            <span class="c1">// 把刚才的索引+小串的长度作为开始位置截取上一次的大串，返回一个新的字符串，并把该字符串的值重新赋值给大串</span>
+            <span class="kt">int</span> <span class="n">startIndex</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="n">minString</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+            <span class="n">maxString</span> <span class="o">=</span> <span class="n">maxString</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">startIndex</span><span class="p">);</span>
+            <span class="c1">// 继续查</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">maxString</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">minString</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_07</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 统计大串中小串出现的次数</span>
+<span class="cm"> * 举例：</span>
+<span class="cm"> *      在字符串&quot;woaijavawozhenaijavawozhendeaijavawozhendehenaijavaxinbuxinwoaijavagun&quot;</span>
+<span class="cm"> * 结果：</span>
+<span class="cm"> *      java出现了5次</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      前提：是已经知道了大串和小串。</span>
+<span class="cm"> * </span>
+<span class="cm"> *      A:定义一个统计变量，初始化值是0</span>
+<span class="cm"> *      B:先在大串中查找一次小串第一次出现的位置</span>
+<span class="cm"> *          a:索引是-1，说明不存在了，就返回统计变量</span>
+<span class="cm"> *          b:索引不是-1，说明存在，统计变量++</span>
+<span class="cm"> *      C:把刚才的索引+小串的长度作为开始位置截取上一次的大串，返回一个新的字符串，并把该字符串的值重新赋值给大串</span>
+<span class="cm"> *      D:回到B</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringTest5</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义大串</span>
+        <span class="n">String</span> <span class="n">maxString</span> <span class="o">=</span> <span class="s">&quot;woaijavawozhenaijavawozhendeaijavawozhendehenaijavaxinbuxinwoaijavagun&quot;</span><span class="p">;</span>
+        <span class="c1">// 定义小串</span>
+        <span class="n">String</span> <span class="n">minString</span> <span class="o">=</span> <span class="s">&quot;java&quot;</span><span class="p">;</span>
+
+        <span class="c1">// 写功能实现</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">getCount</span><span class="p">(</span><span class="n">maxString</span><span class="p">,</span> <span class="n">minString</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Java在大串中出现了：&quot;</span> <span class="o">+</span> <span class="n">count</span> <span class="o">+</span> <span class="s">&quot;次&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 两个明确： 返回值类型：int 参数列表：两个字符串</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="p">(</span><span class="n">String</span> <span class="n">maxString</span><span class="p">,</span> <span class="n">String</span> <span class="n">minString</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 定义一个统计变量，初始化值是0</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="cm">/*</span>
+<span class="cm">        // 先在大串中查找一次小串第一次出现的位置</span>
+<span class="cm">        int index = maxString.indexOf(minString);</span>
+<span class="cm">        // 索引不是-1，说明存在，统计变量++</span>
+<span class="cm">        while (index != -1) {</span>
+<span class="cm">            count++;</span>
+<span class="cm">            // 把刚才的索引+小串的长度作为开始位置截取上一次的大串，返回一个新的字符串，并把该字符串的值重新赋值给大串</span>
+<span class="cm">            // int startIndex = index + minString.length();</span>
+<span class="cm">            // maxString = maxString.substring(startIndex);</span>
+<span class="cm">            maxString = maxString.substring(index + minString.length());</span>
+<span class="cm">            // 继续查</span>
+<span class="cm">            index = maxString.indexOf(minString);</span>
+<span class="cm">        }</span>
+<span class="cm">        */</span>
+
+        <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+        <span class="c1">//先查，赋值，判断</span>
+        <span class="k">while</span><span class="p">((</span><span class="n">index</span><span class="o">=</span><span class="n">maxString</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">minString</span><span class="p">))</span><span class="o">!=-</span><span class="mi">1</span><span class="p">){</span>
+            <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">maxString</span> <span class="o">=</span> <span class="n">maxString</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="n">minString</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

@@ -3312,14 +3312,16 @@
                 
                 
                 <h1 id="numpy">numpy的属性<a class="headerlink" href="#numpy" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]
  [4 5 6]
@@ -3327,57 +3329,65 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span><span class="c1">#维度</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span><span class="c1">#维度</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>2
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="c1">#形状</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="c1">#形状</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>(3, 3)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="c1">#大小</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="c1">#大小</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>9
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="c1">#元素类型</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="c1">#元素类型</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>int32
 </pre></div>
 
 
 <h1 id="array">创建array<a class="headerlink" href="#array" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>  <span class="c1">#创建array的同时给定类型</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>int32
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>float64
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="c1">#一维数据</span>
-<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[1 2 3]
 </pre></div>
@@ -3385,8 +3395,9 @@
 
 <div class="codehilite"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>   <span class="c1">#2维矩阵</span>
               <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]
  [4 5 6]]
@@ -3394,8 +3405,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">zero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c1">#生成2行3列全为0的矩阵  zeros矩阵</span>
-<span class="k">print</span><span class="p">(</span><span class="n">zero</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zero</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 0.  0.  0.]
  [ 0.  0.  0.]]
@@ -3403,8 +3415,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">one</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="c1">#生成3行4列全为1的矩阵 ones矩阵</span>
-<span class="k">print</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 1.  1.  1.  1.]
  [ 1.  1.  1.  1.]
@@ -3413,8 +3426,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">empty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="c1">#生成3行2列全都接近于0（不等于0）的矩阵</span>
-<span class="k">print</span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 0.  0.]
  [ 0.  0.]
@@ -3423,32 +3437,36 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>   <span class="c1">#arange的使用</span>
-<span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[0 1 2 3 4 5 6 7 8 9]
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[ 4  5  6  7  8  9 10 11]
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[ 1  4  7 10 13 16 19]
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="c1">#重新定义矩阵的形状</span>
-<span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[0 1]
  [2 3]
@@ -3458,16 +3476,18 @@
 
 
 <h1 id="numpy_1">numpy的运算<a class="headerlink" href="#numpy_1" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
                  <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
 <span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
                  <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]
  [4 5 6]]
@@ -3476,72 +3496,81 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span><span class="p">)</span>   <span class="c1">#数组的加法,按位加</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span><span class="p">)</span>   <span class="c1">#数组的加法,按位加</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[2 3 5]
  [6 8 9]]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">-</span> <span class="n">arr2</span><span class="p">)</span>  <span class="c1">#数组减法,按位减</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">-</span> <span class="n">arr2</span><span class="p">)</span>  <span class="c1">#数组减法,按位减</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[0 1 1]
  [2 2 3]]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">*</span> <span class="n">arr2</span><span class="p">)</span>    <span class="c1">#数组乘法,按位乘</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">*</span> <span class="n">arr2</span><span class="p">)</span>    <span class="c1">#数组乘法,按位乘</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 1  2  6]
  [ 8 15 18]]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">**</span> <span class="n">arr2</span><span class="p">)</span>   <span class="c1">#数组双乘号求幂</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">**</span> <span class="n">arr2</span><span class="p">)</span>   <span class="c1">#数组双乘号求幂</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[  1   2   9]
  [ 16 125 216]]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">/</span> <span class="n">arr2</span><span class="p">)</span>    <span class="c1">#数组除法,按位除</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">/</span> <span class="n">arr2</span><span class="p">)</span>    <span class="c1">#数组除法,按位除</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 1.          2.          1.5       ]
  [ 2.          1.66666667  2.        ]]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">%</span> <span class="n">arr2</span><span class="p">)</span>   <span class="c1">#数组求余</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">%</span> <span class="n">arr2</span><span class="p">)</span>   <span class="c1">#数组求余</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[0 0 1]
  [0 2 0]]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">//</span> <span class="n">arr2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span> <span class="o">//</span> <span class="n">arr2</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 1]
  [2 1 2]]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#数组所有的元素加2</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#数组所有的元素加2</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[3 4 5]
  [6 7 8]]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span><span class="c1">#数组所有的元素乘以10</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span><span class="c1">#数组所有的元素乘以10</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[10 20 30]
  [40 50 60]]
@@ -3549,8 +3578,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr3</span> <span class="o">=</span> <span class="n">arr1</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="c1">#判断哪些元素大于3,返回的是布尔类型</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[False False False]
  [ True  True  True]]
@@ -3558,8 +3588,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 1.  1.  1.  1.  1.]
  [ 1.  1.  1.  1.  1.]
@@ -3567,8 +3598,9 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]
  [4 5 6]]
@@ -3578,6 +3610,7 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="n">arr4</span><span class="p">)</span><span class="c1">#矩阵乘法AB</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>array([[  6.,   6.,   6.,   6.,   6.],
        [ 15.,  15.,  15.,  15.,  15.]])
 </pre></div>
@@ -3586,15 +3619,17 @@
 <div class="codehilite"><pre><span></span><span class="n">arr1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span><span class="c1">#矩阵乘法</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>array([[  6.,   6.,   6.,   6.,   6.],
        [ 15.,  15.,  15.,  15.,  15.]])
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="c1">#矩阵转置</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">arr1</span><span class="p">))</span><span class="c1">#矩阵转置</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="c1">#矩阵转置</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">arr1</span><span class="p">))</span><span class="c1">#矩阵转置</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]
  [4 5 6]]
@@ -3608,12 +3643,14 @@
 
 
 <h1 id="2">随机数生成及矩阵的运算2<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="n">sample1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="c1">#生成3行2列从0到1的随机数,调用的是numpy中random的random函数</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 0.42548654  0.60831272]
  [ 0.48034909  0.70289579]
@@ -3622,8 +3659,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">sample2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="c1">#生成3行2列符合标准正态分布的随机数,使用的是random中的normal函数(标准正态分布)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sample2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample2</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 0.82645622 -0.63300866]
  [ 0.18604463 -0.30988056]
@@ -3632,8 +3670,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">sample3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="c1">#生成3行2列从0到10的随机整数  ,ranint(随机整数)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sample3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample3</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[2 4]
  [3 1]
@@ -3644,12 +3683,14 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span><span class="c1">#求和sum</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>3.5204561139867017
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span><span class="c1">#求最小值min</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>0.33469265548836047
 </pre></div>
@@ -3658,12 +3699,14 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span><span class="c1">#求最大值max</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>0.96871931960307933
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1">#对列求和,关键字axis0就是列,1就是行</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>array([ 1.87455495,  1.64590117])
 </pre></div>
@@ -3672,12 +3715,14 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#对行求和</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>array([ 1.03379926,  1.18324488,  1.30341198])
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 0.42548654  0.60831272]
  [ 0.48034909  0.70289579]
@@ -3688,6 +3733,7 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span><span class="c1">#求最小值的索引  argmin(逐行从0开始的,将整个数组看展开成一维的)</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>5
 </pre></div>
 
@@ -3695,13 +3741,15 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span><span class="c1">#求最大值的索引</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>4
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span><span class="c1">#求平均值</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sample1</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="c1">#求平均值</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample1</span><span class="p">))</span><span class="c1">#求平均值</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample1</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="c1">#求平均值</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>0.586742685664
 0.586742685664
@@ -3711,12 +3759,14 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span><span class="c1">#求中位数median</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>0.5443309058371042
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span><span class="c1">#开方</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>array([[ 0.65229329,  0.77994405],
        [ 0.69307221,  0.8383888 ],
@@ -3725,8 +3775,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">sample4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sample4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample4</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[9 2 3 0 2 8 1 3 2 8]]
 </pre></div>
@@ -3735,12 +3786,14 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">sample4</span><span class="p">)</span><span class="c1">#排序</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>array([[0, 1, 2, 2, 2, 3, 3, 8, 8, 9]])
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">sample1</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>array([[ 0.42548654,  0.60831272],
        [ 0.48034909,  0.70289579],
@@ -3751,60 +3804,69 @@
 <div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">sample4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span><span class="c1">#小于2就变成2，大于7就变为7  ,数据阈值改变</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>array([[7, 2, 3, 2, 2, 7, 2, 3, 2, 7]])
 </pre></div>
 
 
 <h1 id="numpy_2">numpy的索引<a class="headerlink" href="#numpy_2" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">14</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[ 2  3  4  5  6  7  8  9 10 11 12 13]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="c1">#第二个位置的数据,一维</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="c1">#第二个位置的数据,一维</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>4
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span><span class="c1">#第一到第四个位置的数据</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span><span class="c1">#第一到第四个位置的数据</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[3 4 5]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="c1">#第二到倒数第一个位置的数据</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="c1">#第二到倒数第一个位置的数据</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[ 4  5  6  7  8  9 10 11 12]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span><span class="c1">#前五个数据</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span><span class="c1">#前五个数据</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[2 3 4 5 6]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span><span class="c1">#最后两个数据</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span><span class="c1">#最后两个数据</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[12 13]
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr2</span> <span class="o">=</span> <span class="n">arr1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 2  3  4  5]
  [ 6  7  8  9]
@@ -3812,37 +3874,42 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[6 7 8 9]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>7
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>8
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[ 4  8 12]
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr2</span><span class="p">:</span> <span class="c1">#迭代行</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[2 3 4 5]
 [6 7 8 9]
@@ -3851,8 +3918,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr2</span><span class="o">.</span><span class="n">T</span><span class="p">:</span><span class="c1">#迭代列,转置一下再进行迭代</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[ 2  6 10]
 [ 3  7 11]
@@ -3862,8 +3930,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr2</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span><span class="c1">#一个一个元素迭代flat</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>2
 3
@@ -3881,15 +3950,17 @@
 
 
 <h1 id="array_1">array合并<a class="headerlink" href="#array_1" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
 <span class="n">arr3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">arr1</span><span class="p">,</span><span class="n">arr2</span><span class="p">))</span><span class="c1">#垂直合并vertical(垂直)stack(堆放)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr3</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr3</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]
  [4 5 6]]
@@ -3898,9 +3969,10 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">arr1</span><span class="p">,</span><span class="n">arr2</span><span class="p">))</span><span class="c1">#水平合并horizontal(水平)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr4</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr4</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[1 2 3 4 5 6]
 (6,)
@@ -3908,8 +3980,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arrv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">arr1</span><span class="p">,</span><span class="n">arr2</span><span class="p">,</span><span class="n">arr3</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arrv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrv</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]
  [4 5 6]
@@ -3919,24 +3992,27 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arrh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">arr1</span><span class="p">,</span><span class="n">arr2</span><span class="p">,</span><span class="n">arr4</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arrh</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrh</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[1 2 3 4 5 6 1 2 3 4 5 6]
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">arr1</span><span class="p">,</span><span class="n">arr2</span><span class="p">,</span><span class="n">arr1</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[1 2 3 4 5 6 1 2 3]
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">arr3</span><span class="p">,</span><span class="n">arrv</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1">#合并的array维度要相同，array形状要匹配，axis=0纵向合并</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]
  [4 5 6]
@@ -3948,8 +4024,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">arr3</span><span class="p">,</span><span class="n">arr3</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#合并的array维度要相同，array形状要匹配，axis=1横向合并</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3 1 2 3]
  [4 5 6 4 5 6]]
@@ -3957,32 +4034,36 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr1</span><span class="o">.</span><span class="n">T</span> 
-<span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="c1">#一维的array不能转置</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="c1">#一维的array不能转置</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[1 2 3]
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>(3,)
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr1_1</span> <span class="o">=</span> <span class="n">arr1</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,:]</span>  <span class="c1">#添加一个维度到行</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1_1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1_1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]]
 (1, 3)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">arr1_1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1_1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1]
  [2]
@@ -3991,9 +4072,10 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr1_2</span> <span class="o">=</span> <span class="n">arr1</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>  <span class="c1">#添加维度到列</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1_2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1_2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1_2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1]
  [2]
@@ -4003,9 +4085,10 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr1_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>   <span class="c1">#atleast_2d  将数据变成2维,维度比他高的不发生改变</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1_3</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1_3</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1_3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1_3</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[1 2 3]]
 [[1]
@@ -4015,12 +4098,14 @@
 
 
 <h1 id="array_2">array的分割<a class="headerlink" href="#array_2" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[ 0  1  2  3]
  [ 4  5  6  7]
@@ -4029,9 +4114,10 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr2</span><span class="p">,</span><span class="n">arr3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#水平方向分割，分成2份split(分割)  将arr1切隔成2个arr2和arr3,在水平方向</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[0 1]
  [4 5]
@@ -4043,10 +4129,11 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr4</span><span class="p">,</span><span class="n">arr5</span><span class="p">,</span><span class="n">arr6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1">#垂直方向分割，分成3份</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr5</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr6</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[0 1 2 3]]
 [[4 5 6 7]]
@@ -4055,10 +4142,11 @@
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr2</span><span class="p">,</span><span class="n">arr3</span><span class="p">,</span><span class="n">arr4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#水平方向分割，分成3份,没办法切割成相同大小的部分</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr4</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>---------------------------------------------------------------------------
 
@@ -4098,10 +4186,11 @@ ValueError: array split does not result in an equal division
 
 
 <div class="codehilite"><pre><span></span><span class="n">arr7</span><span class="p">,</span><span class="n">arr8</span><span class="p">,</span><span class="n">arr9</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="c1">#水平方向分割，分成3份，不等分割</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr7</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr8</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr9</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr9</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[0 1]
  [4 5]
@@ -4116,10 +4205,11 @@ ValueError: array split does not result in an equal division
 
 
 <div class="codehilite"><pre><span></span><span class="n">arrv1</span><span class="p">,</span><span class="n">arrv2</span><span class="p">,</span><span class="n">arrv3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vsplit</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="c1">#垂直分割</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arrv1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arrv2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arrv3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrv1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrv2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrv3</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[0 1 2 3]]
 [[4 5 6 7]]
@@ -4128,9 +4218,10 @@ ValueError: array split does not result in an equal division
 
 
 <div class="codehilite"><pre><span></span><span class="n">arrh1</span><span class="p">,</span><span class="n">arrh2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hsplit</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="c1">#水平分割</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arrh1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arrh2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrh1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrh2</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[[0 1]
  [4 5]
@@ -4142,19 +4233,23 @@ ValueError: array split does not result in an equal division
 
 
 <h1 id="numpy_3">numpy的深拷贝,浅拷贝<a class="headerlink" href="#numpy_3" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="n">arr2</span> <span class="o">=</span> <span class="n">arr1</span><span class="c1">#arr1,arr2共享一块内存，浅拷贝</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="n">arr2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c1">#浅拷贝,同步改变</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[5 2 3]
 [5 2 3]
@@ -4164,10 +4259,12 @@ ValueError: array split does not result in an equal division
 <div class="codehilite"><pre><span></span><span class="n">arr3</span> <span class="o">=</span> <span class="n">arr1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="c1">#深拷贝这里就相当于普通变量的deepcopy</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="n">arr3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr3</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>[5 2 3]
 [10  2  3]
@@ -4228,11 +4325,11 @@ ValueError: array split does not result in an equal division
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -4261,6 +4358,10 @@ ValueError: array split does not result in an equal division
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

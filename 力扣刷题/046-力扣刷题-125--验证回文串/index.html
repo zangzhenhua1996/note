@@ -3313,11 +3313,12 @@
             <span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">j</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
                 <span class="n">j</span><span class="o">-=</span><span class="mi">1</span>
             <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">!=</span><span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>  <span class="c1">#如果前后的字符不一致就返回False</span>
-                <span class="k">return</span> <span class="bp">False</span>
+                <span class="k">return</span> <span class="kc">False</span>
             <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>  <span class="c1">#如果一致就继续向下判断</span>
             <span class="n">j</span><span class="o">-=</span><span class="mi">1</span>
-        <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="kc">True</span>
 </pre></div>
+
 
 <p>主要是用了python的一个函数
 isalnum() 判断的是一个字符是不是正文字符也就是abx123这种</p>
@@ -3377,11 +3378,11 @@ isalnum() 判断的是一个字符是不是正文字符也就是abx123这种</p>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3410,6 +3411,10 @@ isalnum() 判断的是一个字符是不是正文字符也就是abx123这种</p>
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

@@ -3508,12 +3508,13 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;初始化音乐播放对象&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;初始化音乐播放对象&quot;</span><span class="p">)</span>
 
 <span class="n">player</span> <span class="o">=</span> <span class="n">MusicPlayer</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
 </pre></div>
+
 
 <h2 id="03-python">03. Python 中的单例<a class="headerlink" href="#03-python" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3526,30 +3527,34 @@
 </li>
 </ul>
 <p><img alt="023_单例流程.png" src="../013python单例设计模式.image/14555448-7d55a9be1ff66e08.png" /></p>
-<p><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">MusicPlayer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">MusicPlayer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="c1"># 定义类属性记录单例对象引用</span>
-    <span class="n">instance</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="c1"># 1. 判断类属性是否已经被赋值</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
         <span class="c1">#否则的话返回的是一开始的对象的地址,这样就实现了每次都是这一个对象,实现单例</span>
         <span class="c1"># 2. 返回类属性的单例引用</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance</span>
 <span class="c1"># 创建多个对象</span>
 <span class="n">player1</span> <span class="o">=</span> <span class="n">MusicPlayer</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">player1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">player1</span><span class="p">)</span>
 
 <span class="n">player2</span> <span class="o">=</span> <span class="n">MusicPlayer</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">player2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">player2</span><span class="p">)</span>
 </pre></div>
-执行结果:
+
+
+<p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">MusicPlayer</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f48180d3940</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">MusicPlayer</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f48180d3940</span><span class="o">&gt;</span>
-</pre></div></p>
+</pre></div>
+
+
 <h3 id="_4">只执行一次初始化工作<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>在每次使用 <code>类名()</code> 创建对象时，<code>Python</code> 的解释器都会自动调用两个方法：<ul>
@@ -3574,14 +3579,14 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">MusicPlayer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="c1"># 记录第一个被创建对象的引用</span>
-    <span class="n">instance</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">instance</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># 记录是否执行过初始化动作</span>
-    <span class="n">init_flag</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">init_flag</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="c1"># 1. 判断类属性是否是空对象</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># 2. 调用父类的方法，为第一个对象分配空间</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 
@@ -3591,17 +3596,17 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">MusicPlayer</span><span class="o">.</span><span class="n">init_flag</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;初始化音乐播放器&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;初始化音乐播放器&quot;</span><span class="p">)</span>
 
-            <span class="n">MusicPlayer</span><span class="o">.</span><span class="n">init_flag</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">MusicPlayer</span><span class="o">.</span><span class="n">init_flag</span> <span class="o">=</span> <span class="kc">True</span>
 
 
 <span class="c1"># 创建多个对象</span>
 <span class="n">player1</span> <span class="o">=</span> <span class="n">MusicPlayer</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">player1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">player1</span><span class="p">)</span>
 
 <span class="n">player2</span> <span class="o">=</span> <span class="n">MusicPlayer</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">player2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">player2</span><span class="p">)</span>
 </pre></div>
                 
                   
@@ -3659,11 +3664,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3692,6 +3697,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

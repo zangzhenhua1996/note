@@ -1,0 +1,5071 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/java学习/008-day-08-代码块,继承,final/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>008 day 08 代码块,继承,final - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#0801_" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                008 day 08 代码块,继承,final
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python-web/015-python项目离线部署/" class="md-tabs__link">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../机器学习/013 进入tensorboard/" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../力扣刷题/066-质因数/" class="md-tabs__link">
+          每天一道力扣题
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" class="md-tabs__link">
+          windows10系统使用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" title="067 Pycharm 运行程序后如何 如何查看变量的值" class="md-nav__link">
+      067 Pycharm 运行程序后如何 如何查看变量的值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/066-spyder升级4.0全新版本/" title="066 spyder升级4.0全新版本" class="md-nav__link">
+      066 spyder升级4.0全新版本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/065-Jupyter Notebook 远程访问配置/" title="065 Jupyter_Notebook 远程访问配置" class="md-nav__link">
+      065 Jupyter_Notebook 远程访问配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/015-python项目离线部署/" title="015 python项目离线部署" class="md-nav__link">
+      015 python项目离线部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/013 进入tensorboard/" title="013 进入tensorboard" class="md-nav__link">
+      013 进入tensorboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/012-Keras使用tensorboard训练过程可视化踩过的坑/" title="012-Keras使用tensorboard训练过程可视化踩过的坑" class="md-nav__link">
+      012-Keras使用tensorboard训练过程可视化踩过的坑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/011-关于交叉验证与偏差-方差的一连串理解/" title="011-关于交叉验证与偏差-方差的一连串理解" class="md-nav__link">
+      011-关于交叉验证与偏差-方差的一连串理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/010-统计学习方法--统计学习方法概论要点加代码/" title="010-统计学习方法--统计学习方法概论要点加代码" class="md-nav__link">
+      010-统计学习方法--统计学习方法概论要点加代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/009-统计学习方法--统计学习方法概论详细/" title="009-统计学习方法--统计学习方法概论详细" class="md-nav__link">
+      009-统计学习方法--统计学习方法概论详细
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线/" title="008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线" class="md-nav__link">
+      008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/007-机器学习中的维数灾难/" title="007-机器学习中的维数灾难" class="md-nav__link">
+      007-机器学习中的维数灾难
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/006-sklearn模型的保存加载/" title="006-sklearn模型的保存加载" class="md-nav__link">
+      006-sklearn模型的保存加载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/005-sklearn之交叉验证/" title="005-sklearn之交叉验证" class="md-nav__link">
+      005-sklearn之交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/004-sklearn：特征提取，常用模型，交叉验证/" title="004-sklearn：特征提取，常用模型，交叉验证" class="md-nav__link">
+      004-sklearn：特征提取，常用模型，交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据/" title="003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据" class="md-nav__link">
+      003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/002-预处理数据的方法总结（使用sklearn-preprocessing）/" title="002-预处理数据的方法总结（使用sklearn-preprocessing）" class="md-nav__link">
+      002-预处理数据的方法总结（使用sklearn-preprocessing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/001-sklearn-安装，获取数据，数据预处理/" title="001-sklearn-安装，获取数据，数据预处理" class="md-nav__link">
+      001-sklearn-安装，获取数据，数据预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      每天一道力扣题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        每天一道力扣题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/066-质因数/" title="066-质因数" class="md-nav__link">
+      066-质因数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/065-完全数的求解/" title="065-完全数的求解" class="md-nav__link">
+      065-完全数的求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/064-刷题过程中慎用-[]-is-None/" title="064-刷题过程中慎用-[]-is-None" class="md-nav__link">
+      064-刷题过程中慎用-[]-is-None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/063-LRU缓存算法的python实现/" title="063-LRU缓存算法的python实现" class="md-nav__link">
+      063-LRU缓存算法的python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/062-力扣刷题-344--反转字符串/" title="062-力扣刷题-344--反转字符串" class="md-nav__link">
+      062-力扣刷题-344--反转字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/061-力扣刷题-23--合并K个排序链表/" title="061-力扣刷题-23--合并K个排序链表" class="md-nav__link">
+      061-力扣刷题-23--合并K个排序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/060-力扣刷题-232--用栈实现队列/" title="060-力扣刷题-232--用栈实现队列" class="md-nav__link">
+      060-力扣刷题-232--用栈实现队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/059-力扣刷题-102--二叉树的层次遍历/" title="059-力扣刷题-102--二叉树的层次遍历" class="md-nav__link">
+      059-力扣刷题-102--二叉树的层次遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/058-力扣刷题-226--翻转二叉树/" title="058-力扣刷题-226--翻转二叉树" class="md-nav__link">
+      058-力扣刷题-226--翻转二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/057-力扣刷题-237删除链表中的节点/" title="057-力扣刷题-237删除链表中的节点" class="md-nav__link">
+      057-力扣刷题-237删除链表中的节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/056-力扣刷题-206--反转链表/" title="056-力扣刷题-206--反转链表" class="md-nav__link">
+      056-力扣刷题-206--反转链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/055-力扣刷题-1004--最大连续1的个数-III/" title="055-力扣刷题-1004--最大连续1的个数-III" class="md-nav__link">
+      055-力扣刷题-1004--最大连续1的个数-III
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/054-小球反弹的总路程/" title="054-小球反弹的总路程" class="md-nav__link">
+      054-小球反弹的总路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/053-力扣刷题-235--二叉搜索树的最近公共祖先/" title="053-力扣刷题-235--二叉搜索树的最近公共祖先" class="md-nav__link">
+      053-力扣刷题-235--二叉搜索树的最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/052-力扣刷题-162--寻找峰值/" title="052-力扣刷题-162--寻找峰值" class="md-nav__link">
+      052-力扣刷题-162--寻找峰值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/051-力扣刷题-136--只出现一次的数字/" title="051-力扣刷题-136--只出现一次的数字" class="md-nav__link">
+      051-力扣刷题-136--只出现一次的数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/050-二维生物的旅行-754--到达终点数字/" title="050-二维生物的旅行-754--到达终点数字" class="md-nav__link">
+      050-二维生物的旅行-754--到达终点数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/049--力扣刷题459--重复的子字符串-pin2字符串构造/" title="049--力扣刷题459--重复的子字符串-pin2字符串构造" class="md-nav__link">
+      049--力扣刷题459--重复的子字符串-pin2字符串构造
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/048-pin题目1/" title="048-pin题目1" class="md-nav__link">
+      048-pin题目1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/047-力扣刷题-845--数组中的最长山脉/" title="047-力扣刷题-845--数组中的最长山脉" class="md-nav__link">
+      047-力扣刷题-845--数组中的最长山脉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/046-力扣刷题-125--验证回文串/" title="046-力扣刷题-125--验证回文串" class="md-nav__link">
+      046-力扣刷题-125--验证回文串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/045-力扣刷题-122--买卖股票的最佳时机-II/" title="045-力扣刷题-122--买卖股票的最佳时机-II" class="md-nav__link">
+      045-力扣刷题-122--买卖股票的最佳时机-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/044-力扣刷题-119--杨辉三角-II/" title="044-力扣刷题-119--杨辉三角-II" class="md-nav__link">
+      044-力扣刷题-119--杨辉三角-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/043-力扣刷题-121--买卖股票的最佳时机/" title="043-力扣刷题-121--买卖股票的最佳时机" class="md-nav__link">
+      043-力扣刷题-121--买卖股票的最佳时机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/042-力扣刷题-8--字符串转换整数-(atoi)/" title="042-力扣刷题-8--字符串转换整数-(atoi)" class="md-nav__link">
+      042-力扣刷题-8--字符串转换整数-(atoi)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/041-力扣刷题-118--杨辉三角/" title="041-力扣刷题-118--杨辉三角" class="md-nav__link">
+      041-力扣刷题-118--杨辉三角
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/040-力扣刷题-535--TinyURL-的加密与解密/" title="040-力扣刷题-535--TinyURL-的加密与解密" class="md-nav__link">
+      040-力扣刷题-535--TinyURL-的加密与解密
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/039-力扣刷题-112--路径总和/" title="039-力扣刷题-112--路径总和" class="md-nav__link">
+      039-力扣刷题-112--路径总和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/038-力扣刷题-98--验证二叉搜索树/" title="038-力扣刷题-98--验证二叉搜索树" class="md-nav__link">
+      038-力扣刷题-98--验证二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/037-力扣刷题-110--平衡二叉树--重点进行理解/" title="037-力扣刷题-110--平衡二叉树--重点进行理解" class="md-nav__link">
+      037-力扣刷题-110--平衡二叉树--重点进行理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/036-力扣刷题-166--分数到小数/" title="036-力扣刷题-166--分数到小数" class="md-nav__link">
+      036-力扣刷题-166--分数到小数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/035-字节跳动题目-小球往返路程/" title="035-字节跳动题目-小球往返路程" class="md-nav__link">
+      035-字节跳动题目-小球往返路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/034-力扣刷题-88--合并两个有序数组/" title="034-力扣刷题-88--合并两个有序数组" class="md-nav__link">
+      034-力扣刷题-88--合并两个有序数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/033-力扣刷题-70--爬楼梯/" title="033-力扣刷题-70--爬楼梯" class="md-nav__link">
+      033-力扣刷题-70--爬楼梯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/032-力扣刷题-83--删除排序链表中的重复元素/" title="032-力扣刷题-83--删除排序链表中的重复元素" class="md-nav__link">
+      032-力扣刷题-83--删除排序链表中的重复元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/031-力扣刷题-101--对称二叉树/" title="031-力扣刷题-101--对称二叉树" class="md-nav__link">
+      031-力扣刷题-101--对称二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/030-力扣刷题-111--二叉树的最小深度/" title="030-力扣刷题-111--二叉树的最小深度" class="md-nav__link">
+      030-力扣刷题-111--二叉树的最小深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/029-力扣刷题-104--二叉树的最大深度/" title="029-力扣刷题-104--二叉树的最大深度" class="md-nav__link">
+      029-力扣刷题-104--二叉树的最大深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/028-力扣刷题107--二叉树的层次遍历-II/" title="028-力扣刷题107--二叉树的层次遍历-II" class="md-nav__link">
+      028-力扣刷题107--二叉树的层次遍历-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/027-字节跳动笔试题-循环链表实现约瑟夫环/" title="027-字节跳动笔试题-循环链表实现约瑟夫环" class="md-nav__link">
+      027-字节跳动笔试题-循环链表实现约瑟夫环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/026-力扣刷题-108--将有序数组转换为二叉搜索树/" title="026-力扣刷题-108--将有序数组转换为二叉搜索树" class="md-nav__link">
+      026-力扣刷题-108--将有序数组转换为二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/025-力扣刷题-100-相同的树/" title="025-力扣刷题-100-相同的树" class="md-nav__link">
+      025-力扣刷题-100-相同的树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/024-力扣刷题-66--加一/" title="024-力扣刷题-66--加一" class="md-nav__link">
+      024-力扣刷题-66--加一
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/023-力扣刷题-69--x-的平方根/" title="023-力扣刷题-69--x-的平方根" class="md-nav__link">
+      023-力扣刷题-69--x-的平方根
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/022-力扣刷题-二进制求和/" title="022-力扣刷题-二进制求和" class="md-nav__link">
+      022-力扣刷题-二进制求和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/021-力扣刷题151--翻转字符串里的单词/" title="021-力扣刷题151--翻转字符串里的单词" class="md-nav__link">
+      021-力扣刷题151--翻转字符串里的单词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/020-力扣刷题-58--最后一个单词的长度/" title="020-力扣刷题-58--最后一个单词的长度" class="md-nav__link">
+      020-力扣刷题-58--最后一个单词的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/019-力扣刷题53--最大子序和/" title="019-力扣刷题53--最大子序和" class="md-nav__link">
+      019-力扣刷题53--最大子序和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/018-力扣刷题-38--报数/" title="018-力扣刷题-38--报数" class="md-nav__link">
+      018-力扣刷题-38--报数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/017-46--全排列/" title="017-46--全排列" class="md-nav__link">
+      017-46--全排列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/016-力扣刷题873--最长的斐波那契子序列的长度/" title="016-力扣刷题873--最长的斐波那契子序列的长度" class="md-nav__link">
+      016-力扣刷题873--最长的斐波那契子序列的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/015-力扣刷题35--搜索插入位置/" title="015-力扣刷题35--搜索插入位置" class="md-nav__link">
+      015-力扣刷题35--搜索插入位置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/014-力扣刷题9--回文数/" title="014-力扣刷题9--回文数" class="md-nav__link">
+      014-力扣刷题9--回文数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/013-力扣刷题7--整数反转/" title="013-力扣刷题7--整数反转" class="md-nav__link">
+      013-力扣刷题7--整数反转
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/012-力扣刷题14--最长公共前缀/" title="012-力扣刷题14--最长公共前缀" class="md-nav__link">
+      012-力扣刷题14--最长公共前缀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/011-力扣刷题21--合并两个有序链表/" title="011-力扣刷题21--合并两个有序链表" class="md-nav__link">
+      011-力扣刷题21--合并两个有序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/010-力扣刷题27--移除元素/" title="010-力扣刷题27--移除元素" class="md-nav__link">
+      010-力扣刷题27--移除元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/009-力扣刷题28--实现strStr()/" title="009-力扣刷题28--实现strStr()" class="md-nav__link">
+      009-力扣刷题28--实现strStr()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/008-力扣刷题20--有效的括号/" title="008-力扣刷题20--有效的括号" class="md-nav__link">
+      008-力扣刷题20--有效的括号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/007-力扣刷题26--删除排序数组中的重复项/" title="007-力扣刷题26--删除排序数组中的重复项" class="md-nav__link">
+      007-力扣刷题26--删除排序数组中的重复项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/006-力扣刷题22--括号生成/" title="006-力扣刷题22--括号生成" class="md-nav__link">
+      006-力扣刷题22--括号生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/005-力扣刷题13--罗马数字转整数/" title="005-力扣刷题13--罗马数字转整数" class="md-nav__link">
+      005-力扣刷题13--罗马数字转整数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/004-力扣刷题4--寻找两个有序数组的中位数/" title="004-力扣刷题4--寻找两个有序数组的中位数" class="md-nav__link">
+      004-力扣刷题4--寻找两个有序数组的中位数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/003-力扣刷题3不含有重复字符的-最长子串-的长度/" title="003-力扣刷题3不含有重复字符的-最长子串-的长度" class="md-nav__link">
+      003-力扣刷题3不含有重复字符的-最长子串-的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/002-力扣刷题2-两数相加/" title="002-力扣刷题2-两数相加" class="md-nav__link">
+      002-力扣刷题2-两数相加
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/001-力扣刷题1--两数之和/" title="001-力扣刷题1--两数之和" class="md-nav__link">
+      001-力扣刷题1--两数之和
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      windows10系统使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        windows10系统使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" title="022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装" class="md-nav__link">
+      022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/021win系统新增新建右键Markdown文件及默认UTF-8编码格式/" title="021win系统新增新建右键Markdown文件及默认UTF-8编码格式" class="md-nav__link">
+      021win系统新增新建右键Markdown文件及默认UTF-8编码格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/020-删除关机等按钮/" title="020-删除关机等按钮" class="md-nav__link">
+      020-删除关机等按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/019-windows1809-系统最近的更新出现了bug/" title="019-windows1809-系统最近的更新出现了bug" class="md-nav__link">
+      019-windows1809-系统最近的更新出现了bug
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/018--win10卸载自带的应用/" title="018--win10卸载自带的应用" class="md-nav__link">
+      018--win10卸载自带的应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/017-笔记本软件/" title="017-笔记本软件" class="md-nav__link">
+      017-笔记本软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/016-Java添加环境变量/" title="016-Java添加环境变量" class="md-nav__link">
+      016-Java添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/015-anaconda-添加环境变量/" title="015-anaconda-添加环境变量" class="md-nav__link">
+      015-anaconda-添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）/" title="014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）" class="md-nav__link">
+      014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/013-win10取消应用弹框/" title="013-win10取消应用弹框" class="md-nav__link">
+      013-win10取消应用弹框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/012--win10系统怎么禁用defender/" title="012--win10系统怎么禁用defender" class="md-nav__link">
+      012--win10系统怎么禁用defender
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b/" title="011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b" class="md-nav__link">
+      011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/010-Axmath破解安装使用/" title="010-Axmath破解安装使用" class="md-nav__link">
+      010-Axmath破解安装使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式/" title="007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式" class="md-nav__link">
+      007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/006-picgo图床使用/" title="006-picgo图床使用" class="md-nav__link">
+      006-picgo图床使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/005-win10开机提示用户名和密码不正确的解决办法/" title="005-win10开机提示用户名和密码不正确的解决办法" class="md-nav__link">
+      005-win10开机提示用户名和密码不正确的解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/004-windows下安装pandoc并通过Typora导出pdf和word/" title="004-windows下安装pandoc并通过Typora导出pdf和word" class="md-nav__link">
+      004-windows下安装pandoc并通过Typora导出pdf和word
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/002-几何画板迷你增强版/" title="002-几何画板迷你增强版" class="md-nav__link">
+      002-几何画板迷你增强版
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/001-开机启动项的存储位置/" title="001-开机启动项的存储位置" class="md-nav__link">
+      001-开机启动项的存储位置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0801_" class="md-nav__link">
+    08.01_面向对象(代码块的概述和分类)(了解)(面试的时候会问,开发不用或者很少用)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0802_" class="md-nav__link">
+    08.02_面向对象(代码块的面试题)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0803_" class="md-nav__link">
+    08.03_面向对象(继承案例演示)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0804_" class="md-nav__link">
+    08.04_面向对象(继承的好处和弊端)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0805_java" class="md-nav__link">
+    08.05_面向对象(Java中类的继承特点)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0806_" class="md-nav__link">
+    08.06_面向对象(继承的注意事项和什么时候使用继承)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0807_" class="md-nav__link">
+    08.07_面向对象(继承中成员变量的关系)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0808_thissuper" class="md-nav__link">
+    08.08_面向对象(this和super的区别和应用)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0809_" class="md-nav__link">
+    08.09_面向对象(继承中构造方法的关系)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0810_" class="md-nav__link">
+    08.10_面向对象(继承中构造方法的注意事项)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0811_" class="md-nav__link">
+    08.11_面向对象(继承中的面试题)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0812_" class="md-nav__link">
+    08.12_面向对象(继承中成员方法关系)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0813_" class="md-nav__link">
+    08.13_面向对象(方法重写概述及其应用)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0814_" class="md-nav__link">
+    08.14_面向对象(方法重写的注意事项)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0815_" class="md-nav__link">
+    08.15_面向对象(方法重写的面试题)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0816_" class="md-nav__link">
+    08.16_面向对象(使用继承前的学生和老师案例)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0817_" class="md-nav__link">
+    08.17_面向对象(使用继承后的学生和老师案例)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0818_" class="md-nav__link">
+    08.18_面向对象(猫狗案例分析,实现及测试)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0819_final" class="md-nav__link">
+    08.19_面向对象(final关键字修饰类,方法以及变量的特点)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0820_final" class="md-nav__link">
+    08.20_面向对象(final关键字修饰局部变量)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0821_final" class="md-nav__link">
+    08.21_面向对象(final修饰变量的初始化时机)(掌握)
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>008 day 08 代码块,继承,final</h1>
+                
+                <h3 id="0801_">08.01_面向对象(代码块的概述和分类)(了解)(面试的时候会问,开发不用或者很少用)<a class="headerlink" href="#0801_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:代码块概述</p>
+<ul>
+<li>在Java中，使用{}括起来的代码被称为代码块。</li>
+<li>
+<p>B:代码块分类</p>
+</li>
+<li>
+<p>根据其位置和声明的不同，可以分为局部代码块，构造代码块，静态代码块，同步代码块(多线程讲解)。</p>
+</li>
+<li>C:常见代码块的应用</li>
+<li>
+<p>a:局部代码块 </p>
+<ul>
+<li>
+<p>在方法中出现；限定变量生命周期，及早释放，提高内存利用率</p>
+<ul>
+<li>b:构造代码块 (初始化块)</li>
+</ul>
+</li>
+<li>
+<p>在类中方法外出现；多个构造方法方法中相同的代码存放到一起，每次调用构造都执行，并且在构造方法前执行</p>
+<ul>
+<li>c:静态代码块 </li>
+</ul>
+</li>
+<li>
+<p>在类中方法外出现，并加上static修饰；用于给类进行初始化，在加载的时候就执行，并且只执行一次。</p>
+</li>
+<li>
+<p>一般用于加载驱动</p>
+</li>
+</ul>
+<p>```java
+  class Demo1_Code {
+    public static void main(String[] args) {
+        {
+            int x = 10;                     //限定变量的声明周期
+            System.out.println(x);
+        }</p>
+<div class="codehilite"><pre><span></span>    Student s1 = new Student();
+    System.out.println(&quot;---------------&quot;);
+    Student s2 = new Student(&quot;张三&quot;,23);
+
+}
+
+static {
+    System.out.println(&quot;我是在主方法类中的静态代码块&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Student {
+    private String name;
+    private int age;</p>
+<div class="codehilite"><pre><span></span>public Student(){
+    //study();
+    System.out.println(&quot;空参构造&quot;);
+}                   //空参构造
+
+public Student(String name,int age) {//有参构造
+    //study();
+    this.name = name;
+    this.age = age;
+    System.out.println(&quot;有参构造&quot;);
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public String getName() {
+    return name;
+}
+
+public void setAge(int age) {
+    this.age = age;
+}
+
+public int getAge() {
+    return age;
+}
+
+{                                           //构造代码块:每创建一次对象就会执行一次,优先于构造函数执行
+    //System.out.println(&quot;构造代码块&quot;);
+    study();
+}
+
+public void study() {
+    System.out.println(&quot;学生学习&quot;);
+}
+
+static {                                    //随着类加载而加载,且只执行一次
+    System.out.println(&quot;我是静态代码块&quot;);  //作用:用来给类进行初始化,一般用来加载驱动
+}                                           //静态代码块是优先于主方法执行
+</pre></div>
+
+
+<p>}
+  ```</p>
+<p>执行结果:</p>
+<p>```java
+  我是在主方法类中的静态代码块   //首先执行的是主类的静态代码块
+  10                        //顺序执行代码块 
+  我是静态代码块              //第一次创建对象时执行静态代码块(加载类),只执行一次
+  学生学习                   //构造代码块,先于构造方法执行
+  空参构造                   //执行构造方法</p>
+<hr />
+<p>学生学习
+  有参构造
+  请按任意键继续. . .
+  ```</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="0802_">08.02_面向对象(代码块的面试题)(掌握)<a class="headerlink" href="#0802_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:看程序写结果</li>
+</ul>
+<p>```java
+   class Student {
+    static {
+        System.out.println("Student 静态代码块");
+    }</p>
+<div class="codehilite"><pre><span></span>{
+    System.out.println(&quot;Student 构造代码块&quot;);
+}
+
+public Student() {
+    System.out.println(&quot;Student 构造方法&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Demo2_Student {
+    static {
+        System.out.println("Demo2_Student静态代码块");  //静态代码块都是最先执行的
+    }</p>
+<div class="codehilite"><pre><span></span>public static void main(String[] args) {
+    System.out.println(&quot;我是main方法&quot;);
+
+    Student s1 = new Student();
+    Student s2 = new Student();
+}
+</pre></div>
+
+
+<p>}
+   ```</p>
+<p>执行结果:只要明白每个代码块的执行顺序就可以了</p>
+<p><code>java
+   Demo2_Student静态代码块
+   我是main方法
+   Student 静态代码块
+   Student 构造代码块
+   Student 构造方法
+   Student 构造代码块
+   Student 构造方法
+   请按任意键继续. . .</code></p>
+<h3 id="0803_">08.03_面向对象(继承案例演示)(掌握)<a class="headerlink" href="#0803_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:继承(extends)</p>
+</li>
+<li>
+<p>让类与类之间产生关系,子父类关系 </p>
+</li>
+<li>B:继承案例演示：</li>
+<li>动物类,猫类,狗类</li>
+<li>定义两个属性(颜色,腿的个数)两个功能(吃饭，睡觉)</li>
+<li>
+<p>C:案例演示</p>
+</li>
+<li>
+<p>使用继承前</p>
+<p>```java
+class Demo1_Extends {
+    public static void main(String[] args) {
+        Cat c = new Cat();
+        c.color = "花";
+        c.leg = 4;
+        c.eat();
+        c.sleep();</p>
+<div class="codehilite"><pre><span></span>    System.out.println(c.leg  + &quot;...&quot; + c.color);
+}
+</pre></div>
+
+
+<p>}
+/*
+* A:继承(extends)
+    * 让类与类之间产生关系,子父类关系 
+* B:继承案例演示：
+    * 动物类,猫类,狗类
+    * 定义两个属性(颜色,腿的个数)两个功能(吃饭，睡觉)
+* C:案例演示
+    * 使用继承前
+* D:案例演示
+    * 使用继承后
+*/
+class Animal {
+    String color;                   //动物的颜色
+    int leg;                        //动物腿的个数</p>
+<div class="codehilite"><pre><span></span>public void eat() {             //吃饭的功能
+    System.out.println(&quot;吃饭&quot;);
+}
+
+public void sleep() {           //睡觉的功能
+    System.out.println(&quot;睡觉&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Cat  {
+    String color;                   //动物的颜色
+    int leg;                        //动物腿的个数</p>
+<div class="codehilite"><pre><span></span>public void eat() {             //吃饭的功能
+    System.out.println(&quot;吃饭&quot;);
+}
+
+public void sleep() {           //睡觉的功能
+    System.out.println(&quot;睡觉&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Dog  {
+        String color;                   //动物的颜色
+    int leg;                        //动物腿的个数</p>
+<div class="codehilite"><pre><span></span>public void eat() {             //吃饭的功能
+    System.out.println(&quot;吃饭&quot;);
+}
+
+public void sleep() {           //睡觉的功能
+    System.out.println(&quot;睡觉&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>/*
+extends是继承的意思
+Animal是父类
+Cat和Dog都是子类
+*/
+```</p>
+<p>执行结果:  定义了三个功能重复的类,麻烦</p>
+<p><code>java
+吃饭
+睡觉
+4...花
+请按任意键继续. . .</code></p>
+</li>
+<li>
+<p>D:案例演示</p>
+</li>
+<li>
+<p>使用继承后</p>
+<p>```java
+class Demo1_Extends {
+    public static void main(String[] args) {
+        Cat c = new Cat();
+        c.color = "花";
+        c.leg = 4;
+        c.eat();
+        c.sleep();</p>
+<div class="codehilite"><pre><span></span>    System.out.println(c.leg  + &quot;...&quot; + c.color);
+}
+</pre></div>
+
+
+<p>}
+/*
+* A:继承(extends)
+    * 让类与类之间产生关系,子父类关系 
+* B:继承案例演示：
+    * 动物类,猫类,狗类
+    * 定义两个属性(颜色,腿的个数)两个功能(吃饭，睡觉)
+* C:案例演示
+    * 使用继承前
+* D:案例演示
+    * 使用继承后
+*/
+class Animal {
+    String color;                   //动物的颜色
+    int leg;                        //动物腿的个数</p>
+<div class="codehilite"><pre><span></span>public void eat() {             //吃饭的功能
+    System.out.println(&quot;吃饭&quot;);
+}
+
+public void sleep() {           //睡觉的功能
+    System.out.println(&quot;睡觉&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Cat extends Animal {</p>
+<p>}</p>
+<p>class Dog extends Animal {</p>
+<p>}</p>
+<p>/*
+extends是继承的意思
+Animal是父类
+Cat和Dog都是子类
+*/
+```</p>
+<p>执行结果:</p>
+<p><code>java
+吃饭
+睡觉
+4...花
+请按任意键继续. . .</code></p>
+</li>
+</ul>
+<h3 id="0804_">08.04_面向对象(继承的好处和弊端)(掌握)<a class="headerlink" href="#0804_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:继承的好处<ul>
+<li>a:提高了代码的复用性</li>
+<li>b:提高了代码的维护性</li>
+<li>c:让类与类之间产生了关系，是多态的前提</li>
+</ul>
+</li>
+<li>
+<p>B:继承的弊端</p>
+<ul>
+<li>
+<p>类的耦合性增强了。</p>
+</li>
+<li>
+<p>开发的原则：高内聚，低耦合。</p>
+</li>
+<li>耦合：类与类的关系</li>
+<li>内聚：就是自己完成某件事情的能力</li>
+</ul>
+</li>
+</ul>
+<h3 id="0805_java">08.05_面向对象(Java中类的继承特点)(掌握)<a class="headerlink" href="#0805_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:Java中类的继承特点<ul>
+<li>a:Java只支持单继承，不支持多继承。(一个儿子只能有一个爹)<ul>
+<li>有些语言(python)是支持多继承，格式：extends 类1,类2,...</li>
+</ul>
+</li>
+<li>b:Java支持多层继承(继承体系)</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>
+<p>Java中类的继承特点</p>
+<ul>
+<li>
+<p>如果想用这个体系的所有功能用最底层的类创建对象</p>
+</li>
+<li>
+<p>如果想看这个体系的共性功能,看最顶层的类 </p>
+</li>
+</ul>
+<p>```java
+  class Demo2_Extends {
+    public static void main(String[] args) {
+        DemoC d = new DemoC();
+        d.show();
+        d.method();
+        d.print();</p>
+<div class="codehilite"><pre><span></span>}
+</pre></div>
+
+
+<p>}
+  /*
+  * A:Java中类的继承特点
+    * a:Java只支持单继承，不支持多继承。(一个儿子只能有一个爹)
+        * 有些语言是支持多继承，格式：extends 类1,类2,...
+    * b:Java支持多层继承(继承体系)
+  * B:案例演示
+    * Java中类的继承特点
+        * 如果想用这个体系的所有功能用最底层的类创建对象
+        * 如果想看这个体系的共性功能,看最顶层的类 
+  */
+  class DemoA {
+    public void show() {
+        System.out.println("DemoA");
+    }
+  }</p>
+<p>class DemoB extends DemoA {
+    public void method() {
+        System.out.println("DemoB");
+    }
+  }</p>
+<p>class DemoC extends DemoB {
+    public void print() {
+        System.out.println("DemoC");
+    }
+  }
+  ```</p>
+<p>执行结果:  继承所有父类的方法</p>
+<p><code>java
+  DemoA
+  DemoB
+  DemoC
+  请按任意键继续. . .</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="0806_">08.06_面向对象(继承的注意事项和什么时候使用继承)(掌握)<a class="headerlink" href="#0806_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:继承的注意事项</p>
+<ul>
+<li>a:子类只能继承父类所有非私有的成员(成员方法和成员变量)</li>
+</ul>
+<p>```java
+  class Demo3_Extends {
+    public static void main(String[] args) {
+        Son s = new Son();
+        s.show();
+    }
+  }
+  /*
+  * A:继承的注意事项
+    * a:子类只能继承父类所有非私有的成员(成员方法和成员变量)
+    * b:子类不能继承父类的构造方法，但是可以通过super(马上讲)关键字去访问父类构造方法。
+    * c:不要为了部分功能而去继承
+    * 项目经理 姓名 工号 工资 奖金
+    * 程序员   姓名 工号 工资
+  */</p>
+<p>class Father {
+    private String name;
+    private void show() {
+        System.out.println("Hello World!");
+    }
+  }</p>
+<p>class Son extends Father {
+  }
+  ```</p>
+<p>执行报错: 不能使用父类的私有方法</p>
+<ul>
+<li>
+<p>b:子类不能继承父类的构造方法，但是可以通过super(马上讲)关键字去访问父类构造方法。</p>
+</li>
+<li>
+<p>c:不要为了部分功能而去继承</p>
+</li>
+<li>
+<p>项目经理 姓名 工号 工资 奖金</p>
+</li>
+<li>
+<p>程序员   姓名 工号 工资</p>
+</li>
+<li>B:什么时候使用继承</li>
+<li>继承其实体现的是一种关系："is a"。
+Person
+    Student
+    Teacher
+水果
+    苹果
+    香蕉
+    橘子</li>
+</ul>
+</li>
+</ul>
+<p>采用假设法。
+    如果有两个类A,B。只有他们符合A是B的一种，或者B是A的一种，就可以考虑使用继承。</p>
+<h3 id="0807_">08.07_面向对象(继承中成员变量的关系)(掌握)<a class="headerlink" href="#0807_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:案例演示</p>
+<ul>
+<li>a:不同名的变量</li>
+</ul>
+</li>
+<li>
+<p>b:同名的变量</p>
+<p>```java
+  class Demo4_Extends {
+    public static void main(String[] args) {
+        Son s = new Son();
+        s.print();
+    }
+  }
+  /*
+  * A:案例演示
+    * a:不同名的变量
+    * b:同名的变量
+        子父类出现同名的变量只是在讲课中举例子有,在开发中是不会出现这种情况的
+        子类继承父类就是为了使用父类的成员,那么如果定义了同名的成员变量没有意义了
+  */</p>
+<p>class Father {
+    int num1 = 10;
+    int num2 = 30;
+  }</p>
+<p>class Son extends Father {
+    int num2 = 20;</p>
+<div class="codehilite"><pre><span></span>public void print() {
+    System.out.println(this.num1);              //this既可以调用本类的,也可以调用父类的(本类没有的情况下)
+    System.out.println(this.num2);              //就近原则,子类有就不用父类的了
+    System.out.println(super.num2);             //利用super调用父类
+}
+</pre></div>
+
+
+<p>} 
+  ```</p>
+<p>执行结果:</p>
+<p><code>java
+  10   //父类的num1
+  20   //本类的num2,自己有就就近用
+  30   //使用super调用父类的num2
+  请按任意键继续. . .</code></p>
+</li>
+</ul>
+<h3 id="0808_thissuper">08.08_面向对象(this和super的区别和应用)(掌握)<a class="headerlink" href="#0808_thissuper" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:this和super都代表什么<ul>
+<li>this:代表当前对象的引用,谁来调用我,我就代表谁</li>
+<li>super:代表当前对象父类的引用</li>
+</ul>
+</li>
+<li>B:this和super的使用区别<ul>
+<li>a:调用成员变量<ul>
+<li>this.成员变量 调用本类的成员变量,也可以调用父类的成员变量(本类与父类重名变量的就近调用本类)</li>
+<li>super.成员变量 调用父类的成员变量</li>
+</ul>
+</li>
+<li>b:调用构造方法<ul>
+<li>this(...) 调用本类的构造方法</li>
+<li>super(...)    调用父类的构造方法</li>
+</ul>
+</li>
+<li>c:调用成员方法<ul>
+<li>this.成员方法 调用本类的成员方法,也可以调用父类的方法</li>
+<li>super.成员方法 调用父类的成员方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="0809_">08.09_面向对象(继承中构造方法的关系)(掌握)<a class="headerlink" href="#0809_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:案例演示</p>
+<ul>
+<li>子类中所有的构造方法默认都会访问父类中空参数的构造方法</li>
+</ul>
+<p>```java
+  class Demo5_Extends {
+    public static void main(String[] args) {
+        Son s = new Son();
+    }
+  }
+  /*
+  * A:案例演示
+    * 子类中所有的构造方法默认都会访问父类中空参数的构造方法
+  * B:为什么呢?
+    * 因为子类会继承父类中的数据，可能还会使用父类的数据。
+    * 所以，子类初始化之前，一定要先完成父类数据的初始化。</p>
+<div class="codehilite"><pre><span></span>* 其实：
+    * 每一个构造方法的第一条语句默认都是：super() Object类最顶层的父类。
+</pre></div>
+
+
+<p>*/</p>
+<p>class Father extends Object {
+    public Father() {
+        super();
+        System.out.println("Father 的构造方法");
+    }
+  }</p>
+<p>class Son extends Father {
+    public Son() {
+        super();                            //这是一条语句,如果不写,系统会默认加上,用来访问父类中的空参构造
+        System.out.println("Son 的构造方法");
+    }
+  }
+  ```</p>
+<p>执行结果:</p>
+<p><code>java
+  Father 的构造方法   //先执行父类的无参构造方法
+  Son 的构造方法      //执行本类的构造方法
+  请按任意键继续. . .</code></p>
+</li>
+<li>
+<p>B:为什么呢?</p>
+<ul>
+<li>因为子类会继承父类中的数据，可能还会使用父类的数据。</li>
+<li>
+<p>所以，子类初始化之前，一定要先完成父类数据的初始化。</p>
+</li>
+<li>
+<p>其实：</p>
+<ul>
+<li>每一个构造方法的第一条语句默认都是：super() Object类最顶层的父类。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="0810_">08.10_面向对象(继承中构造方法的注意事项)(掌握)<a class="headerlink" href="#0810_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:案例演示<ul>
+<li>父类没有无参构造方法,子类怎么办?</li>
+<li>super解决</li>
+<li>this解决</li>
+</ul>
+</li>
+<li>
+<p>B:注意事项</p>
+<ul>
+<li>super(…)或者this(….)必须出现在构造方法的第一条语句上</li>
+</ul>
+<p>```java
+  class Demo6_Extends {
+    public static void main(String[] args) {
+        Son s1 = new Son();
+        System.out.println(s1.getName() + "..." + s1.getAge());
+        System.out.println("--------------------");
+        Son s2 = new Son("张三",23);
+        System.out.println(s2.getName() + "..." + s2.getAge());
+    }
+  }
+  /*
+  * A:案例演示
+    * 父类没有无参构造方法,子类怎么办?
+    * super解决
+    * this解决
+  * B:注意事项
+    * super(…)或者this(….)必须出现在构造方法的第一条语句上
+  */
+  class Father {
+    private String name;            //姓名
+    private int age;                //年龄</p>
+<div class="codehilite"><pre><span></span>public Father() {               //空参构造
+    System.out.println(&quot;Father 空参构造&quot;);
+}
+
+public Father(String name,int age) {    //有参构造
+    this.name = name;
+    this.age = age;
+    System.out.println(&quot;Father 有参构造&quot;);
+}
+
+public void setName(String name) {  //设置姓名
+    this.name = name;
+}
+
+public String getName() {           //获取姓名
+    return name;
+}
+
+public void setAge(int age) {       //设置年龄
+    this.age = age;
+}
+
+public int getAge() {               //获取年龄
+    return age;
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Son extends Father {
+    public Son() {                      //空参构造
+        this("王五",25);              //本类中的有参构造方法
+        //super("李四",24);               //调用父类中的构造方法     super跟this不能同时用</p>
+<div class="codehilite"><pre><span></span>    System.out.println(&quot;Son 空参构造&quot;);
+}
+
+public Son(String name,int age) {   //有参构造
+    super(name,age);   //调用父类的有参构造方法(解决父类没有无参构造方法的问题)
+    System.out.println(&quot;Son 有参构造&quot;);
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+<p>执行结果:</p>
+<p>```java
+  Father 有参构造  <br />
+  Son 有参构造
+  Son 空参构造
+  王五...25
+       //首先空参构造创建对象,在创建本类对象时开始执行本类的空参构造方法,空参构造方法中使用了this()调用本类的有参构造方法,进入到有参构造方法中,有参构造方法使用了super()调用了父类的有参构造方法,因此进入父类的有参构造方法.所以打印的顺序如上</p>
+<hr />
+<p>Father 有参构造
+  Son 有参构造
+  张三...23
+  请按任意键继续. . .
+  ```</p>
+</li>
+</ul>
+<h3 id="0811_">08.11_面向对象(继承中的面试题)(掌握)<a class="headerlink" href="#0811_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:案例演示</p>
+</li>
+<li>
+<p>```java
+  class Fu{
+    public int num = 10;
+    public Fu(){
+        System.out.println("fu");
+    }
+  }
+  class Zi extends Fu{
+    public int num = 20;
+    public Zi(){
+        //super();   //默认项
+        System.out.println("zi");
+    }
+    public void show(){
+        int num = 30;
+        System.out.println(num);
+        System.out.println(this.num);  //本类
+        System.out.println(super.num);  //父类
+    }
+  }
+  class Test1_Extends {
+    public static void main(String[] args) {
+        Zi z = new Zi();   //先输出构造方法中的内容
+        z.show();
+    }
+  }</p>
+</li>
+</ul>
+<p>```</p>
+<ul>
+<li>执行结果:</li>
+</ul>
+<p><code>java
+  fu
+  zi
+  30
+  20
+  10
+  请按任意键继续. . .
+      //首先空参构造对象,先去调用父类的空参构造方法,输出的是fu,然后执行本类的空参构造方法输出的是zi,然后执行的是show函数,一开始打印的是num就是30,然后使用this调用本类的num属性20,最后使用super调用父类的num属性</code></p>
+<ul>
+<li>B案例演示</li>
+</ul>
+<p>```java
+  class Test2_Extends {
+    public static void main(String[] args) {
+        Zi z = new Zi();
+    }
+    /*
+    1,jvm调用了main方法,main进栈
+    2,遇到Zi z = new Zi();
+    会先将Fu.class和Zi.class分别加载进内存,再创建对象,
+    当Fu.class加载进内存
+    父类的静态代码块会随着Fu.class一起加载,当Zi.class加载进内存,子类的静态代码块会随着Zi.class一起加载</p>
+<div class="codehilite"><pre><span></span>第一个输出,静态代码块Fu,第二个输出静态代码块Zi
+3,走Zi类的构造方法,因为java中是分层初始化的,先初始化父类,再初始化子类,所以先走的父类构造,但是在执行
+父类构造时,发现父类有构造代码块,构造代码块是优先于构造方法执行的所以
+第三个输出构造代码块Fu,第四个输出构造方法Fu
+4,Fu类初始化结束,子类初始化,第五个输出的是构造代码块Zi,构造方法Zi
+*/
+</pre></div>
+
+
+<p>}
+  class Fu {
+    static {
+        System.out.println("静态代码块Fu");
+    }</p>
+<div class="codehilite"><pre><span></span>{
+    System.out.println(&quot;构造代码块Fu&quot;);
+}
+
+public Fu() {
+    System.out.println(&quot;构造方法Fu&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Zi extends Fu {
+    static {
+        System.out.println("静态代码块Zi");
+    }</p>
+<div class="codehilite"><pre><span></span>{
+    System.out.println(&quot;构造代码块Zi&quot;);
+}
+
+public Zi() {
+    System.out.println(&quot;构造方法Zi&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>```</p>
+<p>执行结果:</p>
+<p>```java
+  静态代码块Fu
+  静态代码块Zi
+  构造代码块Fu
+  构造方法Fu
+  构造代码块Zi
+  构造方法Zi
+  请按任意键继续. . .
+        /*
+    1,jvm调用了main方法,main进栈
+    2,遇到Zi z = new Zi();
+    会先将Fu.class和Zi.class分别加载进内存,再创建对象,
+    当Fu.class加载进内存
+    父类的静态代码块会随着Fu.class一起加载,当Zi.class加载进内存,子类的静态代码块会随着Zi.class一起加载</p>
+<div class="codehilite"><pre><span></span>第一个输出,静态代码块Fu,第二个输出静态代码块Zi
+3,走Zi类的构造方法,因为java中是分层初始化的,先初始化父类,再初始化子类,所以先走的父类构造,但是在执行
+父类构造时,发现父类有构造代码块,构造代码块是优先于构造方法执行的所以
+第三个输出构造代码块Fu,第四个输出构造方法Fu
+4,Fu类初始化结束,子类初始化,第五个输出的是构造代码块Zi,构造方法Zi
+*/
+</pre></div>
+
+
+<p>```</p>
+<h3 id="0812_">08.12_面向对象(继承中成员方法关系)(掌握)<a class="headerlink" href="#0812_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:案例演示</p>
+<ul>
+<li>
+<p>a:不同名的方法</p>
+</li>
+<li>
+<p>b:同名的方法</p>
+</li>
+</ul>
+<p>```java
+  class Demo7_Extends {
+    public static void main(String[] args) {
+        Son s = new Son();
+        s.print();
+        s.method();
+    }
+  }
+  /*
+  * a:不同名的方法
+  * b:同名的方法
+  */</p>
+<p>class Father {
+    public void print() {
+        System.out.println("Fu print");
+    }
+  }</p>
+<p>class Son extends Father {
+    public void method() {
+        System.out.println("Zi Method");
+    }</p>
+<div class="codehilite"><pre><span></span>public void print() {
+    super.print();                          //super可以调用父类的成员方法
+    System.out.println(&quot;Zi print&quot;);
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+<p>执行结果:</p>
+<p><code>java
+  Fu print
+  Zi print
+  Zi Method
+  请按任意键继续. . .
+      //优先使用的是本类中有的方法</code></p>
+</li>
+</ul>
+<h3 id="0813_">08.13_面向对象(方法重写概述及其应用)(掌握)<a class="headerlink" href="#0813_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:什么是方法重写</p>
+<ul>
+<li>重写:子父类出现了一模一样的方法(注意:返回值类型可以是子父类,这个我们学完面向对象讲) </li>
+<li>
+<p>B:方法重写的应用：</p>
+</li>
+<li>
+<p>当子类需要父类的功能，而功能主体子类有自己特有内容时，可以重写父类中的方法。这样，即沿袭了父类的功能，又定义了子类特有的内容。</p>
+</li>
+<li>
+<p>C:案例演示</p>
+</li>
+<li>
+<p>a:定义一个手机类。</p>
+</li>
+</ul>
+<p>```java
+  class Demo7_Phone {
+    public static void main(String[] args) {
+        Ios8 i = new Ios8();
+        i.siri();
+        i.call();
+    }
+  }</p>
+<p>/*
+  B:方法重写的应用：
+    * 当子类需要父类的功能，而功能主体子类有自己特有内容时，可以重写父类中的方法。这样，即沿袭了父类的功能，又定义了子类特有的内容。
+    ios7系统 siri speak English
+    ios8系统 siri 说中文
+  */</p>
+<p>class Ios7 {
+    public void call() {
+        System.out.println("打电话");
+    }</p>
+<div class="codehilite"><pre><span></span>public void siri() {
+    System.out.println(&quot;speak English&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Ios8 extends Ios7 {
+    public void siri() {</p>
+<div class="codehilite"><pre><span></span>    System.out.println(&quot;说中文&quot;);
+    super.siri();
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+<p>执行结果:</p>
+<p><code>java
+  说中文
+  speak English
+  打电话
+  请按任意键继续. . .
+      //重写方法的同时使用super.方法调用父类的方法,既继承了父类的方法,又有自己特殊的功能</code></p>
+</li>
+</ul>
+<h3 id="0814_">08.14_面向对象(方法重写的注意事项)(掌握)<a class="headerlink" href="#0814_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:方法重写注意事项</p>
+<ul>
+<li>a:父类中私有方法不能被重写<ul>
+<li>因为父类私有方法子类根本就无法继承</li>
+</ul>
+</li>
+<li>b:子类重写父类方法时，访问权限不能更低<ul>
+<li>最好就一致</li>
+</ul>
+</li>
+<li>
+<p>c:父类静态方法，子类也必须通过静态方法进行重写</p>
+<ul>
+<li>其实这个算不上方法重写，但是现象确实如此，至于为什么算不上方法重写，多态中我会讲解(静态只能覆盖静态)</li>
+</ul>
+</li>
+<li>
+<p>子类重写父类方法的时候，最好声明一模一样。</p>
+</li>
+<li>
+<p>B:案例演示</p>
+</li>
+<li>
+<p>方法重写注意事项</p>
+</li>
+</ul>
+<p>```java
+  class Demo8_双桨 {
+    public static void main(String[] args) {
+        DayOne d = new DayOne();
+        d.泡妞();
+        d.print();
+    }
+  }
+  /*
+    * a:父类中私有方法不能被重写
+        * 因为父类私有方法子类根本就无法继承
+    * b:子类重写父类方法时，访问权限不能更低
+        * 最好就一致
+    * c:父类静态方法，子类也必须通过静态方法进行重写
+        * 其实这个算不上方法重写，但是现象确实如此，至于为什么算不上方法重写，多态中我会讲解(静态只能覆盖静态)</p>
+<div class="codehilite"><pre><span></span>* 子类重写父类方法的时候，最好声明一模一样。
+</pre></div>
+
+
+<p>*/
+  class 双桨 {
+    public void sing() {
+        System.out.println("唱红歌");
+    }</p>
+<div class="codehilite"><pre><span></span>public void 泡妞() {
+    System.out.println(&quot;唱红歌搞定林夕合鸟女士&quot;);
+}
+
+public static void print() {
+    System.out.println(&quot;Fu print&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class DayOne extends 双桨 {
+    public void 泡妞() {
+        System.out.println("霸王硬上弓");
+    }</p>
+<div class="codehilite"><pre><span></span>public static void print() {                //静态只能覆盖静态,其实不算重写,多态时候详细讲解
+    System.out.println(&quot;Zi print&quot;);
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+<p>执行结果:</p>
+<p><code>java
+  霸王硬上弓
+  Zi print
+  请按任意键继续. . .
+      //子类的方法覆盖了父类的方法</code></p>
+</li>
+</ul>
+<h3 id="0815_">08.15_面向对象(方法重写的面试题)(掌握)<a class="headerlink" href="#0815_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:方法重写的面试题</p>
+<ul>
+<li>Override和Overload的区别?Overload能改变返回值类型吗?</li>
+<li>overload可以改变返回值类型,只看参数列表</li>
+<li>
+<p>方法重写：子类中出现了和父类中方法声明一模一样的方法。与返回值类型有关,返回值是一致(或者是子父类)的</p>
+</li>
+<li>
+<p>方法重载：本类中出现的方法名一样，参数列表不同的方法。与返回值类型无关。</p>
+</li>
+<li>
+<p>子类对象调用方法的时候：</p>
+<ul>
+<li>先找子类本身，再找父类。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="0816_">08.16_面向对象(使用继承前的学生和老师案例)(掌握)<a class="headerlink" href="#0816_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:案例演示</p>
+<ul>
+<li>
+<p>使用继承前的学生和老师案例</p>
+</li>
+<li>
+<p>属性:姓名,年龄</p>
+</li>
+<li>
+<p>行为:吃饭</p>
+</li>
+<li>
+<p>老师有特有的方法:讲课</p>
+</li>
+<li>
+<p>学生有特有的方法:学习</p>
+</li>
+</ul>
+<p>```java
+  class Test3_Person {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+  }
+  /*
+  * 使用继承前的学生和老师案例
+    * 属性:姓名,年龄
+    * 行为:吃饭
+    * 老师有特有的方法:讲课
+    * 学生有特有的方法:学习
+  */</p>
+<p>class Student {
+    private String name;                    //姓名
+    private int age;                        //年龄</p>
+<div class="codehilite"><pre><span></span>public Student() {}                     //空参构造
+
+public Student(String name,int age) {   //有参构造
+    this.name = name;
+    this.age = age;
+}
+
+public void setName(String name) {      //设置姓名
+    this.name = name;
+}
+
+public String getName() {               //获取姓名
+    return name;
+}
+
+public void setAge(int age) {           //设置年龄
+    this.age = age;
+}
+
+public int getAge() {                   //获取年龄
+    return age;
+}
+
+public void eat() {                     //吃饭
+    System.out.println(&quot;学生吃饭&quot;);
+}
+
+public void study() {                   //学习
+    System.out.println(&quot;学生学习&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Teacher {
+    private String name;                    //姓名
+    private int age;                        //年龄</p>
+<div class="codehilite"><pre><span></span>public Teacher() {}                     //空参构造
+
+public Teacher(String name,int age) {   //有参构造
+    this.name = name;
+    this.age = age;
+}
+
+public void setName(String name) {      //设置姓名
+    this.name = name;
+}
+
+public String getName() {               //获取姓名
+    return name;
+}
+
+public void setAge(int age) {           //设置年龄
+    this.age = age;
+}
+
+public int getAge() {                   //获取年龄
+    return age;
+}
+
+public void eat() {                     //吃饭
+    System.out.println(&quot;老师吃饭&quot;);
+}
+
+public void teach() {                   //学习
+    System.out.println(&quot;老师讲课&quot;);
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+</li>
+</ul>
+<h3 id="0817_">08.17_面向对象(使用继承后的学生和老师案例)(掌握)<a class="headerlink" href="#0817_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:案例演示</p>
+<ul>
+<li>使用继承后的学生和老师案例</li>
+</ul>
+<p>```java
+  class Test4_Person {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.setName("张三");
+        s1.setAge(23);
+        System.out.println(s1.getName() + "..." + s1.getAge());
+        s1.eat();
+        s1.study();</p>
+<div class="codehilite"><pre><span></span>    System.out.println(&quot;------------------&quot;);
+    Student s2 = new Student(&quot;李四&quot;,24);
+    System.out.println(s2.getName() + &quot;...&quot; + s2.getAge());
+    s2.eat();
+    s2.study();
+}
+</pre></div>
+
+
+<p>}
+  /*
+  * 使用继承后的学生和老师案例
+  */</p>
+<p>class Person {
+    private String name;                    //姓名
+    private int age;                        //年龄</p>
+<div class="codehilite"><pre><span></span>public Person() {}                      //空参构造
+
+public Person(String name,int age) {    //有参构造
+    this.name = name;
+    this.age = age;
+}
+
+public void setName(String name) {      //设置姓名
+    this.name = name;
+}
+
+public String getName() {               //获取姓名
+    return name;
+}
+
+public void setAge(int age) {           //设置年龄
+    this.age = age;
+}
+
+public int getAge() {                   //获取年龄
+    return age;
+}
+
+public void eat() {                     //吃饭
+    System.out.println(name  + &quot;吃饭&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Student extends Person {
+    public Student() {}                     //空参构造</p>
+<div class="codehilite"><pre><span></span>public Student(String name,int age) {
+    super(name,age);
+}
+
+public void study() {
+    System.out.println(this.getName() + &quot;学习&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Teacher extends Person {
+    public Teacher() {}                     //空参构造</p>
+<div class="codehilite"><pre><span></span>public Teacher(String name,int age) {
+    super(name,age);     //调用父类的有参构造
+}
+
+public void teach() {
+    System.out.println(this.getName() + &quot;讲课&quot;);
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+<p>执行结果:</p>
+<p>```java
+  张三...23
+  张三吃饭
+  张三学习</p>
+<hr />
+<p>李四...24
+  李四吃饭
+  李四学习
+  请按任意键继续. . .
+  ```</p>
+</li>
+</ul>
+<h3 id="0818_">08.18_面向对象(猫狗案例分析,实现及测试)(掌握)<a class="headerlink" href="#0818_" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:猫狗案例分析</li>
+<li>
+<p>B:案例演示</p>
+<ul>
+<li>
+<p>猫狗案例继承版</p>
+</li>
+<li>
+<p>属性:毛的颜色,腿的个数</p>
+</li>
+<li>
+<p>行为:吃饭</p>
+</li>
+<li>
+<p>猫特有行为:抓老鼠catchMouse</p>
+</li>
+<li>
+<p>狗特有行为:看家lookHome</p>
+</li>
+</ul>
+<p>```java
+  class Test5_Animal {
+    public static void main(String[] args) {
+        Cat c1 = new Cat("花",4);
+        System.out.println(c1.getColor() + "..." + c1.getLeg());
+        c1.eat();
+        c1.catchMouse();</p>
+<div class="codehilite"><pre><span></span>    Dog d1 = new Dog(&quot;黑&quot;,2);
+    System.out.println(d1.getColor() + &quot;...&quot; + d1.getLeg());
+    d1.eat();
+    d1.lookHome();
+}
+</pre></div>
+
+
+<p>}
+  /*
+  * A:猫狗案例分析
+  * B:案例演示
+    * 猫狗案例继承版
+    * 属性:毛的颜色,腿的个数
+    * 行为:吃饭
+    * 猫特有行为:抓老鼠catchMouse
+    * 狗特有行为:看家lookHome
+  */</p>
+<p>class Animal {
+    private String color;                   //毛的颜色
+    private int leg;                        //腿的个数</p>
+<div class="codehilite"><pre><span></span>public Animal(){}
+
+public Animal(String color,int leg) {
+    this.color = color;
+    this.leg = leg;
+}
+
+public void setColor(String color) {    //设置颜色
+    this.color = color;
+}
+
+public String getColor() {              //获取颜色
+    return color;
+}
+
+public void setLeg(int leg) {           //设置腿的个数
+    this.leg = leg;
+}
+
+public int getLeg() {                   //获取腿的个数
+    return leg;
+}
+
+public void eat() {                     //吃饭
+    System.out.println(&quot;吃饭&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Cat extends Animal {
+    public Cat() {}                         //空参构造</p>
+<div class="codehilite"><pre><span></span>public Cat(String color,int leg) {      //有参构造
+    super(color,leg);
+}
+
+public void eat() {                     //吃鱼
+    System.out.println(&quot;猫吃鱼&quot;);
+}
+
+public void catchMouse() {              //抓老鼠
+    System.out.println(&quot;抓老鼠&quot;);
+}
+</pre></div>
+
+
+<p>}</p>
+<p>class Dog extends Animal {
+    public Dog() {}                         //空参构造</p>
+<div class="codehilite"><pre><span></span>public Dog(String color,int leg) {      //有参构造
+    super(color,leg);
+}
+
+public void eat() {                     //吃肉
+    System.out.println(&quot;狗吃肉&quot;);
+}
+
+public void lookHome() {                //看家
+    System.out.println(&quot;看家&quot;);
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+</li>
+</ul>
+<h3 id="0819_final">08.19_面向对象(final关键字修饰类,方法以及变量的特点)(掌握)<a class="headerlink" href="#0819_final" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:final概述</li>
+<li>B:final修饰特点<ul>
+<li>修饰类，类不能被继承</li>
+<li>修饰变量，变量就变成了常量，只能被赋值一次</li>
+<li>修饰方法，方法不能被重写</li>
+</ul>
+</li>
+<li>
+<p>C:案例演示</p>
+<ul>
+<li>final修饰特点</li>
+</ul>
+<p>```java
+  class Demo1_Final {
+    public static void main(String[] args) {
+        Son s = new Son();
+        s.print();
+    }
+  }
+  /*
+  * A:final概述
+    final是最终的
+  * B:final修饰特点
+    * 修饰类，类不能被继承
+    * 修饰变量，变量就变成了常量，只能被赋值一次
+    * 修饰方法，方法不能被重写
+  * C:案例演示
+    * final修饰特点
+  */</p>
+<p>/<em>final class Father {
+    public void print() {
+        System.out.println("访问底层数据资源");
+    }
+  }</em>/</p>
+<p>class Son /<em>extends Father</em>/ {
+    final int NUM = 10;                     //常量命名规范,如果是一个单词,所有字母大写,如果是多个单词,每个单词都大写,中间用下划线隔开
+    public static final double PI = 3.14;   //final修饰变量叫做常量,一般会与public static共用
+    public void print() {
+        //NUM = 20;  //使用了final关键字不能再次赋值
+        System.out.println(NUM);
+    }
+  }
+  ```</p>
+</li>
+</ul>
+<h3 id="0820_final">08.20_面向对象(final关键字修饰局部变量)(掌握)<a class="headerlink" href="#0820_final" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:案例演示</p>
+<ul>
+<li>
+<p>方法内部或者方法声明上都演示一下(了解)</p>
+</li>
+<li>
+<p>基本类型，是值不能被改变</p>
+</li>
+<li>
+<p>引用类型，是地址值不能被改变,对象中的属性可以改变</p>
+</li>
+</ul>
+<p>```java
+  class Demo2_Final {
+    public static void main(String[] args) {
+        final int num = 10;
+        //num = 20;
+        System.out.println(num);</p>
+<div class="codehilite"><pre><span></span>    final Person p = new Person(&quot;张三&quot;,23);
+    //p = new Person(&quot;李四&quot;,24);
+    p.setName(&quot;李四&quot;);
+    p.setAge(24);
+
+    System.out.println(p.getName() + &quot;...&quot; + p.getAge());
+
+    method(10);
+    method(20);
+}
+
+public static void method(final int x) {
+    System.out.println(x);
+}
+</pre></div>
+
+
+<p>}
+  /*
+  * A:案例演示
+    * 方法内部或者方法声明上都演示一下(了解)</p>
+<div class="codehilite"><pre><span></span>* 基本类型，是值不能被改变
+* 引用类型，是地址值不能被改变,对象中的属性可以改变
+</pre></div>
+
+
+<p>*/</p>
+<p>class Person {
+    private String name;            //姓名
+    private int age;                //年龄</p>
+<div class="codehilite"><pre><span></span>public Person(){}               //空参构造
+
+public Person(String name,int age) {
+    this.name = name;
+    this.age = age;
+}
+
+public void setName(String name) {  //设置姓名
+    this.name = name;
+}
+
+public String getName() {       //获取姓名
+    return name;
+}
+
+public void setAge(int age) {   //设置年龄
+    this.age = age;
+}
+
+public int getAge() {           //获取年龄
+    return age;
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+<p>执行结果:</p>
+<p><code>java
+  10  //num是基本数据类型,值不能被改变,因此使用final修饰后不能再次赋值
+  李四...24   //对象属于引用数据类型,创建了新的对象后不能再次创建对象,但是这个对象的属性可以被重新的赋值改变.
+  10
+  20   //method方法中的x也是引用数据类型,因此可以改变属性值
+  请按任意键继续. . .</code></p>
+</li>
+</ul>
+<h3 id="0821_final">08.21_面向对象(final修饰变量的初始化时机)(掌握)<a class="headerlink" href="#0821_final" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:final修饰变量的初始化时机</p>
+<ul>
+<li>
+<p>显示初始化 </p>
+</li>
+<li>
+<p>在对象构造完毕前即可</p>
+</li>
+</ul>
+<p>```java
+  class Demo3_Final {
+    public static void main(String[] args) {
+        Demo d = new Demo();
+        d.print();
+    }
+  }
+  /*
+  * A:final修饰变量的初始化时机
+    * 显示初始化 
+    * 在对象构造完毕前即可
+  */</p>
+<p>class Demo {
+    final int num;                      //成员变量的默认初始化值是无效值,所以初始化必须赋值</p>
+<div class="codehilite"><pre><span></span>public Demo() {   //构造方法初始化
+    num = 10;
+}
+public void print() {
+    System.out.println(num);
+}
+</pre></div>
+
+
+<p>}
+  ```</p>
+</li>
+</ul>
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">10</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

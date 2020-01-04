@@ -3354,27 +3354,35 @@
                 
                 <h3 id="1"><strong>1.安装包准备</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <p>TeXLive 的版本是 2017，可以从官方站点下载<a href="http://mirror.ctan.org/systems/texlive/Images/texlive2017.iso">安装包</a>, 。
-2.TeXLive2017安装
+2.TeXLive2017安装</p>
 <div class="codehilite"><pre><span></span>sudo apt-get install perl
 sudo apt-get install perl-tk
 </pre></div>
-进入texlive2017安装包所在目录,执行以下命令安装texlive:
+
+
+<p>进入texlive2017安装包所在目录,执行以下命令安装texlive:</p>
 <div class="codehilite"><pre><span></span>sudo mount -o loop ./texlive.iso /mnt/
 <span class="nb">cd</span> /mnt
 sudo ./install-tl
 </pre></div>
-大概需要安装十多分钟,默认按照/usr/local/texlive目录,安装完毕然后执行以下命令配置环境变量:
+
+
+<p>大概需要安装十多分钟,默认按照/usr/local/texlive目录,安装完毕然后执行以下命令配置环境变量:</p>
 <div class="codehilite"><pre><span></span>sudo gedit ~/.bashrc
 </pre></div>
-在.bashrc文件末尾添加
+
+
+<p>在.bashrc文件末尾添加</p>
 <div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/texlive/2017/bin/x86_64-linux:<span class="nv">$PATH</span>
 <span class="nb">export</span> <span class="nv">MANPATH</span><span class="o">=</span>/usr/local/texlive/2017/texmf-dist/doc/man:<span class="nv">$MANPATH</span> 
 <span class="nb">export</span> <span class="nv">INFOPATH</span><span class="o">=</span>/usr/local/texlive/2017/texmf-dist/doc/info:<span class="nv">$INFOPATH</span> 
 </pre></div>
-3.TexStudio安装
-可以下载texStudio的deb安装包,点击安装,也可以执行以下命令进行安装:
+
+
+<p>3.TexStudio安装
+可以下载texStudio的deb安装包,点击安装,也可以执行以下命令进行安装:</p>
 <div class="codehilite"><pre><span></span>sudo apt-get install texstudio
-</pre></div></p>
+</pre></div>
                 
                   
                 
@@ -3431,11 +3439,11 @@ sudo ./install-tl
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3464,6 +3472,10 @@ sudo ./install-tl
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

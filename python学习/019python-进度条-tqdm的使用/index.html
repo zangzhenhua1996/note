@@ -3389,29 +3389,33 @@
 <code>tqdm</code>是一个显示工作进度的模块,其实就是我们在安装python的扩展包的使用常见的进度条</p>
 <h1 id="tqdmiterator">语法：<code>tqdm(iterator)</code> 括号里面是一个可迭代的对象<a class="headerlink" href="#tqdmiterator" title="Permanent link">&para;</a></h1>
 <h2 id="_1">默认设置打印进度<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">)):</span>  <span class="c1">#将range迭代器放到了tqdm中</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
 </pre></div>
-<strong>看一下效果是这样的:</strong>
+
+
+<p><strong>看一下效果是这样的:</strong>
 <img alt="image.png" src="../019python-进度条-tqdm的使用.image/14555448-9b38f9af4fc20f09.png" /></p>
 <h2 id="_2">自定义格式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">])</span>  <span class="c1">#首先使用tqdm定义了一个迭代器</span>
 <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">pbar</span><span class="p">:</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
     <span class="c1">#设置进度显示的名称使用的是set_description(设置描述):进程的名字.</span>
-    <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;processing {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">char</span><span class="p">))</span>  
+    <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;processing </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">char</span><span class="p">))</span>  
 </pre></div>
-效果是这样子的: 注意名称的变化
+
+
+<p>效果是这样子的: 注意名称的变化
 <img alt="image.png" src="../019python-进度条-tqdm的使用.image/14555448-1f3d2eac3e69acd3.png" />
 <img alt="image.png" src="../019python-进度条-tqdm的使用.image/14555448-824904387391cc80.png" /></p>
 <h2 id="_3">手动控制更新的进度（按时间控制）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="c1">#放到with中设置总得进度是100,</span>
 <span class="c1">#然后for循环总共迭代20,那么就让tqdm每次更新进度为5循环完了进度就成为100</span>
@@ -3420,7 +3424,9 @@
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
         <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
-或者使用这种格式
+
+
+<p>或者使用这种格式</p>
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
@@ -3432,7 +3438,9 @@
     <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
-效果都是一致的:
+
+
+<p>效果都是一致的:
 <img alt="image.png" src="../019python-进度条-tqdm的使用.image/14555448-33ea0ea4c0f2cee7.png" /></p>
                 
                   
@@ -3490,11 +3498,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3523,6 +3531,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

@@ -3538,6 +3538,7 @@
 <span class="c1">#tracker_server=192.168.124.42:22122</span>
 </pre></div>
 
+
 <p>5.5 启动<code>tracker</code>和 <code>storage</code></p>
 <p><code>sudo service fdfs_trackerd start</code></p>
 <p><code>sudo service fdfs_storaged start</code>
@@ -3546,9 +3547,11 @@
 fdfs_storaged /etc/fdfs/storage.conf start
 </pre></div>
 
+
 <p>启动查询</p>
 <div class="codehilite"><pre><span></span>ps aux <span class="p">|</span> grep fdfs
 </pre></div>
+
 
 <p><img alt="image.png" src="../012-分布式图片服务器FastDFS.image/14555448-7f68aaed364123cf.png" /></p>
 <p>重启</p>
@@ -3556,9 +3559,11 @@ fdfs_storaged /etc/fdfs/storage.conf start
 sudo /usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>sudo /usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf stop
 sudo /usr/bin/fdfs_storaged /etc/fdfs/storage.conf stop
 </pre></div>
+
 
 <blockquote>
 <p>注意点：
@@ -3580,6 +3585,7 @@ sudo /usr/bin/fdfs_storaged /etc/fdfs/storage.conf stop
 <span class="nv">tracker_server</span><span class="o">=</span>自己ubuntu虚拟机的ip地址:22122
 <span class="c1">#tracker_server=192.168.124.42:22122</span>
 </pre></div>
+
 
 <ol>
 <li>上传文件测试：</li>
@@ -3649,6 +3655,7 @@ LINK = $(CC)</p>
 <span class="nv">store_path0</span><span class="o">=</span>/home/zzh/fastdfs/storage
 </pre></div>
 
+
 <ol>
 <li>sudo cp 解压缩的fastdfs-master/conf目录中的http.conf  /etc/fdfs/http.conf
     <code>sudo cp '/media/zzh/zzh/办公移动/常用资料/黑马python/Django课件V3.1/FastDFS/fastdfs-master/conf/http.conf'  /etc/fdfs/http.conf</code></li>
@@ -3687,6 +3694,7 @@ LINK = $(CC)</p>
 
 <span class="c1"># myself add</span>
 </pre></div>
+
 
 <ol>
 <li>启动nginx
@@ -3734,9 +3742,11 @@ LINK = $(CC)</p>
 <span class="n">ret</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ret</span>
 <span class="p">{</span><span class="s1">&#39;Group name&#39;</span><span class="p">:</span> <span class="s1">&#39;group1&#39;</span><span class="p">,</span> <span class="s1">&#39;Remote file_id&#39;</span><span class="p">:</span> <span class="s1">&#39;group1/M00/00/00/wKh8Kl2u9KaAOJTxABYlnmXXzNA556.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;Status&#39;</span><span class="p">:</span> <span class="s1">&#39;Upload successed.&#39;</span><span class="p">,</span> <span class="s1">&#39;Local file name&#39;</span><span class="p">:</span> <span class="s1">&#39;/home/zzh/桌面/123.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;Uploaded size&#39;</span><span class="p">:</span> <span class="s1">&#39;1.00MB&#39;</span><span class="p">,</span> <span class="s1">&#39;Storage IP&#39;</span><span class="p">:</span> <span class="s1">&#39;192.168.124.42&#39;</span><span class="p">}</span>
 </pre></div>
+
 
 <p>文档 <a href="https://github.com/jefforeilly/fdfs_client-py">https://github.com/jefforeilly/fdfs_client-py</a></p>
                 
@@ -3795,11 +3805,11 @@ LINK = $(CC)</p>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3828,6 +3838,10 @@ LINK = $(CC)</p>
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

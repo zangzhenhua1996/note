@@ -3329,6 +3329,7 @@
     网卡      --- 调置 bit流---高低电压
 </pre></div>
 
+
 <hr />
 <p><img alt="image" src="../010 网络知识补充.image/4517527-1dd2750e53cdc794.webp" /></p>
 <div class="codehilite"><pre><span></span>    网卡      --- 解调 高低电压---bit流 
@@ -3340,6 +3341,7 @@
     应用层    --- data
 </pre></div>
 
+
 <hr />
 <h2 id="2ab">2.当A主机访问B主机的服务，封装与解封装的详细过程<a class="headerlink" href="#2ab" title="Permanent link">&para;</a></h2>
 <p><img alt="image" src="../010 网络知识补充.image/4517527-4aee947cfd7dd7f5.webp" /></p>
@@ -3349,6 +3351,7 @@
           3.到达数据链路层进行封装，源MAC(自身MAC)，目的MAC(##为网关的MAC地址，因为到达不同网段要通过网关，所以封装的是网关的MAC##)。
           4.最终到达物理层变为高低电压，通过网线进行传输。 
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>解封装过程
 说明：到达路由器之后
@@ -3361,6 +3364,7 @@
   当拆到网络层的时候看到目的IP为自己的IP时，进行完成上一层的解封装。完成访问。
 </pre></div>
 
+
 <hr />
 <h2 id="pc02pc01">从PC02到PC01回包的过程<a class="headerlink" href="#pc02pc01" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span>说明：
@@ -3370,12 +3374,14 @@
 4.变为高低电压从网线传输出去
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>到达路由器：
 1.进行拆包，到达数据链路层，查看目的MAC为自己的eth1口，是访问自己。
 2.继续进行拆包，到达网络层，查看访问的IP为路由器路由表中的网段，可以进行转发。
 3.路由器进行封装，将源MAC变为eth0的mac地址，目的MAC为pc01的mac,(因为之前PC01已经发包到达PC02,所以知道PC01的mac,所以不需要进行广播了)
 4.pc01收到回包之后逐渐进行解封装，至此，双方完成通信。
 </pre></div>
+
 
 <hr />
 <h1 id="arp">第二部分 ARP协议<a class="headerlink" href="#arp" title="Permanent link">&para;</a></h1>
@@ -3389,6 +3395,7 @@
 6.交换机回包回到主机01后，主机也会记录一个arp的表。（最后所有的主机都会完善自己和其他主机通讯过的ARP表。）
 7.没通信过的主机也会记录之前其他主机的MAC地址。
 </pre></div>
+
 
 <blockquote>
 <p>ARP协议原理：
@@ -3411,6 +3418,7 @@
 应用场景：机房IDC  设备不会经常变化
 </pre></div>
 
+
 <hr />
 <h1 id="tcp">第三部分 TCP的三次握手和四次挥手<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h1>
 <blockquote>
@@ -3432,6 +3440,7 @@ ack =1 发送确认信息</p>
 <div class="codehilite"><pre><span></span>因为端口占用的bit位是0-15 所以6是2的16的次方。65536 但是0是TCP和UDP不识别的端口号所以为65535。
 </pre></div>
 
+
 <h2 id="3tcp">3.TCP三次握手的过程<a class="headerlink" href="#3tcp" title="Permanent link">&para;</a></h2>
 <p><img alt="image" src="../010 网络知识补充.image/4517527-7cce6d6bf3003efc.webp" /></p>
 <div class="codehilite"><pre><span></span> 三次握手过程：
@@ -3439,6 +3448,7 @@ ack =1 发送确认信息</p>
     第二次握手：服务端    接收TCP报文              发送TCP报文（syn ack ACK=X+1 seq=Y）
     第三次握手：客户端    接收TCP报文              发送TCP报文（ack seq=X+1 ACK=Y+1）
 </pre></div>
+
 
 <h2 id="4">4.四次挥手的过程<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p><img alt="image" src="../010 网络知识补充.image/4517527-e0535f950bbf3951.webp" /></p>
@@ -3453,6 +3463,7 @@ ack =1 发送确认信息</p>
     第三次挥手：服务端    发送TCP报文（fin 再确定断开 ack 过程确认）
     第四次挥手：客户端    发送TCP报文（ack）
 </pre></div>
+
 
 <h2 id="5tcp11">5.TCP的11种状态<a class="headerlink" href="#5tcp11" title="Permanent link">&para;</a></h2>
 <p><img alt="image" src="../010 网络知识补充.image/4517527-9ae50bc8270b2a8d.webp" /></p>
@@ -3471,6 +3482,7 @@ ack =1 发送确认信息</p>
 11.当收到客户端的ACK之后，服务端会变为LAST_ACK(11)的状态。
 </pre></div>
 
+
 <h1 id="ip">第四部分 IP地址的子网划分<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>举例：192.16.4.0/27
@@ -3484,6 +3496,7 @@ ack =1 发送确认信息</p>
 所以子网的个数为2的3次方 8个子网
 每个子网的范围的块大小是 256-224=32
 </pre></div>
+
 
 <table>
 <thead>
@@ -3557,6 +3570,7 @@ IP地址是网络通讯时要使用的地址
 #迭代查询：中间会经过很多服务器进行查询。
 </pre></div>
 
+
 <p>小礼物走一走，来简书关注我</p>
                 
                   
@@ -3614,11 +3628,11 @@ IP地址是网络通讯时要使用的地址
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3647,6 +3661,10 @@ IP地址是网络通讯时要使用的地址
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

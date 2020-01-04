@@ -3365,6 +3365,7 @@
 <div class="codehilite"><pre><span></span> sudo mv eclipse  /opt
 </pre></div>
 
+
 <h3 id="eclipse-installer">四 创建eclipse installer桌面快捷图标<a class="headerlink" href="#eclipse-installer" title="Permanent link">&para;</a></h3>
 <ul>
 <li>首先输入指令： <strong>cd /usr/share/applications</strong></li>
@@ -3372,7 +3373,9 @@
 <p>然后输入指令： <strong>sudo gedit eclipseinstall.desktop</strong> </p>
 </li>
 <li>
-<p>最后将下面的代码复制到文件中： 
+<p>最后将下面的代码复制到文件中： </p>
+</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="o">[</span>Desktop Entry<span class="o">]</span>
 <span class="nv">Encoding</span><span class="o">=</span>UTF-8
 <span class="nv">Name</span><span class="o">=</span>Eclipseinstall
@@ -3384,15 +3387,18 @@
 <span class="nv">Type</span><span class="o">=</span>Application
 <span class="nv">Categories</span><span class="o">=</span>Application<span class="p">;</span>Development<span class="p">;</span>
 </pre></div>
-    <strong>其中“Exec=”后面为eclipse安装目录下的eclipse程序的位置路径，“Icon=”后面为eclipse安装目录下的图标图片的路径</strong> </p>
-</li>
-</ul>
+
+
+<div class="codehilite"><pre><span></span>**其中“Exec=”后面为eclipse安装目录下的eclipse程序的位置路径，“Icon=”后面为eclipse安装目录下的图标图片的路径**
+</pre></div>
+
+
 <p>3.3 将eclipse变为可执行文件
 指令为：sudo chmod u+x eclipse.desktop </p>
 <p>五：启动eclipse 的安装器</p>
 <p><img alt="image.png" src="../043 ubuntu安装eclipse.image/14555448-ea8810ce5d7536f4.png" /></p>
 <p>选择第一项进行安装</p>
-<p>安装完成后将原来的eclipse快捷方式重新修改
+<p>安装完成后将原来的eclipse快捷方式重新修改</p>
 <div class="codehilite"><pre><span></span><span class="o">[</span>Desktop Entry<span class="o">]</span>
 <span class="nv">Encoding</span><span class="o">=</span>UTF-8
 <span class="nv">Name</span><span class="o">=</span>Eclipse
@@ -3403,7 +3409,7 @@
 <span class="nv">StartupNotify</span><span class="o">=</span><span class="nb">true</span>
 <span class="nv">Type</span><span class="o">=</span>Application
 <span class="nv">Categories</span><span class="o">=</span>Application<span class="p">;</span>Development<span class="p">;</span>
-</pre></div></p>
+</pre></div>
                 
                   
                 
@@ -3460,11 +3466,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3493,6 +3499,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

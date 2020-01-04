@@ -3509,15 +3509,18 @@ SciPy(&gt;=0.9)</p>
 <div class="codehilite"><pre><span></span>pip install -U scikit-learn
 </pre></div>
 
+
 <p>使用Anaconda安装，推荐Anaconda，因为里面已经内置了NumPy，SciPy等常用工具</p>
 <div class="codehilite"><pre><span></span>conda install scikit-learn
 </pre></div>
+
 
 <p>安装完成后可以在python中检查一下版本，import sklearn不报错，则表示安装成功</p>
 <div class="codehilite"><pre><span></span>&gt;&gt;import sklearn
 &gt;&gt;sklearn.__version__
 &#39;0.19.1&#39;
 </pre></div>
+
 
 <h2 id="_1">获取数据<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>机器学习算法往往需要大量的数据，在skleran中获取数据通常采用两种方式，一种是使用自带的数据集，另一种是创建数据集</p>
@@ -3538,6 +3541,7 @@ iris_X = iris.data #导入数据
 iris_y = iris.target #导入标签
 </pre></div>
 
+
 <h3 id="_3">创建数据集<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>使用skleran的样本生成器(samples generator)可以创建数据，sklearn.datasets.samples_generator中包含了大量创建样本数据的方法。</p>
 <p>这里以分类问题创建样本数据</p>
@@ -3547,6 +3551,7 @@ for x_,y_ in zip(X,y):
     print(y_,end=&quot;: &quot;)
     print(x_)
 </pre></div>
+
 
 <p>参数说明：
 n_features :特征个数= n_informative（） + n_redundant + n_repeated
@@ -3566,12 +3571,14 @@ n_classes*n_clusters_per_class 要小于或等于 2^n_informative</p>
 1: [-0.76656634 -0.35589955 -0.83132182  1.68841011 -0.4153836 ]
 </pre></div>
 
+
 <h3 id="_4">数据集的划分<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>机器学习的过程正往往需要对数据集进行划分，常分为训练集，测试集。sklearn中的model_selection为我们提供了划分数据集的方法。
 以鸢尾花数据集为例进行划分</p>
 <div class="codehilite"><pre><span></span>import sklearn.model_selection as sk_model_selection
 X_train,X_test,y_train,y_test = sk_model_selection.train_test_split(iris_X,iris_y,train_size=0.3,random_state=20)
 </pre></div>
+
 
 <p>参数说明：
 arrays：样本数组，包含特征向量和标签
@@ -3590,6 +3597,7 @@ skleran中为我们提供了一个数据预处理的package：preprocessing，�
 <div class="codehilite"><pre><span></span>import sklearn.preprocessing as sk_preprocessing
 </pre></div>
 
+
 <p>下面的例子我们使用:[[1, -1, 2], [0, 2, -1], [0, 1, -2]]做为初始数据。</p>
 <h3 id="_6">数据的归一化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>基于mean和std的标准化</p>
@@ -3598,6 +3606,7 @@ new_X = scaler.transform(X)
 print(&#39;基于mean和std的标准化:&#39;,new_X)
 </pre></div>
 
+
 <p>打印结果:</p>
 <div class="codehilite"><pre><span></span>基于mean和std的标准化:
  [[ 1.41421356 -1.33630621  1.37281295]
@@ -3605,11 +3614,13 @@ print(&#39;基于mean和std的标准化:&#39;,new_X)
  [-0.70710678  0.26726124 -0.98058068]]
 </pre></div>
 
+
 <p>规范化到一定区间内 feature_range为数据规范化的范围</p>
 <div class="codehilite"><pre><span></span>scaler = sk_preprocessing.MinMaxScaler(feature_range=(0,1)).fit(X)
 new_X=scaler.transform(X)
 print(&#39;规范化到一定区间内&#39;,new_X)
 </pre></div>
+
 
 <p>打印结果:</p>
 <div class="codehilite"><pre><span></span>规范化到一定区间内
@@ -3618,11 +3629,13 @@ print(&#39;规范化到一定区间内&#39;,new_X)
  [ 0.          0.66666667  0.        ]]
 </pre></div>
 
+
 <h3 id="_7">数据的正则化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>首先求出样本的p-范数，然后该样本的所有元素都要除以该范数，这样最终使得每个样本的范数都为1</p>
 <div class="codehilite"><pre><span></span>new_X = sk_preprocessing.normalize(X,norm=&#39;l2&#39;)
 print(&#39;求二范数&#39;,new_X)
 </pre></div>
+
 
 <p>打印结果：</p>
 <div class="codehilite"><pre><span></span>规范化到一定区间内
@@ -3630,6 +3643,7 @@ print(&#39;求二范数&#39;,new_X)
  [ 0.          0.89442719 -0.4472136 ]
  [ 0.          0.4472136  -0.89442719]]
 </pre></div>
+
 
 <h2 id="_8">小结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>本文介绍了sklearn的安装，sklearn导入数据集，创建数据集的基本方法，对数据预处理的常用方法进行了介绍。</p>
@@ -3690,11 +3704,11 @@ print(&#39;求二范数&#39;,new_X)
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3723,6 +3737,10 @@ print(&#39;求二范数&#39;,new_X)
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

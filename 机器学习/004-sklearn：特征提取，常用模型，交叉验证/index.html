@@ -3570,27 +3570,28 @@ PCA实现起来并不复杂（过几天写一篇使用NumPy实现的PCA），但
 
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1">#从sklearn中倒入数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span> 
 <span class="c1">#导入pca的模块</span>
-<span class="kn">import</span> <span class="nn">sklearn.decomposition</span> <span class="kn">as</span> <span class="nn">sk_decomposition</span>
+<span class="kn">import</span> <span class="nn">sklearn.decomposition</span> <span class="k">as</span> <span class="nn">sk_decomposition</span>
 <span class="c1">#导入鸢尾花的数据集</span>
 <span class="n">iris</span> <span class="o">=</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>  
 <span class="n">iris_X</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span>  <span class="c1">#数据的特征(4个属性)</span>
 <span class="n">iris_Y</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="c1">#数据的标签(3个分类,0,1,2)</span>
 <span class="c1">#创建模型</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">sk_decomposition</span><span class="o">.</span><span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">,</span><span class="n">whiten</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">svd_solver</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">sk_decomposition</span><span class="o">.</span><span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">,</span><span class="n">whiten</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">svd_solver</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
 <span class="c1">#训练模型</span>
 <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span>
 
 <span class="c1"># 使用上面这个转换器去转换训练数据x,调用transform方法</span>
 <span class="n">reduced_X</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span> <span class="c1">#reduced_X为降维后的数据</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;PCA:&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;降维后的各主成分的方差值占总方差值的比例&#39;</span><span class="p">,</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;降维后的各主成分的方差值&#39;</span><span class="p">,</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;降维后的特征数&#39;</span><span class="p">,</span><span class="n">pca</span><span class="o">.</span><span class="n">n_components_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PCA:&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;降维后的各主成分的方差值占总方差值的比例&#39;</span><span class="p">,</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;降维后的各主成分的方差值&#39;</span><span class="p">,</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;降维后的特征数&#39;</span><span class="p">,</span><span class="n">pca</span><span class="o">.</span><span class="n">n_components_</span><span class="p">)</span>
 </pre></div>
+
 
 <p>参数说明：
 n_components：指定希望PCA降维后的特征维度数目(&gt;1)， 指定主成分的方差和所占的最小比例阈值（0-1），'mle'用MLE算法根据特征的方差分布情况自己去选择一定数量的主成分特征来降维
@@ -3599,10 +3600,11 @@ svd_solver：奇异值分解SVD的方法{‘auto’, ‘full’, ‘arpack’, �
 <p>打印结果:
 下面打印的内容只是帮助大家理解pca的参数，就不打印降维后的数据了，打印出来并没有什么意义。</p>
 <div class="codehilite"><pre><span></span><span class="n">PCA</span><span class="p">:</span>
-<span class="err">降维后的各主成分的方差值占总方差值的比例</span> <span class="p">[</span> <span class="mf">0.92461621</span>  <span class="mf">0.05301557</span>  <span class="mf">0.01718514</span><span class="p">]</span>
-<span class="err">降维后的各主成分的方差值</span> <span class="p">[</span> <span class="mf">4.22484077</span>  <span class="mf">0.24224357</span>  <span class="mf">0.07852391</span><span class="p">]</span>
-<span class="err">降维后的特征数</span> <span class="mi">3</span>
+<span class="n">降维后的各主成分的方差值占总方差值的比例</span> <span class="p">[</span> <span class="mf">0.92461621</span>  <span class="mf">0.05301557</span>  <span class="mf">0.01718514</span><span class="p">]</span>
+<span class="n">降维后的各主成分的方差值</span> <span class="p">[</span> <span class="mf">4.22484077</span>  <span class="mf">0.24224357</span>  <span class="mf">0.07852391</span><span class="p">]</span>
+<span class="n">降维后的特征数</span> <span class="mi">3</span>
 </pre></div>
+
 
 <h3 id="lda">LDA（线性评价分析）<a class="headerlink" href="#lda" title="Permanent link">&para;</a></h3>
 <p>LDA基于费舍尔准则，即同一类样本尽可能聚合在一起，不同类样本应该尽量扩散；或者说，同类内具有较好的聚合度，类别间具有较好的扩散度。
@@ -3614,13 +3616,13 @@ LDA具体的实现流程这里就不再赘述了，直接看skleran如何实现L
 
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1">#从sklearn中倒入数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span> 
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
 
 <span class="c1">#导入使用:LDA的模块</span>
-<span class="kn">import</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">as</span> <span class="nn">sk_discriminant_analysis</span>
+<span class="kn">import</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="k">as</span> <span class="nn">sk_discriminant_analysis</span>
 <span class="c1">#导入鸢尾花的数据集</span>
 <span class="n">iris</span> <span class="o">=</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>  
 <span class="n">iris_X</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span>  <span class="c1">#数据的特征(4个属性)</span>
@@ -3635,11 +3637,12 @@ LDA具体的实现流程这里就不再赘述了，直接看skleran如何实现L
 
 
 <span class="n">reduced_X</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span> <span class="c1">#reduced_X为降维后的数据</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;LDA:&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;LDA的数据中心点:&#39;</span><span class="p">,</span><span class="n">lda</span><span class="o">.</span><span class="n">means_</span><span class="p">)</span> <span class="c1">#中心点</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;LDA做分类时的正确率:&#39;</span><span class="p">,</span><span class="n">lda</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span> <span class="c1">#score是指分类的正确率</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;LDA降维后特征空间的类中心:&#39;</span><span class="p">,</span><span class="n">lda</span><span class="o">.</span><span class="n">scalings_</span><span class="p">)</span> <span class="c1">#降维后特征空间的类中心</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LDA:&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;LDA的数据中心点:&#39;</span><span class="p">,</span><span class="n">lda</span><span class="o">.</span><span class="n">means_</span><span class="p">)</span> <span class="c1">#中心点</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;LDA做分类时的正确率:&#39;</span><span class="p">,</span><span class="n">lda</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span> <span class="c1">#score是指分类的正确率</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;LDA降维后特征空间的类中心:&#39;</span><span class="p">,</span><span class="n">lda</span><span class="o">.</span><span class="n">scalings_</span><span class="p">)</span> <span class="c1">#降维后特征空间的类中心</span>
 </pre></div>
+
 
 <p>参数说明：
 n_components：指定希望PCA降维后的特征维度数目(&gt;1)
@@ -3657,6 +3660,7 @@ svd_solver：奇异值分解SVD的方法{‘auto’, ‘full’, ‘arpack’, �
  <span class="p">[</span> <span class="mf">2.95645633</span>  <span class="mf">3.1900014</span> <span class="p">]]</span>
 </pre></div>
 
+
 <h2 id="_2">常用模型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>机器学习常用的算法也就那几个，sklearn中对其都做了实现，我们只需要调用即可。下面每一个算法的原理我就不细讲了，只讲怎么用.</p>
 <p>首先sklearn中所有的模型都有四个固定且常用的方法，其实在PCA与LDA中我们已经用到了这些方法中的fit方法。</p>
@@ -3669,6 +3673,7 @@ svd_solver：奇异值分解SVD的方法{‘auto’, ‘full’, ‘arpack’, �
 <span class="c1"># 为模型进行打分</span>
 <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_X</span><span class="p">,</span> <span class="n">data_y</span><span class="p">)</span> <span class="c1"># 回归问题：以R2参数为标准 分类问题：以准确率为标准</span>
 </pre></div>
+
 
 <h3 id="_3">线性回归<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>线性回归是利用数理统计中回归分析，来确定两种或两种以上变量间相互依赖的定量关系的一种统计分析方法，运用十分广泛。其表达形式为<code>y = w'x+e</code>，e为误差服从均值为0的正态分布。
@@ -3709,17 +3714,19 @@ print(&#39;系数:&#39;,model.coef_) #输出系数
 print(&#39;线性回归模型评价:&#39;,acc)
 </pre></div>
 
+
 <p>参数说明：
 fit_intercept：是否计算截距。False-模型没有截距
 normalize： 当fit_intercept设置为False时，该参数将被忽略。 如果为真，则回归前的回归系数X将通过减去平均值并除以l2-范数而归一化。
 copy_X：是否对X数组进行复制,默认为True
 n_jobs：指定线程数</p>
 <p>打印结果：</p>
-<div class="codehilite"><pre><span></span><span class="err">线性回归</span><span class="p">:</span>
-<span class="err">截距</span><span class="p">:</span> <span class="mf">0.360007142807655</span>
-<span class="err">系数</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.23016056</span>  <span class="mf">0.04521955</span>  <span class="mf">0.33913525</span>  <span class="mf">0.47029646</span><span class="p">]</span>
-<span class="err">线性回归模型评价</span><span class="p">:</span> <span class="mf">0.9252305022245975</span>
+<div class="codehilite"><pre><span></span><span class="n">线性回归</span><span class="p">:</span>
+<span class="n">截距</span><span class="p">:</span> <span class="mf">0.360007142807655</span>
+<span class="n">系数</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.23016056</span>  <span class="mf">0.04521955</span>  <span class="mf">0.33913525</span>  <span class="mf">0.47029646</span><span class="p">]</span>
+<span class="n">线性回归模型评价</span><span class="p">:</span> <span class="mf">0.9252305022245975</span>
 </pre></div>
+
 
 <h3 id="_4">逻辑回归<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>logistic回归是一种广义线性回归（generalized linear model），因此与多重线性回归分析有很多相同之处。它们的模型形式基本上相同，都具有 <code>w‘x+b</code>，其中w和b是待求参数，其区别在于他们的**<code>因变量</code><strong>不同，多重线性回归直接将w‘x+b作为因变量，即y =w‘x+b，而logistic回归则通过函数L将w‘x+b对应一个隐状态<code>p</code>，p =L(w‘x+b),然后根据p 与1-p的大小决定因变量的值。如果L是logistic函数，就是logistic回归，如果L是多项式函数就是多项式回归。
@@ -3765,6 +3772,7 @@ acc=model.score(X_test,y_test) #返回预测的确定系数R2
 print(&#39;逻辑回归模型评价:&#39;,acc)
 </pre></div>
 
+
 <p>参数说明：
 penalty：使用指定正则化项（默认：l2）
 dual: n_samples &gt; n_features取False（默认）
@@ -3775,6 +3783,7 @@ fit_intercept: 是否需要常量</p>
 <p>打印结果：</p>
 <div class="codehilite"><pre><span></span>逻辑回归模型评价: 0.8 
 </pre></div>
+
 
 <h3 id="_5">朴素贝叶斯<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。
@@ -3794,14 +3803,14 @@ fit_intercept: 是否需要常量</p>
 
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1">#从sklearn中倒入数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span> 
 <span class="c1">#切分训练集测试集的模块</span>
 <span class="c1">#from sklearn.cross_validation import train_test_split </span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
 <span class="c1">#导入贝叶斯的包</span>
-<span class="kn">import</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">as</span> <span class="nn">sk_bayes</span>
+<span class="kn">import</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">as</span> <span class="nn">sk_bayes</span>
 
 <span class="c1">#使用的鸢尾花的数据集</span>
 <span class="n">iris</span> <span class="o">=</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>  
@@ -3811,13 +3820,14 @@ fit_intercept: 是否需要常量</p>
 <span class="c1">#数据的切割(7:3),数据会被打乱</span>
 <span class="n">X_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span><span class="n">iris_Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">sk_bayes</span><span class="o">.</span><span class="n">MultinomialNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">fit_prior</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">class_prior</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="c1">#多项式分布的朴素贝叶斯</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">sk_bayes</span><span class="o">.</span><span class="n">BernoulliNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">binarize</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">fit_prior</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">class_prior</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="c1">#伯努利分布的朴素贝叶斯</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sk_bayes</span><span class="o">.</span><span class="n">MultinomialNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">fit_prior</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">class_prior</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1">#多项式分布的朴素贝叶斯</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sk_bayes</span><span class="o">.</span><span class="n">BernoulliNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">binarize</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">fit_prior</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">class_prior</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1">#伯努利分布的朴素贝叶斯</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">sk_bayes</span><span class="o">.</span><span class="n">GaussianNB</span><span class="p">()</span><span class="c1">#高斯分布的朴素贝叶斯</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 <span class="n">acc</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span> <span class="c1">#根据给定数据与标签返回正确率的均值</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;朴素贝叶斯(高斯分布)模型评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;朴素贝叶斯(高斯分布)模型评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
 </pre></div>
+
 
 <p>参数说明：
 alpha：平滑参数
@@ -3829,8 +3839,9 @@ binarize: 二值化的阈值，若为None，则假设输入由二进制向量组
 多项式模型：最常见，要求特征是离散数据
 伯努利模型：要求特征是离散的，且为布尔类型，即true和false，或者1和0</p>
 <p>打印结果：</p>
-<div class="codehilite"><pre><span></span><span class="err">朴素贝叶斯</span><span class="p">(</span><span class="err">高斯分布</span><span class="p">)</span><span class="err">模型评价</span><span class="p">:</span> <span class="mf">0.9777777777777777</span>
+<div class="codehilite"><pre><span></span><span class="n">朴素贝叶斯</span><span class="p">(</span><span class="n">高斯分布</span><span class="p">)</span><span class="n">模型评价</span><span class="p">:</span> <span class="mf">0.9777777777777777</span>
 </pre></div>
+
 
 <h3 id="_6">决策树<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>决策树是解决分类问题
@@ -3842,14 +3853,14 @@ binarize: 二值化的阈值，若为None，则假设输入由二进制向量组
 
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1">#从sklearn中倒入数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span> 
 <span class="c1">#切分训练集测试集的模块</span>
 <span class="c1">#from sklearn.cross_validation import train_test_split </span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
 <span class="c1">#导入决策树的包</span>
-<span class="kn">import</span> <span class="nn">sklearn.tree</span> <span class="kn">as</span> <span class="nn">sk_tree</span>
+<span class="kn">import</span> <span class="nn">sklearn.tree</span> <span class="k">as</span> <span class="nn">sk_tree</span>
 
 <span class="c1">#使用的鸢尾花的数据集</span>
 <span class="n">iris</span> <span class="o">=</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>  
@@ -3859,13 +3870,14 @@ binarize: 二值化的阈值，若为None，则假设输入由二进制向量组
 <span class="c1">#数据的切割(7:3),数据会被打乱</span>
 <span class="n">X_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span><span class="n">iris_Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="c1">#创建ID3算法的模型</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">sk_tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sk_tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1">#训练模型</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 <span class="c1">#模型的评价</span>
 <span class="n">acc</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span> <span class="c1">#根据给定数据与标签返回正确率的均值</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;决策树模型评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;决策树模型评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
 </pre></div>
+
 
 <p>参数说明：
 criterion ：特征选择准则gini/entropy
@@ -3876,8 +3888,9 @@ max_features: 寻找最优分割点时的最大特征数
 max_leaf_nodes：优先增长到最大叶子节点数
 min_impurity_decrease：如果这种分离导致杂质的减少大于或等于这个值，则节点将被拆分。</p>
 <p>打印结果：</p>
-<div class="codehilite"><pre><span></span><span class="err">决策树模型评价</span><span class="p">:</span> <span class="mf">0.942857142857</span>
+<div class="codehilite"><pre><span></span><span class="n">决策树模型评价</span><span class="p">:</span> <span class="mf">0.942857142857</span>
 </pre></div>
+
 
 <h3 id="svm">SVM(支持向量机）<a class="headerlink" href="#svm" title="Permanent link">&para;</a></h3>
 <p>支持向量机是解决分类问题
@@ -3892,14 +3905,14 @@ SVM算法思路很清晰，但是实现起来很复杂</p>
 
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1">#从sklearn中倒入数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span> 
 <span class="c1">#切分训练集测试集的模块</span>
 <span class="c1">#from sklearn.cross_validation import train_test_split </span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
 <span class="c1">#导入SVM的包</span>
-<span class="kn">import</span> <span class="nn">sklearn.svm</span> <span class="kn">as</span> <span class="nn">sk_svm</span>
+<span class="kn">import</span> <span class="nn">sklearn.svm</span> <span class="k">as</span> <span class="nn">sk_svm</span>
 
 <span class="c1">#使用的鸢尾花的数据集</span>
 <span class="n">iris</span> <span class="o">=</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>  
@@ -3912,8 +3925,9 @@ SVM算法思路很清晰，但是实现起来很复杂</p>
 <span class="n">model</span> <span class="o">=</span> <span class="n">sk_svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span><span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 <span class="n">acc</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span> <span class="c1">#根据给定数据与标签返回正确率的均值</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;SVM模型评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SVM模型评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
 </pre></div>
+
 
 <p>参数说明：
 C：误差项的惩罚参数C
@@ -3922,6 +3936,7 @@ gamma: 核相关系数。浮点数，If gamma is ‘auto’ then 1/n_features wi
 <p>打印结果：</p>
 <div class="codehilite"><pre><span></span>SVM模型评价: 0.961904761905
 </pre></div>
+
 
 <h3 id="_7">神经网络<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>还在感慨因为不会tensorflow而无法使用神经网络？还在羡慕神经网络的惊人效果?不需要tf，不需要caffe，不需要pytorch！只要一句话，便可以实现多层神经网络！！！
@@ -3943,14 +3958,14 @@ gamma: 核相关系数。浮点数，If gamma is ‘auto’ then 1/n_features wi
 
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1">#从sklearn中倒入数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span> 
 <span class="c1">#切分训练集测试集的模块</span>
 <span class="c1">#from sklearn.cross_validation import train_test_split </span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
 <span class="c1">#导入神经网络的包</span>
-<span class="kn">import</span> <span class="nn">sklearn.neural_network</span> <span class="kn">as</span> <span class="nn">sk_nn</span>
+<span class="kn">import</span> <span class="nn">sklearn.neural_network</span> <span class="k">as</span> <span class="nn">sk_nn</span>
 
 <span class="c1">#使用的鸢尾花的数据集</span>
 <span class="n">iris</span> <span class="o">=</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>  
@@ -3963,8 +3978,9 @@ gamma: 核相关系数。浮点数，If gamma is ‘auto’ then 1/n_features wi
 <span class="n">model</span> <span class="o">=</span> <span class="n">sk_nn</span><span class="o">.</span><span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span><span class="n">learning_rate</span><span class="o">=</span><span class="s1">&#39;adaptive&#39;</span><span class="p">,</span><span class="n">learning_rate_init</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 <span class="n">acc</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span> <span class="c1">#根据给定数据与标签返回正确率的均值</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;神经网络模型评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;神经网络模型评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
 </pre></div>
+
 
 <p>参数说明：
 hidden_layer_sizes: 元祖
@@ -3987,6 +4003,7 @@ adam： Kingma, Diederik, and Jimmy Ba提出的机遇随机梯度的优化器</p
 <div class="codehilite"><pre><span></span>神经网络模型评价: 0.980952380952
 </pre></div>
 
+
 <h3 id="knnk-">KNN（K-近邻算法）<a class="headerlink" href="#knnk-" title="Permanent link">&para;</a></h3>
 <p>KNN可以说是非常好用，也非常常用的分类算法了，也是最简单易懂的机器学习算法，没有之一。由于算法先天优势，KNN甚至不需要训练就可以得到非常好的分类效果了。
 在训练集中数据和标签已知的情况下，输入测试数据，将测试数据的特征与训练集中对应的特征进行相互比较，找到训练集中与之最为相似的前K个数据，则该测试数据对应的类别就是K个数据中出现次数最多的那个分类。</p>
@@ -4005,14 +4022,14 @@ sklearn中的KNN可以做分类也可以做回归</p>
 
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="c1">#从sklearn中倒入数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span> 
 <span class="c1">#切分训练集测试集的模块</span>
 <span class="c1">#from sklearn.cross_validation import train_test_split </span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
 <span class="c1">#导入KNN的包</span>
-<span class="kn">import</span> <span class="nn">sklearn.neighbors</span> <span class="kn">as</span> <span class="nn">sk_neighbors</span>
+<span class="kn">import</span> <span class="nn">sklearn.neighbors</span> <span class="k">as</span> <span class="nn">sk_neighbors</span>
 
 <span class="c1">#使用的鸢尾花的数据集</span>
 <span class="n">iris</span> <span class="o">=</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>  
@@ -4026,25 +4043,27 @@ sklearn中的KNN可以做分类也可以做回归</p>
 <span class="n">model</span> <span class="o">=</span> <span class="n">sk_neighbors</span><span class="o">.</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 <span class="n">acc</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span> <span class="c1">#根据给定数据与标签返回正确率的均值</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;KNN模型(分类)评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;KNN模型(分类)评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
 <span class="n">new_X</span><span class="o">=</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>  <span class="c1">#二维</span>
-<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_X</span><span class="p">))</span> <span class="c1">#打印预测的结果</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_X</span><span class="p">))</span> <span class="c1">#打印预测的结果</span>
 
 <span class="c1">#KNN回归模型</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">sk_neighbors</span><span class="o">.</span><span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 <span class="n">acc</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span> <span class="c1">#返回预测的确定系数R2</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;KNN模型(回归)评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;KNN模型(回归)评价:&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">)</span>
 </pre></div>
+
 
 <p>参数说明：
 n_neighbors： 使用邻居的数目
 n_jobs：并行任务数</p>
 <p>打印结果：</p>
-<div class="codehilite"><pre><span></span><span class="n">KNN模型</span><span class="p">(</span><span class="err">分类</span><span class="p">)</span><span class="err">评价</span><span class="p">:</span> <span class="mf">0.9777777777777777</span>
+<div class="codehilite"><pre><span></span><span class="n">KNN模型</span><span class="p">(</span><span class="n">分类</span><span class="p">)</span><span class="n">评价</span><span class="p">:</span> <span class="mf">0.9777777777777777</span>
 <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">KNN模型</span><span class="p">(</span><span class="err">回归</span><span class="p">)</span><span class="err">评价</span><span class="p">:</span> <span class="mf">0.9710843373493976</span>
+<span class="n">KNN模型</span><span class="p">(</span><span class="n">回归</span><span class="p">)</span><span class="n">评价</span><span class="p">:</span> <span class="mf">0.9710843373493976</span>
 </pre></div>
+
 
 <h2 id="_8">交叉验证<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>好的，终于说完了常用模型，感觉完全是一个算法概述啊hhhhh
@@ -4083,6 +4102,7 @@ accs=sk_model_selection.cross_val_score(model, iris_X, y=iris_Y, scoring=None,cv
 print(&#39;交叉验证结果:&#39;,accs)
 </pre></div>
 
+
 <p>参数说明：
 model：拟合数据的模型
 cv ： 子集个数 就是k
@@ -4093,6 +4113,7 @@ scoring: 打分参数 默认‘accuracy’、可选‘f1’、‘precision’、
   0.93333333  1.          1.          1.        ]
 </pre></div>
 
+
 <h2 id="_9">模型的保存和载入<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>模型的保存和载入方便我们将训练好的模型保存在本地或发送在网上，载入模型方便我们在不同的环境下进行测试。
 使用pickle可以进行保存与载入
@@ -4101,6 +4122,7 @@ scoring: 打分参数 默认‘accuracy’、可选‘f1’、‘precision’、
 sk_externals.joblib.dump(model,&#39;model.pickle&#39;) #保存
 model = sk_externals.joblib.load(&#39;model.pickle&#39;) #载入
 </pre></div>
+
 
 <p>参考简书:<a href="https://www.jianshu.com/p/731610dca805">https://www.jianshu.com/p/731610dca805</a></p>
                 
@@ -4159,11 +4181,11 @@ model = sk_externals.joblib.load(&#39;model.pickle&#39;) #载入
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -4192,6 +4214,10 @@ model = sk_externals.joblib.load(&#39;model.pickle&#39;) #载入
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

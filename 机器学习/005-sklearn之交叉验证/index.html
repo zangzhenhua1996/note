@@ -3374,13 +3374,15 @@
 <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1">#将准确率打印出</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;准确率: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;准确率: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 
+
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="err">准确率</span><span class="p">:</span> 
+<div class="codehilite"><pre><span></span><span class="n">准确率</span><span class="p">:</span> 
  <span class="mf">0.9736842105263158</span>
 </pre></div>
+
 
 <p>可以看到基础验证的准确率为0.9736842105263158
 <img alt="交叉验证数据集的拆分" src="../005-sklearn之交叉验证.image/14555448-9b0d96068f269251.png" /></p>
@@ -3391,23 +3393,25 @@
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>  <span class="c1">#accuracy是准确率的意思</span>
 
 <span class="c1">#将5次的预测准确率打印出</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;5次的预测准确率:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">scores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5次的预测准确率:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">scores</span><span class="p">)</span>
 <span class="c1">#将5次的预测准确平均率打印出</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;平均预测准确率:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平均预测准确率:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 
+
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="mi">5</span><span class="err">次的预测准确率</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><span class="mi">5</span><span class="n">次的预测准确率</span><span class="p">:</span>
  <span class="p">[</span><span class="mf">0.96666667</span> <span class="mf">1.</span>         <span class="mf">0.93333333</span> <span class="mf">0.96666667</span> <span class="mf">1.</span>        <span class="p">]</span>
-<span class="err">平均预测准确率</span><span class="p">:</span>
+<span class="n">平均预测准确率</span><span class="p">:</span>
  <span class="mf">0.9733333333333334</span>
 </pre></div>
+
 
 <p>可以看到交叉验证的准确平均率为0.9733333333334</p>
 <p>以准确率(accuracy)判断:
 一般来说准确率(accuracy)会用于判断分类(Classification)模型的好坏。</p>
 <div class="codehilite"><pre><span></span><span class="c1">#通过交叉验证看一下分几类(K)比较好</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
 
 <span class="c1">#建立测试参数集</span>
 <span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
@@ -3427,12 +3431,13 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
+
 <p>执行结果:</p>
 <p><img alt="不同K的准确率" src="../005-sklearn之交叉验证.image/14555448-a9258e1f9cf661f6.png" />
 从图中可以得知，选择12~18的k值最好。高过18之后，准确率开始下降则是因为过拟合(Over fitting)的问题。</p>
 <p>以平均方差(Mean squared error)
 一般来说平均方差(Mean squared error)会用于判断回归(Regression)模型的好坏</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
 <span class="n">k_scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
@@ -3447,6 +3452,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
+
 <p>执行结果:
 <img alt="image.png" src="../005-sklearn之交叉验证.image/14555448-1a05928dcd9712dd.png" />
 由图可以得知，平均方差越低越好，因此选择13~18左右的K值会最好。</p>
@@ -3456,15 +3462,17 @@
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span> <span class="c1">#学习曲线模块</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> <span class="c1">#digits数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> <span class="c1">#Support Vector Classifier</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
+
 
 <p>加载digits数据集，其包含的是手写体的数字，从0到9。数据集总共有1797个样本，每个样本由64个特征组成， 分别为其手写体对应的8×8像素表示，每个特征取值0~16。</p>
 <div class="codehilite"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>  <span class="c1">#手写体的数字</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span> <span class="c1">#X数据</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span> <span class="c1">#标签y</span>
 </pre></div>
+
 
 <p>观察样本由小到大的学习曲线变化, 采用K折交叉验证 cv=10, 选择平均方差检视模型效能 scoring='neg_mean_squared_error', 样本由小到大分成5轮检视学习曲线(10%, 25%, 50%, 75%, 100%):</p>
 <div class="codehilite"><pre><span></span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">test_loss</span> <span class="o">=</span> <span class="n">learning_curve</span><span class="p">(</span>
@@ -3475,6 +3483,7 @@
 <span class="n">train_loss_mean</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_loss</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">test_loss_mean</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_loss</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
+
 
 <p>可视化图形:</p>
 <div class="codehilite"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_loss_mean</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
@@ -3488,6 +3497,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
+
 <p>整个的程序</p>
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -3498,8 +3508,8 @@
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span> <span class="c1">#学习曲线模块</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> <span class="c1">#digits数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> <span class="c1">#Support Vector Classifier</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
@@ -3522,6 +3532,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
+
 <p>执行结果:
 <img alt="image.png" src="../005-sklearn之交叉验证.image/14555448-c2fb5f5fdd0eea0a.png" /></p>
 <p>当gamma变为0.01时:
@@ -3542,8 +3553,8 @@ validation_curve 检视过拟合
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">validation_curve</span> <span class="c1">#validation_curve模块</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> 
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1">#digits数据集(手写数字)</span>
 <span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
@@ -3552,7 +3563,7 @@ validation_curve 检视过拟合
 
 <span class="c1">#建立参数测试集</span>
 <span class="n">param_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">param_range</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">param_range</span><span class="p">)</span>
 
 <span class="c1">#使用validation_curve快速找出参数对模型的影响</span>
 <span class="n">train_loss</span><span class="p">,</span> <span class="n">test_loss</span> <span class="o">=</span> <span class="n">validation_curve</span><span class="p">(</span>
@@ -3574,6 +3585,7 @@ validation_curve 检视过拟合
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+
 
 <p>执行结果:
 <img alt="image.png" src="../005-sklearn之交叉验证.image/14555448-38c0d1cf3d023766.png" />
@@ -3634,11 +3646,11 @@ validation_curve 检视过拟合
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3667,6 +3679,10 @@ validation_curve 检视过拟合
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

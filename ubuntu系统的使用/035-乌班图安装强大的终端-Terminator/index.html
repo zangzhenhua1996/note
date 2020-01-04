@@ -3294,17 +3294,21 @@
                 
                 <p>1.安装:在终端中输入以下命令:</p>
 <p><code>sudo apt-get install terminator</code></p>
-<p>2.设置默认终端 为 Terminator
+<p>2.设置默认终端 为 Terminator</p>
 <div class="codehilite"><pre><span></span>gsettings  <span class="nb">set</span> org.gnome.desktop.default-applications.terminal  <span class="nb">exec</span>  /usr/bin/terminator
 
 gsettings  <span class="nb">set</span>  org.gnome.desktop.default-applications.terminal   exec-arg  <span class="s2">&quot;-x&quot;</span>
 </pre></div>
-注意:设置默认终端 为 gnome-terminal
+
+
+<p>注意:设置默认终端 为 gnome-terminal</p>
 <div class="codehilite"><pre><span></span>gsetting <span class="nb">set</span> org.gnome.desktop.default-applications.terminal <span class="nb">exec</span> /usr/bin/gnome-terminal
 
 gsettings <span class="nb">set</span> org.gnome.desktop.default-applications.terminal exec-arg <span class="s2">&quot;-x&quot;</span>
 </pre></div>
-注:也可以不设置默认终端,其实没有必要.</p>
+
+
+<p>注:也可以不设置默认终端,其实没有必要.</p>
 <p>在右键菜单打开终端时打开的依旧是默认的乌班图终端.</p>
 <p>但是使用快捷键 ctrl+alt+T打开的是我们安装好的终端Terminator.我们把它添加到收藏夹即可.</p>
 <p>3.修改配色方案</p>
@@ -3382,11 +3386,11 @@ gsettings <span class="nb">set</span> org.gnome.desktop.default-applications.ter
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3415,6 +3419,10 @@ gsettings <span class="nb">set</span> org.gnome.desktop.default-applications.ter
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

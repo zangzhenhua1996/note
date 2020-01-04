@@ -3489,11 +3489,12 @@
 
 <span class="c1"># 接收对方发送过来的数据，最大接收1024个字节</span>
 <span class="n">recvData</span> <span class="o">=</span> <span class="n">tcp_client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recvData</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;gbk&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recvData</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;gbk&#39;</span><span class="p">))</span>
 
 <span class="c1"># 关闭套接字</span>
 <span class="n">tcp_client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
+
 
 <h3 id="_1">运行流程：<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <h4 id="1tcp">&lt;1&gt;tcp客户端<a class="headerlink" href="#1tcp" title="Permanent link">&para;</a></h4>
@@ -3502,6 +3503,7 @@
 请输入要发送的数据：你好啊
 接收到的数据为: 我很好，你呢
 </pre></div>
+
 
 <h4 id="2">&lt;2&gt;网络调试助手：<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <p><img alt="image.png" src="../002-网络tcp.image/14555448-5961fb194b78e7f2.png" /></p>
@@ -3551,7 +3553,7 @@
 
 <span class="c1"># 接收对方发送过来的数据</span>
 <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 接收1024个字节</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
 <span class="c1"># 发送一些数据到客户端</span>
 <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;thank you !&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
@@ -3562,10 +3564,12 @@
 <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
+
 <h3 id="_3">运行流程：<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="1tcp_1">&lt;1&gt;tcp服务器<a class="headerlink" href="#1tcp_1" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span>接收到的数据为: 你在么？
 </pre></div>
+
 
 <h4 id="2_1">&lt;2&gt;网络调试助手：<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
 <p><img alt="image.png" src="../002-网络tcp.image/14555448-26118ffe15638e22.png" /></p>
@@ -3589,16 +3593,16 @@
 
 <span class="c1"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span>
 <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="c1"># 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</span>
     <span class="c1"># client_socket用来为这个客户端服务</span>
     <span class="c1"># tcp_server_socket就可以省下来专门等待其他新客户端的链接</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;等待一个客户端的链接&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;等待一个客户端的链接&#39;</span><span class="p">)</span>
     <span class="n">client_socket</span><span class="p">,</span> <span class="n">clientAddr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
     <span class="c1"># 接收对方发送过来的数据</span>
     <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 接收1024个字节</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
     <span class="c1"># 发送一些数据到客户端</span>
     <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;thank you !&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
@@ -3608,6 +3612,7 @@
 <span class="c1">#关闭整个的服务端</span>
 <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
+
 
 <h3 id="_4">案例,为客户端服务多次<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
@@ -3629,17 +3634,17 @@
 
 <span class="c1"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span>
 <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="c1"># 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</span>
     <span class="c1"># client_socket用来为这个客户端服务</span>
     <span class="c1"># tcp_server_socket就可以省下来专门等待其他新客户端的链接</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;等待一个客户端的链接&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;等待一个客户端的链接&#39;</span><span class="p">)</span>
     <span class="n">client_socket</span><span class="p">,</span> <span class="n">clientAddr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;一个客户端已经到来&#39;</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;一个客户端已经到来&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 接收对方发送过来的数据</span>
         <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 接收1024个字节</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
 
 
@@ -3656,6 +3661,7 @@
 <span class="c1">#关闭整个的服务端</span>
 <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
+
 
 <h2 id="44-tcp">4.4 tcp注意点<a class="headerlink" href="#44-tcp" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3689,13 +3695,13 @@
             <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">content</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;没有下载的文件:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;没有下载的文件:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请按照如下方式运行：python3 xxx.py 7890&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请按照如下方式运行：python3 xxx.py 7890&quot;</span><span class="p">)</span>
         <span class="k">return</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># 运行方式为python3 xxx.py 7890</span>
@@ -3711,13 +3717,13 @@
     <span class="c1"># 将主动套接字变为被动套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 等待客户端的链接，即为这个客户端发送文件</span>
         <span class="n">client_socket</span><span class="p">,</span> <span class="n">clientAddr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="c1"># 接收对方发送过来的数据</span>
         <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 接收1024个字节</span>
         <span class="n">file_name</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;对方请求下载的文件名为:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;对方请求下载的文件名为:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
         <span class="n">file_content</span> <span class="o">=</span> <span class="n">get_file_content</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
         <span class="c1"># 发送文件的数据给客户端</span>
         <span class="c1"># 因为获取打开文件时是以rb方式打开，所以file_content中的数据已经是二进制的格式，因此不需要encode编码</span>
@@ -3733,6 +3739,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <p>客户端 参考代码如下:</p>
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="o">*</span>
@@ -3771,6 +3778,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
 
 <h2 id="46-tcp3">4.6 tcp的3次握手<a class="headerlink" href="#46-tcp3" title="Permanent link">&para;</a></h2>
 <p><img alt="image.png" src="../002-网络tcp.image/14555448-d2230f23628dec5b.png" /></p>
@@ -3933,6 +3941,7 @@ A向B发送确认信号，同意断开：A——&gt;B。</p>
 网络接口层也称为：链路层
 </pre></div>
 
+
 <h4 id="_5">另外一套标准<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><img alt="image.png" src="../002-网络tcp.image/14555448-db8a8fa2be3a7046.png" /></p>
                 
@@ -3991,11 +4000,11 @@ A向B发送确认信号，同意断开：A——&gt;B。</p>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -4024,6 +4033,10 @@ A向B发送确认信号，同意断开：A——&gt;B。</p>
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

@@ -3435,12 +3435,14 @@
 <div class="codehilite"><pre><span></span>activate xxx
 </pre></div>
 
+
 <ol>
 <li>获取whl文件</li>
 </ol>
 <div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">requestments</span><span class="o">.</span><span class="n">txt</span>    <span class="c1">#pip freee的意思是查看当前python安装了哪些库，保存在requestments.txt中</span>
 <span class="n">pip</span> <span class="n">download</span>  <span class="o">-</span><span class="n">r</span> <span class="n">requestments</span><span class="o">.</span><span class="n">txt</span>  <span class="o">-</span><span class="n">d</span>  <span class="o">./</span><span class="n">pip_packages</span>    <span class="c1">#从当前环境的网络中下载requestments.txt中写的包，下载到当前目录下的pip_packages目录中，这时候你会发现，里面有很多依赖，还有一些whl文件</span>
 </pre></div>
+
 
 <p>当然从网上直接下载也是可以的，网址https://pypi.python.org/pypi/</p>
 <blockquote>
@@ -3487,6 +3489,7 @@
 <span class="c1"># --find-links指定的是包文件的存放地址，-r指定的是txt文件的位置</span>
 </pre></div>
 
+
 <p><img alt="image.png" src="../015-python项目离线部署.image/14555448-8de88160f57ae8f9.png" /></p>
 <p>当然，你也可以选择性保留或者删除某些包，但是要注意的是小心依赖哦</p>
 <ol>
@@ -3496,6 +3499,7 @@
 <p>查看一下是否真的安装完成</p>
 <div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="nb">list</span>
 </pre></div>
+
 
 <p><img alt="image.png" src="../015-python项目离线部署.image/14555448-6ffc744c4170d74e.png" /></p>
 <h2 id="4">4.防火墙配置<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
@@ -3617,11 +3621,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3650,6 +3654,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

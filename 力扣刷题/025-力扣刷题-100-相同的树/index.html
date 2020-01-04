@@ -3318,12 +3318,12 @@
 <span class="sd">        :type q: TreeNode</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">q</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>  <span class="c1">#如果一开始的这两个节点都是空的话那么就是说这两个节点不存在那么就是相等的,即使是递归中,这两个节点都是不存在的,返回True然后接着去判断别的节点就好了</span>
-            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">q</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1">#如果一开始的这两个节点都是空的话那么就是说这两个节点不存在那么就是相等的,即使是递归中,这两个节点都是不存在的,返回True然后接着去判断别的节点就好了</span>
+            <span class="k">return</span> <span class="kc">True</span>
 
-        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>  <span class="c1">#如果说这两个节点都不是空的话,那么就判断这个同等位置的节点的值是不是一样的,他们的左孩子以及右孩子是不是一样的.递归进行调用.这样递归判断后,三个条件满足就说明这个节点是相等的,最后这颗树是相等的.</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1">#如果说这两个节点都不是空的话,那么就判断这个同等位置的节点的值是不是一样的,他们的左孩子以及右孩子是不是一样的.递归进行调用.这样递归判断后,三个条件满足就说明这个节点是相等的,最后这颗树是相等的.</span>
             <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">q</span><span class="o">.</span><span class="n">val</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">isSameTree</span><span class="p">(</span> <span class="n">p</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">isSameTree</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">False</span>  <span class="c1">#如果存在一棵树非空,一棵树是空的那么就返回False</span>
+        <span class="k">return</span> <span class="kc">False</span>  <span class="c1">#如果存在一棵树非空,一棵树是空的那么就返回False</span>
 </pre></div>
                 
                   
@@ -3381,11 +3381,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3414,6 +3414,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

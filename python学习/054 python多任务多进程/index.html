@@ -3872,18 +3872,19 @@
 
 <span class="k">def</span> <span class="nf">run_proc</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;子进程要执行的代码&quot;&quot;&quot;</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----2----&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----2----&quot;</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_proc</span><span class="p">)</span> <span class="c1">#创建一个进程</span>
     <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="c1">#开启进程</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----1----&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----1----&quot;</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
+
 
 <h4 id="_2">说明<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <ul>
@@ -3896,14 +3897,14 @@
 
 
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;1--------&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1--------&quot;</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;2--------&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2--------&quot;</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
@@ -3922,6 +3923,7 @@
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
+
 <p><img alt="image.png" src="../054 python多任务多进程.image/14555448-a1a0557e94cccb6b.png" /></p>
 <p>进程开的越多,资源占用的越多,进程越来越多,效率会降低.一开始是快的不过是占用内存.但是进程越来越多的时候就挤不开了.</p>
 <p>子进程是要复制一份主进程的资源,但是代码是共享的,因此会又占用一部分内存这也是耗费资源多的一个原因.</p>
@@ -3934,14 +3936,15 @@
 
 <span class="k">def</span> <span class="nf">run_proc</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;子进程要执行的代码&quot;&quot;&quot;</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;子进程运行中，pid=</span><span class="si">%d</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>  <span class="c1"># os.getpid获取当前进程的进程号</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;子进程将要结束...&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;子进程运行中，pid=</span><span class="si">%d</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>  <span class="c1"># os.getpid获取当前进程的进程号</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;子进程将要结束...&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;父进程pid: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>  <span class="c1"># os.getpid获取当前进程的进程号</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;父进程pid: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>  <span class="c1"># os.getpid获取当前进程的进程号</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_proc</span><span class="p">)</span>
     <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
+
 
 <h3 id="3-process">3. Process语法结构如下：<a class="headerlink" href="#3-process" title="Permanent link">&para;</a></h3>
 <p>Process([group [, target [, name [, args [, kwargs]]]]])</p>
@@ -3973,8 +3976,8 @@
 
 <span class="k">def</span> <span class="nf">run_proc</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;子进程运行中，name= </span><span class="si">%s</span><span class="s1">,age=</span><span class="si">%d</span><span class="s1"> ,pid=</span><span class="si">%d</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;子进程运行中，name= </span><span class="si">%s</span><span class="s1">,age=</span><span class="si">%d</span><span class="s1"> ,pid=</span><span class="si">%d</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -3985,18 +3988,20 @@
     <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </pre></div>
 
+
 <p>运行结果:</p>
-<div class="codehilite"><pre><span></span><span class="err">子进程运行中，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<div class="codehilite"><pre><span></span><span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
 <span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="err">子进程运行中，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
 <span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="err">子进程运行中，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
 <span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="err">子进程运行中，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
 <span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="err">子进程运行中，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
+<span class="n">子进程运行中</span><span class="err">，</span><span class="n">name</span><span class="o">=</span> <span class="n">test</span><span class="p">,</span><span class="n">age</span><span class="o">=</span><span class="mi">18</span> <span class="p">,</span><span class="n">pid</span><span class="o">=</span><span class="mf">45097.</span><span class="o">..</span>
 <span class="p">{</span><span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
 </pre></div>
+
 
 <h3 id="5-nums">5. 进程间不同享全局变量(子进程都会拷贝主进程的一份资源,因此输出的使用nums都是单独的资源)<a class="headerlink" href="#5-nums" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding:utf-8 -*-</span>
@@ -4008,15 +4013,15 @@
 
 <span class="k">def</span> <span class="nf">work1</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;子进程要执行的代码&quot;&quot;&quot;</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;in process1 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in process1 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">nums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;in process1 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in process1 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">work2</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;子进程要执行的代码&quot;&quot;&quot;</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;in process2 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in process2 pid=</span><span class="si">%d</span><span class="s2"> ,nums=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">nums</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">p1</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">work1</span><span class="p">)</span>
@@ -4027,6 +4032,7 @@
     <span class="n">p2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 
+
 <h4 id="_4">运行结果:<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><span class="ow">in</span> <span class="n">process1</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11349</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
 <span class="ow">in</span> <span class="n">process1</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11349</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
@@ -4034,6 +4040,7 @@
 <span class="ow">in</span> <span class="n">process1</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11349</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="ow">in</span> <span class="n">process2</span> <span class="n">pid</span><span class="o">=</span><span class="mi">11350</span> <span class="p">,</span><span class="n">nums</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
 </pre></div>
+
 
 <h2 id="63">6.3. 进程、线程对比<a class="headerlink" href="#63" title="Permanent link">&para;</a></h2>
 <h2 id="_5">进程、线程对比<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
@@ -4070,20 +4077,20 @@
 <span class="n">q</span><span class="o">=</span><span class="n">Queue</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#初始化一个Queue对象，最多可接收三条put消息</span>
 <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息1&quot;</span><span class="p">)</span> 
 <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息2&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">full</span><span class="p">())</span>  <span class="c1">#False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">full</span><span class="p">())</span>  <span class="c1">#False</span>
 <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息3&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">full</span><span class="p">())</span> <span class="c1">#True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">full</span><span class="p">())</span> <span class="c1">#True</span>
 
 <span class="c1">#因为消息列队已满下面的try都会抛出异常，第一个try会等待2秒后再抛出异常，第二个Try会立刻抛出异常</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息4&quot;</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#等两秒再存消息</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;消息4&quot;</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#等两秒再存消息</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;消息列队已满，现有消息数量:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;消息列队已满，现有消息数量:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="n">q</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="s2">&quot;消息4&quot;</span><span class="p">)</span>  <span class="c1">#不想等直接就要往里存消息</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;消息列队已满，现有消息数量:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;消息列队已满，现有消息数量:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span>
 
 <span class="c1">#推荐的方式，先判断消息列队是否已满，再写入</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">full</span><span class="p">():</span>
@@ -4092,18 +4099,20 @@
 <span class="c1">#读取消息时，先判断消息列队是否为空，再读取</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">())</span>
 </pre></div>
 
+
 <p>运行结果:</p>
-<div class="codehilite"><pre><span></span><span class="bp">False</span>
-<span class="bp">True</span>
-<span class="err">消息列队已满，现有消息数量</span><span class="p">:</span><span class="mi">3</span>
-<span class="err">消息列队已满，现有消息数量</span><span class="p">:</span><span class="mi">3</span>
-<span class="err">消息</span><span class="mi">1</span>
-<span class="err">消息</span><span class="mi">2</span>
-<span class="err">消息</span><span class="mi">3</span>
+<div class="codehilite"><pre><span></span><span class="kc">False</span>
+<span class="kc">True</span>
+<span class="n">消息列队已满</span><span class="err">，</span><span class="n">现有消息数量</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">消息列队已满</span><span class="err">，</span><span class="n">现有消息数量</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">消息1</span>
+<span class="n">消息2</span>
+<span class="n">消息3</span>
 </pre></div>
+
 
 <h5 id="_10">说明<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
 <p>初始化Queue()对象时（例如：q=Queue()），若括号中没有指定最大可接收的消息数量，或数量为负值，那么就代表可接受的消息数量没有上限（直到内存的尽头）；</p>
@@ -4154,14 +4163,14 @@
     <span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
         <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---下载器已经下载完了数据并且存入到队列中----&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---下载器已经下载完了数据并且存入到队列中----&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">analysis_data</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;数据处理&quot;&quot;&quot;</span>
     <span class="n">waitting_analysis_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="c1"># 从队列中获取数据</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1">#取数据</span>
         <span class="n">waitting_analysis_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#存储数据</span>
 
@@ -4169,7 +4178,7 @@
             <span class="k">break</span>
 
     <span class="c1"># 模拟数据处理</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">waitting_analysis_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">waitting_analysis_data</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c1"># 1. 创建一个队列</span>
@@ -4186,6 +4195,7 @@
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
+
 <p>更系统的做法</p>
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Queue</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">random</span>
@@ -4193,16 +4203,16 @@
 <span class="c1"># 写数据进程执行的代码:</span>
 <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Put </span><span class="si">%s</span><span class="s1"> to queue...&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Put </span><span class="si">%s</span><span class="s1"> to queue...&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
 
 <span class="c1"># 读数据进程执行的代码:</span>
 <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Get </span><span class="si">%s</span><span class="s1"> from queue.&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Get </span><span class="si">%s</span><span class="s1"> from queue.&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">break</span>
@@ -4220,9 +4230,10 @@
     <span class="n">pr</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">pr</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
     <span class="c1"># pr进程里是死循环，无法等待其结束，只能强行终止:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;所有数据都写入并且读完&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;所有数据都写入并且读完&#39;</span><span class="p">)</span>
 </pre></div>
+
 
 <p>运行结果：</p>
 <p><img alt="13123123123123126.gif" src="../054 python多任务多进程.image/14555448-90f8caa6718feace.gif" /></p>
@@ -4236,11 +4247,11 @@
 
 <span class="k">def</span> <span class="nf">worker</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
     <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">开始执行,进程号为</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">开始执行,进程号为</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()))</span>
     <span class="c1"># random.random()随机生成0~1之间的浮点数</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> 
     <span class="n">t_stop</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="s2">&quot;执行完毕，耗时</span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_stop</span><span class="o">-</span><span class="n">t_start</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="s2">&quot;执行完毕，耗时</span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_stop</span><span class="o">-</span><span class="n">t_start</span><span class="p">))</span>
 
 <span class="n">po</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 定义一个进程池，最大进程数3</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>  <span class="c1">#会把所有的进程任务全部添加,但是执行的只有Pool最大的数量,会慢慢的把添加的任务分配到进程池里进行执行</span>
@@ -4248,37 +4259,39 @@
     <span class="c1"># 每次循环将会用空闲出来的子进程去调用目标</span>
     <span class="n">po</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">worker</span><span class="p">,(</span><span class="n">i</span><span class="p">,))</span> <span class="c1">#worker 函数名,(i,) 参数</span>
 <span class="c1">#使用pool创建的任务,主进程不会等待子进程的任务执行完,会继续往下执行,因此需要一个join函数进行堵塞,等待子进程的执行完毕</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;----start----&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----start----&quot;</span><span class="p">)</span>
 <span class="n">po</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># 关闭进程池，关闭后po不再接收新的请求,会继续向下执行,需要对主进程进行堵塞</span>
 <span class="n">po</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>  <span class="c1"># 等待po中所有子进程执行完成，必须放在close语句之后</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----end-----&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----end-----&quot;</span><span class="p">)</span>
 </pre></div>
+
 
 <p><img alt="图片.png" src="../054 python多任务多进程.image/14555448-9d6390c19c8ee9b3.png" /></p>
 <p>运行结果:</p>
 <div class="codehilite"><pre><span></span><span class="o">----</span><span class="n">start</span><span class="o">----</span>
-<span class="mi">0</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21466</span>
-<span class="mi">1</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21468</span>
-<span class="mi">2</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21467</span>
-<span class="mi">0</span> <span class="err">执行完毕，耗时</span><span class="mf">1.01</span>
-<span class="mi">3</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21466</span>
-<span class="mi">2</span> <span class="err">执行完毕，耗时</span><span class="mf">1.24</span>
-<span class="mi">4</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21467</span>
-<span class="mi">3</span> <span class="err">执行完毕，耗时</span><span class="mf">0.56</span>
-<span class="mi">5</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21466</span>
-<span class="mi">1</span> <span class="err">执行完毕，耗时</span><span class="mf">1.68</span>
-<span class="mi">6</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21468</span>
-<span class="mi">4</span> <span class="err">执行完毕，耗时</span><span class="mf">0.67</span>
-<span class="mi">7</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21467</span>
-<span class="mi">5</span> <span class="err">执行完毕，耗时</span><span class="mf">0.83</span>
-<span class="mi">8</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21466</span>
-<span class="mi">6</span> <span class="err">执行完毕，耗时</span><span class="mf">0.75</span>
-<span class="mi">9</span><span class="err">开始执行</span><span class="p">,</span><span class="err">进程号为</span><span class="mi">21468</span>
-<span class="mi">7</span> <span class="err">执行完毕，耗时</span><span class="mf">1.03</span>
-<span class="mi">8</span> <span class="err">执行完毕，耗时</span><span class="mf">1.05</span>
-<span class="mi">9</span> <span class="err">执行完毕，耗时</span><span class="mf">1.69</span>
+<span class="mi">0</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21466</span>
+<span class="mi">1</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21468</span>
+<span class="mi">2</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21467</span>
+<span class="mi">0</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">01</span>
+<span class="mi">3</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21466</span>
+<span class="mi">2</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">24</span>
+<span class="mi">4</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21467</span>
+<span class="mi">3</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时0</span><span class="o">.</span><span class="mi">56</span>
+<span class="mi">5</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21466</span>
+<span class="mi">1</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">68</span>
+<span class="mi">6</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21468</span>
+<span class="mi">4</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时0</span><span class="o">.</span><span class="mi">67</span>
+<span class="mi">7</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21467</span>
+<span class="mi">5</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时0</span><span class="o">.</span><span class="mi">83</span>
+<span class="mi">8</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21466</span>
+<span class="mi">6</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时0</span><span class="o">.</span><span class="mi">75</span>
+<span class="mi">9</span><span class="n">开始执行</span><span class="p">,</span><span class="n">进程号为21468</span>
+<span class="mi">7</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">03</span>
+<span class="mi">8</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">05</span>
+<span class="mi">9</span> <span class="n">执行完毕</span><span class="err">，</span><span class="n">耗时1</span><span class="o">.</span><span class="mi">69</span>
 <span class="o">-----</span><span class="n">end</span><span class="o">-----</span>
 </pre></div>
+
 
 <p>multiprocessing.Pool常用函数解析：</p>
 <ul>
@@ -4298,17 +4311,17 @@
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">time</span><span class="o">,</span><span class="nn">random</span>
 
 <span class="k">def</span> <span class="nf">reader</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;reader启动(</span><span class="si">%s</span><span class="s2">),父进程为(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reader启动(</span><span class="si">%s</span><span class="s2">),父进程为(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;reader从Queue获取到消息：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">True</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reader从Queue获取到消息：</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">writer</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;writer启动(</span><span class="si">%s</span><span class="s2">),父进程为(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;writer启动(</span><span class="si">%s</span><span class="s2">),父进程为(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">()))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s2">&quot;itcast&quot;</span><span class="p">:</span>
         <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">) start&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">) start&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>  <span class="c1"># 使用Manager中的Queue</span>
     <span class="n">po</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">()</span>
     <span class="n">po</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="p">(</span><span class="n">q</span><span class="p">,))</span>
@@ -4318,13 +4331,14 @@
     <span class="n">po</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="p">(</span><span class="n">q</span><span class="p">,))</span>
     <span class="n">po</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">po</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">) End&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">) End&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
 </pre></div>
+
 
 <p>运行结果:</p>
 <div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">11095</span><span class="p">)</span> <span class="n">start</span>
-<span class="n">writer启动</span><span class="p">(</span><span class="mi">11097</span><span class="p">),</span><span class="err">父进程为</span><span class="p">(</span><span class="mi">11095</span><span class="p">)</span>
-<span class="n">reader启动</span><span class="p">(</span><span class="mi">11098</span><span class="p">),</span><span class="err">父进程为</span><span class="p">(</span><span class="mi">11095</span><span class="p">)</span>
+<span class="n">writer启动</span><span class="p">(</span><span class="mi">11097</span><span class="p">),</span><span class="n">父进程为</span><span class="p">(</span><span class="mi">11095</span><span class="p">)</span>
+<span class="n">reader启动</span><span class="p">(</span><span class="mi">11098</span><span class="p">),</span><span class="n">父进程为</span><span class="p">(</span><span class="mi">11095</span><span class="p">)</span>
 <span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">i</span>
 <span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">t</span>
 <span class="n">reader从Queue获取到消息</span><span class="err">：</span><span class="n">c</span>
@@ -4334,16 +4348,17 @@
 <span class="p">(</span><span class="mi">11095</span><span class="p">)</span> <span class="n">End</span>
 </pre></div>
 
+
 <h2 id="66-copy">6.6. 案例：文件夹copy器（多进程版）<a class="headerlink" href="#66-copy" title="Permanent link">&para;</a></h2>
 <h2 id="copy">应用：文件夹copy器（多进程版）<a class="headerlink" href="#copy" title="Permanent link">&para;</a></h2>
 <p>初始版本</p>
-<p><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">multiprocessing</span>
 
 
 <span class="k">def</span> <span class="nf">copy_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">old_folder_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;完成文件的复制&quot;&quot;&quot;</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;======&gt;模拟copy文件：从</span><span class="si">%s</span><span class="s2">---&gt;到</span><span class="si">%s</span><span class="s2"> 文件名是:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">old_folder_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;======&gt;模拟copy文件：从</span><span class="si">%s</span><span class="s2">---&gt;到</span><span class="si">%s</span><span class="s2"> 文件名是:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">old_folder_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
     <span class="n">old_f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">old_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">old_f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="n">old_f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -4366,7 +4381,7 @@
 
     <span class="c1"># 3. 获取文件夹的所有的待copy的文件名字  listdir()</span>
     <span class="n">file_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">old_folder_name</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">file_names</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file_names</span><span class="p">)</span>
 
     <span class="c1"># 4. 创建进程池</span>
     <span class="n">po</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -4382,7 +4397,9 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
-打印进度版本
+
+
+<p>打印进度版本</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">multiprocessing</span>
 
@@ -4431,20 +4448,22 @@
     <span class="c1"># po.join()</span>
     <span class="n">all_file_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_names</span><span class="p">)</span>  <span class="c1"># 测一下所有的文件个数</span>
     <span class="n">copy_ok_num</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#拷贝完的文件的个数进行初始化</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">file_name</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1">#往外取拷贝完了的文件名,获取到了就加一</span>
         <span class="c1"># print(&quot;已经完成copy：%s&quot; % file_name)</span>
         <span class="n">copy_ok_num</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">拷贝的进度为：</span><span class="si">%.2f</span><span class="s2"> </span><span class="si">%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">copy_ok_num</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="n">all_file_num</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">拷贝的进度为：</span><span class="si">%.2f</span><span class="s2"> </span><span class="si">%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">copy_ok_num</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="n">all_file_num</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">copy_ok_num</span> <span class="o">&gt;=</span> <span class="n">all_file_num</span><span class="p">:</span><span class="c1">#个数相等就说明拷贝完了就结束循环</span>
             <span class="k">break</span>
 
 
-    <span class="k">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div></p>
+</pre></div>
+
+
 <p>多进程拷贝文件,输入原始路径及需要拷贝到的路径</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -4456,7 +4475,7 @@
     <span class="sd">&quot;&quot;&quot;copy文件到指定的路径&quot;&quot;&quot;</span>
     <span class="n">f_read</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
     <span class="n">f_write</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest_folder_name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
         <span class="n">content</span> <span class="o">=</span> <span class="n">f_read</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
@@ -4500,16 +4519,16 @@
     <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="n">all_file_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_names</span><span class="p">)</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">file_name</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">file_names</span><span class="p">:</span>
             <span class="n">file_names</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 
         <span class="n">copy_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_file_num</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">file_names</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="n">all_file_num</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">%.2f</span><span class="s2">...(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">copy_rate</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">%.2f</span><span class="s2">...(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">copy_rate</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">copy_rate</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
             <span class="k">break</span>
-    <span class="k">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">()</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -4571,11 +4590,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -4604,6 +4623,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

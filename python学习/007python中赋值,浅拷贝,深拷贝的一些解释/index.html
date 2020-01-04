@@ -3405,7 +3405,7 @@
 </blockquote>
 <h4 id="a123">首先创建一个列表:<code>a=[1,2,3]</code><a class="headerlink" href="#a123" title="Permanent link">&para;</a></h4>
 <p>然后将**a**赋值给**b**: <code>b=a</code>
-我们运行一下然后查看他们的地址:
+我们运行一下然后查看他们的地址:</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -3418,14 +3418,16 @@
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="mi">140381980736520</span>
-</pre></div></p>
+</pre></div>
+
+
 <h2 id="ab">可以看到的是a跟b指向了同一个地址<a class="headerlink" href="#ab" title="Permanent link">&para;</a></h2>
 <p>下面看一下分别对a和b进行操作会产生怎样的结果:</p>
 <blockquote>
 <p>对a进行操作
 * 给a添加一个数字:<code>a.append(4)</code></p>
 </blockquote>
-<p><div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">a</span>
+<div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">a</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -3445,12 +3447,14 @@
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">32</span><span class="p">]:</span> 
 </pre></div>
-可以看到在对a进行操作的同时由于b指向的地址跟a是一样的,因此b也会添加了一个数字4</p>
+
+
+<p>可以看到在对a进行操作的同时由于b指向的地址跟a是一样的,因此b也会添加了一个数字4</p>
 <blockquote>
 <p>对b进行操作
 * 给b添加一个数字5: <code>b.append(5)</code></p>
 </blockquote>
-<p><div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="n">b</span>
+<div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="n">b</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">34</span><span class="p">]:</span> <span class="n">a</span>
@@ -3470,12 +3474,14 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="mi">140381980736520</span>
 </pre></div>
-同样的b变a也变
+
+
+<p>同样的b变a也变
 这也就说名这种使用a=b的赋值方式只是赋值了一个地地址,一个变化另一个也会跟着变化.因此在实际使用中需要谨慎.</p>
 <blockquote>
 <p>下面看一下不进行添加变量而是重新赋值一个列表会发生什么样的变化</p>
 </blockquote>
-<p><div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="n">b</span>
+<div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="n">b</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">42</span><span class="p">]:</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -3501,7 +3507,9 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">49</span><span class="p">]:</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">49</span><span class="p">]:</span> <span class="mi">140381980736520</span>
 </pre></div>
-重新进行赋值以后,b指向的地址就会发生改变,因此对a不会再产生影响.</p>
+
+
+<p>重新进行赋值以后,b指向的地址就会发生改变,因此对a不会再产生影响.</p>
 <h3 id="_1">所以在实际开发中还是要注意这种赋值语句的实际操作是什么样子的.<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <blockquote>
 <h1 id="2-copy">2 copy浅拷贝，没有拷贝子对象，所以原始数据改变，子对象会改变<a class="headerlink" href="#2-copy" title="Permanent link">&para;</a></h1>
@@ -3535,8 +3543,9 @@
 <span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}</span>
 </pre></div>
 
+
 <h3 id="list">下面再看一下list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span><span class="c1">#添加子对象</span>
+<div class="codehilite"><pre><span></span><span class="c1">#添加子对象</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">a</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">a</span>
@@ -3577,7 +3586,9 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="n">b</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
 </pre></div>
-可以看到的是a子对象发生改变,b也会跟着改变,但是a的父对象发生改变b没有产生变化.同样的b的子对象发生变化a的子对象也会发生变化.
+
+
+<p>可以看到的是a子对象发生改变,b也会跟着改变,但是a的父对象发生改变b没有产生变化.同样的b的子对象发生变化a的子对象也会发生变化.</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="n">a</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">]]</span>
 
@@ -3599,7 +3610,9 @@
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">47</span><span class="p">]:</span> <span class="n">a</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">47</span><span class="p">]:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">]]</span>
-</pre></div></p>
+</pre></div>
+
+
 <blockquote>
 <h3 id="_3">深拷贝<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>深拷贝需要使用copy模块的deepcopy()方法，完全拷贝父对象及其子对象</p>
@@ -3638,6 +3651,7 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">b</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 </pre></div>
+
 
 <blockquote>
 <h3 id="ab_1">从代码中也可以看到使用深拷贝后a和b都是独立的对象,互不影响.<a class="headerlink" href="#ab_1" title="Permanent link">&para;</a></h3>
@@ -3698,11 +3712,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3731,6 +3745,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

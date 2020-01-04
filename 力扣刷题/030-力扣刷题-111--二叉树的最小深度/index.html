@@ -3316,13 +3316,14 @@
 <span class="sd">        :type root: TreeNode</span>
 <span class="sd">        :rtype: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>  <span class="c1">#这个节点对象不存在就返回空</span>
+        <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1">#这个节点对象不存在就返回空</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>  <span class="c1">#这个节点对象左右孩子都存在的时候</span>
             <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">),</span><span class="bp">self</span><span class="o">.</span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">#返回的是下面子树中路径最短的.这个加1加的是当前这个点的一层</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">),</span><span class="bp">self</span><span class="o">.</span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span>  <span class="c1">#这一个考虑的是这个数的根节点只有一边的树,比如只有右边,那么在这次判断中左孩子不存在返回的是0 ,但是我们不能认为这棵树的深度就是1了,所以返回的应该是大的那个值.这样才能满足条件</span>
 </pre></div>
+
 
 <p>第一个if判断的是叶子几点,不会向下延伸,返回值为零
 第二个if 是左右节点都有那么就进行递归
@@ -3386,11 +3387,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3419,6 +3420,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

@@ -3426,7 +3426,7 @@
 </tr>
 <tr>
 <td align="left">os.path.expandvars(path)</td>
-<td align="left">根据环境变量的值替换path中包含的"<span><span class="MathJax_Preview">name"和"</span><script type="math/tex">name"和"</script></span>{name}"</td>
+<td align="left">根据环境变量的值替换path中包含的"<span name="name"><span class="MathJax_Preview">name"和"</span><script type="math/tex">name"和"</script></span>"</td>
 </tr>
 <tr>
 <td align="left">os.path.getatime(path)</td>
@@ -3529,11 +3529,12 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;/root/runoob.txt&#39;</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 返回文件名</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="s1">&#39;/root/runoob.txt&#39;</span><span class="p">)</span> <span class="p">)</span>    <span class="c1"># 返回目录路径</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/root/runoob.txt&#39;</span><span class="p">)</span> <span class="p">)</span>      <span class="c1"># 分割文件名与路径</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;runoob.txt&#39;</span><span class="p">)</span> <span class="p">)</span>  <span class="c1"># 将目录和文件名合成一个路径</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s1">&#39;/root/runoob.txt&#39;</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 返回文件名</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="s1">&#39;/root/runoob.txt&#39;</span><span class="p">)</span> <span class="p">)</span>    <span class="c1"># 返回目录路径</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/root/runoob.txt&#39;</span><span class="p">)</span> <span class="p">)</span>      <span class="c1"># 分割文件名与路径</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;runoob.txt&#39;</span><span class="p">)</span> <span class="p">)</span>  <span class="c1"># 将目录和文件名合成一个路径</span>
 </pre></div>
+
 
 <p>执行以上程序输出结果为：</p>
 <div class="codehilite"><pre><span></span><span class="n">runoob</span><span class="o">.</span><span class="n">txt</span>
@@ -3541,6 +3542,7 @@
 <span class="p">(</span><span class="s1">&#39;/root&#39;</span><span class="p">,</span> <span class="s1">&#39;runoob.txt&#39;</span><span class="p">)</span>
 <span class="n">root</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">runoob</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
+
 
 <p>以下实例输出文件的相关信息。</p>
 <h2 id="_3">实例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
@@ -3550,16 +3552,17 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="nb">file</span><span class="o">=</span><span class="s1">&#39;/root/runoob.txt&#39;</span> <span class="c1"># 文件路径</span>
+<span class="n">file</span><span class="o">=</span><span class="s1">&#39;/root/runoob.txt&#39;</span> <span class="c1"># 文件路径</span>
 
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getatime</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出最近访问时间</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getctime</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出文件创建时间</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出最近修改时间</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="nb">file</span><span class="p">))</span> <span class="p">)</span>  <span class="c1"># 以struct_time形式输出最近修改时间</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出文件大小（字节为单位）</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出绝对路径</span>
-<span class="k">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span> <span class="p">)</span>  <span class="c1"># 规范path字符串形式</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getatime</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出最近访问时间</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getctime</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出文件创建时间</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出最近修改时间</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">file</span><span class="p">))</span> <span class="p">)</span>  <span class="c1"># 以struct_time形式输出最近修改时间</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出文件大小（字节为单位）</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="p">)</span>   <span class="c1"># 输出绝对路径</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="p">)</span>  <span class="c1"># 规范path字符串形式</span>
 </pre></div>
+
 
 <p>执行以上程序输出结果为：</p>
 <div class="codehilite"><pre><span></span>1539052805.5735736
@@ -3626,11 +3629,11 @@ time.struct_time(tm_year=2018, tm_mon=10, tm_mday=9, tm_hour=2, tm_min=40, tm_se
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3659,6 +3662,10 @@ time.struct_time(tm_year=2018, tm_mon=10, tm_mday=9, tm_hour=2, tm_min=40, tm_se
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

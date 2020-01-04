@@ -3585,13 +3585,16 @@
 <div class="codehilite"><pre><span></span>pip install mkdocs mkdocs-material
 </pre></div>
 
+
 <p>若下载慢，可更换安装源为豆瓣</p>
 <div class="codehilite"><pre><span></span>pip install --trusted-host pypi.douban.com -i http://pypi.douban.com/simple/ mkdocs mkdocs-material
 </pre></div>
 
+
 <h2 id="_3">初始化项目<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span>mkdocs new my-project
 </pre></div>
+
 
 <p>会生成my-project目录，进入该目录里，可以看到默认放置了一些文件，包括mkdocs.yml，这是主配置文件
 docs文件夹中是我们写的makedown文件
@@ -3603,18 +3606,23 @@ docs文件夹中是我们写的makedown文件
   name: material
 </pre></div>
 
+
 <h2 id="_5">运行<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span># 在my-project目录里执行
+<div class="codehilite"><pre><span></span># 在my-project目录里执行
 mkdocs serve
 </pre></div>
-或者
+
+
+<p>或者
 如果想自定义一个地址</p>
-<p>可以输入下面的地址
+<p>可以输入下面的地址</p>
 <div class="codehilite"><pre><span></span>mkdocs serve --dev-addr=192.168.31.199:1666
 或者
 mkdocs serve -a 127.0.0.1:9999
 </pre></div>
-通过浏览器访问本地ip的8000端口（比如http://127.0.0.1:8000/） 查看效果，如图所示</p>
+
+
+<p>通过浏览器访问本地ip的8000端口（比如http://127.0.0.1:8000/） 查看效果，如图所示</p>
 <p><img alt="image" src="../061-基于mkdocs-material搭建个人静态博客.image/9206573-6f5740e12d0882ba.png" /></p>
 <h2 id="github-pages">发布到GitHub pages<a class="headerlink" href="#github-pages" title="Permanent link">&para;</a></h2>
 <p>通过<code>mkdocs gh-deploy</code>自动编译出html并发布至GitHub pages，步骤如下</p>
@@ -3626,9 +3634,11 @@ mkdocs serve -a 127.0.0.1:9999
 2.然后可以将最早创建的mkdocs根目录（即my-project目录）删除了</p>
 <p><strong>发布</strong></p>
 <p>在本地git目录下执行</p>
-<p><div class="codehilite"><pre><span></span>mkdocs gh-deploy
+<div class="codehilite"><pre><span></span>mkdocs gh-deploy
 </pre></div>
-如果需要修改的话
+
+
+<p>如果需要修改的话
 重新执行上面的命令就好了</p>
 <h2 id="http-server">发布到个人HTTP Server<a class="headerlink" href="#http-server" title="Permanent link">&para;</a></h2>
 <p>通过<code>mkdocs build</code>编译出html并手动同步至http server的根目录</p>
@@ -3636,6 +3646,7 @@ mkdocs serve -a 127.0.0.1:9999
 <p>在git目录下执行命令</p>
 <div class="codehilite"><pre><span></span>mkdocs build
 </pre></div>
+
 
 <p>命令执行完毕后可以看到site目录</p>
 <p><strong>发布至http server</strong></p>
@@ -3658,6 +3669,7 @@ mkdocs serve -a 127.0.0.1:9999
       - 标题: syntax/headline.md
       - 段落: syntax/paragraph.md
 </pre></div>
+
 
 <ul>
 <li>上面的index.md就是放置在my-project/docs/index.md</li>
@@ -3692,6 +3704,7 @@ mkdocs serve -a 127.0.0.1:9999
   - pymdownx.tasklist
   - pymdownx.tilde
 </pre></div>
+
 
 <h2 id="markdown">markdown语法<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h2>
 <p>mkdocs-material支持几十种markdown语法，有许多很酷炫的功能与效果，由于篇幅有限，无法在这一一展示，因此这里仅列举下所支持的主要语法</p>
@@ -3851,11 +3864,11 @@ mkdocs serve -a 127.0.0.1:9999
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3884,6 +3897,10 @@ mkdocs serve -a 127.0.0.1:9999
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

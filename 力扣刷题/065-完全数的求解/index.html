@@ -3375,14 +3375,16 @@
         <span class="k">if</span> <span class="n">aa</span><span class="o">%</span><span class="n">o</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#如果aa对o求余是等于0的那么就是因数</span>
             <span class="nb">sum</span> <span class="o">+=</span> <span class="n">o</span> <span class="c1">#进行累加</span>
     <span class="k">if</span> <span class="nb">sum</span> <span class="o">==</span> <span class="n">aa</span><span class="p">:</span> <span class="c1">#最后判断是不是相等</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span> <span class="c1">#相等就是完全数</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span> <span class="c1">#相等就是完全数</span>
 </pre></div>
+
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="mi">6</span>
 <span class="mi">28</span>
 <span class="mi">496</span>
 </pre></div>
+
 
 <h2 id="_2">写成函数的形式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
@@ -3402,7 +3404,7 @@
     <span class="k">for</span> <span class="n">aa</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span> <span class="c1">#求一到1000的完全数</span>
         <span class="n">sum1</span> <span class="o">=</span><span class="nb">sum</span><span class="p">(</span> <span class="n">gong_yin_shu</span><span class="p">(</span><span class="n">aa</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">sum1</span> <span class="o">==</span> <span class="n">aa</span><span class="p">:</span> <span class="c1">#最后判断是不是相等</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span> <span class="c1">#相等就是完全数</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">aa</span><span class="p">)</span> <span class="c1">#相等就是完全数</span>
 </pre></div>
                 
                   
@@ -3460,11 +3462,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3493,6 +3495,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

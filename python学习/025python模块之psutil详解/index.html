@@ -3450,7 +3450,8 @@
 <h3 id="psutil">一、psutil模块:<a class="headerlink" href="#psutil" title="Permanent link">&para;</a></h3>
 <ol>
 <li>psutil是一个跨平台库,能够轻松实现获取系统运行的进程和系统利用率（包括CPU、内存、磁盘、网络等）信息。它主要用来做系统监控，性能分析，进程管理。它实现了同等命令行工具提供的功能，如ps、top、lsof、netstat、ifconfig、who、df、kill、free、nice、ionice、iostat、iotop、uptime、pidof、tty、taskset、pmap等。目前支持32位和64位的Linux、Windows、OS X、FreeBSD和Sun Solaris等操作系统.
-2.安装psutil模块：如果是安装了anaconda会自带这个模块
+2.安装psutil模块：如果是安装了anaconda会自带这个模块</li>
+</ol>
 <div class="codehilite"><pre><span></span>CentOS安装psutil包：
 python版本：3.5
 
@@ -3468,50 +3469,64 @@ Collecting psutil
 Installing collected packages: psutil
 Successfully installed psutil-5.3.1
 </pre></div>
-二、.获取系统基本信息的使用:</li>
-</ol>
+
+
+<p>二、.获取系统基本信息的使用:</p>
 <h4 id="1cpu">1.CPU信息<a class="headerlink" href="#1cpu" title="Permanent link">&para;</a></h4>
-<p>使用cpu_times方法获取cpu的完整信息，如下所示。
+<p>使用cpu_times方法获取cpu的完整信息，如下所示。</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_times</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">scputimes</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="mf">22096.843749999996</span><span class="p">,</span> <span class="n">system</span><span class="o">=</span><span class="mf">23272.625</span><span class="p">,</span> <span class="n">idle</span><span class="o">=</span><span class="mf">272734.671875</span><span class="p">,</span> <span class="n">interrupt</span><span class="o">=</span><span class="mf">454.625</span><span class="p">,</span> <span class="n">dpc</span><span class="o">=</span><span class="mf">385.421875</span><span class="p">)</span>
 </pre></div>
-获取单个数据，如查看用户的cpu时间比，如下所示：</p>
-<p><div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_times</span><span class="p">()</span><span class="o">.</span><span class="n">user</span>
+
+
+<p>获取单个数据，如查看用户的cpu时间比，如下所示：</p>
+<div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_times</span><span class="p">()</span><span class="o">.</span><span class="n">user</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="mf">22285.656249999996</span>
 </pre></div>
-获取cpu逻辑和物理个数，默认logical值为True 。
+
+
+<p>获取cpu逻辑和物理个数，默认logical值为True 。</p>
 <div class="codehilite"><pre><span></span><span class="c1">#CPU逻辑个数</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="mi">4</span>
 <span class="c1">#CPU物理个数</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">(</span><span class="n">logical</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">(</span><span class="n">logical</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="mi">2</span>
 </pre></div>
-获取cpu的使用率:
+
+
+<p>获取cpu的使用率:</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">()</span>  <span class="c1">#总得占有率</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="mf">14.0</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1">#pid为1的进程的cpu占有率</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="mf">11.1</span>
-</pre></div></p>
+</pre></div>
+
+
 <h4 id="2">2.内存信息<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>内存信息的获取主要使用virtual_memory方法。swap使用就用swap_memory方法。
+<p>内存信息的获取主要使用virtual_memory方法。swap使用就用swap_memory方法。</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">svmem</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">8485965824</span><span class="p">,</span> <span class="n">available</span><span class="o">=</span><span class="mi">4302585856</span><span class="p">,</span> <span class="n">percent</span><span class="o">=</span><span class="mf">49.3</span><span class="p">,</span> <span class="n">used</span><span class="o">=</span><span class="mi">4183379968</span><span class="p">,</span> <span class="n">free</span><span class="o">=</span><span class="mi">4302585856</span><span class="p">)</span>
 </pre></div>
-其中percent表示实际已经使用的内存占比，即（8485965824-4302585856）/8485965824*100% 。available表示还可以使用的内存。
-获取单个的信息跟cpu的使用是一样的,比如获取内存的使用率
+
+
+<p>其中percent表示实际已经使用的内存占比，即（8485965824-4302585856）/8485965824*100% 。available表示还可以使用的内存。
+获取单个的信息跟cpu的使用是一样的,比如获取内存的使用率</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">percent</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="mf">48.9</span>
-</pre></div></p>
+</pre></div>
+
+
 <h4 id="_1">交换分区的信息<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">swap_memory</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">sswap</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">10566340608</span><span class="p">,</span> <span class="n">used</span><span class="o">=</span><span class="mi">5468590080</span><span class="p">,</span> <span class="n">free</span><span class="o">=</span><span class="mi">5097750528</span><span class="p">,</span> <span class="n">percent</span><span class="o">=</span><span class="mf">51.8</span><span class="p">,</span> <span class="n">sin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sout</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
+
 <h3 id="3">3.磁盘信息<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p>磁盘信息主要有两部分，一个是磁盘的利用率，一个是io，他们分别可以通过disk_usage和disk_io_counters方法获取。</p>
-<p>如下先获取分区信息，然后看下根分区的使用情况:
+<p>如下先获取分区信息，然后看下根分区的使用情况:</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_partitions</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
 <span class="p">[</span><span class="n">sdiskpart</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">mountpoint</span><span class="o">=</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fstype</span><span class="o">=</span><span class="s1">&#39;NTFS&#39;</span><span class="p">,</span> <span class="n">opts</span><span class="o">=</span><span class="s1">&#39;rw,fixed&#39;</span><span class="p">),</span>
@@ -3524,7 +3539,9 @@ Successfully installed psutil-5.3.1
  <span class="n">sdiskpart</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;O:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">mountpoint</span><span class="o">=</span><span class="s1">&#39;O:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fstype</span><span class="o">=</span><span class="s1">&#39;NTFS&#39;</span><span class="p">,</span> <span class="n">opts</span><span class="o">=</span><span class="s1">&#39;rw,fixed&#39;</span><span class="p">),</span>
  <span class="n">sdiskpart</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;P:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">mountpoint</span><span class="o">=</span><span class="s1">&#39;P:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fstype</span><span class="o">=</span><span class="s1">&#39;NTFS&#39;</span><span class="p">,</span> <span class="n">opts</span><span class="o">=</span><span class="s1">&#39;rw,fixed&#39;</span><span class="p">)]</span>
 </pre></div>
-查看某个分区的信息
+
+
+<p>查看某个分区的信息</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_usage</span><span class="p">(</span><span class="s1">&#39;c:&#39;</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">sdiskusage</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">107375226880</span><span class="p">,</span> <span class="n">used</span><span class="o">=</span><span class="mi">48413634560</span><span class="p">,</span> <span class="n">free</span><span class="o">=</span><span class="mi">58961592320</span><span class="p">,</span> <span class="n">percent</span><span class="o">=</span><span class="mf">45.1</span><span class="p">)</span>
 
@@ -3534,7 +3551,9 @@ Successfully installed psutil-5.3.1
 <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_usage</span><span class="p">(</span><span class="s1">&#39;E:&#39;</span><span class="p">)</span>  <span class="c1">#注意一定要有:</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">sdiskusage</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">224426729472</span><span class="p">,</span> <span class="n">used</span><span class="o">=</span><span class="mi">201101312</span><span class="p">,</span> <span class="n">free</span><span class="o">=</span><span class="mi">224225628160</span><span class="p">,</span> <span class="n">percent</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
-默认disk_io_counters方法获取的是硬盘总的io数和读写信息，如果需要获取单个硬盘的io和读写信息加上"perdisk=True"参数。
+
+
+<p>默认disk_io_counters方法获取的是硬盘总的io数和读写信息，如果需要获取单个硬盘的io和读写信息加上"perdisk=True"参数。</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_io_counters</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">sdiskio</span><span class="p">(</span><span class="n">read_count</span><span class="o">=</span><span class="mi">14388378</span><span class="p">,</span> <span class="n">write_count</span><span class="o">=</span><span class="mi">5578458</span><span class="p">,</span> <span class="n">read_bytes</span><span class="o">=</span><span class="mi">858581854208</span><span class="p">,</span> <span class="n">write_bytes</span><span class="o">=</span><span class="mi">40740875776</span><span class="p">,</span> <span class="n">read_time</span><span class="o">=</span><span class="mi">10644</span><span class="p">,</span> <span class="n">write_time</span><span class="o">=</span><span class="mi">3237</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_io_counters</span><span class="p">(</span><span class="s2">&quot;perdisk=True&quot;</span><span class="p">)</span>   <span class="c1">#这里的分区是整个盘,我这里挂载了三块盘</span>
@@ -3542,9 +3561,11 @@ Successfully installed psutil-5.3.1
 <span class="p">{</span><span class="s1">&#39;PhysicalDrive0&#39;</span><span class="p">:</span> <span class="n">sdiskio</span><span class="p">(</span><span class="n">read_count</span><span class="o">=</span><span class="mi">2357409</span><span class="p">,</span> <span class="n">write_count</span><span class="o">=</span><span class="mi">5552659</span><span class="p">,</span> <span class="n">read_bytes</span><span class="o">=</span><span class="mi">77187101184</span><span class="p">,</span> <span class="n">write_bytes</span><span class="o">=</span><span class="mi">40293819904</span><span class="p">,</span> <span class="n">read_time</span><span class="o">=</span><span class="mi">2817</span><span class="p">,</span> <span class="n">write_time</span><span class="o">=</span><span class="mi">2244</span><span class="p">),</span>
  <span class="s1">&#39;PhysicalDrive1&#39;</span><span class="p">:</span> <span class="n">sdiskio</span><span class="p">(</span><span class="n">read_count</span><span class="o">=</span><span class="mi">868070</span><span class="p">,</span> <span class="n">write_count</span><span class="o">=</span><span class="mi">25558</span><span class="p">,</span> <span class="n">read_bytes</span><span class="o">=</span><span class="mi">49977322496</span><span class="p">,</span> <span class="n">write_bytes</span><span class="o">=</span><span class="mi">447356928</span><span class="p">,</span> <span class="n">read_time</span><span class="o">=</span><span class="mi">4129</span><span class="p">,</span> <span class="n">write_time</span><span class="o">=</span><span class="mi">935</span><span class="p">),</span>
  <span class="s1">&#39;PhysicalDrive2&#39;</span><span class="p">:</span> <span class="n">sdiskio</span><span class="p">(</span><span class="n">read_count</span><span class="o">=</span><span class="mi">11338523</span><span class="p">,</span> <span class="n">write_count</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">read_bytes</span><span class="o">=</span><span class="mi">742926391808</span><span class="p">,</span> <span class="n">write_bytes</span><span class="o">=</span><span class="mi">8146944</span><span class="p">,</span> <span class="n">read_time</span><span class="o">=</span><span class="mi">3770</span><span class="p">,</span> <span class="n">write_time</span><span class="o">=</span><span class="mi">58</span><span class="p">)}</span>
-</pre></div></p>
+</pre></div>
+
+
 <h4 id="4">4.网络信息：<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
-<p>网络io和磁盘io使用方法差不多，主要使用net_io_counters方法，如果需要获取单个网卡的io信息，加上pernic=True参数。
+<p>网络io和磁盘io使用方法差不多，主要使用net_io_counters方法，如果需要获取单个网卡的io信息，加上pernic=True参数。</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="c1">#获取网络总的io情况</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">net_io_counters</span><span class="p">()</span>
@@ -3552,7 +3573,7 @@ Successfully installed psutil-5.3.1
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="c1">#获取网卡的io情况</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">net_io_counters</span><span class="p">(</span><span class="n">pernic</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">net_io_counters</span><span class="p">(</span><span class="n">pernic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span>
 <span class="p">{</span><span class="s1">&#39;以太网&#39;</span><span class="p">:</span> <span class="n">snetio</span><span class="p">(</span><span class="n">bytes_sent</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bytes_recv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">packets_sent</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">packets_recv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
  <span class="s1">&#39;本地连接* 9&#39;</span><span class="p">:</span> <span class="n">snetio</span><span class="p">(</span><span class="n">bytes_sent</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bytes_recv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">packets_sent</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">packets_recv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
@@ -3562,8 +3583,8 @@ Successfully installed psutil-5.3.1
  <span class="s1">&#39;WLAN&#39;</span><span class="p">:</span> <span class="n">snetio</span><span class="p">(</span><span class="n">bytes_sent</span><span class="o">=</span><span class="mi">1962230</span><span class="p">,</span> <span class="n">bytes_recv</span><span class="o">=</span><span class="mi">10165831</span><span class="p">,</span> <span class="n">packets_sent</span><span class="o">=</span><span class="mi">8554</span><span class="p">,</span> <span class="n">packets_recv</span><span class="o">=</span><span class="mi">11234</span><span class="p">,</span> <span class="n">errin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
  <span class="s1">&#39;Loopback Pseudo-Interface 1&#39;</span><span class="p">:</span> <span class="n">snetio</span><span class="p">(</span><span class="n">bytes_sent</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bytes_recv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">packets_sent</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">packets_recv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">)}</span>
 <span class="c1">#### 5.其他系统信息：</span>
-<span class="mf">1.</span> <span class="err">获取开机时间</span><span class="p">(</span><span class="err">不是当前时间是开机的时间</span><span class="p">)</span>
-<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="mf">1.</span> <span class="n">获取开机时间</span><span class="p">(</span><span class="n">不是当前时间是开机的时间</span><span class="p">)</span>
+<span class="err">```</span><span class="n">python</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span>  <span class="n">psutil</span><span class="o">.</span><span class="n">boot_time</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="mf">1556333804.0</span>
 <span class="c1">#转换成自然时间格式</span>
@@ -3572,7 +3593,9 @@ Successfully installed psutil-5.3.1
 <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">boot_time</span> <span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H: %M: %S&quot;</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="s1">&#39;2019-04-27 10: 56: 44&#39;</span>  <span class="c1">#现在的时间是4-28</span>
 </pre></div>
-2.查看系统全部进程
+
+
+<p>2.查看系统全部进程</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">pids</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">31</span><span class="p">]:</span>   <span class="c1">#输出太多了就不全部剪切了</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span>
@@ -3589,7 +3612,9 @@ Successfully installed psutil-5.3.1
  <span class="mi">928</span><span class="p">,</span>
  <span class="mi">956</span><span class="p">,</span>
 </pre></div>
-3.查看单个进程
+
+
+<p>3.查看单个进程</p>
 <div class="codehilite"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="mi">16031</span><span class="p">)</span>
 <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>      <span class="c1">#进程名</span>
 <span class="n">p</span><span class="o">.</span><span class="n">exe</span><span class="p">()</span>         <span class="c1">#进程的bin路径</span>
@@ -3605,13 +3630,15 @@ Successfully installed psutil-5.3.1
 <span class="n">p</span><span class="o">.</span><span class="n">io_counters</span><span class="p">()</span>    <span class="c1">#进程的IO信息,包括读写IO数字及参数</span>
 <span class="n">p</span><span class="o">.</span><span class="n">connectios</span><span class="p">()</span>    <span class="c1">#返回进程列表</span>
 <span class="n">p</span><span class="o">.</span><span class="n">num_threads</span><span class="p">()</span>  <span class="c1">#进程开启的线程数</span>
-<span class="err">听过</span><span class="n">psutil的Popen方法启动应用程序</span><span class="err">，可以跟踪程序的相关信息</span>
+<span class="n">听过psutil的Popen方法启动应用程序</span><span class="err">，</span><span class="n">可以跟踪程序的相关信息</span>
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">PIPE</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;/usr/bin/python&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;print(&#39;hello&#39;)&quot;</span><span class="p">],</span><span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span>
 <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
 <span class="n">p</span><span class="o">.</span><span class="n">username</span><span class="p">()</span>
 </pre></div>
- 查看系统硬件脚本：:
+
+
+<p>查看系统硬件脚本：:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Created on Sun Apr 28 10:40:47 2019</span>
@@ -3628,14 +3655,14 @@ Successfully installed psutil-5.3.1
 
 <span class="c1"># 当前时间</span>
 <span class="n">now_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">-%H:%M:%S&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">now_time</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now_time</span><span class="p">)</span>
 
 <span class="c1"># 查看cpu物理个数的信息</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;物理CPU个数: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">(</span><span class="n">logical</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;物理CPU个数: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">(</span><span class="n">logical</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 
 <span class="c1">#CPU的使用率</span>
 <span class="n">cpu</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;cup使用率: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cpu</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;cup使用率: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cpu</span><span class="p">)</span>
 
 <span class="c1">#查看内存信息,剩余内存.free  总共.total</span>
 <span class="c1">#round()函数方法为返回浮点数x的四舍五入值(这里取了2位)。这里是bit所以换算成G需要除以1024**3</span>
@@ -3643,11 +3670,11 @@ Successfully installed psutil-5.3.1
 <span class="n">free</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">free</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1024.0</span> <span class="o">**</span><span class="mi">3</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">total</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">total</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">memory</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">total</span> <span class="o">-</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">free</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">total</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;物理内存： </span><span class="si">%s</span><span class="s2"> G&quot;</span> <span class="o">%</span> <span class="n">total</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;剩余物理内存： </span><span class="si">%s</span><span class="s2"> G&quot;</span> <span class="o">%</span> <span class="n">free</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;物理内存使用率： </span><span class="si">%s</span><span class="s2"> </span><span class="si">%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">memory</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;物理内存： </span><span class="si">%s</span><span class="s2"> G&quot;</span> <span class="o">%</span> <span class="n">total</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;剩余物理内存： </span><span class="si">%s</span><span class="s2"> G&quot;</span> <span class="o">%</span> <span class="n">free</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;物理内存使用率： </span><span class="si">%s</span><span class="s2"> </span><span class="si">%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">memory</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
 <span class="c1"># 系统启动时间</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;系统启动时间: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">boot_time</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;系统启动时间: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">boot_time</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">))</span>
 
 <span class="c1"># 系统用户</span>
 <span class="n">users_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">users</span><span class="p">())</span>
@@ -3668,36 +3695,36 @@ Successfully installed psutil-5.3.1
 <span class="c1"># &gt;&gt;&gt;</span>
 
 <span class="n">users_list</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">u</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">users</span><span class="p">()])</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;当前有</span><span class="si">%s</span><span class="s2">个用户，分别是 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">users_count</span><span class="p">,</span> <span class="n">users_list</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;当前有</span><span class="si">%s</span><span class="s2">个用户，分别是 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">users_count</span><span class="p">,</span> <span class="n">users_list</span><span class="p">))</span>
 
 <span class="c1">#网卡，可以得到网卡属性，连接数，当前流量等信息</span>
 <span class="n">net</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">net_io_counters</span><span class="p">()</span>
-<span class="n">bytes_sent</span> <span class="o">=</span> <span class="s1">&#39;{0:.2f} Mb&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">bytes_recv</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
-<span class="n">bytes_rcvd</span> <span class="o">=</span> <span class="s1">&#39;{0:.2f} Mb&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">bytes_sent</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;网卡接收流量 </span><span class="si">%s</span><span class="s2"> 网卡发送流量 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">bytes_rcvd</span><span class="p">,</span> <span class="n">bytes_sent</span><span class="p">))</span>
+<span class="n">bytes_sent</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1"> Mb&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">bytes_recv</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="n">bytes_rcvd</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1"> Mb&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">bytes_sent</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;网卡接收流量 </span><span class="si">%s</span><span class="s2"> 网卡发送流量 </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">bytes_rcvd</span><span class="p">,</span> <span class="n">bytes_sent</span><span class="p">))</span>
 
 <span class="n">io</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_partitions</span><span class="p">()</span>
 <span class="c1"># print(io)</span>
 <span class="c1"># print(&quot;io[-1]为&quot;,io[-1])</span>
 <span class="c1">#del io[-1]</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------磁盘信息---------------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------磁盘信息---------------------------------------&#39;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;系统磁盘信息：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">io</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;系统磁盘信息：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">io</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">io</span><span class="p">:</span>
     <span class="n">o</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">disk_usage</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>   <span class="c1">#N:\\(i.device)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;总容量：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">total</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;G&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;已用容量：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">used</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;G&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;可用容量：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">free</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;G&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;总容量：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">total</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;G&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;已用容量：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">used</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;G&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;可用容量：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">free</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span> <span class="o">*</span> <span class="mf">1024.0</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;G&quot;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------进程信息-------------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------进程信息-------------------------------------&#39;</span><span class="p">)</span>
 <span class="c1"># 查看系统全部进程</span>
 <span class="k">for</span> <span class="n">pnum</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">pids</span><span class="p">():</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">pnum</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;进程名 </span><span class="si">%-20s</span><span class="s2">  内存利用率 </span><span class="si">%-18s</span><span class="s2"> 进程状态 </span><span class="si">%-10s</span><span class="s2"> 创建时间 </span><span class="si">%-10s</span><span class="s2"> &quot;</span> \
+    <span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;进程名 </span><span class="si">%-20s</span><span class="s2">  内存利用率 </span><span class="si">%-18s</span><span class="s2"> 进程状态 </span><span class="si">%-10s</span><span class="s2"> 创建时间 </span><span class="si">%-10s</span><span class="s2"> &quot;</span> \
     <span class="o">%</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span> <span class="n">p</span><span class="o">.</span><span class="n">memory_percent</span><span class="p">(),</span> <span class="n">p</span><span class="o">.</span><span class="n">status</span><span class="p">(),</span> <span class="n">p</span><span class="o">.</span><span class="n">create_time</span><span class="p">()))</span>
-</pre></div></p>
+</pre></div>
                 
                   
                 
@@ -3754,11 +3781,11 @@ Successfully installed psutil-5.3.1
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3787,6 +3814,10 @@ Successfully installed psutil-5.3.1
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

@@ -3396,7 +3396,7 @@
 <p><code>pip3 install pyqt5</code></p>
 <p>验证是否安装成功，只需要导入下该模块就可以(注意大小写)，如果没有出现任何错误提示，则安装成功：</p>
 <h2 id="12">1.2 程序运行起点<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
-<p>通过下方代码就可以呈现一个非常简单的PyQt5程序。
+<p>通过下方代码就可以呈现一个非常简单的PyQt5程序。</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QLabel</span>
 
@@ -3415,8 +3415,20 @@
     <span class="n">label</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                  <span class="c1"># 3</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>         <span class="c1"># 4</span>
 </pre></div>
-* 1. 想要创建应用必须先实例化一个<code>QApplication</code>，并将<code>sys.argv</code>作为参数传入；
-* 2. 实例化一个<code>QLabel</code>控件，该控件用来展示文字或图片(可以想象下衣服标签，上面既有文字也有图片)，这里用于展示文本。可以像上方代码一样直接传入'Hello World'进行实例化，也可以先实例化，再调用<code>setText()</code>方法来设置文本：
+
+
+<ul>
+<li>
+<ol>
+<li>想要创建应用必须先实例化一个<code>QApplication</code>，并将<code>sys.argv</code>作为参数传入；</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>实例化一个<code>QLabel</code>控件，该控件用来展示文字或图片(可以想象下衣服标签，上面既有文字也有图片)，这里用于展示文本。可以像上方代码一样直接传入'Hello World'进行实例化，也可以先实例化，再调用<code>setText()</code>方法来设置文本：</li>
+</ol>
+</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QLabel</span>
 
@@ -3428,15 +3440,23 @@
     <span class="n">label</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1">#设置显示</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>  <span class="c1">#当app.exec_() 返回值为0时系统退出</span>
 </pre></div>
-* 3. 通过调用show()方法使控件可见(默认是隐藏)；</p>
+
+
 <ul>
-<li>4.<code>app.exec_()</code>是执行应用，让应用开始运转循环，直到窗口关闭返回<code>0</code>给<code>sys.exit()</code>，退出整个程序。 有些小伙伴可能发现还有<code>exec()</code>，在Python2中exec是关键字，所以PyQt5就使用<code>exec_()</code>而不是<code>exec()</code> 。不过<code>exec</code>在Python3中已经不再是关键字了，所以如果读者使用的是Python3的话那在上述代码中用`exec()也完全没关系。</li>
+<li>
+<ol>
+<li>通过调用show()方法使控件可见(默认是隐藏)；</li>
+</ol>
+</li>
+<li>
+<p>4.<code>app.exec_()</code>是执行应用，让应用开始运转循环，直到窗口关闭返回<code>0</code>给<code>sys.exit()</code>，退出整个程序。 有些小伙伴可能发现还有<code>exec()</code>，在Python2中exec是关键字，所以PyQt5就使用<code>exec_()</code>而不是<code>exec()</code> 。不过<code>exec</code>在Python3中已经不再是关键字了，所以如果读者使用的是Python3的话那在上述代码中用`exec()也完全没关系。</p>
+</li>
 </ul>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-c95fd4145d2146b3.png" /></p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-15d9621d91775098.png" /></p>
 <p>那么这个程序运行起来就是这样的：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-2dfbb9ba45bce5e2.png" /></p>
-<p>我们可以直接在字符串中加上html代码，修改文本样式。
+<p>我们可以直接在字符串中加上html代码，修改文本样式。</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QLabel</span>
 
@@ -3447,7 +3467,9 @@
     <span class="c1"># label.setText(&#39;&lt;font color=&quot;red&quot;&gt;Hello&lt;/font&gt; &lt;h1&gt;World&lt;/h1&gt;&#39;)</span>
     <span class="n">label</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
-</pre></div></p>
+</pre></div>
+
+
 <p>有不理解的地方完全没有关系，先记住可以理解的，往下慢慢看，就会越懂越多了。比如可以理解的是QLabel控件的用法，知道这个控件是什么用的，而上方的第4点可以就先记住这么写就好。</p>
 <h2 id="13">1.3 小结<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3470,7 +3492,7 @@
 <h1 id="_1">第二章  信号与槽——裁判鸣枪与选手开跑<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>不用多说，信号(signal)与槽(slot)机制很重要。在这里我把信号视作裁判鸣枪，而用于行动的槽函数则视作选手开跑，当裁判鸣枪后(即信号发出)，选手就开始往前跑(槽函数启动)。PyQt5中各个对象间或各个对象自身就是通过信号与槽机制来相互通信的，下面来看一个例子。</p>
 <h2 id="21">2.1 通过按钮来改变文本(一个信号连接一个槽)<a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
-<p>很多程序上是有“开始”按钮的，按下去后按钮上的文本就变成了“停止”。下面就是一个示例(之后的代码都会用类来呈现)：
+<p>很多程序上是有“开始”按钮的，按下去后按钮上的文本就变成了“停止”。下面就是一个示例(之后的代码都会用类来呈现)：</p>
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Created on Fri May 24 08:47:52 2019</span>
@@ -3492,7 +3514,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_text</span><span class="p">)</span>           <span class="c1"># 3</span>
 
     <span class="k">def</span> <span class="nf">change_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;change text&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;change text&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Stop&#39;</span><span class="p">)</span>                             <span class="c1"># 4</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_text</span><span class="p">)</span>        <span class="c1"># 5</span>
 
@@ -3503,8 +3525,14 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                    <span class="c1">#显示所有的控件                             # 7</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1. 该类继承QWidget，可以将QWidget看作是一种毛坯房，还没有装修，而我们往其中放入QPushButton、QLabel等控件就相当于在装修这间毛坯房。类似的毛坯房还有QMainWindow和QDialog，之后章节再讲述；</p>
+
+
 <ul>
+<li>
+<ol>
+<li>该类继承QWidget，可以将QWidget看作是一种毛坯房，还没有装修，而我们往其中放入QPushButton、QLabel等控件就相当于在装修这间毛坯房。类似的毛坯房还有QMainWindow和QDialog，之后章节再讲述；</li>
+</ol>
+</li>
 <li>
 <ol>
 <li>实例化一个QPushButton，因为继承于QWidget，所以self不能忘了(相当于告诉程序这个QPushButton是放在QWidget这个房子中的)；</li>
@@ -3555,7 +3583,7 @@
 </li>
 </ul>
 <p>所以其实pressed和released两个连起来就是一个完整的clicked</p>
-<p>下面用这两个信号来解释如何将多个信号连接到同一个槽：
+<p>下面用这两个信号来解释如何将多个信号连接到同一个槽：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span>
 
@@ -3580,8 +3608,12 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1-2. 将pressed和released信号连接搭配change_text()槽函数上；</p>
+
+
 <ul>
+<li>
+<p>1-2. 将pressed和released信号连接搭配change_text()槽函数上；</p>
+</li>
 <li>
 <ol>
 <li>若当前按钮文本为‘Start’，则将文本改为‘Stop’；若为‘Stop’，则改为‘Start’。</li>
@@ -3596,7 +3628,7 @@
 <p>放开后：
 <img alt="image.png" src="../037 pyqt5学习.image/14555448-7eb7ad02c2f421ed.png" /></p>
 <h2 id="23">2.3 一个信号与另外一个信号连接<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span>
 
 
@@ -3620,9 +3652,13 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1-2. 将pressed信号和released信号连接起来，而released信号则与槽函数连接。这样当点击不放时，pressed信号发出，released信号也会发出，从而启动槽函数。释放鼠标则发出released信号，再次启动槽函数。所以程序运行效果跟2.2小节其实是一样的。</p>
+
+
+<ul>
+<li>1-2. 将pressed信号和released信号连接起来，而released信号则与槽函数连接。这样当点击不放时，pressed信号发出，released信号也会发出，从而启动槽函数。释放鼠标则发出released信号，再次启动槽函数。所以程序运行效果跟2.2小节其实是一样的。</li>
+</ul>
 <h2 id="2-4">2. 4 一个信号连接多个槽<a class="headerlink" href="#2-4" title="Permanent link">&para;</a></h2>
-<p>信号都为clicked，然后再多定义几个槽函数：
+<p>信号都为clicked，然后再多定义几个槽函数：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span>
 
@@ -3638,17 +3674,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_window_title</span><span class="p">)</span>   <span class="c1"># 4</span>
 
     <span class="k">def</span> <span class="nf">change_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;change text&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;change text&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Stop&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_text</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">change_window_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                               <span class="c1"># 5</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;change window size&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;change window size&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_window_size</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">change_window_title</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                              <span class="c1"># 6</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;change window title&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;change window title&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s1">&#39;window title changed&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_window_title</span><span class="p">)</span>
 
@@ -3659,8 +3695,14 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                                 
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1. 首先在初始化函数中将窗口大小设置为宽300，长300；</p>
+
+
 <ul>
+<li>
+<ol>
+<li>首先在初始化函数中将窗口大小设置为宽300，长300；</li>
+</ol>
+</li>
 <li>
 <ol>
 <li>其次将窗口名称设置为‘demo’；</li>
@@ -3688,7 +3730,7 @@
 <p>点击后则变成：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-608c9bfa45610aab.png" /></p>
 <h2 id="25">2.5 自定义信号<a class="headerlink" href="#25" title="Permanent link">&para;</a></h2>
-<p>注意这里将QPushButton换成了QLabel来讲解：
+<p>注意这里将QPushButton换成了QLabel来讲解：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtCore</span> <span class="kn">import</span> <span class="n">pyqtSignal</span>                             <span class="c1"># 1</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span>
@@ -3718,8 +3760,14 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1. 需要先导入pyqtSignal；</p>
+
+
 <ul>
+<li>
+<ol>
+<li>需要先导入pyqtSignal；</li>
+</ol>
+</li>
 <li>
 <ol>
 <li>实例化一个自定义的信号；</li>
@@ -3761,7 +3809,7 @@
 <h1 id="_2">第三章 布局管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <p>把各个控件摆摆好，让整个界面更加有序好看，这就是布局管理器的作用。</p>
 <h2 id="31-qvboxlayout">3.1 垂直布局QVBoxLayout<a class="headerlink" href="#31-qvboxlayout" title="Permanent link">&para;</a></h2>
-<p>该布局方式就是将各个控件按从上到下垂直的方式摆放，下面看一个例子：
+<p>该布局方式就是将各个控件按从上到下垂直的方式摆放，下面看一个例子：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
 
@@ -3786,8 +3834,14 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1. 实例化一个垂直布局管理器QVBoxLayout；</p>
+
+
 <ul>
+<li>
+<ol>
+<li>实例化一个垂直布局管理器QVBoxLayout；</li>
+</ol>
+</li>
 <li>
 <p>2-3. 通过调用addWidget()方法来将控件一个个添加到垂直布局中，最先添加的出现在最上方；</p>
 </li>
@@ -3800,7 +3854,7 @@
 <p>运行截图如下，可以看出两个标签文本是垂直对齐排列的：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-33af1c73aef7a9af.png" /></p>
 <h2 id="32-qhboxlayout">3.2 水平布局QHBoxLayout<a class="headerlink" href="#32-qhboxlayout" title="Permanent link">&para;</a></h2>
-<p>将控件从左到右依次水平摆放：
+<p>将控件从左到右依次水平摆放：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QHBoxLayout</span>
 
@@ -3825,8 +3879,14 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1. QLineEdit控件就是一个用来进行单行文本输入的框；</p>
+
+
 <ul>
+<li>
+<ol>
+<li>QLineEdit控件就是一个用来进行单行文本输入的框；</li>
+</ol>
+</li>
 <li>
 <ol>
 <li>实例化一个水平布局管理器；</li>
@@ -3844,7 +3904,7 @@
 <p>运行截图如下：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-b918212bda455a6c.png" /></p>
 <h2 id="33-qvboxlayoutqhboxlayout">3.3 混合使用QVBoxLayout和QHBoxLayout<a class="headerlink" href="#33-qvboxlayoutqhboxlayout" title="Permanent link">&para;</a></h2>
-<p>我们将实现一个用于输入账号密码，并有登陆和注册按钮的小窗口：
+<p>我们将实现一个用于输入账号密码，并有登陆和注册按钮的小窗口：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
     <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
@@ -3888,8 +3948,12 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1-3. 实例化三个布局管理器分别用来管理<code>QLabel，QLineEdit</code>和<code>QPushButton</code>；</p>
+
+
 <ul>
+<li>
+<p>1-3. 实例化三个布局管理器分别用来管理<code>QLabel，QLineEdit</code>和<code>QPushButton</code>；</p>
+</li>
 <li>
 <p>4-5. 这两个布局管理器用来管理1-3中的布局，它们添加的不是<code>QLabel、QLineEdit</code>或者<code>QPushButton</code>控件，而是通过<code>addLayout()</code>方法添加布局管理器。第4行的水平布局管理器将<code>self.label_v_layout</code>垂直布局和<code>self.line_vlayout</code>垂直布局这两个布局管理器从左到右依次水平摆放。第5行的垂直布局管理器将<code>self.label_line_h_layout</code>和<code>self.button_h_layout</code>垂直从上到下摆放；</p>
 </li>
@@ -3899,7 +3963,7 @@
 </ul>
 <p>运行截图如下：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-9ac48df990fbfef2.png" /></p>
-<p>上面的代码是将两个<code>QLabel</code>用垂直布局方式摆放，将两个<code>QLineEdit</code>也用垂直布局方式摆放，最后用一个水平布局管理来摆放着两个垂直布局管理器。那换种思路，可以把QLabel和QLineEdit用水平布局方式摆放：
+<p>上面的代码是将两个<code>QLabel</code>用垂直布局方式摆放，将两个<code>QLineEdit</code>也用垂直布局方式摆放，最后用一个水平布局管理来摆放着两个垂直布局管理器。那换种思路，可以把QLabel和QLineEdit用水平布局方式摆放：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
     <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
@@ -3941,9 +4005,11 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-相比而言，这种布局方式更加清晰明了。</p>
+
+
+<p>相比而言，这种布局方式更加清晰明了。</p>
 <h2 id="34-qformlayout">3.4 表单布局QFormLayout<a class="headerlink" href="#34-qformlayout" title="Permanent link">&para;</a></h2>
-<p>表单布局可以将控件以两列的形式进行排布，左列控件为文本标签，右列为输入型的控件，如<code>QLineEdit</code>。用这个布局管理器我们可以更加快速方便地构写有表单的界面。我们用<code>QFormLayout</code>来改写下上面的代码：
+<p>表单布局可以将控件以两列的形式进行排布，左列控件为文本标签，右列为输入型的控件，如<code>QLineEdit</code>。用这个布局管理器我们可以更加快速方便地构写有表单的界面。我们用<code>QFormLayout</code>来改写下上面的代码：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
     <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QFormLayout</span>
@@ -3980,8 +4046,14 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1. 实例化一个QFormLayout控件；</p>
+
+
 <ul>
+<li>
+<ol>
+<li>实例化一个QFormLayout控件；</li>
+</ol>
+</li>
 <li>
 <ol>
 <li>调用addRow()方法传入QLabel和QLineEdit控件；</li>
@@ -3997,7 +4069,7 @@
 </li>
 </ul>
 <h2 id="35-qgridlayout">3.5 网格布局QGridLayout<a class="headerlink" href="#35-qgridlayout" title="Permanent link">&para;</a></h2>
-<p>当使用该布局管理器的时候，你可以把整个窗体想象成带有坐标的，然后只用把各个控件放在相应的坐标就好了，请看示例(还是上方的登录框)：
+<p>当使用该布局管理器的时候，你可以把整个窗体想象成带有坐标的，然后只用把各个控件放在相应的坐标就好了，请看示例(还是上方的登录框)：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
     <span class="n">QGridLayout</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QHBoxLayout</span>
@@ -4037,7 +4109,9 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-这里混合使用<code>QVBoxLayout、QHBoxLayout</code>和<code>QGridLayou</code>t来完成布局。</p>
+
+
+<p>这里混合使用<code>QVBoxLayout、QHBoxLayout</code>和<code>QGridLayou</code>t来完成布局。</p>
 <ul>
 <li>
 <ol>
@@ -4055,14 +4129,18 @@
 <p>在上方程序中，我们将<code>self.user_label</code>放在<code>(0, 0)</code>这个坐标，也就是第一行第一列，占用一行一列；将<code>self.user_line</code>放在<code>(0, 1)</code>，即第一行第二列，也就是<code>self.user_label</code>的右边，占用一行一列；将<code>self.pwd_label</code>放在<code>(1, 0)</code>，即第二行第一列，在<code>self.user_label</code>的正下方，占用一行一列；最后我们将<code>self.pwd_line</code>放在<code>(1, 1)</code>，即第二行第二列，占用一行一列。</p>
 </li>
 </ul>
-<p>因为默认都是一行一列，所以也可以写成：
+<p>因为默认都是一行一列，所以也可以写成：</p>
 <div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_label</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        
 <span class="bp">self</span><span class="o">.</span><span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pwd_label</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
-* 3-4. 最后，程序用垂直布局管理器将一个网格布局和一个水平布局添加进去。</p>
+
+
 <ul>
+<li>
+<p>3-4. 最后，程序用垂直布局管理器将一个网格布局和一个水平布局添加进去。</p>
+</li>
 <li>
 <p>当然你也可以尝试单单用QGridLayout来完成这次界面的布局，但是你会发现效果并不会让人很满意，可以自行去试一下。</p>
 </li>
@@ -4097,7 +4175,7 @@
 <h1 id="qmessagebox">第四章 QMessageBox消息框<a class="headerlink" href="#qmessagebox" title="Permanent link">&para;</a></h1>
 <p>在程序中加入各种消息框来提示可以提高用户体验度。</p>
 <h2 id="41">4.1 各种类型的消息框<a class="headerlink" href="#41" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QMessageBox</span>
 
 
@@ -4118,8 +4196,14 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1. 实例化一个QPushButton并将clicked信号与自定义的show_messagebox槽函数连接起来，这样点击按钮后，信号发出，槽函数就会启动；</p>
+
+
 <ul>
+<li>
+<ol>
+<li>实例化一个QPushButton并将clicked信号与自定义的show_messagebox槽函数连接起来，这样点击按钮后，信号发出，槽函数就会启动；</li>
+</ol>
+</li>
 <li>
 <ol>
 <li>在槽函数中我们创建了一个信息框(information)，基本用法如下：</li>
@@ -4127,7 +4211,9 @@
 </li>
 <li>
 <p><code>QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</code>
-第一个参数填self，表示该信息框属于我们这里的Demo窗口；第二个参数类型为字符串，填入的是该信息框的标题；第三个参数类型也是字符串，填入的是信息框的提示内容；最后个参数为信息框上要添加的按钮，在示例代码中我们添加了Yes、No和Cancel三个按钮，多个按钮之间用 <code>|</code>来连接，常见的按钮种类有以下几种：
+第一个参数填self，表示该信息框属于我们这里的Demo窗口；第二个参数类型为字符串，填入的是该信息框的标题；第三个参数类型也是字符串，填入的是信息框的提示内容；最后个参数为信息框上要添加的按钮，在示例代码中我们添加了Yes、No和Cancel三个按钮，多个按钮之间用 <code>|</code>来连接，常见的按钮种类有以下几种：</p>
+</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">Ok</span>   
 
 <span class="n">QMessageBox</span><span class="o">.</span><span class="n">Yes</span>
@@ -4142,9 +4228,9 @@
 
 <span class="n">QMessage</span><span class="o">.</span><span class="n">Save</span>
 </pre></div>
-最后运行截图如下：</p>
-</li>
-</ul>
+
+
+<p>最后运行截图如下：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-b7242c2010af4556.png" /></p>
 <p>点击后显示提示框：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-845cbf3aec7cf0a6.png" /></p>
@@ -4165,7 +4251,7 @@
 <p>QMessageBox.about                关于框</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-4382543cec527bce.png" /></p>
 <h2 id="42">4.2 与消息框交互<a class="headerlink" href="#42" title="Permanent link">&para;</a></h2>
-<p>在上面的示例中，不管用户按了哪个按钮，程序都用关闭消息框来作出反应。然而用户会希望点击不同按钮，程序作出的反应不同。下面举一个简单的示例：
+<p>在上面的示例中，不管用户按了哪个按钮，程序都用关闭消息框来作出反应。然而用户会希望点击不同按钮，程序作出的反应不同。下面举一个简单的示例：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QMessageBox</span>
 
@@ -4192,8 +4278,14 @@
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-* 1. 当点击消息框上的某个按钮之后，会返回这个按钮，而这里将返回的按钮结果保存在choice中；有返回值</p>
+
+
 <ul>
+<li>
+<ol>
+<li>当点击消息框上的某个按钮之后，会返回这个按钮，而这里将返回的按钮结果保存在choice中；有返回值</li>
+</ol>
+</li>
 <li>
 <ol>
 <li>若是按下了Yes，则改变按钮的文字；</li>
@@ -4231,13 +4323,15 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 </ul>
 <h2 id="_3">第五章 完善登录框小程序<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>在这一章中，我们会结合前面所学的知识来完善登录框小程序。</p>
-<p>为保证代码敲击畅通，可以先引入该程序用到的模块和控件：
+<p>为保证代码敲击畅通，可以先引入该程序用到的模块和控件：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
     <span class="n">QGridLayout</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QMessageBox</span>
-</pre></div></p>
+</pre></div>
+
+
 <h2 id="51">5.1 登录界面布局<a class="headerlink" href="#51" title="Permanent link">&para;</a></h2>
-<p>首先完成登录界面布局，请看下方代码：
+<p>首先完成登录界面布局，请看下方代码：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
     <span class="n">QGridLayout</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QMessageBox</span>
@@ -4278,7 +4372,9 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
     <span class="n">demo</span> <span class="o">=</span> <span class="n">Demo</span><span class="p">()</span>
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
-</pre></div></p>
+</pre></div>
+
+
 <blockquote>
 <p>程序首先将窗口的宽设为300，长设为100。接着再实例化了几个控件：两个文本标签、两个单行文本输入框和两个按钮。然后搭配使用网格布局管理器、水平布局管理器和垂直布局管理器来完成整个界面的布局。相信看过前面章节的小伙伴已经可以理解上方代码的意思了，这里就不再详细解释。</p>
 <p>这里有一点需要注意一下，我把布局管理专门放在了一个函数中layout_init()，然后只用在初始化函数中加上layout_init()中就行。把对不同控件的操作分开来放在相应的函数中，这样写不仅可以让代码更加清晰明了，也方便日后维护。</p>
@@ -4291,42 +4387,50 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 <blockquote>
 <p>单行文本输入框中有浅灰色的提示文字，Log in按钮刚开始无法点击，只能等两个输入框中都有文本输入的时候才可以进行点击。</p>
 </blockquote>
-<p>首先对输入框功能进行完善。
+<p>首先对输入框功能进行完善。</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">lineedit_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="o">.</span><span class="n">setPlaceholderText</span><span class="p">(</span><span class="s1">&#39;Please enter your username&#39;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">setPlaceholderText</span><span class="p">(</span><span class="s1">&#39;Please enter your password&#39;</span><span class="p">)</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
-</pre></div></p>
+</pre></div>
+
+
 <blockquote>
 <p>在未输入前，我们有会看到输入框上就已经有了一行浅灰色的提示文字，就像下面这种：</p>
 </blockquote>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-e544cdb3da23ec42.png" /></p>
 <p>但点击的话浅灰色的文字就会不见：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-91e0ec77c8ec2cf4.png" /></p>
-<p>这种功能就是通过<code>setPlaceholderText()</code>方法来实现的。在这里还进行了信号和槽的连接，将<code>QLineEdit</code>的<code>textChanged()</code>信号连接到一个自定义的槽<code>self.check_input_func</code>上。<code>textChanged()</code>信号会在输入框中文本发生变化的时候发出, 所以槽函数的任务就是判断两个输入框是否都有文字了：
+<p>这种功能就是通过<code>setPlaceholderText()</code>方法来实现的。在这里还进行了信号和槽的连接，将<code>QLineEdit</code>的<code>textChanged()</code>信号连接到一个自定义的槽<code>self.check_input_func</code>上。<code>textChanged()</code>信号会在输入框中文本发生变化的时候发出, 所以槽函数的任务就是判断两个输入框是否都有文字了：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">check_input_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-</pre></div></p>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+
 <blockquote>
 <p>如果账号框和密码框都有文本(通过text()方法获取输入框文本)，那就使登录按钮可用(setEnabled(True))，否则登录按钮不可用。</p>
 </blockquote>
-<p>接下来对按钮进行完善：
+<p>接下来对按钮进行完善：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
-使刚开始显示的登录按钮不可用，只有等账号框和密码框都有文本的时候才能用(上面的槽函数)。</p>
-<p>当我们点击登录按钮的时候，账号框和密码框都有文本了，那点击后肯定是要验证账号密码是否正确：
+
+
+<p>使刚开始显示的登录按钮不可用，只有等账号框和密码框都有文本的时候才能用(上面的槽函数)。</p>
+<p>当我们点击登录按钮的时候，账号框和密码框都有文本了，那点击后肯定是要验证账号密码是否正确：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>   <span class="c1">#按下按钮后,不能再次按下</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#按下按钮后,不能再次按下</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_login_func</span><span class="p">)</span>  <span class="c1">#同时检查账号密码是否正确</span>
 </pre></div>
-所以我们将登录按钮的clicked信号和一个用于检查账号密码是否正确的自定义槽函数连接起来：</p>
-<p>首先我们在程序的最开始处定义一个全局变量<code>USER_PWD</code>：
+
+
+<p>所以我们将登录按钮的clicked信号和一个用于检查账号密码是否正确的自定义槽函数连接起来：</p>
+<p>首先我们在程序的最开始处定义一个全局变量<code>USER_PWD</code>：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
     <span class="n">QGridLayout</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QMessageBox</span>
@@ -4335,8 +4439,10 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         <span class="s1">&#39;la_vie&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span>
     <span class="p">}</span>  <span class="c1">#定义账号密码的全局变量</span>
 </pre></div>
-该字典的键'la_vie'就是当作账号，值‘password’就当作密码(之后复杂的程序会使用数据库，这里就先简单定义一个全局变量来使用)。</p>
-<p>然后定义检查账号密码的槽函数：
+
+
+<p>该字典的键'la_vie'就是当作账号，值‘password’就当作密码(之后复杂的程序会使用数据库，这里就先简单定义一个全局变量来使用)。</p>
+<p>然后定义检查账号密码的槽函数：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">check_login_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">USER_PWD</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="o">.</span><span class="n">text</span><span class="p">())</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
         <span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Information&#39;</span><span class="p">,</span> <span class="s1">&#39;Log in Successfully!&#39;</span><span class="p">)</span>
@@ -4345,11 +4451,13 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</pre></div></p>
+</pre></div>
+
+
 <blockquote>
 <p>将账号框的文本当作get()的参数来获取值，然后跟密码框的文本进行比较，若相同则显示信息框提示登录成功，否则显示账号或密码错误。最后无论成功还是失败，都会用clear()方法来清空账号框和密码框。</p>
 </blockquote>
-<p>最后将<code>self.lineedit_init()</code>和<code>self.pushbutton_init()</code>放在类的初始化函数__init__()中：
+<p>最后将<code>self.lineedit_init()</code>和<code>self.pushbutton_init()</code>放在类的初始化函数__init__()中：</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Demo</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Demo</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -4369,7 +4477,9 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineedit_init</span><span class="p">()</span>            <span class="c1"># 单行文本输入框</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pushbutton_init</span><span class="p">()</span>          <span class="c1"># 按钮,直接将定义的按钮放在类中进行初始化</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout_init</span><span class="p">()</span>
-</pre></div></p>
+</pre></div>
+
+
 <p>此时程序运行截图如下：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-3e49f51c937fcdba.png" /></p>
 <p>输入la_vie和password，点击Log in按钮，则显示信息框提示登录成功。</p>
@@ -4379,7 +4489,7 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 <h2 id="53">5.3 完善注册界面布局及功能<a class="headerlink" href="#53" title="Permanent link">&para;</a></h2>
 <p>接下来就是要完善Sign in按钮这个功能，这里我们想的是点击这个按钮后，会出现一个新的界面用于注册，即下方截图所示：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-7dc1a5624ba3d494.png" /></p>
-<p>可以看出该界面一共是由三个QLabel、三个QLineEdit和一个QPushButton组成的，那首先就来完成界面布局：
+<p>可以看出该界面一共是由三个QLabel、三个QLineEdit和一个QPushButton组成的，那首先就来完成界面布局：</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">SigninPage</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SigninPage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -4413,29 +4523,37 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">all_v_layout</span><span class="p">)</span>
 </pre></div>
-这里我们新写一个类，并继承于QDialog(另一个毛坯房)。QDialog就是指对话框，我们平时在软件中点击“打开”或“另存为”而出现的文件对话框就是其中一种。当然你这里也可以同样继承于QWidget，但是QDialog中有一个方法是QWidget所不具有的，稍后来讲述。</p>
+
+
+<p>这里我们新写一个类，并继承于QDialog(另一个毛坯房)。QDialog就是指对话框，我们平时在软件中点击“打开”或“另存为”而出现的文件对话框就是其中一种。当然你这里也可以同样继承于QWidget，但是QDialog中有一个方法是QWidget所不具有的，稍后来讲述。</p>
 <p>上面的代码不再详细解释，相信大家可以看懂了。</p>
-<p>首先同样将<code>Sign in</code>按钮设为不可用(<code>setEnabled(False)</code>)，并且只有当三个输入框中都有文本的时候，才会启用这个按钮。原理跟之前讲的一样：
+<p>首先同样将<code>Sign in</code>按钮设为不可用(<code>setEnabled(False)</code>)，并且只有当三个输入框中都有文本的时候，才会启用这个按钮。原理跟之前讲的一样：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">lineedit_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_user_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
 </pre></div>
-在lineedit_init()中我们将三个输入框的textChanged()信号跟自定义的
-<code>check_input_func()</code>槽函数进行连接；
+
+
+<p>在lineedit_init()中我们将三个输入框的textChanged()信号跟自定义的
+<code>check_input_func()</code>槽函数进行连接；</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">check_input_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_user_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
-在槽函数中我们判断三个输入框是否都有文本，有的话则将按钮启用，否则禁用；</p>
-<p>​   <br />
+
+
+<p>在槽函数中我们判断三个输入框是否都有文本，有的话则将按钮启用，否则禁用；</p>
+<p>​     </p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="c1">#初始化</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_signin_func</span><span class="p">)</span>
 </pre></div>
-然后在pushbutton_init()中先将sign in按钮设为禁用状态，然后将clicked()信号和之后自定义的check_signin_func()槽函数连接起来。因为在点击注册按钮的时候我们要对输入的文本内容进行检查，看符不符合要求；</p>
+
+
+<p>然后在pushbutton_init()中先将sign in按钮设为禁用状态，然后将clicked()信号和之后自定义的check_signin_func()槽函数连接起来。因为在点击注册按钮的时候我们要对输入的文本内容进行检查，看符不符合要求；</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">check_signin_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
         <span class="n">QMessageBox</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Wrong&#39;</span><span class="p">,</span> <span class="s1">&#39;Two Passwords Typed Are Not Same!&#39;</span><span class="p">)</span>
@@ -4451,11 +4569,12 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </pre></div>
 
+
 <blockquote>
 <p>首先判断两次密码输入框输入的文本是否一致，若不相同的话，则显示错误框提示；当然我们还要对要注册的账号进行判断，如果在字典相对应的键，则说明该账号并没有被注册过，接着将要注册的账号和密码放进字典中，并显示信息框提示注册成功。self.close()是指关闭对话框自身，也就是在信息框按钮被按下去关闭之后，注册界面的对话框也要一起关闭。最后一种情况就是账号已经被注册过了，于是显示错误框来进行提示。</p>
 </blockquote>
 <p>无论哪种情况，最后都会将三个输入框的文本清空掉。</p>
-<p>那么最后将self.lineedit_init()和self.pushbutton_init()放在类的初始化函数__init__()中：
+<p>那么最后将self.lineedit_init()和self.pushbutton_init()放在类的初始化函数__init__()中：</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">SigninPage</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SigninPage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -4475,9 +4594,11 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineedit_init</span><span class="p">()</span>            <span class="c1"># 单行文本输入框</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pushbutton_init</span><span class="p">()</span>          <span class="c1"># 按钮</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout_init</span><span class="p">()</span>
-</pre></div></p>
+</pre></div>
+
+
 <h2 id="54">5.4 整合登录界面和注册界面<a class="headerlink" href="#54" title="Permanent link">&para;</a></h2>
-<p>但是此时运行程序点击登录界面上的sign in按钮的话，注册界面是显示不出来的，所以我们要将登录界面sign in按钮的clicked()信号和一个自定义的用来显示注册界面的槽函数连接起来：
+<p>但是此时运行程序点击登录界面上的sign in按钮的话，注册界面是显示不出来的，所以我们要将登录界面sign in按钮的clicked()信号和一个自定义的用来显示注册界面的槽函数连接起来：</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Demo</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Demo</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -4499,17 +4620,23 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         <span class="bp">self</span><span class="o">.</span><span class="n">layout_init</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">signin_page</span> <span class="o">=</span> <span class="n">SigninPage</span><span class="p">()</span>     <span class="c1"># 实例化SigninPage()</span>
 </pre></div>
-首先我们在Demo的初始化函数中先实例化了SigninPage；
+
+
+<p>首先我们在Demo的初始化函数中先实例化了SigninPage；</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_login_func</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">show_signin_page_func</span><span class="p">)</span>
 </pre></div>
-接着在处理按钮的函数中将sign in按钮的clicked信号和show_signin_page_func()槽函数进行连接； 
+
+
+<p>接着在处理按钮的函数中将sign in按钮的clicked信号和show_signin_page_func()槽函数进行连接； </p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">show_signin_page_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_page</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
 </pre></div>
-在槽函数中，我们用exec_方法来执行注册界面。为什么要使用exec_而不是show()？下面来详细解释下这两个方法的区别：</p>
+
+
+<p>在槽函数中，我们用exec_方法来执行注册界面。为什么要使用exec_而不是show()？下面来详细解释下这两个方法的区别：</p>
 <p>若使用exec_()的话，那么显示出来的注册界面就是模态的，意思就是当前智能对该注册界面进行操作，只有关闭了该界面才能对其他界面进行操作；若使用show()的话，那注册界面就是非模态的，则在显示了注册界面后，还能同时对登录界面进行操作(QDialog有ecec_()方法，而QWidget没有)。</p>
 <p>此时运行截图如下：</p>
 <p>点击登录界面的Sign in，显示注册界面，然后输入账号密码，若没有问题，则显示注册成功；
@@ -4521,7 +4648,7 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 <p>这里为了方便演示，所以密码框输入的时候都没有用原点替代，我们可以对输入框使用setEchoMode(QLineEdit.Password)方法来完成此功能：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-31923b90bb6f9464.png" /></p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-a5d7a2212f2a3cac.png" /></p>
-<p>最终完整的代码如下：
+<p>最终完整的代码如下：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> \
     <span class="n">QGridLayout</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QMessageBox</span>
@@ -4573,7 +4700,7 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_login_func</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">show_signin_page_func</span><span class="p">)</span>
 
@@ -4591,9 +4718,9 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 
     <span class="k">def</span> <span class="nf">check_input_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">SigninPage</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
@@ -4640,14 +4767,14 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_signin_func</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">check_input_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_user_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">check_signin_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
@@ -4669,7 +4796,9 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
     <span class="n">demo</span> <span class="o">=</span> <span class="n">Demo</span><span class="p">()</span>
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
-</pre></div></p>
+</pre></div>
+
+
 <h2 id="55">5.5 小结<a class="headerlink" href="#55" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -4697,7 +4826,7 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 <h2 id="61">6.1 同步显示文本<a class="headerlink" href="#61" title="Permanent link">&para;</a></h2>
 <p>相信通过这两个控件的中文名大家应该也知道这两个控件的功能是什么了，前者用来编辑文本，后者无法编辑，只用于显示。我们将通过完成以下程序来讲解这两个控件的用法：</p>
 <p><img alt="image.png" src="../037 pyqt5学习.image/14555448-1df4d2696a1c2ca3.png" /></p>
-<p>左边为QTextEdit控件，右边为QTextBrowser控件。在左边输入文字时，右边会同步显示。请看下方代码：
+<p>左边为QTextEdit控件，右边为QTextBrowser控件。在左边输入文字时，右边会同步显示。请看下方代码：</p>
 <div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Spyder Editor</span>
@@ -4749,7 +4878,9 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
     <span class="n">demo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-程序非常简单。通过实例化两个QLabel、一个QTextEdit以及一个QTextBrowser再通过垂直布局和水平布局就可以完成整个界面。关键点是在信号和槽的连接上。</p>
+
+
+<p>程序非常简单。通过实例化两个QLabel、一个QTextEdit以及一个QTextBrowser再通过垂直布局和水平布局就可以完成整个界面。关键点是在信号和槽的连接上。</p>
 <ul>
 <li>
 <ol>
@@ -4839,11 +4970,11 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -4872,6 +5003,10 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

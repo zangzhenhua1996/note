@@ -3353,24 +3353,26 @@
                   <h1>021-pickle-保存数据</h1>
                 
                 <h2 id="pickle">pickle 保存<a class="headerlink" href="#pickle" title="Permanent link">&para;</a></h2>
-<p>pickle 是一个 python 中, 压缩/保存/提取 文件的模块. 最一般的使用方式非常简单. 比如下面就是压缩并保存一个字典的方式. 字典和列表都是能被保存的.
+<p>pickle 是一个 python 中, 压缩/保存/提取 文件的模块. 最一般的使用方式非常简单. 比如下面就是压缩并保存一个字典的方式. 字典和列表都是能被保存的.</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
 
 <span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;da&#39;</span><span class="p">:</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;23&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">:</span><span class="s1">&#39;sad&#39;</span><span class="p">}}</span>
 
 <span class="c1"># pickle a variable to a file</span>
-<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pickle_example.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
-<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">a_dict</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
-<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pickle_example.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">a_dict</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
-wb 是以(二进制)写的形式打开 ‘pickle_example.pickle’ 这个文件, 然后 pickle.dump 你要保存的东西去这个打开的 file. 最后关闭 file 你就会发现你的文件目录里多了一个 ‘pickle_example.pickle’ 文件, 这就是那个字典了.
+
+
+<p>wb 是以(二进制)写的形式打开 ‘pickle_example.pickle’ 这个文件, 然后 pickle.dump 你要保存的东西去这个打开的 file. 最后关闭 file 你就会发现你的文件目录里多了一个 ‘pickle_example.pickle’ 文件, 这就是那个字典了.
 pickle 提取:
-提取的时候相对简单点, 同样我们以读的形式打开那个文件, 然后 load 进一个 python 的变量.
+提取的时候相对简单点, 同样我们以读的形式打开那个文件, 然后 load 进一个 python 的变量.</p>
 <div class="codehilite"><pre><span></span><span class="c1"># reload a file to a variable</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pickle_example.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-    <span class="n">a_dict1</span> <span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a_dict1</span><span class="p">)</span>
-</pre></div></p>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pickle_example.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">a_dict1</span> <span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a_dict1</span><span class="p">)</span>
+</pre></div>
                 
                   
                 
@@ -3427,11 +3429,11 @@ pickle 提取:
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3460,6 +3462,10 @@ pickle 提取:
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

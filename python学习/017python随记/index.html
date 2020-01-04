@@ -3396,67 +3396,79 @@
 <p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。</p>
 <p>Python 2.3. 以上版本可用，2.6 添加 start 参数。
 语法
-以下是 enumerate() 方法的语法:
+以下是 enumerate() 方法的语法:</p>
 <div class="codehilite"><pre><span></span><span class="nb">enumerate</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="p">[</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
-参数
+
+
+<p>参数
 <code>sequence</code> -- 一个序列、迭代器或其他支持迭代对象。
 <code>start</code> -- 下标起始位置。
 返回值:
 返回 <code>enumerate(枚举)</code> 对象。</p>
 <blockquote>
 <p>实例
-以下展示了使用 enumerate() 方法的实例：
+以下展示了使用 enumerate() 方法的实例：</p>
+</blockquote>
 <div class="codehilite"><pre><span></span>&gt;&gt;&gt;seasons = [&#39;Spring&#39;, &#39;Summer&#39;, &#39;Fall&#39;, &#39;Winter&#39;]  #一个简单的列表
 &gt;&gt;&gt; list(enumerate(seasons))  #变成枚举对象
 [(0, &#39;Spring&#39;), (1, &#39;Summer&#39;), (2, &#39;Fall&#39;), (3, &#39;Winter&#39;)]
 &gt;&gt;&gt; list(enumerate(seasons, start=1))       # 下标从 1 开始
 [(1, &#39;Spring&#39;), (2, &#39;Summer&#39;), (3, &#39;Fall&#39;), (4, &#39;Winter&#39;)]
-</pre></div></p>
-</blockquote>
+</pre></div>
+
+
 <h4 id="for">用于**for**循环的对比<a class="headerlink" href="#for" title="Permanent link">&para;</a></h4>
 <p>普通的 for 循环</p>
-<p><div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="o">...</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="o">...</span>     <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
 <span class="o">...</span> 
 <span class="mi">0</span> <span class="n">one</span>
 <span class="mi">1</span> <span class="n">two</span>
 <span class="mi">2</span> <span class="n">three</span>
 </pre></div>
-使用enumberate:
+
+
+<p>使用enumberate:</p>
 <div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>  <span class="c1">#返回给i,element的是一个索引加数据</span>
-<span class="o">...</span>     <span class="k">print</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+<span class="o">...</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
 <span class="o">...</span> 
 <span class="mi">0</span> <span class="n">one</span>
 <span class="mi">1</span> <span class="n">two</span>
 <span class="mi">2</span> <span class="n">three</span>
-</pre></div></p>
+</pre></div>
+
+
 <h3 id="python-upper">Python upper()方法<a class="headerlink" href="#python-upper" title="Permanent link">&para;</a></h3>
 <p>描述
 Python upper() 方法将字符串中的小写字母转为大写字母。</p>
 <p>语法
-upper()方法语法：
+upper()方法语法：</p>
 <div class="codehilite"><pre><span></span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 </pre></div>
-参数
+
+
+<p>参数
 NA。
 返回值
 返回小写字母转为大写字母的字符串。</p>
 <p>实例
-以下实例展示了 upper()函数的使用方法：
+以下实例展示了 upper()函数的使用方法：</p>
 <div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/python</span>
 
 <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;this is string example....wow!!!&quot;</span><span class="p">;</span>
 
-<span class="k">print</span> <span class="p">(</span><span class="s2">&quot;str.upper() : &quot;</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;str.upper() : &quot;</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
 </pre></div>
-以上实例输出结果如下：
+
+
+<p>以上实例输出结果如下：</p>
 <div class="codehilite"><pre><span></span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="p">:</span>  <span class="n">THIS</span> <span class="n">IS</span> <span class="n">STRING</span> <span class="n">EXAMPLE</span><span class="o">....</span><span class="n">WOW</span><span class="err">!!!</span>
-</pre></div></p>
+</pre></div>
                 
                   
                 
@@ -3513,11 +3525,11 @@ NA。
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3546,6 +3558,10 @@ NA。
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

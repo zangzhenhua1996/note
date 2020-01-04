@@ -3383,7 +3383,7 @@
 <li>在 <strong>定义属性或方法时</strong>，在 <strong>属性名或者方法名前</strong> 增加 <strong>两个下划线</strong>，定义的就是 <strong>私有</strong> 属性或方法</li>
 </ul>
 <p><img alt="010_私有属性和方法.png" src="../009python私有属性和私有方法.image/14555448-c5cc2db0cfa7d270.png" /></p>
-<p><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Women</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Women</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 
@@ -3392,7 +3392,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__age</span> <span class="o">=</span> <span class="mi">18</span>
 
     <span class="k">def</span> <span class="nf">__secret</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我的年龄是 </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我的年龄是 </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">)</span>
 
 
 <span class="n">xiaofang</span> <span class="o">=</span> <span class="n">Women</span><span class="p">(</span><span class="s2">&quot;小芳&quot;</span><span class="p">)</span>
@@ -3402,8 +3402,12 @@
 <span class="c1"># 私有方法，外部不能直接调用</span>
 <span class="c1"># xiaofang.__secret()</span>
 </pre></div>
-* 但是函数的内部是可以进行访问的:
-比如:
+
+
+<ul>
+<li>但是函数的内部是可以进行访问的:
+比如:</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Women</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
@@ -3413,7 +3417,7 @@
 
     <span class="k">def</span> <span class="nf">secret</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># 在对象的方法内部，是可以访问对象的私有属性的</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 的年龄是 </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 的年龄是 </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">))</span>
 
 
 <span class="n">xiaofang</span> <span class="o">=</span> <span class="n">Women</span><span class="p">(</span><span class="s2">&quot;小芳&quot;</span><span class="p">)</span>
@@ -3424,7 +3428,9 @@
 <span class="c1"># xiaofang.__secret()</span>
 <span class="n">xiaofang</span><span class="o">.</span><span class="n">secret</span><span class="p">()</span>
 </pre></div>
-这里的secret函数调用了类的内部的私有方法是可以执行使用的.</p>
+
+
+<p>这里的secret函数调用了类的内部的私有方法是可以执行使用的.</p>
 <h2 id="02">02. 伪私有属性和私有方法（科普）<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>提示：在日常开发中，<strong>不要使用这种方式</strong>，<strong>访问对象的 私有属性 或 私有方法</strong></p>
@@ -3434,16 +3440,18 @@
 <li>在给 <strong>属性</strong>、<strong>方法</strong> 命名时，实际是对 <strong>名称</strong> 做了一些特殊处理，使得外界无法访问到</li>
 <li><strong>处理方式</strong>：在 <strong>名称</strong> 前面加上 <code>_类名</code> =&gt; <code>_类名__名称</code></li>
 </ul>
-<p><div class="codehilite"><pre><span></span><span class="c1"># 私有属性，外部不能直接访问到</span>
-<span class="k">print</span><span class="p">(</span><span class="n">xiaofang</span><span class="o">.</span><span class="n">_Women__age</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="c1"># 私有属性，外部不能直接访问到</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">xiaofang</span><span class="o">.</span><span class="n">_Women__age</span><span class="p">)</span>
 
 <span class="c1"># 私有方法，外部不能直接调用</span>
 <span class="n">xiaofang</span><span class="o">.</span><span class="n">_Women__secret</span><span class="p">()</span>
 </pre></div>
-执行结果:
+
+
+<p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="mi">18</span>
-<span class="err">小芳</span> <span class="err">的年龄是</span> <span class="mi">18</span>
-</pre></div></p>
+<span class="n">小芳</span> <span class="n">的年龄是</span> <span class="mi">18</span>
+</pre></div>
                 
                   
                 
@@ -3500,11 +3508,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3533,6 +3541,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

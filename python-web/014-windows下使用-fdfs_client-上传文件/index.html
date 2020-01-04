@@ -3466,16 +3466,19 @@
 pip install requests
 </pre></div>
 
+
 <h3 id="4-fastdfs-client_config">4、修改 fastdfs 配置文件: client_config<a class="headerlink" href="#4-fastdfs-client_config" title="Permanent link">&para;</a></h3>
 <p>① 修改 base_path 为你 windows 电脑一个真实存在的文件夹</p>
 <p>例如：</p>
 <div class="codehilite"><pre><span></span>base_path=E:\fdfs_log
 </pre></div>
 
+
 <p>② 修改 tracker_server 为你 Linux 系统的 IP 地址 + :22122</p>
 <p>例如：</p>
 <div class="codehilite"><pre><span></span>tracker_server=192.168.159.140:22122
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span># connect timeout in seconds
 # default value is 30s
@@ -3539,6 +3542,7 @@ http.tracker_server_port=80
 ##include http.conf
 </pre></div>
 
+
 <h3 id="5">5、文件上传测试<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>导入模块：
 from fdfs_client.client import Fdfs_client
@@ -3551,6 +3555,7 @@ client = Fdfs_client(r&#39;配置文件绝对路径&#39;)
 注意：windows环境下绝对路径会发生转义，需要加上 &quot;r&quot; 说明是原生字符串
 client.upload_by_filename(r&#39;图片文件绝对路径&#39;)
 </pre></div>
+
 
 <p>如果你看到如下画面你就成功了！！！</p>
 <p><img alt="image" src="../014-windows下使用-fdfs_client-上传文件.image/14555448-f4399ee455d0def7.png" /></p>
@@ -3610,11 +3615,11 @@ client.upload_by_filename(r&#39;图片文件绝对路径&#39;)
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3643,6 +3648,10 @@ client.upload_by_filename(r&#39;图片文件绝对路径&#39;)
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

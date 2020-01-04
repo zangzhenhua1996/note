@@ -3292,10 +3292,12 @@
                 
                   <h1>040 解决Ubuntu屏幕分辨率不正常问题</h1>
                 
-                <p>1、  输入命令：
+                <p>1、  输入命令：</p>
 <div class="codehilite"><pre><span></span>xrandr
 </pre></div>
-将会出现当前设备有效的输入设备名称:比如我的就是DP-2
+
+
+<p>将会出现当前设备有效的输入设备名称:比如我的就是DP-2</p>
 <div class="codehilite"><pre><span></span>Screen <span class="m">0</span>: minimum <span class="m">320</span> x <span class="m">200</span>, current <span class="m">1024</span> x <span class="m">768</span>, maximum <span class="m">16384</span> x <span class="m">16384</span>
 DP-1 disconnected <span class="o">(</span>normal left inverted right x axis y axis<span class="o">)</span>
 DP-2 connected primary 1024x768+0+0 <span class="o">(</span>normal left inverted right x axis y axis<span class="o">)</span> 0mm x 0mm
@@ -3303,33 +3305,42 @@ DP-2 connected primary 1024x768+0+0 <span class="o">(</span>normal left inverted
    800x600       <span class="m">60</span>.32    <span class="m">56</span>.25  
    848x480       <span class="m">60</span>.00  
    640x480       <span class="m">59</span>.94  
-</pre></div></p>
+</pre></div>
+
+
 <p>2、  上图中就没有我要使用的1440X900，分辨率，所以我要手动添加一个1080P的分辨率，先输入“cvt 1440 900”命令，查询一下1080P分辨率的有效扫描频率，如下图所示</p>
 <div class="codehilite"><pre><span></span><span class="c1"># 1440x900 59.89 Hz (CVT 1.30MA) hsync: 55.93 kHz; pclk: 106.50 MHz</span>
 Modeline <span class="s2">&quot;1440x900_60.00&quot;</span>  <span class="m">106</span>.50  <span class="m">1440</span> <span class="m">1528</span> <span class="m">1672</span> <span class="m">1904</span>  <span class="m">900</span> <span class="m">903</span> <span class="m">909</span> <span class="m">934</span> -hsync +vsync
 </pre></div>
 
-<p>3、  然后通过
+
+<p>3、  然后通过</p>
 <div class="codehilite"><pre><span></span>sudo xrandr --newmode <span class="s2">&quot;1440x900_60.00&quot;</span>  <span class="m">106</span>.50  <span class="m">1440</span> <span class="m">1528</span> <span class="m">1672</span> <span class="m">1904</span>  <span class="m">900</span> <span class="m">903</span> <span class="m">909</span> <span class="m">934</span> -hsync +vsync
 </pre></div>
-命令新建一种输出分辨率，如下图</p>
+
+
+<p>命令新建一种输出分辨率，如下图</p>
 <p>4、  把新建的输出分辨率输出到当前设备上</p>
-<p>执行命令：
+<p>执行命令：</p>
 <div class="codehilite"><pre><span></span>sudo xrandr --addmode DP-2 <span class="s2">&quot;1440x900_60.00&quot;</span>
 </pre></div>
-注：这里我的设备为DVI-0 ，可根据你设备名来进行更换</p>
+
+
+<p>注：这里我的设备为DVI-0 ，可根据你设备名来进行更换</p>
 <p>5、  把当前分辨率设置为刚添加的1080p分辨率</p>
 <p>执行命令：sudo xrandr --output DP-2 --mode "1440x900_60.00"</p>
 <p>注：此处的DVI-0 根据你的情况进行更改</p>
 <p>6、  使每次启动生效，修改配置文件</p>
 <p>执行命令：sudo gedit ~/.profile</p>
 <p>在文件的后面添加这些语句：</p>
-<p><div class="codehilite"><pre><span></span>cvt <span class="m">1440</span> <span class="m">900</span>
+<div class="codehilite"><pre><span></span>cvt <span class="m">1440</span> <span class="m">900</span>
 xrandr --newmode <span class="s2">&quot;1440x900_60.00&quot;</span>  <span class="m">106</span>.50  <span class="m">1440</span> <span class="m">1528</span> <span class="m">1672</span> <span class="m">1904</span>  <span class="m">900</span> <span class="m">903</span> <span class="m">909</span> <span class="m">934</span> -hsync +vsync
 xrandr --addmode DP-2 <span class="s2">&quot;1440x900_60.00&quot;</span>
 xrandr --output DP-2 --mode <span class="s2">&quot;1440x900_60.00&quot;</span>
 </pre></div>
-7、  重启电脑试试分辨率是否正常</p>
+
+
+<p>7、  重启电脑试试分辨率是否正常</p>
                 
                   
                 
@@ -3386,11 +3397,11 @@ xrandr --output DP-2 --mode <span class="s2">&quot;1440x900_60.00&quot;</span>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3419,6 +3430,10 @@ xrandr --output DP-2 --mode <span class="s2">&quot;1440x900_60.00&quot;</span>
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

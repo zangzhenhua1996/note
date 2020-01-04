@@ -3347,12 +3347,13 @@
             <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#一开始传进来的count肯定是最少是1</span>
             <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1">#这个就是遍历 ,这里的i&lt;len(seq)-1 是因为后面的判断,如果最后只剩下一个元素就不用进这个循环了       </span>
                 <span class="n">count</span> <span class="o">+=</span><span class="mi">1</span>
-                <span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
                 <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
             <span class="n">next_seq</span> <span class="o">+=</span><span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>  <span class="c1">#这里的i+1是因为要跳转到下一个不同元素的索引</span>
         <span class="k">return</span> <span class="n">next_seq</span>
 </pre></div>
+
 
 <h1 id="sequence">思想就是递归的将上一个sequence传递下去,然后进行遍历<a class="headerlink" href="#sequence" title="Permanent link">&para;</a></h1>
 <p>对相同的元素进行计数,最后使用字符串的相加,然后将count再归一继续进行遍历.最终传递到想要的第几个报数</p>
@@ -3412,11 +3413,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3445,6 +3446,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

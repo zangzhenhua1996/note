@@ -3327,7 +3327,7 @@
             <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">lookup</span><span class="p">[</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()]</span> <span class="o">!=</span> <span class="n">parenthese</span><span class="p">:</span>
                 <span class="c1">#or 后面的意思很好理解当我们取出的parenthes是右括号时,那么它的前一个元素对应的一定是对应的左括号,否则就是错的  比如(],()(}都是不能对应的,这个地方仔细研究就懂了,只要是第一个出现的右括号前面上一个 出现的一定得是对应的左括号不然就是错的.  </span>
                 <span class="c1"># or 后面的是这种情况 ) 只出现了一个) 或者第一次出现的就是右括号,那么stack中是空的,也认为是错的</span>
-                <span class="k">return</span> <span class="bp">False</span>
+                <span class="k">return</span> <span class="kc">False</span>
 
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>   <span class="c1">#这一种情况考虑的是 只出现了一个 [  那么此时stack中只会存储一个 [  就完事了,但是这种情况是错的.</span>
     <span class="c1">#为什么这个最后判断使用的stack的长度呢,这是因为我们在elif判断左右括号的时候是用了弹出元素的方法,最后左括号和右括号数量相等的情况下,stack中的元素最终会全部被弹出</span>
@@ -3394,11 +3394,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3427,6 +3427,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

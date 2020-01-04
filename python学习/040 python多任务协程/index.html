@@ -3474,9 +3474,9 @@
 </blockquote>
 <h2 id="1">1. 可迭代对象<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>我们已经知道可以对<code>list、tuple、str</code>等类型的数据使用<code>for...in...</code>的循环语法从其中依次拿到数据进行使用，我们把这样的过程称为遍历，也叫迭代。</p>
-<p>但是，是否所有的数据类型都可以放到<code>for...in...</code>的语句中，然后让<code>for...in...</code>每次从中取出一条数据供我们使用，即供我们迭代吗？
+<p>但是，是否所有的数据类型都可以放到<code>for...in...</code>的语句中，然后让<code>for...in...</code>每次从中取出一条数据供我们使用，即供我们迭代吗？</p>
 <div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
 
@@ -3486,6 +3486,8 @@
 <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">iterable</span>
 <span class="c1"># int整型不是iterable，即int整型不是可以迭代的</span>
 </pre></div>
+
+
 <div class="codehilite"><pre><span></span><span class="c1"># 我们自定义一个容器MyList用来存放数据，可以通过add方法向其中添加数据</span>
 <span class="k">class</span> <span class="nc">MyList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3498,7 +3500,7 @@
 <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 <span class="o">...</span>
 
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
@@ -3506,37 +3508,41 @@
 <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;MyList&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">iterable</span>
 <span class="o">&gt;&gt;&gt;</span>
 <span class="c1"># MyList容器的对象也是不能迭代的</span>
-<span class="err">但是调用这个对象的属性</span><span class="p">(</span><span class="err">我们存数据到的列表中是可以进行迭代的</span><span class="p">)</span>
+<span class="n">但是调用这个对象的属性</span><span class="p">(</span><span class="n">我们存数据到的列表中是可以进行迭代的</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">mylist</span><span class="o">.</span><span class="n">container</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-</pre></div></p>
+    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+
+
 <p>我们自定义了一个容器类型<code>MyList</code>，在将一个存放了多个数据的<code>MyList</code>对象放到<code>for...in...</code>的语句中，发现<code>for...in...</code>并不能从中依次取出一条数据返回给我们，也就说我们随便封装了一个可以存放多条数据的类型却并不能被迭代使用。</p>
 <p>我们把可以通过<code>for...in...</code>这类语句迭代读取一条数据供我们使用的对象称之为可迭代对象**（Iterable)**。</p>
 <h2 id="2">2. 如何判断一个对象是否可以迭代<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>可以使用 isinstance() 判断一个对象是否是 Iterable 对象：
+<p>可以使用 isinstance() 判断一个对象是否是 Iterable 对象：</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">50</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterable</span>  <span class="c1">#导入迭代类</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">([],</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="bp">True</span>  <span class="c1">#列表是迭代对象</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="kc">True</span>  <span class="c1">#列表是迭代对象</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">({},</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="bp">True</span> <span class="c1">#字典是迭代对象</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="kc">True</span> <span class="c1">#字典是迭代对象</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">53</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">53</span><span class="p">]:</span> <span class="bp">True</span>  <span class="c1">#字符串是迭代对象</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">53</span><span class="p">]:</span> <span class="kc">True</span>  <span class="c1">#字符串是迭代对象</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">54</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">54</span><span class="p">]:</span> <span class="bp">False</span>  <span class="c1">#自己定义的对象不是可迭代对象(不一定)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">54</span><span class="p">]:</span> <span class="kc">False</span>  <span class="c1">#自己定义的对象不是可迭代对象(不一定)</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">55</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">55</span><span class="p">]:</span> <span class="bp">False</span>  <span class="c1">#整形,浮点型不是可迭代的对象</span>
-</pre></div></p>
+<span class="n">Out</span><span class="p">[</span><span class="mi">55</span><span class="p">]:</span> <span class="kc">False</span>  <span class="c1">#整形,浮点型不是可迭代的对象</span>
+</pre></div>
+
+
 <h2 id="3">3. 可迭代对象的本质<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>我们分析对可迭代对象进行迭代使用的过程，发现每迭代一次（即在<code>for...in...</code>中每循环一次）都会返回对象中的下一条数据，一直向后读取数据直到迭代了所有数据后结束。那么，在这个过程中就应该有一个<code>“人”</code>去记录每次访问到了第几条数据，以便每次迭代都可以返回下一条数据。我们把这个能帮助我们进行数据迭代的<code>“人”</code>称为迭代器**(Iterator)**。</p>
 <p>可迭代对象的本质就是可以向我们提供一个这样的<code>中间“人”</code>即迭代器帮助我们对其进行迭代遍历使用。</p>
 <p>可迭代对象通过<code>__iter__</code>方法向我们提供一个迭代器，我们在迭代一个可迭代对象的时候，实际上就是先获取该对象提供的一个迭代器，然后通过这个迭代器来依次获取对象中的每一个数据.</p>
-<p>那么也就是说，一个具备了<code>__iter__</code>方法的对象，就是一个可迭代对象。
+<p>那么也就是说，一个具备了<code>__iter__</code>方法的对象，就是一个可迭代对象。</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">MyList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">container</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3556,11 +3562,13 @@
 <span class="nb">isinstance</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>
 
 <span class="o">===============</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="bp">True</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="kc">True</span>
 <span class="c1"># 这回测试发现添加了__iter__方法的mylist对象已经是一个可迭代对象了</span>
-</pre></div></p>
+</pre></div>
+
+
 <h2 id="4-iternext">4. iter()函数与next()函数<a class="headerlink" href="#4-iternext" title="Permanent link">&para;</a></h2>
-<p><code>list、tuple</code>等都是可迭代对象，我们可以通过<code>iter()</code>函数获取这些可迭代对象的迭代器。然后我们可以对获取到的迭代器不断使用<code>next()</code>函数来获取下一条数据。<code>iter()</code>函数实际上就是调用了可迭代对象的<code>__iter__</code>方法。
+<p><code>list、tuple</code>等都是可迭代对象，我们可以通过<code>iter()</code>函数获取这些可迭代对象的迭代器。然后我们可以对获取到的迭代器不断使用<code>next()</code>函数来获取下一条数据。<code>iter()</code>函数实际上就是调用了可迭代对象的<code>__iter__</code>方法。</p>
 <div class="codehilite"><pre><span></span><span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">]</span>
 
 <span class="n">li_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
@@ -3582,28 +3590,32 @@
     <span class="nb">next</span><span class="p">(</span><span class="n">li_iter</span><span class="p">)</span>
 
 <span class="ne">StopIteration</span>
-</pre></div></p>
+</pre></div>
+
+
 <blockquote>
 <p>注意，当我们已经迭代完最后一个数据之后，再次调用next()函数会抛出StopIteration的异常，来告诉我们所有数据都已迭代完成，不用再执行next()函数了。</p>
 </blockquote>
 <h2 id="5">5. 如何判断一个对象是否是迭代器(前面介绍的是如何判断一个对象是否可以迭代),这里是一个对象是否是迭代器,含义是不一样的,使用的判断函数也不一样<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<p>可以使用 isinstance() 判断一个对象是否是 Iterator 对象：
+<p>可以使用 isinstance() 判断一个对象是否是 Iterator 对象：</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">56</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterator</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">([],</span> <span class="n">Iterator</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="bp">False</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="kc">False</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">58</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">iter</span><span class="p">([]),</span> <span class="n">Iterator</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">58</span><span class="p">]:</span> <span class="bp">True</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">58</span><span class="p">]:</span> <span class="kc">True</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">59</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">),</span> <span class="n">Iterator</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">59</span><span class="p">]:</span> <span class="bp">True</span>
-</pre></div></p>
+<span class="n">Out</span><span class="p">[</span><span class="mi">59</span><span class="p">]:</span> <span class="kc">True</span>
+</pre></div>
+
+
 <h2 id="6-iterator">6. 迭代器Iterator<a class="headerlink" href="#6-iterator" title="Permanent link">&para;</a></h2>
 <p>通过上面的分析，我们已经知道，迭代器是用来帮助我们记录每次迭代访问到的位置，当我们对迭代器使用<code>next()</code>函数的时候，迭代器会向我们返回它所记录位置的下一个位置的数据。实际上，在使用<code>next()</code>函数的时候，调用的就是迭代器对象的<code>__next__</code>方法（Python3中是对象的<code>__next__</code>方法，Python2中是对象的<code>next()</code>方法）。所以，我们要想构造一个迭代器，就要实现它的<code>__next__</code>方法。但这还不够，python要求迭代器本身也是可迭代的，所以我们还要为迭代器实现<code>__iter__</code>方法，而<code>__iter__</code>方法要返回一个迭代器，迭代器自身正是一个迭代器，所以迭代器的<code>__iter__</code>方法返回自身即可。</p>
 <p>一个实现了<code>__iter__</code>方法和<code>__next__</code>方法的对象，就是迭代器。
 <img alt="image.png" src="../040 python多任务协程.image/14555448-4c0d58be651012c1.png" /></p>
-<p><div class="codehilite"><pre><span></span><span class="c1">#定义可迭代对象</span>
+<div class="codehilite"><pre><span></span><span class="c1">#定义可迭代对象</span>
 <span class="k">class</span> <span class="nc">MyList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;自定义的一个可迭代对象&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3625,7 +3637,7 @@
         <span class="c1"># current用来记录当前访问到的位置</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mylist</span><span class="o">.</span><span class="n">items</span><span class="p">):</span>
             <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mylist</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">]</span>  <span class="c1">#这个就是取这个对象中的列表的值</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -3645,25 +3657,31 @@
     <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
     <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
-执行结果:
+
+
+<p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="mi">1</span>
 <span class="mi">2</span>
 <span class="mi">3</span>
 <span class="mi">4</span>
 <span class="mi">5</span>
-</pre></div></p>
+</pre></div>
+
+
 <h2 id="7-forin">7. for...in...循环的本质<a class="headerlink" href="#7-forin" title="Permanent link">&para;</a></h2>
 <p><code>for item in Iterable</code> 循环的本质就是先通过<code>iter()</code>函数获取可迭代对象<code>Iterable</code>的迭代器，然后对获取到的迭代器不断调用<code>next()</code>方法来获取下一个值并将其赋值给<code>item</code>，当遇到<code>StopIteration</code>的异常后循环结束。</p>
 <h2 id="8">8. 迭代器的应用场景<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
-<p>我们发现迭代器最核心的功能就是可以通过<code>next()</code>函数的调用来返回下一个数据值。如果每次返回的数据值不是在一个已有的数据集合中读取的，而是通过程序按照一定的规律计算生成的，那么也就意味着可以不用再依赖一个已有的数据集合，也就是说不用再将所有要迭代的数据都一次性缓存下来供后续依次读取，这样可以节省大量的存储（内存）空间。
+<p>我们发现迭代器最核心的功能就是可以通过<code>next()</code>函数的调用来返回下一个数据值。如果每次返回的数据值不是在一个已有的数据集合中读取的，而是通过程序按照一定的规律计算生成的，那么也就意味着可以不用再依赖一个已有的数据集合，也就是说不用再将所有要迭代的数据都一次性缓存下来供后续依次读取，这样可以节省大量的存储（内存）空间。</p>
 <div class="codehilite"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
 </pre></div>
-举个例子，比如，数学中有个著名的斐波拉契数列<code>（Fibonacci）</code>，数列中第一个数为0，第二个数为1，其后的每一个数都可由前两个数相加得到：</p>
+
+
+<p>举个例子，比如，数学中有个著名的斐波拉契数列<code>（Fibonacci）</code>，数列中第一个数为0，第二个数为1，其后的每一个数都可由前两个数相加得到：</p>
 <p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...</p>
-<p>现在我们想要通过<code>for...in...</code>循环来遍历迭代斐波那契数列中的前<code>n</code>个数。那么这个斐波那契数列我们就可以用迭代器来实现，每次迭代都通过数学计算来生成下一个数。
+<p>现在我们想要通过<code>for...in...</code>循环来遍历迭代斐波那契数列中的前<code>n</code>个数。那么这个斐波那契数列我们就可以用迭代器来实现，每次迭代都通过数学计算来生成下一个数。</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">FibIterator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;斐波那契数列迭代器&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -3678,7 +3696,7 @@
         <span class="c1"># num2用来保存前一个数，初始值为数列中的第二个数1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num2</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;被next()函数调用来获取下一个数&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
             <span class="n">num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num1</span>
@@ -3696,20 +3714,24 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">fib</span> <span class="o">=</span> <span class="n">FibIterator</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">fib</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-</pre></div></p>
+        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+
+
 <h2 id="9-for">9. 并不是只有for循环能接收可迭代对象<a class="headerlink" href="#9-for" title="Permanent link">&para;</a></h2>
-<p>除了for循环能接收可迭代对象，list、tuple等也能接收。
+<p>除了for循环能接收可迭代对象，list、tuple等也能接收。</p>
 <div class="codehilite"><pre><span></span><span class="n">li</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">FibIterator</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>  <span class="c1">#其实是挨个取值写入到了新的列表中,在元组跟列表进行类型的转换的时候也是同样的道理,并不是简单的类型转换.而是会相当于迭代器的取值赋值</span>
-<span class="k">print</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
 <span class="n">tp</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">FibIterator</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
-</pre></div></p>
+<span class="nb">print</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
+</pre></div>
+
+
 <h1 id="72">7.2生成器<a class="headerlink" href="#72" title="Permanent link">&para;</a></h1>
 <h2 id="1_1">1. 生成器<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h2>
 <p>利用迭代器，我们可以在每次迭代获取数据（通过<code>next()</code>方法）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合<code>next()</code>函数进行迭代使用，我们可以采用更简便的语法，即生成器<code>(generator)</code>。生成器是一类特殊的迭代器。</p>
 <h2 id="2-1">2. 创建生成器方法1<a class="headerlink" href="#2-1" title="Permanent link">&para;</a></h2>
-<p>要创建一个生成器，有很多种方法。第一种方法很简单，只要把一个列表生成式的 [ ] 改成 ( )
+<p>要创建一个生成器，有很多种方法。第一种方法很简单，只要把一个列表生成式的 [ ] 改成 ( )</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">L</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>   <span class="c1">#使用[]生成的是一个列表</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">L</span>
@@ -3720,7 +3742,9 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">G</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">generator</span> <span class="nb">object</span> <span class="o">&lt;</span><span class="n">genexpr</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x7f626c132db0</span><span class="o">&gt;</span>
 </pre></div>
-创建 L 和 G 的区别仅在于最外层的 [ ] 和 ( ) ， L 是一个列表，而 G 是一个生成器。我们可以直接打印出列表L的每一个元素，而对于生成器G，我们可以按照迭代器的使用方法来使用，即可以通过next()函数、for循环、list()等方法使用。
+
+
+<p>创建 L 和 G 的区别仅在于最外层的 [ ] 和 ( ) ， L 是一个列表，而 G 是一个生成器。我们可以直接打印出列表L的每一个元素，而对于生成器G，我们可以按照迭代器的使用方法来使用，即可以通过next()函数、for循环、list()等方法使用。</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="mi">0</span>
 
@@ -3748,17 +3772,19 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">G</span> <span class="o">=</span> <span class="p">(</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+   <span class="o">....</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
    <span class="o">....</span><span class="p">:</span>     
 <span class="mi">0</span>
 <span class="mi">2</span>
 <span class="mi">4</span>
 <span class="mi">6</span>
 <span class="mi">8</span>
-</pre></div></p>
+</pre></div>
+
+
 <h2 id="3-2">3. 创建生成器方法2<a class="headerlink" href="#3-2" title="Permanent link">&para;</a></h2>
 <p>generator非常强大。如果推算的算法比较复杂，用类似列表生成式的 for 循环无法实现的时候，还可以用函数来实现。</p>
-<p>我们仍然用上一节提到的斐波那契数列来举例，回想我们在上一节用迭代器的实现方式：
+<p>我们仍然用上一节提到的斐波那契数列来举例，回想我们在上一节用迭代器的实现方式：</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">FibIterator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;斐波那契数列迭代器&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -3773,7 +3799,7 @@
         <span class="c1"># num2用来保存前一个数，初始值为数列中的第二个数1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num2</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;被next()函数调用来获取下一个数&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
             <span class="n">num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num1</span>
@@ -3787,20 +3813,24 @@
         <span class="sd">&quot;&quot;&quot;迭代器的__iter__返回自身即可&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
-注意，在用迭代器实现的方式中，我们要借助几个变量(n、current、num1、num2)来保存迭代的状态。现在我们用生成器来实现一下。
-不使用生成器函数:
+
+
+<p>注意，在用迭代器实现的方式中，我们要借助几个变量(n、current、num1、num2)来保存迭代的状态。现在我们用生成器来实现一下。
+不使用生成器函数:</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
     <span class="k">while</span> <span class="n">current</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
         <span class="n">num</span> <span class="o">=</span> <span class="n">num1</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
         <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span>
         <span class="n">current</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="c1">#        yield num</span>
 <span class="c1">#    return &#39;done&#39;</span>
 </pre></div>
-执行:
+
+
+<p>执行:</p>
 <div class="codehilite"><pre><span></span><span class="n">fib</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="mi">0</span>
 <span class="mi">1</span>
@@ -3813,8 +3843,10 @@
 <span class="mi">21</span>
 <span class="mi">34</span>
 </pre></div>
-使用生成器:</p>
-<p><div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+
+<p>使用生成器:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
     <span class="k">while</span> <span class="n">current</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
@@ -3827,6 +3859,8 @@
 <span class="c1">#如果在调用fib时,发现这个函数有yield,那么此时不是调用一个函数,而是生成一个生成器对象</span>
 <span class="n">a</span><span class="o">=</span><span class="n">fib</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
+
+
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">F</span> <span class="o">=</span> <span class="n">fib</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
@@ -3852,10 +3886,12 @@
 
 <span class="ne">StopIteration</span><span class="p">:</span> <span class="n">done</span>
 </pre></div>
-在使用生成器实现的方式中，我们将原本在迭代器<code>__next__</code>方法中实现的基本逻辑放到一个函数中来实现，但是将每次迭代返回数值的<code>return</code>换成了<code>yield</code>，此时新定义的函数便不再是函数，而是一个生成器了。简单来说：只要在<code>def</code>中有<code>yield</code>关键字的 就称为 生成器</p>
-<p>此时按照调用函数的方式( 案例中为<code>F = fib(5)</code> )使用生成器就不再是执行函数体了，而是会返回一个生成器对象（ 案例中为<code>F</code>），然后就可以按照使用迭代器的方式来使用生成器了。
+
+
+<p>在使用生成器实现的方式中，我们将原本在迭代器<code>__next__</code>方法中实现的基本逻辑放到一个函数中来实现，但是将每次迭代返回数值的<code>return</code>换成了<code>yield</code>，此时新定义的函数便不再是函数，而是一个生成器了。简单来说：只要在<code>def</code>中有<code>yield</code>关键字的 就称为 生成器</p>
+<p>此时按照调用函数的方式( 案例中为<code>F = fib(5)</code> )使用生成器就不再是执行函数体了，而是会返回一个生成器对象（ 案例中为<code>F</code>），然后就可以按照使用迭代器的方式来使用生成器了。</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">fib</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+   <span class="o">....</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
    <span class="o">....</span><span class="p">:</span>     
 <span class="mi">1</span>
 <span class="mi">1</span>
@@ -3863,15 +3899,17 @@
 <span class="mi">3</span>
 <span class="mi">5</span>
 </pre></div>
-但是用for循环调用generator时，发现拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获<code>StopIteration</code>错误，返回值包含在<code>StopIteration</code>的<code>value</code>中：
+
+
+<p>但是用for循环调用generator时，发现拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获<code>StopIteration</code>错误，返回值包含在<code>StopIteration</code>的<code>value</code>中：</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">g</span> <span class="o">=</span> <span class="n">fib</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
    <span class="o">....</span><span class="p">:</span>     <span class="k">try</span><span class="p">:</span>
    <span class="o">....</span><span class="p">:</span>         <span class="n">x</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-   <span class="o">....</span><span class="p">:</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;value:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">x</span><span class="p">)</span>      
+   <span class="o">....</span><span class="p">:</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">x</span><span class="p">)</span>      
    <span class="o">....</span><span class="p">:</span>     <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;生成器返回值:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">e</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+   <span class="o">....</span><span class="p">:</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;生成器返回值:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">e</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
    <span class="o">....</span><span class="p">:</span>         <span class="k">break</span>
    <span class="o">....</span><span class="p">:</span>     
 <span class="n">value</span><span class="p">:</span><span class="mi">1</span>
@@ -3879,8 +3917,10 @@
 <span class="n">value</span><span class="p">:</span><span class="mi">2</span>
 <span class="n">value</span><span class="p">:</span><span class="mi">3</span>
 <span class="n">value</span><span class="p">:</span><span class="mi">5</span>
-<span class="err">生成器返回值</span><span class="p">:</span><span class="n">done</span>
-</pre></div></p>
+<span class="n">生成器返回值</span><span class="p">:</span><span class="n">done</span>
+</pre></div>
+
+
 <h2 id="_1">总结<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>使用了yield关键字的函数不再是函数，而是生成器。（使用了yield的函数就是生成器）
@@ -3894,15 +3934,17 @@ yield关键字有两点作用：<ul>
 </ul>
 <h2 id="4-send">4. 使用send唤醒<a class="headerlink" href="#4-send" title="Permanent link">&para;</a></h2>
 <p>我们除了可以使用<code>next()</code>函数来唤醒生成器继续执行外，还可以使用<code>send()</code>函数来唤醒执行。使用<code>send()</code>函数的一个好处是可以在唤醒的同时向断点处传入一个附加数据。</p>
-<p>例子：执行到<code>yield</code>时，<code>gen</code>函数作用暂时保存，返回<code>i</code>的值; <code>temp</code>接收下次<code>c.send("python")</code>，<code>send</code>发送过来的值，<code>c.next(</code>)等价<code>c.send(None)</code>
+<p>例子：执行到<code>yield</code>时，<code>gen</code>函数作用暂时保存，返回<code>i</code>的值; <code>temp</code>接收下次<code>c.send("python")</code>，<code>send</code>发送过来的值，<code>c.next(</code>)等价<code>c.send(None)</code></p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">:</span>
         <span class="n">temp</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">i</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>  <span class="c1">#这里使用send的时候就可以接收一个返回值</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>  <span class="c1">#这里使用send的时候就可以接收一个返回值</span>
         <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
 </pre></div>
-使用send(第一次不能使用,没有人接收值)
+
+
+<p>使用send(第一次不能使用,没有人接收值)</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">43</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">44</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -3913,7 +3955,7 @@ yield关键字有两点作用：<ul>
 <span class="n">Out</span><span class="p">[</span><span class="mi">45</span><span class="p">]:</span> <span class="mi">1</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">46</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="bp">None</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">46</span><span class="p">]:</span> <span class="mi">2</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">47</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;haha&#39;</span><span class="p">)</span>
@@ -3922,30 +3964,32 @@ yield关键字有两点作用：<ul>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">48</span><span class="p">]:</span>
 </pre></div>
-使用next函数
+
+
+<p>使用next函数</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="mi">0</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="bp">None</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="mi">1</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="bp">None</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="mi">2</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="bp">None</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="mi">3</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="bp">None</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="mi">4</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="bp">None</span>
+<span class="kc">None</span>
 <span class="o">---------------------------------------------------------------------------</span>
 <span class="ne">StopIteration</span>                             <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">468</span><span class="n">f0afdf1b9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
@@ -3953,37 +3997,41 @@ yield关键字有两点作用：<ul>
 
 <span class="ne">StopIteration</span><span class="p">:</span>
 </pre></div>
-使用<code>__next__()</code>方法（不常使用）
+
+
+<p>使用<code>__next__()</code>方法（不常使用）</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="mi">0</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
-<span class="bp">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="mi">1</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
-<span class="bp">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="mi">2</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
-<span class="bp">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="mi">3</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
-<span class="bp">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+<span class="kc">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="mi">4</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
-<span class="bp">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+<span class="kc">None</span>
 <span class="o">---------------------------------------------------------------------------</span>
 <span class="ne">StopIteration</span>                             <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">39</span><span class="n">ec527346a9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
 
 <span class="ne">StopIteration</span><span class="p">:</span>
-</pre></div></p>
+</pre></div>
+
+
 <h2 id="_2">总结<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>迭代器可以减少内存的空间
 生成器可以是函数暂时停止执行,使用next方法继续执行</p>
@@ -3995,32 +4043,34 @@ yield关键字有两点作用：<ul>
 <h2 id="_4">协程和线程差异<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>在实现多任务时, 线程切换从系统层面远不止保存和恢复 CPU上下文这么简单。 操作系统为了程序运行的高效性每个线程都有自己缓存Cache等等数据，操作系统还会帮你做这些数据的恢复操作。 所以线程的切换非常耗性能。但是协程的切换只是单纯的操作CPU的上下文，所以一秒钟切换个上百万次系统都抗的住。</p>
 <h2 id="_5">简单实现协程<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>如果不加yield那么因为是死循环那么就会在work中跳不出来了
+<p>如果不加yield那么因为是死循环那么就会在work中跳不出来了</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">def</span> <span class="nf">work1</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----work1---&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----work1---&quot;</span><span class="p">)</span>
         <span class="k">yield</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">work2</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----work2---&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----work2---&quot;</span><span class="p">)</span>
         <span class="k">yield</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">w1</span> <span class="o">=</span> <span class="n">work1</span><span class="p">()</span>
     <span class="n">w2</span> <span class="o">=</span> <span class="n">work2</span><span class="p">()</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="nb">next</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
         <span class="nb">next</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
-<div class="codehilite"><pre><span></span><span class="err">运行结果：</span>
+
+
+<div class="codehilite"><pre><span></span><span class="n">运行结果</span><span class="err">：</span>
 
 <span class="o">----</span><span class="n">work1</span><span class="o">---</span>
 <span class="o">----</span><span class="n">work2</span><span class="o">---</span>
@@ -4034,24 +4084,26 @@ yield关键字有两点作用：<ul>
 <span class="o">----</span><span class="n">work2</span><span class="o">---</span>
 <span class="o">----</span><span class="n">work1</span><span class="o">---</span>
 <span class="o">----</span><span class="n">work2</span><span class="o">---</span>
-<span class="o">...</span><span class="err">省略</span><span class="o">...</span>
-</pre></div></p>
+<span class="o">...</span><span class="n">省略</span><span class="o">...</span>
+</pre></div>
+
+
 <h1 id="74-greenlet">7.4协程-greenlet(一般不用)<a class="headerlink" href="#74-greenlet" title="Permanent link">&para;</a></h1>
-<p>为了更好使用协程来完成多任务，python中的<code>greenlet</code>模块对其封装，从而使得切换任务变的更加简单
+<p>为了更好使用协程来完成多任务，python中的<code>greenlet</code>模块对其封装，从而使得切换任务变的更加简单</p>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 
 <span class="kn">from</span> <span class="nn">greenlet</span> <span class="kn">import</span> <span class="n">greenlet</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;---A--&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="s2">&quot;---A--&quot;</span>
         <span class="n">gr2</span><span class="o">.</span><span class="n">switch</span><span class="p">()</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;---B--&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="s2">&quot;---B--&quot;</span>
         <span class="n">gr1</span><span class="o">.</span><span class="n">switch</span><span class="p">()</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
@@ -4060,7 +4112,9 @@ yield关键字有两点作用：<ul>
 
 <span class="c1">#切换到gr1中运行</span>
 <span class="n">gr1</span><span class="o">.</span><span class="n">switch</span><span class="p">()</span>
-</pre></div></p>
+</pre></div>
+
+
 <h1 id="75-gevent">7.5协程-gevent(常用)<a class="headerlink" href="#75-gevent" title="Permanent link">&para;</a></h1>
 <p><code>greenlet</code>已经实现了协程，但是这个还的人工切换，是不是觉得太麻烦了，不要捉急，python还有一个比<code>greenlet</code>更强大的并且能够自动切换任务的模块<code>gevent</code></p>
 <p>其原理是当一个<code>greenlet</code>遇到<code>IO</code>(指的是<code>input output</code> 输入输出，比如网络、文件操作等)操作时，比如访问网络，就自动切换到其他的<code>greenlet</code>，等到<code>IO</code>操作完成，再在适当的时候切换回来继续执行。</p>
@@ -4068,11 +4122,11 @@ yield关键字有两点作用：<ul>
 <p>安装:
 <code>pip3 install gevent</code></p>
 <h3 id="1-gevent">1. gevent的使用<a class="headerlink" href="#1-gevent" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">gevent</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">gevent</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">getcurrent</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">getcurrent</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
 
 <span class="n">g1</span> <span class="o">=</span> <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">g2</span> <span class="o">=</span> <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -4081,7 +4135,9 @@ yield关键字有两点作用：<ul>
 <span class="n">g2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 <span class="n">g3</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </pre></div>
-<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
+
+
+<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
 
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x10e49f550</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x10e49f550</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">1</span>
@@ -4099,13 +4155,15 @@ yield关键字有两点作用：<ul>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x10e49f4b0</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">3</span>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x10e49f4b0</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">4</span>
 </pre></div>
-可以看到，3个greenlet是依次运行而不是交替运行</p>
+
+
+<p>可以看到，3个greenlet是依次运行而不是交替运行</p>
 <h3 id="2-gevent">2. gevent切换执行<a class="headerlink" href="#2-gevent" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">gevent</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">gevent</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">getcurrent</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">getcurrent</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
         <span class="c1">#用来模拟一个耗时操作，注意不是time模块中的sleep</span>
         <span class="n">gevent</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1">#注意这里的延时不是用的time.sleep()</span>
 
@@ -4116,7 +4174,9 @@ yield关键字有两点作用：<ul>
 <span class="n">g2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 <span class="n">g3</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 </pre></div>
-<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
+
+
+<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
 
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x7fa70ffa1c30</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x7fa70ffa1870</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span>
@@ -4133,16 +4193,18 @@ yield关键字有两点作用：<ul>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x7fa70ffa1c30</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">4</span>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x7fa70ffa1870</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">4</span>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x7fa70ffa1eb0</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">4</span>
-</pre></div></p>
+</pre></div>
+
+
 <h3 id="3-gevent">3. 给程序打补丁(不使用gevent的延时函数)<a class="headerlink" href="#3-gevent" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
 <span class="kn">import</span> <span class="nn">gevent</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">def</span> <span class="nf">coroutine_work</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">([</span>
@@ -4150,7 +4212,9 @@ yield关键字有两点作用：<ul>
         <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">coroutine_work</span><span class="p">,</span> <span class="s2">&quot;work2&quot;</span><span class="p">)</span>
 <span class="p">])</span>
 </pre></div>
-<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
+
+
+<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
 
 <span class="n">work1</span> <span class="mi">0</span>
 <span class="n">work1</span> <span class="mi">1</span>
@@ -4172,8 +4236,10 @@ yield关键字有两点作用：<ul>
 <span class="n">work2</span> <span class="mi">7</span>
 <span class="n">work2</span> <span class="mi">8</span>
 <span class="n">work2</span> <span class="mi">9</span>
-</pre></div></p>
-<p><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
 <span class="kn">import</span> <span class="nn">gevent</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -4183,7 +4249,7 @@ yield关键字有两点作用：<ul>
 
 <span class="k">def</span> <span class="nf">coroutine_work</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">([</span>      
@@ -4191,7 +4257,9 @@ yield关键字有两点作用：<ul>
         <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">coroutine_work</span><span class="p">,</span> <span class="s2">&quot;work2&quot;</span><span class="p">)</span>
 <span class="p">])</span>   <span class="c1">#添加所有的携程任务(更方便)</span>
 </pre></div>
-<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
+
+
+<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
 
 <span class="n">work1</span> <span class="mi">0</span>
 <span class="n">work2</span> <span class="mi">0</span>
@@ -4213,7 +4281,9 @@ yield关键字有两点作用：<ul>
 <span class="n">work2</span> <span class="mi">7</span>
 <span class="n">work2</span> <span class="mi">8</span>
 <span class="n">work2</span> <span class="mi">9</span>
-</pre></div></p>
+</pre></div>
+
+
 <h1 id="76">7.6进程、线程、协程对比<a class="headerlink" href="#76" title="Permanent link">&para;</a></h1>
 <h3 id="_6">请仔细理解如下的通俗描述<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ul>
@@ -4242,7 +4312,7 @@ yield关键字有两点作用：<ul>
 </ul>
 <h1 id="77">7.7并发下载器<a class="headerlink" href="#77" title="Permanent link">&para;</a></h1>
 <h2 id="_8">并发下载原理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
 <span class="kn">import</span> <span class="nn">gevent</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>  
 
@@ -4250,10 +4320,10 @@ yield关键字有两点作用：<ul>
 <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span> 
 
 <span class="k">def</span> <span class="nf">my_downLoad</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;GET: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GET: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span> 
     <span class="n">resp</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1">#打开这个url</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1">#读取的是图片的内容</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes received from </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">url</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes received from </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">url</span><span class="p">))</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">([</span>
         <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">my_downLoad</span><span class="p">,</span> <span class="s1">&#39;http://www.baidu.com/&#39;</span><span class="p">),</span>
@@ -4261,7 +4331,9 @@ yield关键字有两点作用：<ul>
         <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">my_downLoad</span><span class="p">,</span> <span class="s1">&#39;http://www.itheima.com/&#39;</span><span class="p">),</span>
 <span class="p">])</span>
 </pre></div>
-<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
+
+
+<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
 
 <span class="n">GET</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">baidu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 <span class="n">GET</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span>
@@ -4270,9 +4342,11 @@ yield关键字有两点作用：<ul>
 <span class="mi">172054</span> <span class="nb">bytes</span> <span class="n">received</span> <span class="kn">from</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">itheima</span><span class="o">.</span><span class="n">com</span><span class="o">/.</span>
 <span class="mi">215035</span> <span class="nb">bytes</span> <span class="n">received</span> <span class="kn">from</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">cn</span><span class="o">/.</span>
 </pre></div>
-从上能够看到是先发送的获取baidu的相关信息，然后依次是itcast、itheima，但是收到数据的先后顺序不一定与发送顺序相同，这也就体现出了异步，即不确定什么时候会收到数据，顺序不一定</p>
+
+
+<p>从上能够看到是先发送的获取baidu的相关信息，然后依次是itcast、itheima，但是收到数据的先后顺序不一定与发送顺序相同，这也就体现出了异步，即不确定什么时候会收到数据，顺序不一定</p>
 <h2 id="_9">实现多个视频下载<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span>
 <span class="kn">import</span> <span class="nn">gevent</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>
 
@@ -4280,21 +4354,23 @@ yield关键字有两点作用：<ul>
 <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">my_downLoad</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;GET: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GET: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span>
     <span class="n">resp</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes received from </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">url</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes received from </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">url</span><span class="p">))</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">([</span>
         <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">my_downLoad</span><span class="p">,</span> <span class="s2">&quot;1.mp4&quot;</span><span class="p">,</span> <span class="s1">&#39;http://oo52bgdsl.bkt.clouddn.com/05day-08-</span><span class="si">%E</span><span class="s1">3</span><span class="si">%80%</span><span class="s1">90</span><span class="si">%E</span><span class="s1">7</span><span class="si">%90%</span><span class="s1">86</span><span class="si">%E</span><span class="s1">8%A7%A3</span><span class="si">%E</span><span class="s1">3</span><span class="si">%80%</span><span class="s1">91</span><span class="si">%E</span><span class="s1">5</span><span class="si">%87%</span><span class="s1">BD</span><span class="si">%E</span><span class="s1">6</span><span class="si">%95%</span><span class="s1">B0</span><span class="si">%E</span><span class="s1">4%BD%BF</span><span class="si">%E</span><span class="s1">7</span><span class="si">%94%</span><span class="s1">A8</span><span class="si">%E</span><span class="s1">6</span><span class="si">%80%</span><span class="s1">BB</span><span class="si">%E</span><span class="s1">7%BB</span><span class="si">%93%</span><span class="s1">EF%BC</span><span class="si">%88%</span><span class="s1">E4%B8</span><span class="si">%80%</span><span class="s1">EF%BC%89.mp4&#39;</span><span class="p">),</span>
         <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">my_downLoad</span><span class="p">,</span> <span class="s2">&quot;2.mp4&quot;</span><span class="p">,</span> <span class="s1">&#39;http://oo52bgdsl.bkt.clouddn.com/05day-03-</span><span class="si">%E</span><span class="s1">3</span><span class="si">%80%</span><span class="s1">90</span><span class="si">%E</span><span class="s1">6</span><span class="si">%8E</span><span class="s1">%8C</span><span class="si">%E</span><span class="s1">6</span><span class="si">%8F</span><span class="s1">%A1</span><span class="si">%E</span><span class="s1">3</span><span class="si">%80%</span><span class="s1">91</span><span class="si">%E</span><span class="s1">6</span><span class="si">%97%</span><span class="s1">A0</span><span class="si">%E</span><span class="s1">5</span><span class="si">%8F%82%</span><span class="s1">E6</span><span class="si">%95%</span><span class="s1">B0</span><span class="si">%E</span><span class="s1">6</span><span class="si">%97%</span><span class="s1">A0</span><span class="si">%E</span><span class="s1">8%BF</span><span class="si">%94%</span><span class="s1">E5%9B</span><span class="si">%9E%E</span><span class="s1">5</span><span class="si">%80%</span><span class="s1">BC</span><span class="si">%E</span><span class="s1">5</span><span class="si">%87%</span><span class="s1">BD</span><span class="si">%E</span><span class="s1">6</span><span class="si">%95%</span><span class="s1">B0</span><span class="si">%E</span><span class="s1">7%9A</span><span class="si">%84%</span><span class="s1">E5%AE%9A</span><span class="si">%E</span><span class="s1">4%B9</span><span class="si">%89%</span><span class="s1">E3</span><span class="si">%80%</span><span class="s1">81</span><span class="si">%E</span><span class="s1">8%B0</span><span class="si">%83%</span><span class="s1">E7</span><span class="si">%94%</span><span class="s1">A8</span><span class="si">%28%</span><span class="s1">E4%B8%8B%29.mp4&#39;</span><span class="p">),</span>
 <span class="p">])</span>
 </pre></div>
-上面的url可以换为自己需要下载视频、音乐、图片等网址</p>
+
+
+<p>上面的url可以换为自己需要下载视频、音乐、图片等网址</p>
                 
                   
                 
@@ -4351,11 +4427,11 @@ yield关键字有两点作用：<ul>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -4384,6 +4460,10 @@ yield关键字有两点作用：<ul>
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

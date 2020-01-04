@@ -3294,7 +3294,7 @@
                 
                 <p>SymPy是Python的数学符号计算库，用它可以进行数学公式的符号推导 
 安装不介绍了 <a href="http://docs.sympy.org/">官方文档</a> 这里还是建议使用anaconda  </p>
-<p><div class="codehilite"><pre><span></span>from sympy import *
+<div class="codehilite"><pre><span></span>from sympy import *
 init_printing(use_unicode=True)
 x,y = symbols(&#39;x y&#39;)  #用符号代表变量，多个变量可以空格，可以逗号隔开。
 expr = x + 2*y
@@ -3329,7 +3329,9 @@ trigsimp(sin(x)**4 - 2*cos(x)**2*sin(x)**2 + cos(x)**4) #trigsimp简化三角函
 expand_trig(sin(x + y)) #分解三角函数
 powsimp(x**a*x**b) #简化指数运算
 </pre></div>
-解方程：  <br />
+
+
+<p>解方程：  <br />
 7）solveset()可以对方程进行符号求解，它的第一个参数是表示方程的表达式，其后的参数是表示方程中未知量的符号。 </p>
 <p>求导：   <br />
 8）Derivative是表示导函数的类，它的第一个参数是需要进行求导的数学函数，第二个参数是求导的自变量，注意：Derivative所得到的是一个导函数，它不会进行求导运算。t=Derivative(sin(x),x)<br />
@@ -3396,11 +3398,11 @@ powsimp(x**a*x**b) #简化指数运算
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3429,6 +3431,10 @@ powsimp(x**a*x**b) #简化指数运算
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

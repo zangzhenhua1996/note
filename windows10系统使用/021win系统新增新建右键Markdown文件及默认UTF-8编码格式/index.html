@@ -3396,6 +3396,7 @@
 &quot;NullFile&quot;=&quot;&quot;
 </pre></div>
 
+
 <ol>
 <li>双击reg文件, 导入注册表, 然后刷新桌面, 右键</li>
 </ol>
@@ -3412,6 +3413,7 @@
 typora-copy-images-to:media
 ---
 </pre></div>
+
 
 <p><strong>Why?</strong> 这是因为, 没有内容的空文件, 即使设置utf-8编码, 下次再打开, 你会发现, 依旧是ANSI编码. 所以索性加上上述内容, 这段内容是指定Typora将粘贴的图片自动保存至md文件同路径下的<code>./media</code>文件夹里.</p>
 <ol>
@@ -3483,11 +3485,11 @@ typora-copy-images-to:media
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3516,6 +3518,10 @@ typora-copy-images-to:media
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

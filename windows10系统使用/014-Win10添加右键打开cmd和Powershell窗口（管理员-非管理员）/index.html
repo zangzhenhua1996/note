@@ -3321,7 +3321,7 @@
 <p>直接右键即可看到该选项，无需同时按住shift键。当然，按住右键也能显示，并且不影响右键打开powershell的功能。</p>
 <p><img alt="image" src="../014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）.image/14555448-aa3035c51b6945c0.gif" /></p>
 <h1 id="_1">方法一：<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>一键自动导入设置。将以下内容保存成reg文件，如a.reg，双击该文件自动导入设置。
+<p>一键自动导入设置。将以下内容保存成reg文件，如a.reg，双击该文件自动导入设置。</p>
 <div class="codehilite"><pre><span></span>Windows Registry Editor Version <span class="m">5</span>.00
 
 <span class="o">[</span>HKEY_CLASSES_ROOT<span class="se">\D</span>irectory<span class="se">\B</span>ackground<span class="se">\s</span>hell<span class="se">\O</span>penCMDHere<span class="o">]</span>
@@ -3329,7 +3329,9 @@
 
 <span class="o">[</span>HKEY_CLASSES_ROOT<span class="se">\D</span>irectory<span class="se">\B</span>ackground<span class="se">\s</span>hell<span class="se">\O</span>penCMDHere<span class="se">\c</span>ommand<span class="o">]</span>
 @<span class="o">=</span><span class="s2">&quot;cmd.exe /s /k pushd \&quot;%V\&quot;&quot;</span>
-</pre></div></p>
+</pre></div>
+
+
 <h1 id="_2">方法二：手工设置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
 <p>1. 我们用regedit或者其他注册表编辑器定位到HKEY_CLASSES_ROOT\Directory\Background\shell\处，右击新建项“OpenCMDHere”，并在该项下，右击新建项“command”。</p>
 <p><img alt="image" src="../014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）.image/14555448-a12ccef0ed585b2a.png" /></p>
@@ -3394,11 +3396,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3427,6 +3429,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

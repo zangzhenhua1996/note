@@ -3414,16 +3414,22 @@
 <span class="n">a</span> <span class="ow">or</span> <span class="n">b</span>
 </pre></div>
 
+
 <h4 id="ab-andor0">如果a，b是数值变量， 则&amp;， |表示位运算， and，or则依据是否非0来决定输出<a class="headerlink" href="#ab-andor0" title="Permanent link">&para;</a></h4>
 <ul>
-<li>&amp;， |：  二进制位运算
+<li>&amp;， |：  二进制位运算</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="c1"># 1&amp;2，2在二进制里面是10,1在二进制中是01，那么01与运算10得到是0 </span>
 
 
 <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">2</span>         <span class="c1"># 输出为 0， </span>
 <span class="mi">1</span> <span class="o">|</span> <span class="mi">2</span>          <span class="c1"># 输出为3</span>
-</pre></div></li>
-<li>and, or:  数值短路运算
+</pre></div>
+
+
+<ul>
+<li>and, or:  数值短路运算</li>
+</ul>
 <div class="codehilite"><pre><span></span> <span class="c1"># 判断变量是否为0， 是0则为False，非0判断为True，</span>
  <span class="c1"># and中含0，返回0； 均为非0时，返回后一个值， </span>
 <span class="mi">2</span> <span class="ow">and</span> <span class="mi">0</span>   <span class="c1"># 返回0</span>
@@ -3434,17 +3440,18 @@
 <span class="mi">2</span> <span class="ow">or</span> <span class="mi">0</span>   <span class="c1"># 返回2</span>
 <span class="mi">2</span> <span class="ow">or</span> <span class="mi">1</span>   <span class="c1"># 返回2</span>
 <span class="mi">0</span> <span class="ow">or</span> <span class="mi">1</span>   <span class="c1"># 返回1 </span>
-</pre></div></li>
-</ul>
+</pre></div>
+
+
 <h3 id="a-b">如何a, b是逻辑变量， 则两类的用法基本一致<a class="headerlink" href="#a-b" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="n">In</span><span class="p">[</span><span class="mi">103</span><span class="p">]:(</span><span class="mi">3</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">3</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">103</span><span class="p">]:</span> <span class="bp">True</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">103</span><span class="p">]:</span> <span class="kc">True</span>
 <span class="n">In</span><span class="p">[</span><span class="mi">104</span><span class="p">]:(</span><span class="mi">3</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">3</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">104</span><span class="p">]:</span> <span class="bp">False</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">104</span><span class="p">]:</span> <span class="kc">False</span>
 <span class="n">In</span><span class="p">[</span><span class="mi">105</span><span class="p">]:(</span><span class="mi">3</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="mi">3</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">105</span><span class="p">]:</span> <span class="bp">True</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">105</span><span class="p">]:</span> <span class="kc">True</span>
 <span class="n">In</span><span class="p">[</span><span class="mi">106</span><span class="p">]:(</span><span class="mi">3</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">3</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">106</span><span class="p">]:</span> <span class="bp">False</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">106</span><span class="p">]:</span> <span class="kc">False</span>
 </pre></div>
                 
                   
@@ -3502,11 +3509,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3535,6 +3542,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

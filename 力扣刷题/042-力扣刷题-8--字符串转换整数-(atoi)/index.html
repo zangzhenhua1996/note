@@ -3334,7 +3334,7 @@
         <span class="c1">#stripS 是去除了空格的字符串</span>
         <span class="c1">#s1是对首先去除了负号,又去除了一个正号的字符串(这里可能只有一个-或者+都是无所谓的)然后这个正则是[^\d]+ 匹配开头没有数字的字符串.说白了这里就是筛选那种开头包含了 -+ - + +- 的后面不跟数字的跟的是字符串的</span>
         <span class="n">s1</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[^\d]+&quot;</span><span class="p">,(</span><span class="n">stripS</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">))</span>  <span class="c1">#lstrip(&quot;字符&quot;) #去除开头这个字符</span>
-        <span class="k">if</span> <span class="n">s1</span> <span class="o">!=</span><span class="bp">None</span><span class="p">:</span>  <span class="c1">#如果说不为空的话那么就说明去掉了-号或者+号剩下的只有字符串,不是以数字开头的</span>
+        <span class="k">if</span> <span class="n">s1</span> <span class="o">!=</span><span class="kc">None</span><span class="p">:</span>  <span class="c1">#如果说不为空的话那么就说明去掉了-号或者+号剩下的只有字符串,不是以数字开头的</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">s1</span> <span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;\-*\+*\d+&#39;</span><span class="p">,</span><span class="n">stripS</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>  <span class="c1">#否则的话就对字符串进行正则匹配.任意多个-任意多个+然后后面跟的是数字的字符串</span>
@@ -3347,33 +3347,34 @@
             <span class="k">return</span> <span class="o">-</span><span class="mi">2147483648</span> <span class="k">if</span> <span class="n">result</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2147483648</span> <span class="k">else</span> <span class="n">result</span>
 </pre></div>
 
+
 <p>输出是0的不符合条件的字符串有这些按照代码的判断筛选顺序</p>
-<div class="codehilite"><pre><span></span><span class="err">第一个判断条件</span>
+<div class="codehilite"><pre><span></span><span class="n">第一个判断条件</span>
 <span class="s2">&quot;&quot;</span>
 <span class="o">-</span>
 <span class="o">+</span>
-<span class="err">第二个判断条件</span>
+<span class="n">第二个判断条件</span>
 <span class="o">-+</span><span class="n">abc</span>
 <span class="o">-</span><span class="n">abc</span>
 <span class="o">+</span><span class="n">abc</span>
 <span class="o">+-</span><span class="n">abc</span>
-<span class="o">+-</span><span class="mi">123</span><span class="n">abc</span>  <span class="p">(</span><span class="err">特殊项</span><span class="p">)</span>
+<span class="o">+-</span><span class="mi">123</span><span class="n">abc</span>  <span class="p">(</span><span class="n">特殊项</span><span class="p">)</span>
 
-<span class="err">第三个判断条件</span>
+<span class="n">第三个判断条件</span>
 <span class="o">--</span><span class="mi">123</span>
 <span class="o">-+</span><span class="mi">123</span>
 <span class="o">++</span><span class="mi">123</span>
-<span class="o">+-</span><span class="mi">123</span><span class="p">(</span><span class="err">在第二个判断条件就进行了过滤</span><span class="p">)</span>
-<span class="err">当然就包含了这些个</span><span class="o">++++</span><span class="mi">123</span><span class="err">的字符串等</span>
+<span class="o">+-</span><span class="mi">123</span><span class="p">(</span><span class="n">在第二个判断条件就进行了过滤</span><span class="p">)</span>
+<span class="n">当然就包含了这些个</span><span class="o">++++</span><span class="mi">123</span><span class="n">的字符串等</span>
 
-<span class="err">最后筛选完所有不符合条件的字符串以后要转换成</span><span class="n">int型</span>
-<span class="err">然后进行大小的比较边界的溢出问题</span>
+<span class="n">最后筛选完所有不符合条件的字符串以后要转换成int型</span>
+<span class="n">然后进行大小的比较边界的溢出问题</span>
 
 
-<span class="err">整个题目主要是几个判断条件的正则表达式的书写</span>
-<span class="err">需要注意的是</span><span class="p">[</span><span class="o">^</span>\<span class="n">d</span><span class="p">]</span><span class="err">是匹配开头非数字的意思</span><span class="p">(</span><span class="err">可以写成这样</span><span class="o">^</span><span class="p">[</span>\<span class="n">D</span><span class="p">])</span><span class="err">要跟</span><span class="o">^</span><span class="p">[</span>\<span class="n">d</span><span class="p">]</span><span class="err">进行区分</span>
+<span class="n">整个题目主要是几个判断条件的正则表达式的书写</span>
+<span class="n">需要注意的是</span><span class="p">[</span><span class="o">^</span>\<span class="n">d</span><span class="p">]</span><span class="n">是匹配开头非数字的意思</span><span class="p">(</span><span class="n">可以写成这样</span><span class="o">^</span><span class="p">[</span>\<span class="n">D</span><span class="p">])</span><span class="n">要跟</span><span class="o">^</span><span class="p">[</span>\<span class="n">d</span><span class="p">]</span><span class="n">进行区分</span>
 
-<span class="p">[</span><span class="o">^</span><span class="n">a</span><span class="p">]</span><span class="err">表示“匹配除了</span><span class="n">a的任意字符</span>
+<span class="p">[</span><span class="o">^</span><span class="n">a</span><span class="p">]</span><span class="n">表示</span><span class="err">“</span><span class="n">匹配除了a的任意字符</span>
 </pre></div>
                 
                   
@@ -3431,11 +3432,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3464,6 +3465,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

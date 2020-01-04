@@ -3406,7 +3406,7 @@
 <p>du -sh dir1 估算目录 'dir1' 已经使用的磁盘空间'</p>
 <p>du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小</p>
 <p>rpm -q -a --qf '%10{SIZE}t%{NAME}n' | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统)</p>
-<p>dpkg-query -W -f='<span><span class="MathJax_Preview">{Installed-Size;10}t</span><script type="math/tex">{Installed-Size;10}t</script></span>{Package}n' | sort -k1,1n 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统)</p>
+<p>dpkg-query -W -f='<span Package="Package"><span class="MathJax_Preview">{Installed-Size;10}t</span><script type="math/tex">{Installed-Size;10}t</script></span>n' | sort -k1,1n 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统)</p>
 <p><strong>用户和群组</strong></p>
 <p>groupadd group_name 创建一个新用户组</p>
 <p>groupdel group_name 删除一个用户组</p>
@@ -3740,11 +3740,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3773,6 +3773,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

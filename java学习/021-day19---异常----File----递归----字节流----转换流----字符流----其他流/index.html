@@ -1,0 +1,4793 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/java学习/021-day19---异常----File----递归----字节流----转换流----字符流----其他流/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>021 day19 异常 File 递归 字节流 转换流 字符流 其他流 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                021 day19   异常    File    递归    字节流    转换流    字符流    其他流
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python-web/015-python项目离线部署/" class="md-tabs__link">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../机器学习/013 进入tensorboard/" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../力扣刷题/066-质因数/" class="md-tabs__link">
+          每天一道力扣题
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" class="md-tabs__link">
+          windows10系统使用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" title="067 Pycharm 运行程序后如何 如何查看变量的值" class="md-nav__link">
+      067 Pycharm 运行程序后如何 如何查看变量的值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/066-spyder升级4.0全新版本/" title="066 spyder升级4.0全新版本" class="md-nav__link">
+      066 spyder升级4.0全新版本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/065-Jupyter Notebook 远程访问配置/" title="065 Jupyter_Notebook 远程访问配置" class="md-nav__link">
+      065 Jupyter_Notebook 远程访问配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/015-python项目离线部署/" title="015 python项目离线部署" class="md-nav__link">
+      015 python项目离线部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/013 进入tensorboard/" title="013 进入tensorboard" class="md-nav__link">
+      013 进入tensorboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/012-Keras使用tensorboard训练过程可视化踩过的坑/" title="012-Keras使用tensorboard训练过程可视化踩过的坑" class="md-nav__link">
+      012-Keras使用tensorboard训练过程可视化踩过的坑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/011-关于交叉验证与偏差-方差的一连串理解/" title="011-关于交叉验证与偏差-方差的一连串理解" class="md-nav__link">
+      011-关于交叉验证与偏差-方差的一连串理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/010-统计学习方法--统计学习方法概论要点加代码/" title="010-统计学习方法--统计学习方法概论要点加代码" class="md-nav__link">
+      010-统计学习方法--统计学习方法概论要点加代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/009-统计学习方法--统计学习方法概论详细/" title="009-统计学习方法--统计学习方法概论详细" class="md-nav__link">
+      009-统计学习方法--统计学习方法概论详细
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线/" title="008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线" class="md-nav__link">
+      008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/007-机器学习中的维数灾难/" title="007-机器学习中的维数灾难" class="md-nav__link">
+      007-机器学习中的维数灾难
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/006-sklearn模型的保存加载/" title="006-sklearn模型的保存加载" class="md-nav__link">
+      006-sklearn模型的保存加载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/005-sklearn之交叉验证/" title="005-sklearn之交叉验证" class="md-nav__link">
+      005-sklearn之交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/004-sklearn：特征提取，常用模型，交叉验证/" title="004-sklearn：特征提取，常用模型，交叉验证" class="md-nav__link">
+      004-sklearn：特征提取，常用模型，交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据/" title="003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据" class="md-nav__link">
+      003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/002-预处理数据的方法总结（使用sklearn-preprocessing）/" title="002-预处理数据的方法总结（使用sklearn-preprocessing）" class="md-nav__link">
+      002-预处理数据的方法总结（使用sklearn-preprocessing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/001-sklearn-安装，获取数据，数据预处理/" title="001-sklearn-安装，获取数据，数据预处理" class="md-nav__link">
+      001-sklearn-安装，获取数据，数据预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      每天一道力扣题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        每天一道力扣题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/066-质因数/" title="066-质因数" class="md-nav__link">
+      066-质因数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/065-完全数的求解/" title="065-完全数的求解" class="md-nav__link">
+      065-完全数的求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/064-刷题过程中慎用-[]-is-None/" title="064-刷题过程中慎用-[]-is-None" class="md-nav__link">
+      064-刷题过程中慎用-[]-is-None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/063-LRU缓存算法的python实现/" title="063-LRU缓存算法的python实现" class="md-nav__link">
+      063-LRU缓存算法的python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/062-力扣刷题-344--反转字符串/" title="062-力扣刷题-344--反转字符串" class="md-nav__link">
+      062-力扣刷题-344--反转字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/061-力扣刷题-23--合并K个排序链表/" title="061-力扣刷题-23--合并K个排序链表" class="md-nav__link">
+      061-力扣刷题-23--合并K个排序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/060-力扣刷题-232--用栈实现队列/" title="060-力扣刷题-232--用栈实现队列" class="md-nav__link">
+      060-力扣刷题-232--用栈实现队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/059-力扣刷题-102--二叉树的层次遍历/" title="059-力扣刷题-102--二叉树的层次遍历" class="md-nav__link">
+      059-力扣刷题-102--二叉树的层次遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/058-力扣刷题-226--翻转二叉树/" title="058-力扣刷题-226--翻转二叉树" class="md-nav__link">
+      058-力扣刷题-226--翻转二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/057-力扣刷题-237删除链表中的节点/" title="057-力扣刷题-237删除链表中的节点" class="md-nav__link">
+      057-力扣刷题-237删除链表中的节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/056-力扣刷题-206--反转链表/" title="056-力扣刷题-206--反转链表" class="md-nav__link">
+      056-力扣刷题-206--反转链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/055-力扣刷题-1004--最大连续1的个数-III/" title="055-力扣刷题-1004--最大连续1的个数-III" class="md-nav__link">
+      055-力扣刷题-1004--最大连续1的个数-III
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/054-小球反弹的总路程/" title="054-小球反弹的总路程" class="md-nav__link">
+      054-小球反弹的总路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/053-力扣刷题-235--二叉搜索树的最近公共祖先/" title="053-力扣刷题-235--二叉搜索树的最近公共祖先" class="md-nav__link">
+      053-力扣刷题-235--二叉搜索树的最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/052-力扣刷题-162--寻找峰值/" title="052-力扣刷题-162--寻找峰值" class="md-nav__link">
+      052-力扣刷题-162--寻找峰值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/051-力扣刷题-136--只出现一次的数字/" title="051-力扣刷题-136--只出现一次的数字" class="md-nav__link">
+      051-力扣刷题-136--只出现一次的数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/050-二维生物的旅行-754--到达终点数字/" title="050-二维生物的旅行-754--到达终点数字" class="md-nav__link">
+      050-二维生物的旅行-754--到达终点数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/049--力扣刷题459--重复的子字符串-pin2字符串构造/" title="049--力扣刷题459--重复的子字符串-pin2字符串构造" class="md-nav__link">
+      049--力扣刷题459--重复的子字符串-pin2字符串构造
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/048-pin题目1/" title="048-pin题目1" class="md-nav__link">
+      048-pin题目1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/047-力扣刷题-845--数组中的最长山脉/" title="047-力扣刷题-845--数组中的最长山脉" class="md-nav__link">
+      047-力扣刷题-845--数组中的最长山脉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/046-力扣刷题-125--验证回文串/" title="046-力扣刷题-125--验证回文串" class="md-nav__link">
+      046-力扣刷题-125--验证回文串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/045-力扣刷题-122--买卖股票的最佳时机-II/" title="045-力扣刷题-122--买卖股票的最佳时机-II" class="md-nav__link">
+      045-力扣刷题-122--买卖股票的最佳时机-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/044-力扣刷题-119--杨辉三角-II/" title="044-力扣刷题-119--杨辉三角-II" class="md-nav__link">
+      044-力扣刷题-119--杨辉三角-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/043-力扣刷题-121--买卖股票的最佳时机/" title="043-力扣刷题-121--买卖股票的最佳时机" class="md-nav__link">
+      043-力扣刷题-121--买卖股票的最佳时机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/042-力扣刷题-8--字符串转换整数-(atoi)/" title="042-力扣刷题-8--字符串转换整数-(atoi)" class="md-nav__link">
+      042-力扣刷题-8--字符串转换整数-(atoi)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/041-力扣刷题-118--杨辉三角/" title="041-力扣刷题-118--杨辉三角" class="md-nav__link">
+      041-力扣刷题-118--杨辉三角
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/040-力扣刷题-535--TinyURL-的加密与解密/" title="040-力扣刷题-535--TinyURL-的加密与解密" class="md-nav__link">
+      040-力扣刷题-535--TinyURL-的加密与解密
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/039-力扣刷题-112--路径总和/" title="039-力扣刷题-112--路径总和" class="md-nav__link">
+      039-力扣刷题-112--路径总和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/038-力扣刷题-98--验证二叉搜索树/" title="038-力扣刷题-98--验证二叉搜索树" class="md-nav__link">
+      038-力扣刷题-98--验证二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/037-力扣刷题-110--平衡二叉树--重点进行理解/" title="037-力扣刷题-110--平衡二叉树--重点进行理解" class="md-nav__link">
+      037-力扣刷题-110--平衡二叉树--重点进行理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/036-力扣刷题-166--分数到小数/" title="036-力扣刷题-166--分数到小数" class="md-nav__link">
+      036-力扣刷题-166--分数到小数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/035-字节跳动题目-小球往返路程/" title="035-字节跳动题目-小球往返路程" class="md-nav__link">
+      035-字节跳动题目-小球往返路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/034-力扣刷题-88--合并两个有序数组/" title="034-力扣刷题-88--合并两个有序数组" class="md-nav__link">
+      034-力扣刷题-88--合并两个有序数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/033-力扣刷题-70--爬楼梯/" title="033-力扣刷题-70--爬楼梯" class="md-nav__link">
+      033-力扣刷题-70--爬楼梯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/032-力扣刷题-83--删除排序链表中的重复元素/" title="032-力扣刷题-83--删除排序链表中的重复元素" class="md-nav__link">
+      032-力扣刷题-83--删除排序链表中的重复元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/031-力扣刷题-101--对称二叉树/" title="031-力扣刷题-101--对称二叉树" class="md-nav__link">
+      031-力扣刷题-101--对称二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/030-力扣刷题-111--二叉树的最小深度/" title="030-力扣刷题-111--二叉树的最小深度" class="md-nav__link">
+      030-力扣刷题-111--二叉树的最小深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/029-力扣刷题-104--二叉树的最大深度/" title="029-力扣刷题-104--二叉树的最大深度" class="md-nav__link">
+      029-力扣刷题-104--二叉树的最大深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/028-力扣刷题107--二叉树的层次遍历-II/" title="028-力扣刷题107--二叉树的层次遍历-II" class="md-nav__link">
+      028-力扣刷题107--二叉树的层次遍历-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/027-字节跳动笔试题-循环链表实现约瑟夫环/" title="027-字节跳动笔试题-循环链表实现约瑟夫环" class="md-nav__link">
+      027-字节跳动笔试题-循环链表实现约瑟夫环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/026-力扣刷题-108--将有序数组转换为二叉搜索树/" title="026-力扣刷题-108--将有序数组转换为二叉搜索树" class="md-nav__link">
+      026-力扣刷题-108--将有序数组转换为二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/025-力扣刷题-100-相同的树/" title="025-力扣刷题-100-相同的树" class="md-nav__link">
+      025-力扣刷题-100-相同的树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/024-力扣刷题-66--加一/" title="024-力扣刷题-66--加一" class="md-nav__link">
+      024-力扣刷题-66--加一
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/023-力扣刷题-69--x-的平方根/" title="023-力扣刷题-69--x-的平方根" class="md-nav__link">
+      023-力扣刷题-69--x-的平方根
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/022-力扣刷题-二进制求和/" title="022-力扣刷题-二进制求和" class="md-nav__link">
+      022-力扣刷题-二进制求和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/021-力扣刷题151--翻转字符串里的单词/" title="021-力扣刷题151--翻转字符串里的单词" class="md-nav__link">
+      021-力扣刷题151--翻转字符串里的单词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/020-力扣刷题-58--最后一个单词的长度/" title="020-力扣刷题-58--最后一个单词的长度" class="md-nav__link">
+      020-力扣刷题-58--最后一个单词的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/019-力扣刷题53--最大子序和/" title="019-力扣刷题53--最大子序和" class="md-nav__link">
+      019-力扣刷题53--最大子序和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/018-力扣刷题-38--报数/" title="018-力扣刷题-38--报数" class="md-nav__link">
+      018-力扣刷题-38--报数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/017-46--全排列/" title="017-46--全排列" class="md-nav__link">
+      017-46--全排列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/016-力扣刷题873--最长的斐波那契子序列的长度/" title="016-力扣刷题873--最长的斐波那契子序列的长度" class="md-nav__link">
+      016-力扣刷题873--最长的斐波那契子序列的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/015-力扣刷题35--搜索插入位置/" title="015-力扣刷题35--搜索插入位置" class="md-nav__link">
+      015-力扣刷题35--搜索插入位置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/014-力扣刷题9--回文数/" title="014-力扣刷题9--回文数" class="md-nav__link">
+      014-力扣刷题9--回文数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/013-力扣刷题7--整数反转/" title="013-力扣刷题7--整数反转" class="md-nav__link">
+      013-力扣刷题7--整数反转
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/012-力扣刷题14--最长公共前缀/" title="012-力扣刷题14--最长公共前缀" class="md-nav__link">
+      012-力扣刷题14--最长公共前缀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/011-力扣刷题21--合并两个有序链表/" title="011-力扣刷题21--合并两个有序链表" class="md-nav__link">
+      011-力扣刷题21--合并两个有序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/010-力扣刷题27--移除元素/" title="010-力扣刷题27--移除元素" class="md-nav__link">
+      010-力扣刷题27--移除元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/009-力扣刷题28--实现strStr()/" title="009-力扣刷题28--实现strStr()" class="md-nav__link">
+      009-力扣刷题28--实现strStr()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/008-力扣刷题20--有效的括号/" title="008-力扣刷题20--有效的括号" class="md-nav__link">
+      008-力扣刷题20--有效的括号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/007-力扣刷题26--删除排序数组中的重复项/" title="007-力扣刷题26--删除排序数组中的重复项" class="md-nav__link">
+      007-力扣刷题26--删除排序数组中的重复项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/006-力扣刷题22--括号生成/" title="006-力扣刷题22--括号生成" class="md-nav__link">
+      006-力扣刷题22--括号生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/005-力扣刷题13--罗马数字转整数/" title="005-力扣刷题13--罗马数字转整数" class="md-nav__link">
+      005-力扣刷题13--罗马数字转整数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/004-力扣刷题4--寻找两个有序数组的中位数/" title="004-力扣刷题4--寻找两个有序数组的中位数" class="md-nav__link">
+      004-力扣刷题4--寻找两个有序数组的中位数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/003-力扣刷题3不含有重复字符的-最长子串-的长度/" title="003-力扣刷题3不含有重复字符的-最长子串-的长度" class="md-nav__link">
+      003-力扣刷题3不含有重复字符的-最长子串-的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/002-力扣刷题2-两数相加/" title="002-力扣刷题2-两数相加" class="md-nav__link">
+      002-力扣刷题2-两数相加
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/001-力扣刷题1--两数之和/" title="001-力扣刷题1--两数之和" class="md-nav__link">
+      001-力扣刷题1--两数之和
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      windows10系统使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        windows10系统使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" title="022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装" class="md-nav__link">
+      022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/021win系统新增新建右键Markdown文件及默认UTF-8编码格式/" title="021win系统新增新建右键Markdown文件及默认UTF-8编码格式" class="md-nav__link">
+      021win系统新增新建右键Markdown文件及默认UTF-8编码格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/020-删除关机等按钮/" title="020-删除关机等按钮" class="md-nav__link">
+      020-删除关机等按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/019-windows1809-系统最近的更新出现了bug/" title="019-windows1809-系统最近的更新出现了bug" class="md-nav__link">
+      019-windows1809-系统最近的更新出现了bug
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/018--win10卸载自带的应用/" title="018--win10卸载自带的应用" class="md-nav__link">
+      018--win10卸载自带的应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/017-笔记本软件/" title="017-笔记本软件" class="md-nav__link">
+      017-笔记本软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/016-Java添加环境变量/" title="016-Java添加环境变量" class="md-nav__link">
+      016-Java添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/015-anaconda-添加环境变量/" title="015-anaconda-添加环境变量" class="md-nav__link">
+      015-anaconda-添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）/" title="014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）" class="md-nav__link">
+      014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/013-win10取消应用弹框/" title="013-win10取消应用弹框" class="md-nav__link">
+      013-win10取消应用弹框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/012--win10系统怎么禁用defender/" title="012--win10系统怎么禁用defender" class="md-nav__link">
+      012--win10系统怎么禁用defender
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b/" title="011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b" class="md-nav__link">
+      011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/010-Axmath破解安装使用/" title="010-Axmath破解安装使用" class="md-nav__link">
+      010-Axmath破解安装使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式/" title="007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式" class="md-nav__link">
+      007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/006-picgo图床使用/" title="006-picgo图床使用" class="md-nav__link">
+      006-picgo图床使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/005-win10开机提示用户名和密码不正确的解决办法/" title="005-win10开机提示用户名和密码不正确的解决办法" class="md-nav__link">
+      005-win10开机提示用户名和密码不正确的解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/004-windows下安装pandoc并通过Typora导出pdf和word/" title="004-windows下安装pandoc并通过Typora导出pdf和word" class="md-nav__link">
+      004-windows下安装pandoc并通过Typora导出pdf和word
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/002-几何画板迷你增强版/" title="002-几何画板迷你增强版" class="md-nav__link">
+      002-几何画板迷你增强版
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/001-开机启动项的存储位置/" title="001-开机启动项的存储位置" class="md-nav__link">
+      001-开机启动项的存储位置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">总结<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><span class="mi">1</span><span class="p">:</span><span class="n">异常</span><span class="p">(</span><span class="n">理解</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="n">程序出现的不正常的情况</span><span class="err">。</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="n">异常的体系</span>
+        <span class="n">Throwable</span>
+            <span class="o">|--</span><span class="n">Error</span>    <span class="n">严重问题</span><span class="err">，</span><span class="n">我们不处理</span><span class="err">。</span>
+            <span class="o">|--</span><span class="n">Exception</span>
+                <span class="o">|--</span><span class="n">RuntimeException</span> <span class="n">运行期异常</span><span class="err">，</span><span class="n">我们需要修正代码</span>
+                <span class="o">|--</span><span class="n">非RuntimeException</span> <span class="n">编译期异常</span><span class="err">，</span><span class="n">必须处理的</span><span class="err">，</span><span class="n">否则程序编译不通过</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="n">异常的处理</span><span class="err">：</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">JVM的默认处理</span>
+            <span class="n">把异常的名称</span><span class="p">,</span><span class="n">原因</span><span class="p">,</span><span class="n">位置等信息输出在控制台</span><span class="err">，</span><span class="n">但是呢程序不能继续执行了</span><span class="err">。</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">自己处理</span>
+            <span class="n">a</span><span class="p">:</span><span class="k">try</span><span class="p">...</span><span class="na">catch</span><span class="p">...</span><span class="na">finally</span>
+                <span class="n">自己编写处理代码</span><span class="p">,</span><span class="n">后面的程序可以继续执行</span>
+            <span class="n">b</span><span class="p">:</span><span class="kd">throws</span>
+                <span class="n">把自己处理不了的</span><span class="err">，</span><span class="n">在方法上声明</span><span class="err">，</span><span class="n">告诉调用者</span><span class="err">，</span><span class="n">这里有问题</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="n">面试题</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">编译期异常和运行期异常的区别</span><span class="o">?</span>
+            <span class="n">编译期异常</span> <span class="n">必须要处理的</span><span class="err">，</span><span class="n">否则编译不通过</span>
+            <span class="n">运行期异常</span> <span class="n">可以不处理</span><span class="err">，</span><span class="n">也可以处理</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">throw和throws是的区别</span>
+            <span class="k">throw</span><span class="p">:</span>
+                <span class="n">在方法体中</span><span class="p">,</span><span class="n">后面跟的是异常对象名</span><span class="p">,</span><span class="n">并且只能是一个</span>
+                <span class="n">throw抛出的是一个异常对象</span><span class="err">，</span><span class="n">说明这里肯定有一个异常产生了</span>
+            <span class="kd">throws</span><span class="p">:</span>
+                <span class="n">在方法声明上</span><span class="p">,</span><span class="n">后面跟的是异常的类名</span><span class="p">,</span><span class="n">可以是多个</span>
+                <span class="n">throws是声明方法有异常</span><span class="err">，</span><span class="n">是一种可能性</span><span class="err">，</span><span class="n">这个异常并不一定会产生</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="n">finally关键字及其面试题</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">finally用于释放资源</span><span class="err">，</span><span class="n">它的代码永远会执行</span><span class="err">。</span><span class="n">特殊情况</span><span class="err">：</span><span class="n">在执行到finally之前jvm退出了</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">面试题</span>
+            <span class="n">a</span><span class="p">:</span><span class="kd">final</span><span class="p">,</span><span class="k">finally</span><span class="p">,</span><span class="n">finalize的区别</span><span class="o">?</span>
+            <span class="n">b</span><span class="p">:</span><span class="n">如果在catch里面有return</span><span class="p">,</span><span class="n">请问finally还执行吗</span><span class="o">?</span><span class="n">如果执行</span><span class="p">,</span><span class="n">在return前还是后</span>
+                <span class="n">会</span><span class="err">，</span><span class="n">前</span><span class="err">。</span>
+
+                <span class="n">实际上在中间</span><span class="err">。</span><span class="n">这个上课我们讲过</span>
+        <span class="n">C</span><span class="p">:</span><span class="n">异常处理的变形</span>
+            <span class="k">try</span><span class="p">...</span><span class="na">catch</span><span class="p">...</span><span class="na">finally</span>
+            <span class="k">try</span><span class="p">...</span><span class="na">catch</span><span class="p">...</span>
+            <span class="k">try</span><span class="p">...</span><span class="na">catch</span><span class="p">...</span><span class="na">catch</span><span class="p">...</span>
+            <span class="k">try</span><span class="p">...</span><span class="na">catch</span><span class="p">...</span><span class="na">catch</span><span class="p">...</span><span class="na">fianlly</span>
+            <span class="k">try</span><span class="p">...</span><span class="na">finally</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="n">自定义异常</span>
+        <span class="n">继承自Exception或者RuntimeException</span><span class="p">,</span><span class="n">只需要提供无参构造和一个带参构造即可</span>
+    <span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="n">异常的注意实现</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">父的方法有异常抛出</span><span class="p">,</span><span class="n">子的重写方法在抛出异常的时候必须要小于等于父的异常</span> 
+        <span class="n">B</span><span class="p">:</span><span class="n">父的方法没有异常抛出</span><span class="p">,</span><span class="n">子的重写方法不能有异常抛出</span>
+        <span class="n">C</span><span class="p">:</span><span class="n">父的方法抛出多个异常</span><span class="p">,</span><span class="n">子的重写方法必须比父少或者小</span>
+
+<span class="mi">2</span><span class="p">:</span><span class="n">File</span><span class="p">(</span><span class="n">掌握</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="n">IO流操作中大部分都是对文件的操作</span><span class="err">，</span><span class="n">所以Java就提供了File类供我们来操作文件</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="n">构造方法</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\demo\\a.txt&quot;</span><span class="p">);</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\demo&quot;</span><span class="p">,</span><span class="s">&quot;a.txt&quot;</span><span class="p">);</span>
+        <span class="n">C</span><span class="p">:</span><span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\demo&quot;</span><span class="p">);</span>
+          <span class="n">File</span> <span class="n">file2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="s">&quot;a.txt&quot;</span><span class="p">);</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="n">File类的功能</span><span class="p">(</span><span class="n">自己补齐</span><span class="p">)</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">创建功能</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">删除功能</span>
+        <span class="n">C</span><span class="p">:</span><span class="n">重命名功能</span>
+        <span class="n">D</span><span class="p">:</span><span class="n">判断功能</span>
+        <span class="n">E</span><span class="p">:</span><span class="n">获取功能</span>
+        <span class="n">F</span><span class="p">:</span><span class="n">高级获取功能</span>
+        <span class="n">G</span><span class="p">:</span><span class="n">过滤器功能</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="n">案例</span><span class="err">：</span>
+        <span class="n">A</span><span class="p">:</span><span class="n">输出指定目录下指定后缀名的文件名称</span>
+            <span class="n">a</span><span class="p">:</span><span class="n">先获取所有的</span><span class="err">，</span><span class="n">在遍历的时候判断</span><span class="err">，</span><span class="n">再输出</span>
+            <span class="n">b</span><span class="p">:</span><span class="n">先判断</span><span class="err">，</span><span class="n">再获取</span><span class="err">，</span><span class="n">最后直接遍历输出即可</span>
+        <span class="n">B</span><span class="p">:</span><span class="n">批量修改文件名称</span>
+</pre></div>
+
+
+<h1 id="_2">本章内容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>异常</p>
+</li>
+<li>
+<p>File</p>
+</li>
+<li>
+<p>递归</p>
+</li>
+<li>
+<p>字节流</p>
+</li>
+<li>
+<p>转换流</p>
+</li>
+<li>
+<p>字符流</p>
+</li>
+<li>
+<p>其他流
+<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-3be4bd3022166645.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+</li>
+</ul>
+<h1 id="_3">异常概述<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>异常：异常就是Java程序在运行过程中出现的错误。</p>
+</li>
+<li>
+<p>异常由来：问题也是现实生活中一个具体事务，也可以通过java 的类的形式进行描述，并封装成对象。其实就是Java对不正常情况进行描述后的对象体现。</p>
+</li>
+<li>
+<p>我们见过的异常,角标越界异常,空指针异常</p>
+</li>
+</ul>
+<h1 id="_4">异常分类图解<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<p><img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-85745a826d8fa1aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<h1 id="_5">异常举例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<ul>
+<li>除数为0</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_01</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 异常：程序出现了不正常的情况。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 举例：今天天气很好，班长出去旅游。骑着自行车，去山里面呼吸新鲜空气。</span>
+<span class="cm"> *      问题1：山路塌陷了，班长及时停住了，但是过不去了。严重的问题。</span>
+<span class="cm"> *      问题2：班长出门推自行车，发现气没了，把气吹起来。出发前就应该检查的问题。</span>
+<span class="cm"> *      问题3:班长骑着车在山路上惬意的行驶着，山路两边是有小石子的，中间是平坦的水泥路。</span>
+<span class="cm"> *          一直在平坦的水泥路上行驶是没有任何问题的，但是呢，他偏偏喜欢骑到小石子上，结果爆胎了。旅游的过程中出现的问题。</span>
+<span class="cm"> *          no zuo no die。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 程序的异常：Throwable</span>
+<span class="cm"> *      严重问题：Error 我们不处理。这种问题一般都是很严重的，比如说内存溢出。</span>
+<span class="cm"> *      问题：Exception</span>
+<span class="cm"> *          编译期问题:不是RuntimeException的异常 必须进行处理的，因为你不处理，编译就不能通过。</span>
+<span class="cm"> *          运行期问题:RuntimeException  这种问题我们也不处理，因为是你的问题，而且这个问题出现肯定是我们的代码不够严谨，需要修正代码的。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 如何程序出现了问题，我们没有做任何处理，最终jvm会做出默认的处理。</span>
+<span class="cm"> * 把异常的名称，原因及出现的问题等信息输出在控制台。</span>
+<span class="cm"> * 同时会结束程序。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//第一阶段</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="c1">// int b = 2;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+
+        <span class="c1">//第二阶段</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;over&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>问题</p>
+<div class="codehilite"><pre><span></span><span class="n">Exception</span> <span class="n">in</span> <span class="n">thread</span> <span class="s">&quot;main&quot;</span> <span class="n">java</span><span class="p">.</span><span class="na">lang</span><span class="p">.</span><span class="na">ArithmeticException</span><span class="p">:</span> <span class="o">/</span> <span class="n">by</span> <span class="n">zero</span>
+    <span class="n">at</span> <span class="n">cn</span><span class="p">.</span><span class="na">itcast_01</span><span class="p">.</span><span class="na">ExceptionDemo</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="n">ExceptionDemo</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="mi">29</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>数组访问越界</li>
+</ul>
+<h1 id="jvm">JVM的默认处理方案<a class="headerlink" href="#jvm" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>把异常的名称，错误原因及异常出现的位置等信息输出在了控制台</p>
+</li>
+<li>
+<p>程序停止执行</p>
+</li>
+</ul>
+<h1 id="_6">异常处理方案<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
+<ul>
+<li>异常处理方案</li>
+</ul>
+<p>•    try…catch…finally</p>
+<p>•    throws</p>
+<h1 id="trycatch">try…catch处理方式<a class="headerlink" href="#trycatch" title="Permanent link">&para;</a></h1>
+<ul>
+<li>一个异常的情况</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 我们自己如何处理异常呢?</span>
+<span class="cm"> * A:try...catch...finally</span>
+<span class="cm"> * B:throws 抛出</span>
+<span class="cm"> * </span>
+<span class="cm"> * try...catch...finally的处理格式：</span>
+<span class="cm"> *      try {</span>
+<span class="cm"> *          可能出现问题的代码;</span>
+<span class="cm"> *      }catch(异常名 变量) {</span>
+<span class="cm"> *          针对问题的处理;</span>
+<span class="cm"> *      }finally {</span>
+<span class="cm"> *          释放资源;</span>
+<span class="cm"> *      }</span>
+<span class="cm"> * </span>
+<span class="cm"> * 变形格式：</span>
+<span class="cm"> *      try {  //这里的代码越少越好</span>
+<span class="cm"> *          可能出现问题的代码;</span>
+<span class="cm"> *      }catch(异常名 变量) {</span>
+<span class="cm"> *          针对问题的处理;</span>
+<span class="cm"> *      }</span>
+<span class="cm"> * </span>
+<span class="cm"> * 注意：</span>
+<span class="cm"> *      A:try里面的代码越少越好</span>
+<span class="cm"> *      B:catch里面必须有内容，哪怕是给出一个简单的提示</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 第一阶段</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="c1">// int b = 2;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArithmeticException</span> <span class="n">ae</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;除数不能为0&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 第二阶段</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;over&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="n">除数不能为0</span>
+<span class="n">over</span>
+</pre></div>
+
+
+<ul>
+<li>多个异常的情况</li>
+</ul>
+<p>•    平级情况</p>
+<p>•    存在上下级的情况</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * A:一个异常</span>
+<span class="cm"> * B:二个异常的处理</span>
+<span class="cm"> *      a:每一个写一个try...catch</span>
+<span class="cm"> *      b:写一个try，多个catch</span>
+<span class="cm"> *          try{</span>
+<span class="cm"> *              ...</span>
+<span class="cm"> *          }catch(异常类名 变量名) {</span>
+<span class="cm"> *              ...</span>
+<span class="cm"> *          }</span>
+<span class="cm"> *          catch(异常类名 变量名) {</span>
+<span class="cm"> *              ...</span>
+<span class="cm"> *          }</span>
+<span class="cm"> *          ...</span>
+<span class="cm"> * </span>
+<span class="cm"> *          注意事项：</span>
+<span class="cm"> *              1:能明确的尽量明确，不要用大的来处理。</span>
+<span class="cm"> *              2:平级关系的异常谁前谁后无所谓，如果出现了子父关系，父必须在后面。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 注意：</span>
+<span class="cm"> *      一旦try里面出了问题，就会在这里把问题给抛出去，然后和catch里面的问题进行匹配，</span>
+<span class="cm"> *      一旦有匹配的，就执行catch里面的处理，然后结束了try...catch</span>
+<span class="cm"> *      继续执行后面的语句。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// method1();</span>
+
+        <span class="c1">// method2();</span>
+
+        <span class="c1">// method3();</span>
+
+        <span class="n">method4</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method4</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+
+        <span class="c1">// 爷爷在最后</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;这里出现了一个异常，你不太清楚是谁，该怎么办呢?&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArithmeticException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;除数不能为0&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;你访问了不该的访问的索引&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//这个可以匹配所有的异常</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;出问题了&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 爷爷在前面是不可以的</span>
+        <span class="c1">// try {</span>
+        <span class="c1">// System.out.println(a / b);</span>
+        <span class="c1">// System.out.println(arr[3]);</span>
+        <span class="c1">// System.out.println(&quot;这里出现了一个异常，你不太清楚是谁，该怎么办呢?&quot;);</span>
+        <span class="c1">// } catch (Exception e) {</span>
+        <span class="c1">// System.out.println(&quot;出问题了&quot;);</span>
+        <span class="c1">// } catch (ArithmeticException e) {</span>
+        <span class="c1">// System.out.println(&quot;除数不能为0&quot;);</span>
+        <span class="c1">// } catch (ArrayIndexOutOfBoundsException e) {</span>
+        <span class="c1">// System.out.println(&quot;你访问了不该的访问的索引&quot;);</span>
+        <span class="c1">// }</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;over&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 两个异常的处理</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method3</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+            <span class="c1">// System.out.println(arr[3]);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArithmeticException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;除数不能为0&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;你访问了不该的访问的索引&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;over&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 两个异常</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method2</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArithmeticException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;除数不能为0&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;你访问了不该的访问的索引&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;over&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 一个异常</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method1</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 第一阶段</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="c1">// int b = 2;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArithmeticException</span> <span class="n">ae</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;除数不能为0&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 第二阶段</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;over&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>•    JDK7的新特性及注意事项</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * JDK7出现了一个新的异常处理方案：</span>
+<span class="cm"> *      try{</span>
+<span class="cm"> * </span>
+<span class="cm"> *      }catch(异常名1 | 异常名2 | ...  变量 ) {</span>
+<span class="cm"> *          ...</span>
+<span class="cm"> *      }</span>
+<span class="cm"> * </span>
+<span class="cm"> *      注意：这个方法虽然简洁，但是也不够好。</span>
+<span class="cm"> *          A:处理方式是一致的。(实际开发中，好多时候可能就是针对同类型的问题，给出同一个处理)</span>
+<span class="cm"> *          B:多个异常间必须是平级关系。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo3</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">method</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+
+        <span class="c1">// try {</span>
+        <span class="c1">// System.out.println(a / b);</span>
+        <span class="c1">// System.out.println(arr[3]);</span>
+        <span class="c1">// System.out.println(&quot;这里出现了一个异常，你不太清楚是谁，该怎么办呢?&quot;);</span>
+        <span class="c1">// } catch (ArithmeticException e) {</span>
+        <span class="c1">// System.out.println(&quot;除数不能为0&quot;);</span>
+        <span class="c1">// } catch (ArrayIndexOutOfBoundsException e) {</span>
+        <span class="c1">// System.out.println(&quot;你访问了不该的访问的索引&quot;);</span>
+        <span class="c1">// } catch (Exception e) {</span>
+        <span class="c1">// System.out.println(&quot;出问题了&quot;);</span>
+        <span class="c1">// }</span>
+
+        <span class="c1">// JDK7的处理方案</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArithmeticException</span> <span class="o">|</span> <span class="n">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;出问题了&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;over&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="_7">编译时异常和运行时异常的区别<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>Java中的异常被分为两大类：编译时异常和运行时异常。所有的RuntimeException类及其子类的实例被称为运行时异常，其他的异常就是编译时异常</p>
+</li>
+<li>
+<p>编译时异常</p>
+</li>
+</ul>
+<p>•    Java程序必须显示处理，否则程序就会发生错误，无法通过编译</p>
+<ul>
+<li>运行时异常</li>
+</ul>
+<p>•    无需显示处理，也可以和编译时异常一样处理</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.text.ParseException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 编译时异常和运行时异常的区别</span>
+<span class="cm"> * 编译期异常：Java程序必须显示处理，否则程序就会发生错误，无法通过编译</span>
+<span class="cm"> * 运行期异常：无需显示处理，也可以和编译时异常一样处理</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// int a = 10;</span>
+        <span class="c1">// int b = 0;</span>
+        <span class="c1">// if (b != 0) {</span>
+        <span class="c1">// System.out.println(a / b);</span>
+        <span class="c1">// }</span>
+
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;2014-11-20&quot;</span><span class="p">;</span>
+        <span class="c1">// SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+        <span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy-MM-dd&quot;</span><span class="p">);</span>
+        <span class="c1">// Date d = sdf.parse(s);</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ParseException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// e.printStackTrace();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;解析日期出问题了&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="throwable">Throwable中的方法<a class="headerlink" href="#throwable" title="Permanent link">&para;</a></h1>
+<ul>
+<li>getMessage()</li>
+</ul>
+<p>•    获取异常信息，返回字符串。</p>
+<ul>
+<li>toString()</li>
+</ul>
+<p>•    获取异常类名和异常信息，返回字符串。</p>
+<ul>
+<li>printStackTrace()</li>
+</ul>
+<p>•    获取异常类名和异常信息，以及异常出现在程序中的位置。返回值void。</p>
+<ul>
+<li>printStackTrace(PrintStream s)</li>
+</ul>
+<p>•    通常用该方法将异常内容保存在日志文件中，以便查阅。</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_04</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.text.ParseException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 在try里面发现问题后，jvm会帮我们生成一个异常对象，然后把这个对象抛出，和catch里面的类进行匹配。</span>
+<span class="cm"> * 如果该对象是某个类型的，就会执行该catch里面的处理信息。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 异常中要了解的几个方法：</span>
+<span class="cm"> * public String getMessage():异常的消息字符串      </span>
+<span class="cm"> * public String toString():返回异常的简单信息描述</span>
+<span class="cm"> *      此对象的类的 name(全路径名)</span>
+<span class="cm"> *      &quot;: &quot;（冒号和一个空格） </span>
+<span class="cm"> *      调用此对象 getLocalizedMessage()方法的结果 (默认返回的是getMessage()的内容)</span>
+<span class="cm"> * printStackTrace() 获取异常类名和异常信息，以及异常出现在程序中的位置。返回值void。把信息输出在控制台。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;2014-11-20&quot;</span><span class="p">;</span>
+        <span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">);</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="c1">// 创建了一个ParseException对象，然后抛出去，和catch里面进行匹配</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ParseException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// ParseException e = new ParseException();</span>
+            <span class="c1">// ParseException</span>
+            <span class="c1">// e.printStackTrace();</span>
+
+            <span class="c1">// getMessage()</span>
+            <span class="c1">// System.out.println(e.getMessage());</span>
+            <span class="c1">// Unparseable date: &quot;2014-11-20&quot;</span>
+
+            <span class="c1">// toString()</span>
+            <span class="c1">// System.out.println(e.toString());</span>
+            <span class="c1">// java.text.ParseException: Unparseable date: &quot;2014-11-20&quot;</span>
+
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+            <span class="c1">//跳转到某个指定的页面(index.html)</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;over&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="n">java</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">ParseException</span><span class="p">:</span> <span class="n">Unparseable</span> <span class="n">date</span><span class="p">:</span> <span class="s">&quot;2014-11-20&quot;</span>
+    <span class="n">at</span> <span class="n">java</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">DateFormat</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">Unknown</span> <span class="n">Source</span><span class="p">)</span>
+    <span class="n">at</span> <span class="n">cn</span><span class="p">.</span><span class="na">itcast_04</span><span class="p">.</span><span class="na">ExceptionDemo</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="n">ExceptionDemo</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">over</span>
+</pre></div>
+
+
+<h1 id="throws">throws<a class="headerlink" href="#throws" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>定义功能方法时，需要把出现的问题暴露出来让调用者去处理。那么就通过throws在方法上标识。</p>
+</li>
+<li>
+<p>举例分别演示编译时异常和运行时异常的抛出</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_05</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.text.ParseException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 有些时候，我们是可以对异常进行处理的，但是又有些时候，我们根本就没有权限去处理某个异常。</span>
+<span class="cm"> * 或者说，我处理不了，我就不处理了。</span>
+<span class="cm"> * 为了解决出错问题，Java针对这种情况，就提供了另一种处理方案：抛出。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 格式：</span>
+<span class="cm"> *      throws 异常类名</span>
+<span class="cm"> *      注意：这个格式必须跟在方法的括号后面。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 注意：</span>
+<span class="cm"> *      尽量不要在main方法上抛出异常。</span>
+<span class="cm"> *      但是我讲课为了方便我就这样做了。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 小结：</span>
+<span class="cm"> *      编译期异常抛出，将来调用者必须处理。</span>
+<span class="cm"> *      运行期异常抛出，将来调用可以不用处理。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;今天天气很好&quot;</span><span class="p">);</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">method</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ParseException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// TODO Auto-generated catch block,自动生成的程序</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;但是就是不该有雾霾&quot;</span><span class="p">);</span>
+
+        <span class="n">method2</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 运行期异常的抛出</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method2</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">ArithmeticException</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 编译期异常的抛出</span>
+    <span class="c1">// 在方法声明上抛出，是为了告诉调用者，你注意了，我有问题。</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;2014-11-20&quot;</span><span class="p">;</span>
+        <span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">);</span>
+        <span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="throw">throw<a class="headerlink" href="#throw" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>在功能方法内部出现某种情况，程序不能继续运行，需要进行跳转时，就用throw把异常对象抛出。</p>
+</li>
+<li>
+<p>举例分别演示编译时异常对象和运行时异常对象的抛出</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_06</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * throw:如果出现了异常情况，我们可以把该异常抛出，这个时候的抛出的应该是异常的对象。</span>
+<span class="cm"> * </span>
+<span class="cm"> * throws和throw的区别(面试题)</span>
+<span class="cm">    throws</span>
+<span class="cm">        用在方法声明后面，跟的是异常类名</span>
+<span class="cm">        可以跟多个异常类名，用逗号隔开</span>
+<span class="cm">        表示抛出异常，由该方法的调用者来处理</span>
+<span class="cm">        throws表示出现异常的一种可能性，并不一定会发生这些异常</span>
+<span class="cm">    throw</span>
+<span class="cm">        用在方法体内，跟的是异常对象名</span>
+<span class="cm">        只能抛出一个异常对象名</span>
+<span class="cm">        表示抛出异常，由方法体内的语句处理</span>
+<span class="cm">        throw则是抛出了异常，执行throw则一定抛出了某种异常</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// method();</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">method2</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// TODO Auto-generated catch block</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+<span class="c1">//      try {</span>
+<span class="c1">//          method2();</span>
+<span class="c1">//      } catch (Exception e) {</span>
+<span class="c1">//          e.printStackTrace();</span>
+<span class="c1">//      }</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">//运行时期的异常</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">ArithmeticException</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">method2</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">();</span><span class="c1">//这是一条正常 的语句是编译器的异常需要在方法上使用throws</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="throwsthrow">throws和throw的区别<a class="headerlink" href="#throwsthrow" title="Permanent link">&para;</a></h1>
+<ul>
+<li>throws</li>
+</ul>
+<p>•    用在方法声明后面，跟的是异常类名</p>
+<p>•    可以跟多个异常类名，用逗号隔开</p>
+<p>•    表示抛出异常，由该方法的调用者来处理</p>
+<p>•    throws表示出现异常的一种可能性，并不一定会发生这些异常</p>
+<ul>
+<li>throw</li>
+</ul>
+<p>•    用在方法体内，跟的是异常对象名</p>
+<p>•    只能抛出一个异常对象名</p>
+<p>•    表示抛出异常，由方法体内的语句处理</p>
+<p>•    throw则是抛出了异常，执行throw则一定抛出了某种异常</p>
+<h1 id="_8">我们到底该如何处理异常呢<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>原则:如果该功能内部可以将问题处理,用try,如果处理不了,交由调用者处理,这是用throws</p>
+</li>
+<li>
+<p>区别:</p>
+</li>
+</ul>
+<p>•    后续程序需要继续运行就try</p>
+<p>•    后续程序不需要继续运行就throws</p>
+<ul>
+<li>举例:</li>
+</ul>
+<p>•    感冒了就自己吃点药就好了,try</p>
+<p>•    吃了好几天药都没好结果得了H7N9,那就的得throws 到医院</p>
+<p>•    如果医院没有特效药就变成Error了</p>
+<h1 id="finally">finally的特点作用及面试题<a class="headerlink" href="#finally" title="Permanent link">&para;</a></h1>
+<ul>
+<li>finally的特点</li>
+</ul>
+<p>•    被finally控制的语句体一定会执行</p>
+<p>•    特殊情况：在执行到finally之前jvm退出了(比如</p>
+<p>System.exit(0))</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_07</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.text.ParseException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * finally:被finally控制的语句体一定会执行</span>
+<span class="cm"> * 注意：如果在执行到finally之前jvm退出了，就不能执行了。</span>
+<span class="cm"> * </span>
+<span class="cm"> * A:格式</span>
+<span class="cm"> *      try...catch...finally...</span>
+<span class="cm"> * B:用于释放资源，在IO流操作和数据库操作中会见到</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FinallyDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;2014-11-20&quot;</span><span class="p">;</span>
+        <span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">);</span>
+
+        <span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// System.out.println(10 / 0);</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ParseException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>  <span class="c1">//执行了退出虚拟机的话,finally是不能执行的</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;这里的代码是可以执行的&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>finally的作用</li>
+</ul>
+<p>•    用于释放资源，在IO流操作和数据库操作中会见到</p>
+<ul>
+<li>finally相关的面试题</li>
+</ul>
+<p>•    final,finally和finalize的区别</p>
+<p>•    如果catch里面有return语句，请问finally的代码还会执行吗?如果会，请问是在return前还是return后。</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_07</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 面试题：</span>
+<span class="cm"> * 1:final,finally和finalize的区别</span>
+<span class="cm"> * final：最终的意思，可以修饰类，成员变量，成员方法</span>
+<span class="cm"> *      修饰类，类不能被继承</span>
+<span class="cm"> *      修饰变量，变量是常量</span>
+<span class="cm"> *      修饰方法，方法不能被重写</span>
+<span class="cm"> * finally：是异常处理的一部分，用于释放资源。</span>
+<span class="cm"> *      一般来说，代码肯定会执行，特殊情况：在执行到finally之前jvm退出了</span>
+<span class="cm"> * finalize：是Object类的一个方法，用于垃圾回收</span>
+<span class="cm"> * </span>
+<span class="cm"> * 2:如果catch里面有return语句，请问finally里面的代码还会执行吗?</span>
+<span class="cm"> *   如果会，请问是在return前，还是return后。</span>
+<span class="cm"> *     会。前。</span>
+<span class="cm"> * </span>
+<span class="cm"> *   准确的说，应该是在中间。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 3:try...catch...finally的格式变形</span>
+<span class="cm"> *      A:try...catch...finally</span>
+<span class="cm"> *      B:try...catch</span>
+<span class="cm"> *      C:try...catch...catch...</span>
+<span class="cm"> *      D:try...catch...catch...finally</span>
+<span class="cm"> *      E:try...finally</span>
+<span class="cm"> *          这种做法的目前是为了释放资源。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FinallyDemo2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">getInt</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getInt</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ArithmeticException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+            <span class="cm">/*</span>
+<span class="cm">             * return a在程序执行到这一步的时候，这里不是return a而是return 30;这个返回路径就形成了。</span>
+<span class="cm">             * 但是呢，它发现后面还有finally，所以继续执行finally的内容，a=40</span>
+<span class="cm">             * 再次回到以前的返回路径，继续走return 30;  这个说的是finally,没有return的情况</span>
+<span class="cm">             */</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">a</span><span class="p">;</span><span class="c1">//如果这样结果就是40了。因为return只有一个返回路径</span>
+        <span class="p">}</span>
+        <span class="c1">// return a;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="_9">自定义异常<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>考试成绩必须在0-100之间</p>
+</li>
+<li>
+<p>很明显java没有对应的异常，需要我们自己来做一个异常</p>
+</li>
+<li>
+<p>自定义异常</p>
+</li>
+</ul>
+<p>•     继承自Exception</p>
+<p>•     继承自RuntimeException
+异常类</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_08</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * java不可能对所有的情况都考虑到，所以，在实际的开发中，我们可能需要自己定义异常。</span>
+<span class="cm"> * 而我们自己随意的写一个类，是不能作为异常类来看的，要想你的类是一个异常类，就必须继承自Exception或者RuntimeException</span>
+<span class="cm"> * </span>
+<span class="cm"> * 两种方式：</span>
+<span class="cm"> * A:继承Exception  //编译异常</span>
+<span class="cm"> * B:继承RuntimeException  //运行异常</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyException</span> <span class="kd">extends</span> <span class="n">Exception</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">MyException</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 自动生成构造方法</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">MyException</span><span class="p">(</span><span class="n">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// public class MyException extends RuntimeException {</span>
+<span class="c1">//</span>
+<span class="c1">// }</span>
+</pre></div>
+
+
+<p>抛出异常的类</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_08</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Teacher</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">check</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">MyException</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="o">||</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">MyException</span><span class="p">(</span><span class="s">&quot;分数必须在0-100之间&quot;</span><span class="p">);</span> <span class="c1">//抛出一个新的异常对象</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;分数没有问题&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 针对MyException继承自RuntimeException .运行异常不需要使用throws</span>
+    <span class="c1">// public void check(int score) {</span>
+    <span class="c1">// if (score &gt; 100 || score &lt; 0) {</span>
+    <span class="c1">// throw new MyException();</span>
+    <span class="c1">// } else {</span>
+    <span class="c1">// System.out.println(&quot;分数没有问题&quot;);</span>
+    <span class="c1">// }</span>
+    <span class="c1">// }</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>测试</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_08</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 自定义异常测试类</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StudentDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入学生成绩：&quot;</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+
+        <span class="n">Teacher</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="p">();</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">t</span><span class="p">.</span><span class="na">check</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">MyException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="_10">异常注意事项<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>子类重写父类方法时，子类的方法必须抛出相同的异常或父类异常的子类。(父亲坏了,儿子不能比父亲更坏)</p>
+</li>
+<li>
+<p>如果父类抛出了多个异常,子类重写父类时,只能抛出相同的异常或者是他的子集,子类不能抛出父类没有的异常</p>
+</li>
+<li>
+<p>如果被重写的方法没有异常抛出,那么子类的方法绝对不</p>
+</li>
+</ul>
+<p>可以抛出异常,如果子类方法内有异常发生,那么子类只能try,不能throws</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_09</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.text.ParseException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 异常注意事项:</span>
+<span class="cm"> * A:子类重写父类方法时，子类的方法必须抛出相同的异常或父类异常的子类。(父亲坏了,儿子不能比父亲更坏)</span>
+<span class="cm"> * B:如果父类抛出了多个异常,子类重写父类时,只能抛出相同的异常或者是他的子集,子类不能抛出父类没有的异常</span>
+<span class="cm"> * C:如果被重写的方法没有异常抛出,那么子类的方法绝对不可以抛出异常,如果子类方法内有异常发生,那么子类只能try,不能throws</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExceptionDemo</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Fu</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Zi</span> <span class="kd">extends</span> <span class="n">Fu</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">ArithmeticException</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// String s = &quot;2014-11-20&quot;;</span>
+        <span class="c1">// SimpleDateFormat sdf = new SimpleDateFormat();</span>
+        <span class="c1">// Date d = sdf.parse(s);</span>
+        <span class="c1">// System.out.println(d);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="file">File类概述和构造方法<a class="headerlink" href="#file" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>File类的概述 • 文件和目录路径名的抽象表示形式 </p>
+</li>
+<li>
+<p>构造方法</p>
+</li>
+</ul>
+<p>•    public File(String pathname)</p>
+<p>•    public File(String parent,String child)</p>
+<p>•    public File(File parent,String child)</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_01</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 我们要想实现IO的操作，就必须知道硬盘上文件的表现形式。</span>
+<span class="cm"> * 而Java就提供了一个类File供我们使用。</span>
+<span class="cm"> * </span>
+<span class="cm"> * File:文件和目录(文件夹)路径名的抽象表示形式</span>
+<span class="cm"> * 构造方法：</span>
+<span class="cm"> *      File(String pathname)：根据一个路径得到File对象</span>
+<span class="cm"> *      File(String parent, String child):根据一个目录和一个子文件/目录得到File对象</span>
+<span class="cm"> *      File(File parent, String child):根据一个父File对象和一个子文件/目录得到File对象</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// File(String pathname)：根据一个路径得到File对象</span>
+        <span class="c1">// 把e:\\demo\\a.txt封装成一个File对象</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span>
+                <span class="s">&quot;M:\\java视频\\01.第一阶段\\day19\\code\\day19_File\\demo\\a.txt&quot;</span><span class="p">);</span>
+
+        <span class="c1">// File(String parent, String child):根据一个目录和一个子文件/目录得到File对象</span>
+        <span class="n">File</span> <span class="n">file2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span>
+                <span class="s">&quot;M:\\java视频\\01.第一阶段\\day19\\code\\day19_File\\demo&quot;</span><span class="p">,</span> <span class="s">&quot;a.txt&quot;</span><span class="p">);</span>
+
+        <span class="c1">// File(File parent, String child):根据一个父File对象和一个子文件/目录得到File对象</span>
+        <span class="n">File</span> <span class="n">file3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span>
+                <span class="s">&quot;M:\\java视频\\01.第一阶段\\day19\\code\\day19_File\\demo&quot;</span><span class="p">);</span>
+        <span class="n">File</span> <span class="n">file4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">file3</span><span class="p">,</span> <span class="s">&quot;a.txt&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 以上三种方式其实效果一样</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="file_1">File类的成员方法<a class="headerlink" href="#file_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>创建功能</li>
+</ul>
+<p>•    public boolean createNewFile()</p>
+<p>•    public boolean mkdir()</p>
+<p>•    public boolean mkdirs()</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_02</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> *创建功能：</span>
+<span class="cm"> *public boolean createNewFile():创建文件 如果存在这样的文件，就不创建了</span>
+<span class="cm"> *public boolean mkdir():创建文件夹 如果存在这样的文件夹，就不创建了</span>
+<span class="cm"> *public boolean mkdirs():创建文件夹,如果父文件夹不存在，会帮你创建出来</span>
+<span class="cm"> *</span>
+<span class="cm"> *骑白马的不一定是王子，可能是班长。</span>
+<span class="cm"> *注意：你到底要创建文件还是文件夹，你最清楚，方法不要调错了。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="c1">// 需求：我要在e盘目录下创建一个文件夹demo</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\demo&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;mkdir:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">mkdir</span><span class="p">());</span>
+
+        <span class="c1">// 需求:我要在e盘目录demo下创建一个文件a.txt</span>
+        <span class="n">File</span> <span class="n">file2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\demo\\a.txt&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;createNewFile:&quot;</span> <span class="o">+</span> <span class="n">file2</span><span class="p">.</span><span class="na">createNewFile</span><span class="p">());</span>
+
+        <span class="c1">// 需求：我要在e盘目录test下创建一个文件b.txt</span>
+        <span class="c1">// Exception in thread &quot;main&quot; java.io.IOException: 系统找不到指定的路径。</span>
+        <span class="c1">// 注意：要想在某个目录下创建内容，该目录首先必须存在。</span>
+        <span class="c1">// File file3 = new File(&quot;e:\\test\\b.txt&quot;);</span>
+        <span class="c1">// System.out.println(&quot;createNewFile:&quot; + file3.createNewFile());</span>
+
+        <span class="c1">// 需求:我要在e盘目录test下创建aaa目录  //首先test必须存在</span>
+        <span class="c1">// File file4 = new File(&quot;e:\\test\\aaa&quot;);</span>
+        <span class="c1">// System.out.println(&quot;mkdir:&quot; + file4.mkdir());</span>
+
+        <span class="c1">// File file5 = new File(&quot;e:\\test&quot;);</span>
+        <span class="c1">// File file6 = new File(&quot;e:\\test\\aaa&quot;);</span>
+        <span class="c1">// System.out.println(&quot;mkdir:&quot; + file5.mkdir());</span>
+        <span class="c1">// System.out.println(&quot;mkdir:&quot; + file6.mkdir());</span>
+
+        <span class="c1">// 其实我们有更简单的方法</span>
+        <span class="n">File</span> <span class="n">file7</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\aaa\\bbb\\ccc\\ddd&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;mkdirs:&quot;</span> <span class="o">+</span> <span class="n">file7</span><span class="p">.</span><span class="na">mkdirs</span><span class="p">());</span>
+
+        <span class="c1">// 看下面的这个东西：</span>
+        <span class="n">File</span> <span class="n">file8</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\liuyi\\a.txt&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;mkdirs:&quot;</span> <span class="o">+</span> <span class="n">file8</span><span class="p">.</span><span class="na">mkdirs</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>删除功能</li>
+</ul>
+<p>•    public boolean delete()</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_03</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 删除功能:public boolean delete()</span>
+<span class="cm"> * </span>
+<span class="cm"> * 注意：</span>
+<span class="cm"> *      A:如果你创建文件或者文件夹忘了写盘符路径，那么，默认在项目路径下。</span>
+<span class="cm"> *      B:Java中的删除不走回收站。</span>
+<span class="cm"> *      C:要删除一个文件夹，请注意该文件夹内不能包含文件或者文件夹</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="c1">// 创建文件</span>
+        <span class="c1">// File file = new File(&quot;e:\\a.txt&quot;);</span>
+        <span class="c1">// System.out.println(&quot;createNewFile:&quot; + file.createNewFile());</span>
+
+        <span class="c1">// 我不小心写成这个样子了</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;a.txt&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;createNewFile:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">createNewFile</span><span class="p">());</span>
+
+        <span class="c1">// 继续玩几个</span>
+        <span class="n">File</span> <span class="n">file2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;aaa\\bbb\\ccc&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;mkdirs:&quot;</span> <span class="o">+</span> <span class="n">file2</span><span class="p">.</span><span class="na">mkdirs</span><span class="p">());</span>
+
+        <span class="c1">// 删除功能：我要删除a.txt这个文件</span>
+        <span class="n">File</span> <span class="n">file3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;a.txt&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;delete:&quot;</span> <span class="o">+</span> <span class="n">file3</span><span class="p">.</span><span class="na">delete</span><span class="p">());</span>
+
+        <span class="c1">// 删除功能：我要删除ccc这个文件夹</span>
+        <span class="n">File</span> <span class="n">file4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;aaa\\bbb\\ccc&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;delete:&quot;</span> <span class="o">+</span> <span class="n">file4</span><span class="p">.</span><span class="na">delete</span><span class="p">());</span>
+
+        <span class="c1">// 删除功能：我要删除aaa文件夹</span>
+        <span class="c1">// File file5 = new File(&quot;aaa&quot;);</span>
+        <span class="c1">// System.out.println(&quot;delete:&quot; + file5.delete());</span>
+
+        <span class="n">File</span> <span class="n">file6</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;aaa\\bbb&quot;</span><span class="p">);</span>
+        <span class="n">File</span> <span class="n">file7</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;aaa&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;delete:&quot;</span> <span class="o">+</span> <span class="n">file6</span><span class="p">.</span><span class="na">delete</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;delete:&quot;</span> <span class="o">+</span> <span class="n">file7</span><span class="p">.</span><span class="na">delete</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>重命名功能</li>
+</ul>
+<p>•    public boolean renameTo(File dest)</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_04</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 重命名功能:public boolean renameTo(File dest)</span>
+<span class="cm"> *      如果路径名相同，就是改名。</span>
+<span class="cm"> *      如果路径名不同，就是改名并剪切。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 路径以盘符开始：绝对路径 c:\\a.txt</span>
+<span class="cm"> * 路径不以盘符开始：相对路径    a.txt</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建一个文件对象</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;林青霞.jpg&quot;</span><span class="p">);</span>
+        <span class="c1">// 需求：我要修改这个文件的名称为&quot;东方不败.jpg&quot;</span>
+        <span class="n">File</span> <span class="n">newFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;东方不败.jpg&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;renameTo:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">renameTo</span><span class="p">(</span><span class="n">newFile</span><span class="p">));</span>
+
+        <span class="n">File</span> <span class="n">file2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;东方不败.jpg&quot;</span><span class="p">);</span>
+        <span class="n">File</span> <span class="n">newFile2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\林青霞.jpg&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;renameTo:&quot;</span> <span class="o">+</span> <span class="n">file2</span><span class="p">.</span><span class="na">renameTo</span><span class="p">(</span><span class="n">newFile2</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="file_2">File类的成员方法<a class="headerlink" href="#file_2" title="Permanent link">&para;</a></h1>
+<ul>
+<li>判断功能</li>
+</ul>
+<p>•    public boolean isDirectory()</p>
+<p>•    public boolean isFile()</p>
+<p>•    public boolean exists()</p>
+<p>•    public boolean canRead()</p>
+<p>•    public boolean canWrite()</p>
+<p>•    public boolean isHidden()</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_05</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 判断功能:</span>
+<span class="cm"> * public boolean isDirectory():判断是否是目录</span>
+<span class="cm"> * public boolean isFile():判断是否是文件</span>
+<span class="cm"> * public boolean exists():判断是否存在</span>
+<span class="cm"> * public boolean canRead():判断是否可读</span>
+<span class="cm"> * public boolean canWrite():判断是否可写</span>
+<span class="cm"> * public boolean isHidden():判断是否隐藏</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建文件对象</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;a.txt&quot;</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;isDirectory:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">isDirectory</span><span class="p">());</span><span class="c1">// false</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;isFile:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">isFile</span><span class="p">());</span><span class="c1">// true</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;exists:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">exists</span><span class="p">());</span><span class="c1">// true</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;canRead:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">canRead</span><span class="p">());</span><span class="c1">// true</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;canWrite:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">canWrite</span><span class="p">());</span><span class="c1">// true</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;isHidden:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">isHidden</span><span class="p">());</span><span class="c1">// false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span><span class="nl">isDirectory:</span><span class="kc">false</span>
+<span class="nl">isFile:</span><span class="kc">true</span>
+<span class="nl">exists:</span><span class="kc">true</span>
+<span class="nl">canRead:</span><span class="kc">true</span>
+<span class="nl">canWrite:</span><span class="kc">true</span>
+<span class="nl">isHidden:</span><span class="kc">false</span>
+</pre></div>
+
+
+<h1 id="file_3">File类的成员方法<a class="headerlink" href="#file_3" title="Permanent link">&para;</a></h1>
+<ul>
+<li>基本获取功能</li>
+</ul>
+<p>•    public String getAbsolutePath()</p>
+<p>•    public String getPath()</p>
+<p>•    public String getName()</p>
+<p>•    public long length()</p>
+<p>•    public long lastModified()</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_06</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 获取功能：</span>
+<span class="cm"> * public String getAbsolutePath()：获取绝对路径</span>
+<span class="cm"> * public String getPath():获取相对路径</span>
+<span class="cm"> * public String getName():获取名称</span>
+<span class="cm"> * public long length():获取长度。字节数</span>
+<span class="cm"> * public long lastModified():获取最后一次的修改时间，毫秒值</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建文件对象</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;demo\\test.txt&quot;</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;getAbsolutePath:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;getPath:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">getPath</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;getName:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;length:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">length</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;lastModified:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">lastModified</span><span class="p">());</span>
+
+        <span class="c1">// 1416471971031</span>
+        <span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="p">(</span><span class="mi">1416471971031L</span><span class="p">);</span>
+        <span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行</p>
+<div class="codehilite"><pre><span></span>getAbsolutePath:M:\java视频\01.第一阶段\day19\code\day19_File\demo\test.txt
+getPath:demo\test.txt
+getName:test.txt
+length:5
+lastModified:1426756289000
+2014-11-20 16:26:11
+</pre></div>
+
+
+<ul>
+<li>高级获取功能</li>
+</ul>
+<p>•    public String[] list()</p>
+<p>•    public File[] listFiles()</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_07</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 获取功能：</span>
+<span class="cm"> * public String[] list():获取指定目录下的所有文件或者文件夹的名称数组</span>
+<span class="cm"> * public File[] listFiles():获取指定目录下的所有文件或者文件夹的File数组</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 指定一个目录</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\&quot;</span><span class="p">);</span>
+
+        <span class="c1">// public String[] list():获取指定目录下的所有文件或者文件夹的名称数组</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">strArray</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="na">list</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">s</span> <span class="p">:</span> <span class="n">strArray</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;------------&quot;</span><span class="p">);</span>
+
+        <span class="c1">// public File[] listFiles():获取指定目录下的所有文件或者文件夹的File数组</span>
+        <span class="n">File</span><span class="o">[]</span> <span class="n">fileArray</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="na">listFiles</span><span class="p">();</span> 
+        <span class="k">for</span> <span class="p">(</span><span class="n">File</span> <span class="n">f</span> <span class="p">:</span> <span class="n">fileArray</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="file_4">File类练习<a class="headerlink" href="#file_4" title="Permanent link">&para;</a></h1>
+<ul>
+<li>判断E盘目录下是否有后缀名为.jpg的文件，如果有，就输出此文件名称</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_08</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 判断E盘目录下是否有后缀名为.jpg的文件，如果有，就输出此文件名称</span>
+<span class="cm"> * </span>
+<span class="cm"> * 分析：</span>
+<span class="cm"> *      A:封装e判断目录</span>
+<span class="cm"> *      B:获取该目录下所有文件或者文件夹的File数组</span>
+<span class="cm"> *      C:遍历该File数组，得到每一个File对象，然后判断</span>
+<span class="cm"> *      D:是否是文件</span>
+<span class="cm"> *          是：继续判断是否以.jpg结尾</span>
+<span class="cm"> *              是：就输出该文件名称</span>
+<span class="cm"> *              否：不搭理它</span>
+<span class="cm"> *          否：不搭理它</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 封装e判断目录</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 获取该目录下所有文件或者文件夹的File数组</span>
+        <span class="n">File</span><span class="o">[]</span> <span class="n">fileArray</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="na">listFiles</span><span class="p">();</span>
+
+        <span class="c1">// 遍历该File数组，得到每一个File对象，然后判断</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">File</span> <span class="n">f</span> <span class="p">:</span> <span class="n">fileArray</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 是否是文件</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">isFile</span><span class="p">())</span> <span class="p">{</span>
+                <span class="c1">// 继续判断是否以.jpg结尾</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;.jpg&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="c1">// 就输出该文件名称</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>文件名称过滤器的实现思想及代码</li>
+</ul>
+<p>•     public String[] list(FilenameFilter filter)</p>
+<p>•     public File[] listFiles(FilenameFilter filter)</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_08</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FilenameFilter</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 判断E盘目录下是否有后缀名为.jpg的文件，如果有，就输出此文件名称</span>
+<span class="cm"> * A:先获取所有的，然后遍历的时候，依次判断，如果满足条件就输出。</span>
+<span class="cm"> * B:获取的时候就已经是满足条件的了，然后输出即可。</span>
+<span class="cm"> * </span>
+<span class="cm"> * 要想实现这个效果，就必须学习一个接口：文件名称过滤器</span>
+<span class="cm"> * public String[] list(FilenameFilter filter)</span>
+<span class="cm"> * public File[] listFiles(FilenameFilter filter)</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo2</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 封装e判断目录</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;e:\\&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 获取该目录下所有文件或者文件夹的String数组</span>
+        <span class="c1">// public String[] list(FilenameFilter filter)</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">strArray</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="na">list</span><span class="p">(</span><span class="k">new</span> <span class="n">FilenameFilter</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">accept</span><span class="p">(</span><span class="n">File</span> <span class="n">dir</span><span class="p">,</span> <span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// return false;</span>
+                <span class="c1">// return true;</span>
+                <span class="c1">// 通过这个测试，我们就知道了，到底把这个文件或者文件夹的名称加不加到数组中，取决于这里的返回值是true还是false</span>
+                <span class="c1">// 所以，这个的true或者false应该是我们通过某种判断得到的</span>
+                <span class="c1">// System.out.println(dir + &quot;---&quot; + name);</span>
+                <span class="c1">// File file = new File(dir, name);</span>
+                <span class="c1">// // System.out.println(file);</span>
+                <span class="c1">// boolean flag = file.isFile();</span>
+                <span class="c1">// boolean flag2 = name.endsWith(&quot;.jpg&quot;);</span>
+                <span class="c1">// return flag &amp;&amp; flag2;</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span> <span class="n">name</span><span class="p">).</span><span class="na">isFile</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">name</span><span class="p">.</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;.jpg&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="c1">// 遍历</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">s</span> <span class="p">:</span> <span class="n">strArray</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>•     查看源码看执行流程</p>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">cn.itcast_09</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * 需求：把E:\评书\三国演义下面的视频名称修改为</span>
+<span class="cm"> *      00?_介绍.avi</span>
+<span class="cm"> * </span>
+<span class="cm"> * 思路：</span>
+<span class="cm"> *      A:封装目录</span>
+<span class="cm"> *      B:获取该目录下所有的文件的File数组</span>
+<span class="cm"> *      C:遍历该File数组，得到每一个File对象</span>
+<span class="cm"> *      D:拼接一个新的名称，然后重命名即可。</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 封装目录</span>
+        <span class="n">File</span> <span class="n">srcFolder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;E:\\评书\\三国演义&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 获取该目录下所有的文件的File数组</span>
+        <span class="n">File</span><span class="o">[]</span> <span class="n">fileArray</span> <span class="o">=</span> <span class="n">srcFolder</span><span class="p">.</span><span class="na">listFiles</span><span class="p">();</span>
+
+        <span class="c1">// 遍历该File数组，得到每一个File对象</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">File</span> <span class="n">file</span> <span class="p">:</span> <span class="n">fileArray</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// System.out.println(file);</span>
+            <span class="c1">// E:\评书\三国演义\三国演义_001_[评书网-今天很高兴,明天就IO了]_桃园三结义.avi</span>
+            <span class="c1">// 改后：E:\评书\三国演义\001_桃园三结义.avi</span>
+            <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">file</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span> <span class="c1">// 三国演义_001_[评书网-今天很高兴,明天就IO了]_桃园三结义.avi</span>
+
+            <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">name</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">numberString</span> <span class="o">=</span> <span class="n">name</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+            <span class="c1">// System.out.println(numberString);</span>
+
+            <span class="c1">// int startIndex = name.lastIndexOf(&#39;_&#39;);</span>
+            <span class="c1">// int endIndex = name.lastIndexOf(&#39;.&#39;);</span>
+            <span class="c1">// String nameString = name.substring(startIndex + 1, endIndex);</span>
+            <span class="c1">// System.out.println(nameString);</span>
+            <span class="kt">int</span> <span class="n">endIndex</span> <span class="o">=</span> <span class="n">name</span><span class="p">.</span><span class="na">lastIndexOf</span><span class="p">(</span><span class="sc">&#39;_&#39;</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">nameString</span> <span class="o">=</span> <span class="n">name</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">endIndex</span><span class="p">);</span>
+
+            <span class="n">String</span> <span class="n">newName</span> <span class="o">=</span> <span class="n">numberString</span><span class="p">.</span><span class="na">concat</span><span class="p">(</span><span class="n">nameString</span><span class="p">);</span> <span class="c1">// 001_桃园三结义.avi</span>
+            <span class="c1">// System.out.println(newName);</span>
+
+            <span class="n">File</span> <span class="n">newFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">srcFolder</span><span class="p">,</span> <span class="n">newName</span><span class="p">);</span> <span class="c1">// E:\\评书\\三国演义\\001_桃园三结义.avi</span>
+
+            <span class="c1">// 重命名即可</span>
+            <span class="n">file</span><span class="p">.</span><span class="na">renameTo</span><span class="p">(</span><span class="n">newFile</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

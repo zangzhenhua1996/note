@@ -3671,6 +3671,7 @@
 ~
 </pre></div>
 
+
 <h3 id="24-linux">2.4 <code>Linux</code> 主要目录速查表<a class="headerlink" href="#24-linux" title="Permanent link">&para;</a></h3>
 <ul>
 <li>/：根目录，<strong>一般根目录下只存放目录</strong>，在 linux 下有且只有一个根目录，所有的东西都是从这里开始<ul>
@@ -4525,6 +4526,7 @@ $ shutdown +10
 $ shutdown -c
 </pre></div>
 
+
 <h2 id="02_2">02. 查看或配置网卡信息<a class="headerlink" href="#02_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4578,6 +4580,7 @@ $ ifconfig
 $ ifconfig <span class="p">|</span> grep inet
 </pre></div>
 
+
 <blockquote>
 <p>提示：一台计算机中有可能会有一个 <strong>物理网卡</strong> 和 <strong>多个虚拟网卡</strong>，在 Linux 中物理网卡的名字通常以 <code>ensXX</code> 表示</p>
 </blockquote>
@@ -4591,6 +4594,7 @@ $ ping IP地址
 <span class="c1"># 检测本地网卡工作正常</span>
 $ ping <span class="m">127</span>.0.0.1
 </pre></div>
+
 
 <ul>
 <li><code>ping</code> 一般用于检测当前计算机到目标计算机之间的网络 <strong>是否通畅</strong>，<strong>数值越大，速度越慢</strong></li>
@@ -4698,6 +4702,7 @@ $ ping <span class="m">127</span>.0.0.1
 <div class="codehilite"><pre><span></span>ssh <span class="o">[</span>-p port<span class="o">]</span> user@remote
 </pre></div>
 
+
 <ul>
 <li><code>user</code> 是在远程机器上的用户名，如果不指定的话默认为当前用户</li>
 <li><code>remote</code> 是远程机器的地址，可以是 <strong>IP</strong>／<strong>域名</strong>，或者是 <strong>后面会提到的别名</strong></li>
@@ -4746,6 +4751,7 @@ scp -r demo user@remote:Desktop
 <span class="c1"># 把远程 家目录下的 Desktop 复制到 当前目录下的 demo 文件夹</span>
 scp -r user@remote:Desktop demo
 </pre></div>
+
 
 <table>
 <thead>
@@ -4810,6 +4816,7 @@ scp -r user@remote:Desktop demo
     User itheima
     Port 22
 </pre></div>
+
 
 <p><strong>保存之后，即可用 ssh mac 实现远程登录了，scp 同样可以使用</strong></p>
 <h1 id="_23">用户权限相关命令<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h1>
@@ -4889,6 +4896,7 @@ scp -r user@remote:Desktop demo
 </ul>
 <div class="codehilite"><pre><span></span>chmod +/-rwx 文件名<span class="p">|</span>目录名
 </pre></div>
+
 
 <blockquote>
 <p>提示：以上方式会一次性修改 <code>拥有者</code> / <code>组</code> 权限，有关 <code>chmod</code> 的高级用法，后续会讲</p>
@@ -5066,11 +5074,13 @@ usermod -G 组 用户名
 usermod -s /bin/bash 用户名
 </pre></div>
 
+
 <blockquote>
 <p>注意：默认使用 <code>useradd</code> 添加的用户是没有权限使用 <code>sudo</code> 以 <code>root</code> 身份执行命令的，可以使用以下命令，将用户添加到 <code>sudo</code> 附加组中</p>
 </blockquote>
 <div class="codehilite"><pre><span></span>usermod -G sudo 用户名
 </pre></div>
+
 
 <h4 id="which">which（重要）<a class="headerlink" href="#which" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -5093,6 +5103,7 @@ which useradd
 <span class="c1"># 输出</span>
 <span class="c1"># /usr/sbin/useradd</span>
 </pre></div>
+
 
 <h5 id="bin-sbin"><code>bin</code> 和 <code>sbin</code><a class="headerlink" href="#bin-sbin" title="Permanent link">&para;</a></h5>
 <ul>
@@ -5178,12 +5189,14 @@ chgrp -R 组名 文件名<span class="p">|</span>目录名
 chmod -R <span class="m">755</span> 文件名<span class="p">|</span>目录名
 </pre></div>
 
+
 <ul>
 <li><code>chmod</code> 在设置权限时，可以简单地使用三个数字分别对应 <strong>拥有者</strong> ／ <strong>组</strong> 和 <strong>其他</strong> 用户的权限</li>
 </ul>
 <div class="codehilite"><pre><span></span><span class="c1"># 直接修改文件|目录的 读|写|执行 权限，但是不能精确到 拥有者|组|其他</span>
 chmod +/-rwx 文件名<span class="p">|</span>目录名
 </pre></div>
+
 
 <p><img alt="image.png" src="../044 linux系统.image/14555448-8a153102fd56b5f4.png" /></p>
 <ul>
@@ -5397,17 +5410,20 @@ chmod +/-rwx 文件名<span class="p">|</span>目录名
 <div class="codehilite"><pre><span></span>find -name &quot;*1*&quot;
 </pre></div>
 
+
 <ul>
 <li>2. 搜索桌面目录下，所有以 <code>.txt</code> 为扩展名的文件</li>
 </ul>
 <div class="codehilite"><pre><span></span>find -name &quot;*.txt&quot;
 </pre></div>
 
+
 <ul>
 <li>3. 搜索桌面目录下，以数字 <code>1</code> 开头的文件</li>
 </ul>
 <div class="codehilite"><pre><span></span>find -name &quot;1*&quot;
 </pre></div>
+
 
 <h2 id="0246_1">02. 软链接<a class="headerlink" href="#0246_1" title="Permanent link">&para;</a></h2>
 <table>
@@ -5489,6 +5505,7 @@ tar -cvf 打包文件.tar 被打包的文件／路径...
 tar -xvf 打包文件.tar
 </pre></div>
 
+
 <ul>
 <li><code>tar</code> 选项说明</li>
 </ul>
@@ -5559,6 +5576,7 @@ tar -zxvf 打包文件.tar.gz
 tar -zxvf 打包文件.tar.gz -C 目标路径
 </pre></div>
 
+
 <table>
 <thead>
 <tr>
@@ -5594,6 +5612,7 @@ tar -jcvf 打包文件.tar.bz2 被压缩的文件／路径...
 tar -jxvf 打包文件.tar.bz2
 </pre></div>
 
+
 <h2 id="0446">04. 软件安装<a class="headerlink" href="#0446" title="Permanent link">&para;</a></h2>
 <h2 id="41-apt">4.1 通过 apt 安装／卸载软件<a class="headerlink" href="#41-apt" title="Permanent link">&para;</a></h2>
 <ul>
@@ -5610,6 +5629,7 @@ $ sudo apt remove 软件名
 $ sudo apt upgrade 
 </pre></div>
 
+
 <h3 id="_36">安装演练<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span># 一个小火车提示
 $ sudo apt install sl
@@ -5617,6 +5637,7 @@ $ sudo apt install sl
 # 一个比较漂亮的查看当前进程排名的软件
 $ sudo apt install htop
 </pre></div>
+
 
 <h2 id="42">4.2 配置软件源<a class="headerlink" href="#42" title="Permanent link">&para;</a></h2>
 <ul>
@@ -5685,11 +5706,11 @@ $ sudo apt install htop
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -5718,6 +5739,10 @@ $ sudo apt install htop
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

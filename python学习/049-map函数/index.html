@@ -3312,7 +3312,7 @@
                 
                 
                 <p>Python：map函数用法详解
-   一个简单的例子：将一个list中所有元素平方，常规的做法如下图所示，虽然实现了这个功能，但并没有给人一目了然的感觉。若换成map来实现，则会好很多。
+   一个简单的例子：将一个list中所有元素平方，常规的做法如下图所示，虽然实现了这个功能，但并没有给人一目了然的感觉。若换成map来实现，则会好很多。</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
 <span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
@@ -3322,18 +3322,22 @@
     <span class="k">return</span> <span class="n">l</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">l</span><span class="o">=</span><span class="n">test</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
 </pre></div>
-使用map函数
+
+
+<p>使用map函数</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
 <span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
     <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
     <span class="n">r</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">maptest</span><span class="p">()</span>
-</pre></div></p>
+</pre></div>
+
+
 <h1 id="1map">1、map函数介绍及其简单使用<a class="headerlink" href="#1map" title="Permanent link">&para;</a></h1>
 <p>上述用一个简单的例子演示的map函数的用法及其优势，下面将详细介绍map函数的用法：
 <code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>迭代器，map将传入的函数依次作用到序列的每一个元素，并把结果作为新的<code>Iterable</code>返回。
@@ -3342,58 +3346,70 @@ map(function，iterable...)                                   
  function---函数名                                                       
  iterable---一个或多个序列
 map作为高阶函数，事实上它把运算规则抽象了，我们可以用这种方式计算任意复杂的函数，再比如，把一个list的所有数据转为string类型：</p>
-<p><div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
     <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
     <span class="n">r</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">maptest</span><span class="p">()</span>
 </pre></div>
-执行结果
+
+
+<p>执行结果</p>
 <div class="codehilite"><pre><span></span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">]</span>
 </pre></div>
-再举一个小例子，对list中的各个元素开方，一步到位：
+
+
+<p>再举一个小例子，对list中的各个元素开方，一步到位：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
     <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
     <span class="n">r</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">maptest</span><span class="p">()</span>
-</pre></div></p>
-<blockquote>
-<p>！注意：在使用math自带函数时，只需要函数名即可</p>
-</blockquote>
-<p>2、map函数与lambda函数结合使用，下面方法同样可以达到对list中的数二次方的目的
-<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
-    <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
-    <span class="n">r</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">maptest</span><span class="p">()</span>
-</pre></div></p>
-<h1 id="maplambda">map函数与lambda函数结合使用，可以传入两个参数相加：<a class="headerlink" href="#maplambda" title="Permanent link">&para;</a></h1>
-<p><div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
-    <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
-    <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
-    <span class="n">r</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">maptest</span><span class="p">()</span>
 </pre></div>
-还可以同时计算多个值：
+
+
+<blockquote>
+<p>！注意：在使用math自带函数时，只需要函数名即可</p>
+</blockquote>
+<p>2、map函数与lambda函数结合使用，下面方法同样可以达到对list中的数二次方的目的</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
+    <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">r</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">maptest</span><span class="p">()</span>
+</pre></div>
+
+
+<h1 id="maplambda">map函数与lambda函数结合使用，可以传入两个参数相加：<a class="headerlink" href="#maplambda" title="Permanent link">&para;</a></h1>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
+    <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">r</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">maptest</span><span class="p">()</span>
+</pre></div>
+
+
+<p>还可以同时计算多个值：</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="k">def</span> <span class="nf">maptest</span><span class="p">():</span>
     <span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
     <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
     <span class="n">r</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">),</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">maptest</span><span class="p">()</span>
 </pre></div>
-执行
+
+
+<p>执行</p>
 <div class="codehilite"><pre><span></span><span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">36</span><span class="p">)]</span>
-</pre></div></p>
+</pre></div>
                 
                   
                 
@@ -3450,11 +3466,11 @@ map作为高阶函数，事实上它把运算规则抽象了，我们可以用�
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3483,6 +3499,10 @@ map作为高阶函数，事实上它把运算规则抽象了，我们可以用�
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

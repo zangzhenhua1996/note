@@ -3315,7 +3315,7 @@
 <p>发现一个问题。</p>
 <p>python中list变量作为全局变量时，在函数中可以直接修改。</p>
 <p>而普通变量则需要先在函数中global声明，否则会报错。</p>
-<p><strong>例如：</strong>
+<p><strong>例如：</strong></p>
 <div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
@@ -3324,29 +3324,29 @@
 
 　　<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="err">而</span><span class="nb">list</span><span class="err">：</span>
+<span class="n">而list</span><span class="err">：</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
 
 　　<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="err">在函数中直接修改</span><span class="n">list则是可以的</span><span class="err">。</span>
+<span class="n">在函数中直接修改list则是可以的</span><span class="err">。</span>
 
-<span class="o">**</span><span class="err">原因是：</span><span class="o">**</span>
+<span class="o">**</span><span class="n">原因是</span><span class="err">：</span><span class="o">**</span>
 
-<span class="err">普通变量如果在函数中赋值</span>
+<span class="n">普通变量如果在函数中赋值</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="err">会有歧义。因为它既可以是表示引用全局变量</span><span class="n">a</span><span class="err">，也可以是创建一个新的局部变量，所以在</span><span class="n">python中</span><span class="err">，默认它的行为是创建局部变量，除非显式声明</span><span class="k">global</span><span class="err">。</span>
+<span class="n">会有歧义</span><span class="err">。</span><span class="n">因为它既可以是表示引用全局变量a</span><span class="err">，</span><span class="n">也可以是创建一个新的局部变量</span><span class="err">，</span><span class="n">所以在python中</span><span class="err">，</span><span class="n">默认它的行为是创建局部变量</span><span class="err">，</span><span class="n">除非显式声明global</span><span class="err">。</span>
 
-<span class="err">而对列表</span><span class="n">list变量进行赋值</span>
+<span class="n">而对列表list变量进行赋值</span>
 
 <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="err">则不会有歧义。它是“明确的”，因为如果把</span><span class="n">b当作是局部变量的话</span><span class="err">，它会报</span><span class="ne">KeyError</span><span class="err">，所以它只能是引用全局的</span><span class="n">b</span><span class="p">,</span><span class="err">故不需要多此一举显式声明</span><span class="k">global</span><span class="err">。</span>
-</pre></div></p>
+<span class="n">则不会有歧义</span><span class="err">。</span><span class="n">它是</span><span class="err">“</span><span class="n">明确的</span><span class="err">”，</span><span class="n">因为如果把b当作是局部变量的话</span><span class="err">，</span><span class="n">它会报KeyError</span><span class="err">，</span><span class="n">所以它只能是引用全局的b</span><span class="p">,</span><span class="n">故不需要多此一举显式声明global</span><span class="err">。</span>
+</pre></div>
                 
                   
                 
@@ -3403,11 +3403,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3436,6 +3436,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

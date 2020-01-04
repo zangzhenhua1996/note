@@ -3361,6 +3361,7 @@
         <span class="k">return</span> <span class="n">ret</span> 
 </pre></div>
 
+
 <p>拼多多的最长山谷</p>
 <div class="codehilite"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
 <span class="k">def</span> <span class="nf">longestMountain</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
@@ -3414,12 +3415,13 @@
     <span class="k">return</span> <span class="n">ret</span> 
 </pre></div>
 
+
 <p>另一种最长山谷的求法</p>
 <div class="codehilite"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="k">print</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -3431,8 +3433,9 @@
             <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">r</span><span class="o">-</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">print</span> <span class="p">(</span><span class="n">res</span> <span class="k">if</span> <span class="n">res</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">res</span> <span class="k">if</span> <span class="n">res</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
+
 
 <p>输出</p>
 <div class="codehilite"><pre><span></span><span class="n">xx</span><span class="o">=</span><span class="nb">input</span><span class="p">()</span><span class="c1">#输入一行</span>
@@ -3494,11 +3497,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3527,6 +3530,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

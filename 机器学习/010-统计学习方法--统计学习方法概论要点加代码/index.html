@@ -3444,12 +3444,13 @@
 <p>即，求 <span><span class="MathJax_Preview">min\sum_{i=1}^n(h(x_i)-y_i)^2</span><script type="math/tex">min\sum_{i=1}^n(h(x_i)-y_i)^2</script></span></p>
 <hr />
 <p>举例：我们用目标函数<span><span class="MathJax_Preview">y=sin2{\pi}x</span><script type="math/tex">y=sin2{\pi}x</script></span>, 加上一个正态分布的噪音干扰，用多项式去拟合【例1.1 11页】</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>  <span class="c1">#线性代数的处理包</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>  <span class="c1">#线性代数的处理包</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">leastsq</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </pre></div>
+
 
 <ul>
 <li>ps: numpy.poly1d([1,2,3])  生成  <span><span class="MathJax_Preview">1x^2+2x^1+3x^0</span><script type="math/tex">1x^2+2x^1+3x^0</script></span>*</li>
@@ -3469,6 +3470,7 @@
     <span class="k">return</span> <span class="n">ret</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="c1"># 十个点</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">x_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
@@ -3485,7 +3487,7 @@
     <span class="n">p_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">M</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="c1"># 最小二乘法</span>
     <span class="n">p_lsq</span> <span class="o">=</span> <span class="n">leastsq</span><span class="p">(</span><span class="n">residuals_func</span><span class="p">,</span> <span class="n">p_init</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="c1">#Scipy中最小二乘函数leastsq（）.误差函数,参数,样本</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Fitting Parameters:&#39;</span><span class="p">,</span> <span class="n">p_lsq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fitting Parameters:&#39;</span><span class="p">,</span> <span class="n">p_lsq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="c1"># 可视化</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">real_func</span><span class="p">(</span><span class="n">x_points</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real&#39;</span><span class="p">)</span>
@@ -3495,10 +3497,12 @@
     <span class="k">return</span> <span class="n">p_lsq</span>
 </pre></div>
 
+
 <h3 id="m0">M=0<a class="headerlink" href="#m0" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="c1"># M=0</span>
 <span class="n">p_lsq_0</span> <span class="o">=</span> <span class="n">fitting</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>Fitting Parameters: [0.01170132]
 </pre></div>
@@ -3510,6 +3514,7 @@
 <span class="n">p_lsq_1</span> <span class="o">=</span> <span class="n">fitting</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>Fitting Parameters: [-1.35280561  0.68810412]
 </pre></div>
 
@@ -3520,6 +3525,7 @@
 <span class="n">p_lsq_3</span> <span class="o">=</span> <span class="n">fitting</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span>Fitting Parameters: [ 2.05388434e+01 -3.06589850e+01  1.01873054e+01  2.34964215e-04]
 </pre></div>
 
@@ -3529,6 +3535,7 @@
 <div class="codehilite"><pre><span></span><span class="c1"># M=9</span>
 <span class="n">p_lsq_9</span> <span class="o">=</span> <span class="n">fitting</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>Fitting Parameters: [-7.82939078e+03  3.69175896e+04 -7.35800852e+04  8.04229659e+04
  -5.22984941e+04  2.05368707e+04 -4.69766563e+03  5.47021480e+02
@@ -3560,11 +3567,13 @@
     <span class="k">return</span> <span class="n">ret</span>
 </pre></div>
 
+
 <div class="codehilite"><pre><span></span><span class="c1"># 最小二乘法,加正则化项</span>
 <span class="n">p_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">9</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">p_lsq_regularization</span> <span class="o">=</span> <span class="n">leastsq</span><span class="p">(</span>
     <span class="n">residuals_func_regularization</span><span class="p">,</span> <span class="n">p_init</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">real_func</span><span class="p">(</span><span class="n">x_points</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">fit_func</span><span class="p">(</span><span class="n">p_lsq_9</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_points</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fitted curve&#39;</span><span class="p">)</span>
@@ -3575,6 +3584,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;noise&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
+
 
 <div class="codehilite"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1a6b7b22da0&gt;
 </pre></div>
@@ -3638,11 +3648,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3671,6 +3681,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

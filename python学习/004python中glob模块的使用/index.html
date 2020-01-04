@@ -3445,20 +3445,29 @@
 <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;K:\python程序\*.txt&#39;</span><span class="p">)</span>
 </pre></div>
 
+
 <blockquote>
 <p>这里就是获得<code>K:\python程序\</code> 路径下的所有txt文件
-执行结果:
+执行结果:</p>
+</blockquote>
 <div class="codehilite"><pre><span></span><span class="p">[</span><span class="s1">&#39;K:</span><span class="se">\\</span><span class="s1">python程序</span><span class="se">\\</span><span class="s1">123.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;K:</span><span class="se">\\</span><span class="s1">python程序</span><span class="se">\\</span><span class="s1">哈哈1.txt&#39;</span><span class="p">]</span>
 </pre></div>
-以列表的形式返回</p>
+
+
+<blockquote>
+<p>以列表的形式返回</p>
 </blockquote>
-<p><div class="codehilite"><pre><span></span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;E:\pic\*\*.jpg&#39;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;E:\pic\*\*.jpg&#39;</span><span class="p">)</span>
 </pre></div>
-获得指定目录下的所有jpg文件</p>
-<p>使用相对路径：
+
+
+<p>获得指定目录下的所有jpg文件</p>
+<p>使用相对路径：</p>
 <div class="codehilite"><pre><span></span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;../python程序/*.py&#39;</span><span class="p">)</span>
 </pre></div>
-执行结果:
+
+
+<p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="p">[</span><span class="s1">&#39;../python程序</span><span class="se">\\</span><span class="s1">copy筛选的文件.py&#39;</span><span class="p">,</span>
  <span class="s1">&#39;../python程序</span><span class="se">\\</span><span class="s1">glob模块的使用.py&#39;</span><span class="p">,</span>
  <span class="s1">&#39;../python程序</span><span class="se">\\</span><span class="s1">MP3到wav格式的转换.py&#39;</span><span class="p">,</span>
@@ -3476,35 +3485,39 @@
  <span class="s1">&#39;../python程序</span><span class="se">\\</span><span class="s1">词频反正排序.py&#39;</span><span class="p">,</span>
  <span class="s1">&#39;../python程序</span><span class="se">\\</span><span class="s1">读取文件的绝对路径.py&#39;</span><span class="p">,</span>
  <span class="s1">&#39;../python程序</span><span class="se">\\</span><span class="s1">音频整段剪切.py&#39;</span><span class="p">]</span>
-</pre></div></p>
+</pre></div>
+
+
 <h3 id="2iglob">2、<code>iglob</code>方法：<a class="headerlink" href="#2iglob" title="Permanent link">&para;</a></h3>
 <h4 id="globglobglobglob-globiglobnetdatasetdatareader">获取一个可遍历对象，使用它可以逐个获取匹配的文件路径名。与glob.glob()的区别是：glob.glob同时获取所有的匹配路径，而 glob.iglob一次只获取一个匹配路径。这有点类似于.NET中操作数据库用到的DataSet与DataReader。下面是一个简单的例子：<a class="headerlink" href="#globglobglobglob-globiglobnetdatasetdatareader" title="Permanent link">&para;</a></h4>
-<p><div class="codehilite"><pre><span></span><span class="c1">#父目录中的.py文件</span>
+<div class="codehilite"><pre><span></span><span class="c1">#父目录中的.py文件</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;../python程序/*.py&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span> 
+<span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span> 
 <span class="k">for</span> <span class="n">py</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">print</span> <span class="p">(</span><span class="n">py</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">py</span><span class="p">)</span>
 </pre></div>
-执行结果:
+
+
+<p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">generator</span> <span class="nb">object</span> <span class="n">_iglob</span> <span class="n">at</span> <span class="mh">0x0000018EABD605E8</span><span class="o">&gt;</span>
 <span class="o">../</span><span class="n">python程序</span>\<span class="n">copy筛选的文件</span><span class="o">.</span><span class="n">py</span>
 <span class="o">../</span><span class="n">python程序</span>\<span class="n">glob模块的使用</span><span class="o">.</span><span class="n">py</span>
 <span class="o">../</span><span class="n">python程序</span>\<span class="n">MP3到wav格式的转换</span><span class="o">.</span><span class="n">py</span>
 <span class="o">../</span><span class="n">python程序</span>\<span class="n">shutil模块的使用</span><span class="o">.</span><span class="n">py</span>
 <span class="o">../</span><span class="n">python程序</span>\<span class="n">wav转换</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">合并</span><span class="n">std的文字</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">循环</span><span class="n">copy文件</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">循环读取行并写入新的文办</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">批量对应重命名</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">批量建立文件</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">文件合并</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">文件名的处理</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">获取当前目录下的所有的文件名</span><span class="p">,</span><span class="err">以及子目录所有文件名</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">词频切割</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">词频反正排序</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">读取文件的绝对路径</span><span class="o">.</span><span class="n">py</span>
-<span class="o">../</span><span class="n">python程序</span>\<span class="err">音频整段剪切</span><span class="o">.</span><span class="n">py</span>
-</pre></div></p>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">合并std的文字</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">循环copy文件</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">循环读取行并写入新的文办</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">批量对应重命名</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">批量建立文件</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">文件合并</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">文件名的处理</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">获取当前目录下的所有的文件名</span><span class="p">,</span><span class="n">以及子目录所有文件名</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">词频切割</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">词频反正排序</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">读取文件的绝对路径</span><span class="o">.</span><span class="n">py</span>
+<span class="o">../</span><span class="n">python程序</span>\<span class="n">音频整段剪切</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
                 
                   
                 
@@ -3561,11 +3574,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3594,6 +3607,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

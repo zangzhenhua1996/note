@@ -3317,9 +3317,11 @@
 </blockquote>
 <p>NumPy 软件包是 Python 生态系统中数据分析、机器学习和科学计算的主力军。它极大地简化了向量和矩阵的操作处理。</p>
 <p>Python 的一些主要软件包（如 scikit-learn、SciPy、pandas 和 tensorflow）都以 NumPy 作为其架构的基础部分。除了能对数值数据进行切片（slice）和切块（dice）之外，使用 NumPy 还能为处理和调试上述库中的高级实例带来极大便利。</p>
-<p>本文将介绍使用 NumPy 的一些主要方法，以及在将数据送入机器学习模型之前，它如何表示不同类型的数据（表格、图像、文本等）。
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-</pre></div></p>
+<p>本文将介绍使用 NumPy 的一些主要方法，以及在将数据送入机器学习模型之前，它如何表示不同类型的数据（表格、图像、文本等）。</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+
 <h1 id="01">01 创建数组<a class="headerlink" href="#01" title="Permanent link">&para;</a></h1>
 <p>我们可以通过传递一个 python 列表并使用 np.array() 来创建 NumPy 数组（极大可能是多维数组）。在本例中，python 创建的数组如下图右所示：
 <img alt="image" src="../051-图解NumPy，这是理解数组最形象的一份教程了.image/14555448-15ba274fdab43a78.png" />
@@ -3350,6 +3352,7 @@
 <p>我们可以传递下列形状的 python 列表，使 NumPy 创建一个矩阵来表示它：</p>
 <div class="codehilite"><pre><span></span>np.array([[1,2],[3,4]])
 </pre></div>
+
 
 <p>我们也可以使用上面提到的方法（<code>ones()</code>、<code>zeros()</code> 和 <code>random.random()</code>），只要写入一个描述我们创建的矩阵维数的元组即可：</p>
 <p><img alt="image" src="../051-图解NumPy，这是理解数组最形象的一份教程了.image/14555448-95a642256d884318.jpg" /> </p>
@@ -3492,11 +3495,11 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3525,6 +3528,10 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

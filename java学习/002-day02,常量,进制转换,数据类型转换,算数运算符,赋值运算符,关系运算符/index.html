@@ -1,0 +1,4531 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/java学习/002-day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>002 day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#0201_java" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                002 day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python-web/015-python项目离线部署/" class="md-tabs__link">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../机器学习/013 进入tensorboard/" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../力扣刷题/066-质因数/" class="md-tabs__link">
+          每天一道力扣题
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" class="md-tabs__link">
+          windows10系统使用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" title="067 Pycharm 运行程序后如何 如何查看变量的值" class="md-nav__link">
+      067 Pycharm 运行程序后如何 如何查看变量的值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/066-spyder升级4.0全新版本/" title="066 spyder升级4.0全新版本" class="md-nav__link">
+      066 spyder升级4.0全新版本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/065-Jupyter Notebook 远程访问配置/" title="065 Jupyter_Notebook 远程访问配置" class="md-nav__link">
+      065 Jupyter_Notebook 远程访问配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/015-python项目离线部署/" title="015 python项目离线部署" class="md-nav__link">
+      015 python项目离线部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/013 进入tensorboard/" title="013 进入tensorboard" class="md-nav__link">
+      013 进入tensorboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/012-Keras使用tensorboard训练过程可视化踩过的坑/" title="012-Keras使用tensorboard训练过程可视化踩过的坑" class="md-nav__link">
+      012-Keras使用tensorboard训练过程可视化踩过的坑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/011-关于交叉验证与偏差-方差的一连串理解/" title="011-关于交叉验证与偏差-方差的一连串理解" class="md-nav__link">
+      011-关于交叉验证与偏差-方差的一连串理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/010-统计学习方法--统计学习方法概论要点加代码/" title="010-统计学习方法--统计学习方法概论要点加代码" class="md-nav__link">
+      010-统计学习方法--统计学习方法概论要点加代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/009-统计学习方法--统计学习方法概论详细/" title="009-统计学习方法--统计学习方法概论详细" class="md-nav__link">
+      009-统计学习方法--统计学习方法概论详细
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线/" title="008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线" class="md-nav__link">
+      008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/007-机器学习中的维数灾难/" title="007-机器学习中的维数灾难" class="md-nav__link">
+      007-机器学习中的维数灾难
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/006-sklearn模型的保存加载/" title="006-sklearn模型的保存加载" class="md-nav__link">
+      006-sklearn模型的保存加载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/005-sklearn之交叉验证/" title="005-sklearn之交叉验证" class="md-nav__link">
+      005-sklearn之交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/004-sklearn：特征提取，常用模型，交叉验证/" title="004-sklearn：特征提取，常用模型，交叉验证" class="md-nav__link">
+      004-sklearn：特征提取，常用模型，交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据/" title="003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据" class="md-nav__link">
+      003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/002-预处理数据的方法总结（使用sklearn-preprocessing）/" title="002-预处理数据的方法总结（使用sklearn-preprocessing）" class="md-nav__link">
+      002-预处理数据的方法总结（使用sklearn-preprocessing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/001-sklearn-安装，获取数据，数据预处理/" title="001-sklearn-安装，获取数据，数据预处理" class="md-nav__link">
+      001-sklearn-安装，获取数据，数据预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      每天一道力扣题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        每天一道力扣题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/066-质因数/" title="066-质因数" class="md-nav__link">
+      066-质因数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/065-完全数的求解/" title="065-完全数的求解" class="md-nav__link">
+      065-完全数的求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/064-刷题过程中慎用-[]-is-None/" title="064-刷题过程中慎用-[]-is-None" class="md-nav__link">
+      064-刷题过程中慎用-[]-is-None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/063-LRU缓存算法的python实现/" title="063-LRU缓存算法的python实现" class="md-nav__link">
+      063-LRU缓存算法的python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/062-力扣刷题-344--反转字符串/" title="062-力扣刷题-344--反转字符串" class="md-nav__link">
+      062-力扣刷题-344--反转字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/061-力扣刷题-23--合并K个排序链表/" title="061-力扣刷题-23--合并K个排序链表" class="md-nav__link">
+      061-力扣刷题-23--合并K个排序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/060-力扣刷题-232--用栈实现队列/" title="060-力扣刷题-232--用栈实现队列" class="md-nav__link">
+      060-力扣刷题-232--用栈实现队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/059-力扣刷题-102--二叉树的层次遍历/" title="059-力扣刷题-102--二叉树的层次遍历" class="md-nav__link">
+      059-力扣刷题-102--二叉树的层次遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/058-力扣刷题-226--翻转二叉树/" title="058-力扣刷题-226--翻转二叉树" class="md-nav__link">
+      058-力扣刷题-226--翻转二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/057-力扣刷题-237删除链表中的节点/" title="057-力扣刷题-237删除链表中的节点" class="md-nav__link">
+      057-力扣刷题-237删除链表中的节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/056-力扣刷题-206--反转链表/" title="056-力扣刷题-206--反转链表" class="md-nav__link">
+      056-力扣刷题-206--反转链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/055-力扣刷题-1004--最大连续1的个数-III/" title="055-力扣刷题-1004--最大连续1的个数-III" class="md-nav__link">
+      055-力扣刷题-1004--最大连续1的个数-III
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/054-小球反弹的总路程/" title="054-小球反弹的总路程" class="md-nav__link">
+      054-小球反弹的总路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/053-力扣刷题-235--二叉搜索树的最近公共祖先/" title="053-力扣刷题-235--二叉搜索树的最近公共祖先" class="md-nav__link">
+      053-力扣刷题-235--二叉搜索树的最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/052-力扣刷题-162--寻找峰值/" title="052-力扣刷题-162--寻找峰值" class="md-nav__link">
+      052-力扣刷题-162--寻找峰值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/051-力扣刷题-136--只出现一次的数字/" title="051-力扣刷题-136--只出现一次的数字" class="md-nav__link">
+      051-力扣刷题-136--只出现一次的数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/050-二维生物的旅行-754--到达终点数字/" title="050-二维生物的旅行-754--到达终点数字" class="md-nav__link">
+      050-二维生物的旅行-754--到达终点数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/049--力扣刷题459--重复的子字符串-pin2字符串构造/" title="049--力扣刷题459--重复的子字符串-pin2字符串构造" class="md-nav__link">
+      049--力扣刷题459--重复的子字符串-pin2字符串构造
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/048-pin题目1/" title="048-pin题目1" class="md-nav__link">
+      048-pin题目1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/047-力扣刷题-845--数组中的最长山脉/" title="047-力扣刷题-845--数组中的最长山脉" class="md-nav__link">
+      047-力扣刷题-845--数组中的最长山脉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/046-力扣刷题-125--验证回文串/" title="046-力扣刷题-125--验证回文串" class="md-nav__link">
+      046-力扣刷题-125--验证回文串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/045-力扣刷题-122--买卖股票的最佳时机-II/" title="045-力扣刷题-122--买卖股票的最佳时机-II" class="md-nav__link">
+      045-力扣刷题-122--买卖股票的最佳时机-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/044-力扣刷题-119--杨辉三角-II/" title="044-力扣刷题-119--杨辉三角-II" class="md-nav__link">
+      044-力扣刷题-119--杨辉三角-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/043-力扣刷题-121--买卖股票的最佳时机/" title="043-力扣刷题-121--买卖股票的最佳时机" class="md-nav__link">
+      043-力扣刷题-121--买卖股票的最佳时机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/042-力扣刷题-8--字符串转换整数-(atoi)/" title="042-力扣刷题-8--字符串转换整数-(atoi)" class="md-nav__link">
+      042-力扣刷题-8--字符串转换整数-(atoi)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/041-力扣刷题-118--杨辉三角/" title="041-力扣刷题-118--杨辉三角" class="md-nav__link">
+      041-力扣刷题-118--杨辉三角
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/040-力扣刷题-535--TinyURL-的加密与解密/" title="040-力扣刷题-535--TinyURL-的加密与解密" class="md-nav__link">
+      040-力扣刷题-535--TinyURL-的加密与解密
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/039-力扣刷题-112--路径总和/" title="039-力扣刷题-112--路径总和" class="md-nav__link">
+      039-力扣刷题-112--路径总和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/038-力扣刷题-98--验证二叉搜索树/" title="038-力扣刷题-98--验证二叉搜索树" class="md-nav__link">
+      038-力扣刷题-98--验证二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/037-力扣刷题-110--平衡二叉树--重点进行理解/" title="037-力扣刷题-110--平衡二叉树--重点进行理解" class="md-nav__link">
+      037-力扣刷题-110--平衡二叉树--重点进行理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/036-力扣刷题-166--分数到小数/" title="036-力扣刷题-166--分数到小数" class="md-nav__link">
+      036-力扣刷题-166--分数到小数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/035-字节跳动题目-小球往返路程/" title="035-字节跳动题目-小球往返路程" class="md-nav__link">
+      035-字节跳动题目-小球往返路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/034-力扣刷题-88--合并两个有序数组/" title="034-力扣刷题-88--合并两个有序数组" class="md-nav__link">
+      034-力扣刷题-88--合并两个有序数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/033-力扣刷题-70--爬楼梯/" title="033-力扣刷题-70--爬楼梯" class="md-nav__link">
+      033-力扣刷题-70--爬楼梯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/032-力扣刷题-83--删除排序链表中的重复元素/" title="032-力扣刷题-83--删除排序链表中的重复元素" class="md-nav__link">
+      032-力扣刷题-83--删除排序链表中的重复元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/031-力扣刷题-101--对称二叉树/" title="031-力扣刷题-101--对称二叉树" class="md-nav__link">
+      031-力扣刷题-101--对称二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/030-力扣刷题-111--二叉树的最小深度/" title="030-力扣刷题-111--二叉树的最小深度" class="md-nav__link">
+      030-力扣刷题-111--二叉树的最小深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/029-力扣刷题-104--二叉树的最大深度/" title="029-力扣刷题-104--二叉树的最大深度" class="md-nav__link">
+      029-力扣刷题-104--二叉树的最大深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/028-力扣刷题107--二叉树的层次遍历-II/" title="028-力扣刷题107--二叉树的层次遍历-II" class="md-nav__link">
+      028-力扣刷题107--二叉树的层次遍历-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/027-字节跳动笔试题-循环链表实现约瑟夫环/" title="027-字节跳动笔试题-循环链表实现约瑟夫环" class="md-nav__link">
+      027-字节跳动笔试题-循环链表实现约瑟夫环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/026-力扣刷题-108--将有序数组转换为二叉搜索树/" title="026-力扣刷题-108--将有序数组转换为二叉搜索树" class="md-nav__link">
+      026-力扣刷题-108--将有序数组转换为二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/025-力扣刷题-100-相同的树/" title="025-力扣刷题-100-相同的树" class="md-nav__link">
+      025-力扣刷题-100-相同的树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/024-力扣刷题-66--加一/" title="024-力扣刷题-66--加一" class="md-nav__link">
+      024-力扣刷题-66--加一
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/023-力扣刷题-69--x-的平方根/" title="023-力扣刷题-69--x-的平方根" class="md-nav__link">
+      023-力扣刷题-69--x-的平方根
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/022-力扣刷题-二进制求和/" title="022-力扣刷题-二进制求和" class="md-nav__link">
+      022-力扣刷题-二进制求和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/021-力扣刷题151--翻转字符串里的单词/" title="021-力扣刷题151--翻转字符串里的单词" class="md-nav__link">
+      021-力扣刷题151--翻转字符串里的单词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/020-力扣刷题-58--最后一个单词的长度/" title="020-力扣刷题-58--最后一个单词的长度" class="md-nav__link">
+      020-力扣刷题-58--最后一个单词的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/019-力扣刷题53--最大子序和/" title="019-力扣刷题53--最大子序和" class="md-nav__link">
+      019-力扣刷题53--最大子序和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/018-力扣刷题-38--报数/" title="018-力扣刷题-38--报数" class="md-nav__link">
+      018-力扣刷题-38--报数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/017-46--全排列/" title="017-46--全排列" class="md-nav__link">
+      017-46--全排列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/016-力扣刷题873--最长的斐波那契子序列的长度/" title="016-力扣刷题873--最长的斐波那契子序列的长度" class="md-nav__link">
+      016-力扣刷题873--最长的斐波那契子序列的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/015-力扣刷题35--搜索插入位置/" title="015-力扣刷题35--搜索插入位置" class="md-nav__link">
+      015-力扣刷题35--搜索插入位置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/014-力扣刷题9--回文数/" title="014-力扣刷题9--回文数" class="md-nav__link">
+      014-力扣刷题9--回文数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/013-力扣刷题7--整数反转/" title="013-力扣刷题7--整数反转" class="md-nav__link">
+      013-力扣刷题7--整数反转
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/012-力扣刷题14--最长公共前缀/" title="012-力扣刷题14--最长公共前缀" class="md-nav__link">
+      012-力扣刷题14--最长公共前缀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/011-力扣刷题21--合并两个有序链表/" title="011-力扣刷题21--合并两个有序链表" class="md-nav__link">
+      011-力扣刷题21--合并两个有序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/010-力扣刷题27--移除元素/" title="010-力扣刷题27--移除元素" class="md-nav__link">
+      010-力扣刷题27--移除元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/009-力扣刷题28--实现strStr()/" title="009-力扣刷题28--实现strStr()" class="md-nav__link">
+      009-力扣刷题28--实现strStr()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/008-力扣刷题20--有效的括号/" title="008-力扣刷题20--有效的括号" class="md-nav__link">
+      008-力扣刷题20--有效的括号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/007-力扣刷题26--删除排序数组中的重复项/" title="007-力扣刷题26--删除排序数组中的重复项" class="md-nav__link">
+      007-力扣刷题26--删除排序数组中的重复项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/006-力扣刷题22--括号生成/" title="006-力扣刷题22--括号生成" class="md-nav__link">
+      006-力扣刷题22--括号生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/005-力扣刷题13--罗马数字转整数/" title="005-力扣刷题13--罗马数字转整数" class="md-nav__link">
+      005-力扣刷题13--罗马数字转整数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/004-力扣刷题4--寻找两个有序数组的中位数/" title="004-力扣刷题4--寻找两个有序数组的中位数" class="md-nav__link">
+      004-力扣刷题4--寻找两个有序数组的中位数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/003-力扣刷题3不含有重复字符的-最长子串-的长度/" title="003-力扣刷题3不含有重复字符的-最长子串-的长度" class="md-nav__link">
+      003-力扣刷题3不含有重复字符的-最长子串-的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/002-力扣刷题2-两数相加/" title="002-力扣刷题2-两数相加" class="md-nav__link">
+      002-力扣刷题2-两数相加
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/001-力扣刷题1--两数之和/" title="001-力扣刷题1--两数之和" class="md-nav__link">
+      001-力扣刷题1--两数之和
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      windows10系统使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        windows10系统使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" title="022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装" class="md-nav__link">
+      022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/021win系统新增新建右键Markdown文件及默认UTF-8编码格式/" title="021win系统新增新建右键Markdown文件及默认UTF-8编码格式" class="md-nav__link">
+      021win系统新增新建右键Markdown文件及默认UTF-8编码格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/020-删除关机等按钮/" title="020-删除关机等按钮" class="md-nav__link">
+      020-删除关机等按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/019-windows1809-系统最近的更新出现了bug/" title="019-windows1809-系统最近的更新出现了bug" class="md-nav__link">
+      019-windows1809-系统最近的更新出现了bug
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/018--win10卸载自带的应用/" title="018--win10卸载自带的应用" class="md-nav__link">
+      018--win10卸载自带的应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/017-笔记本软件/" title="017-笔记本软件" class="md-nav__link">
+      017-笔记本软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/016-Java添加环境变量/" title="016-Java添加环境变量" class="md-nav__link">
+      016-Java添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/015-anaconda-添加环境变量/" title="015-anaconda-添加环境变量" class="md-nav__link">
+      015-anaconda-添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）/" title="014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）" class="md-nav__link">
+      014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/013-win10取消应用弹框/" title="013-win10取消应用弹框" class="md-nav__link">
+      013-win10取消应用弹框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/012--win10系统怎么禁用defender/" title="012--win10系统怎么禁用defender" class="md-nav__link">
+      012--win10系统怎么禁用defender
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b/" title="011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b" class="md-nav__link">
+      011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/010-Axmath破解安装使用/" title="010-Axmath破解安装使用" class="md-nav__link">
+      010-Axmath破解安装使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式/" title="007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式" class="md-nav__link">
+      007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/006-picgo图床使用/" title="006-picgo图床使用" class="md-nav__link">
+      006-picgo图床使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/005-win10开机提示用户名和密码不正确的解决办法/" title="005-win10开机提示用户名和密码不正确的解决办法" class="md-nav__link">
+      005-win10开机提示用户名和密码不正确的解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/004-windows下安装pandoc并通过Typora导出pdf和word/" title="004-windows下安装pandoc并通过Typora导出pdf和word" class="md-nav__link">
+      004-windows下安装pandoc并通过Typora导出pdf和word
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/002-几何画板迷你增强版/" title="002-几何画板迷你增强版" class="md-nav__link">
+      002-几何画板迷你增强版
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/001-开机启动项的存储位置/" title="001-开机启动项的存储位置" class="md-nav__link">
+      001-开机启动项的存储位置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0201_java" class="md-nav__link">
+    02.01_Java语言基础(常量的概述和使用)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0202_java" class="md-nav__link">
+    02.02_Java语言基础(进制概述和二,八,十六进制图解)(了解)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0203_java" class="md-nav__link">
+    02.03_Java语言基础(不同进制数据的表现形式)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0204_java" class="md-nav__link">
+    02.04_Java语言基础(任意进制到十进制的转换图解)(了解)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0205_java" class="md-nav__link">
+    02.05_Java语言基础(十进制到任意进制的转换图解)(了解)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0206_java" class="md-nav__link">
+    02.06_Java语言基础(快速的进制转换法)(了解)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0207_java" class="md-nav__link">
+    02.07_Java语言基础(原码反码补码)(了解)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0208_java" class="md-nav__link">
+    02.08_Java语言基础(原码反码补码的练习)(了解)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0209_java" class="md-nav__link">
+    02.09_Java语言基础(变量的概述及格式)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0210_java" class="md-nav__link">
+    02.10_Java语言基础(数据类型的概述和分类)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0211_java" class="md-nav__link">
+    02.11_Java语言基础(定义不同数据类型的变量)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0212_java" class="md-nav__link">
+    02.12_Java语言基础(使用变量的注意事项)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0213_java" class="md-nav__link">
+    02.13_Java语言基础(数据类型转换之隐式转换)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0214_java" class="md-nav__link">
+    02.14_Java语言基础(数据类型转换之强制转换)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0215_java" class="md-nav__link">
+    02.15_Java语言基础(面试题之变量相加和常量相加的区别)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0216_javalongfloat" class="md-nav__link">
+    02.16_Java语言基础(long与float的取值范围谁大谁小)(了解)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0217_java" class="md-nav__link">
+    02.17_Java语言基础(字符和字符串参与运算)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0218_javachar" class="md-nav__link">
+    02.18_Java语言基础(char数据类型)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0220_java-" class="md-nav__link">
+    02.20_Java语言基础(算术运算符++和--的用法)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0221_java-" class="md-nav__link">
+    02.21_Java语言基础(算术运算符++和--的练习)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0222_java" class="md-nav__link">
+    02.22_Java语言基础(赋值运算符的基本用法)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0223_java" class="md-nav__link">
+    02.23_Java语言基础(赋值运算符的面试题)(掌握)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0224_java" class="md-nav__link">
+    02.24_Java语言基础(关系运算符的基本用法及其注意事项)(掌握)
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>002 day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符</h1>
+                
+                <h3 id="0201_java">02.01_Java语言基础(常量的概述和使用)(掌握)<a class="headerlink" href="#0201_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:什么是常量</li>
+<li>在程序执行的过程中其值不可以发生改变 </li>
+<li>B:Java中常量的分类</li>
+<li>字面值常量</li>
+<li>自定义常量(面向对象部分讲) </li>
+<li>C:字面值常量的分类</li>
+<li>字符串常量   用双引号括起来的内容</li>
+<li>整数常量        所有整数</li>
+<li>小数常量        所有小数</li>
+<li>字符常量        用单引号括起来的内容,里面只能放单个数字,单个字母或单个符号</li>
+<li>布尔常量        较为特殊，只有true和false</li>
+<li>空常量         null(数组部分讲解)</li>
+<li>D:案例演示</li>
+<li>用输出语句输出各种常量。null不演示
+ ```java
+package zang;</li>
+</ul>
+<p>public class chang_liang_shu_chu {</p>
+<div class="codehilite"><pre><span></span>/**
+ * @param args
+ */
+public static void main(String[] args) {
+    /*
+    * 字符串常量 用双引号括起来的内容
+    * 整数常量      所有整数
+    * 小数常量      所有小数
+    * 字符常量      用单引号括起来的内容,里面只能放单个数字,单个字母或单个符号
+    * 布尔常量      较为特殊，只有true和false
+    * 空常量           null(数组部分讲解)
+    */
+    System.out.println(&quot;abc&quot;);  //字符串常量
+    System.out.println(123);    //整数常量
+    System.out.println(123.12); //小数常量
+    //System.out.println(&#39;10&#39;); //&#39;&#39;中必须放的是单个字符,10代表的是1字符和0字符
+    //System.out.println(&#39;&#39;);   //&#39;&#39;中什么也不放,也是不可以的,因为代表不了任何字符
+    System.out.println(&#39; &#39;);    //代表空格字符
+    System.out.println(true);   //boolean类只有两个值,true和false
+    System.out.println(false);
+
+}
+</pre></div>
+
+
+<p>}</p>
+<p>```</p>
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">abc</span>                                                                                      
+<span class="mi">123</span>                                                                                       
+<span class="mf">12.3</span>                                                                                                                                                                         <span class="kc">true</span>                                                                                     
+<span class="kc">false</span>                                                                                     
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>  
+</pre></div>
+
+
+<h3 id="0202_java">02.02_Java语言基础(进制概述和二,八,十六进制图解)(了解)<a class="headerlink" href="#0202_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:什么是进制</li>
+<li>进制：就是进位制，是人们规定的一种进位方法。 对于任何一种进制--X进制，就表示某一位置上的数运算时是逢X进一位。二进制就是逢二进一，八进制是逢八进一，十进制是逢十进一，十六进制是逢十六进一。</li>
+<li>例如一周有七天,七进制,一年有十二个月,十二进制</li>
+<li>B:十进制的由来 </li>
+<li>十进制的由来是因为人类有十个手指 </li>
+<li>C:二进制的由来</li>
+<li>其实二进制来源与中国,请看史料记载</li>
+<li>18世纪德国数理哲学大师莱布尼兹从他的传教士朋友鲍威特寄给他的拉丁文译本《易经》中，读到了八卦的组成结构，惊奇地发现其基本素数（0）（1），即《易经》的阴爻yao- -和__阳爻，其进位制就是二进制，并认为这是世界上数学进制中最先进的。20世纪被称作第三次科技革命的重要标志之一的计算机的发明与应用，其运算模式正是二进制。它不但证明了莱布尼兹的原理是正确的，同时也证明了《易经》数理学是很了不起的。</li>
+<li>D:八进制的由来</li>
+<li>任何数据在计算机中都是以二进制的形式存在的。二进制早期由电信号开关演变而来。一个整数在内存中一样也是二进制的，但是使用一大串的1或者0组成的数值进行使用很麻烦。 </li>
+<li>所以就想把一大串缩短点，将二进制中的三位用一位表示。这三位可以取到的最大值就是7.超过7就进位了，这就是八进制。 </li>
+<li>E:十六进制的由来</li>
+<li>但是对于过长的二进制变成八进制还是较长，所以出现的用4个二进制位表示一位的情况，四个二进制位最大是15，这就是十六进制。</li>
+<li>F:不同进制表现同一个数据的形式特点</li>
+<li>进制越大，表现形式越短</li>
+</ul>
+<h3 id="0203_java">02.03_Java语言基础(不同进制数据的表现形式)(掌握)<a class="headerlink" href="#0203_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:二进制的数据表现形式</li>
+<li>由0,1组成。以0b(b可以大写也可以小写)开头(JDK1.7版本可以表示二进制了)</li>
+<li>B:八进制的数据表现形式</li>
+<li>由0,1,…7组成。以0开头</li>
+<li>C:十进制的数据表现形式</li>
+<li>由0,1,…9组成。整数默认是十进制的 </li>
+<li>D:十六进制的数据表现形式</li>
+<li>由0,1,…9,a,b,c,d,e,f(大小写均可)。以0x开头 </li>
+<li>E:案例演示</li>
+<li>输出不同进制表现100的数据。</li>
+<li>0b100</li>
+<li>0100</li>
+<li>100</li>
+<li>0x100</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">zang</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">jinzhi</span> <span class="p">{</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * @param args</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*</span>
+<span class="cm">        * 0b100</span>
+<span class="cm">        * 0100</span>
+<span class="cm">        * 100</span>
+<span class="cm">        * 0x100</span>
+<span class="cm">        */</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mb">0b100</span><span class="p">);</span>              <span class="c1">//4?    二进制表示形式前面加0b(b可以大写也可以小写)</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mo">0100</span><span class="p">);</span>               <span class="c1">//64?   八进制表示形式前面加0</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mh">0x100</span><span class="p">);</span>              <span class="c1">//256?  十六进制表示形式前面加0x(可以大写也可以小写)</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">4</span>
+<span class="mi">64</span>
+<span class="mi">100</span>
+<span class="mi">256</span>
+</pre></div>
+
+
+<h3 id="0204_java">02.04_Java语言基础(任意进制到十进制的转换图解)(了解)<a class="headerlink" href="#0204_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:任意进制到十进制的转换原理</li>
+<li>系数：就是每一位上的数据。</li>
+<li>基数：X进制，基数就是X。</li>
+<li>权：在右边，从0开始编号，对应位上的编号即为该位的权。</li>
+<li>结果：把系数*基数的权次幂相加即可。 </li>
+<li>B:画图练习</li>
+<li>二进制--十进制</li>
+<li>八进制--十进制</li>
+<li>十六进制--十进制</li>
+</ul>
+<h3 id="0205_java">02.05_Java语言基础(十进制到任意进制的转换图解)(了解)<a class="headerlink" href="#0205_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:十进制到任意进制的转换原理</li>
+<li>除积倒取余 </li>
+<li>B:画图练习</li>
+<li>十进制--二进制</li>
+<li>十进制--八进制</li>
+<li>十进制--十六进制</li>
+</ul>
+<h3 id="0206_java">02.06_Java语言基础(快速的进制转换法)(了解)<a class="headerlink" href="#0206_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:8421码及特点</li>
+<li>8421码是中国大陆的叫法，8421码是BCD代码中最常用的一种。在这种编码方式中每一位二值代码的1都是代表一个固定数值，把每一位的1代表的十进制数加起来，得到的结果就是它所代表的十进制数码。 </li>
+<li>B:通过8421码的方式进行二进制和十进制的相互转换</li>
+<li>C:二进制到八进制的简易方式</li>
+<li>D:二进制到十六进制的简易方式</li>
+</ul>
+<h3 id="0207_java">02.07_Java语言基础(原码反码补码)(了解)<a class="headerlink" href="#0207_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:为什么要学习原码反码补码?</li>
+<li>后面要学习强制类型转换,如果不知道有原反补会看不懂结果 </li>
+<li>B:有符号数据表示法的几种方式</li>
+<li>原码<ul>
+<li>就是二进制定点表示法，即最高位为符号位，“0”表示正，“1”表示负，其余位表示数值的大小。</li>
+<li>通过一个字节,也就是8个二进制位表示+7和-7</li>
+<li>0(符号位)    0000111 (+7)</li>
+<li>1(符号位)    1000111 (-7)</li>
+</ul>
+</li>
+<li>反码<ul>
+<li>正数的反码与其原码相同；负数的反码是对其原码逐位取反，但符号位除外。</li>
+</ul>
+</li>
+<li>补码<ul>
+<li>正数的补码与其原码相同；负数的补码是在其反码的末位加1。 </li>
+</ul>
+</li>
+</ul>
+<h3 id="0208_java">02.08_Java语言基础(原码反码补码的练习)(了解)<a class="headerlink" href="#0208_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:已知原码求补码</li>
+<li>0b10110100 </li>
+<li>B:已知补码求原码</li>
+<li>0b11101110 
+<img alt="原码补码的简单运算" src="https://upload-images.jianshu.io/upload_images/14555448-661a783b4cbb0d79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></li>
+</ul>
+<h3 id="0209_java">02.09_Java语言基础(变量的概述及格式)(掌握)<a class="headerlink" href="#0209_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:什么是变量</li>
+<li>在程序执行的过程中，在某个范围内其值可以发生改变的量</li>
+<li>B:变量的定义格式</li>
+<li>数据类型 变量名 = 变量值;</li>
+<li>C:为什么要定义变量</li>
+<li>用来不断的存放同一类型的常量，并可以重复使用 </li>
+</ul>
+<h3 id="0210_java">02.10_Java语言基础(数据类型的概述和分类)(掌握)<a class="headerlink" href="#0210_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:为什么有数据类型</li>
+<li>Java语言是强类型语言，对于每一种数据都定义了明确的具体数据类型，在内存中分配了不同大小的内存空间</li>
+<li>B:Java中数据类型的分类</li>
+<li>基本数据类型</li>
+<li>引用数据类型 <ul>
+<li>面向对象部分讲解 </li>
+</ul>
+</li>
+<li>C:基本数据类型分类(4类8种) </li>
+<li>整数型<ul>
+<li>byte 占一个字节  -128到127</li>
+<li>short 占两个字 <span><span class="MathJax_Preview">$ -2^{15}  到  2^{15}-1 $</span><script type="math/tex"> -2^{15}  到  2^{15}-1 </script></span></li>
+<li>int 占四个字节 <span><span class="MathJax_Preview">-2^{31} 到 2^{31}-1</span><script type="math/tex">-2^{31} 到 2^{31}-1</script></span></li>
+<li>long 占八个字节 <span><span class="MathJax_Preview">-2^{63} ~ 2^{63}-1</span><script type="math/tex">-2^{63} ~ 2^{63}-1</script></span></li>
+</ul>
+</li>
+<li>浮点型<ul>
+<li>float 占四个字节 <span><span class="MathJax_Preview">-3.403*10^{38}到3.403*10^{38}</span><script type="math/tex">-3.403*10^{38}到3.403*10^{38}</script></span>  单精度</li>
+<li>double 占八个字节-1.798E308~1.798E308 双精度</li>
+</ul>
+</li>
+<li>字符型<ul>
+<li>char 占两个字节 0~65535</li>
+</ul>
+</li>
+<li>布尔型<ul>
+<li>boolean   </li>
+<li>boolean理论上是占八分之一个字节,因为一个开关就可以决定是true和false了,但是java中boolean类型没有明确指定他的大小      </li>
+</ul>
+</li>
+</ul>
+<h3 id="0211_java">02.11_Java语言基础(定义不同数据类型的变量)(掌握)<a class="headerlink" href="#0211_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:案例演示</li>
+<li>定义不同基本数据类型的变量，并输出</li>
+<li>赋值时候注意float类型,long类型</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_DataType</span> <span class="p">{</span>                          <span class="c1">//DataType数据类型          </span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//整数类型</span>
+        <span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>            <span class="c1">//占一个字节,-128 到 127</span>
+        <span class="kt">short</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>           <span class="c1">//占两个字节</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>             <span class="c1">//占四个字节         整数默认的数据类型就是int类型</span>
+        <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">8888888888L</span><span class="p">;</span>   <span class="c1">//占八个字节 如果long类型后面加L进行标识最好加大L(大写),因为小l太像一了</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>    <span class="c1">//进行输出</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+
+        <span class="c1">//System.out.println(12345 + 54321l);//注意这里54321后面是小l,一定要注意</span>
+
+        <span class="c1">//浮点类型</span>
+        <span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">12.3F</span><span class="p">;</span>        <span class="c1">//占四个字节,float类型存储的是小数需要加F进行标识</span>
+        <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">33.4</span><span class="p">;</span>        <span class="c1">//占八个字节         小数默认的数据类型是double,double类型后面也可以用D或d标识,但是一般不加</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+
+        <span class="c1">//字符类型</span>
+        <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span>           <span class="c1">//占两个字节</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+
+        <span class="c1">//布尔类型</span>
+        <span class="kt">boolean</span> <span class="n">b1</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="kt">boolean</span> <span class="n">b2</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b1</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">10</span>
+<span class="mi">20</span>
+<span class="mi">30</span>
+<span class="mi">8888888888</span>
+<span class="mf">12.3</span>
+<span class="mf">33.4</span>
+<span class="n">a</span>
+<span class="kc">true</span>
+<span class="kc">false</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<h3 id="0212_java">02.12_Java语言基础(使用变量的注意事项)(掌握)<a class="headerlink" href="#0212_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:案例演示</li>
+<li>a:作用域问题<ul>
+<li>同一个区域不能使用相同的变量名 </li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>  <span class="c1">//同一个区域使用了两个时会报错</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>错误提示:
+<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-7b07a32e056ad2d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<ul>
+<li>b:初始化值问题<ul>
+<li>局部变量在使用之前必须赋值 </li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>  <span class="c1">//先声明,但是使用的时候需要进行赋值,不然会报错</span>
+
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">//使用之前必须先赋值</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>错误做法:</p>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>  <span class="c1">//先声明,但是使用的时候需要进行赋值,不然会报错</span>
+
+        <span class="c1">//y = 10;  //使用之前必须先赋值</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>错误提示:
+<img alt="没有赋值使用变量" src="https://upload-images.jianshu.io/upload_images/14555448-e6722b2b488dc5ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<ul>
+<li>c:一条语句可以定义几个变量<ul>
+<li>int a,b,c...; </li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">;</span>   <span class="c1">//先声明后赋值</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> 
+
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>   <span class="c1">//直接赋值,使用最常用</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="0213_java">02.13_Java语言基础(数据类型转换之隐式转换)(掌握)<a class="headerlink" href="#0213_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:案例演示</li>
+<li>a:int + int</li>
+<li>b:byte + int </li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">c</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">;</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>   <span class="c1">//不是同一类型的也可以进行相加,相加完是字节多的那种类型</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>  <span class="c1">//打印x</span>
+        <span class="c1">//System.out.println(x.getClass().getName());  //整数类型不能获取数据类型</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getName</span><span class="p">());</span>   <span class="c1">//字符串可以获取数据类型</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">7</span>
+<span class="n">java</span><span class="p">.</span><span class="na">lang</span><span class="p">.</span><span class="na">String</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<ul>
+<li>B:Java中的默认转换规则</li>
+<li>取值范围小的数据类型与取值范围大的数据类型进行运算,会先将小的数据类型提升为大的,再运算 (全部转换为二进制,进行补零)</li>
+<li>C:画图解释byte+int类型的问题</li>
+</ul>
+<h3 id="0214_java">02.14_Java语言基础(数据类型转换之强制转换)(掌握)<a class="headerlink" href="#0214_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:强制转换问题(会报错)</li>
+<li>int a = 10;</li>
+<li>byte b = 20; </li>
+<li>b = a + b;</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">//打印x</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:会报错,x+b变成了int型再赋值给byte型,会出现精度损失从而报错
+<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-d2d69220d328df88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<ul>
+<li>B:强制转换的格式(加上类型强制转换)</li>
+<li>b = (byte)(a + b); </li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)(</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>  <span class="c1">//注意进行强制类型转换时,byte要用括号括起来,跟python的区别</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">//打印x</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果是: 7
+- C:强制转换的注意事项
+  - 如果超出了被赋值的数据类型的取值范围得到的结果会与你期望的结果不同 </p>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">126</span><span class="p">;</span>
+        <span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)(</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>  <span class="c1">//注意进行强制类型转换时,byte要用括号括起来,跟python的区别</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">//打印x</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:进行相加后结果是137超出了byte的取值范围,截取二进制位后变成-126</p>
+<div class="codehilite"><pre><span></span><span class="o">-</span><span class="mi">126</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<p>分析:</p>
+<div class="codehilite"><pre><span></span>        <span class="c1">//00000000 00000000 00000000 10000010           130的二进制(补码)</span>
+        <span class="c1">//取后面的八位为byte(补码)</span>
+        <span class="c1">//10000010                                       补码(第一位为正负标志位,第一位为1为负数,输出结果需要从补码转换到原码)</span>
+        <span class="c1">//00000001                                      -1求反码</span>
+        <span class="c1">//10000001                                      -反码(其余7为取反求原码)</span>
+        <span class="c1">//11111110                                       原码(结果为-126)</span>
+        <span class="c1">//这里其实就是溢出砍掉后变成-126</span>
+</pre></div>
+
+
+<h3 id="0215_java">02.15_Java语言基础(面试题之变量相加和常量相加的区别)(掌握)<a class="headerlink" href="#0215_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:案例演示</li>
+<li>面试题:看下面的程序是否有问题，如果有问题，请指出并说明理由。</li>
+<li>byte b1 = 3;</li>
+<li>byte b2 = 4;</li>
+<li>byte b3 = b1 + b2;<ul>
+<li>从两方面去回答这个题</li>
+<li>b1和b2是两个变量,变量里面存储的值都是变化的,所以在程序运行中JVM是无法判断里面具体的值</li>
+<li>byte类型的变量在进行运算的时候,会自动类型提升为int类型 </li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">byte</span> <span class="n">b1</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kt">byte</span> <span class="n">b2</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="kt">byte</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b3</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行出错:  把提升到int类型的数赋值给byte类型的变量是会损失精度报错的
+<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-ec1198a12945337b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<ul>
+<li>byte b4 = 3 + 4;<ul>
+<li>3和4都是常量,java有常量优化机制,就是在编译的的时候直接把3和4的结果赋值给b4了 </li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">byte</span> <span class="n">b3</span> <span class="o">=</span> <span class="mi">3</span><span class="o">+</span><span class="mi">4</span> <span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b3</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">7</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<h3 id="0216_javalongfloat">02.16_Java语言基础(long与float的取值范围谁大谁小)(了解)<a class="headerlink" href="#0216_javalongfloat" title="Permanent link">&para;</a></h3>
+<ul>
+<li>进行混合运算的时候,byte,short,char不会相互转换,都会自动类型提升为int类型,其他类型进行混合运算的是小的数据类型提升为大的</li>
+<li>byte,short,char -- int -- long -- float -- double</li>
+<li>long: 8个字节</li>
+<li>float：4个字节</li>
+<li>IEEE754</li>
+<li>4个字节是32个二进制位</li>
+<li>1位是符号位</li>
+<li>8位是指数位</li>
+<li>00000000   11111111</li>
+<li>0到255</li>
+<li>1到254</li>
+<li>-126到127</li>
+<li>23位是尾数位</li>
+<li>每个指数位减去127</li>
+<li>A:它们底层的存储结构不同。</li>
+<li>B:float表示的数据范围比long的范围要大<ul>
+<li>long：2^63-1</li>
+<li>float：3.4*10^38 &gt; 2*10^38 &gt; 2*8^38 = 2*2<sup>3</sup>38 = 2*2^114 &gt; 2^63-1</li>
+</ul>
+</li>
+</ul>
+<h3 id="0217_java">02.17_Java语言基础(字符和字符串参与运算)(掌握)<a class="headerlink" href="#0217_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:案例演示</li>
+<li>System.out.println('a');</li>
+<li>System.out.println('a'+1);</li>
+<li>通过看结果知道'a'的值是多少,由此引出ASCII码表</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="sc">&#39;a&#39;</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>            <span class="c1">//98,因为有ASCII码表,a字符对应的是int类型的97</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="kt">char</span><span class="p">)(</span><span class="sc">&#39;a&#39;</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行的结果：</p>
+<div class="codehilite"><pre><span></span><span class="mi">98</span>
+<span class="n">b</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<ul>
+<li>B:ASCII码表的概述</li>
+<li>记住三个值：<ul>
+<li>'0'  48</li>
+<li>'A'  65</li>
+<li>'a'  97</li>
+</ul>
+</li>
+<li>C:案例演示</li>
+<li>System.out.println("hello"+'a'+1);</li>
+<li>System.out.println('a'+1+"hello");</li>
+<li>D:+在有字符串参与中被称为字符串连接符</li>
+<li>System.out.println("5+5="+5+5);</li>
+<li>System.out.println(5+5+"=5+5");</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo4_DataTypeConversion</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//System.out.println(&#39;a&#39; + 1);          //98,因为有ASCII码表,a字符对应的是int类型的97</span>
+        <span class="c1">//System.out.println((char)(&#39;a&#39; + 1));</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="o">+</span><span class="sc">&#39;a&#39;</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>      <span class="c1">//任何数据类型用+与字符串相连接都会产生新的字符串</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>      <span class="c1">//a是字符代表了97再加1是98然后跟后面的字符串相加</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;5+5=&quot;</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>  <span class="c1">//输出的是55,原因是被认为是字符串</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot; 5 + 5 = &quot;</span> <span class="o">+</span> <span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span><span class="p">));</span>   <span class="c1">//加上括号就是5+5先进行运算</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">helloa1</span>
+<span class="mi">98</span><span class="n">hello</span>
+<span class="mi">5</span><span class="o">+</span><span class="mi">5</span><span class="o">=</span><span class="mi">55</span>
+ <span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<h3 id="0218_javachar">02.18_Java语言基础(char数据类型)(掌握)<a class="headerlink" href="#0218_javachar" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:char c = 97;    0到65535</li>
+<li>B:Java语言中的字符char可以存储一个中文汉字吗?为什么呢?</li>
+<li>可以。因为Java语言采用的是Unicode编码。Unicode编码中的每个字符占用两个字节。中文也是占的两个字节</li>
+<li>所以，Java中的字符可以存储一个中文汉字</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo5_Char</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+
+        <span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="mi">97</span><span class="p">;</span>       <span class="c1">//0 - 65535</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+
+        <span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">c3</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">c4</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">c5</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c3</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c4</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c5</span><span class="p">);</span>
+
+        <span class="c1">//char类型是否可以存储中文</span>
+        <span class="kt">char</span> <span class="n">c6</span> <span class="o">=</span> <span class="sc">&#39;中&#39;</span><span class="p">;</span>  <span class="c1">//单引号里只能存储一个中文 ,char是两个字节,中文汉字也是两个字节因此能够进行存储</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c6</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">a</span>
+<span class="n">a</span>
+
+
+<span class="err"></span>
+<span class="err"></span>
+<span class="n">中</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<p>### 02.19_Java语言基础(算术运算符的基本用法)(掌握)
+- A:什么是运算符
+  - 就是对常量和变量进行操作的符号。
+- B:运算符的分类
+  - 算术运算符，赋值运算符，比较(关系或条件)运算符，逻辑运算符，位运算符，三目(元)运算符 
+- C:算数运算符有哪些
+  -  +,-,*,/,%,++,-- 
+- D:注意事项：
+  - a:+号在java中有三种作用:代表正号,做加法运算,字符串的连接符
+  - b:整数相除只能得到整数。如果想得到小数，必须把数据变化为浮点数类型
+  - c: / 获取的是除法操作的商，%获取的是除法操作的余数
+  - %运算符
+    - 当左边的绝对值小于右边绝对值时,结果是左边
+    - 当左边的绝对值等于右边或是右边的倍数时,结果是0
+    - 当左边的绝对值大于右边绝对值时,结果是余数
+    - %运算符结果的符号只和左边有关系,与右边无关
+    - 任何一个正整数%2结果不是0就是1可以用来当作切换条件 </p>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Operator</span> <span class="p">{</span>                      <span class="c1">//operator 运算符</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*</span>
+<span class="cm">        * a:+号在java中有三种作用,代表正号,做加法运算,字符串的连接符</span>
+<span class="cm">        * b:整数相除只能得到整数。如果想得到小数，必须把数据变化为浮点数类型</span>
+<span class="cm">        * c:/获取的是除法操作的商，%获取的是除法操作的余数</span>
+<span class="cm">        * %运算符</span>
+<span class="cm">            * 当左边的绝对值小于右边绝对值时,结果是左边</span>
+<span class="cm">            * 当左边的绝对值等于右边或是右边的倍数时,结果是0</span>
+<span class="cm">            * 当左边的绝对值大于右边绝对值时,结果是余数</span>
+<span class="cm">            * %运算符结果的符号只和左边有关系,与右边无关</span>
+<span class="cm">            * 任何一个正整数%2结果不是0就是1可以用来当作切换条件 </span>
+<span class="cm">        */</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">);</span>             <span class="c1">//整数相除结果只能是整数</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">);</span>           <span class="c1">//如果想得到小数,把其中一个数变成小数,另一个数在运算的时候会自动类型提升</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">%</span> <span class="mi">5</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">13</span> <span class="o">%</span> <span class="o">-</span><span class="mi">5</span><span class="p">);</span>         <span class="c1">//求余的符号只与左边有关</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">3</span>
+<span class="mf">3.3333333333333335</span>
+<span class="mi">0</span>
+<span class="mi">3</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<h3 id="0220_java-">02.20_Java语言基础(算术运算符++和--的用法)(掌握)<a class="headerlink" href="#0220_java-" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:++,--运算符的作用</li>
+<li>自加（++）自减（--）运算</li>
+<li>++:自加。对原有的数据进行+1</li>
+<li>--:自减。对原有的数据进行-1</li>
+<li>B:案例演示</li>
+<li>a:单独使用：<ul>
+<li>放在操作数的前面和后面效果一样。(这种用法是我们比较常见的)</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="c1">//单独使用</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">a</span><span class="o">++</span><span class="p">;</span>                        <span class="c1">//a = a + 1;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">b</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">b</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>     <span class="c1">////b = b + 1;</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">4</span>
+<span class="mi">6</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<ul>
+<li>b:参与运算使用：<ul>
+<li>放在操作数的前面，先自增或者自减，然后再参与运算。</li>
+<li>放在操作数的后面，先参与运算，再自增或者自减。</li>
+</ul>
+</li>
+</ul>
+<p>放在操作数的前面</p>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="c1">//参与运算使用</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+
+        <span class="c1">//b = a++;                  //当++在变量后面的时候,会先将变量中的值取出做赋值操作,然后再自身加1</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="o">++</span><span class="n">a</span><span class="p">;</span>                    <span class="c1">//当++在变量前面的时候,会先自身加1,然后在将结果赋值</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;a = &quot;</span> <span class="o">+</span> <span class="n">a</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;b = &quot;</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<p>放在操作数后面</p>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="c1">//参与运算使用</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+
+        <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">++</span><span class="p">;</span>                    <span class="c1">//当++在变量后面的时候,会先将变量中的值取出做赋值操作,然后再自身加1</span>
+        <span class="c1">//b = ++a;                  //当++在变量前面的时候,会先自身加1,然后在将结果赋值</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;a = &quot;</span> <span class="o">+</span> <span class="n">a</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;b = &quot;</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<h3 id="0221_java-">02.21_Java语言基础(算术运算符++和--的练习)(掌握)<a class="headerlink" href="#0221_java-" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>A:案例演示</p>
+</li>
+<li>
+<p>请分别计算出a,b,c的值?</p>
+</li>
+<li>
+<p>int a = 10;
+        int b = 10;
+        int c = 10;</p>
+<p><code>java
+a = b++;        
+c = --a;            
+b = ++a;        
+a = c--;</code></p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">++</span><span class="p">;</span>        <span class="c1">//a=10,b=11</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="o">--</span><span class="n">a</span><span class="p">;</span>        <span class="c1">//a=9,c=9   </span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="o">++</span><span class="n">a</span><span class="p">;</span>        <span class="c1">//a=10,b=10</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">c</span><span class="o">--</span><span class="p">;</span>        <span class="c1">//a=9,c=8</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行的结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">10</span>
+<span class="mi">11</span>
+<span class="mi">9</span>
+<span class="mi">9</span>
+<span class="mi">10</span>
+<span class="mi">10</span>
+<span class="mi">9</span>
+<span class="mi">8</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>B:案例演示</p>
+</li>
+<li>
+<p>请分别计算出x,y的值?</p>
+<p>int x = 4;
+    int y = (x++)+(++x)+(x*10);</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="o">++</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span>  <span class="c1">//4+6+60</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行结果:</p>
+<div class="codehilite"><pre><span></span><span class="mi">70</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>C:面试题</p>
+</li>
+<li>
+<p>byte b = 10;</p>
+</li>
+<li>b++;</li>
+<li>b = b + 1;</li>
+<li>问哪句会报错,为什么 ,第三句报错,损失精度</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
+<span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
+    <span class="p">{</span>   
+        <span class="c1">//第三题问哪句会报错,为什么 </span>
+        <span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">b</span><span class="o">++</span><span class="p">;</span>                    <span class="c1">//b = (byte)(b + 1)(自动的给强制转换)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>              <span class="c1">//当byte与int进行混合运算的时候,会提升为int类型,两个int相加的结果还是int,赋值给byte会损失精度</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;b = &quot;</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>错误提示:
+<img alt="image.png" src="https://upload-images.jianshu.io/upload_images/14555448-71a8b01c67b72f33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p>
+<h3 id="0222_java">02.22_Java语言基础(赋值运算符的基本用法)(掌握)<a class="headerlink" href="#0222_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:赋值运算符有哪些</li>
+<li>a:基本的赋值运算符：=<ul>
+<li>把=右边的数据赋值给左边。</li>
+</ul>
+</li>
+<li>b:扩展的赋值运算符：+=,-=,*=,/=,%=<ul>
+<li>+= 把左边和右边做加法，然后赋值给左边。</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Operator</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//赋值运算符</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>                          <span class="c1">//把右边的常量值赋值给左边的变量,左边必须是变量</span>
+
+        <span class="n">a</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>                             <span class="c1">//a = a + 4; a=7</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span><span class="p">;</span>                           <span class="c1">//a=7+4=11</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="0223_java">02.23_Java语言基础(赋值运算符的面试题)(掌握)<a class="headerlink" href="#0223_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:案例演示</li>
+<li>面试题:看下面的程序是否有问题，如果有问题，请指出并说明理由。</li>
+<li>short s=1;s = s+1;</li>
+<li>short s=1;s+=1;</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Test1_Operator</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 面试题:看下面的程序是否有问题，如果有问题，请指出并说明理由。</span>
+        <span class="kt">short</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>          <span class="c1">//当short与int进行运算的时候,会提升为int类型,两个int类型相加的结果也是int类型</span>
+        <span class="kt">short</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">s</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>                 <span class="c1">//s = (short)(s + 1);自动的优化</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="0224_java">02.24_Java语言基础(关系运算符的基本用法及其注意事项)(掌握)<a class="headerlink" href="#0224_java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A:关系运算符有哪些(比较运算符,条件运算符)</li>
+<li>==,!=,&gt;,&gt;=,&lt;,&lt;= </li>
+<li>注意事项：</li>
+<li>无论你的操作是简单还是复杂，结果是boolean类型。</li>
+<li>"=="不能写成"="。</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Operator</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//关系运算符</span>
+        <span class="c1">//==,!=,&gt;,&gt;=,&lt;,&lt;= </span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">//等于</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">4</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">//不等于</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">4</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">4</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>执行的结果:</p>
+<div class="codehilite"><pre><span></span><span class="kc">false</span>
+<span class="kc">true</span>
+<span class="kc">false</span>
+<span class="kc">true</span>
+<span class="kc">false</span>
+<span class="kc">false</span>
+<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

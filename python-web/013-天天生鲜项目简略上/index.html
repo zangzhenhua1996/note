@@ -3499,6 +3499,7 @@
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;apps&#39;</span><span class="p">)</span> <span class="p">)</span>
 </pre></div>
 
+
 <p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-7db93c2c39207b7c.png" /></p>
 <ol>
 <li>创建模板文件
@@ -3515,6 +3516,7 @@
 <div class="codehilite"><pre><span></span>import pymysql
 pymysql.install_as_MySQLdb()
 </pre></div>
+
 
 <p>数据库的迁移</p>
 <ol>
@@ -3540,14 +3542,15 @@ pymysql.install_as_MySQLdb()
 
 <span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;模型抽象类&#39;&#39;&#39;</span>
-    <span class="n">create_time</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;创建时间&#39;</span><span class="p">)</span>
-    <span class="n">update_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;更新时间&#39;</span><span class="p">)</span>
-    <span class="n">is_delete</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;删除标记&#39;</span><span class="p">)</span>
+    <span class="n">create_time</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;创建时间&#39;</span><span class="p">)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;更新时间&#39;</span><span class="p">)</span>
+    <span class="n">is_delete</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;删除标记&#39;</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="c1">#说明这是个抽象模型类</span>
-        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">abstract</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
+
 
 <ol>
 <li>其它models模型类的创建
@@ -3562,12 +3565,14 @@ pymysql.install_as_MySQLdb()
 <span class="p">}</span>
 </pre></div>
 
+
 <p>3）在test6/urls.py中配置编辑器url。</p>
 <div class="codehilite"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="o">...</span>
     <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^tinymce/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;tinymce.urls&#39;</span><span class="p">)),</span>
 <span class="p">]</span>
 </pre></div>
+
 
 <p>15 . 指定自己的认证系统
 <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-f42223b8a2bf17bc.png" /></p>
@@ -3765,6 +3770,7 @@ fdfs_storaged /etc/fdfs/storage.conf start
 sudo /usr/local/nginx/sbin/nginx
 </pre></div>
 
+
 <p><img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-bfe977d8c327ef07.png" />
 要加路径(上面的是对的,这个图片是没加路径时候的错误信息)
 <img alt="image.png" src="../011-天天生鲜项目简略上.image/14555448-b0573dc4f1d0b906.png" />
@@ -3889,11 +3895,11 @@ nginx一般是127. 以及自己的ip都可以进行访问,但是后面会生成�
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3922,6 +3928,10 @@ nginx一般是127. 以及自己的ip都可以进行访问,但是后面会生成�
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

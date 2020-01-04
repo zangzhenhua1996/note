@@ -3313,17 +3313,23 @@
                 
                 <blockquote>
 <h1 id="1-22">1. 创建一个2*2的数组<a class="headerlink" href="#1-22" title="Permanent link">&para;</a></h1>
-<p><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> <span class="c1">#导包</span>
+</blockquote>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#导包</span>
 <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1">#生成一个2*2的</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;a的类型: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;a数组的结果: </span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a的类型: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a数组的结果: </span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-执行的结果:
+
+
+<p>执行的结果:</p>
 <div class="codehilite"><pre><span></span><span class="n">a的类型</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="s1">&#39;&gt;</span>
 <span class="n">a数组的结果</span><span class="p">:</span> 
  <span class="p">[[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
  <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]]</span>
-</pre></div></p>
+</pre></div>
+
+
+<blockquote>
 <h1 id="2-randomuniform">2. random.uniform( ) 函数教程与实例解析<a class="headerlink" href="#2-randomuniform" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
@@ -3342,15 +3348,19 @@ random.uniform(x, y) 方法将随机生成一个实数，它在 [x,y] 范围�
 </li>
 </ul>
 <h3 id="21">2.1 语法<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
-<p><div class="codehilite"><pre><span></span><span class="c1"># _*_ coding: utf-8 _*_</span>
+<div class="codehilite"><pre><span></span><span class="c1"># _*_ coding: utf-8 _*_</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
-或
+
+
+<p>或</p>
 <div class="codehilite"><pre><span></span><span class="c1"># _*_ coding: utf-8 _*_</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">uniform</span>
 <span class="n">uniform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div></p>
+</pre></div>
+
+
 <blockquote>
 <blockquote>
 <p>提示：uniform 包含在random库中，需要使用时需导入random库。</p>
@@ -3361,32 +3371,40 @@ random.uniform(x, y) 方法将随机生成一个实数，它在 [x,y] 范围�
 y -- 随机数的最大值，不包含该值。
 返回一个浮点数</p>
 <h2 id="numpy">在numpy中也是可以进行调用的:<a class="headerlink" href="#numpy" title="Permanent link">&para;</a></h2>
-<p>例如:
+<p>例如:</p>
 <div class="codehilite"><pre><span></span><span class="c1">#2利用numpy的random生成一个随机数</span>
 <span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>  <span class="c1">#生成一个0-79的随机数</span>
 <span class="n">b</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="c1">#将生成的随机数转换成整数</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
-执行的结果:
+
+
+<p>执行的结果:</p>
 <div class="codehilite"><pre><span></span><span class="mi">55</span>
-</pre></div></p>
+</pre></div>
+
+
 <blockquote>
 <h1 id="3">3 计算数组某两行(列同理)对应的欧几里得距离<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
-<p><div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>  <span class="c1">#第一行</span>
-<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="c1">#第二行</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;第一行: &#39;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;第二行: &#39;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;两行对应列相减:&#39;</span> <span class="p">,</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
-<span class="n">ju_li</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;欧几里得距离为: &#39;</span><span class="p">,</span><span class="n">ju_li</span><span class="p">)</span>
-</pre></div>
-执行的结果如下:
-<div class="codehilite"><pre><span></span><span class="err">第一行</span><span class="p">:</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
-<span class="err">第二行</span><span class="p">:</span>  <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
-<span class="err">两行对应列相减</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="err">欧几里得距离为</span><span class="p">:</span>  <span class="mf">1.4142135623730951</span>
-</pre></div></p>
 </blockquote>
+<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>  <span class="c1">#第一行</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="c1">#第二行</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;第一行: &#39;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;第二行: &#39;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;两行对应列相减:&#39;</span> <span class="p">,</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
+<span class="n">ju_li</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;欧几里得距离为: &#39;</span><span class="p">,</span><span class="n">ju_li</span><span class="p">)</span>
+</pre></div>
+
+
+<p>执行的结果如下:</p>
+<div class="codehilite"><pre><span></span><span class="n">第一行</span><span class="p">:</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">第二行</span><span class="p">:</span>  <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">两行对应列相减</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">欧几里得距离为</span><span class="p">:</span>  <span class="mf">1.4142135623730951</span>
+</pre></div>
+
+
 <p>numpy中产生高斯分布的噪声</p>
 <p>一
 先看伟大的高斯分布（Gaussian Distribution）的概率密度函数（probability density function）： 
@@ -3400,19 +3418,21 @@ X = N ( μ, σ^2 )
 此外，我们通过公式可以看出，σ越大，x位置的概率值就越小，说明曲线越平缓（矮小）；而如果σ小，x的概率就大，说明曲线是瘦高的，概率分布比较集中。 </p>
 <p>如上图所示，红，蓝，橘黄色曲线的数学期望在0点，但蓝色的方差为0.2，所以其最为陡峭，而橘红色曲线的方差为5.0，证明其分布很广，由于曲线的概率总和为1，所以若其分布广，则高度必然会较低。绿色曲线由于其数学期望为－2，所以，在其他三条曲线的左侧。</p>
 <p>二
-对应于numpy中：
-<div class="codehilite"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+对应于numpy中：</p>
+<div class="codehilite"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
-<span class="err">参数的意义为：</span>
+<span class="n">参数的意义为</span><span class="err">：</span>
 
 <span class="n">loc</span><span class="err">：</span><span class="nb">float</span>
-    <span class="err">此概率分布的均值（对应着整个分布的中心</span><span class="n">centre</span><span class="err">）</span>
+    <span class="n">此概率分布的均值</span><span class="err">（</span><span class="n">对应着整个分布的中心centre</span><span class="err">）</span>
 <span class="n">scale</span><span class="err">：</span><span class="nb">float</span>
-    <span class="err">此概率分布的标准差（对应于分布的宽度，</span><span class="n">scale越大越矮胖</span><span class="err">，</span><span class="n">scale越小</span><span class="err">，越瘦高）</span>
+    <span class="n">此概率分布的标准差</span><span class="err">（</span><span class="n">对应于分布的宽度</span><span class="err">，</span><span class="n">scale越大越矮胖</span><span class="err">，</span><span class="n">scale越小</span><span class="err">，</span><span class="n">越瘦高</span><span class="err">）</span>
 <span class="n">size</span><span class="err">：</span><span class="nb">int</span> <span class="ow">or</span> <span class="nb">tuple</span> <span class="n">of</span> <span class="n">ints</span>
-    <span class="err">输出的</span><span class="n">shape</span><span class="err">，默认为</span><span class="bp">None</span><span class="err">，只输出一个值</span>
+    <span class="n">输出的shape</span><span class="err">，</span><span class="n">默认为None</span><span class="err">，</span><span class="n">只输出一个值</span>
 </pre></div>
-我们更经常会用到的<code>np.random.rand(size)</code>所谓标准正态分布（μ=0,σ=1），对应于<code>np.random.normal(loc=0, scale=1, size)</code>。</p>
+
+
+<p>我们更经常会用到的<code>np.random.rand(size)</code>所谓标准正态分布（μ=0,σ=1），对应于<code>np.random.normal(loc=0, scale=1, size)</code>。</p>
                 
                   
                 
@@ -3469,11 +3489,11 @@ X = N ( μ, σ^2 )
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
+        <!-- powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs</a> -->
       </div>
       
     </div>
@@ -3502,6 +3522,10 @@ X = N ( μ, σ^2 )
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>
