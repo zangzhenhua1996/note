@@ -7,7 +7,7 @@ Created on Sat Jan  4 12:28:06 2020
 
 
 import os
-path = r'力扣刷题'
+path = r'mysql8-0使用'
 list1=[]
 for filename in os.listdir(path):
     if filename.endswith(".md"):
@@ -16,6 +16,6 @@ for filename in os.listdir(path):
 data = list1
 data.reverse()
 for line in data:
-    line = '力扣刷题'+'/'+line
+    line = 'mysql8-0使用'+'/'+line
     with open(line,'w',encoding="utf-8") as f:
         f.write(line)

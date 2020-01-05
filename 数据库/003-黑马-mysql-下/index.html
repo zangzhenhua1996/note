@@ -1,0 +1,5525 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/数据库/003-黑马-mysql-下/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>003-黑马-mysql-下 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                003-黑马-mysql-下
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python-web/015-python项目离线部署/" class="md-tabs__link">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../数据结构与算法Python/09-图_problem-solving-with-algorithms-and-data-structure-usingpython-中文/" class="md-tabs__link">
+          python 数据结构与算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../机器学习/013 进入tensorboard/" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../力扣刷题/066-质因数/" class="md-tabs__link">
+          每天一道力扣题
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../java学习/029-IntelliJ-IDEA-2019-快捷键终极大全/" class="md-tabs__link">
+          java学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../006-mysql的一些底层原理/" class="md-tabs__link md-tabs__link--active">
+          数据库
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" class="md-tabs__link">
+          windows10系统使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" title="067 Pycharm 运行程序后如何 如何查看变量的值" class="md-nav__link">
+      067 Pycharm 运行程序后如何 如何查看变量的值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/066-spyder升级4.0全新版本/" title="066 spyder升级4.0全新版本" class="md-nav__link">
+      066 spyder升级4.0全新版本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/065-Jupyter Notebook 远程访问配置/" title="065 Jupyter_Notebook 远程访问配置" class="md-nav__link">
+      065 Jupyter_Notebook 远程访问配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/015-python项目离线部署/" title="015 python项目离线部署" class="md-nav__link">
+      015 python项目离线部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      python 数据结构与算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python 数据结构与算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/09-图_problem-solving-with-algorithms-and-data-structure-usingpython-中文/" title="09-图_problem-solving-with-algorithms-and-data-structure-usingpython-中文" class="md-nav__link">
+      09-图_problem-solving-with-algorithms-and-data-structure-usingpython-中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/08-图-基本概念及python实现/" title="08-图-基本概念及python实现" class="md-nav__link">
+      08-图-基本概念及python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/07-树与树算法/" title="07-树与树算法" class="md-nav__link">
+      07-树与树算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/06-排序与搜索-数据结构与算法（Python）/" title="06-排序与搜索-数据结构与算法（Python）" class="md-nav__link">
+      06-排序与搜索-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/05-队列-数据结构与算法（Python）/" title="05-队列-数据结构与算法（Python）" class="md-nav__link">
+      05-队列-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/04-栈-数据结构与算法（Python）/" title="04-栈-数据结构与算法（Python）" class="md-nav__link">
+      04-栈-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/03-链表-数据结构与算法（Python）/" title="03-链表-数据结构与算法（Python）" class="md-nav__link">
+      03-链表-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/02-顺序表-数据结构与算法（Python）/" title="02-顺序表-数据结构与算法（Python）" class="md-nav__link">
+      02-顺序表-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/01-引入概念-数据结构与算法（Python）/" title="01-引入概念-数据结构与算法（Python）" class="md-nav__link">
+      01-引入概念-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/00-数据结构与算法（Python）/" title="00-数据结构与算法（Python）" class="md-nav__link">
+      00-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/013 进入tensorboard/" title="013 进入tensorboard" class="md-nav__link">
+      013 进入tensorboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/012-Keras使用tensorboard训练过程可视化踩过的坑/" title="012-Keras使用tensorboard训练过程可视化踩过的坑" class="md-nav__link">
+      012-Keras使用tensorboard训练过程可视化踩过的坑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/011-关于交叉验证与偏差-方差的一连串理解/" title="011-关于交叉验证与偏差-方差的一连串理解" class="md-nav__link">
+      011-关于交叉验证与偏差-方差的一连串理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/010-统计学习方法--统计学习方法概论要点加代码/" title="010-统计学习方法--统计学习方法概论要点加代码" class="md-nav__link">
+      010-统计学习方法--统计学习方法概论要点加代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/009-统计学习方法--统计学习方法概论详细/" title="009-统计学习方法--统计学习方法概论详细" class="md-nav__link">
+      009-统计学习方法--统计学习方法概论详细
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线/" title="008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线" class="md-nav__link">
+      008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/007-机器学习中的维数灾难/" title="007-机器学习中的维数灾难" class="md-nav__link">
+      007-机器学习中的维数灾难
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/006-sklearn模型的保存加载/" title="006-sklearn模型的保存加载" class="md-nav__link">
+      006-sklearn模型的保存加载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/005-sklearn之交叉验证/" title="005-sklearn之交叉验证" class="md-nav__link">
+      005-sklearn之交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/004-sklearn：特征提取，常用模型，交叉验证/" title="004-sklearn：特征提取，常用模型，交叉验证" class="md-nav__link">
+      004-sklearn：特征提取，常用模型，交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据/" title="003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据" class="md-nav__link">
+      003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/002-预处理数据的方法总结（使用sklearn-preprocessing）/" title="002-预处理数据的方法总结（使用sklearn-preprocessing）" class="md-nav__link">
+      002-预处理数据的方法总结（使用sklearn-preprocessing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/001-sklearn-安装，获取数据，数据预处理/" title="001-sklearn-安装，获取数据，数据预处理" class="md-nav__link">
+      001-sklearn-安装，获取数据，数据预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      每天一道力扣题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        每天一道力扣题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/066-质因数/" title="066-质因数" class="md-nav__link">
+      066-质因数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/065-完全数的求解/" title="065-完全数的求解" class="md-nav__link">
+      065-完全数的求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/064-刷题过程中慎用-[]-is-None/" title="064-刷题过程中慎用-[]-is-None" class="md-nav__link">
+      064-刷题过程中慎用-[]-is-None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/063-LRU缓存算法的python实现/" title="063-LRU缓存算法的python实现" class="md-nav__link">
+      063-LRU缓存算法的python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/062-力扣刷题-344--反转字符串/" title="062-力扣刷题-344--反转字符串" class="md-nav__link">
+      062-力扣刷题-344--反转字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/061-力扣刷题-23--合并K个排序链表/" title="061-力扣刷题-23--合并K个排序链表" class="md-nav__link">
+      061-力扣刷题-23--合并K个排序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/060-力扣刷题-232--用栈实现队列/" title="060-力扣刷题-232--用栈实现队列" class="md-nav__link">
+      060-力扣刷题-232--用栈实现队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/059-力扣刷题-102--二叉树的层次遍历/" title="059-力扣刷题-102--二叉树的层次遍历" class="md-nav__link">
+      059-力扣刷题-102--二叉树的层次遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/058-力扣刷题-226--翻转二叉树/" title="058-力扣刷题-226--翻转二叉树" class="md-nav__link">
+      058-力扣刷题-226--翻转二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/057-力扣刷题-237删除链表中的节点/" title="057-力扣刷题-237删除链表中的节点" class="md-nav__link">
+      057-力扣刷题-237删除链表中的节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/056-力扣刷题-206--反转链表/" title="056-力扣刷题-206--反转链表" class="md-nav__link">
+      056-力扣刷题-206--反转链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/055-力扣刷题-1004--最大连续1的个数-III/" title="055-力扣刷题-1004--最大连续1的个数-III" class="md-nav__link">
+      055-力扣刷题-1004--最大连续1的个数-III
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/054-小球反弹的总路程/" title="054-小球反弹的总路程" class="md-nav__link">
+      054-小球反弹的总路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/053-力扣刷题-235--二叉搜索树的最近公共祖先/" title="053-力扣刷题-235--二叉搜索树的最近公共祖先" class="md-nav__link">
+      053-力扣刷题-235--二叉搜索树的最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/052-力扣刷题-162--寻找峰值/" title="052-力扣刷题-162--寻找峰值" class="md-nav__link">
+      052-力扣刷题-162--寻找峰值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/051-力扣刷题-136--只出现一次的数字/" title="051-力扣刷题-136--只出现一次的数字" class="md-nav__link">
+      051-力扣刷题-136--只出现一次的数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/050-二维生物的旅行-754--到达终点数字/" title="050-二维生物的旅行-754--到达终点数字" class="md-nav__link">
+      050-二维生物的旅行-754--到达终点数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/049--力扣刷题459--重复的子字符串-pin2字符串构造/" title="049--力扣刷题459--重复的子字符串-pin2字符串构造" class="md-nav__link">
+      049--力扣刷题459--重复的子字符串-pin2字符串构造
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/048-pin题目1/" title="048-pin题目1" class="md-nav__link">
+      048-pin题目1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/047-力扣刷题-845--数组中的最长山脉/" title="047-力扣刷题-845--数组中的最长山脉" class="md-nav__link">
+      047-力扣刷题-845--数组中的最长山脉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/046-力扣刷题-125--验证回文串/" title="046-力扣刷题-125--验证回文串" class="md-nav__link">
+      046-力扣刷题-125--验证回文串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/045-力扣刷题-122--买卖股票的最佳时机-II/" title="045-力扣刷题-122--买卖股票的最佳时机-II" class="md-nav__link">
+      045-力扣刷题-122--买卖股票的最佳时机-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/044-力扣刷题-119--杨辉三角-II/" title="044-力扣刷题-119--杨辉三角-II" class="md-nav__link">
+      044-力扣刷题-119--杨辉三角-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/043-力扣刷题-121--买卖股票的最佳时机/" title="043-力扣刷题-121--买卖股票的最佳时机" class="md-nav__link">
+      043-力扣刷题-121--买卖股票的最佳时机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/042-力扣刷题-8--字符串转换整数-(atoi)/" title="042-力扣刷题-8--字符串转换整数-(atoi)" class="md-nav__link">
+      042-力扣刷题-8--字符串转换整数-(atoi)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/041-力扣刷题-118--杨辉三角/" title="041-力扣刷题-118--杨辉三角" class="md-nav__link">
+      041-力扣刷题-118--杨辉三角
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/040-力扣刷题-535--TinyURL-的加密与解密/" title="040-力扣刷题-535--TinyURL-的加密与解密" class="md-nav__link">
+      040-力扣刷题-535--TinyURL-的加密与解密
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/039-力扣刷题-112--路径总和/" title="039-力扣刷题-112--路径总和" class="md-nav__link">
+      039-力扣刷题-112--路径总和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/038-力扣刷题-98--验证二叉搜索树/" title="038-力扣刷题-98--验证二叉搜索树" class="md-nav__link">
+      038-力扣刷题-98--验证二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/037-力扣刷题-110--平衡二叉树--重点进行理解/" title="037-力扣刷题-110--平衡二叉树--重点进行理解" class="md-nav__link">
+      037-力扣刷题-110--平衡二叉树--重点进行理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/036-力扣刷题-166--分数到小数/" title="036-力扣刷题-166--分数到小数" class="md-nav__link">
+      036-力扣刷题-166--分数到小数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/035-字节跳动题目-小球往返路程/" title="035-字节跳动题目-小球往返路程" class="md-nav__link">
+      035-字节跳动题目-小球往返路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/034-力扣刷题-88--合并两个有序数组/" title="034-力扣刷题-88--合并两个有序数组" class="md-nav__link">
+      034-力扣刷题-88--合并两个有序数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/033-力扣刷题-70--爬楼梯/" title="033-力扣刷题-70--爬楼梯" class="md-nav__link">
+      033-力扣刷题-70--爬楼梯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/032-力扣刷题-83--删除排序链表中的重复元素/" title="032-力扣刷题-83--删除排序链表中的重复元素" class="md-nav__link">
+      032-力扣刷题-83--删除排序链表中的重复元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/031-力扣刷题-101--对称二叉树/" title="031-力扣刷题-101--对称二叉树" class="md-nav__link">
+      031-力扣刷题-101--对称二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/030-力扣刷题-111--二叉树的最小深度/" title="030-力扣刷题-111--二叉树的最小深度" class="md-nav__link">
+      030-力扣刷题-111--二叉树的最小深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/029-力扣刷题-104--二叉树的最大深度/" title="029-力扣刷题-104--二叉树的最大深度" class="md-nav__link">
+      029-力扣刷题-104--二叉树的最大深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/028-力扣刷题107--二叉树的层次遍历-II/" title="028-力扣刷题107--二叉树的层次遍历-II" class="md-nav__link">
+      028-力扣刷题107--二叉树的层次遍历-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/027-字节跳动笔试题-循环链表实现约瑟夫环/" title="027-字节跳动笔试题-循环链表实现约瑟夫环" class="md-nav__link">
+      027-字节跳动笔试题-循环链表实现约瑟夫环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/026-力扣刷题-108--将有序数组转换为二叉搜索树/" title="026-力扣刷题-108--将有序数组转换为二叉搜索树" class="md-nav__link">
+      026-力扣刷题-108--将有序数组转换为二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/025-力扣刷题-100-相同的树/" title="025-力扣刷题-100-相同的树" class="md-nav__link">
+      025-力扣刷题-100-相同的树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/024-力扣刷题-66--加一/" title="024-力扣刷题-66--加一" class="md-nav__link">
+      024-力扣刷题-66--加一
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/023-力扣刷题-69--x-的平方根/" title="023-力扣刷题-69--x-的平方根" class="md-nav__link">
+      023-力扣刷题-69--x-的平方根
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/022-力扣刷题-二进制求和/" title="022-力扣刷题-二进制求和" class="md-nav__link">
+      022-力扣刷题-二进制求和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/021-力扣刷题151--翻转字符串里的单词/" title="021-力扣刷题151--翻转字符串里的单词" class="md-nav__link">
+      021-力扣刷题151--翻转字符串里的单词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/020-力扣刷题-58--最后一个单词的长度/" title="020-力扣刷题-58--最后一个单词的长度" class="md-nav__link">
+      020-力扣刷题-58--最后一个单词的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/019-力扣刷题53--最大子序和/" title="019-力扣刷题53--最大子序和" class="md-nav__link">
+      019-力扣刷题53--最大子序和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/018-力扣刷题-38--报数/" title="018-力扣刷题-38--报数" class="md-nav__link">
+      018-力扣刷题-38--报数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/017-46--全排列/" title="017-46--全排列" class="md-nav__link">
+      017-46--全排列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/016-力扣刷题873--最长的斐波那契子序列的长度/" title="016-力扣刷题873--最长的斐波那契子序列的长度" class="md-nav__link">
+      016-力扣刷题873--最长的斐波那契子序列的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/015-力扣刷题35--搜索插入位置/" title="015-力扣刷题35--搜索插入位置" class="md-nav__link">
+      015-力扣刷题35--搜索插入位置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/014-力扣刷题9--回文数/" title="014-力扣刷题9--回文数" class="md-nav__link">
+      014-力扣刷题9--回文数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/013-力扣刷题7--整数反转/" title="013-力扣刷题7--整数反转" class="md-nav__link">
+      013-力扣刷题7--整数反转
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/012-力扣刷题14--最长公共前缀/" title="012-力扣刷题14--最长公共前缀" class="md-nav__link">
+      012-力扣刷题14--最长公共前缀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/011-力扣刷题21--合并两个有序链表/" title="011-力扣刷题21--合并两个有序链表" class="md-nav__link">
+      011-力扣刷题21--合并两个有序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/010-力扣刷题27--移除元素/" title="010-力扣刷题27--移除元素" class="md-nav__link">
+      010-力扣刷题27--移除元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/009-力扣刷题28--实现strStr()/" title="009-力扣刷题28--实现strStr()" class="md-nav__link">
+      009-力扣刷题28--实现strStr()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/008-力扣刷题20--有效的括号/" title="008-力扣刷题20--有效的括号" class="md-nav__link">
+      008-力扣刷题20--有效的括号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/007-力扣刷题26--删除排序数组中的重复项/" title="007-力扣刷题26--删除排序数组中的重复项" class="md-nav__link">
+      007-力扣刷题26--删除排序数组中的重复项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/006-力扣刷题22--括号生成/" title="006-力扣刷题22--括号生成" class="md-nav__link">
+      006-力扣刷题22--括号生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/005-力扣刷题13--罗马数字转整数/" title="005-力扣刷题13--罗马数字转整数" class="md-nav__link">
+      005-力扣刷题13--罗马数字转整数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/004-力扣刷题4--寻找两个有序数组的中位数/" title="004-力扣刷题4--寻找两个有序数组的中位数" class="md-nav__link">
+      004-力扣刷题4--寻找两个有序数组的中位数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/003-力扣刷题3不含有重复字符的-最长子串-的长度/" title="003-力扣刷题3不含有重复字符的-最长子串-的长度" class="md-nav__link">
+      003-力扣刷题3不含有重复字符的-最长子串-的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/002-力扣刷题2-两数相加/" title="002-力扣刷题2-两数相加" class="md-nav__link">
+      002-力扣刷题2-两数相加
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/001-力扣刷题1--两数之和/" title="001-力扣刷题1--两数之和" class="md-nav__link">
+      001-力扣刷题1--两数之和
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      java学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        java学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/029-IntelliJ-IDEA-2019-快捷键终极大全/" title="029-IntelliJ-IDEA-2019-快捷键终极大全" class="md-nav__link">
+      029-IntelliJ-IDEA-2019-快捷键终极大全
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/028-day27-反射/" title="028-day27-反射" class="md-nav__link">
+      028-day27-反射
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/027-day26-网络/" title="027-day26-网络" class="md-nav__link">
+      027-day26-网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/026-day25-多线程2/" title="026-day25-多线程2" class="md-nav__link">
+      026-day25-多线程2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/025-day24-多线程1/" title="025-day24-多线程1" class="md-nav__link">
+      025-day24-多线程1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/024-day22数据流/" title="024-day22数据流" class="md-nav__link">
+      024-day22数据流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/023-day21--每个讲解到最后的其实才是最需要记住的/" title="023-day21--每个讲解到最后的其实才是最需要记住的" class="md-nav__link">
+      023-day21--每个讲解到最后的其实才是最需要记住的
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/022-day20-递归,IO流/" title="022-day20-递归,IO流" class="md-nav__link">
+      022-day20-递归,IO流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/021-day19---异常----File----递归----字节流----转换流----字符流----其他流/" title="021-day19---异常----File----递归----字节流----转换流----字符流----其他流" class="md-nav__link">
+      021-day19---异常----File----递归----字节流----转换流----字符流----其他流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/020-day18-hashmap/" title="020-day18-hashmap" class="md-nav__link">
+      020-day18-hashmap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/019-day17--hashset/" title="019-day17--hashset" class="md-nav__link">
+      019-day17--hashset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/018-day16arraylist使用/" title="018-day16arraylist使用" class="md-nav__link">
+      018-day16arraylist使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/017-Eclipse-常用快捷键及使用技巧/" title="017-Eclipse-常用快捷键及使用技巧" class="md-nav__link">
+      017-Eclipse-常用快捷键及使用技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/016-day15-集合类/" title="016-day15-集合类" class="md-nav__link">
+      016-day15-集合类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/015-day14-正则表达式概述及基本使用/" title="015-day14-正则表达式概述及基本使用" class="md-nav__link">
+      015-day14-正则表达式概述及基本使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/014-day13-StringBuffer类,数组高级以及Arrays(掌握),(3)Arrays工具类/" title="014-day13-StringBuffer类,数组高级以及Arrays(掌握),(3)Arrays工具类" class="md-nav__link">
+      014-day13-StringBuffer类,数组高级以及Arrays(掌握),(3)Arrays工具类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/013-day12-API概述,object类,scanner类,string类/" title="013-day12-API概述,object类,scanner类,string类" class="md-nav__link">
+      013-day12-API概述,object类,scanner类,string类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/012-如何查看jdk的源码/" title="012-如何查看jdk的源码" class="md-nav__link">
+      012-如何查看jdk的源码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/011-day11java使用eclipse/" title="011-day11java使用eclipse" class="md-nav__link">
+      011-day11java使用eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/010-day10笔记--包,内部类/" title="010-day10笔记--包,内部类" class="md-nav__link">
+      010-day10笔记--包,内部类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/009-day09多态/" title="009-day09多态" class="md-nav__link">
+      009-day09多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/008-day-08-代码块,继承,final/" title="008-day-08-代码块,继承,final" class="md-nav__link">
+      008-day-08-代码块,继承,final
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/007-day-07-构造方法,创建对象的步骤,练习,static,文档说明书的制作与使用/" title="007-day-07-构造方法,创建对象的步骤,练习,static,文档说明书的制作与使用" class="md-nav__link">
+      007-day-07-构造方法,创建对象的步骤,练习,static,文档说明书的制作与使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/006-day06-类的定义及使用,面向对象内存图,匿名对象,封装,this/" title="006-day06-类的定义及使用,面向对象内存图,匿名对象,封装,this" class="md-nav__link">
+      006-day06-类的定义及使用,面向对象内存图,匿名对象,封装,this
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/005-day05,一维数组,二维数组/" title="005-day05,一维数组,二维数组" class="md-nav__link">
+      005-day05,一维数组,二维数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/004-day04,for循环,while循环,do_while循环,循环嵌套,控制语句,方法/" title="004-day04,for循环,while循环,do_while循环,循环嵌套,控制语句,方法" class="md-nav__link">
+      004-day04,for循环,while循环,do_while循环,循环嵌套,控制语句,方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/003-day03,逻辑运算符,位运算符,三元运算符,顺序结构,选择结构if,switch/" title="003-day03,逻辑运算符,位运算符,三元运算符,顺序结构,选择结构if,switch" class="md-nav__link">
+      003-day03,逻辑运算符,位运算符,三元运算符,顺序结构,选择结构if,switch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/002-day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符/" title="002-day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符" class="md-nav__link">
+      002-day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/001-day01,java初探以及说明/" title="001-day01,java初探以及说明" class="md-nav__link">
+      001-day01,java初探以及说明
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../006-mysql的一些底层原理/" title="006-mysql的一些底层原理" class="md-nav__link">
+      006-mysql的一些底层原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../005-ubuntu安装mysql没有让我设置密码/" title="005-ubuntu安装mysql没有让我设置密码" class="md-nav__link">
+      005-ubuntu安装mysql没有让我设置密码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../004-mysql-高级/" title="004-mysql-高级" class="md-nav__link">
+      004-mysql-高级
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        003-黑马-mysql-下
+      </label>
+    
+    <a href="./" title="003-黑马-mysql-下" class="md-nav__link md-nav__link--active">
+      003-黑马-mysql-下
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1、实体完整性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11primary-key" class="md-nav__link">
+    1.1主键约束（primary key）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12unique" class="md-nav__link">
+    1.2唯一约束(unique)：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    特点：数据不能重复。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13auto_increment" class="md-nav__link">
+    1.3自动增长列(auto_increment)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlserver-identity-oracle-sequence" class="md-nav__link">
+    sqlserver数据库 (identity)  oracle数据库( sequence)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2、域完整性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 数据类型:（数值类型、日期类型、字符串类型）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-not-null" class="md-nav__link">
+    1.2 非空约束：not null
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-default" class="md-nav__link">
+    1.3 默认值约束 default
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3、引用完整性（参照完整性）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4、　表与表之间的关系
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../002-黑马mysql-上/" title="002-黑马mysql-上" class="md-nav__link">
+      002-黑马mysql-上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../001-mysql的使用/" title="001-mysql的使用" class="md-nav__link">
+      001-mysql的使用
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      windows10系统使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        windows10系统使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" title="022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装" class="md-nav__link">
+      022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/021win系统新增新建右键Markdown文件及默认UTF-8编码格式/" title="021win系统新增新建右键Markdown文件及默认UTF-8编码格式" class="md-nav__link">
+      021win系统新增新建右键Markdown文件及默认UTF-8编码格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/020-删除关机等按钮/" title="020-删除关机等按钮" class="md-nav__link">
+      020-删除关机等按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/019-windows1809-系统最近的更新出现了bug/" title="019-windows1809-系统最近的更新出现了bug" class="md-nav__link">
+      019-windows1809-系统最近的更新出现了bug
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/018--win10卸载自带的应用/" title="018--win10卸载自带的应用" class="md-nav__link">
+      018--win10卸载自带的应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/017-笔记本软件/" title="017-笔记本软件" class="md-nav__link">
+      017-笔记本软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/016-Java添加环境变量/" title="016-Java添加环境变量" class="md-nav__link">
+      016-Java添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/015-anaconda-添加环境变量/" title="015-anaconda-添加环境变量" class="md-nav__link">
+      015-anaconda-添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）/" title="014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）" class="md-nav__link">
+      014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/013-win10取消应用弹框/" title="013-win10取消应用弹框" class="md-nav__link">
+      013-win10取消应用弹框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/012--win10系统怎么禁用defender/" title="012--win10系统怎么禁用defender" class="md-nav__link">
+      012--win10系统怎么禁用defender
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b/" title="011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b" class="md-nav__link">
+      011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/010-Axmath破解安装使用/" title="010-Axmath破解安装使用" class="md-nav__link">
+      010-Axmath破解安装使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式/" title="007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式" class="md-nav__link">
+      007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/006-picgo图床使用/" title="006-picgo图床使用" class="md-nav__link">
+      006-picgo图床使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/005-win10开机提示用户名和密码不正确的解决办法/" title="005-win10开机提示用户名和密码不正确的解决办法" class="md-nav__link">
+      005-win10开机提示用户名和密码不正确的解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/004-windows下安装pandoc并通过Typora导出pdf和word/" title="004-windows下安装pandoc并通过Typora导出pdf和word" class="md-nav__link">
+      004-windows下安装pandoc并通过Typora导出pdf和word
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/002-几何画板迷你增强版/" title="002-几何画板迷你增强版" class="md-nav__link">
+      002-几何画板迷你增强版
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/001-开机启动项的存储位置/" title="001-开机启动项的存储位置" class="md-nav__link">
+      001-开机启动项的存储位置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1、实体完整性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11primary-key" class="md-nav__link">
+    1.1主键约束（primary key）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12unique" class="md-nav__link">
+    1.2唯一约束(unique)：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    特点：数据不能重复。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13auto_increment" class="md-nav__link">
+    1.3自动增长列(auto_increment)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlserver-identity-oracle-sequence" class="md-nav__link">
+    sqlserver数据库 (identity)  oracle数据库( sequence)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2、域完整性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 数据类型:（数值类型、日期类型、字符串类型）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-not-null" class="md-nav__link">
+    1.2 非空约束：not null
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-default" class="md-nav__link">
+    1.3 默认值约束 default
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3、引用完整性（参照完整性）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4、　表与表之间的关系
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">五、数据的完整性<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>作用：保证用户输入的数据保存到数据库中是正确的。</p>
+<p>确保数据的完整性 = 在创建表时给表中添加约束</p>
+<p>完整性的分类：</p>
+<ul>
+<li>实体完整性:</li>
+<li>域完整性:</li>
+<li>引用完整性:</li>
+</ul>
+<h2 id="1">1、实体完整性<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>实体：即表中的一行(一条记录)代表一个实体（entity）</p>
+<p>实体完整性的作用：标识每一行数据不重复。</p>
+<p><strong>约束类型：</strong> <strong>主键约束（primary key)</strong>  <strong>唯一约束(unique)</strong>  <strong>自动增长列(auto_increment)</strong></p>
+<h3 id="11primary-key">1.1主键约束（primary key）<a class="headerlink" href="#11primary-key" title="Permanent link">&para;</a></h3>
+<p>注：每个表中要有一个主键。</p>
+<p>特点：数据唯一，且不能为null</p>
+<p>例：</p>
+<p>第一种添加方式：</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+
+<span class="n">id</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+
+<span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="p">);</span>
+</pre></div>
+
+
+<p>第二种添加方式：此种方式优势在于，可以创建联合主键</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+
+<span class="n">id</span> <span class="nb">int</span><span class="p">,</span>
+
+<span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+
+<span class="k">primary</span> <span class="k">key</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+
+<span class="p">);</span>  <span class="o">#</span><span class="err">主键直接方法</span><span class="k">primary</span> <span class="k">key</span><span class="p">()</span><span class="err">的函数中</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+
+<span class="n">classid</span> <span class="nb">int</span><span class="p">,</span>
+
+<span class="n">stuid</span> <span class="nb">int</span><span class="p">,</span>
+
+<span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+
+<span class="k">primary</span> <span class="k">key</span><span class="p">(</span><span class="n">classid</span><span class="err">，</span><span class="n">stuid</span><span class="p">)</span>
+
+<span class="p">);</span>  <span class="o">#</span><span class="err">这里就可以使用联合主键</span><span class="p">(</span><span class="err">不可分割</span><span class="p">)</span><span class="err">类似于二进制</span>
+</pre></div>
+
+
+<p>第三种添加方式：</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">int</span><span class="p">,</span>
+<span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student</span>  <span class="k">ADD</span>  <span class="k">PRIMARY</span>  <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</pre></div>
+
+
+<h3 id="12unique">1.2唯一约束(unique)：<a class="headerlink" href="#12unique" title="Permanent link">&para;</a></h3>
+<h3 id="_2">特点：数据不能重复。<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+
+<span class="n">Id</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+
+<span class="n">Name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">unique</span>
+
+<span class="p">);</span>
+</pre></div>
+
+
+<h3 id="13auto_increment">1.3自动增长列(auto_increment)<a class="headerlink" href="#13auto_increment" title="Permanent link">&para;</a></h3>
+<h3 id="sqlserver-identity-oracle-sequence">sqlserver数据库 (identity)  oracle数据库( sequence)<a class="headerlink" href="#sqlserver-identity-oracle-sequence" title="Permanent link">&para;</a></h3>
+<p>给主键添加自动增长的数值，列只能是整数类型</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;tom&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h2 id="2">2、域完整性<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>域完整性的作用：限制此单元格的数据正确，不对照此列的其它单元格比较</p>
+<p>域代表当前单元格</p>
+<p>域完整性约束：数据类型 非空约束（not null） 默认值约束(default)  </p>
+<p>​                               check约束（mysql不支持）check(sex='男' or  sex='女')</p>
+<h3 id="11">1.1 数据类型:（数值类型、日期类型、字符串类型）<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<h3 id="12-not-null">1.2 非空约束：not null<a class="headerlink" href="#12-not-null" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">Sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+
+
+<h3 id="13-default">1.3 默认值约束 default<a class="headerlink" href="#13-default" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">Sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">&#39;男&#39;</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span><span class="s1">&#39;女&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;jerry&#39;</span><span class="p">,</span><span class="k">DEFAULT</span><span class="p">);</span>
+</pre></div>
+
+
+<h2 id="3">3、引用完整性（参照完整性）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>外键约束：FOREIGN KEY </p>
+<p>例：</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 外键约束：FOREIGN KEY </span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">stu1</span><span class="p">(</span>
+<span class="n">sid</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">&#39;男&#39;</span>
+<span class="p">);</span>
+<span class="c1">-- CONSTRAINT fk_stu1_score1_sid FOREIGN KEY (sid) REFERENCES student(id)</span>
+<span class="c1">-- 一个约束,约束的名字叫fk_stu1_score1_sid 是外键约束sid 参照学生表stu1的sid</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">score1</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">score</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">sid</span> <span class="nb">INT</span> <span class="p">,</span> <span class="c1">-- 外键列的数据类型一定要与主键的类型一致</span>
+<span class="k">CONSTRAINT</span> <span class="n">fk_stu1_score1_sid</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">sid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">stu1</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+
+
+<p>第二种添加外键方式。</p>
+<div class="codehilite"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">score1</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="n">fk_stu1_score1_sid</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">stu1</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-b1d8346530590f06.png" />
+整个的sql语句</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 数据完整性</span>
+<span class="c1">-- 1.1主键约束（primary key） PRIMARY KEY对id进行约束,id就是主键</span>
+<span class="c1">-- 第一种添加方式：</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+
+<span class="n">id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="p">);</span>
+<span class="c1">-- 删除表</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student1</span><span class="p">;</span>
+
+<span class="c1">-- 第二种创建主键的方式</span>
+<span class="c1">-- 主键写到函数中</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">);</span>  <span class="o">#</span><span class="err">主键直接方法</span><span class="k">primary</span> <span class="k">key</span><span class="p">()</span><span class="err">的函数中</span>
+
+<span class="c1">-- 使用联合主键 #这里就可以使用联合主键(不可分割)类似于二进制</span>
+<span class="n">USE</span> <span class="n">mydb1</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">classid</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">stuid</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">classid</span><span class="p">,</span><span class="n">stuid</span><span class="p">)</span>
+<span class="p">);</span> 
+
+<span class="c1">-- 第三种创建主键的方式</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="c1">-- 先创建再修改</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student</span>  <span class="k">ADD</span>  <span class="k">PRIMARY</span>  <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span> <span class="o">#</span><span class="err">添加主键约束</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+
+<span class="c1">-- 1.2唯一约束(unique)： </span>
+<span class="c1">-- 特点：数据不能重复。</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">UNIQUE</span>
+<span class="p">);</span>  <span class="o">#</span><span class="err">可以有空值</span><span class="p">,</span><span class="err">但是不能有多个</span><span class="p">,</span><span class="err">但是不能重复</span>
+
+
+<span class="c1">-- 1.3自动增长列(auto_increment) (删除的数据依旧会占着这个id,新插入的只会自动增长) </span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;tom&#39;</span><span class="p">);</span>
+
+<span class="c1">-- 2、域完整性</span>
+<span class="c1">-- 1.2 非空约束：not null</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">Sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">);</span>
+
+<span class="c1">-- 1.3 默认值约束 default</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">Sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">&#39;男&#39;</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span><span class="s1">&#39;女&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;jerry&#39;</span><span class="p">,</span><span class="k">DEFAULT</span><span class="p">);</span> <span class="o">#</span><span class="err">默认值要加上</span><span class="k">default</span>
+
+
+<span class="c1">-- 3、引用完整性（参照完整性）</span>
+<span class="c1">-- 外键约束：FOREIGN KEY </span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">stu1</span><span class="p">(</span>
+<span class="n">sid</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">&#39;男&#39;</span>
+<span class="p">);</span>
+<span class="c1">-- CONSTRAINT fk_stu1_score1_sid FOREIGN KEY (sid) REFERENCES student(id)</span>
+<span class="c1">-- 一个约束,约束的名字叫fk_stu1_score1_sid 是外键约束sid 参照学生表stu1的sid</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">score1</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">score</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">sid</span> <span class="nb">INT</span> <span class="p">,</span> <span class="c1">-- 外键列的数据类型一定要与主键的类型一致</span>
+<span class="k">CONSTRAINT</span> <span class="n">fk_stu1_score1_sid</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">sid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">stu1</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+<span class="p">);</span>
+
+
+
+<span class="c1">-- 4、　表与表之间的关系</span>
+<span class="err">﻿</span><span class="c1">-- 学生表先创建主表</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+    <span class="n">stuid</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">stuname</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 分数表</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">score</span><span class="p">(</span>
+    <span class="n">stuid</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">score</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">courseid</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="k">CONSTRAINT</span> <span class="n">fk_stu_sco</span>  <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">stuid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">student</span><span class="p">(</span><span class="n">stuid</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- DROP TABLE score;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1001&#39;</span><span class="p">,</span><span class="s1">&#39;张三峰&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1002&#39;</span><span class="p">,</span><span class="s1">&#39;张无忌&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1003&#39;</span><span class="p">,</span><span class="s1">&#39;王尼玛&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1004&#39;</span><span class="p">,</span><span class="s1">&#39;王老五&#39;</span><span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">score</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1001&#39;</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1002&#39;</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1002&#39;</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1003&#39;</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1003&#39;</span><span class="p">,</span><span class="mi">57</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span><span class="p">,</span><span class="n">score</span> <span class="k">c</span> <span class="k">WHERE</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+</pre></div>
+
+
+<h2 id="4">4、　表与表之间的关系<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>一对一：例如t_person表和t_card表，即人和身份证。这种情况需要找出主从关系，即谁是主表，谁是从表。人可以没有身份证，但身份证必须要有人才行，所以人是主表，而身份证是从表。设计从表可以有两种方案：</p>
+<p>Ø  在t_card表中添加外键列（相对t_user表），并且给外键添加唯一约束；</p>
+<p>Ø  给t_card表的主键添加外键约束（相对t_user表），即t_card表的主键也是外键。</p>
+</li>
+<li>
+<p>一对多（多对一）：最为常见的就是一对多！一对多和多对一，这是从哪个角度去看得出来的。t_user和t_section的关系，从t_user来看就是一对多，而从t_section的角度来看就是多对一！这种情况都是在多方创建外键！</p>
+</li>
+<li>
+<p>多对多：例如t_stu和t_teacher表，即一个学生可以有多个老师，而一个老师也可以有多个学生。这种情况通常需要创建中间表来处理多对多关系。例如再创建一张表t_stu_tea表，给出两个外键，一个相对t_stu表的外键，另一个相对t_teacher表的外键。</p>
+</li>
+</ul>
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-75318895e83d0738.png" />
+<img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-9e1bd7a4d100cc02.png" /></p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 多对多的关系</span>
+<span class="n">use</span> <span class="n">mydb1</span><span class="p">;</span>
+<span class="c1">-- 老师表</span>
+<span class="k">create</span> <span class="k">table</span> <span class="n">teacher</span><span class="p">(</span>
+<span class="n">tid</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+<span class="n">tname</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">);</span>
+ <span class="c1">-- 学生表</span>
+<span class="k">create</span> <span class="k">table</span> <span class="n">stu2</span><span class="p">(</span>
+<span class="n">sid</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+<span class="n">sname</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> 
+<span class="p">);</span>
+ <span class="c1">-- 外键表</span>
+ <span class="k">create</span> <span class="k">table</span> <span class="n">tea_stu_rel</span><span class="p">(</span>
+<span class="n">tid</span> <span class="nb">int</span><span class="p">,</span>
+<span class="n">sid</span> <span class="nb">int</span> 
+ <span class="p">);</span>
+<span class="c1">-- 修改外键的表,添加外键</span>
+<span class="k">alter</span> <span class="k">table</span> <span class="n">tea_stu_rel</span> <span class="k">add</span> <span class="k">constraint</span> <span class="n">fk_tid</span> <span class="k">foreign</span> <span class="k">key</span><span class="p">(</span><span class="n">tid</span><span class="p">)</span> <span class="k">references</span> <span class="n">teacher</span><span class="p">(</span><span class="n">tid</span><span class="p">);</span>
+
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">tea_stu_rel</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="n">fk_sid</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">stu2</span><span class="p">(</span><span class="n">sid</span><span class="p">);</span>
+
+
+
+<span class="c1">-- 一对一</span>
+<span class="c1">-- QQ表</span>
+<span class="k">create</span> <span class="k">table</span> <span class="n">QQ</span><span class="p">(</span>
+<span class="n">qqid</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+<span class="n">password</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="c1">-- 详细信息</span>
+<span class="k">create</span> <span class="k">table</span> <span class="n">QQDetail</span><span class="p">(</span>
+<span class="n">qqid</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+<span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="n">address</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">alter</span> <span class="k">table</span> <span class="n">QQDetail</span> <span class="k">add</span> <span class="k">constraint</span> <span class="n">fk_QQ</span> <span class="k">foreign</span> <span class="k">key</span><span class="p">(</span><span class="n">qqid</span><span class="p">)</span> <span class="k">references</span> <span class="n">QQ</span><span class="p">(</span><span class="n">qqid</span><span class="p">);</span>
+</pre></div>
+
+
+<p>拆表是方便查询存储方便,同时可以去除冗余（主要是为了去除大量的冗余数据，但是并不是拆表越多越好）
+<img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-6ba30ec22eb691b9.png" /></p>
+<h1 id="_3">六、多表查询（重要）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<p>多表查询有如下几种：</p>
+<ul>
+<li>
+<p>合并结果集；UNION 、  UNION ALL</p>
+</li>
+<li>
+<p>连接查询</p>
+<ul>
+<li>内连接  [INNER] JOIN  ON </li>
+<li>外连接  OUTER JOIN ON<ul>
+<li>左外连接 LEFT [OUTER] JOIN</li>
+<li>右外连接 RIGHT [OUTER] JOIN</li>
+<li>全外连接（MySQL不支持）FULL JOIN</li>
+</ul>
+</li>
+<li>自然连接  NATURAL JOIN</li>
+</ul>
+</li>
+<li>
+<p>子查询</p>
+</li>
+</ul>
+<p>```sql
+-- ------------联合查询------------------
+USE mydb1;
+CREATE TABLE A(
+    NAME VARCHAR(10),
+    score INT
+)</p>
+<p>CREATE TABLE B(
+    NAME VARCHAR(10),
+    score INT
+)</p>
+<p>INSERT INTO A VALUES('a',10),('b',20),('c',30);
+INSERT INTO B VALUES('a',10),('b',20),('d',40);
+ ```</p>
+<h6 id="1_1">1　合并结果集<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h6>
+<ol>
+<li>
+<p>作用：合并结果集就是把两个select语句的查询结果合并到一起！</p>
+</li>
+<li>
+<p>合并结果集有两种方式：</p>
+</li>
+<li>
+<p>UNION：去除重复记录，例如：SELECT * FROM t1 UNION SELECT * FROM t2；</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><span class="c1">-- 合并结果集</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="k">FROM</span> <span class="n">A</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="k">FROM</span> <span class="n">B</span><span class="p">;</span>
+</pre></div>
+
+
+<ul>
+<li>UNION ALL：不去除重复记录，例如：SELECT * FROM t1 UNION ALL SELECT * FROM t2。</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="c1">-- 合并结果集</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="k">FROM</span> <span class="n">A</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="k">FROM</span> <span class="n">B</span><span class="p">;</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-9f353e61fc70384e.png" />
+<img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-fec62461c58b7f2b.png" /></p>
+<ol>
+<li>要求：<strong>被合并的两个结果：列数、列类型必须相同。</strong></li>
+</ol>
+<h6 id="2_1">2　连接查询 （非常重要）<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h6>
+<p>连接查询就是求出多个表的乘积，例如t1连接t2，那么查询出的结果就是t1*t2。</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 笛卡尔积的表</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span><span class="p">,</span><span class="n">score</span><span class="p">;</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-4d17d6f169813492.png" /></p>
+<p>连接查询会产生笛卡尔积，假设集合A={a,b}，集合B={0,1,2}，则两个集合的笛卡尔积为{(a,0),(a,1),(a,2),(b,0),(b,1),(b,2)}。可以扩展到多个集合的情况。</p>
+<p>那么多表查询产生这样的结果并不是我们想要的，那么怎么去除重复的，不想要的记录呢，当然是通过条件过滤。通常要查询的多个表之间都存在关联关系，那么就通过关联关系去除笛卡尔积。</p>
+<p>你能想像到emp和dept表连接查询的结果么？emp一共14行记录，dept表一共4行记录，那么连接后查询出的结果是56行记录。</p>
+<p>也就你只是想在查询emp表的同时，把每个员工的所在部门信息显示出来，那么就需要使用主外键来去除无用信息了。</p>
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-0c0cfd85a4847e8e.png" />
+<img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-151bc5eb117786d2.png" /></p>
+<p><strong>使用主外键关系做为条件来去除无用信息</strong></p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 使用主外键关系作为条件删除无用信息</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span><span class="n">dept</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-9add3ed4ddedd852.png" /></p>
+<p>上面查询结果会把两张表的所有列都查询出来，也许你不需要那么多列，这时就可以指定要查询的列了。</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">emp</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="n">emp</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span><span class="n">emp</span><span class="p">.</span><span class="n">comm</span><span class="p">,</span><span class="n">dept</span><span class="p">.</span><span class="n">dname</span> 
+<span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span><span class="n">dept</span> 
+<span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+</pre></div>
+
+
+<blockquote>
+<p>在多表查询中，在使用列时必须指定列所从属的表，例如emp.deptno表示emp表的deptno列。</p>
+</blockquote>
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-110c333342ec58a5.png" /></p>
+<p>还可以为表指定别名，然后在引用列时使用别名即可。（其中AS是可以省略的）</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 为表指定别名,方便书写(as 放在from表的后面)</span>
+<span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span><span class="n">e</span><span class="p">.</span><span class="n">comm</span><span class="p">,</span><span class="n">d</span><span class="p">.</span><span class="n">dname</span> 
+<span class="k">FROM</span> <span class="n">emp</span> <span class="k">AS</span> <span class="n">e</span><span class="p">,</span><span class="n">dept</span> <span class="k">AS</span> <span class="n">d</span>
+<span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+</pre></div>
+
+
+<p>2.1　内连接</p>
+<p>上面的连接语句就是内连接，但它不是SQL标准中的查询方式，可以理解为方言！SQL标准的内连接为：</p>
+<p><code>sql
+SELECT * 
+FROM emp e 
+INNER JOIN dept d 
+ON e.deptno=d.deptno;</code></p>
+<blockquote>
+<p>INNER可以省略，MySQL默认的连接方式就是内连接</p>
+<p>不使用WHERE，而是使用ON</p>
+</blockquote>
+<p>内连接的特点：查询结果必须满足条件。例如我们向emp表中插入一条记录：</p>
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-de08661b6f104f9a.png" />　　</p>
+<p>​   其中deptno为50，而在dept表中只有10、20、30、40部门，那么上面的查询结果中就不会出现“张三”这条记录，因为它不能满足e.deptno=d.deptno这个条件。</p>
+<p><code>sql
+-- 下面两条语句是一样的
+SELECT s.stuid,s.stuname,c.score FROM student s JOIN score c ON s.stuid=c.stuid;
+SELECT s.stuid,s.stuname,c.score FROM student s , score c WHERE s.stuid=c.stuid;</code></p>
+<p>2.2　外连接（左连接、右连接）</p>
+<p>外连接的特点：查询出的结果存在不满足条件的可能。</p>
+<p>左连接：</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">e</span> 
+<span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="n">d</span> 
+<span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="c1">-- 外连接查询</span>
+<span class="c1">-- 左连接</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+</pre></div>
+
+
+<p>左连接是先查询出左表（即以左表为主），然后查询右表，右表中满足条件的显示出来，不满足条件的显示NULL。</p>
+<p>这么说你可能不太明白，我们还是用上面的例子来说明。其中emp表中“张三”这条记录中，部门编号为50，而dept表中不存在部门编号为50的记录，所以“张三”这条记录，不能满足e.deptno=d.deptno这条件。但在左连接中，因为emp表是左表，所以左表中的记录都会查询出来，即“张三”这条记录也会查出，但相应的右表部分显示NULL。</p>
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-95df29c7813e7a68.png" /></p>
+<p>2.3　右连接</p>
+<p>右连接就是先把右表中所有记录都查询出来，然后左表满足条件的显示，不满足显示NULL。例如在dept表中的40部门并不存在员工，但在右连接中，如果dept表为右表，那么还是会查出40部门，但相应的员工信息为NULL。</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">e</span> 
+<span class="k">RIGHT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="n">d</span> 
+<span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">RIGHT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-a72a7accc4fa70b2.png" /></p>
+<p><strong>连接查询心得</strong>：</p>
+<p>连接不限与两张表，连接查询也可以是三张、四张，甚至N张表的连接查询。通常连接查询不可能需要整个笛卡尔积，而只是需要其中一部分，那么这时就需要使用条件来去除不需要的记录。这个条件大多数情况下都是使用主外键关系去除。</p>
+<p>两张表的连接查询一定有一个主外键关系，三张表的连接查询就一定有两个主外键关系，所以在大家不是很熟悉连接查询时，首先要学会去除无用笛卡尔积，那么就是用主外键关系作为条件来处理。如果两张表的查询，那么至少有一个主外键条件，三张表连接至少有两个主外键条件*。*</p>
+<p>```sql
+-- 多表查询
+CREATE TABLE course(
+    courseid INT PRIMARY KEY,
+    cname VARCHAR(50)
+);</p>
+<p>SELECT s.stuid,s.stuname,c.score,cc.cname FROM student s,score c,course cc WHERE s.stuid = c.stuid AND c.courseid = cc.courseid;
+-- 使用内连接(只要主外键的关系分清楚就好了)
+SELECT * FROM student s JOIN score c ON s.stuid=c.stuid
+JOIN course cc ON c.courseid=cc.courseid;
+ ```</p>
+<h6 id="3_1">3　自然连接<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h6>
+<p>大家也都知道，连接查询会产生无用笛卡尔积，我们通常使用主外键关系等式来去除它。而自然连接无需你去给出主外键等式，它会自动找到这一等式：</p>
+<ul>
+<li>两张连接的表中名称和类型完全一致的列作为条件，例如emp和dept表都存在deptno列，并且类型一致，所以会被自然连接找到！（natural join  自然连接 ）</li>
+</ul>
+<p>当然自然连接还有其他的查找条件的方式，但其他方式都可能存在问题！</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">NATURAL</span> <span class="k">JOIN</span> <span class="n">dept</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">NATURAL</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">dept</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">NATURAL</span> <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">dept</span><span class="p">;</span>
+</pre></div>
+
+
+<h6 id="4_1">4　子查询（非常重要）<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h6>
+<p>一个select语句中包含另一个完整的select语句。</p>
+<p>子查询就是嵌套查询，即SELECT中包含SELECT，如果一条语句中存在两个，或两个以上SELECT，那么就是子查询语句了。</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 4　子查询（非常重要）</span>
+<span class="c1">-- 查询与scott  同一个部门的员工</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">deptno</span><span class="o">=</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">deptno</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">ename</span><span class="o">=</span><span class="s1">&#39;SCOTT&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>子查询出现的位置：</p>
+<ul>
+<li>where后，作为条为被查询的一条件的一部分；</li>
+<li>from后，作表；</li>
+</ul>
+</li>
+<li>
+<p>当子查询出现在where后作为条件时，还可以使用如下关键字：</p>
+<ul>
+<li>any</li>
+<li>all</li>
+</ul>
+</li>
+<li>
+<p>子查询结果集的形式：</p>
+<ul>
+<li>单行单列（用于条件）</li>
+</ul>
+</li>
+<li>
+<p>单行多列（用于条件）</p>
+<ul>
+<li>多行单列（用于条件）</li>
+<li>多行多列（用于表）</li>
+</ul>
+</li>
+</ul>
+<p>练习：</p>
+<p><strong>1.</strong>       **工资高于JONES**的员工。</p>
+<p>分析：</p>
+<p>查询条件：工资&gt;JONES工资，其中JONES工资需要一条子查询。</p>
+<p>第一步：查询JONES的工资</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">sal</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">ename</span><span class="o">=</span><span class="s1">&#39;JONES&#39;</span>
+</pre></div>
+
+
+<p>第二步：查询高于甘宁工资的员工</p>
+<p><code>sql
+SELECT * FROM emp WHERE sal &gt; (${第一步})</code></p>
+<p>结果：</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">sal</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">sal</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">ename</span><span class="o">=</span><span class="s1">&#39;JONES&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>2</strong>、查询与SCOTT同一个部门的员工。</p>
+<ul>
+<li>
+<p>子查询作为条件</p>
+</li>
+<li>
+<p>子查询形式为单行单列</p>
+</li>
+</ul>
+<p><strong>3</strong>、工资高于30号部门所有人的员工信息</p>
+<p>分析：</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">sal</span><span class="o">&gt;</span><span class="p">(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">deptno</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
+</pre></div>
+
+
+<p>查询条件：工资高于30部门所有人工资，其中30部门所有人工资是子查询。高于所有需要使用all关键字。</p>
+<p>第一步：查询30部门所有人工资</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">sal</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">deptno</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span>
+</pre></div>
+
+
+<p>第二步：查询高于30部门所有人工资的员工信息 </p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">sal</span> <span class="o">&gt;</span> <span class="k">ALL</span> <span class="p">(</span><span class="err">${第一步}</span><span class="p">)</span>
+</pre></div>
+
+
+<p>结果：</p>
+<p><code>sql
+SELECT * FROM emp WHERE sal &gt; ALL  (SELECT sal FROM emp WHERE deptno=30)</code></p>
+<ul>
+<li>
+<p>子查询作为条件</p>
+</li>
+<li>
+<p>子查询形式为多行单列（当子查询结果集形式为多行单列时可以使用ALL或ANY关键字）</p>
+</li>
+</ul>
+<p><code>sql
+-- 3、工资高于30号部门所有人的员工信息
+SELECT * FROM emp WHERE sal&gt;(SELECT MAX(sal) FROM emp WHERE deptno=30);
+-- 用的不多
+SELECT * FROM emp WHERE sal &gt; ALL  (SELECT sal FROM emp WHERE deptno=30);</code></p>
+<p><strong>4</strong>、查询工作和工资与MARTIN（马丁）完全相同的员工信息</p>
+<p>分析：</p>
+<p>查询条件：工作和工资与MARTIN完全相同，这是子查询</p>
+<p>第一步：查询出MARTIN的工作和工资</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">job</span><span class="p">,</span><span class="n">sal</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">ename</span><span class="o">=</span><span class="s1">&#39;MARTIN&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>第二步：查询出与MARTIN工作和工资相同的人(单行多列用括号,多个值用in)</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span><span class="n">sal</span><span class="p">)</span> <span class="k">IN</span> <span class="p">(</span><span class="err">${第一步}</span><span class="p">);</span>
+</pre></div>
+
+
+<p>结果：</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span><span class="n">sal</span><span class="p">)</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">job</span><span class="p">,</span><span class="n">sal</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">ename</span><span class="o">=</span><span class="s1">&#39;MARTIN&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><strong>5</strong>、有2个以上直接下属的员工信息</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">empno</span> <span class="k">IN</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">mgr</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">mgr</span> <span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">mgr</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>子查询作为条件</p>
+</li>
+<li>
+<p>子查询形式为单行多列</p>
+</li>
+</ul>
+<p><code>sql
+-- 5、有2个以上直接下属的员工信息
+SELECT * FROM emp WHERE empno IN(SELECT mgr FROM emp GROUP BY mgr HAVING COUNT(mgr)&gt;=2);
+SELECT mgr FROM emp GROUP BY mgr HAVING COUNT(mgr)&gt;=2;</code></p>
+<p><strong>5</strong>、查询员工编号为7788的员工名称、员工工资、部门名称、部门地址</p>
+<p>分析：（无需子查询）</p>
+<p>查询列：员工名称、员工工资、部门名称、部门地址</p>
+<p>查询表：emp和dept，分析得出，不需要外连接（外连接的特性：某一行（或某些行）记录上会出现一半有值，一半为NULL值）</p>
+<p>条件：员工编号为**7788**</p>
+<p>第一步：去除多表，只查一张表，这里去除部门表，只查员工表</p>
+<p><code>sql
+SELECT ename, sal FROM emp e WHERE empno=7788;</code></p>
+<p>第二步：让第一步与dept做内连接查询，添加主外键条件去除无用笛卡尔积</p>
+<p><code>sql
+SELECT e.ename, e.sal, d.dname, d.loc 
+FROM emp e, dept d 
+WHERE e.deptno=d.deptno AND empno=7788</code></p>
+<p>第二步中的dept表表示所有行所有列的一张完整的表，这里可以把dept替换成所有行，但只有dname和loc列的表，这需要子查询。</p>
+<p>第三步：查询dept表中dname和loc两列，因为deptno会被作为条件，用来去除无用笛卡尔积，所以需要查询它。</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">dname</span><span class="p">,</span><span class="n">loc</span><span class="p">,</span><span class="n">deptno</span> <span class="k">FROM</span> <span class="n">dept</span><span class="p">;</span>
+</pre></div>
+
+
+<p>第四步：替换第二步中的dept</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">loc</span> 
+<span class="k">FROM</span> <span class="n">emp</span> <span class="n">e</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">dname</span><span class="p">,</span><span class="n">loc</span><span class="p">,</span><span class="n">deptno</span> <span class="k">FROM</span> <span class="n">dept</span><span class="p">)</span> <span class="n">d</span> 
+<span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span> <span class="k">AND</span> <span class="n">e</span><span class="p">.</span><span class="n">empno</span><span class="o">=</span><span class="mi">7788</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>子查询作为表</p>
+</li>
+<li>
+<p>子查询形式为多行多列</p>
+</li>
+</ul>
+<h6 id="6">6、自连接:自己连接自己，起别名<a class="headerlink" href="#6" title="Permanent link">&para;</a></h6>
+<p>求7369员工编号、姓名、经理编号和经理姓名</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">e1</span><span class="p">.</span><span class="n">empno</span> <span class="p">,</span> <span class="n">e1</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="n">e2</span><span class="p">.</span><span class="n">mgr</span><span class="p">,</span><span class="n">e2</span><span class="p">.</span><span class="n">ename</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">e1</span><span class="p">,</span> <span class="n">emp</span> <span class="n">e2</span> <span class="k">WHERE</span> <span class="n">e1</span><span class="p">.</span><span class="n">mgr</span> <span class="o">=</span> <span class="n">e2</span><span class="p">.</span><span class="n">empno</span> <span class="k">AND</span> <span class="n">e1</span><span class="p">.</span><span class="n">empno</span> <span class="o">=</span> <span class="mi">7369</span><span class="p">;</span>
+</pre></div>
+
+
+<p>练习：</p>
+<p>求各个部门薪水最高的员工所有信息</p>
+<div class="codehilite"><pre><span></span><span class="c1">--部门最高工资</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">e</span><span class="p">,(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span> <span class="n">maxsal</span><span class="p">,</span><span class="n">deptno</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">deptno</span><span class="p">)</span> <span class="n">a</span>
+
+<span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">deptno</span>
+
+<span class="k">AND</span> <span class="n">e</span><span class="p">.</span><span class="n">sal</span> <span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">maxsal</span><span class="p">;</span>
+</pre></div>
+
+
+<blockquote>
+<p>MAX(sal) maxsal  重命名</p>
+<p>(SELECT MAX(sal) maxsal,deptno FROM emp GROUP BY deptno) a  重命名a</p>
+</blockquote>
+<h1 id="mysql">七、MySQL中的函数<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h1>
+<h2 id="-count">合计函数－count<a class="headerlink" href="#-count" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Count(列名)返回某一列，行的总数</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">Select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">|</span><span class="k">count</span><span class="p">(</span><span class="err">列名</span><span class="p">)</span> <span class="k">from</span> <span class="n">tablename</span>
+        <span class="p">[</span><span class="k">WHERE</span> <span class="n">where_definition</span><span class="p">]</span> 
+</pre></div>
+
+
+<h2 id="-sum">合计函数－SUM<a class="headerlink" href="#-sum" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Sum函数返回满足where条件的行的和</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">Select</span> <span class="k">sum</span><span class="p">(</span><span class="err">列名</span><span class="p">)</span><span class="err">｛</span><span class="p">,</span><span class="k">sum</span><span class="p">(</span><span class="err">列名</span><span class="p">)</span><span class="err">…｝</span> <span class="k">from</span> <span class="n">tablename</span>
+        <span class="p">[</span><span class="k">WHERE</span> <span class="n">where_definition</span><span class="p">]</span> 
+</pre></div>
+
+
+<blockquote>
+<p>注意：sum仅对数值起作用，否则会报错。</p>
+<p>注意：对多列求和，“，”号不能少。</p>
+</blockquote>
+<h2 id="-avg">合计函数－AVG<a class="headerlink" href="#-avg" title="Permanent link">&para;</a></h2>
+<ul>
+<li>AVG函数返回满足where条件的一列的平均值</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">Select</span> <span class="k">avg</span><span class="p">(</span><span class="err">列名</span><span class="p">)</span><span class="err">｛</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="err">列名</span><span class="p">)</span><span class="err">…｝</span> <span class="k">from</span> <span class="n">tablename</span>
+        <span class="p">[</span><span class="k">WHERE</span> <span class="n">where_definition</span><span class="p">]</span> 
+</pre></div>
+
+
+<h2 id="-maxmin">合计函数－MAX/MIN<a class="headerlink" href="#-maxmin" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Max/min函数返回满足where条件的一列的最大/最小值</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">Select</span> <span class="k">max</span><span class="p">(</span><span class="err">列名</span><span class="p">)</span>　<span class="k">from</span> <span class="n">tablename</span>
+        <span class="p">[</span><span class="k">WHERE</span> <span class="n">where_definition</span><span class="p">]</span> 
+</pre></div>
+
+
+<h2 id="_4">时间日期相关函数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>ADDTIME   (date2 ,time_interval )</strong></th>
+<th><strong>将time_interval加到date2</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CURRENT_DATE   (</strong>  <strong>)</strong></td>
+<td><strong>当前日期</strong></td>
+</tr>
+<tr>
+<td><strong>CURRENT_TIME   (</strong>  <strong>)</strong></td>
+<td><strong>当前时间</strong></td>
+</tr>
+<tr>
+<td><strong>CURRENT_TIMESTAMP   (  )</strong></td>
+<td><strong>当前时间戳</strong></td>
+</tr>
+<tr>
+<td><strong>DATE   (datetime )</strong></td>
+<td><strong>返回datetime的日期部分</strong></td>
+</tr>
+<tr>
+<td><strong>DATE_ADD   (date2 , INTERVAL d_value d_type )</strong></td>
+<td><strong>在date2中加上日期或时间</strong></td>
+</tr>
+<tr>
+<td><strong>DATE_SUB   (date2 , INTERVAL d_value d_type )</strong></td>
+<td><strong>在date2上减去一个时间</strong></td>
+</tr>
+<tr>
+<td><strong>DATEDIFF   (date1 ,date2 )</strong></td>
+<td><strong>两个日期差</strong></td>
+</tr>
+<tr>
+<td><strong>NOW   (</strong>  <strong>)</strong></td>
+<td><strong>当前时间</strong></td>
+</tr>
+<tr>
+<td>YEAR|Month|Day(datetime )</td>
+<td><strong>年月日</strong></td>
+</tr>
+</tbody>
+</table>
+<p>示例：<code>select addtime(‘02:30:30’,‘01:01:01’);</code>         注意：字符串、时间日期的引号问题</p>
+<p>​     <code>select date_add(entry_date,INTERVAL 2 year) from student;</code>／／增加两年</p>
+<p><code>select addtime(time,‘1 1-1 10:09:09’) from student;</code>／／时间戳上增加，注意年后没有 <code>-</code></p>
+<div class="codehilite"><pre><span></span><span class="c1">-- mysql函数</span>
+<span class="c1">-- 注意：字符串、时间日期的引号问题</span>
+<span class="k">SELECT</span> <span class="n">ADDTIME</span> <span class="p">(</span><span class="s1">&#39;02:30:30&#39;</span><span class="p">,</span><span class="s1">&#39;01:01:01&#39;</span><span class="p">);</span>
+<span class="c1">-- 当前日期</span>
+<span class="k">SELECT</span> <span class="k">CURRENT_DATE</span><span class="p">();</span>
+<span class="c1">-- 当前时间</span>
+<span class="k">SELECT</span> <span class="k">CURRENT_TIME</span><span class="p">();</span>
+<span class="c1">-- 当前时间戳</span>
+<span class="k">SELECT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">();</span>
+
+<span class="c1">-- 返回当前的年份</span>
+<span class="k">SELECT</span> <span class="k">YEAR</span><span class="p">(</span><span class="n">NOW</span><span class="p">());</span>
+<span class="c1">-- 返回当前的日期时间</span>
+<span class="k">SELECT</span> <span class="n">NOW</span><span class="p">();</span>
+<span class="c1">-- 返回当前的月份</span>
+<span class="k">SELECT</span> <span class="k">MONTH</span><span class="p">(</span><span class="n">NOW</span><span class="p">());</span>
+<span class="c1">-- 返回当前的日</span>
+<span class="k">SELECT</span> <span class="k">DAY</span><span class="p">(</span><span class="n">NOW</span><span class="p">());</span>
+<span class="c1">-- 当前日期增加一个月</span>
+<span class="k">SELECT</span> <span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="nb">INTERVAL</span> <span class="mi">1</span> <span class="k">MONTH</span><span class="p">);</span> 
+</pre></div>
+
+
+<h2 id="_5">字符串相关函数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>CHARSET(str)</strong></th>
+<th><strong>返回字串字符集</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CONCAT   (string2</strong>  <strong>[,... ])</strong></td>
+<td><strong>连接字串</strong></td>
+</tr>
+<tr>
+<td><strong>INSTR   (string ,substring )</strong></td>
+<td><strong>返回substring在string中出现的位置,没有返回0</strong></td>
+</tr>
+<tr>
+<td><strong>UCASE   (string2 )</strong></td>
+<td><strong>转换成大写</strong></td>
+</tr>
+<tr>
+<td><strong>LCASE   (string2 )</strong></td>
+<td><strong>转换成小写</strong></td>
+</tr>
+<tr>
+<td><strong>LEFT   (string2 ,length )</strong></td>
+<td><strong>从string2中的左边起取length个字符</strong></td>
+</tr>
+<tr>
+<td><strong>LENGTH   (string )</strong></td>
+<td><strong>string长度</strong></td>
+</tr>
+<tr>
+<td><strong>REPLACE   (str ,search_str ,replace_str )</strong></td>
+<td><strong>在str中用replace_str替换search_str</strong></td>
+</tr>
+<tr>
+<td><strong>STRCMP   (string1 ,string2 )</strong></td>
+<td><strong>逐字符比较两字串大小,</strong></td>
+</tr>
+<tr>
+<td><strong>SUBSTRING   (str , position</strong>  <strong>[,length ])</strong></td>
+<td><strong>从str的position开始,取length个字符</strong></td>
+</tr>
+<tr>
+<td><strong>LTRIM   (string2 ) RTRIM (string2 )  trim</strong></td>
+<td><strong>去除前端空格或后端空格</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><span class="c1">-- 字符串相关函数</span>
+<span class="c1">-- 返回字串字符集</span>
+<span class="k">SELECT</span> <span class="n">CHARSET</span><span class="p">(</span><span class="s1">&#39;tom&#39;</span><span class="p">);</span>
+<span class="c1">-- 链接字符串</span>
+<span class="k">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span><span class="s1">&#39;bbb&#39;</span><span class="p">);</span>
+<span class="c1">-- 返回substring在string中出现的位置,没有返回0,从1开始</span>
+<span class="k">SELECT</span> <span class="n">INSTR</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">);</span> 
+<span class="c1">-- 字符替换</span>
+<span class="k">SELECT</span> <span class="k">REPLACE</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="s1">&#39;ack&#39;</span><span class="p">,</span><span class="s1">&#39;ccc&#39;</span><span class="p">);</span>
+<span class="c1">-- 逐字符比较两个字符串的大小</span>
+<span class="k">SELECT</span> <span class="n">STRCMP</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span><span class="s1">&#39;ad&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h2 id="_6">数学相关函数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>ABS   (number2 )</strong></th>
+<th><strong>绝对值</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BIN   (decimal_number )</strong></td>
+<td><strong>十进制转二进制</strong></td>
+</tr>
+<tr>
+<td><strong>CEILING   (number2 )</strong></td>
+<td><strong>向上取整</strong></td>
+</tr>
+<tr>
+<td><strong>CONV(number2,from_base,to_base)</strong></td>
+<td><strong>进制转换</strong></td>
+</tr>
+<tr>
+<td><strong>FLOOR   (number2 )</strong></td>
+<td><strong>向下取整</strong></td>
+</tr>
+<tr>
+<td><strong>FORMAT   (number,decimal_places )</strong></td>
+<td><strong>保留小数位数</strong></td>
+</tr>
+<tr>
+<td><strong>HEX   (DecimalNumber )</strong></td>
+<td><strong>转十六进制</strong></td>
+</tr>
+<tr>
+<td><strong>LEAST   (number , number2</strong>  <strong>[,..])</strong></td>
+<td><strong>求最小值</strong></td>
+</tr>
+<tr>
+<td><strong>MOD   (numerator ,denominator )</strong></td>
+<td><strong>求余</strong></td>
+</tr>
+<tr>
+<td><strong>RAND([seed])</strong></td>
+<td><strong>RAND([seed])</strong></td>
+</tr>
+</tbody>
+</table>
+<p>整个的sql</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 数据完整性</span>
+<span class="c1">-- 1.1主键约束（primary key） PRIMARY KEY对id进行约束,id就是主键</span>
+<span class="c1">-- 第一种添加方式：</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+
+<span class="n">id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="p">);</span>
+<span class="c1">-- 删除表</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student1</span><span class="p">;</span>
+
+<span class="c1">-- 第二种创建主键的方式</span>
+<span class="c1">-- 主键写到函数中</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">);</span>  <span class="o">#</span><span class="err">主键直接方法</span><span class="k">primary</span> <span class="k">key</span><span class="p">()</span><span class="err">的函数中</span>
+
+<span class="c1">-- 使用联合主键 #这里就可以使用联合主键(不可分割)类似于二进制</span>
+<span class="n">USE</span> <span class="n">mydb1</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">classid</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">stuid</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">classid</span><span class="p">,</span><span class="n">stuid</span><span class="p">)</span>
+<span class="p">);</span> 
+
+<span class="c1">-- 第三种创建主键的方式</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="c1">-- 先创建再修改</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student</span>  <span class="k">ADD</span>  <span class="k">PRIMARY</span>  <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">);</span> <span class="o">#</span><span class="err">添加主键约束</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+
+<span class="c1">-- 1.2唯一约束(unique)： </span>
+<span class="c1">-- 特点：数据不能重复。</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">UNIQUE</span>
+<span class="p">);</span>  <span class="o">#</span><span class="err">可以有空值</span><span class="p">,</span><span class="err">但是不能有多个</span><span class="p">,</span><span class="err">但是不能重复</span>
+
+
+<span class="c1">-- 1.3自动增长列(auto_increment) (删除的数据依旧会占着这个id,新插入的只会自动增长) </span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;tom&#39;</span><span class="p">);</span>
+
+<span class="c1">-- 2、域完整性</span>
+<span class="c1">-- 1.2 非空约束：not null</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">Sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">);</span>
+
+<span class="c1">-- 1.3 默认值约束 default</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+<span class="n">Id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">Sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">&#39;男&#39;</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span><span class="s1">&#39;女&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;jerry&#39;</span><span class="p">,</span><span class="k">DEFAULT</span><span class="p">);</span> <span class="o">#</span><span class="err">默认值要加上</span><span class="k">default</span>
+
+
+<span class="c1">-- 3、引用完整性（参照完整性）</span>
+<span class="c1">-- 外键约束：FOREIGN KEY </span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">stu1</span><span class="p">(</span>
+<span class="n">sid</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="n">sex</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="s1">&#39;男&#39;</span>
+<span class="p">);</span>
+<span class="c1">-- CONSTRAINT fk_stu1_score1_sid FOREIGN KEY (sid) REFERENCES student(id)</span>
+<span class="c1">-- 一个约束,约束的名字叫fk_stu1_score1_sid 是外键约束sid 参照学生表stu1的sid</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">score1</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">score</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">sid</span> <span class="nb">INT</span> <span class="p">,</span> <span class="c1">-- 外键列的数据类型一定要与主键的类型一致</span>
+<span class="k">CONSTRAINT</span> <span class="n">fk_stu1_score1_sid</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">sid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">stu1</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+<span class="p">);</span>
+
+
+
+<span class="c1">-- 4、　表与表之间的关系</span>
+<span class="err">﻿</span><span class="c1">-- 学生表先创建主表</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">student</span><span class="p">(</span>
+    <span class="n">stuid</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">stuname</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- 分数表</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">score</span><span class="p">(</span>
+    <span class="n">stuid</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">score</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="n">courseid</span> <span class="nb">INT</span><span class="p">,</span>
+    <span class="k">CONSTRAINT</span> <span class="n">fk_stu_sco</span>  <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">stuid</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">student</span><span class="p">(</span><span class="n">stuid</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- DROP TABLE score;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1001&#39;</span><span class="p">,</span><span class="s1">&#39;张三峰&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1002&#39;</span><span class="p">,</span><span class="s1">&#39;张无忌&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1003&#39;</span><span class="p">,</span><span class="s1">&#39;王尼玛&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">student</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1004&#39;</span><span class="p">,</span><span class="s1">&#39;王老五&#39;</span><span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">score</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1001&#39;</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1002&#39;</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1002&#39;</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1003&#39;</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">score</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;1003&#39;</span><span class="p">,</span><span class="mi">57</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span><span class="p">,</span><span class="n">score</span> <span class="k">c</span> <span class="k">WHERE</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+
+<span class="c1">-- ----------六 多表查询----------------</span>
+<span class="c1">-- ------------联合查询------------------</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">A</span><span class="p">(</span>
+    <span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">score</span> <span class="nb">INT</span>
+<span class="p">)</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">B</span><span class="p">(</span>
+    <span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">score</span> <span class="nb">INT</span>
+<span class="p">)</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">A</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">),(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">),(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="mi">30</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">B</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">),(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">),(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="mi">40</span><span class="p">);</span>
+
+
+<span class="c1">-- 合并结果集</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="k">FROM</span> <span class="n">A</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="k">FROM</span> <span class="n">B</span><span class="p">;</span>
+
+<span class="c1">-- 合并结果集</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="k">FROM</span> <span class="n">A</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="o">*</span><span class="k">FROM</span> <span class="n">B</span><span class="p">;</span>
+
+<span class="c1">-- 连接查询</span>
+<span class="n">USE</span> <span class="n">mydb1</span><span class="p">;</span>
+<span class="c1">-- 笛卡尔积的表</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span><span class="p">,</span><span class="n">score</span><span class="p">;</span>
+
+<span class="c1">-- 使用主外键关系作为条件删除无用信息</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span><span class="n">dept</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+
+<span class="c1">-- 这时就可以指定要查询的列了</span>
+<span class="k">SELECT</span> <span class="n">emp</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="n">emp</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span><span class="n">emp</span><span class="p">.</span><span class="n">comm</span><span class="p">,</span><span class="n">dept</span><span class="p">.</span><span class="n">dname</span> 
+<span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span><span class="n">dept</span> 
+<span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+
+<span class="c1">-- 为表指定别名,方便书写(as 放在from表的后面)</span>
+<span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span><span class="n">e</span><span class="p">.</span><span class="n">comm</span><span class="p">,</span><span class="n">d</span><span class="p">.</span><span class="n">dname</span> 
+<span class="k">FROM</span> <span class="n">emp</span> <span class="k">AS</span> <span class="n">e</span><span class="p">,</span><span class="n">dept</span> <span class="k">AS</span> <span class="n">d</span>
+<span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+
+<span class="c1">-- 2.1　内连接</span>
+<span class="k">SELECT</span> <span class="o">*</span> 
+<span class="k">FROM</span> <span class="n">emp</span> <span class="n">e</span> 
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="n">d</span> 
+<span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span>
+<span class="c1">-- 下面两条语句是一样的</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="p">,</span> <span class="n">score</span> <span class="k">c</span> <span class="k">WHERE</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+
+<span class="c1">-- 外连接查询</span>
+<span class="c1">-- 左连接</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+<span class="c1">-- 右 外连接</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">RIGHT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span><span class="p">;</span>
+
+
+<span class="c1">-- 多表查询</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">course</span><span class="p">(</span>
+    <span class="n">courseid</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">cname</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">stuname</span><span class="p">,</span><span class="k">c</span><span class="p">.</span><span class="n">score</span><span class="p">,</span><span class="n">cc</span><span class="p">.</span><span class="n">cname</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span><span class="p">,</span><span class="n">score</span> <span class="k">c</span><span class="p">,</span><span class="n">course</span> <span class="n">cc</span> <span class="k">WHERE</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">stuid</span> <span class="k">AND</span> <span class="k">c</span><span class="p">.</span><span class="n">courseid</span> <span class="o">=</span> <span class="n">cc</span><span class="p">.</span><span class="n">courseid</span><span class="p">;</span>
+<span class="c1">-- 使用内连接(只要主外键的关系分清楚就好了)</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="n">s</span> <span class="k">JOIN</span> <span class="n">score</span> <span class="k">c</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">stuid</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">stuid</span>
+<span class="k">JOIN</span> <span class="n">course</span> <span class="n">cc</span> <span class="k">ON</span> <span class="k">c</span><span class="p">.</span><span class="n">courseid</span><span class="o">=</span><span class="n">cc</span><span class="p">.</span><span class="n">courseid</span><span class="p">;</span>
+
+<span class="c1">-- 自然连接</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">NATURAL</span> <span class="k">JOIN</span> <span class="n">dept</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">NATURAL</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">dept</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">NATURAL</span> <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">dept</span><span class="p">;</span>
+
+<span class="c1">-- 4　子查询（非常重要）</span>
+<span class="c1">-- 查询与scott  同一个部门的员工</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">deptno</span><span class="o">=</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">deptno</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">ename</span><span class="o">=</span><span class="s1">&#39;SCOTT&#39;</span><span class="p">);</span>
+
+<span class="c1">-- 工资高于JONES的员工。</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">sal</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">sal</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">ename</span><span class="o">=</span><span class="s1">&#39;JONES&#39;</span><span class="p">)</span>
+
+<span class="c1">-- 3、工资高于30号部门所有人的员工信息</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">sal</span><span class="o">&gt;</span><span class="p">(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">deptno</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
+<span class="c1">-- 用的不多</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">sal</span> <span class="o">&gt;</span> <span class="k">ALL</span>  <span class="p">(</span><span class="k">SELECT</span> <span class="n">sal</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">deptno</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
+
+<span class="c1">-- 4、查询工作和工资与MARTIN（马丁）完全相同的员工信息</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span><span class="n">sal</span><span class="p">)</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">job</span><span class="p">,</span><span class="n">sal</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">ename</span><span class="o">=</span><span class="s1">&#39;MARTIN&#39;</span><span class="p">);</span>
+
+<span class="c1">-- 5、有2个以上直接下属的员工信息</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">empno</span> <span class="k">IN</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">mgr</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">mgr</span> <span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">mgr</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">SELECT</span> <span class="n">mgr</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">mgr</span> <span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">mgr</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">-- 5、查询员工编号为7788的员工名称、员工工资、部门名称、部门地址</span>
+<span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">loc</span> 
+<span class="k">FROM</span> <span class="n">emp</span> <span class="n">e</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">dname</span><span class="p">,</span><span class="n">loc</span><span class="p">,</span><span class="n">deptno</span> <span class="k">FROM</span> <span class="n">dept</span><span class="p">)</span> <span class="n">d</span> 
+<span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span> <span class="k">AND</span> <span class="n">e</span><span class="p">.</span><span class="n">empno</span><span class="o">=</span><span class="mi">7788</span> <span class="p">;</span>
+
+<span class="c1">-- 6、自连接:自己连接自己，起别名</span>
+<span class="c1">-- 求7369员工编号、姓名、经理编号和经理姓名</span>
+<span class="k">SELECT</span> <span class="n">e1</span><span class="p">.</span><span class="n">empno</span> <span class="p">,</span> <span class="n">e1</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="n">e2</span><span class="p">.</span><span class="n">mgr</span><span class="p">,</span><span class="n">e2</span><span class="p">.</span><span class="n">ename</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">e1</span><span class="p">,</span> <span class="n">emp</span> <span class="n">e2</span> <span class="k">WHERE</span> <span class="n">e1</span><span class="p">.</span><span class="n">mgr</span> <span class="o">=</span> <span class="n">e2</span><span class="p">.</span><span class="n">empno</span> <span class="k">AND</span> <span class="n">e1</span><span class="p">.</span><span class="n">empno</span> <span class="o">=</span> <span class="mi">7369</span><span class="p">;</span>
+
+<span class="c1">-- 部门最高工资</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">e</span><span class="p">,(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span> <span class="n">maxsal</span><span class="p">,</span><span class="n">deptno</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">deptno</span><span class="p">)</span> <span class="n">a</span>
+
+<span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="n">deptno</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">deptno</span>
+
+<span class="k">AND</span> <span class="n">e</span><span class="p">.</span><span class="n">sal</span> <span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">maxsal</span><span class="p">;</span>
+
+
+<span class="c1">-- mysql函数</span>
+<span class="c1">-- 注意：字符串、时间日期的引号问题</span>
+<span class="k">SELECT</span> <span class="n">ADDTIME</span> <span class="p">(</span><span class="s1">&#39;02:30:30&#39;</span><span class="p">,</span><span class="s1">&#39;01:01:01&#39;</span><span class="p">);</span>
+<span class="c1">-- 当前日期</span>
+<span class="k">SELECT</span> <span class="k">CURRENT_DATE</span><span class="p">();</span>
+<span class="c1">-- 当前时间</span>
+<span class="k">SELECT</span> <span class="k">CURRENT_TIME</span><span class="p">();</span>
+<span class="c1">-- 当前时间戳</span>
+<span class="k">SELECT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">();</span>
+
+<span class="c1">-- 返回当前的年份</span>
+<span class="k">SELECT</span> <span class="k">YEAR</span><span class="p">(</span><span class="n">NOW</span><span class="p">());</span>
+<span class="c1">-- 返回当前的日期时间</span>
+<span class="k">SELECT</span> <span class="n">NOW</span><span class="p">();</span>
+<span class="c1">-- 返回当前的月份</span>
+<span class="k">SELECT</span> <span class="k">MONTH</span><span class="p">(</span><span class="n">NOW</span><span class="p">());</span>
+<span class="c1">-- 返回当前的日</span>
+<span class="k">SELECT</span> <span class="k">DAY</span><span class="p">(</span><span class="n">NOW</span><span class="p">());</span>
+<span class="c1">-- 当前日期增加一个月</span>
+<span class="k">SELECT</span> <span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="nb">INTERVAL</span> <span class="mi">1</span> <span class="k">MONTH</span><span class="p">);</span> 
+
+<span class="c1">-- 字符串相关函数</span>
+<span class="c1">-- 返回字串字符集</span>
+<span class="k">SELECT</span> <span class="n">CHARSET</span><span class="p">(</span><span class="s1">&#39;tom&#39;</span><span class="p">);</span>
+<span class="c1">-- 链接字符串</span>
+<span class="k">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span><span class="s1">&#39;bbb&#39;</span><span class="p">);</span>
+<span class="c1">-- 返回substring在string中出现的位置,没有返回0,从1开始</span>
+<span class="k">SELECT</span> <span class="n">INSTR</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">);</span> 
+<span class="c1">-- 字符替换</span>
+<span class="k">SELECT</span> <span class="k">REPLACE</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="s1">&#39;ack&#39;</span><span class="p">,</span><span class="s1">&#39;ccc&#39;</span><span class="p">);</span>
+<span class="c1">-- 逐字符比较两个字符串的大小</span>
+<span class="k">SELECT</span> <span class="n">STRCMP</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span><span class="s1">&#39;ad&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h1 id="mysql_1">八、MySQL数据库的备份与恢复<a class="headerlink" href="#mysql_1" title="Permanent link">&para;</a></h1>
+<h2 id="1-sql">1　生成SQL脚本  导出数据<a class="headerlink" href="#1-sql" title="Permanent link">&para;</a></h2>
+<p>在控制台使用mysqldump命令可以用来生成指定数据库的脚本文本，但要注意，脚本文本中只包含数据库的内容，而不会存在创建数据库的语句！所以在恢复数据时，还需要自已手动创建一个数据库之后再去恢复数据。</p>
+<p><code>sql
+　　mysqldump –u用户名 –p密码 数据库名&gt;生成的脚本文件路径</code></p>
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-ef6fe8b4217d2d32.png" /></p>
+<p>现在可以在C盘下找到mydb1.sql文件了！</p>
+<p>注意，mysqldump命令是在Windows控制台下执行，无需登录mysql！！！</p>
+<h2 id="2-sql">2　执行SQL脚本 恢复数据<a class="headerlink" href="#2-sql" title="Permanent link">&para;</a></h2>
+<p><strong>前提：必须先创建数据库名</strong></p>
+<p>**执行SQL**脚本需要登录mysql，然后进入指定数据库，才可以执行SQL脚本！！！</p>
+<p>执行SQL脚本不只是用来恢复数据库，也可以在平时编写SQL脚本，然后使用执行SQL 脚本来操作数据库！大家都知道，在黑屏下编写SQL语句时，就算发现了错误，可能也不能修改了。所以我建议大家使用脚本文件来编写SQL代码，然后执行之！</p>
+<div class="codehilite"><pre><span></span><span class="k">SOURCE</span> <span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">mydb1</span><span class="p">.</span><span class="k">sql</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-55bc77aea1e224aa.png" /></p>
+<p>注意，在执行脚本时需要先行核查当前数据库中的表是否与脚本文件中的语句有冲突！例如在脚本文件中存在create table a的语句，而当前数据库中已经存在了a表，那么就会出错！</p>
+<p>还可以通过下面的方式来执行脚本文件：</p>
+<div class="codehilite"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">p123</span> <span class="n">mydb1</span><span class="o">&lt;</span><span class="k">c</span><span class="p">:</span><span class="err">\</span><span class="n">mydb1</span><span class="p">.</span><span class="k">sql</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">mysql</span> <span class="err">–</span><span class="n">u用户名</span> <span class="err">–</span><span class="n">p密码</span> <span class="err">数据库</span><span class="o">&lt;</span><span class="err">要执行脚本文件路径</span>
+</pre></div>
+
+
+<p><img alt="图片.png" src="../003-黑马-mysql-下.image/14555448-2c63156818fc03cc.png" /></p>
+<p><strong>这种方式无需登录mysql</strong>！</p>
+<p><strong>注意：在CMD**下 **命令不能加;</strong></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../004-mysql-高级/" title="004-mysql-高级" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                004-mysql-高级
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../002-黑马mysql-上/" title="002-黑马mysql-上" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                002-黑马mysql-上
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

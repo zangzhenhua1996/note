@@ -1,0 +1,4751 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="学习笔记">
+      
+      
+        <link rel="canonical" href="https://zangzhenhua1996.github.io/go/数据库/006-mysql的一些底层原理/">
+      
+      
+        <meta name="author" content="臧珍华">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>006-mysql的一些底层原理 - 臧珍华的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="darkviolet-" data-md-color-accent="aqua-">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              臧珍华的博客
+            </span>
+            <span class="md-header-nav__topic">
+              
+                006-mysql的一些底层原理
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" class="md-tabs__link">
+          python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../python-web/015-python项目离线部署/" class="md-tabs__link">
+          python web
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../数据结构与算法Python/09-图_problem-solving-with-algorithms-and-data-structure-usingpython-中文/" class="md-tabs__link">
+          python 数据结构与算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../机器学习/013 进入tensorboard/" class="md-tabs__link">
+          机器学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../力扣刷题/066-质因数/" class="md-tabs__link">
+          每天一道力扣题
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../java学习/029-IntelliJ-IDEA-2019-快捷键终极大全/" class="md-tabs__link">
+          java学习
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          数据库
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" class="md-tabs__link">
+          windows10系统使用
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" class="md-tabs__link">
+          ubuntu系统的使用
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://zangzhenhua1996.github.io/go/" title="臧珍华的博客" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    臧珍华的博客
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://www.jianshu.com/u/21b46dcb7c44" title="前往 Github 仓库" class="md-source" data-md-source="">
+  
+  <div class="md-source__repository">
+    I love AnFei
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/067 Pycharm 运行程序后如何 如何查看变量的值/" title="067 Pycharm 运行程序后如何 如何查看变量的值" class="md-nav__link">
+      067 Pycharm 运行程序后如何 如何查看变量的值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/066-spyder升级4.0全新版本/" title="066 spyder升级4.0全新版本" class="md-nav__link">
+      066 spyder升级4.0全新版本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/065-Jupyter Notebook 远程访问配置/" title="065 Jupyter_Notebook 远程访问配置" class="md-nav__link">
+      065 Jupyter_Notebook 远程访问配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/064 python科学计算库Sympy指南/" title="064 python科学计算库Sympy指南" class="md-nav__link">
+      064 python科学计算库Sympy指南
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/063-vscode-高亮提示/" title="063 vscode-高亮提示" class="md-nav__link">
+      063 vscode-高亮提示
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/062-Python-os-path()-模块/" title="062 Python-os-path()-模块" class="md-nav__link">
+      062 Python-os-path()-模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/061-基于mkdocs-material搭建个人静态博客/" title="061 基于mkdocs-material搭建个人静态博客" class="md-nav__link">
+      061 基于mkdocs-material搭建个人静态博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-vscode-ubuntu18-04-空格小/" title="060 vscode-ubuntu18-04-空格小" class="md-nav__link">
+      060 vscode-ubuntu18-04-空格小
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/060-cuda及cudann的配置安装/" title="060 cuda及cudann的配置安装" class="md-nav__link">
+      060 cuda及cudann的配置安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/059-在vscode中显示空格和tab符号/" title="059 在vscode中显示空格和tab符号" class="md-nav__link">
+      059 在vscode中显示空格和tab符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/058-VS-code快捷键/" title="058 VS-code快捷键" class="md-nav__link">
+      058 VS-code快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/057 B站缓存视频重命名/" title="057 B站缓存视频重命名" class="md-nav__link">
+      057 B站缓存视频重命名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/056 python中的全局变量/" title="056 python中的全局变量" class="md-nav__link">
+      056 python中的全局变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/055  Python 中 （&，）和（and，or）之间的区别/" title="055 Python 中 （&，）和（and，or）之间的区别" class="md-nav__link">
+      055 Python 中 （&，）和（and，or）之间的区别
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/054 python多任务多进程/" title="054 python多任务多进程" class="md-nav__link">
+      054 python多任务多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/053 python多任务多线程/" title="053 python多任务多线程" class="md-nav__link">
+      053 python多任务多线程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/052-140种Python标准库、第三方库和外部工具都有了/" title="052 140种Python标准库、第三方库和外部工具都有了" class="md-nav__link">
+      052 140种Python标准库、第三方库和外部工具都有了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/051-图解NumPy，这是理解数组最形象的一份教程了/" title="051 图解NumPy，这是理解数组最形象的一份教程了" class="md-nav__link">
+      051 图解NumPy，这是理解数组最形象的一份教程了
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/050-Python的zip函数/" title="050 Python的zip函数" class="md-nav__link">
+      050 Python的zip函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/049-map函数/" title="049 map函数" class="md-nav__link">
+      049 map函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/048-sys模块/" title="048 sys模块" class="md-nav__link">
+      048 sys模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/047-opencv-python-怎么读取视频以及获得视频的相应参数/" title="047 opencv-python-怎么读取视频以及获得视频的相应参数" class="md-nav__link">
+      047 opencv-python-怎么读取视频以及获得视频的相应参数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/046-将文件夹中视频按照横屏竖屏进行分类/" title="046 将文件夹中视频按照横屏竖屏进行分类" class="md-nav__link">
+      046 将文件夹中视频按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/045-python-的join方法/" title="045 python-的join方法" class="md-nav__link">
+      045 python-的join方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/044-python的切片/" title="044 python的切片" class="md-nav__link">
+      044 python的切片
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/043-用python写了一个壁纸切换的系统/" title="043 用python写了一个壁纸切换的系统" class="md-nav__link">
+      043 用python写了一个壁纸切换的系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/042-将文件夹中图片按照横屏竖屏进行分类/" title="042 将文件夹中图片按照横屏竖屏进行分类" class="md-nav__link">
+      042 将文件夹中图片按照横屏竖屏进行分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/041 python正则表达式/" title="041 python正则表达式" class="md-nav__link">
+      041 python正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/040 python多任务协程/" title="040 python多任务协程" class="md-nav__link">
+      040 python多任务协程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/039 matplotlib绘图的使用/" title="039 matplotlib绘图的使用" class="md-nav__link">
+      039 matplotlib绘图的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/038 numpy常用/" title="038 numpy常用" class="md-nav__link">
+      038 numpy常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/037 pyqt5学习/" title="037 pyqt5学习" class="md-nav__link">
+      037 pyqt5学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/036-pandas常用/" title="036 pandas常用" class="md-nav__link">
+      036 pandas常用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/035python中图像处理的工具Pillow的使用/" title="035 python中图像处理的工具Pillow的使用" class="md-nav__link">
+      035 python中图像处理的工具Pillow的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/034Python代码写得丑怎么办？/" title="034 Python代码写得丑怎么办？" class="md-nav__link">
+      034 Python代码写得丑怎么办？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/033在使用jupyter-notebook明明安装了包,却导入失败-/" title="033 在使用jupyter-notebook明明安装了包,却导入失败-" class="md-nav__link">
+      033 在使用jupyter-notebook明明安装了包,却导入失败-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/032pandas常用的函数/" title="032 pandas常用的函数" class="md-nav__link">
+      032 pandas常用的函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/031python自测100题/" title="031 python自测100题" class="md-nav__link">
+      031 python自测100题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/030Python面试｜一文让你读懂if-__name__=='__main__'的含义/" title="030 Python面试｜一文让你读懂if-__name__=='__main__'的含义" class="md-nav__link">
+      030 Python面试｜一文让你读懂if-__name__=='__main__'的含义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/029python自动拷贝优盘的指定后缀文件/" title="029 python自动拷贝优盘的指定后缀文件" class="md-nav__link">
+      029 python自动拷贝优盘的指定后缀文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/028获取指定路径所有文件的路径名并进行筛选/" title="028 获取指定路径所有文件的路径名并进行筛选" class="md-nav__link">
+      028 获取指定路径所有文件的路径名并进行筛选
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/027获取指定路径所有文件的路径名/" title="027 获取指定路径所有文件的路径名" class="md-nav__link">
+      027 获取指定路径所有文件的路径名
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/026python自动拷贝优盘的所有内容/" title="026 python自动拷贝优盘的所有内容" class="md-nav__link">
+      026 python自动拷贝优盘的所有内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/025python模块之psutil详解/" title="025 python模块之psutil详解" class="md-nav__link">
+      025 python模块之psutil详解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/024python的各种推导式/" title="024 python的各种推导式" class="md-nav__link">
+      024 python的各种推导式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/023python多进程/" title="023 python多进程" class="md-nav__link">
+      023 python多进程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/022-python多线程(修改借鉴莫烦python)/" title="022 python多线程(修改借鉴莫烦python)" class="md-nav__link">
+      022 python多线程(修改借鉴莫烦python)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/021-pickle-保存数据/" title="021-pickle-保存数据" class="md-nav__link">
+      021-pickle-保存数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/020-python错题集/" title="020 python错题集" class="md-nav__link">
+      020 python错题集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/019python-进度条-tqdm的使用/" title="019 python-进度条-tqdm的使用" class="md-nav__link">
+      019 python-进度条-tqdm的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/018-python数据科学速查表___为个人方便查看转载/" title="018 python数据科学速查表___为个人方便查看转载" class="md-nav__link">
+      018 python数据科学速查表___为个人方便查看转载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/017python随记/" title="017 python随记" class="md-nav__link">
+      017 python随记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/016python-numpy的简单实用杂乱/" title="016 python-numpy的简单实用杂乱" class="md-nav__link">
+      016 python-numpy的简单实用杂乱
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/015python模块和包/" title="015 python模块和包" class="md-nav__link">
+      015 python模块和包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/014python异常/" title="014 python异常" class="md-nav__link">
+      014 python异常
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/013python单例设计模式/" title="013 python单例设计模式" class="md-nav__link">
+      013 python单例设计模式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/012python类属性和类方法/" title="012 python类属性和类方法" class="md-nav__link">
+      012 python类属性和类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/011python多态/" title="011 python多态" class="md-nav__link">
+      011 python多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/010python继承/" title="010 python继承" class="md-nav__link">
+      010 python继承
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/009python私有属性和私有方法/" title="009 python私有属性和私有方法" class="md-nav__link">
+      009 python私有属性和私有方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/008python面向对象编程/" title="008 python面向对象编程" class="md-nav__link">
+      008 python面向对象编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/007python中赋值,浅拷贝,深拷贝的一些解释/" title="007python中赋值,浅拷贝,深拷贝的一些解释" class="md-nav__link">
+      007python中赋值,浅拷贝,深拷贝的一些解释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/006pythoneval函数/" title="006 pythoneval函数" class="md-nav__link">
+      006 pythoneval函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/005python_中文转换成拼音_xpinyin包/" title="005 python中文转换成拼音xpinyin包" class="md-nav__link">
+      005 python中文转换成拼音xpinyin包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/004python中glob模块的使用/" title="004 python中glob模块的使用" class="md-nav__link">
+      004 python中glob模块的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/003python使用shutil-模块移动复制文件/" title="003 python使用shutil模块移动复制文件" class="md-nav__link">
+      003 python使用shutil模块移动复制文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/002 python操作文件/" title="002 python操作文件" class="md-nav__link">
+      002 python操作文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/001 jupyter notebook快捷键/" title="001 jupyter notebook快捷键" class="md-nav__link">
+      001 jupyter notebook快捷键
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      python web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        python web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/015-python项目离线部署/" title="015 python项目离线部署" class="md-nav__link">
+      015 python项目离线部署
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-天天生鲜项目指令/" title="014 天天生鲜项目指令" class="md-nav__link">
+      014 天天生鲜项目指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/014-windows下使用-fdfs_client-上传文件/" title="014 windows下使用_fdfs_client-上传文件" class="md-nav__link">
+      014 windows下使用_fdfs_client-上传文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略中/" title="013 天天生鲜项目简略中" class="md-nav__link">
+      013 天天生鲜项目简略中
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/013-天天生鲜项目简略上/" title="013 天天生鲜项目简略上" class="md-nav__link">
+      013 天天生鲜项目简略上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/012-分布式图片服务器FastDFS/" title="012 分布式图片服务器FastDFS" class="md-nav__link">
+      012 分布式图片服务器FastDFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/011-Django框架使用步骤/" title="011 Django框架使用步骤" class="md-nav__link">
+      011 Django框架使用步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/010 网络知识补充/" title="010 网络知识补充" class="md-nav__link">
+      010 网络知识补充
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/009-13--python提高-2/" title="009 13--python提高-2" class="md-nav__link">
+      009 13--python提高-2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/008-12--python提高-1/" title="008 12--python提高-1" class="md-nav__link">
+      008 12--python提高-1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/007 19. 闭包、装饰器/" title="007 19. 闭包、装饰器" class="md-nav__link">
+      007 19. 闭包、装饰器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/006 18. WSGI、mini-web框架/" title="006 18. WSGI、mini-web框架" class="md-nav__link">
+      006 18. WSGI、mini-web框架
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/005--11-网络通信过程/" title="005 11-网络通信过程" class="md-nav__link">
+      005  11-网络通信过程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/004--10--web服务器-并发服务器2/" title="004 10-web服务器-并发服务器2" class="md-nav__link">
+      004  10-web服务器-并发服务器2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/003-9--http协议、web服务器-并发服务器1/" title="003 9--http协议、web服务器-并发服务器1" class="md-nav__link">
+      003 9--http协议、web服务器-并发服务器1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/002-网络tcp/" title="002 网络tcp" class="md-nav__link">
+      002 网络tcp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python-web/001-网络udp/" title="001 网络udp" class="md-nav__link">
+      001 网络udp
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      python 数据结构与算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        python 数据结构与算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/09-图_problem-solving-with-algorithms-and-data-structure-usingpython-中文/" title="09-图_problem-solving-with-algorithms-and-data-structure-usingpython-中文" class="md-nav__link">
+      09-图_problem-solving-with-algorithms-and-data-structure-usingpython-中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/08-图-基本概念及python实现/" title="08-图-基本概念及python实现" class="md-nav__link">
+      08-图-基本概念及python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/07-树与树算法/" title="07-树与树算法" class="md-nav__link">
+      07-树与树算法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/06-排序与搜索-数据结构与算法（Python）/" title="06-排序与搜索-数据结构与算法（Python）" class="md-nav__link">
+      06-排序与搜索-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/05-队列-数据结构与算法（Python）/" title="05-队列-数据结构与算法（Python）" class="md-nav__link">
+      05-队列-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/04-栈-数据结构与算法（Python）/" title="04-栈-数据结构与算法（Python）" class="md-nav__link">
+      04-栈-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/03-链表-数据结构与算法（Python）/" title="03-链表-数据结构与算法（Python）" class="md-nav__link">
+      03-链表-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/02-顺序表-数据结构与算法（Python）/" title="02-顺序表-数据结构与算法（Python）" class="md-nav__link">
+      02-顺序表-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/01-引入概念-数据结构与算法（Python）/" title="01-引入概念-数据结构与算法（Python）" class="md-nav__link">
+      01-引入概念-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../数据结构与算法Python/00-数据结构与算法（Python）/" title="00-数据结构与算法（Python）" class="md-nav__link">
+      00-数据结构与算法（Python）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      机器学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        机器学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/013 进入tensorboard/" title="013 进入tensorboard" class="md-nav__link">
+      013 进入tensorboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/012-Keras使用tensorboard训练过程可视化踩过的坑/" title="012-Keras使用tensorboard训练过程可视化踩过的坑" class="md-nav__link">
+      012-Keras使用tensorboard训练过程可视化踩过的坑
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/011-关于交叉验证与偏差-方差的一连串理解/" title="011-关于交叉验证与偏差-方差的一连串理解" class="md-nav__link">
+      011-关于交叉验证与偏差-方差的一连串理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/010-统计学习方法--统计学习方法概论要点加代码/" title="010-统计学习方法--统计学习方法概论要点加代码" class="md-nav__link">
+      010-统计学习方法--统计学习方法概论要点加代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/009-统计学习方法--统计学习方法概论详细/" title="009-统计学习方法--统计学习方法概论详细" class="md-nav__link">
+      009-统计学习方法--统计学习方法概论详细
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线/" title="008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线" class="md-nav__link">
+      008-机器学习概念回顾、精确率、召回率、F1-score、准确率、AUC、ROC曲线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/007-机器学习中的维数灾难/" title="007-机器学习中的维数灾难" class="md-nav__link">
+      007-机器学习中的维数灾难
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/006-sklearn模型的保存加载/" title="006-sklearn模型的保存加载" class="md-nav__link">
+      006-sklearn模型的保存加载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/005-sklearn之交叉验证/" title="005-sklearn之交叉验证" class="md-nav__link">
+      005-sklearn之交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/004-sklearn：特征提取，常用模型，交叉验证/" title="004-sklearn：特征提取，常用模型，交叉验证" class="md-nav__link">
+      004-sklearn：特征提取，常用模型，交叉验证
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据/" title="003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据" class="md-nav__link">
+      003-sklearn学习,选择模型流程,应用模型(鸢尾花的例子),使用模型的步骤：,Sklearn中的数据集-,预处理数据
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/002-预处理数据的方法总结（使用sklearn-preprocessing）/" title="002-预处理数据的方法总结（使用sklearn-preprocessing）" class="md-nav__link">
+      002-预处理数据的方法总结（使用sklearn-preprocessing）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../机器学习/001-sklearn-安装，获取数据，数据预处理/" title="001-sklearn-安装，获取数据，数据预处理" class="md-nav__link">
+      001-sklearn-安装，获取数据，数据预处理
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      每天一道力扣题
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        每天一道力扣题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/066-质因数/" title="066-质因数" class="md-nav__link">
+      066-质因数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/065-完全数的求解/" title="065-完全数的求解" class="md-nav__link">
+      065-完全数的求解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/064-刷题过程中慎用-[]-is-None/" title="064-刷题过程中慎用-[]-is-None" class="md-nav__link">
+      064-刷题过程中慎用-[]-is-None
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/063-LRU缓存算法的python实现/" title="063-LRU缓存算法的python实现" class="md-nav__link">
+      063-LRU缓存算法的python实现
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/062-力扣刷题-344--反转字符串/" title="062-力扣刷题-344--反转字符串" class="md-nav__link">
+      062-力扣刷题-344--反转字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/061-力扣刷题-23--合并K个排序链表/" title="061-力扣刷题-23--合并K个排序链表" class="md-nav__link">
+      061-力扣刷题-23--合并K个排序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/060-力扣刷题-232--用栈实现队列/" title="060-力扣刷题-232--用栈实现队列" class="md-nav__link">
+      060-力扣刷题-232--用栈实现队列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/059-力扣刷题-102--二叉树的层次遍历/" title="059-力扣刷题-102--二叉树的层次遍历" class="md-nav__link">
+      059-力扣刷题-102--二叉树的层次遍历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/058-力扣刷题-226--翻转二叉树/" title="058-力扣刷题-226--翻转二叉树" class="md-nav__link">
+      058-力扣刷题-226--翻转二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/057-力扣刷题-237删除链表中的节点/" title="057-力扣刷题-237删除链表中的节点" class="md-nav__link">
+      057-力扣刷题-237删除链表中的节点
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/056-力扣刷题-206--反转链表/" title="056-力扣刷题-206--反转链表" class="md-nav__link">
+      056-力扣刷题-206--反转链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/055-力扣刷题-1004--最大连续1的个数-III/" title="055-力扣刷题-1004--最大连续1的个数-III" class="md-nav__link">
+      055-力扣刷题-1004--最大连续1的个数-III
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/054-小球反弹的总路程/" title="054-小球反弹的总路程" class="md-nav__link">
+      054-小球反弹的总路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/053-力扣刷题-235--二叉搜索树的最近公共祖先/" title="053-力扣刷题-235--二叉搜索树的最近公共祖先" class="md-nav__link">
+      053-力扣刷题-235--二叉搜索树的最近公共祖先
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/052-力扣刷题-162--寻找峰值/" title="052-力扣刷题-162--寻找峰值" class="md-nav__link">
+      052-力扣刷题-162--寻找峰值
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/051-力扣刷题-136--只出现一次的数字/" title="051-力扣刷题-136--只出现一次的数字" class="md-nav__link">
+      051-力扣刷题-136--只出现一次的数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/050-二维生物的旅行-754--到达终点数字/" title="050-二维生物的旅行-754--到达终点数字" class="md-nav__link">
+      050-二维生物的旅行-754--到达终点数字
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/049--力扣刷题459--重复的子字符串-pin2字符串构造/" title="049--力扣刷题459--重复的子字符串-pin2字符串构造" class="md-nav__link">
+      049--力扣刷题459--重复的子字符串-pin2字符串构造
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/048-pin题目1/" title="048-pin题目1" class="md-nav__link">
+      048-pin题目1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/047-力扣刷题-845--数组中的最长山脉/" title="047-力扣刷题-845--数组中的最长山脉" class="md-nav__link">
+      047-力扣刷题-845--数组中的最长山脉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/046-力扣刷题-125--验证回文串/" title="046-力扣刷题-125--验证回文串" class="md-nav__link">
+      046-力扣刷题-125--验证回文串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/045-力扣刷题-122--买卖股票的最佳时机-II/" title="045-力扣刷题-122--买卖股票的最佳时机-II" class="md-nav__link">
+      045-力扣刷题-122--买卖股票的最佳时机-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/044-力扣刷题-119--杨辉三角-II/" title="044-力扣刷题-119--杨辉三角-II" class="md-nav__link">
+      044-力扣刷题-119--杨辉三角-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/043-力扣刷题-121--买卖股票的最佳时机/" title="043-力扣刷题-121--买卖股票的最佳时机" class="md-nav__link">
+      043-力扣刷题-121--买卖股票的最佳时机
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/042-力扣刷题-8--字符串转换整数-(atoi)/" title="042-力扣刷题-8--字符串转换整数-(atoi)" class="md-nav__link">
+      042-力扣刷题-8--字符串转换整数-(atoi)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/041-力扣刷题-118--杨辉三角/" title="041-力扣刷题-118--杨辉三角" class="md-nav__link">
+      041-力扣刷题-118--杨辉三角
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/040-力扣刷题-535--TinyURL-的加密与解密/" title="040-力扣刷题-535--TinyURL-的加密与解密" class="md-nav__link">
+      040-力扣刷题-535--TinyURL-的加密与解密
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/039-力扣刷题-112--路径总和/" title="039-力扣刷题-112--路径总和" class="md-nav__link">
+      039-力扣刷题-112--路径总和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/038-力扣刷题-98--验证二叉搜索树/" title="038-力扣刷题-98--验证二叉搜索树" class="md-nav__link">
+      038-力扣刷题-98--验证二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/037-力扣刷题-110--平衡二叉树--重点进行理解/" title="037-力扣刷题-110--平衡二叉树--重点进行理解" class="md-nav__link">
+      037-力扣刷题-110--平衡二叉树--重点进行理解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/036-力扣刷题-166--分数到小数/" title="036-力扣刷题-166--分数到小数" class="md-nav__link">
+      036-力扣刷题-166--分数到小数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/035-字节跳动题目-小球往返路程/" title="035-字节跳动题目-小球往返路程" class="md-nav__link">
+      035-字节跳动题目-小球往返路程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/034-力扣刷题-88--合并两个有序数组/" title="034-力扣刷题-88--合并两个有序数组" class="md-nav__link">
+      034-力扣刷题-88--合并两个有序数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/033-力扣刷题-70--爬楼梯/" title="033-力扣刷题-70--爬楼梯" class="md-nav__link">
+      033-力扣刷题-70--爬楼梯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/032-力扣刷题-83--删除排序链表中的重复元素/" title="032-力扣刷题-83--删除排序链表中的重复元素" class="md-nav__link">
+      032-力扣刷题-83--删除排序链表中的重复元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/031-力扣刷题-101--对称二叉树/" title="031-力扣刷题-101--对称二叉树" class="md-nav__link">
+      031-力扣刷题-101--对称二叉树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/030-力扣刷题-111--二叉树的最小深度/" title="030-力扣刷题-111--二叉树的最小深度" class="md-nav__link">
+      030-力扣刷题-111--二叉树的最小深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/029-力扣刷题-104--二叉树的最大深度/" title="029-力扣刷题-104--二叉树的最大深度" class="md-nav__link">
+      029-力扣刷题-104--二叉树的最大深度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/028-力扣刷题107--二叉树的层次遍历-II/" title="028-力扣刷题107--二叉树的层次遍历-II" class="md-nav__link">
+      028-力扣刷题107--二叉树的层次遍历-II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/027-字节跳动笔试题-循环链表实现约瑟夫环/" title="027-字节跳动笔试题-循环链表实现约瑟夫环" class="md-nav__link">
+      027-字节跳动笔试题-循环链表实现约瑟夫环
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/026-力扣刷题-108--将有序数组转换为二叉搜索树/" title="026-力扣刷题-108--将有序数组转换为二叉搜索树" class="md-nav__link">
+      026-力扣刷题-108--将有序数组转换为二叉搜索树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/025-力扣刷题-100-相同的树/" title="025-力扣刷题-100-相同的树" class="md-nav__link">
+      025-力扣刷题-100-相同的树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/024-力扣刷题-66--加一/" title="024-力扣刷题-66--加一" class="md-nav__link">
+      024-力扣刷题-66--加一
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/023-力扣刷题-69--x-的平方根/" title="023-力扣刷题-69--x-的平方根" class="md-nav__link">
+      023-力扣刷题-69--x-的平方根
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/022-力扣刷题-二进制求和/" title="022-力扣刷题-二进制求和" class="md-nav__link">
+      022-力扣刷题-二进制求和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/021-力扣刷题151--翻转字符串里的单词/" title="021-力扣刷题151--翻转字符串里的单词" class="md-nav__link">
+      021-力扣刷题151--翻转字符串里的单词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/020-力扣刷题-58--最后一个单词的长度/" title="020-力扣刷题-58--最后一个单词的长度" class="md-nav__link">
+      020-力扣刷题-58--最后一个单词的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/019-力扣刷题53--最大子序和/" title="019-力扣刷题53--最大子序和" class="md-nav__link">
+      019-力扣刷题53--最大子序和
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/018-力扣刷题-38--报数/" title="018-力扣刷题-38--报数" class="md-nav__link">
+      018-力扣刷题-38--报数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/017-46--全排列/" title="017-46--全排列" class="md-nav__link">
+      017-46--全排列
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/016-力扣刷题873--最长的斐波那契子序列的长度/" title="016-力扣刷题873--最长的斐波那契子序列的长度" class="md-nav__link">
+      016-力扣刷题873--最长的斐波那契子序列的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/015-力扣刷题35--搜索插入位置/" title="015-力扣刷题35--搜索插入位置" class="md-nav__link">
+      015-力扣刷题35--搜索插入位置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/014-力扣刷题9--回文数/" title="014-力扣刷题9--回文数" class="md-nav__link">
+      014-力扣刷题9--回文数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/013-力扣刷题7--整数反转/" title="013-力扣刷题7--整数反转" class="md-nav__link">
+      013-力扣刷题7--整数反转
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/012-力扣刷题14--最长公共前缀/" title="012-力扣刷题14--最长公共前缀" class="md-nav__link">
+      012-力扣刷题14--最长公共前缀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/011-力扣刷题21--合并两个有序链表/" title="011-力扣刷题21--合并两个有序链表" class="md-nav__link">
+      011-力扣刷题21--合并两个有序链表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/010-力扣刷题27--移除元素/" title="010-力扣刷题27--移除元素" class="md-nav__link">
+      010-力扣刷题27--移除元素
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/009-力扣刷题28--实现strStr()/" title="009-力扣刷题28--实现strStr()" class="md-nav__link">
+      009-力扣刷题28--实现strStr()
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/008-力扣刷题20--有效的括号/" title="008-力扣刷题20--有效的括号" class="md-nav__link">
+      008-力扣刷题20--有效的括号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/007-力扣刷题26--删除排序数组中的重复项/" title="007-力扣刷题26--删除排序数组中的重复项" class="md-nav__link">
+      007-力扣刷题26--删除排序数组中的重复项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/006-力扣刷题22--括号生成/" title="006-力扣刷题22--括号生成" class="md-nav__link">
+      006-力扣刷题22--括号生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/005-力扣刷题13--罗马数字转整数/" title="005-力扣刷题13--罗马数字转整数" class="md-nav__link">
+      005-力扣刷题13--罗马数字转整数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/004-力扣刷题4--寻找两个有序数组的中位数/" title="004-力扣刷题4--寻找两个有序数组的中位数" class="md-nav__link">
+      004-力扣刷题4--寻找两个有序数组的中位数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/003-力扣刷题3不含有重复字符的-最长子串-的长度/" title="003-力扣刷题3不含有重复字符的-最长子串-的长度" class="md-nav__link">
+      003-力扣刷题3不含有重复字符的-最长子串-的长度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/002-力扣刷题2-两数相加/" title="002-力扣刷题2-两数相加" class="md-nav__link">
+      002-力扣刷题2-两数相加
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../力扣刷题/001-力扣刷题1--两数之和/" title="001-力扣刷题1--两数之和" class="md-nav__link">
+      001-力扣刷题1--两数之和
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      java学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        java学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/029-IntelliJ-IDEA-2019-快捷键终极大全/" title="029-IntelliJ-IDEA-2019-快捷键终极大全" class="md-nav__link">
+      029-IntelliJ-IDEA-2019-快捷键终极大全
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/028-day27-反射/" title="028-day27-反射" class="md-nav__link">
+      028-day27-反射
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/027-day26-网络/" title="027-day26-网络" class="md-nav__link">
+      027-day26-网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/026-day25-多线程2/" title="026-day25-多线程2" class="md-nav__link">
+      026-day25-多线程2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/025-day24-多线程1/" title="025-day24-多线程1" class="md-nav__link">
+      025-day24-多线程1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/024-day22数据流/" title="024-day22数据流" class="md-nav__link">
+      024-day22数据流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/023-day21--每个讲解到最后的其实才是最需要记住的/" title="023-day21--每个讲解到最后的其实才是最需要记住的" class="md-nav__link">
+      023-day21--每个讲解到最后的其实才是最需要记住的
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/022-day20-递归,IO流/" title="022-day20-递归,IO流" class="md-nav__link">
+      022-day20-递归,IO流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/021-day19---异常----File----递归----字节流----转换流----字符流----其他流/" title="021-day19---异常----File----递归----字节流----转换流----字符流----其他流" class="md-nav__link">
+      021-day19---异常----File----递归----字节流----转换流----字符流----其他流
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/020-day18-hashmap/" title="020-day18-hashmap" class="md-nav__link">
+      020-day18-hashmap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/019-day17--hashset/" title="019-day17--hashset" class="md-nav__link">
+      019-day17--hashset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/018-day16arraylist使用/" title="018-day16arraylist使用" class="md-nav__link">
+      018-day16arraylist使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/017-Eclipse-常用快捷键及使用技巧/" title="017-Eclipse-常用快捷键及使用技巧" class="md-nav__link">
+      017-Eclipse-常用快捷键及使用技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/016-day15-集合类/" title="016-day15-集合类" class="md-nav__link">
+      016-day15-集合类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/015-day14-正则表达式概述及基本使用/" title="015-day14-正则表达式概述及基本使用" class="md-nav__link">
+      015-day14-正则表达式概述及基本使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/014-day13-StringBuffer类,数组高级以及Arrays(掌握),(3)Arrays工具类/" title="014-day13-StringBuffer类,数组高级以及Arrays(掌握),(3)Arrays工具类" class="md-nav__link">
+      014-day13-StringBuffer类,数组高级以及Arrays(掌握),(3)Arrays工具类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/013-day12-API概述,object类,scanner类,string类/" title="013-day12-API概述,object类,scanner类,string类" class="md-nav__link">
+      013-day12-API概述,object类,scanner类,string类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/012-如何查看jdk的源码/" title="012-如何查看jdk的源码" class="md-nav__link">
+      012-如何查看jdk的源码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/011-day11java使用eclipse/" title="011-day11java使用eclipse" class="md-nav__link">
+      011-day11java使用eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/010-day10笔记--包,内部类/" title="010-day10笔记--包,内部类" class="md-nav__link">
+      010-day10笔记--包,内部类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/009-day09多态/" title="009-day09多态" class="md-nav__link">
+      009-day09多态
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/008-day-08-代码块,继承,final/" title="008-day-08-代码块,继承,final" class="md-nav__link">
+      008-day-08-代码块,继承,final
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/007-day-07-构造方法,创建对象的步骤,练习,static,文档说明书的制作与使用/" title="007-day-07-构造方法,创建对象的步骤,练习,static,文档说明书的制作与使用" class="md-nav__link">
+      007-day-07-构造方法,创建对象的步骤,练习,static,文档说明书的制作与使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/006-day06-类的定义及使用,面向对象内存图,匿名对象,封装,this/" title="006-day06-类的定义及使用,面向对象内存图,匿名对象,封装,this" class="md-nav__link">
+      006-day06-类的定义及使用,面向对象内存图,匿名对象,封装,this
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/005-day05,一维数组,二维数组/" title="005-day05,一维数组,二维数组" class="md-nav__link">
+      005-day05,一维数组,二维数组
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/004-day04,for循环,while循环,do_while循环,循环嵌套,控制语句,方法/" title="004-day04,for循环,while循环,do_while循环,循环嵌套,控制语句,方法" class="md-nav__link">
+      004-day04,for循环,while循环,do_while循环,循环嵌套,控制语句,方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/003-day03,逻辑运算符,位运算符,三元运算符,顺序结构,选择结构if,switch/" title="003-day03,逻辑运算符,位运算符,三元运算符,顺序结构,选择结构if,switch" class="md-nav__link">
+      003-day03,逻辑运算符,位运算符,三元运算符,顺序结构,选择结构if,switch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/002-day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符/" title="002-day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符" class="md-nav__link">
+      002-day02,常量,进制转换,数据类型转换,算数运算符,赋值运算符,关系运算符
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../java学习/001-day01,java初探以及说明/" title="001-day01,java初探以及说明" class="md-nav__link">
+      001-day01,java初探以及说明
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      数据库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="006-mysql的一些底层原理" class="md-nav__link md-nav__link--active">
+      006-mysql的一些底层原理
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../005-ubuntu安装mysql没有让我设置密码/" title="005-ubuntu安装mysql没有让我设置密码" class="md-nav__link">
+      005-ubuntu安装mysql没有让我设置密码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../004-mysql-高级/" title="004-mysql-高级" class="md-nav__link">
+      004-mysql-高级
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../003-黑马-mysql-下/" title="003-黑马-mysql-下" class="md-nav__link">
+      003-黑马-mysql-下
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../002-黑马mysql-上/" title="002-黑马mysql-上" class="md-nav__link">
+      002-黑马mysql-上
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../001-mysql的使用/" title="001-mysql的使用" class="md-nav__link">
+      001-mysql的使用
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      windows10系统使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        windows10系统使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" title="022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装" class="md-nav__link">
+      022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/021win系统新增新建右键Markdown文件及默认UTF-8编码格式/" title="021win系统新增新建右键Markdown文件及默认UTF-8编码格式" class="md-nav__link">
+      021win系统新增新建右键Markdown文件及默认UTF-8编码格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/020-删除关机等按钮/" title="020-删除关机等按钮" class="md-nav__link">
+      020-删除关机等按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/019-windows1809-系统最近的更新出现了bug/" title="019-windows1809-系统最近的更新出现了bug" class="md-nav__link">
+      019-windows1809-系统最近的更新出现了bug
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/018--win10卸载自带的应用/" title="018--win10卸载自带的应用" class="md-nav__link">
+      018--win10卸载自带的应用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/017-笔记本软件/" title="017-笔记本软件" class="md-nav__link">
+      017-笔记本软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/016-Java添加环境变量/" title="016-Java添加环境变量" class="md-nav__link">
+      016-Java添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/015-anaconda-添加环境变量/" title="015-anaconda-添加环境变量" class="md-nav__link">
+      015-anaconda-添加环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）/" title="014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）" class="md-nav__link">
+      014-Win10添加右键打开cmd和Powershell窗口（管理员-非管理员）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/013-win10取消应用弹框/" title="013-win10取消应用弹框" class="md-nav__link">
+      013-win10取消应用弹框
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/012--win10系统怎么禁用defender/" title="012--win10系统怎么禁用defender" class="md-nav__link">
+      012--win10系统怎么禁用defender
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b/" title="011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b" class="md-nav__link">
+      011-Windows-无法启动print-spooler服务(位于本地计算机上)。错误0x800706b
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/010-Axmath破解安装使用/" title="010-Axmath破解安装使用" class="md-nav__link">
+      010-Axmath破解安装使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式/" title="007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式" class="md-nav__link">
+      007-Mathpix-Snipping-Tool-+-Typora-+-Pandoc-快速将其他论文中的公式图片转化成Word可编辑格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/006-picgo图床使用/" title="006-picgo图床使用" class="md-nav__link">
+      006-picgo图床使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/005-win10开机提示用户名和密码不正确的解决办法/" title="005-win10开机提示用户名和密码不正确的解决办法" class="md-nav__link">
+      005-win10开机提示用户名和密码不正确的解决办法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/004-windows下安装pandoc并通过Typora导出pdf和word/" title="004-windows下安装pandoc并通过Typora导出pdf和word" class="md-nav__link">
+      004-windows下安装pandoc并通过Typora导出pdf和word
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/002-几何画板迷你增强版/" title="002-几何画板迷你增强版" class="md-nav__link">
+      002-几何画板迷你增强版
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/001-开机启动项的存储位置/" title="001-开机启动项的存储位置" class="md-nav__link">
+      001-开机启动项的存储位置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      ubuntu系统的使用
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        ubuntu系统的使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" title="053 ubuntu18-04安装搜狗输入法" class="md-nav__link">
+      053 ubuntu18-04安装搜狗输入法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/052-ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客/" title="052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客" class="md-nav__link">
+      052 ubuntu18-04卸载ibus出现登录循环问题,真是什么人都出来写博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/051-ubuntu安装redis的方法/" title="051 ubuntu安装redis的方法" class="md-nav__link">
+      051 ubuntu安装redis的方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/050-ubuntu下codeblocks安装及汉化教程/" title="050 ubuntu下codeblocks安装及汉化教程" class="md-nav__link">
+      050 ubuntu下codeblocks安装及汉化教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/049-ubuntu绘图软件/" title="049 ubuntu绘图软件" class="md-nav__link">
+      049 ubuntu绘图软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/048-linux的指令/" title="048 linux的指令" class="md-nav__link">
+      048 linux的指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/047-记录一次笔记本使用硬盘系统的经历/" title="047 记录一次笔记本使用硬盘系统的经历" class="md-nav__link">
+      047 记录一次笔记本使用硬盘系统的经历
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/044 linux系统/" title="044 linux系统" class="md-nav__link">
+      044 linux系统
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/043 ubuntu安装eclipse/" title="043 ubuntu安装eclipse" class="md-nav__link">
+      043 ubuntu安装eclipse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/042 ubuntu在使用搜狗输入法时,spyder不能输入中文/" title="042 ubuntu在使用搜狗输入法时,spyder不能输入中文" class="md-nav__link">
+      042 ubuntu在使用搜狗输入法时,spyder不能输入中文
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/041-解决ubuntu鼠标灵敏度无法调整的情况/" title="041 解决ubuntu鼠标灵敏度无法调整的情况" class="md-nav__link">
+      041 解决ubuntu鼠标灵敏度无法调整的情况
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/040-解决Ubuntu屏幕分辨率不正常问题/" title="040 解决Ubuntu屏幕分辨率不正常问题" class="md-nav__link">
+      040 解决Ubuntu屏幕分辨率不正常问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/039-ubuntu安装latex+texstudio/" title="039 ubuntu安装latex+texstudio" class="md-nav__link">
+      039 ubuntu安装latex+texstudio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/038-乌班图不能用QQ,微信怎么办-/" title="038 乌班图不能用QQ,微信怎么办-" class="md-nav__link">
+      038 乌班图不能用QQ,微信怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/037-乌班图安装的网易云音乐不能正常启动怎么办-/" title="037 乌班图安装的网易云音乐不能正常启动怎么办-" class="md-nav__link">
+      037 乌班图安装的网易云音乐不能正常启动怎么办-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/036-为火狐浏览器安装flash插件/" title="036 为火狐浏览器安装flash插件" class="md-nav__link">
+      036 为火狐浏览器安装flash插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/035-乌班图安装强大的终端-Terminator/" title="035 乌班图安装强大的终端-Terminator" class="md-nav__link">
+      035 乌班图安装强大的终端-Terminator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/034-乌班图最好用的截图软件的安装/" title="034 乌班图最好用的截图软件的安装" class="md-nav__link">
+      034 乌班图最好用的截图软件的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/033-乌班图下Anaconda环境的使用/" title="033 乌班图下Anaconda环境的使用" class="md-nav__link">
+      033 乌班图下Anaconda环境的使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/032-乌班图系统的原版优化配置/" title="032 乌班图系统的原版优化配置" class="md-nav__link">
+      032 乌班图系统的原版优化配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/031-乌班图安装虚拟机VMware/" title="031 乌班图安装虚拟机VMware" class="md-nav__link">
+      031 乌班图安装虚拟机VMware
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/030-乌班图自带输入法ibus-无法按数字键取词/" title="030 乌班图自带输入法ibus-无法按数字键取词" class="md-nav__link">
+      030 乌班图自带输入法ibus-无法按数字键取词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/029-乌班图鼠标键盘延迟问题--已/" title="029 乌班图鼠标键盘延迟问题--已" class="md-nav__link">
+      029 乌班图鼠标键盘延迟问题--已
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/028-乌班图添加环境变量路径/" title="028 乌班图添加环境变量路径" class="md-nav__link">
+      028 乌班图添加环境变量路径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/027-如何在Ubuntu中使用GNOME-Sushi快速预览文件/" title="027 如何在Ubuntu中使用GNOME-Sushi快速预览文件" class="md-nav__link">
+      027 如何在Ubuntu中使用GNOME-Sushi快速预览文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/026-Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。/" title="026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。" class="md-nav__link">
+      026 Ubuntu18-04-问题——无法安全地用该源进行更新，所以默认禁用该源。
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/025-在局域网内Ubuntu和Windows之间实现共享文件教程/" title="025 在局域网内Ubuntu和Windows之间实现共享文件教程" class="md-nav__link">
+      025 在局域网内Ubuntu和Windows之间实现共享文件教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/024-ubuntu系统下matplotlib中文乱码问题/" title="024 ubuntu系统下matplotlib中文乱码问题" class="md-nav__link">
+      024 ubuntu系统下matplotlib中文乱码问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/023-ubuntu安装anaconda/" title="023 ubuntu安装anaconda" class="md-nav__link">
+      023 ubuntu安装anaconda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/022-乌班图常用指令/" title="022 乌班图常用指令" class="md-nav__link">
+      022 乌班图常用指令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/021-ubuntu18-04实时显示网速CPU温度等/" title="021 ubuntu18-04实时显示网速CPU温度等" class="md-nav__link">
+      021 ubuntu18-04实时显示网速CPU温度等
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/020-ubuntu18-04智能拼音候选字体调节方法/" title="020 ubuntu18-04智能拼音候选字体调节方法" class="md-nav__link">
+      020 ubuntu18-04智能拼音候选字体调节方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/019-Ubuntu解压zip压缩包中文乱码/" title="019 Ubuntu解压zip压缩包中文乱码" class="md-nav__link">
+      019 Ubuntu解压zip压缩包中文乱码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/018-Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq/" title="018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq" class="md-nav__link">
+      018 Windows下安装Notepad++-以及-Ubuntu-16-04下-安装-Notepadqq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/017-ubuntu更新引导项/" title="017 ubuntu更新引导项" class="md-nav__link">
+      017 ubuntu更新引导项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/016-ubuntu下NTFS分区无法访问解决/" title="016 ubuntu下NTFS分区无法访问解决" class="md-nav__link">
+      016 ubuntu下NTFS分区无法访问解决
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/015-保存ubuntu终端屏幕输出的信息/" title="015 保存ubuntu终端屏幕输出的信息" class="md-nav__link">
+      015 保存ubuntu终端屏幕输出的信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/014-在Ubuntu上安装Chrome浏览器和ChromeDriver/" title="014 在Ubuntu上安装Chrome浏览器和ChromeDriver" class="md-nav__link">
+      014 在Ubuntu上安装Chrome浏览器和ChromeDriver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/013-Ubuntu下解决apt-update时签名无效问题/" title="013 Ubuntu下解决apt-update时签名无效问题" class="md-nav__link">
+      013 Ubuntu下解决apt-update时签名无效问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/012-ubuntu怎么切换到root用户,切换到root账号方法/" title="012 ubuntu怎么切换到root用户,切换到root账号方法" class="md-nav__link">
+      012 ubuntu怎么切换到root用户,切换到root账号方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/011-ubuntu安装makedown编辑器typora/" title="011 ubuntu安装makedown编辑器typora" class="md-nav__link">
+      011 ubuntu安装makedown编辑器typora
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/010ubuntu配置java开发环境/" title="010 ubuntu配置java开发环境" class="md-nav__link">
+      010 ubuntu配置java开发环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/009ubuntu安装remarkable-makedown编辑器/" title="009 ubuntu安装remarkable-makedown编辑器" class="md-nav__link">
+      009 ubuntu安装remarkable-makedown编辑器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/008ubuntu-18-04如何自动更换壁纸？/" title="008 ubuntu-18-04如何自动更换壁纸？" class="md-nav__link">
+      008 ubuntu-18-04如何自动更换壁纸？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/007Ubuntu-18-04-引导修复（boot-repair）/" title="007 Ubuntu-18-04-引导修复（boot-repair）" class="md-nav__link">
+      007 Ubuntu-18-04-引导修复（boot-repair）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/006ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-/" title="006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-" class="md-nav__link">
+      006 ubuntu18-04无法下载-http---dl-google-com-linux-chrome-deb-dists-stable-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/005ubuntu18-04安装xmind-8/" title="005 ubuntu18-04安装xmind-8" class="md-nav__link">
+      005 ubuntu18-04安装xmind-8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/004ubuntu使用pandoc配合typora将makedown转换为docx/" title="004 ubuntu使用pandoc配合typora将makedown转换为docx" class="md-nav__link">
+      004 ubuntu使用pandoc配合typora将makedown转换为docx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/003ubuntu安装mathpix/" title="003 ubuntu安装mathpix" class="md-nav__link">
+      003 ubuntu安装mathpix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/002如何移植ubuntu系统到另一台电脑-/" title="002 如何移植ubuntu系统到另一台电脑-" class="md-nav__link">
+      002 如何移植ubuntu系统到另一台电脑-
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/001tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法/" title="001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法" class="md-nav__link">
+      001 tplink无线网卡在ubuntu-16-04-下频繁掉线-信号弱-解决办法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h2 id="1">1.什么是存储过程？有哪些优缺点？<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>什么是存储过程？有哪些优缺点？</p>
+</blockquote>
+<p><strong>存储过程就像我们编程语言中的函数一样，封装了我们的代码(PLSQL、T-SQL)</strong>。</p>
+<p>存储过程的优点：</p>
+<ul>
+<li><strong>能够将代码封装起来</strong></li>
+<li><strong>保存在数据库之中</strong></li>
+<li><strong>让编程语言进行调用</strong></li>
+<li><strong>存储过程是一个预编译的代码块，执行效率比较高</strong></li>
+<li><strong>一个存储过程替代大量T_SQL语句 ，可以降低网络通信量，提高通信速率</strong></li>
+</ul>
+<p>存储过程的缺点：</p>
+<ul>
+<li><strong>每个数据库的存储过程语法几乎都不一样，十分难以维护（不通用）</strong></li>
+<li><strong>业务逻辑放在数据库上，难以迭代</strong></li>
+</ul>
+<h2 id="sql">Sql执行顺序<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="mi">1</span><span class="p">.</span>  <span class="k">FROM</span> <span class="err">子句</span> <span class="err">组装来自不同数据源的数据</span>
+<span class="mi">2</span><span class="p">.</span>  <span class="k">WHERE</span> <span class="err">子句</span> <span class="err">基于指定的条件对记录进行筛选</span>
+<span class="mi">3</span><span class="p">.</span>  <span class="k">GROUP</span> <span class="k">BY</span> <span class="err">子句</span> <span class="err">将数据划分为多个分组</span>
+<span class="mi">4</span><span class="p">.</span>  <span class="err">使用聚合函数进行计算</span>
+<span class="mi">5</span><span class="p">.</span>  <span class="err">使用</span><span class="n">HAVING子句筛选分组</span>
+<span class="mi">6</span><span class="p">.</span>  <span class="err">计算所有的表达式</span>
+<span class="mi">7</span><span class="p">.</span>  <span class="err">使用</span><span class="k">ORDER</span> <span class="n">BY对结果集进行排序</span>
+<span class="mi">8</span><span class="p">.</span>  <span class="k">select</span> <span class="err">获取相应列</span>
+<span class="mi">9</span><span class="p">.</span>  <span class="n">limit截取结果集</span>
+</pre></div>
+
+
+<h2 id="2">2.什么是视图？以及视图的使用场景有哪些？<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>什么是视图？以及视图的使用场景有哪些？</p>
+</blockquote>
+<p>视图是一种基于数据表的一种**虚表**</p>
+<ul>
+<li>（1）视图是一种虚表</li>
+<li>（2）视图建立在已有表的基础上, 视图赖以建立的这些表称为基表</li>
+<li>（3）<strong>向视图提供数据内容的语句为 SELECT 语句,可以将视图理解为存储起来的 SELECT 语句</strong></li>
+<li>（4）视图向用户提供基表数据的另一种表现形式</li>
+<li>（5）视图没有存储真正的数据，真正的数据还是存储在基表中</li>
+<li>（6）程序员虽然操作的是视图，但最终视图还会转成操作基表</li>
+<li>（7）一个基表可以有0个或多个视图</li>
+</ul>
+<p>有的时候，我们可能只关系一张数据表中的某些字段，而另外的一些人只关系同一张数据表的某些字段...</p>
+<p>那么把全部的字段都都显示给他们看，这是不合理的。</p>
+<p>我们应该做到：<strong>他们想看到什么样的数据，我们就给他们什么样的数据...一方面就能够让他们只关注自己的数据，另一方面，我们也保证数据表一些保密的数据不会泄露出来...</strong></p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/161f3de9b3092439.jpg" /></p>
+<p>我们在查询数据的时候，常常需要编写非常长的SQL语句，几乎每次都要写很长很长....上面已经说了，<strong>视图就是基于查询的一种虚表，也就是说，视图可以将查询出来的数据进行封装。。。那么我们在使用的时候就会变得非常方便</strong>...</p>
+<p>值得注意的是：<strong>使用视图可以让我们专注与逻辑，但不提高查询效率</strong></p>
+<h2 id="3dropdeletetruncate">3.drop、delete与truncate分别在什么场景之下使用？<a class="headerlink" href="#3dropdeletetruncate" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>drop、delete与truncate分别在什么场景之下使用？</p>
+</blockquote>
+<p>我们来对比一下他们的区别：</p>
+<p>drop table</p>
+<ul>
+<li>1)属于DDL</li>
+<li>2)不可回滚</li>
+<li>3)不可带where</li>
+<li>4)表内容和结构删除</li>
+<li>5)删除速度快</li>
+</ul>
+<p>truncate table</p>
+<ul>
+<li>1)属于DDL</li>
+<li>2)不可回滚</li>
+<li>3)不可带where</li>
+<li>4)表内容删除(会新建立一张空白的定义好数据类型的表)</li>
+<li>5)删除速度快</li>
+</ul>
+<p>delete from</p>
+<ul>
+<li>1)属于DML</li>
+<li>2)可回滚</li>
+<li>3)可带where</li>
+<li>4)表结构在，表内容要看where执行的情况</li>
+<li>5)删除速度慢,需要逐行删除</li>
+<li><strong>不再需要一张表的时候，用drop</strong></li>
+<li><strong>想删除部分数据行时候，用delete，并且带上where子句</strong></li>
+<li><strong>保留表而删除所有数据的时候用truncate</strong></li>
+</ul>
+<h2 id="4">4.事务相关<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1什么是事务?<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p><strong>事务是逻辑上的一组操作，要么都执行，要么都不执行。</strong></p>
+<p>事务最经典也经常被拿出来说例子就是转账了。假如小明要给小红转账1000元，这个转账会涉及到两个关键操作就是：将小明的余额减少1000元，将小红的余额增加1000元。万一在这两个操作之间突然出现错误比如银行系统崩溃，导致小明余额减少而小红的余额没有增加，这样就不对了。事务就是保证这两个关键操作要么都成功，要么都要失败。</p>
+<h3 id="42acid">4.2事物的四大特性(ACID)介绍一下?<a class="headerlink" href="#42acid" title="Permanent link">&para;</a></h3>
+<p><strong>原子性：</strong> 事务被视为不可分割的最小单元，事务的所有操作要么全部提交成功，要么全部失败回滚 </p>
+<p><strong>一致性：</strong> 执行事务前后，数据保持一致，多个事务对同一个数据读取的结果是相同的；</p>
+<p><strong>隔离性：</strong> 并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；</p>
+<p><strong>持久性：</strong> 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。</p>
+<blockquote>
+<p>事务的 ACID 特性概念简单，但不是很好理解，主要是因为这几个特性不是一种平级关系：</p>
+</blockquote>
+<ul>
+<li>只有满足一致性，事务的执行结果才是正确的。</li>
+<li>在无并发的情况下，事务串行执行，隔离性一定能够满足。此时只要能满足原子性，就一定能满足一致性。</li>
+<li>在并发的情况下，多个事务并行执行，事务不仅要满足原子性，还需要满足隔离性，才能满足一致性。</li>
+<li>事务满足持久化是为了能应对数据库崩溃的情况 </li>
+</ul>
+<h3 id="43">4.3并发事务带来哪些问题?<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p>在典型的应用程序中，多个事务并发运行，经常会操作相同的数据来完成各自的任务（多个用户对统一数据进行操作）。并发虽然是必须的，但可能会导致以下的问题。</p>
+<ul>
+<li><strong>脏读（Dirty read）:</strong> 当一个事务正在访问数据并且对数据进行了修改，而这种修改还没有提交到数据库中，这时另外一个事务也访问了这个数据，然后使用了这个数据。因为这个数据是还没有提交的数据，那么另外一个事务读到的这个数据是“脏数据”，依据“脏数据”所做的操作可能是不正确的。</li>
+<li><strong>丢失修改（Lost to modify）:</strong> 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。 例如：事务1读取某表中的数据A=20，事务2也读取A=20，事务1修改A=A-1，事务2也修改A=A-1，最终结果A=19，事务1的修改被丢失。</li>
+<li><strong>不可重复读（Unrepeatableread）:</strong> 指在一个事务内多次读同一数据。在这个事务还没有结束时，另一个事务也访问该数据。那么，在第一个事务中的两次读数据之间，由于第二个事务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到的数据是不一样的情况，因此称为不可重复读。</li>
+<li><strong>幻读（Phantom read）:</strong> 幻读与不可重复读类似。它发生在一个事务（T1）读取了几行数据，接着另一个并发事务（T2）插入了一些数据时。在随后的查询中，第一个事务（T1）就会发现多了一些原本不存在的记录，就好像发生了幻觉一样，所以称为幻读。</li>
+</ul>
+<p><strong>不可重复度和幻读区别：</strong></p>
+<p>不可重复读的重点是修改，幻读的重点在于新增或者删除。</p>
+<blockquote>
+<p>产生并发不一致性问题主要原因是破坏了事务的隔离性，解决方法是通过并发控制来保证隔离性。并发控制可以通过封锁来实现，但是封锁操作需要用户自己控制，相当复杂。数据库管理系统提供了事务的隔离级别，让用户以一种更轻松的方式处理并发一致性问题。 </p>
+</blockquote>
+<h3 id="mysql">事务隔离级别有哪些?MySQL的默认隔离级别是?<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h3>
+<p><strong>SQL 标准定义了四个隔离级别：</strong></p>
+<ul>
+<li><strong>READ-UNCOMMITTED(读取未提交)：</strong> 最低的隔离级别，事务中的修改，即使没有提交，对其它事务也是可见的。允许读取尚未提交的数据变更，<strong>可能会导致脏读、幻读或不可重复读</strong>。  </li>
+<li><strong>READ-COMMITTED(读取已提交)：</strong> 一个事务只能读取已经提交的事务所做的修改。换句话说，一个事务所做的修改在提交之前对其它事务是不可见的。 <strong>可以阻止脏读，但是幻读或不可重复读仍有可能发生</strong>。</li>
+<li><strong>REPEATABLE-READ(可重复读)：</strong>  保证在同一个事务中多次读取同样数据的结果是一样的。 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，<strong>可以阻止脏读和不可重复读，但幻读仍有可能发生</strong>。</li>
+<li><strong>SERIALIZABLE(可串行化)：</strong> 最高的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，<strong>该级别可以防止脏读、不可重复读以及幻读</strong>。  强制事务串行执行。需要加锁实现，而其它隔离级别通常不需要。 </li>
+</ul>
+<hr />
+<table>
+<thead>
+<tr>
+<th align="center">隔离级别</th>
+<th align="center">脏读</th>
+<th align="center">不可重复读</th>
+<th align="center">幻影读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">READ-UNCOMMITTED</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">READ-COMMITTED</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">REPEATABLE-READ</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">SERIALIZABLE</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+</tbody>
+</table>
+<p>MySQL InnoDB 存储引擎的默认支持的隔离级别是 <strong>REPEATABLE-READ（可重读）</strong>。我们可以通过<code>SELECT @@tx_isolation;</code>命令来查看</p>
+<div class="codehilite"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">@@</span><span class="n">tx_isolation</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">-----------------+</span>
+<span class="o">|</span> <span class="o">@@</span><span class="n">tx_isolation</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------------+</span>
+<span class="o">|</span> <span class="k">REPEATABLE</span><span class="o">-</span><span class="k">READ</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------------+</span>
+</pre></div>
+
+
+<p>这里需要注意的是：与 SQL 标准不同的地方在于InnoDB 存储引擎在 **REPEATABLE-READ（可重读）**事务隔离级别下使用的是Next-Key Lock 锁(间隙锁)算法，因此可以避免幻读的产生，这与其他数据库系统(如 SQL Server)是不同的。所以说InnoDB 存储引擎的默认支持的隔离级别是 REPEATABLE-READ（可重读） 已经可以完全保证事务的隔离性要求，即达到了 SQL标准的**SERIALIZABLE(可串行化)**隔离级别。</p>
+<p>因为隔离级别越低，事务请求的锁越少，所以大部分数据库系统的隔离级别都是**READ-COMMITTED(读取提交内容):**，但是你要知道的是InnoDB 存储引擎默认使用 **REPEATABLE-READ（可重读）**并不会有任何性能损失。</p>
+<p>InnoDB 存储引擎在 <strong>分布式事务</strong> 的情况下一般会用到**SERIALIZABLE(可串行化)**隔离级别</p>
+<h2 id="mysql_1">Mysql的逻辑架构<a class="headerlink" href="#mysql_1" title="Permanent link">&para;</a></h2>
+<p>Mysql的逻辑架构如下图：</p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/16c1f8b03abebec7.jpg" /></p>
+<ul>
+<li>
+<p>最上层是处理客户端过来的连接的。主要做连接处理、授权认证、安全等。Mysql在这一层维护了一个线程池，用于处理来自客户端的连接。Mysql可以使用用户名密码认证，也可以使用SSL基于X.509证书认证。</p>
+</li>
+<li>
+<p>第二层由三部分组成：查询缓存、解析器、优化器。解析器用来解析SQL语句，优化器会对解析之后的语句进行优化。在解析查询前，服务器会先检查查询缓存，如果能在其中找到对应的查询结果，则无需再进行查询解析、优化等过程，直接返回查询结果。存储过程、触发器、视图等都在这一层实现。</p>
+</li>
+<li>
+<p>第三层是存储引擎，存储引擎负责在MySQL中存储数据、提取数据、开启一个事务等等。存储引擎通过API与上层进行通信，这些API屏蔽了不同存储引擎之间的差异，使得这些差异对上层查询过程透明。存储引擎不会去解析SQL。</p>
+</li>
+</ul>
+<h2 id="_1">锁<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>SELECT ... FOR UPDATE; #拍他锁(更新锁更好一点)
+SELECT ... LOCK In SHARE MODE; #共享锁
+</pre></div>
+
+
+<p>MySQL 的锁按照范围可以分为全局锁、表锁、行锁，其中行锁是由数据库引擎实现的，并不是所有的引擎都提供行锁，MyISAM 就不支持行锁，所以文章介绍行锁会以InnoDB引擎为例来介绍</p>
+<p>MySQL各存储引擎使用了三种类型（级别）的锁定机制：表级锁定，行级锁定和页级锁定。<br />
+<strong>1.表级锁定</strong>（table-level） 
+　　表级别的锁定是MySQL各存储引擎中最大颗粒度的锁定机制。该锁定机制最大的特点是实现逻辑非常简单，带来的系统负面影响最小。所以获取锁和释放锁的速度很快。由于表级锁一次会将整个表锁定，所以可以很好的避免困扰我们的死锁问题。  <br />
+　　当然，锁定颗粒度大所带来最大的负面影响就是出现锁定资源争用的概率也会最高，致使并发度大打折扣。 <br />
+　　使用表级锁定的主要是MyISAM，MEMORY，CSV等一些非事务性存储引擎。     <br />
+<strong>2.行级锁定</strong>（row-level） <br />
+　　行级锁定最大的特点就是锁定对象的颗粒度很小，也是目前各大数据库管理软件所实现的锁定颗粒度最小的。由于锁定颗粒度很小，所以发生锁定资源争用的概率也最小，能够给予应用程序尽可能大的并发处理能力而提高一些需要高并发应用系统的整体性能。  <br />
+　　虽然能够在并发处理能力上面有较大的优势，但是行级锁定也因此带来了不少弊端。由于锁定资源的颗粒度很小，所以每次获取锁和释放锁需要做的事情也更多，带来的消耗自然也就更大了。此外，行级锁定也最容易发生死锁。<br />
+　　使用行级锁定的主要是InnoDB存储引擎。   <br />
+<strong>3.页级锁定</strong>（page-level）<br />
+　　页级锁定是MySQL中比较独特的一种锁定级别，在其他数据库管理软件中也并不是太常见。页级锁定的特点是锁定颗粒度介于行级锁定与表级锁之间，所以获取锁定所需要的资源开销，以及所能提供的并发处理能力也同样是介于上面二者之间。另外，页级锁定和行级锁定一样，会发生死锁。  <br />
+　　在数据库实现资源锁定的过程中，随着锁定资源颗粒度的减小，锁定相同数据量的数据所需要消耗的内存数量是越来越多的，实现算法也会越来越复杂。不过，随着锁定资源颗粒度的减小，应用程序的访问请求遇到锁等待的可能性也会随之降低，系统整体并发度也随之提升。
+　　使用页级锁定的主要是BerkeleyDB存储引擎。 
+　　总的来说，MySQL这3种锁的特性可大致归纳如下：   <br />
+**表级锁：**开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高，并发度最低；<br />
+**行级锁：**开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高；<br />
+**页面锁：**开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。 
+**适用：**从锁的角度来说，表级锁更适合于以查询为主，只有少量按索引条件更新数据的应用，如Web应用；而行级锁则更适合于有大量按索引条件并发更新少量不同数据，同时又有并发查询的应用，如一些在线事务处理（OLTP）系统。  </p>
+<h4 id="mysql_2">MySQL 提供全局锁来对整个数据库实例加锁。<a class="headerlink" href="#mysql_2" title="Permanent link">&para;</a></h4>
+<p>语法：</p>
+<div class="codehilite"><pre><span></span>FLUSH TABLES WITH READ LOCK
+</pre></div>
+
+
+<p>这条语句一般都是用来备份的，当执行这条语句后，数据库所有打开的表都会被关闭，并且使用全局读锁锁定数据库的所有表，同时，其他线程的更新语句（增删改），数据定义语句（建表，修改表结构）和更新类的事务提交都会被阻塞。</p>
+<p>在mysql 8.0 以后，对于备份，mysql可以直接使用备份锁。</p>
+<p>语句：</p>
+<div class="codehilite"><pre><span></span>LOCK INSTANCE FOR BACKUP
+UNLOCK INSTANCE
+复制代码
+</pre></div>
+
+
+<p>这个锁的作用范围更广，这个锁会阻止文件的创建，重命名，删除，包括 <code>REPAIR TABLE TRUNCATE TABLE, OPTIMIZE TABLE</code>操作以及账户的管理都会被阻塞。当然这些操作对于内存临时表来说是可以执行的，为什么内存表不受这些限制呢？因为内存表不需要备份，所以也就没必要满足这些条件</p>
+<h2 id="_2">三、表锁<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Mysql的表级别锁分为两类，一类是元数据锁（Metadata Lock，MDL），一种是表锁。</p>
+<p><strong>元数据锁(MDL)</strong> 不需要显式使用，在访问一个表的时候会被自动加上。这个特性需要MySQL5.5版本以上才会支持，当对一个表做**增删改查的时候**(这里的意思是对表访问还是对表结构进行变化)，该表会被加MDL读锁；当对表做结构变更的时候，加MDL写锁。MDL锁有一些规则：</p>
+<ul>
+<li>读锁之间不互斥，所以可以多线程多同一张表进行查询。</li>
+<li>读写锁、写锁之间是互斥的，为了保证表结构变更的安全性，所以如果要多线程对同一个表加字段等表结构操作，就会变成串行化，需要进行锁等待。</li>
+<li>MDL的写锁优先级比MDL读锁的优先级高，但是可以设置max_write_lock_count系统变量来改变这种情况，当写锁请求超过这个变量设置的数后，MDL读锁的优先级会比MDL写锁的优先级高。（默认情况下，这个数字会很大，所以不用担心写锁的优先级下降）</li>
+<li>MDL的锁释放必须要等到事务结束才会释放</li>
+</ul>
+<p>所以我们在操作数据库表结构时候必须要注意不要使用长事务，这里具体是什么意思呢？我举个例子说明下：</p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/16a15bcad254b77d.jpg" /></p>
+<p>上图表示演示了4个session执行语句，(就是说长事物下一般只是读没有事,但只要有一个想改,那么后面的读写都不行了)</p>
+<p>首先SessionA开启了事务没有提交，</p>
+<p>接着sessionB执行查询，因为是获取MDL读锁，所以互相不影响，可以正常执行，</p>
+<p>SessionC新增一个字段，由于MDL写和读是互斥的，所以SessionC会被阻塞，</p>
+<p>之后SessionD开始执行一个查询语句，由于SessionC的阻塞，</p>
+<p>所以SessionD也阻塞了。</p>
+<p>所以，我们模拟的SessionA的事务是长事务，然后后面执行了修改表结构，会导致后续对该表所有的读写操作都不可行了。所以在实际场景中，如果业务请求比较频繁的时候，对表结构进行修改的时候就有可能导致该库的线程被阻塞满。</p>
+<p><strong>表锁</strong> 的语法如下：</p>
+<div class="codehilite"><pre><span></span><span class="k">LOCK</span> <span class="n">TABLES</span>
+    <span class="n">tbl_name</span> <span class="p">[[</span><span class="k">AS</span><span class="p">]</span> <span class="k">alias</span><span class="p">]</span> <span class="n">lock_type</span>
+    <span class="p">[,</span> <span class="n">tbl_name</span> <span class="p">[[</span><span class="k">AS</span><span class="p">]</span> <span class="k">alias</span><span class="p">]</span> <span class="n">lock_type</span><span class="p">]</span> <span class="p">...</span>
+
+<span class="n">lock_type</span><span class="p">:</span> <span class="err">{</span>
+    <span class="k">READ</span> <span class="p">[</span><span class="k">LOCAL</span><span class="p">]</span>
+  <span class="o">|</span> <span class="p">[</span><span class="n">LOW_PRIORITY</span><span class="p">]</span> <span class="k">WRITE</span>
+<span class="err">}</span>
+
+<span class="n">UNLOCK</span> <span class="n">TABLES</span>
+</pre></div>
+
+
+<p><strong>表锁分为读锁和写锁</strong>，</p>
+<p>**读锁(表共享读锁shared)**不互斥，但是获取读锁不能写入数据,其他没有获取到读锁的session也是可以读取表的，所以读锁的目的就是限制表被写。如果表被读锁锁住后，再执行插入语句会报错，报错如下：(读锁的作用主要就是限制表被写)</p>
+<div class="codehilite"><pre><span></span>1099 - Table &#39;XXXX&#39; was locked with a READ lock and can&#39;t be updated
+</pre></div>
+
+
+<p>**写锁(表独占写锁Exclusive )**被获取后可以对表进行读写，写锁是互斥的，一旦某个session获取到表的写锁，另外的session无法访问这个表，直到写锁被释放。</p>
+<p>表的解锁可以使用<code>unlock tables</code>解锁，也可以客户端口自动解锁。<code>lock tables</code>锁表会独占式的锁住表，除了限制其他线程对该表的读写，也会限制本线程接下来的操作对象。</p>
+<h2 id="innodb">四、行锁(InnoDB)<a class="headerlink" href="#innodb" title="Permanent link">&para;</a></h2>
+<p>MySQL的行锁是在引擎层面实现的，所以这里讨论的也是InnoDB引擎下的行锁，下面会详细介绍InnoDB下常见的几种行锁</p>
+<h3 id="41_1">4.1 共享锁<a class="headerlink" href="#41_1" title="Permanent link">&para;</a></h3>
+<p>共享锁能允许事务获取到锁后进行读操作，共享锁是不互斥的，一个事务获取到共享锁后，另外一个事务也可以获取共享锁，获取共享锁后不能进行写操作。</p>
+<h3 id="42">4.2 排它锁<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>排他锁允许事务获取到锁后进行更新一行或者删除某一行操作，排他锁顾名思义是互斥的，一个事务获取到排他锁后，其他事务不能获取到排他锁，直到这个锁被释放。</p>
+<h3 id="43-mysql">4.3 意向锁(意向锁是mysql内部使用的，不需要用户干预)<a class="headerlink" href="#43-mysql" title="Permanent link">&para;</a></h3>
+<p>InnoDB支持多种粒度的锁，允许**行锁和表锁**共存，这里说的**意向锁其实是一种表级别的锁**，但是我把它放在行锁里面是因为它不会单独存在，它的出现肯定会伴随着行锁（共享锁或者排他锁），它主要的目的就是表示将要锁定表中的行或者正在锁定表中的行。</p>
+<p>意向锁根据和行锁的组合可以分为：</p>
+<ul>
+<li>意向排他锁：<strong>表明将要在表中的**某些行**获取排他锁</strong></li>
+<li>意向共享锁：表明将要在表中的某些行获取共享锁</li>
+</ul>
+<p>意向锁的获取必须在行锁获取之前，也就是说获取共享锁之前必须先要获取共享意向锁，对于排他锁也是一样的道理。</p>
+<p><strong>那么这个意向锁到底有什么作用呢？</strong></p>
+<p>解释这个之前，我们先看看意向锁和行锁之前的兼容关系：</p>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>排他锁（X）</th>
+<th>意向排他锁（IX)</th>
+<th>共享锁(S)</th>
+<th>意向共享锁(IS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>排他锁(X）</td>
+<td>冲突</td>
+<td>冲突</td>
+<td>冲突</td>
+<td>冲突</td>
+</tr>
+<tr>
+<td>意向排他锁（IX)</td>
+<td>冲突</td>
+<td>兼容</td>
+<td>冲突</td>
+<td>兼容</td>
+</tr>
+<tr>
+<td>共享锁(S)</td>
+<td>冲突</td>
+<td>冲突</td>
+<td>兼容</td>
+<td>兼容</td>
+</tr>
+<tr>
+<td>意向共享锁(IS)</td>
+<td>冲突</td>
+<td>兼容</td>
+<td>兼容</td>
+<td>兼容</td>
+</tr>
+</tbody>
+</table>
+<p>在存在行级锁和表级锁的情况下，事务 T 想要对表 A 加 X 锁，就需要先检测是否有其它事务对表 A 或者表 A 中的任意一行加了锁，那么就需要对表 A 的每一行都检测一次，这是非常耗时的。
+意向锁在原来的 X/S 锁之上引入了 IX/IS，IX/IS 都是表锁，用来表示一个事务想要在表中的某个数据行上加 X 锁或 S锁。有以下两个规定：</p>
+<ul>
+<li>一个事务在获得某个数据行对象的 S 锁之前，必须先获得**表**的 IS 锁或者更强的锁；</li>
+<li>一个事务在获得某个数据行对象的 X 锁之前，必须先获得**表**的 IX 锁。</li>
+<li>通过引入意向锁，事务 T 想要对表 A 加X 锁，只需要先检测是否有其它事务对**表 A(注意是表不是行)** 加了 X/IX/S/IS 锁，如果加了就表示有其它事务**正在使用这个表或者表中某一行的锁**，因此事务 T 加 X 锁失败 (主要是加排他锁的时候)</li>
+</ul>
+<blockquote>
+<p>这样每个事物获得意向锁以后别的事物想要加锁的时候只需要看有没有表锁就完事了,不用逐行扫描</p>
+<p>人家已经加了意向共享锁了,说明要么是前一个事务等待前前一个事务处理,要么是这个事务已经获得了行锁正在进行处理,这时候要是人家是意向排它锁,那就凉凉滚蛋,人家要是意向共享锁那么你也可以加上,并且是当前事务获取的是共享锁,你就可以直接去获取共享锁.如果人家是意向排它锁,你可以加一个意向共享锁等着人家搞完再获取锁.</p>
+</blockquote>
+<p>**任意 IS/IX 锁之间都是兼容的，因为它们只是表示想要对表加锁，而不是真正加锁；
+S 锁只与 S 锁和 IS 锁兼容，也就是说事务 T 想要对数据行加 S 锁，其它事务可以已经获得对表或者表中的行的
+S 锁 **</p>
+<h4 id="_3">更新锁<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>更新锁主要在初始阶段用来锁定可能要被修改的资源,这样可以避免使用共享锁升级为排它锁的时候造成的死锁问题</p>
+<p>更新锁的特征:加锁与解锁,当一个事物执行update语句,数据库系统会先为事务分配一把更新锁.当读取数据数据完毕,执行更新操作时会把更新锁升级为排它锁</p>
+<p>兼容性:更新锁跟共享锁兼容,但是最多只能放置一把更新锁</p>
+<p>并发性能:允许多个事务同时读锁定的资源,但不允许其它事务修改它.</p>
+<h4 id="_4">封锁协议<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>三级封锁协议</p>
+<ol>
+<li>一级封锁协议
+    事务 T 要修改数据 A 时必须加 X 锁，直到 T 结束才释放锁。
+      可以解决丢失修改问题，因为不能同时有两个事务对同一个数据进行修改，那么事务的修改就不会被覆盖。 </li>
+<li>在一级的基础上，要求读取数据 A 时必须加 S 锁，读取完马上释放 S 锁。
+    可以解决读脏数据问题，因为如果一个事务在对数据 A 进行修改，根据 1 级封锁协议，会加 X 锁，那么就不能再加 S锁了，也就是不会读入数据。 </li>
+<li>在二级的基础上，要求读取数据 A 时必须加 S 锁，直到事务结束了才能释放 S 锁。
+    可以解决不可重复读的问题，因为读 A 时，其它事务不能对 A 加 X 锁，从而避免了在读的期间数据发生改变。 </li>
+</ol>
+<p><strong>4.死锁</strong></p>
+<p>死锁是指两个或多个事务在同一资源上相互占用，并请求锁定对方占用的资源，从而导致恶性循环。</p>
+<p>当事务试图以不同的顺序锁定资源时，就可能产生死锁。多个事务同时锁定同一个资源时也可能会产生死锁。</p>
+<p>锁的行为和顺序和存储引擎相关。以同样的顺序执行语句，有些存储引擎会产生死锁有些不会——死锁有双重原因：真正的数据冲突；存储引擎的实现方式。</p>
+<h4 id="_5">检测死锁<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>数据库系统实现了各种死锁检测和死锁超时的机制。InnoDB存储引擎能检测到死锁的循环依赖并立即返回一个错误。</p>
+<h4 id="_6">死锁恢复<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>死锁发生以后，只有部分或完全回滚其中一个事务，才能打破死锁，InnoDB目前处理死锁的方法是，将持有最少行级排他锁的事务进行回滚。所以事务型应用程序在设计时必须考虑如何处理死锁，多数情况下只需要重新执行因死锁回滚的事务即可。</p>
+<h4 id="_7">外部锁的死锁检测<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>发生死锁后，InnoDB 一般都能自动检测到，并使一个事务释放锁并回退，另一个事务获得锁，继续完成事务。但在涉及外部锁，或涉及表锁的情况下，InnoDB 并不能完全自动检测到死锁， 这需要通过设置锁等待超时参数 innodb_lock_wait_timeout 来解决</p>
+<h4 id="_8">死锁影响性能<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>死锁会影响性能而不是会产生严重错误，因为InnoDB会自动检测死锁状况并回滚其中一个受影响的事务。在高并发系统上，当许多线程等待同一个锁时，死锁检测可能导致速度变慢。 有时当发生死锁时，禁用死锁检测（使用innodb_deadlock_detect配置选项）可能会更有效，这时可以依赖innodb_lock_wait_timeout设置进行事务回滚。</p>
+<h4 id="myisam">MyISAM避免死锁<a class="headerlink" href="#myisam" title="Permanent link">&para;</a></h4>
+<p>在自动加锁的情况下，MyISAM 总是一次获得 SQL 语句所需要的全部锁，所以 MyISAM 表不会出现死锁。</p>
+<h4 id="innodb_1">InnoDB避免死锁<a class="headerlink" href="#innodb_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>为了在单个InnoDB表上执行多个并发写入操作时避免死锁，可以在事务开始时通过为预期要修改的每个元祖（行）使用SELECT ... FOR UPDATE语句来获取必要的锁，即使这些行的更改语句是在之后才执行的。</li>
+<li>在事务中，如果要更新记录，应该直接申请足够级别的锁，即排他锁，而不应先申请共享锁、更新时再申请排他锁，因为这时候当用户再申请排他锁时，其他事务可能又已经获得了相同记录的共享锁，从而造成锁冲突，甚至死锁</li>
+<li>如果事务需要修改或锁定多个表，则应在每个事务中以相同的顺序使用加锁语句。在应用中，如果不同的程序会并发存取多个表，应尽量约定以相同的顺序来访问表，这样可以大大降低产生死锁的机会</li>
+<li>通过SELECT ... LOCK IN SHARE MODE获取行的读锁后，如果当前事务再需要对该记录进行更新操作，则很有可能造成死锁。</li>
+<li>改变事务隔离级别</li>
+</ul>
+<p>如果出现死锁，可以用 SHOW INNODB STATUS 命令来确定最后一个死锁产生的原因。返回结果中包括死锁相关事务的详细信息，如引发死锁的 SQL 语句，事务已经获得的锁，正在等待什么锁，以及被回滚的事务等。据此可以分析死锁产生的原因和改进措施。</p>
+<h3 id="next-key">间隙锁（Next-Key锁）<a class="headerlink" href="#next-key" title="Permanent link">&para;</a></h3>
+<p>当我们用范围条件而不是相等条件检索数据，并请求共享或排他锁时，</p>
+<p>InnoDB会给符合条件的已有数据记录的索引项加锁；</p>
+<p>对于键值在条件范围内但并不存在的记录，叫做“间隙（GAP)”，</p>
+<p>InnoDB也会对这个“间隙”加锁，这种锁机制就是所谓的间隙锁（Next-Key锁）。</p>
+<p>举例来说，假如emp表中只有101条记录，其empid的值分别是 1,2,...,100,101，下面的SQL：
+Select * from  emp where empid &gt; 100 for update;
+是一个范围条件的检索，InnoDB不仅会对符合条件的empid值为101的记录加锁，也会对empid大于101（这些记录并不存在）的“间隙”加锁。</p>
+<p><strong>InnoDB使用间隙锁的目的</strong>，一方面是为了防止幻读，以满足相关隔离级别的要求，</p>
+<p>对于上面的例子，要是不使用间隙锁，如果其他事务插入了empid大于100的任何记录，那么本事务如果再次执行上述语句，就会发生幻读；</p>
+<p>另外一方面，是为了满足其恢复和复制的需要。有关其恢复和复制对锁机制的影响，以及不同隔离级别下InnoDB使用间隙锁的情况
+很显然，在使用范围条件检索并锁定记录时，InnoDB这种加锁机制会阻塞符合条件范围内键值的并发插入，这往往会造成严重的锁等待。</p>
+<p>因此，在实际应用开发中，尤其是并发插入比较多的应用，我们要尽量优化业务逻辑，尽量使用相等条件来访问更新数据，避免使用范围条件。
+还要特别说明的是，InnoDB除了通过范围条件加锁时使用间隙锁外，如果使用相等条件请求给一个不存在的记录加锁，InnoDB也会使用间隙锁！</p>
+<h2 id="_9">悲观锁,乐观锁<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_10">何谓悲观锁与乐观锁<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>乐观锁对应于生活中乐观的人总是想着事情往好的方向发展，悲观锁对应于生活中悲观的人总是想着事情往坏的方向发展。这两种人各有优缺点，不能不以场景而定说一种人好于另外一种人。</p>
+</blockquote>
+<h4 id="_11">悲观锁<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁（<strong>共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程</strong>）。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。</p>
+<h4 id="_12">乐观锁<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>总是假设最好的情况，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和CAS算法实现。<strong>乐观锁适用于多读的应用类型，这样可以提高吞吐量</strong>，像数据库提供的类似于**write_condition机制**，其实都是提供的乐观锁。</p>
+<h4 id="_13">两种锁的使用场景<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>从上面对两种锁的介绍，我们知道两种锁各有优缺点，不可认为一种好于另一种，像**乐观锁适用于写比较少的情况下（多读场景）<strong>，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果是多写的情况，一般会经常产生冲突，这就会导致上层应用会不断的进行retry，这样反倒是降低了性能，所以**一般多写的场景下用悲观锁就比较合适。</strong></p>
+<h3 id="_14">乐观锁常见的两种实现方式<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>乐观锁一般会使用版本号机制或CAS算法实现。</strong></p>
+</blockquote>
+<h4 id="1_1">1. 版本号机制<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<p>一般是在数据表中加上一个数据版本号version字段，表示数据被修改的次数，当数据被修改时，version值会加一。当线程A要更新数据值时，在读取数据的同时也会读取version值，在提交更新时，若刚才读取到的version值为当前数据库中的version值相等时才更新，否则重试更新操作，直到更新成功。</p>
+<p><strong>举一个简单的例子：</strong> 假设数据库中帐户信息表中有一个 version 字段，当前值为 1 ；而当前帐户余额字段（ balance ）为 $100 。</p>
+<ol>
+<li>操作员 A 此时将其读出（ version=1 ），并从其帐户余额中扣除 $50（ <span><span class="MathJax_Preview">100-</span><script type="math/tex">100-</script></span>50 ）。</li>
+<li>在操作员 A 操作的过程中，操作员B 也读入此用户信息（ version=1 ），并从其帐户余额中扣除 $20 （ <span><span class="MathJax_Preview">100-</span><script type="math/tex">100-</script></span>20 ）。</li>
+<li>操作员 A 完成了修改工作，将数据版本号加一（ version=2 ），连同帐户扣除后余额（ balance=$50 ），提交至数据库更新，此时由于提交数据版本大于数据库记录当前版本，数据被更新，数据库记录 version 更新为 2 。</li>
+<li>操作员 B 完成了操作，也将版本号加一（ version=2 ）试图向数据库提交数据（ balance=$80 ），但此时比对数据库记录版本时发现，操作员 B 提交的数据版本号为 2 ，数据库记录当前版本也为 2 ，不满足 “ 提交版本必须大于记录当前版本才能执行更新 “ 的乐观锁策略，因此，操作员 B 的提交被驳回。</li>
+</ol>
+<p>这样，就避免了操作员 B 用基于 version=1 的旧数据修改的结果覆盖操作员A 的操作结果的可能。</p>
+<h2 id="1_2">方式1：版本号机制<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h2>
+<p>给表增加一个 <code>version</code> 版本号字段，具体流程如下：</p>
+<ul>
+<li>读取数据时，将数据的版本号数据一同读出；</li>
+<li>数据每次发生更新时，将版本号加 1；</li>
+<li>提交数据时，将当前版本号与之前读出的版本号进行对比。若相同，则更新；否则，更新失败。</li>
+</ul>
+<h2 id="2_1">方式2：记录时间戳<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h2>
+<p>原理与方式一相同，给表增加一个记录操作的时间戳字段，当发生数据更新时，将当前时间戳与更新前获取的时间戳进行对比，若相同，则允许更新，且同时更新操作时间戳字段，否则更新失败。</p>
+<h2 id="_15">优点<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ul>
+<li>不会发生任何锁和死锁</li>
+<li>可增加吞吐量</li>
+<li>避免了长事务中的数据库加锁开销</li>
+</ul>
+<h2 id="_16">缺点<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>对于写多的场景并不适用，因为当写操作非常频繁时，更新失败的几率就越大，上层逻辑进行retry的次数也会增多，从而降低了系统的性能。</p>
+<h3 id="_17">乐观锁的缺点<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>ABA 问题是乐观锁一个常见的问题</p>
+</blockquote>
+<h4 id="1-aba">1 ABA 问题<a class="headerlink" href="#1-aba" title="Permanent link">&para;</a></h4>
+<p>如果一个变量 V 初次读取的时候是A值，并且在准备赋值的时候检查到它仍然是A值，那我们就能说明它的值没有被其他线程修改过了吗？很明显是不能的，因为在这段时间它的值可能被改为其他值，然后又改回A，那CAS操作就会误认为它从来没有被修改过。这个问题被称为CAS操作的 <strong>"ABA"问题。</strong></p>
+<h1 id="_18">总结<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h1>
+<p>不管是乐观锁还是悲观锁，其目的都是为了保障数据的一致性。乐观锁与悲观锁的区别在于，乐观锁会在更新前比较数据是否发生变化，若变化则更新失败。悲观锁则是等待前一个事务完成才执行自己的操作。</p>
+<h2 id="_19">三、存储引擎<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<h4 id="innodb_2">InnoDB<a class="headerlink" href="#innodb_2" title="Permanent link">&para;</a></h4>
+<h5 id="2innodb4">(2)、innodb引擎的4大特性<a class="headerlink" href="#2innodb4" title="Permanent link">&para;</a></h5>
+<p>插入缓冲（insert buffer),二次写(double write),自适应哈希索引(ahi),预读(read ahead)</p>
+<p>是 MySQL 默认的事务型存储引擎，只有在需要它不支持的特性时，才考虑使用其它存储引擎。
+实现了四个标准的隔离级别，默认级别是可重复读（REPEATABLE READ）。在可重复读隔离级别下，通过多版本并发控制（MVCC）+ 间隙锁（Next-Key Locking）防止幻影读。
+主索引是聚簇索引，在索引中保存了数据，从而避免直接读取磁盘，因此对查询性能有很大的提升。
+内部做了很多优化，包括从磁盘读取数据时采用的可预测性读、能够加快读操作并且自动创建的自适应哈希索引、能够加速插入操作的插入缓冲区等。
+支持真正的在线热备份。其它存储引擎不支持在线热备份，要获取一致性视图需要停止对所有表的写入，而在读写混合场景中，停止写入可能也意味着停止读取。</p>
+<h3 id="myisam_1">MyISAM<a class="headerlink" href="#myisam_1" title="Permanent link">&para;</a></h3>
+<p>设计简单，数据以紧密格式存储。对于只读数据，或者表比较小、可以容忍修复操作，则依然可以使用它。
+提供了大量的特性，包括压缩表、空间数据索引等。
+不支持事务。
+不支持行级锁，只能对整张表加锁，读取时会对需要读到的所有表加共享锁，写入时则对表加排它锁。但在表有读取操作的同时，也可以往表中插入新的记录，这被称为并发插入（CONCURRENT INSERT）。
+可以手工或者自动执行检查和修复操作，但是和事务恢复以及崩溃恢复不同，可能导致一些数据丢失，而且修复操作是非常慢的。
+如果指定了 DELAY_KEY_WRITE 选项，在每次修改执行完成时，不会立即将修改的索引数据写入磁盘，而是会写到内存中的键缓冲区，只有在清理键缓冲区或者关闭表的时候才会将对应的索引块写入磁盘。这种方式可以极大的提升写入性能，但是在数据库或者主机崩溃时会造成索引损坏，需要执行修复操作。
+比较
+事务：InnoDB 是事务型的，可以使用 Commit 和 Rollback 语句。
+并发：MyISAM 只支持表级锁，而 InnoDB 还支持行级锁。
+外键：InnoDB 支持外键。
+备份：InnoDB 支持在线热备份。
+崩溃恢复：MyISAM 崩溃后发生损坏的概率比 InnoDB 高很多，而且恢复的速度也更慢。
+其它特性：MyISAM 支持压缩表和空间数据索引。 </p>
+<h3 id="2mysqlmyisaminnodb5">2、MySQL中myisam与innodb的区别，至少5点<a class="headerlink" href="#2mysqlmyisaminnodb5" title="Permanent link">&para;</a></h3>
+<h5 id="15">(1)、问5点不同；<a class="headerlink" href="#15" title="Permanent link">&para;</a></h5>
+<ul>
+<li>1&gt;.InnoDB支持事物，而MyISAM不支持事物</li>
+<li>2&gt;.InnoDB支持行级锁，而MyISAM支持表级锁</li>
+<li>3&gt;.InnoDB支持MVCC, 而MyISAM不支持</li>
+<li>4&gt;.InnoDB支持外键，而MyISAM不支持</li>
+<li>5&gt;.InnoDB不支持全文索引，而MyISAM支持。</li>
+</ul>
+<h1 id="mysql_3">MySQL索引原理<a class="headerlink" href="#mysql_3" title="Permanent link">&para;</a></h1>
+<h2 id="_20">为什么建立索引<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>“索引”是为了能够更快地查询数据。比如一本书的目录，就是这本书的内容的索引，读者可以通过在目录中快速查找自己想要的内容，然后根据页码去找到具体的章节。</p>
+<p>数据库也是一样，如果查询语句使用到了索引，会先去索引里面查询，取得数据所在行的物理地址，进而访问数据。</p>
+<h3 id="_21">索引的本质<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>索引是帮助mysql高效获取数据的数据结构</p>
+<h2 id="_22">索引的优缺点<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<p>优势：</p>
+<ul>
+<li>
+<p>快速检索，减少I/O次数，</p>
+</li>
+<li>
+<p>加快检索速度；</p>
+</li>
+<li>
+<p>根据索引分组和排序，可以加快分组和排序；</p>
+</li>
+<li>加快表与表的连接</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>索引本身也是表，因此会占用存储空间。</li>
+<li>索引的维护和创建需要时间成本，这个成本随着数据量增大而增大；</li>
+<li>构建索引会降低数据表的修改操作（删除，添加，修改）的效率，因为在修改数据表的同时还需要修改索引表。</li>
+</ul>
+<blockquote>
+<p>注意点：小表使用全表扫描更快，中大表才使用索引。超级大表索引基本无效。</p>
+</blockquote>
+<h4 id="_23">索引的分类:<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>索引从实现上说，分成 2 种：聚集索引和非聚集索引（也叫二级索引或者非聚集索引）</p>
+<p>​   1.聚集索引:表记录的排列顺序和索引的排列顺序一致,所以查询快,但是修改慢</p>
+<p>​   2.非聚集索引:表记录的排列顺序和索引的排列顺序不一致</p>
+<p>从功能上说，分为 6 种：普通索引，唯一索引，主键索引，复合索引，外键索引，全文索引。</p>
+<p>详细说说 6 种索引：</p>
+<ol>
+<li>普通索引：最基本的索引，没有任何约束。</li>
+<li>唯一索引：与普通索引类似，但具有唯一性约束。</li>
+<li>主键索引：<strong>特殊的唯一索引，不允许有空值</strong>。</li>
+<li>复合索引：将多个列组合在一起创建索引，可以覆盖多个列。</li>
+<li>外键索引：只有InnoDB类型的表才可以使用外键索引，保证数据的一致性、完整性和实现级联操作。</li>
+<li>全文索引：MySQL 自带的全文索引只能用于 InnoDB、MyISAM ，并且只能对英文进行全文检索，一般使用全文索引引擎（ES，Solr）。</li>
+</ol>
+<blockquote>
+<p><code>注意：主键就是唯一索引，但是唯一索引不一定是主键，唯一索引可以为空，但是空值只能有一个，主键不能为空。</code></p>
+</blockquote>
+<p>另外，InnoDB 通过主键聚簇数据，如果没有定义主键且没有定义聚集索引， MySql 会选择一个唯一的非空索引代替，如果没有这样的索引，会隐式定义个 6 字节的主键作为聚簇索引，用户不能查看或访问。</p>
+<p><strong>简单点说：</strong></p>
+<ol>
+<li>设置主键时，会自动生成一个唯一索引，如果**之前**没有聚集索引，那么主键就是聚集索引。</li>
+<li>没有设置主键时，会选择一个不为空的唯一索引作为聚集索引，如果还没有，那就生成一个隐式的 6 字节的索引。</li>
+</ol>
+<p>MySql 将数据按照页来存储，默认一页为 16kb，当你在查询时，不会只加载某一条数据，而是将这个数据所在的页都加载到 pageCache 中，这个其实和 OS 的就近访问原理类似。</p>
+<p>MySql 的索引使用 B+ 树结构。在说 B+ 树之前，先说说 B 树，B 树是一个多路平衡查找树，相较于普通的二叉树，不会发生极度不平衡的状况，同时也是多路的。</p>
+<h3 id="22-hash">2.2 Hash索引特性<a class="headerlink" href="#22-hash" title="Permanent link">&para;</a></h3>
+<p>只支持包括 “=” "in "在内的等值查询，不支持范围，前缀匹配查询</p>
+<p>Hash索引是通过hash函数将，键值直接映射为物理存储地址，使时间复杂度降低到O(1).本身存储是无序的，所以不能通过hash索引避免排序</p>
+<h3 id="_24">从二叉搜索树聊起<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>了解过数据结构的朋友应该知道一种叫二叉树的数据结构。二叉树根据用途不同，衍生了不同的变种，比如堆，比如二叉搜索树。</p>
+<p>而二叉搜索树中，为了防止极端情况树的高度过大影响查询效率，所以衍生出了一些平衡二叉查找树，最典型的就是AVL和红黑树。</p>
+<p>但二叉树在数据量较大时，深度过深，不太适合数据库的查询，所以数据库使用了多叉树。</p>
+<h3 id="btree">BTree<a class="headerlink" href="#btree" title="Permanent link">&para;</a></h3>
+<p>BTree（又称为B-Tree）是一个**平衡搜索多叉树**。BTree的结构如下图：</p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/16c297d8fa9a997e.jpg" /></p>
+<p>设树的度为2d（d&gt;1），高度为h，那么BTree有以下性质：</p>
+<ul>
+<li>每个叶子结点的高度一样，等于h；</li>
+<li>每个非叶子结点由n-1个key和n个指针组成，key和指针相互隔离，结点两端一定是key；</li>
+<li>叶子结点指针为null；</li>
+<li>非叶子结点的key都是[key,data]二元组，其中key表示作为索引的键，data为键值所在行的其它列的数据；</li>
+</ul>
+<p>在BTree中，对索引列是顺序存储的，所以很适合查找范围数据和<code>ORDER BY</code>操作</p>
+<p>B 树的特点是：他会将数据也保存在非页子节点。</p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/169a3edc8e4fc0fb.jpg" /></p>
+<p>而这个特点会导致非页子节点不能存储大量的索引。</p>
+<blockquote>
+<p>m阶 B树的特性：树中每个节点至多包含m棵子树  若根节点不是叶子节点，则至少包含两颗子树  </p>
+<p>除根以外的所有非终点节点至少有 (m/2)向上取整棵子树  </p>
+<p>支持范围查询，前缀匹配查询，等值查询，可以避免排序，</p>
+<p>例如order by index相关的列，排序会非常快，因为该列本身就是  有序存储的，查找时间复杂度 log m N(m为底,N的对数，N为总记录数)</p>
+</blockquote>
+<p>B+Tree是BTree的一种变种。B+Tree和BTree的不同主要在于：</p>
+<ul>
+<li>B+Tree中的非叶子结点不存储数据，只存储键值和指针；</li>
+<li>B+Tree的叶子结点没有指针，所有键值都会出现在叶子结点上，且key存储的键值对应data数据的物理地址；</li>
+<li>B+Tree的每个非叶子节点由n个键值key和n个指针point组成；</li>
+</ul>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/16c297d904572a9e.jpg" /></p>
+<p>而 B+ Tree 就是针对这个对 B tree 做了优化。如下图所示：</p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/169a3ee0b60252b9.jpg" /></p>
+<p>我们看到，B+ Tree 将所有的 data 数据都保存到了叶子节点中，非叶子节点只保存索引(id)和指针。</p>
+<p>我们假设一个非页子节点是 16kb，每个索引，即主键是 bigint，即 8b，指针为 8b。那么每页能存储大约 1000 个索引（16kb/ 8b + 8b）.</p>
+<p>而一颗 3 层的 B+树能够存储多少索引呢？如下图：</p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/169a3ee2e60052bd.jpg" /></p>
+<p>大约能够存储 10 亿个索引。通常 B+ 树的高度在 2-4 层，由于 MySql 在运行时，根节点是常驻内存的，因此每次查找只需要大约 2 -3 次 IO。可以说，B+ 树的设计，就是根据机械磁盘的特性来进行设计的。</p>
+<p><strong>B+Tree对比BTree的优点：</strong></p>
+<p>B-树和B+树的区别在于B+树所有键值全部保存在叶子节点，而B-树则不然，B-树的键值根据树的结构分布在整个树上。而**Mysql为什么要采用B+树索引呢？**</p>
+<p>1.遍历方便.B+树可以将键值保存在（线性表【数组或链表】）中，遍历线性表比索引树要快，因为保存在线性表中数据存储更加密集，B-Tree分散的</p>
+<p>存储会导致更多的随机I/O,对于磁盘访问，随机I/O是比顺序I/O慢很多的，因为随机I/O需要额外的磁头寻道操作。顺序I/O有效减少寻道的次数</p>
+<p>2.插入更新索引树时可以避免移动节点.</p>
+<p>3.遍历任何节点的时间复杂度相同，即访问路径总是从根节点到叶子节点.相比B-树,访问时间略长.所以某些高频访问的搜索采用B-树，即访问频率越高使其距离根节点越近。</p>
+<p>4.（也许是最重要的）范围查找方便。对于[A,B]区间的范围查找，B-树索引可以直接找到A,B对应的线性表中节点，只需要返回区间的所有节点</p>
+<p>即为目标结果。而B-树则稍显麻烦需要继续遍历索引树。</p>
+<blockquote>
+<p>在 InnoDB 中，索引使用的数据结构是 <em>B+ Tree</em>，这里的 <em>B</em> 是 <em>Balance</em> 的意思。B 类树的一个很鲜明的特点就是树的层数比较少，而每层的节点都非常多，树的每个叶子节点到根节点的距离都是相同的（这也是为什么叫 <em>Balance Tree</em> 的原因），另外，树的每一个节点都是一个数据页，这样每个节点只需要一次 IO 就可以全部读取。这样的结构保证了查询数据时能尽量少地进行磁盘 IO，同时保证 IO 的稳定性。</p>
+</blockquote>
+<h2 id="btree_1">带顺序索引的B+Tree<a class="headerlink" href="#btree_1" title="Permanent link">&para;</a></h2>
+<p>一般在数据库系统或文件系统中使用的B+Tree结构都在经典B+Tree的基础上进行了优化，增加了顺序访问指针。</p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/16c297d8f9b9b9a0.jpg" /></p>
+<p>在B+Tree的每个叶子节点增加一个指向相邻叶子节点的指针，就形成了带有顺序访问指针的B+Tree。做这个优化的目的是为了提高区间访问的性能，例如如果要查询key为从18到49的所有数据记录，当找到18后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，不用从头再查询一次，极大提到了区间查询效率。</p>
+<h2 id="_25">聚簇索引和非聚簇索引<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+<p>MySQL中最常见的两种存储引擎分别是MyISAM和InnoDB，分别实现了非聚簇索引和聚簇索引。</p>
+<p>前段时间看到一个问题：“你知道为什么InnoDB非主键索引普遍比主键索引要慢吗？”答案是InnoDB使用了聚簇索引，主键索引主需要查询一次，而非主键索引需要查询两次。</p>
+<p>为什么非主键索引需要查询两次呢？且看接下来的内容。</p>
+<h3 id="_26">主(聚集)索引与辅助索引<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>首先介绍一下基础的概念。在索引的分类中，我们可以按照索引的键是否为主键来分为“主索引”和“辅助索引”，使用主键键值建立的索引称为“主索引”，其它的称为“辅助索引”。因此主索引只能有一个，辅助索引可以有很多个。</p>
+<p>为什么需要用到辅助索引？因为前面我们介绍了，查询语句如果想要使用索引，是需要满足**最左匹配**原则的。有时候我们的查询并不会使用到主键列，所以需要在其它列建立索引，即辅助索引。((通过二级索引查出对应主键，拿主键回表查主键索引得到数据， 二级索引可筛选掉大量无效记录，提高效率))</p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/16133167da8e4cb3.jpg" /></p>
+<p><img alt="img" src="../006-mysql的一些底层原理.image/16133167da978bff.jpg" /></p>
+<h3 id="_27">非聚簇索引<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>非聚簇索引的主索引和辅助索引几乎是一样的，只是主索引不允许重复，不允许空值，他们的叶子结点的key都存储指向键值对应的数据的物理地址。</p>
+<p><strong>非聚簇索引的数据表和索引表是分开存储的也就是说指向的是一个地址</strong>。非聚簇索引中的数据是根据数据的插入顺序保存。因此非聚簇索引更适合**单个数据的查询**。插入顺序不受键值影响。</p>
+<h3 id="_28">聚簇索引<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p><strong>聚簇索引的主索引的叶子结点存储的是键值对应的数据本身</strong>，辅助索引的叶子结点存储的是**键值对应的数据的主键**键值。因此主键的值长度越小越好，类型越简单越好。</p>
+<p>聚簇索引的数据和主键索引存储在一起。</p>
+<p>聚簇索引的数据是根据主键的顺序保存。因此适合按主键索引的区间查找，可以有更少的磁盘I/O，加快查询速度。但是也是因为这个原因，聚簇索引的插入顺序最好按照主键单调的顺序插入，否则会频繁的引起页分裂（BTree插入时的一个操作），严重影响性能。</p>
+<p>在InnoDB中，如果只需要查找索引的列，就尽量不要加入其它的列，这样会提高查询效率。</p>
+<p>一张图说明聚簇索引与非聚簇索引的区别：</p>
+<p><img alt="聚簇索引和非聚簇索引的区别" src="../006-mysql的一些底层原理.image/16c297d939cec98d.jpg" /></p>
+<p>聚簇索引的优点有：</p>
+<ul>
+<li>
+<p>范围查询效率更高；</p>
+</li>
+<li>
+<p>特别适合有一小部分热点数据频繁读写的场景；</p>
+</li>
+<li>
+<p>通过主键访问数据时快速可达；</p>
+</li>
+</ul>
+<p>访问聚簇索引速度应该保证足够快，主键不宜选择过大存储需求的字段，例如UUID，另外非聚簇索引需要额外保存主键，主键太长存储需求较大。</p>
+<p>也不宜选择字符串：一.字符串比较速度较数字慢，二.字符串插入时更加无序，索引树分裂合并相对更加频繁，出现更多磁盘碎片 。当有字符串和数字都能满足代理主键【该主键与业务无关只是添加一列主键保证记录唯一性】需求时，应当优先选择数字</p>
+<p>做主键，但是如果逻辑主键【业务中有作为主键的列，也可选为主键，即为逻辑主键】是字符串类型，那也应该选择其作为主键，因为字符串相比数字性能差别不是很大。</p>
+<p>知道了索引的设计，我们能够知道另外一些信息：</p>
+<ol>
+<li>MySql 的主键不能太大，如果使用 UUID 这种，将会浪费 B+ 树的非叶子节点。</li>
+<li>MySql 的主键最好是自增的，如果使用 UUID 这种，每次插入都会调整 B+树，从而导致页分裂，严重影响性能。</li>
+</ol>
+<p>那么，如果项目中使用了分库分表，我们通常都会需要一个主键进行 sharding，那怎么办呢？在实现上，我们可以保留自增主键，而逻辑主键用来作为唯一索引即可。</p>
+<h2 id="_29">数据库建立索引常用的规则如下：<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<p>1、表的主键、外键必须有索引； 
+2、数据量超过300的表应该有索引； 
+3、经常与其他表进行连接的表，在连接字段上应该建立索引； 
+4、经常出现在Where子句中的字段，特别是大表的字段，应该建立索引； 
+5、索引应该建在选择性高的字段上； 
+6、索引应该建在小字段上，对于大的文本字段甚至超长字段，不要建索引； 
+7、复合索引的建立需要进行仔细分析；尽量考虑用单字段索引代替：</p>
+<p>8、频繁进行数据操作的表，不要建立太多的索引； 
+9、删除无用的索引，避免对执行计划造成负面影响；</p>
+<h2 id="mysql_4">对千万级MySQL数据库建立索引的事项及提高性能的手段<a class="headerlink" href="#mysql_4" title="Permanent link">&para;</a></h2>
+<h3 id="_30">一、注意事项：<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>首先，应当考虑表空间和磁盘空间是否足够。我们知道索引也是一种数据，在建立索引的时候势必也会占用大量表空间。因此在对一大表建立索引的时候首先应当考虑的是空间容量问题。 
+其次，在对建立索引的时候要对表进行加锁，因此应当注意操作在业务空闲的时候进行。</p>
+<h3 id="_31">二、性能调整方面：<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p>首当其冲的考虑因素便是磁盘I/O。物理上，应当尽量把索引与数据分散到不同的磁盘上（不考虑阵列的情况）。逻辑上，数据表空间与索引表空间分开。这是在建索引时应当遵守的基本准则。</p>
+<p>其次，我们知道，在建立索引的时候要对表进行全表的扫描工作，因此，应当考虑调大初始化参数db_file_multiblock_read_count的值。一般设置为32或更大。</p>
+<p>再次，建立索引除了要进行全表扫描外同时还要对数据进行大量的排序操作，因此，应当调整排序区的大小。</p>
+<p>9i之前，可以在session级别上加大sort_area_size的大小，比如设置为100m或者更大。</p>
+<p>9i以后，如果初始化参数workarea_size_policy的值为TRUE，则排序区从pga_aggregate_target里自动分配获得。</p>
+<p>最后，建立索引的时候，可以加上nologging选项。以减少在建立索引过程中产生的大量redo，从而提高执行的速度。</p>
+<h2 id="mysql_5">MySql在建立索引优化时需要注意的问题<a class="headerlink" href="#mysql_5" title="Permanent link">&para;</a></h2>
+<p>设计好MySql的索引可以让你的数据库飞起来，大大的提高数据库效率。设计MySql索引的时候有一下几点注意：</p>
+<h3 id="1_3">1，创建索引<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
+<p>对于查询占主要的应用来说，索引显得尤为重要。很多时候性能问题很简单的就是因为我们忘了添加索引而造成的，或者说没有添加更为有效的索引导致。如果不加索引的话，那么查找任何哪怕只是一条特定的数据都会进行一次全表扫描，如果一张表的数据量很大而符合条件的结果又很少，那么不加索引会引起致命的性能下降。但是也不是什么情况都非得建索引不可，比如性别可能就只有两个值，建索引不仅没什么优势，还会影响到更新速度，这被称为过度索引。</p>
+<h3 id="2_2">2，复合索引<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<p>比如有一条语句是这样的：select * from users where area=’beijing’ and age=22; 
+如果我们是在area和age上分别创建单个索引的话，由于mysql查询每次只能使用一个索引，所以虽然这样已经相对不做索引时全表扫描提高了很多效 
+率，但是如果在area、age两列上创建复合索引的话将带来更高的效率。如果我们创建了(area, age, 
+salary)的复合索引，那么其实相当于创建了(area,age,salary)、(area,age)、(area)三个索引，这被称为最佳左前缀 
+特性。因此我们在创建复合索引时应该将最常用作限制条件的列放在最左边，依次递减。</p>
+<h3 id="3null">3，索引不会包含有NULL值的列<a class="headerlink" href="#3null" title="Permanent link">&para;</a></h3>
+<p>只要列中包含有NULL值都将不会被包含在索引中，复合索引中只要有一列含有NULL值，那么这一列对于此复合索引就是无效的。所以我们在数据库设计时不要让字段的默认值为NULL。</p>
+<h3 id="4_1">4，使用短索引<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>对串列进行索引，如果可能应该指定一个前缀长度。例如，如果有一个CHAR(255)的 列，如果在前10 个或20 个字符内，多数值是惟一的，那么就不要对整个列进行索引。短索引不仅可以提高查询速度而且可以节省磁盘空间和I/O操作。</p>
+<h3 id="5">5，排序的索引问题<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>mysql查询只使用一个索引，因此如果where子句中已经使用了索引的话，那么order by中的列是不会使用索引的。因此数据库默认排序可以符合要求的情况下不要使用排序操作；尽量不要包含多个列的排序，如果需要最好给这些列创建复合索引。</p>
+<h3 id="6like">6，like语句操作<a class="headerlink" href="#6like" title="Permanent link">&para;</a></h3>
+<p>一般情况下不鼓励使用like操作，如果非使用不可，如何使用也是一个问题。like “%a%” 不会使用索引而like “aaa%”可以使用索引。</p>
+<h3 id="7">7，不要在列上进行运算<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<p>select * from users where 
+YEAR(adddate)</p>
+<h3 id="8not-in">8，不使用NOT IN和操作<a class="headerlink" href="#8not-in" title="Permanent link">&para;</a></h3>
+<p>NOT IN和操作都不会使用索引将进行全表扫描。NOT IN可以NOT EXISTS代替，id3则可使用id&gt;3 or id</p>
+<h1 id="_32">数据库设计范式<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h1>
+<p>什么是范式：简言之就是，数据库设计对数据的存储性能，还有开发人员对数据的操作都有莫大的关系。所以建立科学的，规范的的数据库是需要满足一些</p>
+<p>规范的来优化数据数据存储方式。在关系型数据库中这些规范就可以称为范式。</p>
+<p>什么是三大范式：</p>
+<p>第一范式：当关系模式R的所有属性都不能在分解为更基本的数据单位时，称R是满足第一范式的，简记为1NF。满足第一范式是关系模式规范化的最低要</p>
+<p>求，否则，将有很多基本操作在这样的关系模式中实现不了。</p>
+<p>第二范式：如果关系模式R满足第一范式，并且R得所有非主属性都完全依赖于R的每一个候选关键属性，称R满足第二范式，简记为2NF。</p>
+<p>第三范式：设R是一个满足第一范式条件的关系模式，X是R的任意属性集，如果X非传递依赖于R的任意一个候选关键字，称R满足第三范式，简记为3NF.</p>
+<p>**注：**关系实质上是一张二维表，其中每一行是一个元组，每一列是一个属性</p>
+<h4 id="_33">主从复制<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<p>主要涉及三个线程：binlog 线程、I/O 线程和 SQL 线程。
+binlog 线程 ：负责将主服务器上的数据更改写入二进制日志（Binary log）中。
+I/O 线程 ：负责从主服务器上读取二进制日志，并写入从服务器的中继日志（Relay log）。
+SQL 线程 ：负责读取中继日志，解析出主服务器已经执行的数据更改并在从服务器中重放（Replay） </p>
+<h3 id="_34">读写分离<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<p>主服务器处理写操作以及实时性要求比较高的读操作，而从服务器处理读操作。</p>
+<ul>
+<li>读写分离能提高性能的原因在于：
+    主从服务器负责各自的读和写，极大程度缓解了锁的争用；
+    从服务器可以使用 MyISAM，提升查询性能以及节约系统开销；
+    增加冗余，提高可用性。
+    读写分离常用代理方式来实现，代理服务器接收应用层传来的读写请求，然后决定转发到哪个服务器 </li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../java学习/001-day01,java初探以及说明/" title="001-day01,java初探以及说明" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                001-day01,java初探以及说明
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../005-ubuntu安装mysql没有让我设置密码/" title="005-ubuntu安装mysql没有让我设置密码" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                005-ubuntu安装mysql没有让我设置密码
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        <!-- powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a> -->
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
