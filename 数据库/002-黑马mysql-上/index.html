@@ -4328,14 +4328,21 @@ Query OK, 0 rows affected (0.01 sec)</code></p>
 
 
 <p>插入操作</p>
-<p>```sql
-INSERT INTO emp(id,name,gender,birthday,salary,entry_date,resume)</p>
-<p>VALUES(1,'zhangsan','female','1990-5-10',10000,'2015-5-5-','good girl');</p>
-<p>INSERT INTO emp(id,name,gender,birthday,salary,entry_date,resume)</p>
-<p>VALUES(2,'lisi','male','1995-5-10',10000,'2015-5-5','good boy');</p>
-<p>INSERT INTO emp(id,name,gender,birthday,salary,entry_date,resume)</p>
-<p>VALUES(3,'wangwu','male','1995-5-10',10000,'2015-5-5','good boy');
- ```</p>
+<div class="codehilite"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">gender</span><span class="p">,</span><span class="n">birthday</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">entry_date</span><span class="p">,</span><span class="n">resume</span><span class="p">)</span>
+
+<span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;zhangsan&#39;</span><span class="p">,</span><span class="s1">&#39;female&#39;</span><span class="p">,</span><span class="s1">&#39;1990-5-10&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-5-5-&#39;</span><span class="p">,</span><span class="s1">&#39;good girl&#39;</span><span class="p">);</span>
+
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">gender</span><span class="p">,</span><span class="n">birthday</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">entry_date</span><span class="p">,</span><span class="n">resume</span><span class="p">)</span>
+
+<span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;lisi&#39;</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="p">,</span><span class="s1">&#39;1995-5-10&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-5-5&#39;</span><span class="p">,</span><span class="s1">&#39;good boy&#39;</span><span class="p">);</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">gender</span><span class="p">,</span><span class="n">birthday</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">entry_date</span><span class="p">,</span><span class="n">resume</span><span class="p">)</span>
+
+<span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;wangwu&#39;</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="p">,</span><span class="s1">&#39;1995-5-10&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-5-5&#39;</span><span class="p">,</span><span class="s1">&#39;good boy&#39;</span><span class="p">);</span>
+</pre></div>
+
+
 <p>批量插入：</p>
 <div class="codehilite"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span> <span class="k">VALUES</span>
 
@@ -4403,54 +4410,70 @@ INSERT INTO emp(id,name,gender,birthday,salary,entry_date,resume)</p>
 <p>删除的数据不能找回。执行速度比DELETE快。</p>
 </blockquote>
 <p>DML 操作的sql语句</p>
-<p>```sql
--- 创建一个新的数据库，这个软件会自动大写,注意后面的分号可以不写但是不要这么去做
-CREATE DATABASE mydb1 ;
--- 使用这个数据库
-USE mydb1 ;
--- 在这个数据库中创建一个新的表emp
-CREATE TABLE emp(
-id INT,
-NAME VARCHAR(100),
-gender VARCHAR(10),
-birthday DATE,
-salary FLOAT(10,2),
-entry_date DATE,
-RESUME TEXT
-);</p>
-<p>-- 查询表中的所有数据
-SELECT * FROM emp;</p>
-<p>-- 向emp表中添加数据(一行行的插入)(需要注意的是在sql里大小写不敏感)
-INSERT INTO emp(id,NAME,gender,birthday,salary,entry_date,RESUME)
-VALUES(1,'tom','m','2015-09-24','10000','2015-09-25','good boy');</p>
-<p>INSERT INTO emp(id,NAME,gender,birthday,salary,entry_date,RESUME)
-VALUES(1,'zhangsan','female','1990-5-10',10000,'2015-5-5-','good girl');</p>
-<p>INSERT INTO emp(id,NAME,gender,birthday,salary,entry_date,RESUME)
-VALUES(2,'lisi','male','1995-5-10',10000,'2015-5-5','good boy');</p>
-<p>INSERT INTO emp(id,NAME,gender,birthday,salary,entry_date,RESUME)
-VALUES(3,'王','male','1995-5-10',10000,'2015-5-5','good boy');</p>
-<p>-- 向emp表中插入数据(多行的插入)
-INSERT INTO emp VALUES
-(4,'zs','m','2015-09-01',10000,'2015-09-01',NULL),
-(5,'li','m','2015-09-01',10000,'2015-09-01',NULL),
-(6,'ww','m','2015-09-01',10000,'2015-09-01',NULL);</p>
-<p>-- 查询表中的所有数据
-SELECT * FROM emp;</p>
-<p>-- 将所有员工薪水修改为5000元
-UPDATE emp SET salary=5000;</p>
-<p>-- 将姓名为’zs’的员工薪水修改为3000元。注意这里的等于是一个等于号
-UPDATE emp SET salary=300 WHERE NAME ='zs';</p>
-<p>-- 将姓名为’lisi’的员工薪水修改为4000元,性别改为f。
-UPDATE emp SET salary=4000,gender='f' WHERE NAME='lisi';</p>
-<p>-- 将ww的薪水在原有基础上增加1000元.
-UPDATE emp SET salary=salary+1000 WHERE NAME='ww'; </p>
-<p>-- 删除表中名称为’zhangsan’的记录。
-DELETE FROM emp WHERE NAME = 'zhangsan'</p>
-<p>-- 删除表中的所有的元素
-DELETE FROM emp;</p>
-<p>-- 使用truncate删除表中记录,首先删除表然后创建一个新的表
-TRUNCATE TABLE emp;</p>
-<p>```</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- 创建一个新的数据库，这个软件会自动大写,注意后面的分号可以不写但是不要这么去做</span>
+<span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">mydb1</span> <span class="p">;</span>
+<span class="c1">-- 使用这个数据库</span>
+<span class="n">USE</span> <span class="n">mydb1</span> <span class="p">;</span>
+<span class="c1">-- 在这个数据库中创建一个新的表emp</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">emp</span><span class="p">(</span>
+<span class="n">id</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="n">NAME</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="n">gender</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="n">birthday</span> <span class="nb">DATE</span><span class="p">,</span>
+<span class="n">salary</span> <span class="nb">FLOAT</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="n">entry_date</span> <span class="nb">DATE</span><span class="p">,</span>
+<span class="n">RESUME</span> <span class="nb">TEXT</span>
+<span class="p">);</span>
+
+<span class="c1">-- 查询表中的所有数据</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">;</span>
+
+<span class="c1">-- 向emp表中添加数据(一行行的插入)(需要注意的是在sql里大小写不敏感)</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">NAME</span><span class="p">,</span><span class="n">gender</span><span class="p">,</span><span class="n">birthday</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">entry_date</span><span class="p">,</span><span class="n">RESUME</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;2015-09-24&#39;</span><span class="p">,</span><span class="s1">&#39;10000&#39;</span><span class="p">,</span><span class="s1">&#39;2015-09-25&#39;</span><span class="p">,</span><span class="s1">&#39;good boy&#39;</span><span class="p">);</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">NAME</span><span class="p">,</span><span class="n">gender</span><span class="p">,</span><span class="n">birthday</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">entry_date</span><span class="p">,</span><span class="n">RESUME</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;zhangsan&#39;</span><span class="p">,</span><span class="s1">&#39;female&#39;</span><span class="p">,</span><span class="s1">&#39;1990-5-10&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-5-5-&#39;</span><span class="p">,</span><span class="s1">&#39;good girl&#39;</span><span class="p">);</span>
+
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">NAME</span><span class="p">,</span><span class="n">gender</span><span class="p">,</span><span class="n">birthday</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">entry_date</span><span class="p">,</span><span class="n">RESUME</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;lisi&#39;</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="p">,</span><span class="s1">&#39;1995-5-10&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-5-5&#39;</span><span class="p">,</span><span class="s1">&#39;good boy&#39;</span><span class="p">);</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">NAME</span><span class="p">,</span><span class="n">gender</span><span class="p">,</span><span class="n">birthday</span><span class="p">,</span><span class="n">salary</span><span class="p">,</span><span class="n">entry_date</span><span class="p">,</span><span class="n">RESUME</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;王&#39;</span><span class="p">,</span><span class="s1">&#39;male&#39;</span><span class="p">,</span><span class="s1">&#39;1995-5-10&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-5-5&#39;</span><span class="p">,</span><span class="s1">&#39;good boy&#39;</span><span class="p">);</span>
+
+<span class="c1">-- 向emp表中插入数据(多行的插入)</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">emp</span> <span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;zs&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;2015-09-01&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-09-01&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;li&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;2015-09-01&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-09-01&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="s1">&#39;ww&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;2015-09-01&#39;</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="s1">&#39;2015-09-01&#39;</span><span class="p">,</span><span class="k">NULL</span><span class="p">);</span>
+
+<span class="c1">-- 查询表中的所有数据</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">;</span>
+
+<span class="c1">-- 将所有员工薪水修改为5000元</span>
+<span class="k">UPDATE</span> <span class="n">emp</span> <span class="k">SET</span> <span class="n">salary</span><span class="o">=</span><span class="mi">5000</span><span class="p">;</span>
+
+<span class="c1">-- 将姓名为’zs’的员工薪水修改为3000元。注意这里的等于是一个等于号</span>
+<span class="k">UPDATE</span> <span class="n">emp</span> <span class="k">SET</span> <span class="n">salary</span><span class="o">=</span><span class="mi">300</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="o">=</span><span class="s1">&#39;zs&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 将姓名为’lisi’的员工薪水修改为4000元,性别改为f。</span>
+<span class="k">UPDATE</span> <span class="n">emp</span> <span class="k">SET</span> <span class="n">salary</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span><span class="n">gender</span><span class="o">=</span><span class="s1">&#39;f&#39;</span> <span class="k">WHERE</span> <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;lisi&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 将ww的薪水在原有基础上增加1000元.</span>
+<span class="k">UPDATE</span> <span class="n">emp</span> <span class="k">SET</span> <span class="n">salary</span><span class="o">=</span><span class="n">salary</span><span class="o">+</span><span class="mi">1000</span> <span class="k">WHERE</span> <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;ww&#39;</span><span class="p">;</span> 
+
+<span class="c1">-- 删除表中名称为’zhangsan’的记录。</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;zhangsan&#39;</span>
+
+<span class="c1">-- 删除表中的所有的元素</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">;</span>
+
+<span class="c1">-- 使用truncate删除表中记录,首先删除表然后创建一个新的表</span>
+<span class="k">TRUNCATE</span> <span class="k">TABLE</span> <span class="n">emp</span><span class="p">;</span>
+</pre></div>
+
+
 <h2 id="43-dql">4.3 DQL操作<a class="headerlink" href="#43-dql" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
