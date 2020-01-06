@@ -4152,7 +4152,7 @@
 
 <span class="c1"># 接收对方发送过来的数据，最大接收1024个字节</span>
 <span class="n">recvData</span> <span class="o">=</span> <span class="n">tcp_client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recvData</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;gbk&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recvData</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;gbk&#39;</span><span class="p">))</span>
 
 <span class="c1"># 关闭套接字</span>
 <span class="n">tcp_client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -4216,7 +4216,7 @@
 
 <span class="c1"># 接收对方发送过来的数据</span>
 <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 接收1024个字节</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
 <span class="c1"># 发送一些数据到客户端</span>
 <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;thank you !&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
@@ -4256,16 +4256,16 @@
 
 <span class="c1"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span>
 <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="c1"># 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</span>
     <span class="c1"># client_socket用来为这个客户端服务</span>
     <span class="c1"># tcp_server_socket就可以省下来专门等待其他新客户端的链接</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;等待一个客户端的链接&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;等待一个客户端的链接&#39;</span><span class="p">)</span>
     <span class="n">client_socket</span><span class="p">,</span> <span class="n">clientAddr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
     <span class="c1"># 接收对方发送过来的数据</span>
     <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 接收1024个字节</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
     <span class="c1"># 发送一些数据到客户端</span>
     <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;thank you !&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
@@ -4297,17 +4297,17 @@
 
 <span class="c1"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span>
 <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="c1"># 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</span>
     <span class="c1"># client_socket用来为这个客户端服务</span>
     <span class="c1"># tcp_server_socket就可以省下来专门等待其他新客户端的链接</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;等待一个客户端的链接&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;等待一个客户端的链接&#39;</span><span class="p">)</span>
     <span class="n">client_socket</span><span class="p">,</span> <span class="n">clientAddr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;一个客户端已经到来&#39;</span><span class="p">)</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;一个客户端已经到来&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
         <span class="c1"># 接收对方发送过来的数据</span>
         <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 接收1024个字节</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;接收到的数据为:&#39;</span><span class="p">,</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
 
 
@@ -4358,13 +4358,13 @@
             <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">content</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;没有下载的文件:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;没有下载的文件:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;请按照如下方式运行：python3 xxx.py 7890&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;请按照如下方式运行：python3 xxx.py 7890&quot;</span><span class="p">)</span>
         <span class="k">return</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># 运行方式为python3 xxx.py 7890</span>
@@ -4380,13 +4380,13 @@
     <span class="c1"># 将主动套接字变为被动套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
         <span class="c1"># 等待客户端的链接，即为这个客户端发送文件</span>
         <span class="n">client_socket</span><span class="p">,</span> <span class="n">clientAddr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="c1"># 接收对方发送过来的数据</span>
         <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 接收1024个字节</span>
         <span class="n">file_name</span> <span class="o">=</span> <span class="n">recv_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;对方请求下载的文件名为:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;对方请求下载的文件名为:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">file_name</span><span class="p">)</span>
         <span class="n">file_content</span> <span class="o">=</span> <span class="n">get_file_content</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
         <span class="c1"># 发送文件的数据给客户端</span>
         <span class="c1"># 因为获取打开文件时是以rb方式打开，所以file_content中的数据已经是二进制的格式，因此不需要encode编码</span>

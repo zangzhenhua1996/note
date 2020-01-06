@@ -3970,7 +3970,7 @@
 <span class="sd">        :rtype: ListNode</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span>  <span class="c1">#设立一个指针指向头结点</span>
-        <span class="k">while</span> <span class="n">cur</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">cur</span><span class="o">!=</span><span class="bp">None</span><span class="p">:</span>
             <span class="c1"># print(cur.val)</span>
             <span class="n">runner</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>  <span class="c1">#让runner记录的是cur的下一个节点</span>
             <span class="k">while</span> <span class="n">runner</span> <span class="ow">and</span> <span class="n">cur</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">runner</span><span class="o">.</span><span class="n">val</span><span class="p">:</span>  <span class="c1">#,因为runner指向的是cur的下一个节点,所以首先到达空,要判断一下并且如果当前值跟下一个节点的值相等话就删除下一个节点,并继续循环</span>

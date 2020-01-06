@@ -4104,7 +4104,7 @@
                 <h2 id="_1">闭包<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="1">1. 函数引用<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- in test1 func----&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;--- in test1 func----&quot;</span><span class="p">)</span>
 
 <span class="c1"># 调用函数</span>
 <span class="n">test1</span><span class="p">()</span>
@@ -4112,8 +4112,8 @@
 <span class="c1"># 引用函数</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">test1</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">test1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">test1</span><span class="p">))</span>
 
 <span class="c1">#通过引用调用函数</span>
 <span class="n">ret</span><span class="p">()</span>
@@ -4134,7 +4134,7 @@
 
     <span class="c1"># 在函数内部再定义一个函数，并且这个函数用到了外边函数的变量，那么将这个函数以及用到的一些变量称之为闭包</span>
     <span class="k">def</span> <span class="nf">test_in</span><span class="p">(</span><span class="n">number_in</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in test_in 函数, number_in is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">number_in</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;in test_in 函数, number_in is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">number_in</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">number</span><span class="o">+</span><span class="n">number_in</span>
     <span class="c1"># 其实这里返回的就是闭包的结果</span>
     <span class="k">return</span> <span class="n">test_in</span>
@@ -4144,18 +4144,18 @@
 <span class="n">ret</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="c1"># 注意这里的100其实给参数number_in</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
 
 <span class="c1">#注 意这里的200其实给参数number_in</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
 </pre></div>
 
 
 <p>运行结果：</p>
-<div class="codehilite"><pre><span></span><span class="ow">in</span> <span class="n">test_in</span> <span class="n">函数</span><span class="p">,</span> <span class="n">number_in</span> <span class="ow">is</span> <span class="mi">100</span>
+<div class="codehilite"><pre><span></span><span class="ow">in</span> <span class="n">test_in</span> <span class="err">函数</span><span class="p">,</span> <span class="n">number_in</span> <span class="ow">is</span> <span class="mi">100</span>
 <span class="mi">120</span>
 
-<span class="ow">in</span> <span class="n">test_in</span> <span class="n">函数</span><span class="p">,</span> <span class="n">number_in</span> <span class="ow">is</span> <span class="mi">200</span>
+<span class="ow">in</span> <span class="n">test_in</span> <span class="err">函数</span><span class="p">,</span> <span class="n">number_in</span> <span class="ow">is</span> <span class="mi">200</span>
 <span class="mi">220</span>
 </pre></div>
 
@@ -4168,8 +4168,8 @@
 
 <span class="n">line1</span> <span class="o">=</span> <span class="n">line_conf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">line2</span> <span class="o">=</span> <span class="n">line_conf</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">line1</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">line2</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">line1</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">line2</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 
 
@@ -4181,24 +4181,24 @@
 <h4 id="python3">python3的方法<a class="headerlink" href="#python3" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">incr</span><span class="p">():</span>
-        <span class="k">nonlocal</span> <span class="n">start</span>
+        <span class="n">nonlocal</span> <span class="n">start</span>
         <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">start</span>
     <span class="k">return</span> <span class="n">incr</span>
 
 <span class="n">c1</span> <span class="o">=</span> <span class="n">counter</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
 
 <span class="n">c2</span> <span class="o">=</span> <span class="n">counter</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>
 </pre></div>
 
 
@@ -4211,11 +4211,11 @@
     <span class="k">return</span> <span class="n">incr</span>
 
 <span class="n">c1</span> <span class="o">=</span> <span class="n">closeure</span><span class="o">.</span><span class="n">counter</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>  <span class="c1"># 6</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>  <span class="c1"># 7</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>  <span class="c1"># 6</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="p">())</span>  <span class="c1"># 7</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">closeure</span><span class="o">.</span><span class="n">counter</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>  <span class="c1"># 101</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>  <span class="c1"># 102</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>  <span class="c1"># 101</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">())</span>  <span class="c1"># 102</span>
 </pre></div>
 
 
@@ -4231,21 +4231,21 @@
 
 <span class="c1"># 第2种</span>
 <span class="k">def</span> <span class="nf">line_2</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
 
 <span class="n">line_2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">line_2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">line_2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1"># 缺点：如果想要计算多次这条线上的y值，那么每次都需要传递k，b的值，麻烦</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
 
 
 <span class="c1"># 第3种: 全局变量(不修改变量的话是可以直接用的不用声明变量)</span>
 <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="k">def</span> <span class="nf">line_3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
 
 <span class="n">line_3</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">line_3</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -4257,11 +4257,11 @@
 <span class="n">line_3</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="c1"># 缺点：如果要计算多条线上的y值，那么需要每次对全局变量进行修改，代码会增多，麻烦</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="c1"># 第4种：缺省参数</span>
 <span class="k">def</span> <span class="nf">line_4</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
 
 <span class="n">line_4</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">line_4</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -4273,7 +4273,7 @@
 <span class="c1"># 优点：比全局变量的方式好在：k, b是函数line_4的一部分 而不是全局变量，因为全局变量可以任意的被其他函数所修改</span>
 <span class="c1"># 缺点：如果要计算多条线上的y值，那么需要在调用的时候进行传递参数，麻烦</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="c1"># 第5种：实例对象</span>
 <span class="k">class</span> <span class="nc">Line5</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -4282,7 +4282,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="c1">#call魔法属性可以传递很多的不定长的参数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
 
 
 <span class="n">line_5_1</span> <span class="o">=</span> <span class="n">Line5</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -4297,13 +4297,13 @@
 <span class="n">line_5_2</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="c1"># 缺点：为了计算多条线上的y值，所以需要保存多个k, b的值，因此用了很多个实例对象， 浪费资源</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="c1"># 第6种：闭包</span>
 
 <span class="k">def</span> <span class="nf">line_6</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">create_y</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">create_y</span>
 
 
@@ -4331,10 +4331,10 @@
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">200</span>
     <span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
-        <span class="k">nonlocal</span> <span class="n">x</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----1----x=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">nonlocal</span> <span class="n">x</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----1----x=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1">#使用nolocal对闭包中的变量进行类似global的声明</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----2----x=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----2----x=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">test2</span>
 
@@ -4354,14 +4354,14 @@
 <h3 id="1_1">1、先明白这段代码<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="c1">#### 第一波 ####</span>
 <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
 
 <span class="n">foo</span>  <span class="c1"># 表示是函数</span>
 <span class="n">foo</span><span class="p">()</span>  <span class="c1"># 表示执行foo函数</span>
 
 <span class="c1">#### 第二波 ####</span>
 <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
 
 <span class="n">foo</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 
@@ -4375,16 +4375,16 @@
 <div class="codehilite"><pre><span></span><span class="c1">############### 基础平台提供的功能如下 ###############</span>
 
 <span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f3</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f4</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
 
 <span class="c1">############### 业务部门A 调用基础平台提供的功能 ###############</span>
 
@@ -4415,25 +4415,25 @@
     <span class="c1"># 验证1</span>
     <span class="c1"># 验证2</span>
     <span class="c1"># 验证3</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
     <span class="c1"># 验证1</span>
     <span class="c1"># 验证2</span>
     <span class="c1"># 验证3</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f3</span><span class="p">():</span>
     <span class="c1"># 验证1</span>
     <span class="c1"># 验证2</span>
     <span class="c1"># 验证3</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f4</span><span class="p">():</span>
     <span class="c1"># 验证1</span>
     <span class="c1"># 验证2</span>
     <span class="c1"># 验证3</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
 
 <span class="c1">############### 业务部门不变 ############### </span>
 <span class="c1">### 业务部门A 调用基础平台提供的功能### </span>
@@ -4470,25 +4470,25 @@
 
     <span class="n">check_login</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
 
     <span class="n">check_login</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f3</span><span class="p">():</span>
 
     <span class="n">check_login</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">f4</span><span class="p">():</span>
 
     <span class="n">check_login</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4510,16 +4510,16 @@
 
 <span class="nd">@w1</span>
 <span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
 <span class="nd">@w1</span>
 <span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
 <span class="nd">@w1</span>
 <span class="k">def</span> <span class="nf">f3</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">)</span>
 <span class="nd">@w1</span>
 <span class="k">def</span> <span class="nf">f4</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4538,7 +4538,7 @@
 
 <span class="nd">@w1</span>
 <span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4579,14 +4579,14 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <h3 id="_5">装饰器的一个演示<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
         <span class="n">func</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
 <span class="nd">@set_func</span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
 
 
 <span class="n">test1</span><span class="p">()</span>
@@ -4594,8 +4594,8 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span>
 </pre></div>
 
@@ -4603,14 +4603,14 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <h3 id="04-py">04-装饰器的实现过程.py<a class="headerlink" href="#04-py" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
         <span class="n">func</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
 <span class="nd">@set_func</span>  <span class="c1"># 等价于test1 = set_func(test1) </span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
 
 <span class="c1">#这两行就是实现的过程</span>
 <span class="c1"># ret = set_func(test1)</span>
@@ -4633,12 +4633,12 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
         <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#开始的执行时间</span>
         <span class="n">func</span><span class="p">()</span>
         <span class="n">stop_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#终止的执行时间</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;alltimeis </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">stop_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;alltimeis </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">stop_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
 <span class="nd">@set_func</span>  <span class="c1"># 等价于test1 = set_func(test1) </span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
         <span class="k">pass</span>
 
@@ -4664,14 +4664,14 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <h3 id="06-py">06-对没有参数、没有返回值的函数进行装饰.py<a class="headerlink" href="#06-py" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
         <span class="n">func</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
 <span class="nd">@set_func</span>  <span class="c1"># 等价于test1 = set_func(test1) </span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># ret = set_func(test1)</span>
@@ -4683,8 +4683,8 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 
 <p>执行</p>
-<div class="codehilite"><pre><span></span><span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span>
 </pre></div>
 
@@ -4692,15 +4692,15 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <h3 id="07-py">07-对有参数、无返回值的函数进行装饰.py<a class="headerlink" href="#07-py" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="c1">#这里也需要加参数,因为要把参数在传递给func(a)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
         <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">#这里需要加参数</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
 
 <span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
 
 
 <span class="n">test1</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -4713,11 +4713,11 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 
 <p>执行</p>
-<div class="codehilite"><pre><span></span><span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span>
-<span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">200</span>
 </pre></div>
 
@@ -4750,9 +4750,9 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="k">def</span> <span class="nf">test3</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">&quot;hello world-3&quot;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">test1</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">test2</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">test3</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">test1</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">test2</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">test3</span><span class="p">())</span>
 </pre></div>
 
 
@@ -4778,13 +4778,13 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 <span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
         <span class="n">func</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">wrapped_func</span>
 
 <span class="nd">@timefun</span>
 <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
 
 <span class="n">foo</span><span class="p">()</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -4807,14 +4807,14 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 <span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
         <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">wrapped_func</span>
 
 <span class="nd">@timefun</span>
 <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
 
 <span class="n">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -4825,20 +4825,20 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <h3 id="08-py">08-通一个装饰器对多个函数进行装饰.py<a class="headerlink" href="#08-py" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
         <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
 
 <span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
 
 
 <span class="nd">@set_func</span>  <span class="c1"># 相当于 test2 = set_func(test2)</span>
 <span class="k">def</span> <span class="nf">test2</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test2----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test2----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
 
 
 <span class="n">test1</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -4847,33 +4847,33 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 
 <p>执行</p>
-<div class="codehilite"><pre><span></span><span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span>
-<span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test2</span><span class="o">----</span><span class="mi">200</span>
 </pre></div>
 
 
 <h3 id="09-py">09-装饰器在没有调用函数之前已经装饰了.py<a class="headerlink" href="#09-py" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
         <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
 
 <span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
 
 
 <span class="nd">@set_func</span>  <span class="c1"># 相当于 test2 = set_func(test2)</span>
 <span class="k">def</span> <span class="nf">test2</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test2----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test2----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
 
 <span class="c1"># 装饰器在调用函数之前，已经被python解释器执行了，所以要牢记 当调用函数之前 其实已经装饰好了，尽管调用就可以了</span>
 <span class="c1"># test1(100)</span>
@@ -4882,8 +4882,8 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 
 <p>执行</p>
-<div class="codehilite"><pre><span></span><span class="o">---</span><span class="n">开始进行装饰</span>
-<span class="o">---</span><span class="n">开始进行装饰</span>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">开始进行装饰</span>
+<span class="o">---</span><span class="err">开始进行装饰</span>
 </pre></div>
 
 
@@ -4892,13 +4892,13 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 <span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
         <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">wrapped_func</span>
 
 <span class="nd">@timefun</span>
 <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>
 
 <span class="n">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -4908,10 +4908,10 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 <h3 id="10-py">10-对不定长参数的函数进行装饰.py<a class="headerlink" href="#10-py" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
         <span class="c1"># func(args, kwargs)  # 不行，相当于传递了2个参数 ：1个元组，1个字典</span>
         <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># 拆包(多余的参数给元祖,多余的关键字给字典)</span>
     <span class="k">return</span> <span class="n">call_func</span>
@@ -4919,9 +4919,9 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 <span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">num1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># *args元祖,**kwargs 字典</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">,</span><span class="n">num1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">args</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">,</span><span class="n">num1</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
 
 
 <span class="c1">#test1(100)</span>
@@ -4931,14 +4931,14 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 
 <p>执行</p>
-<div class="codehilite"><pre><span></span><span class="o">---</span><span class="n">开始进行装饰</span>
-<span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">开始进行装饰</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span> <span class="mi">200</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">()</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">{}</span>
-<span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span> <span class="mi">200</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">(</span><span class="mi">300</span><span class="p">,)</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">{</span><span class="s1">&#39;mm&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
@@ -4950,10 +4950,10 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <h3 id="11-py">11-对带有返回值的函数进行装饰.py<a class="headerlink" href="#11-py" title="Permanent link">&para;</a></h3>
 <p>通用的装饰器</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证2----&quot;</span><span class="p">)</span>
         <span class="c1"># func(args, kwargs)  # 不行，相当于传递了2个参数 ：1个元组，1个字典</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># 拆包</span>
     <span class="k">return</span> <span class="n">call_func</span>
@@ -4961,9 +4961,9 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 <span class="nd">@set_func</span>  <span class="c1"># 相当于 test1 = set_func(test1)</span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">args</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----test1----&quot;</span> <span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="s2">&quot;ok&quot;</span>
 
 
@@ -4972,25 +4972,25 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
     <span class="k">pass</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">test1</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">test2</span><span class="p">()</span> <span class="c1">#没有返回值那么就返回none,return没有什么影响</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 </pre></div>
 
 
 <p>执行</p>
-<div class="codehilite"><pre><span></span><span class="o">---</span><span class="n">开始进行装饰</span>
-<span class="o">---</span><span class="n">开始进行装饰</span>
-<span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">开始进行装饰</span>
+<span class="o">---</span><span class="err">开始进行装饰</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span><span class="mi">100</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">()</span>
 <span class="o">-----</span><span class="n">test1</span><span class="o">----</span> <span class="p">{}</span>
 <span class="n">ok</span>
-<span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是权限验证2</span><span class="o">----</span>
-<span class="kc">None</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">2</span><span class="o">----</span>
+<span class="bp">None</span>
 </pre></div>
 
 
@@ -4999,13 +4999,13 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 
 <span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">()))</span>
         <span class="n">func</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">wrapped_func</span>
 
 <span class="nd">@timefun</span>
 <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
 
 <span class="nd">@timefun</span>
 <span class="k">def</span> <span class="nf">getInfo</span><span class="p">():</span>
@@ -5016,7 +5016,7 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="n">foo</span><span class="p">()</span>
 
 
-<span class="nb">print</span><span class="p">(</span><span class="n">getInfo</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">getInfo</span><span class="p">())</span>
 </pre></div>
 
 
@@ -5026,7 +5026,7 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="n">foo</span> <span class="n">called</span> <span class="n">at</span> <span class="n">Fri</span> <span class="n">Nov</span>  <span class="mi">4</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">37</span> <span class="mi">2016</span>
 <span class="n">I</span> <span class="n">am</span> <span class="n">foo</span>
 <span class="n">getInfo</span> <span class="n">called</span> <span class="n">at</span> <span class="n">Fri</span> <span class="n">Nov</span>  <span class="mi">4</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">37</span> <span class="mi">2016</span>
-<span class="kc">None</span>
+<span class="bp">None</span>
 </pre></div>
 
 
@@ -5046,17 +5046,17 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 </ul>
 <h3 id="12-py">12-多个装饰器对同一个函数进行装饰.py<a class="headerlink" href="#12-py" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">add_qx</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰权限1的功能---&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰权限1的功能---&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是权限验证1----&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
 
 <span class="k">def</span> <span class="nf">add_xx</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰xxx的功能---&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---开始进行装饰xxx的功能---&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">call_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---这是xxx的功能----&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---这是xxx的功能----&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">call_func</span>
 
@@ -5064,17 +5064,17 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="nd">@add_qx</span> <span class="c1">#想装但是下面不是函数等下面的装饰器完事了在装</span>
 <span class="nd">@add_xx</span>
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------test1------&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;------test1------&quot;</span><span class="p">)</span>
 
 
 <span class="n">test1</span><span class="p">()</span>
 
 
 <span class="c1">#结果  类似于使用栈,靠近函数的先进栈,(装饰)执行的时候先进的后出,或者是执行的时候是按照顺序执行代码的</span>
-<span class="o">---</span><span class="n">开始进行装饰xxx的功能</span><span class="o">---</span>
-<span class="o">---</span><span class="n">开始进行装饰权限1的功能</span><span class="o">---</span>
-<span class="o">---</span><span class="n">这是权限验证1</span><span class="o">----</span>
-<span class="o">---</span><span class="n">这是xxx的功能</span><span class="o">----</span>
+<span class="o">---</span><span class="err">开始进行装饰</span><span class="n">xxx的功能</span><span class="o">---</span>
+<span class="o">---</span><span class="err">开始进行装饰权限</span><span class="mi">1</span><span class="err">的功能</span><span class="o">---</span>
+<span class="o">---</span><span class="err">这是权限验证</span><span class="mi">1</span><span class="o">----</span>
+<span class="o">---</span><span class="err">这是</span><span class="n">xxx的功能</span><span class="o">----</span>
 <span class="o">------</span><span class="n">test1</span><span class="o">------</span>
 </pre></div>
 
@@ -5098,7 +5098,7 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="k">def</span> <span class="nf">get_str</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">&quot;haha&quot;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">get_str</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">get_str</span><span class="p">())</span>
 </pre></div>
 
 
@@ -5116,7 +5116,7 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="k">def</span> <span class="nf">timefun_arg</span><span class="p">(</span><span class="n">pre</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">timefun</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">(),</span> <span class="n">pre</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> called at </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">ctime</span><span class="p">(),</span> <span class="n">pre</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">func</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">wrapped_func</span>
     <span class="k">return</span> <span class="n">timefun</span>
@@ -5128,11 +5128,11 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="c1"># 4. 让foo = wrapped_fun，即foo现在指向wrapped_func</span>
 <span class="nd">@timefun_arg</span><span class="p">(</span><span class="s2">&quot;itcast&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am foo&quot;</span><span class="p">)</span>
 
 <span class="nd">@timefun_arg</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">too</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am too&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am too&quot;</span><span class="p">)</span>
 
 <span class="n">foo</span><span class="p">()</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -5153,7 +5153,7 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <p>装饰器函数其实是这样一个接口约束，它必须接受一个callable对象作为参数，然后返回一个callable对象。在Python中一般callable对象都是函数，但也有例外。只要某个对象重写了 <code>__call__()</code> 方法，那么这个对象就是callable的。</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Test</span><span class="p">():</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;call me!&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;call me!&#39;</span><span class="p">)</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">Test</span><span class="p">()</span>
 <span class="n">t</span><span class="p">()</span>  <span class="c1"># call me</span>
@@ -5163,11 +5163,11 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <p>类装饰器demo</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---初始化---&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;func name is </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---初始化---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;func name is </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__func</span> <span class="o">=</span> <span class="n">func</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---装饰器中的功能---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---装饰器中的功能---&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__func</span><span class="p">()</span>
 <span class="c1">#说明：</span>
 <span class="c1">#1. 当用Test来装作装饰器对test函数进行装饰的时候，首先会创建Test的实例对象</span>
@@ -5182,16 +5182,16 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="c1">#   所以才有了self.__func = func这句代码，从而在调用__call__方法中能够调用到test之前的函数体</span>
 <span class="nd">@Test</span>
 <span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----test---&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----test---&quot;</span><span class="p">)</span>
 <span class="n">test</span><span class="p">()</span>
 <span class="n">showpy</span><span class="p">()</span><span class="c1">#如果把这句话注释，重新运行程序，依然会看到&quot;--初始化--&quot;</span>
 </pre></div>
 
 
 <p>运行结果如下：</p>
-<div class="codehilite"><pre><span></span><span class="o">---</span><span class="n">初始化</span><span class="o">---</span>
+<div class="codehilite"><pre><span></span><span class="o">---</span><span class="err">初始化</span><span class="o">---</span>
 <span class="n">func</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">test</span>
-<span class="o">---</span><span class="n">装饰器中的功能</span><span class="o">---</span>
+<span class="o">---</span><span class="err">装饰器中的功能</span><span class="o">---</span>
 <span class="o">----</span><span class="n">test</span><span class="o">---</span>
 </pre></div>
 
@@ -5209,7 +5209,7 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;这里是装饰器添加的功能.....&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;这里是装饰器添加的功能.....&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">()</span>
 
 
@@ -5217,12 +5217,12 @@ return inner# 返回的 inner，inner代表的是函数，非执行函数 ,其�
 <span class="k">def</span> <span class="nf">get_str</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">&quot;haha&quot;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">get_str</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">get_str</span><span class="p">())</span>
 </pre></div>
 
 
 <p>执行</p>
-<div class="codehilite"><pre><span></span><span class="n">这里是装饰器添加的功能</span><span class="o">.....</span>
+<div class="codehilite"><pre><span></span><span class="err">这里是装饰器添加的功能</span><span class="o">.....</span>
 <span class="n">haha</span>
 </pre></div>
                 

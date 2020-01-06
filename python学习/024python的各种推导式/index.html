@@ -4080,15 +4080,15 @@
 <p><strong>1、使用[]生成list</strong></p>
 <p><strong>基本格式</strong></p>
 <div class="codehilite"><pre><span></span><span class="n">variable</span> <span class="o">=</span> <span class="p">[</span><span class="n">out_exp_res</span> <span class="k">for</span> <span class="n">out_exp</span> <span class="ow">in</span> <span class="n">input_list</span> <span class="k">if</span> <span class="n">out_exp</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
-  <span class="n">out_exp_res</span><span class="p">:</span>　　<span class="n">列表生成元素表达式</span><span class="err">，</span><span class="n">可以是有返回值的函数</span><span class="err">。</span>
-  <span class="k">for</span> <span class="n">out_exp</span> <span class="ow">in</span> <span class="n">input_list</span><span class="err">：</span>　　<span class="n">迭代input_list将out_exp传入out_exp_res表达式中</span><span class="err">。</span>
-  <span class="k">if</span> <span class="n">out_exp</span> <span class="o">==</span> <span class="mi">2</span><span class="err">：</span>　　<span class="n">根据条件过滤哪些值可以</span><span class="err">。</span>
+  <span class="n">out_exp_res</span><span class="p">:</span>　　<span class="err">列表生成元素表达式，可以是有返回值的函数。</span>
+  <span class="k">for</span> <span class="n">out_exp</span> <span class="ow">in</span> <span class="n">input_list</span><span class="err">：</span>　　<span class="err">迭代</span><span class="n">input_list将out_exp传入out_exp_res表达式中</span><span class="err">。</span>
+  <span class="k">if</span> <span class="n">out_exp</span> <span class="o">==</span> <span class="mi">2</span><span class="err">：</span>　　<span class="err">根据条件过滤哪些值可以。</span>
 </pre></div>
 
 
 <p>例一：直接筛选</p>
 <div class="codehilite"><pre><span></span><span class="n">multiples</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">multiples</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">multiples</span><span class="p">)</span>
 <span class="c1">#multiples是一个接收列表</span>
 <span class="c1">#接收的值是一个的i</span>
 <span class="c1">#使用for循环将传入的range(30)中的值传递给列表</span>
@@ -4103,7 +4103,7 @@
     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>   <span class="c1">#返回的是传入值的平方  </span>
 <span class="c1">#将for循环的返回值传到函数中</span>
 <span class="n">multiples</span> <span class="o">=</span> <span class="p">[</span><span class="n">squared</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">multiples</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">multiples</span><span class="p">)</span>
 
 <span class="c1">#  Output: [0, 9, 36, 81, 144, 225, 324, 441, 576, 729]</span>
 </pre></div>
@@ -4112,8 +4112,8 @@
 <p><strong>2、使用()生成generator</strong></p>
 <p>将俩表推导式的[]改成()即可得到生成器。</p>
 <div class="codehilite"><pre><span></span><span class="n">multiples</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">multiples</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">multiples</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">multiples</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">multiples</span><span class="p">))</span>
 <span class="c1">#  Output: &lt;generator object &lt;genexpr&gt; at 0x0000022D6AC7BB10&gt;</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">generator</span><span class="s1">&#39;&gt;</span>
 </pre></div>
@@ -4128,7 +4128,7 @@
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mcase</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="nb">print</span> <span class="n">mcase_frequency</span>
+<span class="k">print</span> <span class="n">mcase_frequency</span>
 <span class="c1">#  Output: {&#39;a&#39;: 17, &#39;b&#39;: 34}</span>
 </pre></div>
 
@@ -4136,7 +4136,7 @@
 <p>例子二：快速更换key和value</p>
 <div class="codehilite"><pre><span></span><span class="n">mcase</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">34</span><span class="p">}</span>
 <span class="n">mcase_frequency</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mcase</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-<span class="nb">print</span> <span class="n">mcase_frequency</span>
+<span class="k">print</span> <span class="n">mcase_frequency</span>
 <span class="c1">#  Output: {10: &#39;a&#39;, 34: &#39;b&#39;}</span>
 </pre></div>
 
@@ -4145,7 +4145,7 @@
 <p>它们跟列表推导式也是类似的。 唯一的区别在于它使用大括号{}。</p>
 <p><strong>例一：</strong></p>
 <div class="codehilite"><pre><span></span><span class="n">squared</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">squared</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">squared</span><span class="p">)</span>
 <span class="c1"># Output: set([1, 4])</span>
 </pre></div>
                 

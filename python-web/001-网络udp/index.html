@@ -5178,8 +5178,8 @@
 <span class="c1"># 接收到的数据recv_data是一个元组</span>
 <span class="c1"># 第1个元素是对方发送的数据</span>
 <span class="c1"># 第2个元素是对方的ip和端口</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;gbk&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;gbk&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># 7\. 关闭套接字</span>
 <span class="n">udp_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -5200,12 +5200,12 @@
 <div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;我是文本&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">text</span>
 <span class="s1">&#39;我是文本&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="n">我是文本</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="err">我是文本</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">bytesText</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">bytesText</span>
 <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xe6\x88\x91\xe6\x98\xaf\xe6\x96\x87\xe6\x9c\xac</span><span class="s1">&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">bytesText</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">bytesText</span><span class="p">)</span>
 <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xe6\x88\x91\xe6\x98\xaf\xe6\x96\x87\xe6\x9c\xac</span><span class="s1">&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">str</span><span class="s1">&#39;&gt;</span>
@@ -5214,8 +5214,8 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">textDecode</span> <span class="o">=</span> <span class="n">bytesText</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">textDecode</span>
 <span class="s1">&#39;我是文本&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">textDecode</span><span class="p">)</span>
-<span class="n">我是文本</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">textDecode</span><span class="p">)</span>
+<span class="err">我是文本</span>
 </pre></div>
 
 
@@ -5321,7 +5321,7 @@ udp_socket.close()
     <span class="n">recv_ip</span> <span class="o">=</span> <span class="n">recv_msg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">recv_msg</span> <span class="o">=</span> <span class="n">recv_msg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
     <span class="c1"># 3. 显示接收到的数据</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">recv_ip</span><span class="p">),</span> <span class="n">recv_msg</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&gt;&gt;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">recv_ip</span><span class="p">),</span> <span class="n">recv_msg</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -5329,12 +5329,12 @@ udp_socket.close()
     <span class="n">udp_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
     <span class="c1"># 2. 绑定本地信息</span>
     <span class="n">udp_socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7890</span><span class="p">))</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
         <span class="c1"># 3. 选择功能</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1:发送消息&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2:接收消息&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;1:发送消息&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;2:接收消息&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
         <span class="n">op_num</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入要操作的功能序号:&quot;</span><span class="p">)</span>
 
         <span class="c1"># 4. 根据选择调用相应的函数</span>
@@ -5343,7 +5343,7 @@ udp_socket.close()
         <span class="k">elif</span> <span class="n">op_num</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
             <span class="n">recv_msg</span><span class="p">(</span><span class="n">udp_socket</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;输入有误，请重新输入...&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;输入有误，请重新输入...&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>

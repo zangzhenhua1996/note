@@ -4010,7 +4010,7 @@
             <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#一开始传进来的count肯定是最少是1</span>
             <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1">#这个就是遍历 ,这里的i&lt;len(seq)-1 是因为后面的判断,如果最后只剩下一个元素就不用进这个循环了       </span>
                 <span class="n">count</span> <span class="o">+=</span><span class="mi">1</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
                 <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
             <span class="n">next_seq</span> <span class="o">+=</span><span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>  <span class="c1">#这里的i+1是因为要跳转到下一个不同元素的索引</span>

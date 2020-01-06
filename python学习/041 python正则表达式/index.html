@@ -4103,7 +4103,7 @@ itheima php
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="c1"># 使用match方法进行匹配操作</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">正则表达式</span><span class="p">,</span><span class="n">要匹配的字符串</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="err">正则表达式</span><span class="p">,</span><span class="err">要匹配的字符串</span><span class="p">)</span>
 
 <span class="c1"># 如果上一步匹配到数据的话，可以使用group方法来提取数据</span>
 <span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
@@ -4178,13 +4178,13 @@ itheima php
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;t.o&quot;</span><span class="p">,</span><span class="s2">&quot;too&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;t.o&quot;</span><span class="p">,</span><span class="s2">&quot;two&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </pre></div>
 
 
@@ -4202,36 +4202,36 @@ itheima php
 
 <span class="c1"># 如果hello的首字符小写，那么正则表达式需要小写的h</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;hello Python&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 
 <span class="c1"># 如果hello的首字符大写，那么正则表达式需要大写的H</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span><span class="s2">&quot;Hello Python&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 大小写h都可以的情况</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[hH]&quot;</span><span class="p">,</span><span class="s2">&quot;hello Python&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[hH]&quot;</span><span class="p">,</span><span class="s2">&quot;Hello Python&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[hH]ello Python&quot;</span><span class="p">,</span><span class="s2">&quot;Hello Python&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 匹配0到9第一种写法</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0123456789]Hello Python&quot;</span><span class="p">,</span><span class="s2">&quot;7Hello Python&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 匹配0到9第二种写法</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9]Hello Python&quot;</span><span class="p">,</span><span class="s2">&quot;7Hello Python&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 <span class="c1">#匹配0-3以及5-9的写法</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-35-9]Hello Python&quot;</span><span class="p">,</span><span class="s2">&quot;7Hello Python&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 下面这个正则不能够匹配到数字4，因此ret为None</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-35-9]Hello Python&quot;</span><span class="p">,</span><span class="s2">&quot;4Hello Python&quot;</span><span class="p">)</span>
 <span class="c1"># print(ret.group())</span>
-<span class="n">运行结果</span><span class="err">：</span>
+<span class="err">运行结果：</span>
 </pre></div>
 
 
@@ -4253,63 +4253,86 @@ itheima php
 
 <span class="c1"># 普通的匹配方式</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;嫦娥1号&quot;</span><span class="p">,</span><span class="s2">&quot;嫦娥1号发射成功&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;嫦娥2号&quot;</span><span class="p">,</span><span class="s2">&quot;嫦娥2号发射成功&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;嫦娥3号&quot;</span><span class="p">,</span><span class="s2">&quot;嫦娥3号发射成功&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 使用\d进行匹配</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;嫦娥\d号&quot;</span><span class="p">,</span><span class="s2">&quot;嫦娥1号发射成功&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;嫦娥\d号&quot;</span><span class="p">,</span><span class="s2">&quot;嫦娥2号发射成功&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;嫦娥\d号&quot;</span><span class="p">,</span><span class="s2">&quot;嫦娥3号发射成功&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
-<span class="n">运行结果</span><span class="err">：</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="err">运行结果：</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">嫦娥1号</span>
-<span class="n">嫦娥2号</span>
-<span class="n">嫦娥3号</span>
-<span class="n">嫦娥1号</span>
-<span class="n">嫦娥2号</span>
-<span class="n">嫦娥3号</span>
+<div class="codehilite"><pre><span></span><span class="err">嫦娥</span><span class="mi">1</span><span class="err">号</span>
+<span class="err">嫦娥</span><span class="mi">2</span><span class="err">号</span>
+<span class="err">嫦娥</span><span class="mi">3</span><span class="err">号</span>
+<span class="err">嫦娥</span><span class="mi">1</span><span class="err">号</span>
+<span class="err">嫦娥</span><span class="mi">2</span><span class="err">号</span>
+<span class="err">嫦娥</span><span class="mi">3</span><span class="err">号</span>
 </pre></div>
 
 
 <h2 id="_2">说明<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>其他的匹配符参见后面章节的讲解</p>
 <h1 id="84">8.4 匹配多个字符<a class="headerlink" href="#84" title="Permanent link">&para;</a></h1>
-<p>匹配多个字符的相关格式
-| 字符  | 功能                                                |
-| ----- | --------------------------------------------------- |
-| *     | 匹配前一个字符出现0次或者无限次，即可有可无         |
-| +     | 匹配前一个字符出现1次或者无限次，即至少有1次        |
-| ?     | 匹配前一个字符出现1次或者0次，即要么有1次，要么没有 |
-| {m}   | 匹配前一个字符出现m次                               |
-| {m,n} | 匹配前一个字符出现从m到n次                          |</p>
+<p>匹配多个字符的相关格式 </p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配前一个字符出现0次或者无限次，即可有可无</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前一个字符出现1次或者无限次，即至少有1次</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前一个字符出现1次或者0次，即要么有1次，要么没有</td>
+</tr>
+<tr>
+<td><code>{m}</code></td>
+<td>匹配前一个字符出现m次</td>
+</tr>
+<tr>
+<td><code>{m,n}</code></td>
+<td>匹配前一个字符出现从m到n次</td>
+</tr>
+</tbody>
+</table>
 <h2 id="1_1">示例1：*<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h2>
 <p>需求：匹配出，一个字符串第一个字母为大小字符，后面都是小写字母并且这些小写字母可有可无</p>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[A-Z][a-z]*&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[A-Z][a-z]*&quot;</span><span class="p">,</span><span class="s2">&quot;MnnM&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[A-Z][a-z]*&quot;</span><span class="p">,</span><span class="s2">&quot;Aabcdef&quot;</span><span class="p">)</span>  <span class="c1">#*是匹配前面的[a-z]出现任意多次的</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[A-Z][a-z]*&quot;</span><span class="p">,</span><span class="s2">&quot;AabcdefH&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </pre></div>
 
 
@@ -4331,17 +4354,17 @@ itheima php
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[a-zA-Z_]+[\w]*&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;变量名 </span><span class="si">%s</span><span class="s2"> 符合要求&quot;</span> <span class="o">%</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;变量名 </span><span class="si">%s</span><span class="s2"> 符合要求&quot;</span> <span class="o">%</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;变量名 </span><span class="si">%s</span><span class="s2"> 非法&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;变量名 </span><span class="si">%s</span><span class="s2"> 非法&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
 
 
 <p>运行结果：</p>
-<div class="codehilite"><pre><span></span><span class="n">变量名</span> <span class="n">name1</span> <span class="n">符合要求</span>
-<span class="n">变量名</span> <span class="n">_name</span> <span class="n">符合要求</span>
-<span class="n">变量名</span> <span class="mi">2</span><span class="n">_name</span> <span class="n">非法</span>
-<span class="n">变量名</span> <span class="vm">__name__</span> <span class="n">符合要求</span>
+<div class="codehilite"><pre><span></span><span class="err">变量名</span> <span class="n">name1</span> <span class="err">符合要求</span>
+<span class="err">变量名</span> <span class="n">_name</span> <span class="err">符合要求</span>
+<span class="err">变量名</span> <span class="mi">2</span><span class="n">_name</span> <span class="err">非法</span>
+<span class="err">变量名</span> <span class="vm">__name__</span> <span class="err">符合要求</span>
 </pre></div>
 
 
@@ -4351,13 +4374,13 @@ itheima php
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?[0-9]&quot;</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d&quot;</span><span class="p">,</span><span class="s2">&quot;33&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d&quot;</span><span class="p">,</span><span class="s2">&quot;09&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </pre></div>
 
 
@@ -4373,11 +4396,11 @@ itheima php
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
-<span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[a-zA-Z0-9_]</span><span class="si">{6}</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;12a3g45678&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[a-zA-Z0-9_]{6}&quot;</span><span class="p">,</span><span class="s2">&quot;12a3g45678&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[a-zA-Z0-9_]{8,20}&quot;</span><span class="p">,</span><span class="s2">&quot;1ad12f23s34455ff66&quot;</span><span class="p">)</span>  <span class="c1">#这里{8,20}是8-20位的意思</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </pre></div>
 
 
@@ -4387,13 +4410,27 @@ itheima php
 </pre></div>
 
 
-<p>## 匹配开头结尾
-| 字符 | 功能           |
-| ---- | -------------- |
-| ^    | 匹配字符串开头 |
-| $    | 匹配字符串结尾 |</p>
+<h2 id="_3">匹配开头结尾<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>匹配字符串开头</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串结尾</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>注意 [<sup>a]表示“匹配除了a的任意字符,</sup>[a]表示匹配开头是a的字符串</p>
+<p>注意  [^a]  表示“匹配除了a的任意字符, ^[a] 表示匹配开头是a的字符串</p>
 </blockquote>
 <h3 id="1_2">示例1：$<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
 <p>需求：匹配163.com的邮箱地址</p>
@@ -4406,16 +4443,16 @@ itheima php
 <span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">email_list</span><span class="p">:</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[\w]{4,20}@163\.com&quot;</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 是符合规定的邮件地址,匹配后的结果是:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 是符合规定的邮件地址,匹配后的结果是:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">()))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 不符合要求&quot;</span> <span class="o">%</span> <span class="n">email</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 不符合要求&quot;</span> <span class="o">%</span> <span class="n">email</span><span class="p">)</span>
 </pre></div>
 
 
 <p>运行结果:</p>
-<div class="codehilite"><pre><span></span><span class="n">xiaoWang</span><span class="o">@</span><span class="mf">163.</span><span class="n">com</span> <span class="n">是符合规定的邮件地址</span><span class="p">,</span><span class="n">匹配后的结果是</span><span class="p">:</span><span class="n">xiaoWang</span><span class="o">@</span><span class="mf">163.</span><span class="n">com</span>
-<span class="n">xiaoWang</span><span class="o">@</span><span class="mf">163.</span><span class="n">comheihei</span> <span class="n">是符合规定的邮件地址</span><span class="p">,</span><span class="n">匹配后的结果是</span><span class="p">:</span><span class="n">xiaoWang</span><span class="o">@</span><span class="mf">163.</span><span class="n">com</span>
-<span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">xiaowang</span><span class="nd">@qq</span><span class="o">.</span><span class="n">com</span> <span class="n">不符合要求</span>
+<div class="codehilite"><pre><span></span><span class="n">xiaoWang</span><span class="nd">@163.com</span> <span class="err">是符合规定的邮件地址</span><span class="p">,</span><span class="err">匹配后的结果是</span><span class="p">:</span><span class="n">xiaoWang</span><span class="nd">@163.com</span>
+<span class="n">xiaoWang</span><span class="nd">@163.comheihei</span> <span class="err">是符合规定的邮件地址</span><span class="p">,</span><span class="err">匹配后的结果是</span><span class="p">:</span><span class="n">xiaoWang</span><span class="nd">@163.com</span>
+<span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">xiaowang</span><span class="nd">@qq.com</span> <span class="err">不符合要求</span>
 </pre></div>
 
 
@@ -4425,17 +4462,17 @@ itheima php
 <span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">email_list</span><span class="p">:</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[\w]{4,20}@163\.com$&quot;</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 是符合规定的邮件地址,匹配后的结果是:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">()))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 是符合规定的邮件地址,匹配后的结果是:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">()))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 不符合要求&quot;</span> <span class="o">%</span> <span class="n">email</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 不符合要求&quot;</span> <span class="o">%</span> <span class="n">email</span><span class="p">)</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">运行结果</span><span class="err">：</span>
+<div class="codehilite"><pre><span></span><span class="err">运行结果：</span>
 
-<span class="n">xiaoWang</span><span class="o">@</span><span class="mf">163.</span><span class="n">com</span> <span class="n">是符合规定的邮件地址</span><span class="p">,</span><span class="n">匹配后的结果是</span><span class="p">:</span><span class="n">xiaoWang</span><span class="o">@</span><span class="mf">163.</span><span class="n">com</span>
-<span class="n">xiaoWang</span><span class="o">@</span><span class="mf">163.</span><span class="n">comheihei</span> <span class="n">不符合要求</span>
-<span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">xiaowang</span><span class="nd">@qq</span><span class="o">.</span><span class="n">com</span> <span class="n">不符合要求</span>
+<span class="n">xiaoWang</span><span class="nd">@163.com</span> <span class="err">是符合规定的邮件地址</span><span class="p">,</span><span class="err">匹配后的结果是</span><span class="p">:</span><span class="n">xiaoWang</span><span class="nd">@163.com</span>
+<span class="n">xiaoWang</span><span class="nd">@163.comheihei</span> <span class="err">不符合要求</span>
+<span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">xiaowang</span><span class="nd">@qq.com</span> <span class="err">不符合要求</span>
 </pre></div>
 
 
@@ -4461,7 +4498,7 @@ itheima php
 <td>引用分组num匹配到的字符串</td>
 </tr>
 <tr>
-<td>(?P<name>)</td>
+<td><code>(?P&lt;name&gt;)</code></td>
 <td>分组起别名</td>
 </tr>
 <tr>
@@ -4478,14 +4515,14 @@ itheima php
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d&quot;</span><span class="p">,</span><span class="s2">&quot;8&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 8</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 8</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d&quot;</span><span class="p">,</span><span class="s2">&quot;78&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 78</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 78</span>
 
 <span class="c1"># 不正确的情况</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d&quot;</span><span class="p">,</span><span class="s2">&quot;08&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 0  #?匹配的是前面出现的字符可以有一次或0次,然后没有出现,然后\d匹配到了0,所以返回的是0</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 0  #?匹配的是前面出现的字符可以有一次或0次,然后没有出现,然后\d匹配到了0,所以返回的是0</span>
 </pre></div>
 
 
@@ -4493,29 +4530,29 @@ itheima php
 <div class="codehilite"><pre><span></span><span class="c1"># 修正之后的</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d$&quot;</span><span class="p">,</span><span class="s2">&quot;008&quot;</span><span class="p">)</span>  <span class="c1">#这个$是匹配修饰\d也就是说结尾必须是整数 的.然后?这里就匹配不到</span>
 <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不在0-100之间&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;不在0-100之间&quot;</span><span class="p">)</span>
 
 
 <span class="o">============</span>
-<span class="n">不在0</span><span class="o">-</span><span class="mi">100</span><span class="n">之间</span>
+<span class="err">不在</span><span class="mi">0</span><span class="o">-</span><span class="mi">100</span><span class="err">之间</span>
 </pre></div>
 
 
 <p>使用 |</p>
 <div class="codehilite"><pre><span></span><span class="c1"># 添加|</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d$|100&quot;</span><span class="p">,</span><span class="s2">&quot;8&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 8</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 8</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d$|100&quot;</span><span class="p">,</span><span class="s2">&quot;78&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 78</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 78</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d$|100&quot;</span><span class="p">,</span><span class="s2">&quot;08&quot;</span><span class="p">)</span>
 <span class="c1"># print(ret.group())  # 不是0-100之间</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[1-9]?\d$|100&quot;</span><span class="p">,</span><span class="s2">&quot;100&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 100</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># 100</span>
 </pre></div>
 
 
@@ -4531,27 +4568,27 @@ itheima php
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;\w{4,20}@163\.com&quot;</span><span class="p">,</span> <span class="s2">&quot;test@163.com&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># test@163.com</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># test@163.com</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;\w{4,20}@(163|126|qq)\.com&quot;</span><span class="p">,</span> <span class="s2">&quot;test@126.com&quot;</span><span class="p">)</span>  <span class="c1">#这里需要将或的内容用小括号阔起来,防止出现逻辑上的错误</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># test@126.com</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># test@126.com</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;\w{4,20}@(163|126|qq)\.com&quot;</span><span class="p">,</span> <span class="s2">&quot;test@qq.com&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># test@qq.com</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  <span class="c1"># test@qq.com</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;\w{4,20}@(163|126|qq)\.com&quot;</span><span class="p">,</span> <span class="s2">&quot;test@gmail.com&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不是163、126、qq邮箱&quot;</span><span class="p">)</span>  <span class="c1"># 不是163、126、qq邮箱</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;不是163、126、qq邮箱&quot;</span><span class="p">)</span>  <span class="c1"># 不是163、126、qq邮箱</span>
 </pre></div>
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="n">test</span><span class="o">@</span><span class="mf">163.</span><span class="n">com</span>
-<span class="n">test</span><span class="o">@</span><span class="mf">126.</span><span class="n">com</span>
-<span class="n">test</span><span class="nd">@qq</span><span class="o">.</span><span class="n">com</span>
-<span class="n">不是163</span><span class="err">、</span><span class="mi">126</span><span class="err">、</span><span class="n">qq邮箱</span>
+<div class="codehilite"><pre><span></span><span class="n">test</span><span class="nd">@163.com</span>
+<span class="n">test</span><span class="nd">@126.com</span>
+<span class="n">test</span><span class="nd">@qq.com</span>
+<span class="err">不是</span><span class="mi">163</span><span class="err">、</span><span class="mi">126</span><span class="err">、</span><span class="n">qq邮箱</span>
 </pre></div>
 
 
@@ -4561,19 +4598,19 @@ itheima php
 <span class="n">tels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;13100001234&quot;</span><span class="p">,</span> <span class="s2">&quot;18912344321&quot;</span><span class="p">,</span> <span class="s2">&quot;10086&quot;</span><span class="p">,</span> <span class="s2">&quot;18800007777&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">tel</span> <span class="ow">in</span> <span class="n">tels</span><span class="p">:</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;1\d</span><span class="si">{9}</span><span class="s2">[0-35-68-9]&quot;</span><span class="p">,</span> <span class="n">tel</span><span class="p">)</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;1\d{9}[0-35-68-9]&quot;</span><span class="p">,</span> <span class="n">tel</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 不是想要的手机号&quot;</span> <span class="o">%</span> <span class="n">tel</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 不是想要的手机号&quot;</span> <span class="o">%</span> <span class="n">tel</span><span class="p">)</span>
 </pre></div>
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="mi">13100001234</span> <span class="n">不是想要的手机号</span>
+<div class="codehilite"><pre><span></span><span class="mi">13100001234</span> <span class="err">不是想要的手机号</span>
 <span class="mi">18912344321</span>
-<span class="mi">10086</span> <span class="n">不是想要的手机号</span>
-<span class="mi">18800007777</span> <span class="n">不是想要的手机号</span>
+<span class="mi">10086</span> <span class="err">不是想要的手机号</span>
+<span class="mi">18800007777</span> <span class="err">不是想要的手机号</span>
 </pre></div>
 
 
@@ -4590,31 +4627,31 @@ itheima php
 </pre></div>
 
 
-<h2 id="hh">需求：匹配出<html>hh</html><a class="headerlink" href="#hh" title="Permanent link">&para;</a></h2>
+<h2 id="htmlhhhtml">需求：匹配出<code>&lt;html&gt;hh&lt;/html&gt;</code><a class="headerlink" href="#htmlhhhtml" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 
 <span class="c1"># 能够完成对正确的字符串的匹配</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;&lt;[a-zA-Z]*&gt;\w*&lt;/[a-zA-Z]*&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;html&gt;hh&lt;/html&gt;&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 如果遇到非正常的html格式字符串，匹配出错</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;&lt;[a-zA-Z]*&gt;\w*&lt;/[a-zA-Z]*&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;html&gt;hh&lt;/htmlbalabala&gt;&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 正确的理解思路：如果在第一对&lt;&gt;中是什么，按理说在后面的那对&lt;&gt;中就应该是什么</span>
 
 <span class="c1"># 通过引用分组中匹配到的数据即可，但是要注意是元字符串，即类似 r&quot;&quot;这种格式</span>
 <span class="c1">#\num   引用分组num匹配到的字符串</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;([a-zA-Z]*)&gt;\w*&lt;/\1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;html&gt;hh&lt;/html&gt;&quot;</span><span class="p">)</span>  <span class="c1"># \1 1就是第一个括号出现的内容</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 
 <span class="c1"># 因为2对&lt;&gt;中的数据不一致，所以没有匹配出来</span>
 <span class="n">test_label</span> <span class="o">=</span> <span class="s2">&quot;&lt;html&gt;hh&lt;/htmlbalabala&gt;&quot;</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;([a-zA-Z]*)&gt;\w*&lt;/\1&gt;&quot;</span><span class="p">,</span> <span class="n">test_label</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 这是一对不正确的标签&quot;</span> <span class="o">%</span> <span class="n">test_label</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 这是一对不正确的标签&quot;</span> <span class="o">%</span> <span class="n">test_label</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4622,12 +4659,12 @@ itheima php
 <div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span><span class="n">hh</span><span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span><span class="n">hh</span><span class="o">&lt;/</span><span class="n">htmlbalabala</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span><span class="n">hh</span><span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span><span class="n">hh</span><span class="o">&lt;/</span><span class="n">htmlbalabala</span><span class="o">&gt;</span> <span class="n">这是一对不正确的标签</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span><span class="n">hh</span><span class="o">&lt;/</span><span class="n">htmlbalabala</span><span class="o">&gt;</span> <span class="err">这是一对不正确的标签</span>
 </pre></div>
 
 
 <h2 id="4number">示例4：\number<a class="headerlink" href="#4number" title="Permanent link">&para;</a></h2>
-<p>需求：匹配出<html><h1><a href="http://www.itcast.cn">www.itcast.cn</a></h1></html></p>
+<p>需求：匹配出<code>&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;</code></p>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
@@ -4637,19 +4674,19 @@ itheima php
 <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;(\w*)&gt;&lt;(\w*)&gt;.*&lt;/\2&gt;&lt;/\1&gt;&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 是符合要求的标签&quot;</span> <span class="o">%</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 是符合要求的标签&quot;</span> <span class="o">%</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 不符合要求&quot;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> 不符合要求&quot;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
 </pre></div>
 
 
 <p>运行结果：</p>
-<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">www</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">cn</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;&lt;/</span><span class="n">html</span><span class="o">&gt;</span> <span class="n">是符合要求的标签</span>
-<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">www</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">cn</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;&lt;/</span><span class="n">html</span><span class="o">&gt;</span> <span class="n">不符合要求</span>
+<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">www</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">cn</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;&lt;/</span><span class="n">html</span><span class="o">&gt;</span> <span class="err">是符合要求的标签</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">www</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">cn</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;&lt;/</span><span class="n">html</span><span class="o">&gt;</span> <span class="err">不符合要求</span>
 </pre></div>
 
 
-<h2 id="5p-pname-pw-name">示例5：(?P<name>) (?P=name)    ====(?P<name>\w*)  这个是匹配任意多个字符,并且将分组命名为name<a class="headerlink" href="#5p-pname-pw-name" title="Permanent link">&para;</a></h2>
+<h2 id="5pname-pname-pnamewname">示例5：<code>(?P&lt;name&gt;) (?P=name)    ====(?P&lt;name&gt;\w*)</code>这个是匹配任意多个字符,并且将分组命名为name<a class="headerlink" href="#5pname-pname-pnamewname" title="Permanent link">&para;</a></h2>
 <p>需求：匹配出<html><h1><a href="http://www.itcast.cn">www.itcast.cn</a></h1></html></p>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 
@@ -4675,7 +4712,7 @@ itheima php
 </pre></div>
 
 
-<h3 id="ppnamep">注意：(?P<name>)和(?P=name)中的字母p大写<a class="headerlink" href="#ppnamep" title="Permanent link">&para;</a></h3>
+<h3 id="ppnamep">注意：(?P\<name>)和(?P=name)中的字母p大写<a class="headerlink" href="#ppnamep" title="Permanent link">&para;</a></h3>
 <p>运行结果：
 <img alt="image.png" src="../041 python正则表达式.image/14555448-6d7b53dfca646b6c.png" /></p>
 <h1 id="repython">re模块的高级用法(python独有的)<a class="headerlink" href="#repython" title="Permanent link">&para;</a></h1>
@@ -4686,7 +4723,7 @@ itheima php
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;阅读次数为 9999&quot;</span><span class="p">)</span>
 <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="n">运行结果</span><span class="err">：</span>
+<span class="err">运行结果：</span>
 
 <span class="s1">&#39;9999&#39;</span>
 </pre></div>
@@ -4698,8 +4735,8 @@ itheima php
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;python = 9999, c = 7890, c++ = 12345&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
-<span class="n">运行结果</span><span class="err">：</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="err">运行结果：</span>
 
 
 <span class="p">[</span><span class="s1">&#39;9999&#39;</span><span class="p">,</span> <span class="s1">&#39;7890&#39;</span><span class="p">,</span> <span class="s1">&#39;12345&#39;</span><span class="p">]</span>
@@ -4713,7 +4750,7 @@ itheima php
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s1">&#39;998&#39;</span><span class="p">,</span> <span class="s2">&quot;python = 997&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4732,10 +4769,10 @@ itheima php
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>  <span class="c1">#最后返回的就是需要替换的字符串</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="s2">&quot;python = 997&quot;</span><span class="p">)</span>    <span class="c1">#会将匹配后的正则对象传递给这个函数</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="s2">&quot;python = 99&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4745,7 +4782,7 @@ itheima php
 </pre></div>
 
 
-<h2 id="_3">练习<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">练习<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p><img alt="image.png" src="../041 python正则表达式.image/14555448-95671fbcdcf4b6c0.png" /></p>
 <p>从下面的字符串中取出文本</p>
 <div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -4780,7 +4817,7 @@ itheima php
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;:| &quot;</span><span class="p">,</span><span class="s2">&quot;info:xiaoZhang 33 shandong&quot;</span><span class="p">)</span>  <span class="c1">#以冒号或者空格为分割字符</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4818,7 +4855,7 @@ itheima php
 </pre></div>
 
 
-<h2 id="_4">练一练<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">练一练<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p><img alt="image.png" src="../041 python正则表达式.image/14555448-973fc71ac17fd3f3.png" /></p>
 <p>字符串为:</p>
 <div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">img</span> <span class="n">data</span><span class="o">-</span><span class="n">original</span><span class="o">=</span><span class="s2">&quot;https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973_201611131917_small.jpg&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973_201611131917_small.jpg&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;display: inline;&quot;</span><span class="o">&gt;</span>
@@ -4841,18 +4878,18 @@ itheima php
 <div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">mm</span> <span class="o">=</span> <span class="s2">&quot;c:</span><span class="se">\\</span><span class="s2">a</span><span class="se">\\</span><span class="s2">b</span><span class="se">\\</span><span class="s2">c&quot;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">mm</span>
 <span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">a</span><span class="se">\\</span><span class="s1">b</span><span class="se">\\</span><span class="s1">c&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">mm</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mm</span><span class="p">)</span>
 <span class="n">c</span><span class="p">:</span>\<span class="n">a</span>\<span class="n">b</span>\<span class="n">c</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;c:</span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">mm</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
 <span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;c:</span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">mm</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 <span class="n">c</span><span class="p">:</span>\
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;c:</span><span class="se">\\\\</span><span class="s2">a&quot;</span><span class="p">,</span><span class="n">mm</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 <span class="n">c</span><span class="p">:</span>\<span class="n">a</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;c:</span><span class="se">\\</span><span class="s2">a&quot;</span><span class="p">,</span><span class="n">mm</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 <span class="n">c</span><span class="p">:</span>\<span class="n">a</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;c:\a&quot;</span><span class="p">,</span><span class="n">mm</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
@@ -4874,6 +4911,14 @@ itheima php
 
 <div class="codehilite"><pre><span></span><span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">a&#39;</span>
 </pre></div>
+
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:a"></li>
+</ol>
+</div>
                 
                   
                 

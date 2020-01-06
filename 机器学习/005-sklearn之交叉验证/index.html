@@ -4037,12 +4037,12 @@
 <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1">#将准确率打印出</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;准确率: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;准确率: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="n">准确率</span><span class="p">:</span> 
+<div class="codehilite"><pre><span></span><span class="err">准确率</span><span class="p">:</span> 
  <span class="mf">0.9736842105263158</span>
 </pre></div>
 
@@ -4056,16 +4056,16 @@
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>  <span class="c1">#accuracy是准确率的意思</span>
 
 <span class="c1">#将5次的预测准确率打印出</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5次的预测准确率:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">scores</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;5次的预测准确率:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">scores</span><span class="p">)</span>
 <span class="c1">#将5次的预测准确平均率打印出</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;平均预测准确率:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;平均预测准确率:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="mi">5</span><span class="n">次的预测准确率</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><span class="mi">5</span><span class="err">次的预测准确率</span><span class="p">:</span>
  <span class="p">[</span><span class="mf">0.96666667</span> <span class="mf">1.</span>         <span class="mf">0.93333333</span> <span class="mf">0.96666667</span> <span class="mf">1.</span>        <span class="p">]</span>
-<span class="n">平均预测准确率</span><span class="p">:</span>
+<span class="err">平均预测准确率</span><span class="p">:</span>
  <span class="mf">0.9733333333333334</span>
 </pre></div>
 
@@ -4074,7 +4074,7 @@
 <p>以准确率(accuracy)判断:
 一般来说准确率(accuracy)会用于判断分类(Classification)模型的好坏。</p>
 <div class="codehilite"><pre><span></span><span class="c1">#通过交叉验证看一下分几类(K)比较好</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
 
 <span class="c1">#建立测试参数集</span>
 <span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
@@ -4100,7 +4100,7 @@
 从图中可以得知，选择12~18的k值最好。高过18之后，准确率开始下降则是因为过拟合(Over fitting)的问题。</p>
 <p>以平均方差(Mean squared error)
 一般来说平均方差(Mean squared error)会用于判断回归(Regression)模型的好坏</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
 <span class="n">k_scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
@@ -4125,8 +4125,8 @@
 <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span> <span class="c1">#学习曲线模块</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> <span class="c1">#digits数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> <span class="c1">#Support Vector Classifier</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 
 
@@ -4171,8 +4171,8 @@
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span> <span class="c1">#学习曲线模块</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> <span class="c1">#digits数据集</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> <span class="c1">#Support Vector Classifier</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> <span class="c1">#可视化模块</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
@@ -4216,8 +4216,8 @@ validation_curve 检视过拟合
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">validation_curve</span> <span class="c1">#validation_curve模块</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> 
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="c1">#digits数据集(手写数字)</span>
 <span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
@@ -4226,7 +4226,7 @@ validation_curve 检视过拟合
 
 <span class="c1">#建立参数测试集</span>
 <span class="n">param_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">param_range</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">param_range</span><span class="p">)</span>
 
 <span class="c1">#使用validation_curve快速找出参数对模型的影响</span>
 <span class="n">train_loss</span><span class="p">,</span> <span class="n">test_loss</span> <span class="o">=</span> <span class="n">validation_curve</span><span class="p">(</span>

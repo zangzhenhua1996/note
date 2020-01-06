@@ -4205,13 +4205,13 @@ pymysql.install_as_MySQLdb()
 
 <span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;模型抽象类&#39;&#39;&#39;</span>
-    <span class="n">create_time</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;创建时间&#39;</span><span class="p">)</span>
-    <span class="n">update_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;更新时间&#39;</span><span class="p">)</span>
-    <span class="n">is_delete</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;删除标记&#39;</span><span class="p">)</span>
+    <span class="n">create_time</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;创建时间&#39;</span><span class="p">)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;更新时间&#39;</span><span class="p">)</span>
+    <span class="n">is_delete</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;删除标记&#39;</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="c1">#说明这是个抽象模型类</span>
-        <span class="n">abstract</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
 </pre></div>
 
 

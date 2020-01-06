@@ -4200,8 +4200,8 @@
 多进程 Multiprocessing 和多线程 threading 类似, 他们都是在 python 中用来并行运算的. 不过既然有了 threading, 为什么 Python 还要出一个 multiprocessing 呢? 原因很简单, 就是用来弥补 threading 的一些劣势, 比如在 threading <a href="https://morvanzhou.github.io/tutorials/python-basic/threading/5-GIL/">教程中提到的GIL</a>.</p>
 <p>使用 multiprocessing 也非常简单, 如果对 threading 有一定了解的朋友, 你们的享受时间就到了. 因为 python 把 multiprocessing 和 threading 的使用方法做的几乎差不多. 这样我们就更容易上手. 也更容易发挥你电脑多核系统的威力了!</p>
 <h2 id="_1">导入线程进程标准模块<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span> <span class="c1">#多进程模块</span>
-<span class="kn">import</span> <span class="nn">threading</span> <span class="k">as</span> <span class="nn">td</span>    <span class="c1">#多线程模块</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span> <span class="c1">#多进程模块</span>
+<span class="kn">import</span> <span class="nn">threading</span> <span class="kn">as</span> <span class="nn">td</span>    <span class="c1">#多线程模块</span>
 </pre></div>
 
 
@@ -4231,11 +4231,11 @@
 
 
 <h2 id="_4">完整的线程和进程创建使用对比代码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
-<span class="kn">import</span> <span class="nn">threading</span> <span class="k">as</span> <span class="nn">td</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">threading</span> <span class="kn">as</span> <span class="nn">td</span>
 
 <span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;aaaaa&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;aaaaa&#39;</span><span class="p">)</span>
 
 <span class="n">t1</span> <span class="o">=</span> <span class="n">td</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">job</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">p1</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">job</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
@@ -4313,9 +4313,9 @@ p2 = mp.Process(target=job,args=(q,))
 <p>上面是分两批处理的，所以这里分两批输出，将结果分别保存</p>
 <div class="codehilite"><pre><span></span><span class="n">res1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 <span class="n">res2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="n">打印最后的运算结果</span>
-<span class="err">​```</span><span class="n">python</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res1</span><span class="o">+</span><span class="n">res2</span><span class="p">)</span>
+<span class="err">打印最后的运算结果</span>
+<span class="err">​</span><span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res1</span><span class="o">+</span><span class="n">res2</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4327,7 +4327,7 @@ p2 = mp.Process(target=job,args=(q,))
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>  <span class="c1">#导包</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>  <span class="c1">#导包</span>
 
 <span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>  <span class="c1">#多进程没有返回值,压到队列中</span>
     <span class="n">res</span><span class="o">=</span><span class="mi">0</span>  <span class="c1">#初始值</span>
@@ -4346,7 +4346,7 @@ p2 = mp.Process(target=job,args=(q,))
     <span class="n">p2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
     <span class="n">res1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="c1">#队列的先进先出</span>
     <span class="n">res2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  
-    <span class="nb">print</span><span class="p">(</span><span class="n">res1</span><span class="o">+</span><span class="n">res2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res1</span><span class="o">+</span><span class="n">res2</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4359,7 +4359,7 @@ p2 = mp.Process(target=job,args=(q,))
 <p>上篇讲了多进程/多核的运算，这次我们来对比下多进程，多线程和什么都不做时的消耗时间，看看哪种方式更有效率。
 创建多进程 multiprocessing
 和上节一样，首先import multiprocessing并定义要实现的job()，同时为了容易比较，我们将计算的次数增加到1000000</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
 
 <span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
@@ -4380,13 +4380,13 @@ p2 = mp.Process(target=job,args=(q,))
     <span class="n">p2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
     <span class="n">res1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="n">res2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multicore:&#39;</span><span class="p">,</span><span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multicore:&#39;</span><span class="p">,</span><span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">)</span>
 </pre></div>
 
 
 <p>创建多线程 multithread:
 接下来创建多线程程序，创建多线程和多进程有很多相似的地方。首先import threading然后定义multithread()完成同样的任务</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span> <span class="k">as</span> <span class="nn">td</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span> <span class="kn">as</span> <span class="nn">td</span>
 
 <span class="k">def</span> <span class="nf">multithread</span><span class="p">():</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span> <span class="c1"># thread可放入process同样的queue中</span>
@@ -4398,7 +4398,7 @@ p2 = mp.Process(target=job,args=(q,))
     <span class="n">t2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
     <span class="n">res1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="n">res2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multithread:&#39;</span><span class="p">,</span> <span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multithread:&#39;</span><span class="p">,</span> <span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4409,7 +4409,7 @@ p2 = mp.Process(target=job,args=(q,))
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">):</span>
             <span class="n">res</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">3</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;normal:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;normal:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4421,12 +4421,12 @@ p2 = mp.Process(target=job,args=(q,))
     <span class="n">st</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">normal</span><span class="p">()</span>
     <span class="n">st1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;normal time:&#39;</span><span class="p">,</span> <span class="n">st1</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;normal time:&#39;</span><span class="p">,</span> <span class="n">st1</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span>
     <span class="n">multithread</span><span class="p">()</span>
     <span class="n">st2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multithread time:&#39;</span><span class="p">,</span> <span class="n">st2</span> <span class="o">-</span> <span class="n">st1</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multithread time:&#39;</span><span class="p">,</span> <span class="n">st2</span> <span class="o">-</span> <span class="n">st1</span><span class="p">)</span>
     <span class="n">multicore</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multicore time:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multicore time:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st2</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4439,8 +4439,8 @@ p2 = mp.Process(target=job,args=(q,))
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>  <span class="c1">#多进程导包</span>
-<span class="kn">import</span> <span class="nn">threading</span> <span class="k">as</span> <span class="nn">td</span>   <span class="c1">#多线程导包</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>  <span class="c1">#多进程导包</span>
+<span class="kn">import</span> <span class="nn">threading</span> <span class="kn">as</span> <span class="nn">td</span>   <span class="c1">#多线程导包</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
 
@@ -4460,7 +4460,7 @@ p2 = mp.Process(target=job,args=(q,))
     <span class="n">p2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
     <span class="n">res1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="n">res2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multicore:&#39;</span><span class="p">,</span><span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multicore:&#39;</span><span class="p">,</span><span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">multithread</span><span class="p">():</span>   <span class="c1">#多线程</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span> <span class="c1"># thread可放入process同样的queue中</span>
@@ -4472,14 +4472,14 @@ p2 = mp.Process(target=job,args=(q,))
     <span class="n">t2</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
     <span class="n">res1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="n">res2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multithread:&#39;</span><span class="p">,</span> <span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multithread:&#39;</span><span class="p">,</span> <span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">normal</span><span class="p">():</span>  <span class="c1">#普通函数</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">):</span>
             <span class="n">res</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">3</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;normal:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;normal:&#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
 
 
 
@@ -4487,12 +4487,12 @@ p2 = mp.Process(target=job,args=(q,))
     <span class="n">st</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">normal</span><span class="p">()</span>
     <span class="n">st1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;normal time:&#39;</span><span class="p">,</span> <span class="n">st1</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span> <span class="c1">#计算的是执行普通函数的时间差</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;normal time:&#39;</span><span class="p">,</span> <span class="n">st1</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span> <span class="c1">#计算的是执行普通函数的时间差</span>
     <span class="n">multithread</span><span class="p">()</span>
     <span class="n">st2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multithread time:&#39;</span><span class="p">,</span> <span class="n">st2</span> <span class="o">-</span> <span class="n">st1</span><span class="p">)</span>  <span class="c1">#计算的是多线程的时间差</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multithread time:&#39;</span><span class="p">,</span> <span class="n">st2</span> <span class="o">-</span> <span class="n">st1</span><span class="p">)</span>  <span class="c1">#计算的是多线程的时间差</span>
     <span class="n">multicore</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multicore time:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st2</span><span class="p">)</span>  <span class="c1">#计算的是多进程的时间差</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multicore time:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">st2</span><span class="p">)</span>  <span class="c1">#计算的是多进程的时间差</span>
 </pre></div>
 
 
@@ -4526,7 +4526,7 @@ p2 = mp.Process(target=job,args=(q,))
 <h3 id="pool">进程池 Pool<a class="headerlink" href="#pool" title="Permanent link">&para;</a></h3>
 <p>这次我们讲进程池Pool。 进程池就是我们将所要运行的东西，放到池子里，Python会自行解决多进程的问题</p>
 <p>首先import multiprocessing和定义job()</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
 
 <span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
@@ -4549,7 +4549,7 @@ p2 = mp.Process(target=job,args=(q,))
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">multicore</span><span class="p">():</span>
     <span class="n">pool</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">multicore</span><span class="p">()</span>
@@ -4564,7 +4564,7 @@ p2 = mp.Process(target=job,args=(q,))
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
 
 <span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1">#定义目标的功能有返回值</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
@@ -4573,7 +4573,7 @@ p2 = mp.Process(target=job,args=(q,))
 <span class="k">def</span> <span class="nf">multicore</span><span class="p">():</span>  <span class="c1">#多线程的函数</span>
     <span class="n">pool</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span>  <span class="c1">#实例化(创建)一个池</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1">#使用map函数获得最终的返回值</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">multicore</span><span class="p">()</span>
@@ -4591,7 +4591,7 @@ p2 = mp.Process(target=job,args=(q,))
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">multicore</span><span class="p">():</span>
     <span class="n">pool</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># 定义CPU核数量为3</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4601,11 +4601,11 @@ Pool除了map()外，还有可以返回结果的方式，那就是apply_async().
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">multicore</span><span class="p">():</span>
     <span class="n">pool</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span> 
     <span class="n">res</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
    <span class="c1">#使用apply_async函数,一次只能传入获取一个值</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
     <span class="c1"># 用get获得结果</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
 </pre></div>
 
 
@@ -4636,7 +4636,7 @@ Pool除了map()外，还有可以返回结果的方式，那就是apply_async().
 
 
 <p>同样在取出值时需要一个一个取出来</p>
-<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">multi_res</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">multi_res</span><span class="p">])</span>
 </pre></div>
 
 
@@ -4644,14 +4644,14 @@ Pool除了map()外，还有可以返回结果的方式，那就是apply_async().
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">multicore</span><span class="p">():</span>
     <span class="n">pool</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span> 
     <span class="n">res</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
     <span class="c1"># 用get获得结果</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="c1"># 迭代器，i=0时apply一次，i=1时apply一次等等</span>
     <span class="n">multi_res</span> <span class="o">=</span> <span class="p">[</span><span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
     <span class="c1"># 从迭代器中取出(这里也得使用res.get,因为列表中存的都是地址,需要进行获取)</span>
-    <span class="nb">print</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">multi_res</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">multi_res</span><span class="p">])</span>
 </pre></div>
 
 
@@ -4673,7 +4673,7 @@ apply_async()只能放入一组参数，并返回一个结果，如果想得到m
 <p>这节我们学习如何定义共享内存。只有用共享内存才能让CPU之间有交流。  多线程使用的是一个核因此使用全局变量就可以使用共享内存.但是多核进程时需要使用共享内存才可以.
 Shared Value
 我们可以通过使用Value数据存储在一个共享的内存表中</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
 
 <span class="n">value1</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 
 <span class="n">value2</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">)</span>
@@ -4728,14 +4728,14 @@ Shared Value
 <span class="sd">@author: zangz</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>  <span class="c1">#导包</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>  <span class="c1">#导包</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">def</span> <span class="nf">job</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>  <span class="c1">#目标函数</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 暂停0.1秒，让输出效果更明显</span>
         <span class="n">v</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="n">num</span> <span class="c1"># v.value获取共享变量值(必须是这样的形式)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">multicore</span><span class="p">():</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># 定义共享变量(整数型,初始值为0)</span>

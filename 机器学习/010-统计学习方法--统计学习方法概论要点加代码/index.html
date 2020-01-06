@@ -4107,10 +4107,10 @@
 <p>即，求 <span><span class="MathJax_Preview">min\sum_{i=1}^n(h(x_i)-y_i)^2</span><script type="math/tex">min\sum_{i=1}^n(h(x_i)-y_i)^2</script></span></p>
 <hr />
 <p>举例：我们用目标函数<span><span class="MathJax_Preview">y=sin2{\pi}x</span><script type="math/tex">y=sin2{\pi}x</script></span>, 加上一个正态分布的噪音干扰，用多项式去拟合【例1.1 11页】</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>  <span class="c1">#线性代数的处理包</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>  <span class="c1">#线性代数的处理包</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">leastsq</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </pre></div>
 
@@ -4150,7 +4150,7 @@
     <span class="n">p_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">M</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="c1"># 最小二乘法</span>
     <span class="n">p_lsq</span> <span class="o">=</span> <span class="n">leastsq</span><span class="p">(</span><span class="n">residuals_func</span><span class="p">,</span> <span class="n">p_init</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="c1">#Scipy中最小二乘函数leastsq（）.误差函数,参数,样本</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fitting Parameters:&#39;</span><span class="p">,</span> <span class="n">p_lsq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Fitting Parameters:&#39;</span><span class="p">,</span> <span class="n">p_lsq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="c1"># 可视化</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">real_func</span><span class="p">(</span><span class="n">x_points</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real&#39;</span><span class="p">)</span>

@@ -4139,7 +4139,7 @@
 <p>我们已经知道可以对<code>list、tuple、str</code>等类型的数据使用<code>for...in...</code>的循环语法从其中依次拿到数据进行使用，我们把这样的过程称为遍历，也叫迭代。</p>
 <p>但是，是否所有的数据类型都可以放到<code>for...in...</code>的语句中，然后让<code>for...in...</code>每次从中取出一条数据供我们使用，即供我们迭代吗？</p>
 <div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
 
@@ -4163,7 +4163,7 @@
 <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 <span class="o">...</span>
 
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
@@ -4171,10 +4171,10 @@
 <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;MyList&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">iterable</span>
 <span class="o">&gt;&gt;&gt;</span>
 <span class="c1"># MyList容器的对象也是不能迭代的</span>
-<span class="n">但是调用这个对象的属性</span><span class="p">(</span><span class="n">我们存数据到的列表中是可以进行迭代的</span><span class="p">)</span>
+<span class="err">但是调用这个对象的属性</span><span class="p">(</span><span class="err">我们存数据到的列表中是可以进行迭代的</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">mylist</span><span class="o">.</span><span class="n">container</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4185,19 +4185,19 @@
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">50</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterable</span>  <span class="c1">#导入迭代类</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">([],</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="kc">True</span>  <span class="c1">#列表是迭代对象</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="bp">True</span>  <span class="c1">#列表是迭代对象</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">({},</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="kc">True</span> <span class="c1">#字典是迭代对象</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="bp">True</span> <span class="c1">#字典是迭代对象</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">53</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">53</span><span class="p">]:</span> <span class="kc">True</span>  <span class="c1">#字符串是迭代对象</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">53</span><span class="p">]:</span> <span class="bp">True</span>  <span class="c1">#字符串是迭代对象</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">54</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">54</span><span class="p">]:</span> <span class="kc">False</span>  <span class="c1">#自己定义的对象不是可迭代对象(不一定)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">54</span><span class="p">]:</span> <span class="bp">False</span>  <span class="c1">#自己定义的对象不是可迭代对象(不一定)</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">55</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">55</span><span class="p">]:</span> <span class="kc">False</span>  <span class="c1">#整形,浮点型不是可迭代的对象</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">55</span><span class="p">]:</span> <span class="bp">False</span>  <span class="c1">#整形,浮点型不是可迭代的对象</span>
 </pre></div>
 
 
@@ -4225,7 +4225,7 @@
 <span class="nb">isinstance</span><span class="p">(</span><span class="n">mylist</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>
 
 <span class="o">===============</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="kc">True</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="bp">True</span>
 <span class="c1"># 这回测试发现添加了__iter__方法的mylist对象已经是一个可迭代对象了</span>
 </pre></div>
 
@@ -4264,13 +4264,13 @@
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">56</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterator</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">([],</span> <span class="n">Iterator</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="kc">False</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">57</span><span class="p">]:</span> <span class="bp">False</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">58</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">iter</span><span class="p">([]),</span> <span class="n">Iterator</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">58</span><span class="p">]:</span> <span class="kc">True</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">58</span><span class="p">]:</span> <span class="bp">True</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">59</span><span class="p">]:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">),</span> <span class="n">Iterator</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">59</span><span class="p">]:</span> <span class="kc">True</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">59</span><span class="p">]:</span> <span class="bp">True</span>
 </pre></div>
 
 
@@ -4300,7 +4300,7 @@
         <span class="c1"># current用来记录当前访问到的位置</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mylist</span><span class="o">.</span><span class="n">items</span><span class="p">):</span>
             <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mylist</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">]</span>  <span class="c1">#这个就是取这个对象中的列表的值</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -4320,7 +4320,7 @@
     <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
     <span class="n">mylist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4359,7 +4359,7 @@
         <span class="c1"># num2用来保存前一个数，初始值为数列中的第二个数1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num2</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;被next()函数调用来获取下一个数&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
             <span class="n">num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num1</span>
@@ -4377,16 +4377,16 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">fib</span> <span class="o">=</span> <span class="n">FibIterator</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">fib</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <h2 id="9-for">9. 并不是只有for循环能接收可迭代对象<a class="headerlink" href="#9-for" title="Permanent link">&para;</a></h2>
 <p>除了for循环能接收可迭代对象，list、tuple等也能接收。</p>
 <div class="codehilite"><pre><span></span><span class="n">li</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">FibIterator</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>  <span class="c1">#其实是挨个取值写入到了新的列表中,在元组跟列表进行类型的转换的时候也是同样的道理,并不是简单的类型转换.而是会相当于迭代器的取值赋值</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
 <span class="n">tp</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">FibIterator</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4435,7 +4435,7 @@
 <span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">G</span> <span class="o">=</span> <span class="p">(</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+   <span class="o">....</span><span class="p">:</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
    <span class="o">....</span><span class="p">:</span>     
 <span class="mi">0</span>
 <span class="mi">2</span>
@@ -4462,7 +4462,7 @@
         <span class="c1"># num2用来保存前一个数，初始值为数列中的第二个数1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num2</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;被next()函数调用来获取下一个数&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span>
             <span class="n">num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num1</span>
@@ -4485,7 +4485,7 @@
     <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
     <span class="k">while</span> <span class="n">current</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
         <span class="n">num</span> <span class="o">=</span> <span class="n">num1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
         <span class="n">num1</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num1</span><span class="o">+</span><span class="n">num2</span>
         <span class="n">current</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="c1">#        yield num</span>
@@ -4554,7 +4554,7 @@
 <p>在使用生成器实现的方式中，我们将原本在迭代器<code>__next__</code>方法中实现的基本逻辑放到一个函数中来实现，但是将每次迭代返回数值的<code>return</code>换成了<code>yield</code>，此时新定义的函数便不再是函数，而是一个生成器了。简单来说：只要在<code>def</code>中有<code>yield</code>关键字的 就称为 生成器</p>
 <p>此时按照调用函数的方式( 案例中为<code>F = fib(5)</code> )使用生成器就不再是执行函数体了，而是会返回一个生成器对象（ 案例中为<code>F</code>），然后就可以按照使用迭代器的方式来使用生成器了。</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">fib</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-   <span class="o">....</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+   <span class="o">....</span><span class="p">:</span>     <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
    <span class="o">....</span><span class="p">:</span>     
 <span class="mi">1</span>
 <span class="mi">1</span>
@@ -4567,12 +4567,12 @@
 <p>但是用for循环调用generator时，发现拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获<code>StopIteration</code>错误，返回值包含在<code>StopIteration</code>的<code>value</code>中：</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">g</span> <span class="o">=</span> <span class="n">fib</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
    <span class="o">....</span><span class="p">:</span>     <span class="k">try</span><span class="p">:</span>
    <span class="o">....</span><span class="p">:</span>         <span class="n">x</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-   <span class="o">....</span><span class="p">:</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">x</span><span class="p">)</span>      
+   <span class="o">....</span><span class="p">:</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;value:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">x</span><span class="p">)</span>      
    <span class="o">....</span><span class="p">:</span>     <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-   <span class="o">....</span><span class="p">:</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;生成器返回值:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">e</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+   <span class="o">....</span><span class="p">:</span>         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;生成器返回值:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">e</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
    <span class="o">....</span><span class="p">:</span>         <span class="k">break</span>
    <span class="o">....</span><span class="p">:</span>     
 <span class="n">value</span><span class="p">:</span><span class="mi">1</span>
@@ -4580,7 +4580,7 @@
 <span class="n">value</span><span class="p">:</span><span class="mi">2</span>
 <span class="n">value</span><span class="p">:</span><span class="mi">3</span>
 <span class="n">value</span><span class="p">:</span><span class="mi">5</span>
-<span class="n">生成器返回值</span><span class="p">:</span><span class="n">done</span>
+<span class="err">生成器返回值</span><span class="p">:</span><span class="n">done</span>
 </pre></div>
 
 
@@ -4602,7 +4602,7 @@ yield关键字有两点作用：<ul>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">:</span>
         <span class="n">temp</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">i</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>  <span class="c1">#这里使用send的时候就可以接收一个返回值</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>  <span class="c1">#这里使用send的时候就可以接收一个返回值</span>
         <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
 </pre></div>
 
@@ -4618,7 +4618,7 @@ yield关键字有两点作用：<ul>
 <span class="n">Out</span><span class="p">[</span><span class="mi">45</span><span class="p">]:</span> <span class="mi">1</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">46</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">46</span><span class="p">]:</span> <span class="mi">2</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">47</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;haha&#39;</span><span class="p">)</span>
@@ -4636,23 +4636,23 @@ yield关键字有两点作用：<ul>
 <span class="n">Out</span><span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="mi">0</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="mi">1</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="mi">2</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="mi">3</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="mi">4</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="bp">None</span>
 <span class="o">---------------------------------------------------------------------------</span>
 <span class="ne">StopIteration</span>                             <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">468</span><span class="n">f0afdf1b9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
@@ -4665,31 +4665,31 @@ yield关键字有两点作用：<ul>
 <p>使用<code>__next__()</code>方法（不常使用）</p>
 <div class="codehilite"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="mi">0</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
-<span class="kc">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="mi">1</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
-<span class="kc">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="mi">2</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
-<span class="kc">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="mi">3</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
-<span class="kc">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="bp">None</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="mi">4</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
-<span class="kc">None</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
+<span class="bp">None</span>
 <span class="o">---------------------------------------------------------------------------</span>
 <span class="ne">StopIteration</span>                             <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">39</span><span class="n">ec527346a9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">f</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">f</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span>
 
 <span class="ne">StopIteration</span><span class="p">:</span>
 </pre></div>
@@ -4710,21 +4710,21 @@ yield关键字有两点作用：<ul>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">def</span> <span class="nf">work1</span><span class="p">():</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----work1---&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----work1---&quot;</span><span class="p">)</span>
         <span class="k">yield</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">work2</span><span class="p">():</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----work2---&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----work2---&quot;</span><span class="p">)</span>
         <span class="k">yield</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">w1</span> <span class="o">=</span> <span class="n">work1</span><span class="p">()</span>
     <span class="n">w2</span> <span class="o">=</span> <span class="n">work2</span><span class="p">()</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
         <span class="nb">next</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
         <span class="nb">next</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span>
 
@@ -4733,7 +4733,7 @@ yield关键字有两点作用：<ul>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">运行结果</span><span class="err">：</span>
+<div class="codehilite"><pre><span></span><span class="err">运行结果：</span>
 
 <span class="o">----</span><span class="n">work1</span><span class="o">---</span>
 <span class="o">----</span><span class="n">work2</span><span class="o">---</span>
@@ -4747,7 +4747,7 @@ yield关键字有两点作用：<ul>
 <span class="o">----</span><span class="n">work2</span><span class="o">---</span>
 <span class="o">----</span><span class="n">work1</span><span class="o">---</span>
 <span class="o">----</span><span class="n">work2</span><span class="o">---</span>
-<span class="o">...</span><span class="n">省略</span><span class="o">...</span>
+<span class="o">...</span><span class="err">省略</span><span class="o">...</span>
 </pre></div>
 
 
@@ -4759,14 +4759,14 @@ yield关键字有两点作用：<ul>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">def</span> <span class="nf">test1</span><span class="p">():</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="s2">&quot;---A--&quot;</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;---A--&quot;</span>
         <span class="n">gr2</span><span class="o">.</span><span class="n">switch</span><span class="p">()</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="s2">&quot;---B--&quot;</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;---B--&quot;</span>
         <span class="n">gr1</span><span class="o">.</span><span class="n">switch</span><span class="p">()</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
@@ -4789,7 +4789,7 @@ yield关键字有两点作用：<ul>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">getcurrent</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">getcurrent</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
 
 <span class="n">g1</span> <span class="o">=</span> <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">g2</span> <span class="o">=</span> <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -4800,7 +4800,7 @@ yield关键字有两点作用：<ul>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
+<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
 
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x10e49f550</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x10e49f550</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">1</span>
@@ -4826,7 +4826,7 @@ yield关键字有两点作用：<ul>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">getcurrent</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">gevent</span><span class="o">.</span><span class="n">getcurrent</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
         <span class="c1">#用来模拟一个耗时操作，注意不是time模块中的sleep</span>
         <span class="n">gevent</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1">#注意这里的延时不是用的time.sleep()</span>
 
@@ -4839,7 +4839,7 @@ yield关键字有两点作用：<ul>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
+<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
 
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x7fa70ffa1c30</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span>
 <span class="o">&lt;</span><span class="n">Greenlet</span> <span class="n">at</span> <span class="mh">0x7fa70ffa1870</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span>
@@ -4867,7 +4867,7 @@ yield关键字有两点作用：<ul>
 
 <span class="k">def</span> <span class="nf">coroutine_work</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">([</span>
@@ -4877,7 +4877,7 @@ yield关键字有两点作用：<ul>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
+<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
 
 <span class="n">work1</span> <span class="mi">0</span>
 <span class="n">work1</span> <span class="mi">1</span>
@@ -4912,7 +4912,7 @@ yield关键字有两点作用：<ul>
 
 <span class="k">def</span> <span class="nf">coroutine_work</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">coroutine_name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">([</span>      
@@ -4922,7 +4922,7 @@ yield关键字有两点作用：<ul>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
+<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
 
 <span class="n">work1</span> <span class="mi">0</span>
 <span class="n">work2</span> <span class="mi">0</span>
@@ -4983,10 +4983,10 @@ yield关键字有两点作用：<ul>
 <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span> 
 
 <span class="k">def</span> <span class="nf">my_downLoad</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GET: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span> 
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;GET: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span> 
     <span class="n">resp</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1">#打开这个url</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1">#读取的是图片的内容</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes received from </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">url</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes received from </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">url</span><span class="p">))</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">([</span>
         <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">my_downLoad</span><span class="p">,</span> <span class="s1">&#39;http://www.baidu.com/&#39;</span><span class="p">),</span>
@@ -4996,7 +4996,7 @@ yield关键字有两点作用：<ul>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">运行结果</span>
+<div class="codehilite"><pre><span></span><span class="err">运行结果</span>
 
 <span class="n">GET</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">baidu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 <span class="n">GET</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span>
@@ -5017,14 +5017,14 @@ yield关键字有两点作用：<ul>
 <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">my_downLoad</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GET: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;GET: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">url</span><span class="p">)</span>
     <span class="n">resp</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes received from </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">url</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> bytes received from </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">url</span><span class="p">))</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">joinall</span><span class="p">([</span>
         <span class="n">gevent</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">my_downLoad</span><span class="p">,</span> <span class="s2">&quot;1.mp4&quot;</span><span class="p">,</span> <span class="s1">&#39;http://oo52bgdsl.bkt.clouddn.com/05day-08-</span><span class="si">%E</span><span class="s1">3</span><span class="si">%80%</span><span class="s1">90</span><span class="si">%E</span><span class="s1">7</span><span class="si">%90%</span><span class="s1">86</span><span class="si">%E</span><span class="s1">8%A7%A3</span><span class="si">%E</span><span class="s1">3</span><span class="si">%80%</span><span class="s1">91</span><span class="si">%E</span><span class="s1">5</span><span class="si">%87%</span><span class="s1">BD</span><span class="si">%E</span><span class="s1">6</span><span class="si">%95%</span><span class="s1">B0</span><span class="si">%E</span><span class="s1">4%BD%BF</span><span class="si">%E</span><span class="s1">7</span><span class="si">%94%</span><span class="s1">A8</span><span class="si">%E</span><span class="s1">6</span><span class="si">%80%</span><span class="s1">BB</span><span class="si">%E</span><span class="s1">7%BB</span><span class="si">%93%</span><span class="s1">EF%BC</span><span class="si">%88%</span><span class="s1">E4%B8</span><span class="si">%80%</span><span class="s1">EF%BC%89.mp4&#39;</span><span class="p">),</span>

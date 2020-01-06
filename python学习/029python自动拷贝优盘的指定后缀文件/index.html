@@ -3978,7 +3978,7 @@
 <span class="kn">from</span> <span class="nn">psutil</span> <span class="kn">import</span> <span class="n">disk_partitions</span>  <span class="c1">#获取分区的信息</span>
 
 <span class="k">def</span> <span class="nf">copy_u_to_computer</span><span class="p">():</span>
-    <span class="n">a</span><span class="o">=</span><span class="kc">True</span>  <span class="c1">#定义while循环结束的标志</span>
+    <span class="n">a</span><span class="o">=</span><span class="bp">True</span>  <span class="c1">#定义while循环结束的标志</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">a</span><span class="p">):</span>  <span class="c1">#写一个一直循环的while</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1">#暂停一秒</span>
         <span class="c1">#检查所有驱动器</span>
@@ -3989,8 +3989,8 @@
             <span class="k">if</span> <span class="s1">&#39;removable&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">opts</span><span class="p">:</span>   <span class="c1">#removable是可拆卸的意思,fixed是固定的意思(移动硬盘同样是固定的,只有u盘会检测是removable)</span>
                 <span class="n">driver</span><span class="p">,</span><span class="n">opts</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">device</span><span class="p">,</span><span class="n">item</span><span class="o">.</span><span class="n">opts</span>  <span class="c1">#device是驱动器的根目录比如F:\</span>
                 <span class="c1">#输出可移动驱动器符号</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;发现优盘,嘿嘿&#39;</span><span class="p">,</span><span class="n">driver</span><span class="p">)</span>
-                <span class="n">a</span><span class="o">=</span><span class="kc">False</span>  <span class="c1">#发现优盘就停止while循环</span>
+                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;发现优盘,嘿嘿&#39;</span><span class="p">,</span><span class="n">driver</span><span class="p">)</span>
+                <span class="n">a</span><span class="o">=</span><span class="bp">False</span>  <span class="c1">#发现优盘就停止while循环</span>
                                 <span class="c1">#复制根目录</span>
                 <span class="c1">#</span>
                 <span class="c1">#生成拷贝到的路径:使用时间作为路径</span>
@@ -3999,7 +3999,7 @@
                 <span class="c1">#由于创建文件夹时不能有:等非法的字符,所以使用replace函数进行过滤</span>
                 <span class="n">now_time1</span><span class="o">=</span><span class="n">now_time</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
 
-                <span class="nb">print</span><span class="p">(</span><span class="n">now_time1</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">now_time1</span><span class="p">)</span>
                 <span class="c1">#创建一个使用时间为文件名的路径</span>
                 <span class="n">path</span><span class="o">=</span><span class="s1">&#39;E:</span><span class="se">\\</span><span class="s1">拷贝</span><span class="se">\\</span><span class="s1">&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">now_time1</span><span class="p">)</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -4019,8 +4019,8 @@
 
                 <span class="k">break</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;没发现可移动优盘&#39;</span><span class="p">)</span>
-        <span class="n">a</span><span class="o">=</span><span class="kc">False</span>  <span class="c1">#循环查看完一遍所有的驱动器还是没有发现可移动的优盘就跳出循环(有可能是移动硬盘)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;没发现可移动优盘&#39;</span><span class="p">)</span>
+        <span class="n">a</span><span class="o">=</span><span class="bp">False</span>  <span class="c1">#循环查看完一遍所有的驱动器还是没有发现可移动的优盘就跳出循环(有可能是移动硬盘)</span>
 
 <span class="c1">#函数查找指定路径中所有文件的路径</span>
 <span class="c1">#函数查找指定路径中所有文件的路径</span>
@@ -4061,18 +4061,18 @@
 
 <span class="n">qu_num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">disk_partitions</span><span class="p">())</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">qu_num</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">qu_num</span><span class="p">)</span>
 
-<span class="k">while</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>  <span class="c1">#这里的while循环保证了,只要驱动器的个数与设定的不一样就会执行拷贝函数</span>
+<span class="k">while</span><span class="p">(</span><span class="bp">True</span><span class="p">):</span>  <span class="c1">#这里的while循环保证了,只要驱动器的个数与设定的不一样就会执行拷贝函数</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">disk_partitions</span><span class="p">())</span> <span class="o">==</span> <span class="n">qu_num</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;驱动器个数未改变&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;驱动器个数未改变&quot;</span><span class="p">)</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;驱动器个数发生改变,准备拷贝优盘的内容&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;驱动器个数发生改变,准备拷贝优盘的内容&quot;</span><span class="p">)</span>
         <span class="n">qu_num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">disk_partitions</span><span class="p">())</span>  <span class="c1">#改变驱动器的个数防止执行拷贝函数后死循环</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">qu_num</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">qu_num</span><span class="p">)</span>
         <span class="n">copy_u_to_computer</span><span class="p">()</span>  <span class="c1">#执行拷贝函数</span>
 </pre></div>
 

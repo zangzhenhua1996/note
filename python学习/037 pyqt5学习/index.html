@@ -4177,7 +4177,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_text</span><span class="p">)</span>           <span class="c1"># 3</span>
 
     <span class="k">def</span> <span class="nf">change_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;change text&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;change text&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Stop&#39;</span><span class="p">)</span>                             <span class="c1"># 4</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_text</span><span class="p">)</span>        <span class="c1"># 5</span>
 
@@ -4337,17 +4337,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_window_title</span><span class="p">)</span>   <span class="c1"># 4</span>
 
     <span class="k">def</span> <span class="nf">change_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;change text&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;change text&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;Stop&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_text</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">change_window_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                               <span class="c1"># 5</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;change window size&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;change window size&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_window_size</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">change_window_title</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                              <span class="c1"># 6</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;change window title&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;change window title&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s1">&#39;window title changed&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">change_window_title</span><span class="p">)</span>
 
@@ -5069,9 +5069,9 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 <p>这种功能就是通过<code>setPlaceholderText()</code>方法来实现的。在这里还进行了信号和槽的连接，将<code>QLineEdit</code>的<code>textChanged()</code>信号连接到一个自定义的槽<code>self.check_input_func</code>上。<code>textChanged()</code>信号会在输入框中文本发生变化的时候发出, 所以槽函数的任务就是判断两个输入框是否都有文字了：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">check_input_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5080,14 +5080,14 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 </blockquote>
 <p>接下来对按钮进行完善：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
 
 <p>使刚开始显示的登录按钮不可用，只有等账号框和密码框都有文本的时候才能用(上面的槽函数)。</p>
 <p>当我们点击登录按钮的时候，账号框和密码框都有文本了，那点击后肯定是要验证账号密码是否正确：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#按下按钮后,不能再次按下</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>   <span class="c1">#按下按钮后,不能再次按下</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_login_func</span><span class="p">)</span>  <span class="c1">#同时检查账号密码是否正确</span>
 </pre></div>
 
@@ -5202,16 +5202,16 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 <code>check_input_func()</code>槽函数进行连接；</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">check_input_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_user_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
 
 <p>在槽函数中我们判断三个输入框是否都有文本，有的话则将按钮启用，否则禁用；</p>
 <p>​     </p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   <span class="c1">#初始化</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_signin_func</span><span class="p">)</span>
 </pre></div>
 
@@ -5287,7 +5287,7 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 
 <p>首先我们在Demo的初始化函数中先实例化了SigninPage；</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_login_func</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">show_signin_page_func</span><span class="p">)</span>
 </pre></div>
@@ -5363,7 +5363,7 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_login_func</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">show_signin_page_func</span><span class="p">)</span>
 
@@ -5381,9 +5381,9 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
 
     <span class="k">def</span> <span class="nf">check_input_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">login_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">SigninPage</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
@@ -5430,14 +5430,14 @@ QMessageBox.information(QWidget, ‘Title’, ’Content‘, buttons)</li>
         <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_input_func</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pushbutton_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">check_signin_func</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">check_input_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_user_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signin_button</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">check_signin_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd_line</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signin_pwd2_line</span><span class="o">.</span><span class="n">text</span><span class="p">():</span>

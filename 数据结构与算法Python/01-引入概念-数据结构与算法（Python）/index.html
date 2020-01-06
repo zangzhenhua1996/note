@@ -4507,11 +4507,11 @@
     <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span> <span class="o">==</span> <span class="mi">1000</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a, b, c: </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a, b, c: </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 
 <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#程序结束时间</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;elapsed: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;complete!&quot;</span><span class="p">)</span>  
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;elapsed: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;complete!&quot;</span><span class="p">)</span>  
 </pre></div>
 
 
@@ -4522,7 +4522,7 @@
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">500</span>
 <span class="n">elapsed</span><span class="p">:</span> <span class="mf">2664.042919</span>
 <span class="n">complete</span><span class="err">!</span>
-<span class="n">注意运行的时间</span><span class="p">:</span><span class="mf">2664.042919</span><span class="n">秒</span><span class="p">,</span><span class="n">也有电脑太烂的原因</span>
+<span class="err">注意运行的时间</span><span class="p">:</span><span class="mf">2664.042919</span><span class="err">秒</span><span class="p">,</span><span class="err">也有电脑太烂的原因</span>
 </pre></div>
 
 
@@ -4565,11 +4565,11 @@
     <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="o">-</span><span class="n">a</span><span class="p">):</span>
         <span class="n">c</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">-</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>    <span class="c1">#</span>
         <span class="k">if</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a, b, c: </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a, b, c: </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 
 <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="c1">#程序结束时间</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;elapsed: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;complete!&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;elapsed: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;complete!&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4580,7 +4580,7 @@
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">500</span>
 <span class="n">elapsed</span><span class="p">:</span> <span class="mf">1.077858</span>
 <span class="n">complete</span><span class="err">!</span>
-<span class="n">注意运行的时间</span><span class="p">:</span><span class="mf">1.077858</span><span class="n">秒</span><span class="p">,</span><span class="n">这个差距简直是不要不要的</span>
+<span class="err">注意运行的时间</span><span class="p">:</span><span class="mf">1.077858</span><span class="err">秒</span><span class="p">,</span><span class="err">这个差距简直是不要不要的</span>
 </pre></div>
 
 
@@ -4632,7 +4632,7 @@
     <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span> <span class="o">==</span> <span class="mi">1000</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a, b, c: </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a, b, c: </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 </pre></div>
 
 
@@ -4643,7 +4643,7 @@
     <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="o">-</span><span class="n">a</span><span class="p">):</span>
         <span class="n">c</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">-</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
         <span class="k">if</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a, b, c: </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a, b, c: </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 </pre></div>
 
 
@@ -4886,25 +4886,25 @@ O(3n³+1)</p>
 <span class="c1">#因此做这样的设置,&quot;from __main__ import test1&quot;从我当前的文件中导入test1这个函数</span>
 <span class="c1">#使用__main__的原因是当前文件在启动后名字变成__main__(主程序)</span>
 <span class="n">t1</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;test1()&quot;</span><span class="p">,</span> <span class="s2">&quot;from __main__ import test1&quot;</span><span class="p">)</span>  
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;concat &quot;</span><span class="p">,</span><span class="n">t1</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;concat &quot;</span><span class="p">,</span><span class="n">t1</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 
 <span class="n">t2</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;test2()&quot;</span><span class="p">,</span> <span class="s2">&quot;from __main__ import test2&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;append &quot;</span><span class="p">,</span><span class="n">t2</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;append &quot;</span><span class="p">,</span><span class="n">t2</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 
 <span class="n">t3</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;test3()&quot;</span><span class="p">,</span> <span class="s2">&quot;from __main__ import test3&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;comprehension &quot;</span><span class="p">,</span><span class="n">t3</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;comprehension &quot;</span><span class="p">,</span><span class="n">t3</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 
 <span class="n">t4</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;test4()&quot;</span><span class="p">,</span> <span class="s2">&quot;from __main__ import test4&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;list range &quot;</span><span class="p">,</span><span class="n">t4</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;list range &quot;</span><span class="p">,</span><span class="n">t4</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 
 <span class="n">t5</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;test5()&quot;</span><span class="p">,</span> <span class="s2">&quot;from __main__ import test5&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;extend &quot;</span><span class="p">,</span><span class="n">t5</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;extend &quot;</span><span class="p">,</span><span class="n">t5</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 
 
 <span class="n">t6</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;test6()&quot;</span><span class="p">,</span> <span class="s2">&quot;from __main__ import test6&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;insert_tou &quot;</span><span class="p">,</span><span class="n">t6</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;insert_tou &quot;</span><span class="p">,</span><span class="n">t6</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 <span class="n">t7</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;test7()&quot;</span><span class="p">,</span> <span class="s2">&quot;from __main__ import test7&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;insert_wei &quot;</span><span class="p">,</span><span class="n">t7</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;insert_wei &quot;</span><span class="p">,</span><span class="n">t7</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4930,10 +4930,10 @@ O(3n³+1)</p>
 <span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>  <span class="c1">#导入Timer模块</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2000000</span><span class="p">))</span>
 <span class="n">pop_zero</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;x.pop(0)&quot;</span><span class="p">,</span><span class="s2">&quot;from __main__ import x&quot;</span><span class="p">)</span>  <span class="c1">#从头部弹出元素</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pop_zero &quot;</span><span class="p">,</span><span class="n">pop_zero</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;pop_zero &quot;</span><span class="p">,</span><span class="n">pop_zero</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2000000</span><span class="p">))</span>
 <span class="n">pop_end</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;x.pop()&quot;</span><span class="p">,</span><span class="s2">&quot;from __main__ import x&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pop_end &quot;</span><span class="p">,</span><span class="n">pop_end</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>  <span class="c1">#从尾部弹出元素</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;pop_end &quot;</span><span class="p">,</span><span class="n">pop_end</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>  <span class="c1">#从尾部弹出元素</span>
 </pre></div>
 
 

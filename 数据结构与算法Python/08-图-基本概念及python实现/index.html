@@ -4228,7 +4228,7 @@
         <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span> <span class="c1">#进行递归操作的终止条件,遍历到了最后的终止点就返回路径</span>
             <span class="k">return</span> <span class="n">path</span>  <span class="c1">#返回的路径都是要满足有起始点和终点的</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">start</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="c1">#如果start不是起始的点的话，也就不在字典的键中，这条路径就是错的，不能到达指定的终点的路径          </span>
-            <span class="k">return</span> <span class="kc">None</span> <span class="c1">#返回空</span>
+            <span class="k">return</span> <span class="bp">None</span> <span class="c1">#返回空</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span> <span class="c1">#node是start键指向的多个路径点，graph[start]对应的值</span>
             <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span> <span class="c1">#如果说这个node没有在路径path中的话，对它进行遍历路径，找到终点，在的话就不用了</span>
                 <span class="n">newpath</span> <span class="o">=</span> <span class="n">find_path</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="c1">#node就是新的需要遍历的起始值，同时将前面的已经产生的路径进传递</span>
@@ -4258,8 +4258,8 @@
         <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">path</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">start</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">return</span> <span class="kc">None</span>
-        <span class="n">shortest</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="n">shortest</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
                 <span class="n">newpath</span> <span class="o">=</span> <span class="n">find_shortest_path</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
@@ -4288,10 +4288,10 @@
              <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">],</span>
              <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">],</span>
              <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]}</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">find_path</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">find_all_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">find_shortest_path</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">find_all_graph_path</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+    <span class="k">print</span> <span class="p">(</span><span class="n">find_path</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
+    <span class="k">print</span> <span class="p">(</span><span class="n">find_all_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">find_shortest_path</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">find_all_graph_path</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
 </pre></div>
                 
                   

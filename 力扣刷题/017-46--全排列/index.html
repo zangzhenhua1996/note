@@ -3989,12 +3989,12 @@
         <span class="n">answer</span><span class="o">=</span><span class="p">[]</span> <span class="c1">#存储最后的结果</span>
         <span class="k">for</span> <span class="n">i</span> <span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>   <span class="c1">#迭代器,i是index,num是元素</span>
             <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="c1">#刨除了i位置元素的剩余的所有的元素</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num:&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;num:&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1">#进行递归调用,在递归的时候单个这种[3]是一开始的判断返回的千万要注意,自己好好想想调试一下流程</span>
                 <span class="c1"># print(num)</span>
-                <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;y:&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+                <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;y:&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
                 <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">num</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span><span class="n">answer</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span><span class="n">answer</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">answer</span>
 </pre></div>
 

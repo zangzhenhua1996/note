@@ -4243,21 +4243,21 @@
 <span class="n">tcp_server_tcp</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="c1">#建立tcp服务端</span>
 <span class="n">tcp_server_tcp</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">7899</span><span class="p">))</span> <span class="c1">#绑定端口</span>
 <span class="n">tcp_server_tcp</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="c1">#设置监听</span>
-<span class="n">tcp_server_tcp</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 设置套接字为非堵塞的方式,服务端设置为费堵塞</span>
+<span class="n">tcp_server_tcp</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># 设置套接字为非堵塞的方式,服务端设置为费堵塞</span>
 
 <span class="n">client_socket_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span> <span class="c1">#建立客户端列表,如果连客户端都没有那么不管怎么样你都接收不到数据,你try也不行,因此使用列表</span>
 
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 
     <span class="c1"># time.sleep(0.5)</span>
 
     <span class="k">try</span><span class="p">:</span> <span class="c1">#循环接收客户端的请求,如果没有新的客户端就产生异常就好了</span>
         <span class="n">new_socket</span><span class="p">,</span> <span class="n">new_addr</span> <span class="o">=</span> <span class="n">tcp_server_tcp</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ret</span><span class="p">:</span> <span class="c1">#产生异常</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---没有新的客户端到来---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---没有新的客户端到来---&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span> <span class="c1">#如果有新的客户端到来了</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---只要没有产生异常，那么也就意味着 来了一个新的客户端----&quot;</span><span class="p">)</span>
-        <span class="n">new_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 设置套接字为非堵塞的方式(True就是默认堵塞),客户端也要设置成费堵塞的方式</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---只要没有产生异常，那么也就意味着 来了一个新的客户端----&quot;</span><span class="p">)</span>
+        <span class="n">new_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># 设置套接字为非堵塞的方式(True就是默认堵塞),客户端也要设置成费堵塞的方式</span>
         <span class="c1">#如果不设置客户端是费堵塞的话那么只有客户端接收到数据才能解堵塞是不行的</span>
         <span class="n">client_socket_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_socket</span><span class="p">)</span> <span class="c1">#客户端来了那就存储到服务列表中</span>
 
@@ -4265,19 +4265,19 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">recv_data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ret</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----这个客户端没有发送过来数据----&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----这个客户端没有发送过来数据----&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span> <span class="c1">#try执行是正确的才会进入else</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----没有异常-----&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----没有异常-----&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">recv_data</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">recv_data</span><span class="p">:</span>
                 <span class="c1"># 对方发送过来数据</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----客户端发送过来了数据-----&quot;</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;----客户端发送过来了数据-----&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># 对方调用close 导致了 recv返回</span>
                 <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
                 <span class="n">client_socket_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">client_socket</span><span class="p">)</span> <span class="c1">#服务完成的客户端就给关闭</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---客户端已经关闭----&quot;</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;---客户端已经关闭----&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4297,9 +4297,9 @@
     <span class="c1"># 将套接字设置为非堵塞</span>
     <span class="c1"># 设置为非堵塞后，如果accept时，恰巧没有客户端connect，那么accept会</span>
     <span class="c1"># 产生一个异常，所以需要try来进行处理</span>
-    <span class="n">server_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">server_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 
         <span class="c1"># 用来测试</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
@@ -4309,23 +4309,23 @@
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;一个新的客户端到来:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">newClientInfo</span><span class="p">))</span>
-            <span class="n">newClientInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 设置为非堵塞</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;一个新的客户端到来:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">newClientInfo</span><span class="p">))</span>
+            <span class="n">newClientInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># 设置为非堵塞</span>
             <span class="n">g_socket_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newClientInfo</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="ow">in</span> <span class="n">g_socket_list</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">recvData</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">recvData</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;recv[</span><span class="si">%s</span><span class="s1">]:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">client_addr</span><span class="p">),</span> <span class="n">recvData</span><span class="p">))</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;recv[</span><span class="si">%s</span><span class="s1">]:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">client_addr</span><span class="p">),</span> <span class="n">recvData</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]客户端已经关闭&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">client_addr</span><span class="p">))</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]客户端已经关闭&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">client_addr</span><span class="p">))</span>
                     <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
                     <span class="n">g_socket_list</span><span class="o">.</span><span class="n">remove</span><span class="p">((</span><span class="n">client_socket</span><span class="p">,</span><span class="n">client_addr</span><span class="p">))</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
                 <span class="k">pass</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="n">g_socket_list</span><span class="p">)</span>  <span class="c1"># for test</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">g_socket_list</span><span class="p">)</span>  <span class="c1"># for test</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -4349,9 +4349,9 @@
     <span class="c1"># print(request)</span>
 
     <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
 
     <span class="c1"># GET /index.html HTTP/1.1</span>
     <span class="c1"># get post put del</span>
@@ -4399,17 +4399,17 @@
 
     <span class="c1"># 3. 变为监听套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 将套接字变为非堵塞</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># 将套接字变为非堵塞</span>
 
     <span class="n">client_socket_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>  <span class="c1">#创建服务列表</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
         <span class="c1"># 4. 等待新客户端的链接</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">new_socket</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ret</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">new_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1">#设置客户端非堵塞</span>
+            <span class="n">new_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>  <span class="c1">#设置客户端非堵塞</span>
             <span class="n">client_socket_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_socket</span><span class="p">)</span>  <span class="c1">#添加到列表</span>
 
 
@@ -4454,7 +4454,7 @@
         <span class="c1"># 3. 变为监听套接字</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">server_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">server_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client_socket_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">documents_root</span> <span class="o">=</span> <span class="n">documents_root</span>
@@ -4463,23 +4463,23 @@
         <span class="sd">&quot;&quot;&quot;运行服务器&quot;&quot;&quot;</span>
 
         <span class="c1"># 等待对方链接</span>
-        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 
             <span class="c1"># time.sleep(0.5)  # for test</span>
 
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">new_socket</span><span class="p">,</span> <span class="n">new_addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_socket</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ret</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----1----&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>  <span class="c1"># for test</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;-----1----&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>  <span class="c1"># for test</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">new_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">new_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">client_socket_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_socket</span><span class="p">)</span>
 
             <span class="k">for</span> <span class="n">client_socket</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_socket_list</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">request</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ret</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------2----&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>  <span class="c1"># for test</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;------2----&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>  <span class="c1"># for test</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">request</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">deal_with_request</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">client_socket</span><span class="p">)</span>
@@ -4487,7 +4487,7 @@
                         <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">client_socket_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">client_socket</span><span class="p">)</span>
 
-            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_socket_list</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_socket_list</span><span class="p">)</span>
 
 
     <span class="k">def</span> <span class="nf">deal_with_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">client_socket</span><span class="p">):</span>
@@ -4497,14 +4497,14 @@
 
         <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">request_lines</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
 
         <span class="c1"># 提取请求的文件(index.html)</span>
         <span class="c1"># GET /a/b/c/d/e/index.html HTTP/1.1</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([^/]*)([^ ]+)&quot;</span><span class="p">,</span> <span class="n">request_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正则提取数据:&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正则提取数据:&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;正则提取数据:&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;正则提取数据:&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
             <span class="n">file_name</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
                 <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/index.html&quot;</span>
@@ -4550,10 +4550,10 @@
         <span class="k">if</span> <span class="n">port</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
             <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;运行方式如: python3 xxx.py 7890&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;运行方式如: python3 xxx.py 7890&quot;</span><span class="p">)</span>
         <span class="k">return</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;http服务器使用的port:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">port</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;http服务器使用的port:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">port</span><span class="p">)</span>
     <span class="n">http_server</span> <span class="o">=</span> <span class="n">WSGIServer</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">DOCUMENTS_ROOT</span><span class="p">)</span>
     <span class="n">http_server</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span>
 
@@ -4587,9 +4587,9 @@
     <span class="c1"># print(request)</span>
 
     <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">request_lines</span><span class="p">)</span>
 
     <span class="c1"># GET /index.html HTTP/1.1</span>
     <span class="c1"># get post put del</span>
@@ -4636,7 +4636,7 @@
 
     <span class="c1"># 3. 变为监听套接字</span>
     <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 将套接字变为非堵塞</span>
+    <span class="n">tcp_server_socket</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>  <span class="c1"># 将套接字变为非堵塞</span>
 
     <span class="c1"># 创建一个epoll对象(与操作系统共享)</span>
     <span class="n">epl</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">epoll</span><span class="p">()</span> <span class="c1">#使用select的epoll类创建一个epoll对象</span>
@@ -4646,7 +4646,7 @@
 
     <span class="n">fd_event_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 
         <span class="n">fd_event_list</span> <span class="o">=</span> <span class="n">epl</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>  <span class="c1"># 默认会堵塞，直到 os监测到数据到来 通过事件通知方式 告诉这个程序，此时才会解堵塞</span>
 
@@ -4711,7 +4711,7 @@
 <span class="n">addresses</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="c1"># 循环等待客户端的到来或者对方发送数据</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 
     <span class="c1"># epoll 进行 fd 扫描的地方 -- 未指定超时时间则为阻塞等待</span>
     <span class="n">epoll_list</span> <span class="o">=</span> <span class="n">epoll</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
@@ -4726,7 +4726,7 @@
         <span class="k">if</span> <span class="n">fd</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="n">fileno</span><span class="p">():</span>
             <span class="n">new_socket</span><span class="p">,</span> <span class="n">new_addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;有新的客户端到来</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_addr</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;有新的客户端到来</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_addr</span><span class="p">))</span>
 
             <span class="c1"># 将 conn 和 addr 信息分别保存起来</span>
             <span class="n">connections</span><span class="p">[</span><span class="n">new_socket</span><span class="o">.</span><span class="n">fileno</span><span class="p">()]</span> <span class="o">=</span> <span class="n">new_socket</span>
@@ -4741,14 +4741,14 @@
             <span class="n">recvData</span> <span class="o">=</span> <span class="n">connections</span><span class="p">[</span><span class="n">fd</span><span class="p">]</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">recvData</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;recv:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">recvData</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;recv:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">recvData</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># 从 epoll 中移除该 连接 fd</span>
                 <span class="n">epoll</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
 
                 <span class="c1"># server 侧主动关闭该 连接 fd</span>
                 <span class="n">connections</span><span class="p">[</span><span class="n">fd</span><span class="p">]</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">---offline---&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">addresses</span><span class="p">[</span><span class="n">fd</span><span class="p">]))</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">---offline---&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">addresses</span><span class="p">[</span><span class="n">fd</span><span class="p">]))</span>
                 <span class="k">del</span> <span class="n">connections</span><span class="p">[</span><span class="n">fd</span><span class="p">]</span>
                 <span class="k">del</span> <span class="n">addresses</span><span class="p">[</span><span class="n">fd</span><span class="p">]</span>
 </pre></div>
@@ -4803,7 +4803,7 @@ ET模式：当epoll检测到描述符事件发生并将此事件通知应用程�
         <span class="sd">&quot;&quot;&quot;运行服务器&quot;&quot;&quot;</span>
 
         <span class="c1"># 等待对方链接</span>
-        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="c1"># epoll 进行 fd 扫描的地方 -- 未指定超时时间则为阻塞等待</span>
             <span class="n">epoll_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">epoll</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
 
@@ -4837,14 +4837,14 @@ ET模式：当epoll检测到描述符事件发生并将此事件通知应用程�
 
         <span class="n">request_lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">request_lines</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
 
         <span class="c1"># 提取请求的文件(index.html)</span>
         <span class="c1"># GET /a/b/c/d/e/index.html HTTP/1.1</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([^/]*)([^ ]+)&quot;</span><span class="p">,</span> <span class="n">request_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正则提取数据:&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正则提取数据:&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;正则提取数据:&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;正则提取数据:&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
             <span class="n">file_name</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">file_name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
                 <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/index.html&quot;</span>
@@ -4892,10 +4892,10 @@ ET模式：当epoll检测到描述符事件发生并将此事件通知应用程�
         <span class="k">if</span> <span class="n">port</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
             <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;运行方式如: python3 xxx.py 7890&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;运行方式如: python3 xxx.py 7890&quot;</span><span class="p">)</span>
         <span class="k">return</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;http服务器使用的port:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">port</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;http服务器使用的port:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">port</span><span class="p">)</span>
     <span class="n">http_server</span> <span class="o">=</span> <span class="n">WSGIServer</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">DOCUMENTS_ROOT</span><span class="p">)</span>
     <span class="n">http_server</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span>
 

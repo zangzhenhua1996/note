@@ -4081,34 +4081,34 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;吃&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;吃&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;喝&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;喝&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;跑&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;跑&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;睡&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;睡&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;吃&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;吃&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;喝&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;喝&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;跑&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;跑&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;睡&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;睡&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
 
 <span class="c1"># 创建一个对象 - 狗对象</span>
 <span class="n">wangcai</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
@@ -4126,7 +4126,7 @@
 </ul>
 <h1 id="_3">使用继承<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
 <h4 id="1">1) 继承的语法<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">类名</span><span class="p">(</span><span class="n">父类名</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="err">类名(父类名):</span>
 
     <span class="k">pass</span>
 </pre></div>
@@ -4142,16 +4142,16 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
@@ -4170,7 +4170,7 @@
     <span class="c1">#     print(&quot;睡&quot;)</span>
 
     <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
 
 <span class="c1"># 创建一个对象 - 狗对象</span>
 <span class="n">wangcai</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
@@ -4200,28 +4200,28 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">XiaoTianQuan</span><span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我会飞&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我会飞&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># 创建一个哮天犬的对象</span>
@@ -4243,34 +4243,34 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">XiaoTianQuan</span><span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我会飞&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我会飞&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">catch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;抓老鼠&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;抓老鼠&quot;</span><span class="p">)</span>
 
 <span class="c1"># 创建一个哮天犬的对象</span>
 <span class="n">xtq</span> <span class="o">=</span> <span class="n">XiaoTianQuan</span><span class="p">()</span>
@@ -4316,31 +4316,31 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">XiaoTianQuan</span><span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我会飞&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我会飞&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;叫得跟神一样...&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;叫得跟神一样...&quot;</span><span class="p">)</span>
 
 
 <span class="n">xtq</span> <span class="o">=</span> <span class="n">XiaoTianQuan</span><span class="p">()</span>
@@ -4370,40 +4370,40 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;吃---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">drink</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;喝---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;跑---&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;睡---&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;汪汪叫&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">XiaoTianQuan</span><span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我会飞&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我会飞&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="c1"># 1. 针对子类特有的需求，编写代码</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;神一样的叫唤...&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;神一样的叫唤...&quot;</span><span class="p">)</span>
 
         <span class="c1"># 2. 使用 super(). 调用原本在父类中封装的方法</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">bark</span><span class="p">()</span>  
 
 
         <span class="c1"># 3. 增加其他子类的代码</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;$%^*%^$%^#%$%&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;$%^*%^$%^#%$%&quot;</span><span class="p">)</span>
 
 
 <span class="n">xtq</span> <span class="o">=</span> <span class="n">XiaoTianQuan</span><span class="p">()</span>
@@ -4415,9 +4415,9 @@
 
 
 <p>输出结果:</p>
-<div class="codehilite"><pre><span></span><span class="n">神一样的叫唤</span><span class="o">...</span>
-<span class="n">汪汪叫</span>
-<span class="n">汪汪叫</span>
+<div class="codehilite"><pre><span></span><span class="err">神一样的叫唤</span><span class="o">...</span>
+<span class="err">汪汪叫</span>
+<span class="err">汪汪叫</span>
 <span class="err">$</span><span class="o">%^*%^</span><span class="err">$</span><span class="o">%^</span><span class="c1">#%$%</span>
 </pre></div>
 
@@ -4432,7 +4432,7 @@
 <blockquote>
 <p>在 <code>Python 2.x</code> 时，如果需要调用父类的方法，还可以使用以下方式：</p>
 </blockquote>
-<div class="codehilite"><pre><span></span><span class="n">父类名</span><span class="o">.</span><span class="n">方法</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="err">父类名</span><span class="o">.</span><span class="err">方法</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4473,7 +4473,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__num2</span> <span class="o">=</span> <span class="mi">200</span>
 
     <span class="k">def</span> <span class="nf">__test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;私有方法 </span><span class="si">%d</span><span class="s2"> </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__num2</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;私有方法 </span><span class="si">%d</span><span class="s2"> </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__num2</span><span class="p">))</span>
 
 
 <span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
@@ -4489,7 +4489,7 @@
 
 <span class="c1"># 创建一个子类对象</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 
 <span class="n">b</span><span class="o">.</span><span class="n">demo</span><span class="p">()</span>
 
@@ -4507,7 +4507,7 @@
 </ul>
 <p><img alt="014_多继承.png" src="../010python继承.image/14555448-12fa6aa2814392a5.png" /></p>
 <p><strong>语法</strong></p>
-<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">子类名</span><span class="p">(</span><span class="n">父类名1</span><span class="p">,</span> <span class="n">父类名2</span><span class="o">...</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="err">子类名(父类名1, 父类名2...)</span>
     <span class="k">pass</span>
 </pre></div>
 
@@ -4516,13 +4516,13 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;test 方法&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">demo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;demo 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;demo 方法&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
@@ -4539,8 +4539,8 @@
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="n">test</span> <span class="n">方法</span>
-<span class="n">demo</span> <span class="n">方法</span>
+<div class="codehilite"><pre><span></span><span class="n">test</span> <span class="err">方法</span>
+<span class="n">demo</span> <span class="err">方法</span>
 </pre></div>
 
 
@@ -4555,18 +4555,18 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A --- test 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A --- test 方法&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">demo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A --- demo 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A --- demo 方法&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B --- test 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;B --- test 方法&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">demo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B --- demo 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;B --- demo 方法&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
@@ -4581,13 +4581,13 @@
 <span class="n">c</span><span class="o">.</span><span class="n">demo</span><span class="p">()</span>
 
 <span class="c1"># 确定C类对象调用方法的顺序</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
 </pre></div>
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="n">B</span> <span class="o">---</span> <span class="n">test</span> <span class="n">方法</span>
-<span class="n">B</span> <span class="o">---</span> <span class="n">demo</span> <span class="n">方法</span>
+<div class="codehilite"><pre><span></span><span class="n">B</span> <span class="o">---</span> <span class="n">test</span> <span class="err">方法</span>
+<span class="n">B</span> <span class="o">---</span> <span class="n">demo</span> <span class="err">方法</span>
 <span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">__main__</span><span class="o">.</span><span class="n">C</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="n">__main__</span><span class="o">.</span><span class="sa">B</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="n">__main__</span><span class="o">.</span><span class="n">A</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="nb">object</span><span class="s1">&#39;&gt;)</span>
 </pre></div>
 
@@ -4598,18 +4598,18 @@
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A --- test 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A --- test 方法&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">demo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A --- demo 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A --- demo 方法&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B --- test 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;B --- test 方法&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">demo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B --- demo 方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;B --- demo 方法&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
@@ -4624,13 +4624,13 @@
 <span class="n">c</span><span class="o">.</span><span class="n">demo</span><span class="p">()</span>
 
 <span class="c1"># 确定C类对象调用方法的顺序</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
 </pre></div>
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="n">A</span> <span class="o">---</span> <span class="n">test</span> <span class="n">方法</span>
-<span class="n">A</span> <span class="o">---</span> <span class="n">demo</span> <span class="n">方法</span>
+<div class="codehilite"><pre><span></span><span class="n">A</span> <span class="o">---</span> <span class="n">test</span> <span class="err">方法</span>
+<span class="n">A</span> <span class="o">---</span> <span class="n">demo</span> <span class="err">方法</span>
 <span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">__main__</span><span class="o">.</span><span class="n">C</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="n">__main__</span><span class="o">.</span><span class="n">A</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="n">__main__</span><span class="o">.</span><span class="sa">B</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="nb">object</span><span class="s1">&#39;&gt;)</span>
 </pre></div>
 
@@ -4644,7 +4644,7 @@
 <li><code>Python</code> 中针对 <strong>类</strong> 提供了一个 <strong>内置属性</strong> <code>__mro__</code> 可以查看 <strong>方法</strong> 搜索顺序</li>
 <li>MRO 是 <code>method resolution order</code>，主要用于 <strong>在多继承时判断 方法、属性 的调用 路径</strong></li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4678,7 +4678,7 @@
 </blockquote>
 <p>为了保证编写的代码能够同时在 <code>Python 2.x</code> 和 <code>Python 3.x</code> 运行！
 今后在定义类时，<strong>如果没有父类，建议统一继承自 <code>object</code></strong></p>
-<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">类名</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="err">类名(</span><span class="nc">object</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
                 

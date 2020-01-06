@@ -4942,45 +4942,45 @@
 <h2 id="1">1. 单独调用父类的方法<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="c1"># coding=utf-8</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;******多继承使用类名.__init__ 发生的状态******&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;******多继承使用类名.__init__ 发生的状态******&quot;</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;parent的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;parent的init开始被调用&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;parent的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;parent的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Son1</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son1的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son1的init开始被调用&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
         <span class="n">Parent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son1的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son1的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Son2</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son2的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son2的init开始被调用&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
         <span class="n">Parent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son2的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son2的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Grandson</span><span class="p">(</span><span class="n">Son1</span><span class="p">,</span> <span class="n">Son2</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init开始被调用&#39;</span><span class="p">)</span>
         <span class="n">Son1</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>  <span class="c1"># 单独调用父类的初始化方法</span>
         <span class="n">Son2</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="n">gs</span> <span class="o">=</span> <span class="n">Grandson</span><span class="p">(</span><span class="s1">&#39;grandson&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;姓名：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;年龄：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;性别：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">gender</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;姓名：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;年龄：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;性别：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">gender</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;******多继承使用类名.__init__ 发生的状态******</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;******多继承使用类名.__init__ 发生的状态******</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>运行结果:</p>
-<div class="codehilite"><pre><span></span><span class="o">******</span><span class="n">多继承使用类名</span><span class="o">.</span><span class="fm">__init__</span> <span class="n">发生的状态</span><span class="o">******</span>
+<div class="codehilite"><pre><span></span><span class="o">******</span><span class="err">多继承使用类名</span><span class="o">.</span><span class="fm">__init__</span> <span class="err">发生的状态</span><span class="o">******</span>
 <span class="n">Grandson的init开始被调用</span>
 <span class="n">Son1的init开始被调用</span>
 <span class="n">parent的init开始被调用</span>
@@ -4991,10 +4991,10 @@
 <span class="n">parent的init结束被调用</span>
 <span class="n">Son2的init结束被调用</span>
 <span class="n">Grandson的init结束被调用</span>
-<span class="n">姓名</span><span class="err">：</span> <span class="n">grandson</span>
-<span class="n">年龄</span><span class="err">：</span> <span class="mi">12</span>
-<span class="n">性别</span><span class="err">：</span> <span class="n">男</span>
-<span class="o">******</span><span class="n">多继承使用类名</span><span class="o">.</span><span class="fm">__init__</span> <span class="n">发生的状态</span><span class="o">******</span>
+<span class="err">姓名：</span> <span class="n">grandson</span>
+<span class="err">年龄：</span> <span class="mi">12</span>
+<span class="err">性别：</span> <span class="err">男</span>
+<span class="o">******</span><span class="err">多继承使用类名</span><span class="o">.</span><span class="fm">__init__</span> <span class="err">发生的状态</span><span class="o">******</span>
 </pre></div>
 
 
@@ -5003,48 +5003,48 @@
 <p>python 是动态类型的语言因此没有方法的重载只有方法的重写</p>
 </blockquote>
 <h2 id="2-super">2. 多继承中super调用有所父类的被重写的方法<a class="headerlink" href="#2-super" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;******多继承使用super().__init__ 发生的状态******&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;******多继承使用super().__init__ 发生的状态******&quot;</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># 为避免多继承报错，使用不定长参数，接受参数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;parent的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;parent的init开始被调用&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;parent的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;parent的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Son1</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># 为避免多继承报错，使用不定长参数，接受参数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son1的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son1的init开始被调用&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># 为避免多继承报错，使用不定长参数，接受参数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son1的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son1的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Son2</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># 为避免多继承报错，使用不定长参数，接受参数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son2的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son2的init开始被调用&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># 为避免多继承报错，使用不定长参数，接受参数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son2的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son2的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Grandson</span><span class="p">(</span><span class="n">Son1</span><span class="p">,</span> <span class="n">Son2</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init开始被调用&#39;</span><span class="p">)</span>
         <span class="c1"># 多继承时，相对于使用类名.__init__方法，要把每个父类全部写一遍</span>
         <span class="c1"># 而super只用一句话，执行了全部父类的方法，这也是为何多继承需要全部传参的一个原因</span>
         <span class="c1"># super(Grandson, self).__init__(name, age, gender)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">gender</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init结束被调用&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">Grandson</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>  <span class="c1">#C3算法获得super调用父类时的顺序</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Grandson</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>  <span class="c1">#C3算法获得super调用父类时的顺序</span>
 
 <span class="n">gs</span> <span class="o">=</span> <span class="n">Grandson</span><span class="p">(</span><span class="s1">&#39;grandson&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;姓名：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;年龄：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;性别：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">gender</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;******多继承使用super().__init__ 发生的状态******</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;姓名：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;年龄：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;性别：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">gender</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;******多继承使用super().__init__ 发生的状态******</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>运行结果：</p>
-<div class="codehilite"><pre><span></span><span class="o">******</span><span class="n">多继承使用super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span> <span class="n">发生的状态</span><span class="o">******</span>
+<div class="codehilite"><pre><span></span><span class="o">******</span><span class="err">多继承使用</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span> <span class="err">发生的状态</span><span class="o">******</span>
 <span class="p">(</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">__main__</span><span class="o">.</span><span class="n">Grandson</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Son1</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Son2</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Parent</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="nb">object</span><span class="s1">&#39;&gt;)</span>
 <span class="n">Grandson的init开始被调用</span>
 <span class="n">Son1的init开始被调用</span>
@@ -5054,10 +5054,10 @@
 <span class="n">Son2的init结束被调用</span>
 <span class="n">Son1的init结束被调用</span>
 <span class="n">Grandson的init结束被调用</span>
-<span class="n">姓名</span><span class="err">：</span> <span class="n">grandson</span>
-<span class="n">年龄</span><span class="err">：</span> <span class="mi">12</span>
-<span class="n">性别</span><span class="err">：</span> <span class="n">男</span>
-<span class="o">******</span><span class="n">多继承使用super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span> <span class="n">发生的状态</span><span class="o">******</span>
+<span class="err">姓名：</span> <span class="n">grandson</span>
+<span class="err">年龄：</span> <span class="mi">12</span>
+<span class="err">性别：</span> <span class="err">男</span>
+<span class="o">******</span><span class="err">多继承使用</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span> <span class="err">发生的状态</span><span class="o">******</span>
 </pre></div>
 
 
@@ -5072,18 +5072,18 @@
 </blockquote>
 <h4 id="args-kwargs">*args, **kwargs 解释<a class="headerlink" href="#args-kwargs" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">test2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">test1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c1"># test2(a, b, args, kwargs)  # 相当于test2(11, 22, (33, 44, 55, 66), {&quot;name&quot;:&quot;laowang&quot;, &quot;age&quot;:18})</span>
     <span class="c1"># test2(a, b, *args, kwargs)  # 相当于test2(11, 22, 33, 44, 55, 66, {&quot;name&quot;:&quot;laowang&quot;, &quot;age&quot;:18})</span>
@@ -5109,45 +5109,45 @@
 
 
 <h2 id="3-super">3. 单继承中super<a class="headerlink" href="#3-super" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;******单继承使用super().__init__ 发生的状态******&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;******单继承使用super().__init__ 发生的状态******&quot;</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;parent的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;parent的init开始被调用&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;parent的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;parent的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Son1</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son1的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son1的init开始被调用&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># 单继承不能提供全部参数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Son1的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Son1的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Grandson</span><span class="p">(</span><span class="n">Son1</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init开始被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init开始被调用&#39;</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>  <span class="c1"># 单继承不能提供全部参数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init结束被调用&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Grandson的init结束被调用&#39;</span><span class="p">)</span>
 
 <span class="n">gs</span> <span class="o">=</span> <span class="n">Grandson</span><span class="p">(</span><span class="s1">&#39;grandson&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;男&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;姓名：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;年龄：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;姓名：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;年龄：&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
 <span class="c1">#print(&#39;性别：&#39;, gs.gender)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;******单继承使用super().__init__ 发生的状态******</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;******单继承使用super().__init__ 发生的状态******</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>运行结果</p>
-<div class="codehilite"><pre><span></span><span class="o">******</span><span class="n">单继承使用super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span> <span class="n">发生的状态</span><span class="o">******</span>
+<div class="codehilite"><pre><span></span><span class="o">******</span><span class="err">单继承使用</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span> <span class="err">发生的状态</span><span class="o">******</span>
 <span class="n">Grandson的init开始被调用</span>
 <span class="n">Son1的init开始被调用</span>
 <span class="n">parent的init开始被调用</span>
 <span class="n">parent的init结束被调用</span>
 <span class="n">Son1的init结束被调用</span>
 <span class="n">Grandson的init结束被调用</span>
-<span class="n">姓名</span><span class="err">：</span> <span class="n">grandson</span>
-<span class="n">年龄</span><span class="err">：</span> <span class="mi">12</span>
-<span class="o">******</span><span class="n">单继承使用super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span> <span class="n">发生的状态</span><span class="o">******</span>
+<span class="err">姓名：</span> <span class="n">grandson</span>
+<span class="err">年龄：</span> <span class="mi">12</span>
+<span class="o">******</span><span class="err">单继承使用</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span> <span class="err">发生的状态</span><span class="o">******</span>
 </pre></div>
 
 
@@ -5173,11 +5173,11 @@
 <span class="k">class</span> <span class="nc">Child2</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
     <span class="k">pass</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <span class="n">Child1</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <span class="n">Parent</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">Child2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5213,7 +5213,7 @@
 <span class="c1"># 创建一个实例对象</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Province</span><span class="p">(</span><span class="s1">&#39;山东省&#39;</span><span class="p">)</span>
 <span class="c1"># 直接访问实例属性</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="c1"># 直接访问类属性</span>
 <span class="n">Province</span><span class="o">.</span><span class="n">country</span>
 </pre></div>
@@ -5253,17 +5253,17 @@
     <span class="k">def</span> <span class="nf">ord_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; 定义实例方法，至少有一个self参数 &quot;&quot;&quot;</span>
         <span class="c1"># print(self.name)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;实例方法&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;实例方法&#39;</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">class_func</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; 定义类方法，至少有一个cls参数 &quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;类方法&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;类方法&#39;</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">static_func</span><span class="p">():</span> <span class="c1">#(主要是防止出现又有类又有类外的函数出现)</span>
         <span class="sd">&quot;&quot;&quot; 定义静态方法 ，无默认参数&quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;静态方法&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;静态方法&#39;</span><span class="p">)</span>
 
 
 
@@ -5280,9 +5280,9 @@
 
 
 <p>运行结果</p>
-<div class="codehilite"><pre><span></span><span class="n">实例方法</span>
-<span class="n">类方法</span>
-<span class="n">静态方法</span>
+<div class="codehilite"><pre><span></span><span class="err">实例方法</span>
+<span class="err">类方法</span>
+<span class="err">静态方法</span>
 </pre></div>
 
 
@@ -5364,11 +5364,11 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="c1"># ############### 调用 ###############</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Pager</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>  <span class="c1"># 就是起始值，即：m</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>  <span class="c1"># 就是结束值，即：n</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>  <span class="c1"># 就是起始值，即：m</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>  <span class="c1"># 就是结束值，即：n</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Pager</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>  <span class="c1"># 就是起始值，即：m</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>  <span class="c1"># 就是结束值，即：n</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>  <span class="c1"># 就是起始值，即：m</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>  <span class="c1"># 就是结束值，即：n</span>
 </pre></div>
 
 
@@ -5401,7 +5401,7 @@
 <span class="c1"># ############### 调用 ###############</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Goods</span><span class="p">()</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">price</span>  <span class="c1"># 自动执行 @property 修饰的 price 方法，并获取方法的返回值</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5414,15 +5414,15 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;@property&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;@property&#39;</span><span class="p">)</span>
 
-    <span class="nd">@price</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@price.setter</span>
     <span class="k">def</span> <span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;@price.setter&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;@price.setter&#39;</span><span class="p">)</span>
 
-    <span class="nd">@price</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="nd">@price.deleter</span>
     <span class="k">def</span> <span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;@price.deleter&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;@price.deleter&#39;</span><span class="p">)</span>
 
 <span class="c1"># ############### 调用 ###############</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Goods</span><span class="p">()</span>
@@ -5453,11 +5453,11 @@
         <span class="n">new_price</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_price</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">discount</span>
         <span class="k">return</span> <span class="n">new_price</span>
 
-    <span class="nd">@price</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@price.setter</span>
     <span class="k">def</span> <span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">original_price</span> <span class="o">=</span> <span class="n">value</span>  <span class="c1">#可以作一些修改</span>
 
-    <span class="nd">@price</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="nd">@price.deleter</span>
     <span class="k">def</span> <span class="nf">price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_price</span>  <span class="c1">#删除实例属性</span>
 
@@ -5484,7 +5484,7 @@
 
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
 <span class="n">reuslt</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">BAR</span>  <span class="c1"># 自动调用get_bar方法，并获取方法的返回值</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">reuslt</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">reuslt</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5498,16 +5498,16 @@
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 <span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;getter...&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;getter...&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;laowang&#39;</span>
 
     <span class="k">def</span> <span class="nf">set_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> 
         <span class="sd">&quot;&quot;&quot;必须两个参数&quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;setter...&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;setter...&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;set value&#39;</span> <span class="o">+</span> <span class="n">value</span>
 
     <span class="k">def</span> <span class="nf">del_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;deleter...&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;deleter...&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;laowang&#39;</span>
 
     <span class="n">BAR</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_bar</span><span class="p">,</span> <span class="n">set_bar</span><span class="p">,</span> <span class="n">del_bar</span><span class="p">,</span> <span class="s2">&quot;description...&quot;</span><span class="p">)</span>
@@ -5517,7 +5517,7 @@
 <span class="n">obj</span><span class="o">.</span><span class="n">BAR</span>  <span class="c1"># 自动调用第一个参数中定义的方法：get_bar</span>
 <span class="n">obj</span><span class="o">.</span><span class="n">BAR</span> <span class="o">=</span> <span class="s2">&quot;alex&quot;</span>  <span class="c1"># 自动调用第二个参数中定义的方法：set_bar方法，并将“alex”当作参数传入</span>
 <span class="n">desc</span> <span class="o">=</span> <span class="n">Foo</span><span class="o">.</span><span class="n">BAR</span><span class="o">.</span><span class="vm">__doc__</span>  <span class="c1"># 自动获取第四个参数中设置的值：description...</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span>
 <span class="k">del</span> <span class="n">obj</span><span class="o">.</span><span class="n">BAR</span>  <span class="c1"># 自动调用第三个参数中定义的方法：del_bar方法</span>
 </pre></div>
 
@@ -5579,14 +5579,14 @@
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">content_params</span><span class="p">[</span><span class="s1">&#39;charset&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_post_parse_error</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_post_parse_error</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">content_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CONTENT_LENGTH&#39;</span><span class="p">))</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
             <span class="n">content_length</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span> <span class="o">=</span> <span class="n">LimitedStream</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;wsgi.input&#39;</span><span class="p">],</span> <span class="n">content_length</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_read_started</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">resolver_match</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read_started</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resolver_match</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">def</span> <span class="nf">_get_scheme</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;wsgi.url_scheme&#39;</span><span class="p">)</span>
@@ -5650,7 +5650,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__money</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error:不是整型数字&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;error:不是整型数字&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5666,14 +5666,14 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__money</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error:不是整型数字&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;error:不是整型数字&quot;</span><span class="p">)</span>
 
     <span class="c1"># 定义一个属性，当对这个money设置值时调用setMoney,当获取值时调用getMoney</span>
     <span class="n">money</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">getMoney</span><span class="p">,</span> <span class="n">setMoney</span><span class="p">)</span>    <span class="c1">#类属性</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">Money</span><span class="p">()</span>
 <span class="n">a</span><span class="o">.</span><span class="n">money</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># 调用setMoney方法</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">money</span><span class="p">)</span>  <span class="c1"># 调用getMoney方法</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">money</span><span class="p">)</span>  <span class="c1"># 调用getMoney方法</span>
 <span class="c1">#100</span>
 </pre></div>
 
@@ -5692,16 +5692,16 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__money</span>
 
     <span class="c1"># 使用装饰器对money进行装饰，当对money设置值时，调用装饰的方法</span>
-    <span class="nd">@money</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@money.setter</span>
     <span class="k">def</span> <span class="nf">money</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__money</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error:不是整型数字&quot;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;error:不是整型数字&quot;</span><span class="p">)</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">Money</span><span class="p">()</span>
 <span class="n">a</span><span class="o">.</span><span class="n">money</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">money</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">money</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5717,12 +5717,12 @@
         <span class="k">pass</span>
 
 
-<span class="nb">print</span><span class="p">(</span><span class="n">Foo</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Foo</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 
 
 <p>执行结果</p>
-<div class="codehilite"><pre><span></span><span class="n">描述类信息</span><span class="err">，</span><span class="n">这是用于看片的神奇</span> 
+<div class="codehilite"><pre><span></span><span class="err">描述类信息，这是用于看片的神奇</span> 
 </pre></div>
 
 
@@ -5731,7 +5731,7 @@
 <span class="n">Help</span> <span class="n">on</span> <span class="k">class</span> <span class="nc">Foo</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">__main__</span><span class="p">:</span>
 
 <span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="n">builtins</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
- <span class="o">|</span>  <span class="n">描述类信息</span><span class="err">，</span><span class="n">这是用于看片的神奇</span>
+ <span class="o">|</span>  <span class="err">描述类信息，这是用于看片的神奇</span>
  <span class="o">|</span>  
  <span class="o">|</span>  <span class="n">Methods</span> <span class="n">defined</span> <span class="n">here</span><span class="p">:</span>
  <span class="o">|</span>  
@@ -5763,8 +5763,8 @@
 <span class="kn">from</span> <span class="nn">test</span> <span class="kn">import</span> <span class="n">Person</span>
 
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__module__</span><span class="p">)</span>  <span class="c1"># 输出 test 即：输出模块</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>  <span class="c1"># 输出 test.Person 即：输出类</span>
+<span class="k">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__module__</span><span class="p">)</span>  <span class="c1"># 输出 test 即：输出模块</span>
+<span class="k">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>  <span class="c1"># 输出 test.Person 即：输出类</span>
 </pre></div>
 
 
@@ -5811,8 +5811,8 @@
         <span class="k">pass</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__call__&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我是call方法&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;__call__&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;我是call方法&quot;</span><span class="p">)</span>
 
 
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>  <span class="c1"># 执行 __init__</span>
@@ -5822,7 +5822,7 @@
 
 <p>执行结果</p>
 <div class="codehilite"><pre><span></span><span class="fm">__call__</span>
-<span class="n">我是call方法</span>
+<span class="err">我是</span><span class="n">call方法</span>
 </pre></div>
 
 
@@ -5839,19 +5839,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">count</span>
 
     <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;func&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;func&#39;</span><span class="p">)</span>
 
 <span class="c1"># 获取类的属性，即：类属性、方法、</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Province</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Province</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
 <span class="c1"># 输出：{&#39;__dict__&#39;: &lt;attribute &#39;__dict__&#39; of &#39;Province&#39; objects&gt;, &#39;__module__&#39;: &#39;__main__&#39;, &#39;country&#39;: &#39;China&#39;, &#39;__doc__&#39;: None, &#39;__weakref__&#39;: &lt;attribute &#39;__weakref__&#39; of &#39;Province&#39; objects&gt;, &#39;func&#39;: &lt;function Province.func at 0x101897950&gt;, &#39;__init__&#39;: &lt;function Province.__init__ at 0x1018978c8&gt;}</span>
 
 <span class="n">obj1</span> <span class="o">=</span> <span class="n">Province</span><span class="p">(</span><span class="s1">&#39;山东&#39;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj1</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">obj1</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
 <span class="c1"># 获取 对象obj1 的属性</span>
 <span class="c1"># 输出：{&#39;count&#39;: 10000, &#39;name&#39;: &#39;山东&#39;}</span>
 
 <span class="n">obj2</span> <span class="o">=</span> <span class="n">Province</span><span class="p">(</span><span class="s1">&#39;山西&#39;</span><span class="p">,</span> <span class="mi">20000</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj2</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">obj2</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
 <span class="c1"># 获取 对象obj1 的属性</span>
 <span class="c1"># 输出：{&#39;count&#39;: 20000, &#39;name&#39;: &#39;山西&#39;}</span>
 </pre></div>
@@ -5869,17 +5869,17 @@
 
 
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>   <span class="c1">#根对象()进行区别</span>
+<span class="k">print</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>   <span class="c1">#根对象()进行区别</span>
 <span class="c1"># 输出：laowang</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;对象的描述 </span><span class="si">% s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">obj</span><span class="p">)</span>   <span class="c1">#使用格式化字符串也是可以得到对象的str描述的</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>   <span class="c1">#根对象()进行区别</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;对象的描述 </span><span class="si">% s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">obj</span><span class="p">)</span>   <span class="c1">#使用格式化字符串也是可以得到对象的str描述的</span>
+<span class="k">print</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>   <span class="c1">#根对象()进行区别</span>
 <span class="c1"># 输出：laowang</span>
 </pre></div>
 
 
 <p>执行</p>
 <div class="codehilite"><pre><span></span><span class="n">laowang</span>
-<span class="n">对象的描述</span> <span class="n">laowang</span>
+<span class="err">对象的描述</span> <span class="n">laowang</span>
 </pre></div>
 
 
@@ -5892,13 +5892,13 @@
 <span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__getitem__&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;__getitem__&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__setitem__&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;__setitem__&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__delitem__&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;__delitem__&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 
 
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
@@ -5917,14 +5917,14 @@
 
 <span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__getslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__getslice__&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__getslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;__getslice__&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__setslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">sequence</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__setslice__&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__setslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">sequence</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;__setslice__&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__delslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__delslice__&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__delslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;__delslice__&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 
 <span class="n">obj</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
 
@@ -6320,7 +6320,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__request</span> <span class="o">=</span> <span class="n">WechatRequest</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;checkssl&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;checkssl&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
             <span class="n">disable_urllib3_warning</span><span class="p">()</span>  <span class="c1"># 可解决 InsecurePlatformWarning 警告</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__token</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
@@ -6330,7 +6330,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__encrypt_mode</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;encrypt_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;safe&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__encoding_aes_key</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;encoding_aes_key&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__crypto</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__crypto</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_crypto</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__access_token_getfunc</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;access_token_getfunc&#39;</span><span class="p">)</span>
@@ -6355,7 +6355,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_token</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__token</span>
 
-    <span class="nd">@token</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@token.setter</span>
     <span class="k">def</span> <span class="nf">token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; 设置当前 Token &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__token</span> <span class="o">=</span> <span class="n">token</span>
@@ -6382,7 +6382,7 @@
         <span class="sd">&quot;&quot;&quot; 获取当前 EncodingAESKey &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__encoding_aes_key</span>
 
-    <span class="nd">@encoding_aes_key</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@encoding_aes_key.setter</span>
     <span class="k">def</span> <span class="nf">encoding_aes_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding_aes_key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; 设置当前 EncodingAESKey &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__encoding_aes_key</span> <span class="o">=</span> <span class="n">encoding_aes_key</span>
@@ -6392,7 +6392,7 @@
     <span class="k">def</span> <span class="nf">encrypt_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__encrypt_mode</span>
 
-    <span class="nd">@encrypt_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@encrypt_mode.setter</span>
     <span class="k">def</span> <span class="nf">encrypt_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encrypt_mode</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; 设置当前加密模式 &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__encrypt_mode</span> <span class="o">=</span> <span class="n">encrypt_mode</span>
@@ -6408,7 +6408,7 @@
         <span class="sd">&quot;&quot;&quot; 获取当前 access token 值, 本方法会自行维护 access token 有效性 &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_appid_appsecret</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__access_token_getfunc</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__access_token_getfunc</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__access_token</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__access_token_expires_at</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__access_token_getfunc</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__access_token</span><span class="p">:</span>
@@ -6424,7 +6424,7 @@
         <span class="sd">&quot;&quot;&quot; 获取当前 jsapi ticket 值, 本方法会自行维护 jsapi ticket 有效性 &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_appid_appsecret</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_getfunc</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_getfunc</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_expires_at</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_getfunc</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket</span><span class="p">:</span>
@@ -6457,7 +6457,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_appid_appsecret</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__access_token_refreshfunc</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__access_token_refreshfunc</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__access_token</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__access_token_expires_at</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__access_token_refreshfunc</span><span class="p">()</span>
             <span class="k">return</span>
 
@@ -6473,7 +6473,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__access_token</span> <span class="o">=</span> <span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__access_token_expires_at</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span> <span class="o">+</span> <span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;expires_in&#39;</span><span class="p">]</span>
 
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__access_token_setfunc</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__access_token_setfunc</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__access_token_setfunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__access_token</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__access_token_expires_at</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">response_json</span>
@@ -6485,7 +6485,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_appid_appsecret</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_refreshfunc</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_refreshfunc</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_expires_at</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_refreshfunc</span><span class="p">()</span>
             <span class="k">return</span>
 
@@ -6499,7 +6499,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket</span> <span class="o">=</span> <span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;ticket&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_expires_at</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span> <span class="o">+</span> <span class="n">response_json</span><span class="p">[</span><span class="s1">&#39;expires_in&#39;</span><span class="p">]</span>
 
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_setfunc</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_setfunc</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_setfunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jsapi_ticket_expires_at</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">response_json</span>
@@ -6550,12 +6550,12 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        根据当前配置内容更新 Crypto 类</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__encrypt_mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;compatible&#39;</span><span class="p">,</span> <span class="s1">&#39;safe&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__encoding_aes_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__token</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__encrypt_mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;compatible&#39;</span><span class="p">,</span> <span class="s1">&#39;safe&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__encoding_aes_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__token</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appid</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">NeedParamError</span><span class="p">(</span><span class="s1">&#39;Please provide token and appid parameters in the construction of class.&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__crypto</span> <span class="o">=</span> <span class="n">BasicCrypto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__token</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__encoding_aes_key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appid</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__crypto</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__crypto</span> <span class="o">=</span> <span class="bp">None</span>
 </pre></div>
 
 
@@ -6585,7 +6585,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;python之禅&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;oops error&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;oops error&quot;</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -6625,12 +6625,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;entering&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;entering&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span>
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;will exit&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;will exit&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
@@ -6638,7 +6638,7 @@
 <p><strong>enter</strong>() 方法返回资源对象，这里就是你将要打开的那个文件对象，<strong>exit</strong>() 方法处理一些清除工作。</p>
 <p>因为 File 类实现了上下文管理器，现在就可以使用 with 语句了。</p>
 <div class="codehilite"><pre><span></span><span class="k">with</span> <span class="n">File</span><span class="p">(</span><span class="s1">&#39;out.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;writing&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;writing&quot;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;hello, python&#39;</span><span class="p">)</span>
 </pre></div>
 

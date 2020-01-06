@@ -3982,10 +3982,10 @@
         <span class="n">numlist</span><span class="o">=</span><span class="p">[]</span> <span class="c1">#存储除法计算的商的每一位,如果是循环会多存储一位</span>
         <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#记录存储的次数,算是一个循环检测开始的标志位</span>
         <span class="n">loopDict</span><span class="o">=</span><span class="p">{}</span> <span class="c1">#用来存储的是不重复的数字,从小数开始存储</span>
-        <span class="n">loopStr</span><span class="o">=</span><span class="kc">None</span>  <span class="c1">#循环的小数字符</span>
+        <span class="n">loopStr</span><span class="o">=</span><span class="bp">None</span>  <span class="c1">#循环的小数字符</span>
 
 
-        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="n">numlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">numerator</span><span class="o">//</span><span class="n">denominator</span><span class="p">))</span>   <span class="c1">#s首先存储的是整数位,注意的是这里直接存储的是字符串</span>
             <span class="n">cnt</span><span class="o">+=</span><span class="mi">1</span> <span class="c1">#count=1的是手存储的是第一位小数</span>
             <span class="n">numerator</span> <span class="o">=</span> <span class="p">(</span><span class="n">numerator</span><span class="o">%</span><span class="n">denominator</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span>  <span class="c1">#模仿的是除法的手动计算的方法,将除完的余数乘上10继续对分母做除法(手动计算是补零)</span>

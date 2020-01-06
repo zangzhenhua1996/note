@@ -4168,13 +4168,13 @@
                   <h1>036 pandas常用</h1>
                 
                 <h2 id="1pandasseriesdataframe">1.pandas基础,Series,DataFrame<a class="headerlink" href="#1pandasseriesdataframe" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>    <span class="c1">#导包</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>    <span class="c1">#导包</span>
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="c1">#创建一个series，索引为默认值</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4206,7 +4206,7 @@ dtype: int64
 
 
 <div class="codehilite"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">6.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">],</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>  <span class="c1">#带索引创建一个series</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4245,7 +4245,7 @@ dtype: int64
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="kc">True</span>
+<div class="codehilite"><pre><span></span><span class="bp">True</span>
 </pre></div>
 
 
@@ -4254,14 +4254,14 @@ dtype: int64
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="kc">False</span>
+<div class="codehilite"><pre><span></span><span class="bp">False</span>
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="c1">#Series可以看成是一个定长的有序字典,使用字典创建series</span>
 <span class="n">dic1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apple&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;pen&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;applepen&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dic1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
 </pre></div>
 
 
@@ -4426,14 +4426,14 @@ dtype: int64
 
 
 <h2 id="2-pandas">2 pandas选择数据<a class="headerlink" href="#2-pandas" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="c1">#创建一个dataframe</span>
 <span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;20170101&#39;</span><span class="p">,</span><span class="n">periods</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>   <span class="c1">#periods是周期的意思,初始值:20170101</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
 <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">])</span>
 <span class="n">df1</span>
 </pre></div>
@@ -4444,12 +4444,12 @@ dtype: int64
                <span class="s1">&#39;2017-01-05&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-01-06&#39;</span><span class="p">],</span>
               <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
 <span class="n">A</span>   <span class="n">B</span>   <span class="n">C</span>   <span class="n">D</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>  <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>  <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>  <span class="mi">8</span>   <span class="mi">9</span>   <span class="mi">10</span>  <span class="mi">11</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>  <span class="mi">15</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>  <span class="mi">16</span>  <span class="mi">17</span>  <span class="mi">18</span>  <span class="mi">19</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>  <span class="mi">20</span>  <span class="mi">21</span>  <span class="mi">22</span>  <span class="mi">23</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span>  <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>  <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>  <span class="mi">8</span>   <span class="mi">9</span>   <span class="mi">10</span>  <span class="mi">11</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>  <span class="mi">15</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">05</span>  <span class="mi">16</span>  <span class="mi">17</span>  <span class="mi">18</span>  <span class="mi">19</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">06</span>  <span class="mi">20</span>  <span class="mi">21</span>  <span class="mi">22</span>  <span class="mi">23</span>
 </pre></div>
 
 
@@ -4458,12 +4458,12 @@ dtype: int64
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>     <span class="mi">0</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>     <span class="mi">4</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>     <span class="mi">8</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>    <span class="mi">12</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>    <span class="mi">16</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>    <span class="mi">20</span>
+<div class="codehilite"><pre><span></span><span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span>     <span class="mi">0</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>     <span class="mi">4</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>     <span class="mi">8</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>    <span class="mi">12</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">05</span>    <span class="mi">16</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">06</span>    <span class="mi">20</span>
 <span class="n">Freq</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">Name</span><span class="p">:</span> <span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
 </pre></div>
 
@@ -4473,12 +4473,12 @@ dtype: int64
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>     <span class="mi">0</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>     <span class="mi">4</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>     <span class="mi">8</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>    <span class="mi">12</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>    <span class="mi">16</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>    <span class="mi">20</span>
+<div class="codehilite"><pre><span></span><span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span>     <span class="mi">0</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>     <span class="mi">4</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>     <span class="mi">8</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>    <span class="mi">12</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">05</span>    <span class="mi">16</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">06</span>    <span class="mi">20</span>
 <span class="n">Freq</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">Name</span><span class="p">:</span> <span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
 </pre></div>
 
@@ -4489,8 +4489,8 @@ dtype: int64
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span>    <span class="n">A</span>   <span class="n">B</span>   <span class="n">C</span>   <span class="n">D</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>  <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>  <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span>  <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>  <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>
 </pre></div>
 
 
@@ -4500,9 +4500,9 @@ dtype: int64
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span>    <span class="n">A</span>   <span class="n">B</span>   <span class="n">C</span>   <span class="n">D</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>  <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>  <span class="mi">8</span>   <span class="mi">9</span>   <span class="mi">10</span>  <span class="mi">11</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>  <span class="mi">15</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>  <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>  <span class="mi">8</span>   <span class="mi">9</span>   <span class="mi">10</span>  <span class="mi">11</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>  <span class="mi">15</span>
 </pre></div>
 
 
@@ -4516,7 +4516,7 @@ dtype: int64
 <span class="n">B</span>    <span class="mi">5</span>
 <span class="n">C</span>    <span class="mi">6</span>
 <span class="n">D</span>    <span class="mi">7</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span> <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
 </pre></div>
 
 
@@ -4528,7 +4528,7 @@ dtype: int64
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="n">A</span>    <span class="mi">0</span>
 <span class="n">C</span>    <span class="mi">2</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span> <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
 </pre></div>
 
 
@@ -4538,12 +4538,12 @@ dtype: int64
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span>    <span class="n">A</span>   <span class="n">B</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>  <span class="mi">0</span>   <span class="mi">1</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>  <span class="mi">4</span>   <span class="mi">5</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>  <span class="mi">8</span>   <span class="mi">9</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>  <span class="mi">12</span>  <span class="mi">13</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>  <span class="mi">16</span>  <span class="mi">17</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>  <span class="mi">20</span>  <span class="mi">21</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span>  <span class="mi">0</span>   <span class="mi">1</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>  <span class="mi">4</span>   <span class="mi">5</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>  <span class="mi">8</span>   <span class="mi">9</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>  <span class="mi">12</span>  <span class="mi">13</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">05</span>  <span class="mi">16</span>  <span class="mi">17</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">06</span>  <span class="mi">20</span>  <span class="mi">21</span>
 </pre></div>
 
 
@@ -4557,7 +4557,7 @@ dtype: int64
 <span class="n">B</span>     <span class="mi">9</span>
 <span class="n">C</span>    <span class="mi">10</span>
 <span class="n">D</span>    <span class="mi">11</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span> <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
 </pre></div>
 
 
@@ -4567,8 +4567,8 @@ dtype: int64
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="n">C</span>   <span class="n">D</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>  <span class="mi">6</span>   <span class="mi">7</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>  <span class="mi">10</span>  <span class="mi">11</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>  <span class="mi">6</span>   <span class="mi">7</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>  <span class="mi">10</span>  <span class="mi">11</span>
 </pre></div>
 
 
@@ -4578,9 +4578,9 @@ dtype: int64
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span>    <span class="n">B</span>   <span class="n">D</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>  <span class="mi">5</span>   <span class="mi">7</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>  <span class="mi">9</span>   <span class="mi">11</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>  <span class="mi">17</span>  <span class="mi">19</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>  <span class="mi">5</span>   <span class="mi">7</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>  <span class="mi">9</span>   <span class="mi">11</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">05</span>  <span class="mi">17</span>  <span class="mi">19</span>
 </pre></div>
 
 
@@ -4591,8 +4591,8 @@ dtype: int64
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span>    <span class="n">A</span>   <span class="n">C</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>  <span class="mi">8</span>   <span class="mi">10</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>  <span class="mi">12</span>  <span class="mi">14</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>  <span class="mi">8</span>   <span class="mi">10</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>  <span class="mi">12</span>  <span class="mi">14</span>
 </pre></div>
 
 
@@ -4602,9 +4602,9 @@ dtype: int64
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span>    <span class="n">C</span>   <span class="n">D</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>  <span class="mi">6</span>   <span class="mi">7</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>  <span class="mi">10</span>  <span class="mi">11</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>  <span class="mi">14</span>  <span class="mi">15</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>  <span class="mi">6</span>   <span class="mi">7</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>  <span class="mi">10</span>  <span class="mi">11</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>  <span class="mi">14</span>  <span class="mi">15</span>
 </pre></div>
 
 
@@ -4613,12 +4613,12 @@ dtype: int64
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span>     <span class="mi">0</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>     <span class="mi">4</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>     <span class="mi">8</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>    <span class="mi">12</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>    <span class="mi">16</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>    <span class="mi">20</span>
+<div class="codehilite"><pre><span></span><span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span>     <span class="mi">0</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">02</span>     <span class="mi">4</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>     <span class="mi">8</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>    <span class="mi">12</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">05</span>    <span class="mi">16</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">06</span>    <span class="mi">20</span>
 <span class="n">Freq</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">Name</span><span class="p">:</span> <span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int32</span>
 </pre></div>
 
@@ -4644,16 +4644,16 @@ Freq: D, Name: A, dtype: bool
 
 <p>执行结果:</p>
 <div class="codehilite"><pre><span></span><span class="n">A</span>   <span class="n">B</span>   <span class="n">C</span>   <span class="n">D</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span>  <span class="mi">8</span>   <span class="mi">9</span>   <span class="mi">10</span>  <span class="mi">11</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">04</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>  <span class="mi">15</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">05</span>  <span class="mi">16</span>  <span class="mi">17</span>  <span class="mi">18</span>  <span class="mi">19</span>
-<span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">06</span>  <span class="mi">20</span>  <span class="mi">21</span>  <span class="mi">22</span>  <span class="mi">23</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">03</span>  <span class="mi">8</span>   <span class="mi">9</span>   <span class="mi">10</span>  <span class="mi">11</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>  <span class="mi">15</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">05</span>  <span class="mi">16</span>  <span class="mi">17</span>  <span class="mi">18</span>  <span class="mi">19</span>
+<span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">06</span>  <span class="mi">20</span>  <span class="mi">21</span>  <span class="mi">22</span>  <span class="mi">23</span>
 </pre></div>
 
 
 <h2 id="3pandas">3.pandas赋值及操作<a class="headerlink" href="#3pandas" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 
 
@@ -4916,8 +4916,8 @@ Freq: D, Name: A, dtype: bool
 
 
 <h2 id="4pandas">4.pandas处理丢失数据<a class="headerlink" href="#4pandas" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20170101</span><span class="p">,</span><span class="mi">20170105</span><span class="p">)</span>
 <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">])</span>
 <span class="n">df1</span>
@@ -4975,43 +4975,43 @@ Freq: D, Name: A, dtype: bool
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="kc">False</span>
+<div class="codehilite"><pre><span></span><span class="bp">False</span>
 </pre></div>
 
 
 <h2 id="5pandas">5.pandas读取及写入文件<a class="headerlink" href="#5pandas" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;people.csv&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;gbk&#39;</span><span class="p">)</span>
-<span class="n">file</span>
+<div class="codehilite"><pre><span></span><span class="nb">file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;people.csv&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;gbk&#39;</span><span class="p">)</span>
+<span class="nb">file</span>
 </pre></div>
 
 
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-a9e8cb030ae54f5e.png" /></p>
-<div class="codehilite"><pre><span></span><span class="n">file</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;深圳&#39;</span>  <span class="c1">#赋值操作</span>
-<span class="n">file</span>
+<div class="codehilite"><pre><span></span><span class="nb">file</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;深圳&#39;</span>  <span class="c1">#赋值操作</span>
+<span class="nb">file</span>
 </pre></div>
 
 
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-af17aebcf5ee69ee.png" /></p>
-<div class="codehilite"><pre><span></span><span class="n">file</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;people2.csv&#39;</span><span class="p">)</span>  <span class="c1">#写入文件</span>
+<div class="codehilite"><pre><span></span><span class="nb">file</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;people2.csv&#39;</span><span class="p">)</span>  <span class="c1">#写入文件</span>
 </pre></div>
 
 
 <h2 id="6pandasconcat">6.pandas合并,concat<a class="headerlink" href="#6pandasconcat" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>
 <span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">36</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5022,7 +5022,7 @@ Freq: D, Name: A, dtype: bool
 
 
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-dd0a8460b07447fb.png" /></p>
-<div class="codehilite"><pre><span></span><span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">df3</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1">#纵向合并，不考虑原来的index</span>
+<div class="codehilite"><pre><span></span><span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">df3</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="c1">#纵向合并，不考虑原来的index</span>
 <span class="n">df4</span>
 </pre></div>
 
@@ -5036,19 +5036,19 @@ Freq: D, Name: A, dtype: bool
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-548140f548ab93dd.png" /></p>
 <div class="codehilite"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;f&#39;</span><span class="p">])</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;e&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
 </pre></div>
 
 
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-62e7dd02c531f383.png" /></p>
-<div class="codehilite"><pre><span></span><span class="n">df6</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span><span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1">#合并两个表，缺少的部分填充NaN</span>
+<div class="codehilite"><pre><span></span><span class="n">df6</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span><span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="c1">#合并两个表，缺少的部分填充NaN</span>
 <span class="n">df6</span>
 </pre></div>
 
 
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-6154a3053d6537cc.png" /></p>
-<div class="codehilite"><pre><span></span><span class="n">df7</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span><span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1">#合并两个表，缺少的部分去掉</span>
+<div class="codehilite"><pre><span></span><span class="n">df7</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span><span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="c1">#合并两个表，缺少的部分去掉</span>
 <span class="n">df7</span>
 </pre></div>
 
@@ -5056,8 +5056,8 @@ Freq: D, Name: A, dtype: bool
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-90f7a3cca0d3ded2.png" /></p>
 <div class="codehilite"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;f&#39;</span><span class="p">])</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5075,7 +5075,7 @@ Freq: D, Name: A, dtype: bool
 
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-c61ba67a82abbf05.png" /></p>
 <h2 id="7pandasmerge">7.pandas合并merge<a class="headerlink" href="#7pandasmerge" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 </pre></div>
 
 
@@ -5087,8 +5087,8 @@ Freq: D, Name: A, dtype: bool
                      <span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span><span class="s1">&#39;C3&#39;</span><span class="p">],</span>
                      <span class="s1">&#39;D&#39;</span><span class="p">:[</span><span class="s1">&#39;D0&#39;</span><span class="p">,</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span><span class="s1">&#39;D2&#39;</span><span class="p">,</span><span class="s1">&#39;D3&#39;</span><span class="p">]})</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5109,8 +5109,8 @@ Freq: D, Name: A, dtype: bool
                      <span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span><span class="s1">&#39;C3&#39;</span><span class="p">],</span>
                      <span class="s1">&#39;D&#39;</span><span class="p">:[</span><span class="s1">&#39;D0&#39;</span><span class="p">,</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span><span class="s1">&#39;D2&#39;</span><span class="p">,</span><span class="s1">&#39;D3&#39;</span><span class="p">]})</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5137,7 +5137,7 @@ Freq: D, Name: A, dtype: bool
 
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-bd52c19f8014d50d.png" /></p>
 <div class="codehilite"><pre><span></span><span class="c1">#how = [&#39;left&#39;,&#39;right&#39;,&#39;inner&#39;,&#39;outer&#39;]</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span><span class="s1">&#39;key2&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span><span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1">#显示merge信息</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span><span class="s1">&#39;key2&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span><span class="n">indicator</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="c1">#显示merge信息</span>
 <span class="n">res</span>
 </pre></div>
 
@@ -5156,8 +5156,8 @@ Freq: D, Name: A, dtype: bool
 <span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span><span class="s1">&#39;C3&#39;</span><span class="p">],</span>
                       <span class="s1">&#39;D&#39;</span><span class="p">:[</span><span class="s1">&#39;D0&#39;</span><span class="p">,</span><span class="s1">&#39;D2&#39;</span><span class="p">,</span><span class="s1">&#39;D3&#39;</span><span class="p">]},</span>
                       <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;K0&#39;</span><span class="p">,</span><span class="s1">&#39;K2&#39;</span><span class="p">,</span><span class="s1">&#39;K3&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5166,8 +5166,8 @@ Freq: D, Name: A, dtype: bool
 
 <span class="n">girls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;k&#39;</span><span class="p">:[</span><span class="s1">&#39;K0&#39;</span><span class="p">,</span><span class="s1">&#39;K0&#39;</span><span class="p">,</span><span class="s1">&#39;K3&#39;</span><span class="p">],</span><span class="s1">&#39;age&#39;</span><span class="p">:[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]})</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">boys</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">girls</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">boys</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">girls</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5179,9 +5179,9 @@ Freq: D, Name: A, dtype: bool
 
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-2215221a7cb96d67.png" /></p>
 <h2 id="8pandas-plot">8.pandas plot<a class="headerlink" href="#8pandas-plot" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 </pre></div>
 
 
@@ -5197,7 +5197,7 @@ Freq: D, Name: A, dtype: bool
 <p><img alt="image.png" src="../036-pandas常用.image/14555448-a995a10cee3058dd.png" /></p>
 <div class="codehilite"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">])</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 
 
@@ -5254,14 +5254,14 @@ Freq: D, Name: A, dtype: bool
 <ul>
 <li>header ：是否输出列名，默认是True</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;./output.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1">#不输出列名</span>
+<div class="codehilite"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;./output.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>  <span class="c1">#不输出列名</span>
 </pre></div>
 
 
 <ul>
 <li>index ：是否输出索引，默认是True</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;./output.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>    <span class="c1">#不输出索引</span>
+<div class="codehilite"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;./output.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>    <span class="c1">#不输出索引</span>
 </pre></div>
 
 
@@ -5313,10 +5313,10 @@ Freq: D, Name: A, dtype: bool
 <h2 id="10pandasdataframeseriesindex">10pandas重置DataFrame或Series的索引index(重置索引)<a class="headerlink" href="#10pandasdataframeseriesindex" title="Permanent link">&para;</a></h2>
 <p>当我们在清洗数据时往往会将带有空值的行删除，不论是DataFrame还是Series的index都将不再是连续的索引了，那么这个时候我们可以使用reset_index()方法来重置它们的索引，以便后续的操作。</p>
 <p>具体例子1：</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
 
@@ -5371,7 +5371,7 @@ Freq: D, Name: A, dtype: bool
 
 
 <p>在原来的列表上上重置索引</p>
-<div class="codehilite"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">df</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> 

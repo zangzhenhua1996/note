@@ -4334,20 +4334,20 @@
     逻辑与:</li>
 </ul>
 <div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="c1">//逻辑与 &amp; 并且and 遇false则false</span>
-        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">);</span>          <span class="c1">//true &amp; true = true</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">);</span>              <span class="c1">//true &amp; false = false</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">);</span>              <span class="c1">//false &amp; true = false</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">);</span>              <span class="c1">//false &amp; false = false</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span><span class="o">);</span>          <span class="c1">//true &amp; true = true</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="o">);</span>              <span class="c1">//true &amp; false = false</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span><span class="o">);</span>              <span class="c1">//false &amp; true = false</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="o">);</span>              <span class="c1">//false &amp; false = false</span>
 
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4371,33 +4371,33 @@
 
 <p>逻辑异或:</p>
 <div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="c1">//逻辑或 或or 遇true则true</span>
-        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
         <span class="c1">//逻辑异或 ^ 两边相同为false,两边不同为true</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">^</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">);</span>              <span class="c1">//true ^ true = false</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">^</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">);</span>              <span class="c1">//true ^ false = true</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">^</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span><span class="p">);</span>              <span class="c1">//false ^ true = true</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">^</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">);</span>              <span class="c1">//false ^ flase = false</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">^</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span><span class="o">);</span>              <span class="c1">//true ^ true = false</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">^</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="o">);</span>              <span class="c1">//true ^ false = true</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">^</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span><span class="o">);</span>              <span class="c1">//false ^ true = true</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">^</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="o">);</span>              <span class="c1">//false ^ flase = false</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
 <p>逻辑非:</p>
 <div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="c1">//逻辑非!</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">!</span><span class="kc">true</span><span class="p">);</span>  <span class="c1">//false</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">!!</span><span class="kc">true</span><span class="p">);</span> <span class="c1">//true</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(!</span><span class="kc">true</span><span class="o">);</span>  <span class="c1">//false</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(!!</span><span class="kc">true</span><span class="o">);</span> <span class="c1">//true</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4435,16 +4435,16 @@
 </li>
 </ul>
 <div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="o">++</span><span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">++</span><span class="n">y</span> <span class="o">==</span> <span class="mi">4</span><span class="p">));</span>    <span class="c1">//false &amp; false = false</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;x = &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>                 <span class="c1">//x = 4</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;y = &quot;</span> <span class="o">+</span> <span class="n">y</span><span class="p">);</span>                 <span class="c1">//y = 5</span>
-<span class="p">}</span>
-<span class="p">}</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((++</span><span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span> <span class="o">&amp;</span> <span class="o">(++</span><span class="n">y</span> <span class="o">==</span> <span class="mi">4</span><span class="o">));</span>    <span class="c1">//false &amp; false = false</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;x = &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>                 <span class="c1">//x = 4</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;y = &quot;</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>                 <span class="c1">//y = 5</span>
+<span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4452,22 +4452,22 @@
 <div class="codehilite"><pre><span></span><span class="kc">false</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="n">请按任意键继续</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 </pre></div>
 
 
 <p>使用&amp;&amp;时:右边不执行,因此只有x的值加一</p>
 <div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="o">++</span><span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">++</span><span class="n">y</span> <span class="o">==</span> <span class="mi">4</span><span class="p">));</span>   <span class="c1">//false &amp; false = false</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;x = &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>                 <span class="c1">//x = 4</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;y = &quot;</span> <span class="o">+</span> <span class="n">y</span><span class="p">);</span>                 <span class="c1">//y = 5</span>
-<span class="p">}</span>
-<span class="p">}</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((++</span><span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(++</span><span class="n">y</span> <span class="o">==</span> <span class="mi">4</span><span class="o">));</span>   <span class="c1">//false &amp; false = false</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;x = &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>                 <span class="c1">//x = 4</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;y = &quot;</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>                 <span class="c1">//y = 5</span>
+<span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4475,7 +4475,7 @@
 <div class="codehilite"><pre><span></span><span class="kc">false</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="n">请按任意键继续</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 </pre></div>
 
 
@@ -4502,8 +4502,8 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Operator</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Operator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="cm">/*</span>
 <span class="cm">        * &amp;,|,^,~ 的用法</span>
 <span class="cm">        * &amp;:有0则0</span>
@@ -4512,12 +4512,12 @@
 <span class="cm">        * ~:按位取反</span>
 <span class="cm">        */</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">6</span> <span class="o">&amp;</span> <span class="mi">3</span><span class="p">);</span>              <span class="c1">//2   全部转换为二进制进行对应位置的逻辑运算</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">6</span> <span class="o">|</span> <span class="mi">3</span><span class="p">);</span>              <span class="c1">//7</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">6</span> <span class="o">^</span> <span class="mi">3</span><span class="p">);</span>              <span class="c1">//5 </span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">~</span><span class="mi">6</span><span class="p">);</span>                 <span class="c1">//-7?                   </span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">6</span> <span class="o">&amp;</span> <span class="mi">3</span><span class="o">);</span>              <span class="c1">//2   全部转换为二进制进行对应位置的逻辑运算</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">6</span> <span class="o">|</span> <span class="mi">3</span><span class="o">);</span>              <span class="c1">//7</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">6</span> <span class="o">^</span> <span class="mi">3</span><span class="o">);</span>              <span class="c1">//5 </span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(~</span><span class="mi">6</span><span class="o">);</span>                 <span class="c1">//-7?                   </span>
+    <span class="o">}</span>
+<span class="o">}</span>
 <span class="cm">/*</span>
 <span class="cm">    110</span>
 <span class="cm">&amp;   011</span>
@@ -4561,24 +4561,24 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo2_Operator</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo2_Operator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="cm">/*</span>
 <span class="cm">        * 位异或运算符的特点</span>
 
 <span class="cm">        * ^的特点：一个数据对另一个数据位异或两次，该数本身不变。</span>
 <span class="cm">        */</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">5</span> <span class="o">^</span> <span class="mi">10</span> <span class="o">^</span> <span class="mi">10</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">5</span> <span class="o">^</span> <span class="mi">10</span> <span class="o">^</span> <span class="mi">5</span><span class="p">);</span>  <span class="c1">//不变得是少的那个</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">5</span> <span class="o">^</span> <span class="mi">10</span> <span class="o">^</span> <span class="mi">10</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">5</span> <span class="o">^</span> <span class="mi">10</span> <span class="o">^</span> <span class="mi">5</span><span class="o">);</span>  <span class="c1">//不变得是少的那个</span>
 
         <span class="cm">/*</span>
 <span class="cm">        * 请自己实现两个整数变量的交换(不需要定义第三方变量)</span>
 <span class="cm">        * 注意：以后讲课的过程中，我没有明确指定数据的类型，默认int类型。</span>
 <span class="cm">        */</span>
 
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
 
         <span class="c1">//需要第三方变量,开发推荐用这种</span>
         <span class="cm">/*int temp;</span>
@@ -4592,13 +4592,13 @@
 <span class="cm">        x = x - y;              //15 - 10 = 5*/</span>
 
         <span class="c1">//不需要第三方变量,通过^来做</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span><span class="p">;</span>              <span class="c1">// 10 ^ 5 </span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span><span class="p">;</span>              <span class="c1">// 10 ^ 5 ^ 5   y = 10</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span><span class="p">;</span>              <span class="c1">// 10 ^ 5 ^ 10  x = 5</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span><span class="o">;</span>              <span class="c1">// 10 ^ 5 </span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span><span class="o">;</span>              <span class="c1">// 10 ^ 5 ^ 5   y = 10</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span><span class="o">;</span>              <span class="c1">// 10 ^ 5 ^ 10  x = 5</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;x = &quot;</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,y = &quot;</span> <span class="o">+</span> <span class="n">y</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;x = &quot;</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,y = &quot;</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4622,8 +4622,8 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo3_Operator</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo3_Operator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="cm">/*</span>
 <span class="cm">        *  &lt;&lt;:左移    左边最高位丢弃，右边补齐0</span>
 <span class="cm">        *  &gt;&gt;:右移    最高位是0，左边补齐0;最高为是1，左边补齐1</span>
@@ -4632,8 +4632,8 @@
 <span class="cm">        */</span>
 
         <span class="c1">//左移,向左移动几位就是乘以2的几次幂</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">12</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">);</span>        <span class="c1">//24</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">12</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">);</span>        <span class="c1">//48</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">12</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="o">);</span>        <span class="c1">//24</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">12</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="o">);</span>        <span class="c1">//48</span>
 
         <span class="cm">/*</span>
 <span class="cm">        00000000 00000000 00000000 00001100     12的补码</span>
@@ -4642,8 +4642,8 @@
 <span class="cm">        */</span>
 
         <span class="c1">//右移,向右移动几位就是除以2的几次幂</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">12</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">12</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">12</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">12</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="o">);</span>
 
         <span class="cm">/*</span>
 <span class="cm">        00000000 00000000 00000000 00001100     12的补码</span>
@@ -4652,9 +4652,9 @@
 <span class="cm">        */</span>
 
         <span class="c1">//最有效率的算出2 * 8的结果</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4668,17 +4668,17 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Operator</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Operator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="c1">//(关系表达式) ? 表达式1 : 表达式2;</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">z</span><span class="p">;</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="o">?</span> <span class="n">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">;</span>    <span class="c1">//如果x&gt;y表达式1,否则表达式2</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">z</span><span class="o">;</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">)</span> <span class="o">?</span> <span class="n">x</span> <span class="o">:</span> <span class="n">y</span><span class="o">;</span>    <span class="c1">//如果x&gt;y表达式1,否则表达式2</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;z = &quot;</span> <span class="o">+</span> <span class="n">z</span><span class="p">);</span>     
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;z = &quot;</span> <span class="o">+</span> <span class="n">z</span><span class="o">);</span>     
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4690,19 +4690,19 @@
 </li>
 </ul>
 <div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="c1">//比较两个整数是否相同</span>
 
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
 
         <span class="c1">//boolean b = (x == y) ? true : false;</span>
-        <span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;b = &quot;</span> <span class="o">+</span>  <span class="n">b</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;b = &quot;</span> <span class="o">+</span>  <span class="n">b</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4713,21 +4713,21 @@
 </li>
 </ul>
 <div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="c1">//获取三个整数中的最大值</span>
-        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
 
         <span class="c1">//先比较任意两个数的值,找出这两个数中的最大值</span>
-        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">?</span> <span class="n">a</span> <span class="p">:</span> <span class="n">b</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="o">;</span>
         <span class="c1">//用前两个数的最大值与第三个数比较,获取最大值</span>
-        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">)</span> <span class="o">?</span> <span class="n">temp</span> <span class="p">:</span> <span class="n">c</span><span class="p">;</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;max =&quot;</span> <span class="o">+</span> <span class="n">max</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="o">(</span><span class="n">temp</span> <span class="o">&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">?</span> <span class="n">temp</span> <span class="o">:</span> <span class="n">c</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;max =&quot;</span> <span class="o">+</span> <span class="n">max</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4772,35 +4772,35 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span><span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入一个整数&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span><span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入一个整数&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
 <ul>
 <li>键盘录入2个整数，并输出到控制台。</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span><span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入一个整数&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span><span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;x= &quot;</span><span class="o">+</span> <span class="n">x</span><span class="o">+</span><span class="s">&quot;y =&quot;</span><span class="o">+</span><span class="n">y</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span><span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入一个整数&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;x= &quot;</span><span class="o">+</span> <span class="n">x</span><span class="o">+</span><span class="s">&quot;y =&quot;</span><span class="o">+</span><span class="n">y</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4811,22 +4811,22 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="c1">//键盘录入练习：键盘录入两个数据，并对这两个数据求和，输出其结果</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span><span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第一个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                   <span class="c1">//将键盘录入的数据存储在x中</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第二个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                   <span class="c1">//将键盘录入的数据存储在y中</span>
-        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span><span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第一个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                   <span class="c1">//将键盘录入的数据存储在x中</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第二个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                   <span class="c1">//将键盘录入的数据存储在y中</span>
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;求和的结果: &quot;</span><span class="o">+</span><span class="n">sum</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;求和的结果: &quot;</span><span class="o">+</span><span class="n">sum</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4836,22 +4836,22 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="c1">//键盘录入练习：键盘录入两个数据，并对这两个数据求和，输出其结果</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span><span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第一个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                   <span class="c1">//将键盘录入的数据存储在x中</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第二个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                   <span class="c1">//将键盘录入的数据存储在y中</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span><span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第一个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                   <span class="c1">//将键盘录入的数据存储在x中</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第二个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                   <span class="c1">//将键盘录入的数据存储在y中</span>
 
-        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="o">?</span> <span class="n">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">;</span>              <span class="c1">//获取x和y中的最大值</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;max = &quot;</span> <span class="o">+</span> <span class="n">max</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">)</span> <span class="o">?</span> <span class="n">x</span> <span class="o">:</span> <span class="n">y</span><span class="o">;</span>              <span class="c1">//获取x和y中的最大值</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;max = &quot;</span> <span class="o">+</span> <span class="n">max</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4862,23 +4862,23 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="c1">//键盘录入练习：键盘录入两个数据，比较这两个数据是否相等</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第一个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                       <span class="c1">//将键盘录入的数据存储在x中</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第二个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                       <span class="c1">//将键盘录入的数据存储在y中</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第一个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                       <span class="c1">//将键盘录入的数据存储在x中</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第二个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                       <span class="c1">//将键盘录入的数据存储在y中</span>
 
         <span class="c1">//boolean b = (x == y)? true : false;</span>
-        <span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4888,29 +4888,29 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
 
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
         <span class="c1">//键盘录入练习：键盘录入三个数据，获取这三个数据中的最大值</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第一个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                       <span class="c1">//将键盘录入的数据存储在x中</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第二个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                       <span class="c1">//将键盘录入的数据存储在y中</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第三个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>                       <span class="c1">//将键盘录入的数据存储在y中</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第一个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                       <span class="c1">//将键盘录入的数据存储在x中</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第二个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                       <span class="c1">//将键盘录入的数据存储在y中</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入第三个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>                       <span class="c1">//将键盘录入的数据存储在y中</span>
 
         <span class="c1">//定义临时变量记录住比较出前两个变量中的最大值</span>
-        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="o">?</span> <span class="n">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">)</span> <span class="o">?</span> <span class="n">x</span> <span class="o">:</span> <span class="n">y</span><span class="o">;</span>
         <span class="c1">//将比较后的结果与第三个变量中的值比较,比较出三个数中的最大值</span>
-        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp</span> <span class="o">&gt;</span> <span class="n">z</span><span class="p">)</span> <span class="o">?</span> <span class="n">temp</span> <span class="p">:</span> <span class="n">z</span><span class="p">;</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">max</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="o">(</span><span class="n">temp</span> <span class="o">&gt;</span> <span class="n">z</span><span class="o">)</span> <span class="o">?</span> <span class="n">temp</span> <span class="o">:</span> <span class="n">z</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4935,14 +4935,14 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Sequence</span> <span class="p">{</span>                          <span class="c1">//sequence 顺序</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello World!11111&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello World!3333&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello World!22222&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello World!44444&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Sequence</span> <span class="o">{</span>                          <span class="c1">//sequence 顺序</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World!11111&quot;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World!3333&quot;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World!22222&quot;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World!44444&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -4951,7 +4951,7 @@
 <span class="n">Hello</span> <span class="n">World</span><span class="o">!</span><span class="mi">3333</span>
 <span class="n">Hello</span> <span class="n">World</span><span class="o">!</span><span class="mi">22222</span>
 <span class="n">Hello</span> <span class="n">World</span><span class="o">!</span><span class="mi">44444</span>
-<span class="n">请按任意键继续</span><span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+<span class="n">请按任意键继续</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 </pre></div>
 
 
@@ -5002,17 +5002,17 @@
 <span class="cm">    * 如果是true，就执行语句体；</span>
 <span class="cm">    * 如果是false，就不执行语句体；</span>
 <span class="cm">*/</span>
-<span class="kd">class</span> <span class="nc">Demo1_If</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>
+<span class="kd">class</span> <span class="nc">Demo1_If</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">19</span><span class="o">;</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;可以浏览本网站&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;可以浏览本网站&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;完了&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;完了&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5035,54 +5035,54 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
 
-        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;男厕所欢迎您&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;女厕所欢迎您&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;男厕所欢迎您&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;女厕所欢迎您&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
 
         <span class="c1">//a:获取两个数据中较大的值</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">z</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">z</span><span class="o">;</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-            <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-        <span class="p">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">z</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
 <ul>
 <li>b:判断一个数据是奇数还是偶数,并输出是奇数还是偶数</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
 
         <span class="c1">//b:判断一个数据是奇数还是偶数,并输出是奇数还是偶数</span>
-        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">&quot;是一个偶数&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">&quot;是一个奇数&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">11</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">&quot;是一个偶数&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">&quot;是一个奇数&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5109,30 +5109,30 @@
 <span class="cm">        * 为什么呢?因为三元运算符是一个运算符，运算符操作完毕就应该有一个结果，而不是一个输出。</span>
 
 <span class="cm">*/</span>
-<span class="kd">class</span> <span class="nc">Demo4_If</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">z</span><span class="p">;</span>
+<span class="kd">class</span> <span class="nc">Demo4_If</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">z</span><span class="o">;</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-            <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">y</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">z</span><span class="o">);</span>
 
-        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
 
-        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span><span class="o">?</span> <span class="n">a</span> <span class="p">:</span> <span class="n">b</span><span class="p">;</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">)?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
 
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5198,18 +5198,18 @@
 <span class="cm">    * 如果都是false，就执行语句体n+1。</span>
 <span class="cm">* C:注意事项:最后一个else可以省略,但是建议不要省略,可以对范围外的错误值提示 </span>
 <span class="cm">*/</span>
-<span class="kd">class</span> <span class="nc">Demo5_If</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;男厕所欢迎您&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;女厕所欢迎您&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;无法识别您的性别&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Demo5_If</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;男厕所欢迎您&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;女厕所欢迎您&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;无法识别您的性别&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5223,32 +5223,32 @@
         60-69  及
         0-59   差</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
 
         <span class="c1">//需求：键盘录入一个成绩，判断并输出成绩的等级。</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入学生成绩范围在1到100之间&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入学生成绩范围在1到100之间&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">90</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;优&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">80</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">89</span> <span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;良&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">70</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">79</span> <span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;中&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">60</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">69</span> <span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;及&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">59</span> <span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;差&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;成绩录入错误&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">90</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;优&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">80</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">89</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;良&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">70</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">79</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;中&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">60</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">69</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;及&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">59</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;差&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;成绩录入错误&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5264,28 +5264,28 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
 
         <span class="c1">//需求： 键盘录入x的值，计算出y的并输出</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入一个整数:&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入一个整数:&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">y</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5302,28 +5302,28 @@
 <span class="cm">    * 需求：获取三个数据中的最大值</span>
 <span class="cm">    * if语句的嵌套使用。</span>
 <span class="cm">*/</span>
-<span class="kd">class</span> <span class="nc">Demo6_IfIf</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="kd">class</span> <span class="nc">Demo6_IfIf</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">40</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="p">);</span>
-            <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="p">);</span>
-            <span class="p">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="o">);</span>
+            <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
 
-        <span class="p">}</span><span class="k">else</span> <span class="p">{</span> <span class="c1">//b &gt;= a</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="p">);</span>
-            <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span> <span class="c1">//b &gt;= a</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="o">);</span>
+            <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span> <span class="o">+</span> <span class="s">&quot;是最大值&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5355,8 +5355,8 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Switch</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Demo1_Switch</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="cm">/*</span>
 <span class="cm">        * A:switch语句的格式</span>
 <span class="cm">        *       int x = 10;</span>
@@ -5383,21 +5383,21 @@
 <span class="cm">            * 然后和case后面的匹配，如果有就执行对应的语句，否则执行default控制的语句</span>
 <span class="cm">        */</span>
 
-        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;rose&quot;</span><span class="p">;</span>
-        <span class="n">String</span> <span class="n">gender</span> <span class="o">=</span> <span class="s">&quot;男士&quot;</span><span class="p">;</span>
-        <span class="k">switch</span> <span class="p">(</span><span class="n">gender</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="s">&quot;男士&quot;</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;是一位&quot;</span> <span class="o">+</span> <span class="n">gender</span> <span class="o">+</span> <span class="s">&quot;喜欢吃饭睡觉打dota&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">case</span> <span class="s">&quot;女士&quot;</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;是一位&quot;</span> <span class="o">+</span> <span class="n">gender</span> <span class="o">+</span> <span class="s">&quot;喜欢逛街购物美容&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">default</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;是一位&quot;</span> <span class="o">+</span> <span class="n">gender</span> <span class="o">+</span> <span class="s">&quot;打雌性激素维持美貌容颜&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;rose&quot;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">gender</span> <span class="o">=</span> <span class="s">&quot;男士&quot;</span><span class="o">;</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">gender</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="s">&quot;男士&quot;</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;是一位&quot;</span> <span class="o">+</span> <span class="n">gender</span> <span class="o">+</span> <span class="s">&quot;喜欢吃饭睡觉打dota&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="s">&quot;女士&quot;</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;是一位&quot;</span> <span class="o">+</span> <span class="n">gender</span> <span class="o">+</span> <span class="s">&quot;喜欢逛街购物美容&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;是一位&quot;</span> <span class="o">+</span> <span class="n">gender</span> <span class="o">+</span> <span class="s">&quot;打雌性激素维持美貌容颜&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5405,38 +5405,38 @@
 <ul>
 <li>A:整数(给定一个值,输出对应星期几)</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Test1_Switch</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Test1_Switch</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="c1">//* A:整数(给定一个值,输出对应星期几)</span>
-        <span class="kt">int</span> <span class="n">week</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">switch</span> <span class="p">(</span><span class="n">week</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;星期一&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;星期二&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;星期三&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;星期四&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">case</span> <span class="mi">5</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;星期五&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">case</span> <span class="mi">6</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;星期六&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">case</span> <span class="mi">7</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;星期日&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="k">default</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;对不起没有对应的星期&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>   <span class="c1">//最后一个breake可以省略,但是前面的不能省略否则会出现break穿透,default可以写在前面但是不建议这么做</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="kt">int</span> <span class="n">week</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">week</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;星期一&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;星期二&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;星期三&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;星期四&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;星期五&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;星期六&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="mi">7</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;星期日&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;对不起没有对应的星期&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>   <span class="c1">//最后一个breake可以省略,但是前面的不能省略否则会出现break穿透,default可以写在前面但是不建议这么做</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5493,29 +5493,29 @@
         }
         System.out.println("y="+y);</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
         <span class="c1">// A:看程序写结果：</span>
 
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-        <span class="k">switch</span><span class="p">(</span><span class="n">x</span><span class="p">){</span> 
-            <span class="k">default</span><span class="p">:</span>
-                <span class="n">y</span><span class="o">++</span><span class="p">;</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
-                <span class="n">y</span><span class="o">++</span><span class="p">;</span>
-            <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
-                <span class="n">y</span><span class="o">++</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;y=&quot;</span><span class="o">+</span><span class="n">y</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span><span class="n">x</span><span class="o">){</span> 
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">y</span><span class="o">++;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+                <span class="n">y</span><span class="o">++;</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+                <span class="n">y</span><span class="o">++;</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;y=&quot;</span><span class="o">+</span><span class="n">y</span><span class="o">);</span>
         <span class="c1">// defult y=4</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5533,27 +5533,27 @@
         }
         System.out.println("y="+y);</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
     <span class="c1">//B:看程序写结果：</span>
 
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-        <span class="k">switch</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
-            <span class="k">default</span><span class="p">:</span>
-                <span class="n">y</span><span class="o">++</span><span class="p">;</span>    <span class="c1">//4</span>
-            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>  
-                <span class="n">y</span><span class="o">++</span><span class="p">;</span>    <span class="c1">//5</span>
-            <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
-                <span class="n">y</span><span class="o">++</span><span class="p">;</span>    <span class="c1">//6</span>
-        <span class="p">}</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;y=&quot;</span><span class="o">+</span><span class="n">y</span><span class="p">);</span>  <span class="c1">//顺序执行到了右大括号结束,每次y+1,最终是6</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span><span class="n">x</span><span class="o">){</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">y</span><span class="o">++;</span>    <span class="c1">//4</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>  
+                <span class="n">y</span><span class="o">++;</span>    <span class="c1">//5</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+                <span class="n">y</span><span class="o">++;</span>    <span class="c1">//6</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;y=&quot;</span><span class="o">+</span><span class="n">y</span><span class="o">);</span>  <span class="c1">//顺序执行到了右大括号结束,每次y+1,最终是6</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
@@ -5571,11 +5571,11 @@
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="cm">/*</span>
 
 <span class="cm">        * 键盘录入月份，输出对应的季节</span>
@@ -5585,51 +5585,51 @@
 <span class="cm">        9,10,11秋季</span>
 <span class="cm">        12,1,2冬季</span>
 <span class="cm">        */</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>    <span class="c1">//创建键盘录入对象</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入月份&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>               <span class="c1">//将键盘录入的结果存储在month</span>
-        <span class="k">switch</span> <span class="p">(</span><span class="n">month</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">case</span> <span class="mi">5</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是春季&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>    <span class="c1">//创建键盘录入对象</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入月份&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>               <span class="c1">//将键盘录入的结果存储在month</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">month</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+        <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是春季&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
 
-        <span class="k">case</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">case</span> <span class="mi">7</span><span class="p">:</span>
-        <span class="k">case</span> <span class="mi">8</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是夏季&quot;</span><span class="p">);</span>     <span class="c1">//利用的是case穿透</span>
-        <span class="k">break</span><span class="p">;</span>  
+        <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+        <span class="k">case</span> <span class="mi">7</span><span class="o">:</span>
+        <span class="k">case</span> <span class="mi">8</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是夏季&quot;</span><span class="o">);</span>     <span class="c1">//利用的是case穿透</span>
+        <span class="k">break</span><span class="o">;</span>  
 
-        <span class="k">case</span> <span class="mi">9</span><span class="p">:</span>
-        <span class="k">case</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="k">case</span> <span class="mi">11</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是秋季&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>
+        <span class="k">case</span> <span class="mi">10</span><span class="o">:</span>
+        <span class="k">case</span> <span class="mi">11</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是秋季&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
 
-        <span class="k">case</span> <span class="mi">12</span><span class="p">:</span>
-        <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是冬季&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">12</span><span class="o">:</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是冬季&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
 
 <span class="nl">        default:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;对不起没有对应的季节&quot;</span><span class="p">);</span>
-        <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;对不起没有对应的季节&quot;</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
 
 
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
 
 
 <p>if实现:</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kd">class</span> <span class="nc">data</span> 
-<span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> 
-    <span class="p">{</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span>
         <span class="cm">/*</span>
 
 <span class="cm">        * 键盘录入月份，输出对应的季节</span>
@@ -5639,26 +5639,26 @@
 <span class="cm">        9,10,11秋季</span>
 <span class="cm">        12,1,2冬季</span>
 <span class="cm">        */</span>
-        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>    <span class="c1">//创建键盘录入对象</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入月份&quot;</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>               <span class="c1">//将键盘录入的结果存储在month</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>    <span class="c1">//创建键盘录入对象</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;请输入月份&quot;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>               <span class="c1">//将键盘录入的结果存储在month</span>
 
         <span class="c1">//用if语句来完成月份对应季节   //能用switch能做的if都能做,固定值的用switch做范围用if 做</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">month</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="o">||</span> <span class="n">month</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;对不起没有对应的季节&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是春季&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">6</span> <span class="o">&amp;&amp;</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是夏季&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">9</span> <span class="o">&amp;&amp;</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">11</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是秋季&quot;</span><span class="p">);</span>
-        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是冬季&quot;</span><span class="p">);</span>
-        <span class="p">}</span> 
+        <span class="k">if</span> <span class="o">(</span><span class="n">month</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="o">||</span> <span class="n">month</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;对不起没有对应的季节&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是春季&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">6</span> <span class="o">&amp;&amp;</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是夏季&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">9</span> <span class="o">&amp;&amp;</span> <span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">11</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是秋季&quot;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">month</span> <span class="o">+</span> <span class="s">&quot;月是冬季&quot;</span><span class="o">);</span>
+        <span class="o">}</span> 
 
 
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </pre></div>
                 
                   

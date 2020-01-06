@@ -3975,7 +3975,7 @@
 <span class="sd">        :rtype: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1">#如果root这个节点对象是空的就返回空的lieb</span>
+        <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#如果root这个节点对象是空的就返回空的lieb</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1">#使用的就是递归算法,每一次返回都是toot节点的路径最长的子树,这样就可以一直递归到叶子节点,然后这里需要注意的是这个加1因为最后的叶子结点返回的是0但是本身也是包含了一层的,所以要加1</span>
             <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">),</span><span class="bp">self</span><span class="o">.</span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span>

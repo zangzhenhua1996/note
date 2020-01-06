@@ -4073,25 +4073,25 @@ SortedSet(有序集合zset)</p>
 </ul>
 <div class="codehilite"><pre><span></span><span class="n">lpush</span> <span class="n">key</span> <span class="n">value1</span> <span class="n">value2</span> <span class="o">...</span> <span class="c1"># 在左侧插⼊数据</span>
 <span class="n">rpush</span> <span class="n">key</span> <span class="n">value1</span> <span class="n">value2</span> <span class="o">...</span> <span class="c1">#在右侧插⼊数据</span>
-<span class="n">linsert</span> <span class="n">key</span> <span class="n">before或after</span> <span class="n">现有元素</span> <span class="n">新元素</span> <span class="c1">#在指定元素的前或后插⼊新元素</span>
+<span class="n">linsert</span> <span class="n">key</span> <span class="n">before或after</span> <span class="err">现有元素</span> <span class="err">新元素</span> <span class="c1">#在指定元素的前或后插⼊新元素</span>
 
 <span class="c1">#########################</span>
-<span class="n">返回列表</span><span class="err">⾥</span><span class="n">指定范围内的元素</span>
+<span class="err">返回列表⾥指定范围内的元素</span>
 <span class="n">start</span><span class="err">、</span><span class="n">stop为元素的下标索引</span>
-<span class="n">索引从左侧开始</span><span class="err">，</span><span class="n">第</span><span class="err">⼀</span><span class="n">个元素为0</span>
-<span class="n">索引可以是负数</span><span class="err">，</span><span class="n">表示从尾部开始计数</span><span class="err">，</span><span class="n">如</span><span class="o">-</span><span class="mi">1</span><span class="n">表示最后</span><span class="err">⼀</span><span class="n">个元素</span>
+<span class="err">索引从左侧开始，第⼀个元素为</span><span class="mi">0</span>
+<span class="err">索引可以是负数，表示从尾部开始计数，如</span><span class="o">-</span><span class="mi">1</span><span class="err">表示最后⼀个元素</span>
 <span class="n">lrange</span> <span class="n">key</span> <span class="n">start</span> <span class="n">stop</span>
 
 <span class="c1">##修改指定位置元素</span>
-<span class="n">索引从左侧开始</span><span class="err">，</span><span class="n">第</span><span class="err">⼀</span><span class="n">个元素为0</span>
-<span class="n">索引可以是负数</span><span class="err">，</span><span class="n">表示尾部开始计数</span><span class="err">，</span><span class="n">如</span><span class="o">-</span><span class="mi">1</span><span class="n">表示最后</span><span class="err">⼀</span><span class="n">个元素</span>
+<span class="err">索引从左侧开始，第⼀个元素为</span><span class="mi">0</span>
+<span class="err">索引可以是负数，表示尾部开始计数，如</span><span class="o">-</span><span class="mi">1</span><span class="err">表示最后⼀个元素</span>
 <span class="n">lset</span> <span class="n">key</span> <span class="n">index</span> <span class="n">value</span>
 <span class="c1">##############</span>
-<span class="n">删除指定元素</span>
-<span class="n">将列表中前count次出现的值为value的元素移除</span>
-<span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">从头往尾移除</span>
-<span class="n">count</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">从尾往头移除</span>
-<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="n">移除所有</span>
+<span class="err">删除指定元素</span>
+<span class="err">将列表中前</span><span class="n">count次出现的值为value的元素移除</span>
+<span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="err">从头往尾移除</span>
+<span class="n">count</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="err">从尾往头移除</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="err">移除所有</span>
 <span class="n">lrem</span> <span class="n">key</span> <span class="n">count</span> <span class="n">value</span> <span class="c1">#从哪个表中移除几个(count不仅是次数也是方向)</span>
 </pre></div>
 
@@ -4119,10 +4119,10 @@ SortedSet(有序集合zset)</p>
 </ul>
 <div class="codehilite"><pre><span></span><span class="n">zadd</span> <span class="n">key</span> <span class="n">score1</span> <span class="n">member1</span> <span class="n">score2</span> <span class="n">member2</span> <span class="o">...</span> <span class="c1">#添加 zadd 键 权重1 值1 权重2 值2</span>
 <span class="c1">########</span>
-<span class="n">返回指定范围内的元素</span>
+<span class="err">返回指定范围内的元素</span>
 <span class="n">start</span><span class="err">、</span><span class="n">stop为元素的下标索引</span>
-<span class="n">索引从左侧开始</span><span class="err">，</span><span class="n">第</span><span class="err">⼀</span><span class="n">个元素为0</span>
-<span class="n">索引可以是负数</span><span class="err">，</span><span class="n">表示从尾部开始计数</span><span class="err">，</span><span class="n">如</span><span class="o">-</span><span class="mi">1</span><span class="n">表示最后</span><span class="err">⼀</span><span class="n">个元素</span>
+<span class="err">索引从左侧开始，第⼀个元素为</span><span class="mi">0</span>
+<span class="err">索引可以是负数，表示从尾部开始计数，如</span><span class="o">-</span><span class="mi">1</span><span class="err">表示最后⼀个元素</span>
 <span class="n">zrange</span> <span class="n">key</span> <span class="n">start</span> <span class="n">stop</span>  <span class="c1">#跟list的差不多嘛lrange key start stop</span>
 
 
