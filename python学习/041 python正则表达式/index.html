@@ -4687,7 +4687,7 @@ itheima php
 
 
 <h2 id="5pname-pname-pnamewname">示例5：<code>(?P&lt;name&gt;) (?P=name)    ====(?P&lt;name&gt;\w*)</code>这个是匹配任意多个字符,并且将分组命名为name<a class="headerlink" href="#5pname-pname-pnamewname" title="Permanent link">&para;</a></h2>
-<p>需求：匹配出<html><h1><a href="http://www.itcast.cn">www.itcast.cn</a></h1></html></p>
+<p>需求：匹配出<code>&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;</code></p>
 <div class="codehilite"><pre><span></span><span class="c1">#coding=utf-8</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
@@ -4701,7 +4701,7 @@ itheima php
 
 
 <p>执行结果:</p>
-<div class="codehilite"><pre><span></span><span class="s1">&#39;&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;&#39;</span>
+<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">www</span><span class="o">.</span><span class="n">itcast</span><span class="o">.</span><span class="n">cn</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
 <span class="o">------------------------------------------------</span>
 <span class="ne">AttributeError</span> <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mf">2744835e3</span><span class="n">ab3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
