@@ -1,5 +1,5 @@
-- 005-ubuntu安装mysql没有让我设置密码: mysql8-0使用/005-ubuntu安装mysql没有让我设置密码.md
-- 004-mysql-高级: mysql8-0使用/004-mysql-高级.md
-- 003-黑马-mysql-下: mysql8-0使用/003-黑马-mysql-下.md
-- 002-黑马mysql-上: mysql8-0使用/002-黑马mysql-上.md
-- 001-mysql的使用: mysql8-0使用/001-mysql的使用.md
+- 005 GitBook 搭建使用教程: 未分类/005 GitBook 搭建使用教程.md
+- 004 ffmpeg的小使用: 未分类/004 ffmpeg的小使用.md
+- 003 超详细教程：YOLO_V3（yolov3）训练自己的数据: 未分类/003 超详细教程：YOLO_V3（yolov3）训练自己的数据.md
+- 002 加速国内Github访问: 未分类/002 加速国内Github访问.md
+- 001 git的使用: 未分类/001 git的使用.md
