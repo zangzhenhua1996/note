@@ -4225,6 +4225,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    linux系统
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#macos" class="md-nav__link">
     MacOS 系统
   </a>
@@ -4627,6 +4634,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    linux系统
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#macos" class="md-nav__link">
     MacOS 系统
   </a>
@@ -4973,14 +4987,18 @@
 <p>Git 是一个分布式版本控制系统. 它的灵活性, 优越性使得它从2005年发布以来. 获得了越来越多的使用和支持.</p>
 <h3 id="git_1">什么时候需要用 Git?<a class="headerlink" href="#git_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>当你已经成为码农, 或者已经在成为码农的路上;</li>
-<li>当你觉得代码太多;</li>
+<li>
+<p>当你已经成为码农, 或者已经在成为码农的路上;</p>
+</li>
+<li>
+<p>当你觉得代码太多;</p>
+</li>
 <li>当你已经开始用日期或版本号命名的代码文件的时候.
- 你是想要这样的文件夹:
-<img alt="image.png" src="../001 git的使用.image/14555448-98fef157583756f3.png" /></li>
+    你是想要这样的文件夹:
+   <img alt="image.png" src="../001 git的使用.image/14555448-98fef157583756f3.png" /></li>
 </ul>
 <p>还是这样的文件夹:
-<img alt="image.png" src="../001 git的使用.image/14555448-69cc2b5f799c563e.png" /></p>
+   <img alt="image.png" src="../001 git的使用.image/14555448-69cc2b5f799c563e.png" /></p>
 <h3 id="git_2">什么文件可以被 Git 管理?<a class="headerlink" href="#git_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>文本文件 (.txt) 等;</li>
@@ -4998,9 +5016,9 @@
 <li><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git 官网安装说明</a></li>
 </ul>
 <p>安装 git 的方式在每种系统中各不相同, 所以我们分开来说:</p>
-<p>图个方便, 也可以直接上 git 的下载页面, 让网站自动识别你的系统, 并提供可用的下载文件: <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>
- #### linux系统
-使用 Linux 的朋友们, 大家肯定都很熟悉怎么在 Linux 上装东西, 所以只要找到你的 Terminal, 并输入以下指令就可以啦:</p>
+<p>图个方便, 也可以直接上 git 的下载页面, 让网站自动识别你的系统, 并提供可用的下载文件: <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<h4 id="linux">linux系统<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h4>
+<p>使用 Linux 的朋友们, 大家肯定都很熟悉怎么在 Linux 上装东西, 所以只要找到你的 Terminal, 并输入以下指令就可以啦:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -5302,8 +5320,8 @@ zzh@zzh-MS-7A01:
 
 <p>输出
 <img alt="image.png" src="../001 git的使用.image/14555448-dcb71455db77afed.png" /></p>
-<p><img alt="image.png" src="../001 git的使用.image/14555448-9316fc8b513f3385.png" />
-为了下节内容, 我们保持这次修改, 全部 add 变成 staged 状态, 并 commit.</p>
+<p><img alt="image.png" src="../001 git的使用.image/14555448-9316fc8b513f3385.png" />    </p>
+<p>为了下节内容, 我们保持这次修改, 全部 add 变成 staged 状态, 并 commit.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git add .
 git commit -m <span class="s2">&quot;change 2&quot;</span>
@@ -5504,10 +5522,10 @@ c50b1fc change <span class="m">1</span>
 
 <p>一开始两个文件的内容是一样的
 1.py文件:
-<img alt="image.png" src="../001 git的使用.image/14555448-47381ab0361844b3.png" /></p>
-<p>2.py
-<img alt="image.png" src="../001 git的使用.image/14555448-bfc0ad97c5bc6cb0.png" />
-我们在 1.py 加上一行内容 # I went back to change 1 然后 add 并 commit 1.py:</p>
+<img alt="image.png" src="../001 git的使用.image/14555448-47381ab0361844b3.png" />    </p>
+<p>2.py</p>
+<p><img alt="image.png" src="../001 git的使用.image/14555448-bfc0ad97c5bc6cb0.png" />    </p>
+<p>我们在 1.py 加上一行内容 # I went back to change 1 然后 add 并 commit 1.py:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git add <span class="m">1</span>.py
