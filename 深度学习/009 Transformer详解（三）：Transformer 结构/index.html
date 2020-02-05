@@ -211,7 +211,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../python学习/070 部署mkdocs 到码云(gitee)/" class="md-tabs__link">
+        <a href="../../python学习/071 IDEA几个常用的设置设置空格显示成小点、显示行数、 Ctrl + 鼠标滚轮 快捷键来控制代码字体大小显示、护眼背景色/" class="md-tabs__link">
           python
         </a>
       
@@ -302,7 +302,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../数据库/007-redis总结/" class="md-tabs__link">
+        <a href="../../数据库/008 便携版mysql安装配置/" class="md-tabs__link">
           数据库
         </a>
       
@@ -315,7 +315,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../windows10系统使用/022-Vmware安装报错--此安装程序要求您重新启动系统以完成Microsoft-VC-Redistributable-安装/" class="md-tabs__link">
+        <a href="../../windows10系统使用/024 如何在开始菜单隐藏关机按钮/" class="md-tabs__link">
           windows10系统使用
         </a>
       
@@ -328,7 +328,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../ubuntu系统的使用/053-ubuntu18-04安装搜狗输入法/" class="md-tabs__link">
+        <a href="../../ubuntu系统的使用/054 ubuntu18.04VNC远程配置/" class="md-tabs__link">
           ubuntu系统的使用
         </a>
       
@@ -341,7 +341,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../未分类/005 GitBook 搭建使用教程/" class="md-tabs__link">
+        <a href="../../未分类/006 sublime text 3 显示空格和Tab/" class="md-tabs__link">
           未分类
         </a>
       
@@ -452,6 +452,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../python学习/071 IDEA几个常用的设置设置空格显示成小点、显示行数、 Ctrl + 鼠标滚轮 快捷键来控制代码字体大小显示、护眼背景色/" title="071 IDEA几个常用的设置:设置空格显示成小点、显示行数、 Ctrl + 鼠标滚轮 快捷键来控制代码字体大小显示、护眼背景色" class="md-nav__link">
+      071 IDEA几个常用的设置:设置空格显示成小点、显示行数、 Ctrl + 鼠标滚轮 快捷键来控制代码字体大小显示、护眼背景色
+    </a>
+  </li>
+
         
           
           
@@ -3195,6 +3207,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../数据库/008 便携版mysql安装配置/" title="008 便携版mysql安装配置" class="md-nav__link">
+      008 便携版mysql安装配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../数据库/007-redis总结/" title="007-redis总结" class="md-nav__link">
       007-redis总结
     </a>
@@ -3296,6 +3320,30 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/024 如何在开始菜单隐藏关机按钮/" title="024 如何在开始菜单隐藏关机按钮" class="md-nav__link">
+      024 如何在开始菜单隐藏关机按钮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../windows10系统使用/023 windows 命令行代码提示/" title="023 windows 命令行代码提示" class="md-nav__link">
+      023 windows 命令行代码提示
+    </a>
+  </li>
+
         
           
           
@@ -3548,6 +3596,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ubuntu系统的使用/054 ubuntu18.04VNC远程配置/" title="054 ubuntu18.04VNC远程配置" class="md-nav__link">
+      054 ubuntu18.04VNC远程配置
+    </a>
+  </li>
+
         
           
           
@@ -4191,6 +4251,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../未分类/006 sublime text 3 显示空格和Tab/" title="006 sublime text 3 显示空格和Tab" class="md-nav__link">
+      006 sublime text 3 显示空格和Tab
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../未分类/005 GitBook 搭建使用教程/" title="005 GitBook 搭建使用教程" class="md-nav__link">
       005 GitBook 搭建使用教程
     </a>
@@ -4345,12 +4417,12 @@ Transformer 整体结构宏观上看是一个Encoder-Decoder结构，只不过�
         <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">=</span> <span class="n">d_model</span> <span class="o">//</span> <span class="n">h</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linears</span> <span class="o">=</span> <span class="n">clones</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attn</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attn</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">dropout</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="s2">&quot;Implements Figure 2&quot;</span>
-        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># Same mask applied to all h heads.</span>
             <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">nbatches</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -4457,7 +4529,7 @@ $$</span><script type="math/tex; mode=display">
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pe</span><span class="p">[:,</span> <span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> 
-                         <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                         <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
@@ -4465,13 +4537,13 @@ $$</span><script type="math/tex; mode=display">
 <p>总结
 以上就是transformer结构的基本讲解。更深入细节的了解还是要继续研读论文和代码了。</p>
 <h3 id="_1">参考文献<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>[1]<a href="http://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf">Attention Is All You Need</a>
-[2]<a href="https://zhuanlan.zhihu.com/p/48508221">详解Transformer （Attention Is All You Need）</a>
-[3]<a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a>
-[4]<a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Visualizing A Neural Machine Translation Model</a>
-[5]<a href="https://blog.csdn.net/dakenz/article/details/85150676">在NLP中广泛应用的transformer（Self-Attention）剖析笔记</a>
-[6]<a href="https://zhuanlan.zhihu.com/p/39034683">Attention is all you need模型笔记</a>
-[7]<a href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">The Annotated Transformer</a></p>
+<p>[1]<a href="http://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf">Attention Is All You Need</a><br />
+[2]<a href="https://zhuanlan.zhihu.com/p/48508221">详解Transformer （Attention Is All You Need）</a> <br />
+[3]<a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a> <br />
+[4]<a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Visualizing A Neural Machine Translation Model</a><br />
+[5]<a href="https://blog.csdn.net/dakenz/article/details/85150676">在NLP中广泛应用的transformer（Self-Attention）剖析笔记</a> <br />
+[6]<a href="https://zhuanlan.zhihu.com/p/39034683">Attention is all you need模型笔记</a> <br />
+[7]<a href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">The Annotated Transformer</a>   </p>
 <p>转载自:作者：Max_7
 链接：<a href="https://www.jianshu.com/p/0c196df57323">https://www.jianshu.com/p/0c196df57323</a>
 来源：简书</p>
