@@ -207,7 +207,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../071 IDEA几个常用的设置设置空格显示成小点、显示行数、 Ctrl + 鼠标滚轮 快捷键来控制代码字体大小显示、护眼背景色/" class="md-tabs__link md-tabs__link--active">
+        <a href="../073 f-String - Python3 字符串格式化利器 - Python Weekly EP1/" class="md-tabs__link md-tabs__link--active">
           python
         </a>
       
@@ -337,7 +337,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../未分类/006 sublime text 3 显示空格和Tab/" class="md-tabs__link">
+        <a href="../../未分类/007 操作系统词典/" class="md-tabs__link">
           未分类
         </a>
       
@@ -425,6 +425,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../情感语录/002 学校生活/" title="002 学校生活" class="md-nav__link">
+      002 学校生活
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -450,6 +462,30 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../073 f-String - Python3 字符串格式化利器 - Python Weekly EP1/" title="073 f-String - Python3 字符串格式化利器 - Python Weekly EP1" class="md-nav__link">
+      073 f-String - Python3 字符串格式化利器 - Python Weekly EP1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../072 14张思维导图构建python核心知识体系/" title="072 14张思维导图构建python核心知识体系" class="md-nav__link">
+      072 14张思维导图构建python核心知识体系
+    </a>
+  </li>
+
         
           
           
@@ -4220,6 +4256,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../未分类/007 操作系统词典/" title="007 操作系统词典" class="md-nav__link">
+      007 操作系统词典
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../未分类/006 sublime text 3 显示空格和Tab/" title="006 sublime text 3 显示空格和Tab" class="md-nav__link">
       006 sublime text 3 显示空格和Tab
     </a>
@@ -4306,7 +4354,7 @@
                 
                   <h1>042 将文件夹中图片按照横屏竖屏进行分类</h1>
                 
-                <p>代码如下:关键位置自行修改</p>
+                <p>代码如下:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -4363,7 +4411,47 @@
 54
 55
 56
-57</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">可以遍历输入的路径的指定后缀的文件,主要是用来筛选图片,将图片分成</span>
 <span class="sd">横屏,竖屏分别存放在两个文件夹中</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -4372,6 +4460,14 @@
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
 <span class="c1">#函数查找指定路径中所有文件的路径</span>
 <span class="c1">#函数查找指定路径中所有文件的路径</span>
 <span class="k">def</span> <span class="nf">get_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
@@ -4387,41 +4483,77 @@
             <span class="n">list1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pathTmp</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">list1</span>
 
-<span class="n">path</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;请输入路径：&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1">#.strip()去除首尾的空格</span>
+<span class="c1"># path = input(&#39;请输入路径：&#39;).strip()  #.strip()去除首尾的空格</span>
 
-<span class="n">file_path_list</span><span class="o">=</span><span class="n">get_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
 
 <span class="c1">#筛选后缀函数,传入包含所有后缀名的列表,以及需要筛选的后缀(默认筛选txt文件)</span>
-<span class="k">def</span> <span class="nf">shai_xuan_hou_zhui</span><span class="p">(</span><span class="n">file_path_list</span><span class="p">,</span><span class="n">hou_zhui</span><span class="o">=</span><span class="s1">&#39;.txt&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">shai_xuan_hou_zhui</span><span class="p">(</span><span class="n">file_path_list</span><span class="p">,</span><span class="n">hou_zhui</span><span class="p">):</span>
 
     <span class="n">list2</span><span class="o">=</span><span class="p">[]</span>  <span class="c1">#用于储存筛选好的文件的路径</span>
     <span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">file_path_list</span><span class="p">:</span>
         <span class="c1"># os.path.splitext():分离文件名与扩展名</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">hou_zhui</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">hou_zhui</span> <span class="p">:</span>
             <span class="n">list2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
     <span class="c1">#        print(filepath +&#39;\n&#39;)</span>
 
     <span class="k">return</span> <span class="n">list2</span>
 
-<span class="c1"># hou_zhui=&#39;.jpg&#39;</span>
-<span class="c1"># py_list=shai_xuan_hou_zhui(file_path_list,&#39;.py&#39;)  #筛选py文件</span>
-<span class="n">pig_list</span><span class="o">=</span><span class="n">shai_xuan_hou_zhui</span><span class="p">(</span><span class="n">file_path_list</span><span class="p">,</span><span class="s1">&#39;.jpg&#39;</span><span class="p">)</span>   <span class="c1">#筛选jpg格式文件</span>
-<span class="c1"># print(txt_list)</span>
-<span class="n">folder1</span><span class="o">=</span>  <span class="c1">#存放横屏图片的地址</span>
-<span class="n">folder2</span><span class="o">=</span> <span class="c1">#存放竖屏图片的地址</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">()</span>
+    <span class="n">file_path_list</span><span class="o">=</span><span class="n">get_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pig_list</span><span class="p">))):</span>
-    <span class="n">lujing</span><span class="o">=</span><span class="n">pig_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">picture</span><span class="o">=</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">lujing</span><span class="p">)</span>
-    <span class="n">width</span><span class="o">=</span><span class="n">picture</span><span class="o">.</span><span class="n">width</span>
-    <span class="n">height</span><span class="o">=</span><span class="n">picture</span><span class="o">.</span><span class="n">height</span>
-    <span class="n">picture</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">:</span>
-        <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">lujing</span><span class="p">,</span><span class="n">folder1</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">lujing</span><span class="p">,</span><span class="n">folder2</span><span class="p">)</span>
+
+    <span class="c1">#拷贝jpg,png.webp等文件</span>
+    <span class="n">hou_zhui</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.jpg&quot;</span><span class="p">,</span><span class="s2">&quot;.png&quot;</span><span class="p">,</span><span class="s2">&quot;.webp&quot;</span><span class="p">,</span><span class="s2">&quot;.jpeg&quot;</span><span class="p">,</span><span class="s2">&quot;.bmp&quot;</span><span class="p">]</span>
+    <span class="n">pig_list</span><span class="o">=</span><span class="n">shai_xuan_hou_zhui</span><span class="p">(</span><span class="n">file_path_list</span><span class="p">,</span><span class="n">hou_zhui</span><span class="p">)</span>   <span class="c1">#筛选jpg格式文件</span>
+    <span class="c1"># print(txt_list)</span>
+    <span class="n">folder1</span> <span class="o">=</span> <span class="n">path</span><span class="o">+</span><span class="s2">&quot;/横&quot;</span>
+    <span class="n">folder2</span> <span class="o">=</span> <span class="n">path</span><span class="o">+</span><span class="s2">&quot;/竖&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder1</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">folder1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder2</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">folder2</span><span class="p">)</span>
+
+    <span class="c1"># folder1=&#39;F:\\私密文件\\精选黄图\\横&#39;  #存放横屏图片的地址</span>
+    <span class="c1"># folder2=&#39;F:\\私密文件\\精选黄图\\竖&#39; #存放竖屏图片的地址</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pig_list</span><span class="p">))):</span>
+        <span class="n">lujing</span><span class="o">=</span><span class="n">pig_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">picture</span><span class="o">=</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">lujing</span><span class="p">)</span>
+        <span class="n">width</span><span class="o">=</span><span class="n">picture</span><span class="o">.</span><span class="n">width</span>
+        <span class="n">height</span><span class="o">=</span><span class="n">picture</span><span class="o">.</span><span class="n">height</span>
+        <span class="n">picture</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;</span> <span class="n">height</span><span class="p">:</span>
+                <span class="c1"># shutil.move(lujing,folder1)</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">lujing</span><span class="p">,</span><span class="n">folder1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">lujing</span><span class="p">,</span><span class="n">folder2</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="c1"># 拷贝gif文件</span>
+    <span class="n">folder3</span> <span class="o">=</span> <span class="n">path</span><span class="o">+</span><span class="s2">&quot;/gif&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder3</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">folder3</span><span class="p">)</span>
+    <span class="n">hou_zhui</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.gif&quot;</span><span class="p">,</span><span class="s2">&quot;.webm&quot;</span><span class="p">]</span>
+    <span class="n">pig_list</span><span class="o">=</span><span class="n">shai_xuan_hou_zhui</span><span class="p">(</span><span class="n">file_path_list</span><span class="p">,</span><span class="n">hou_zhui</span><span class="p">)</span>   <span class="c1">#筛选jpg格式文件</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pig_list</span><span class="p">))):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lujing</span><span class="o">=</span><span class="n">pig_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="c1"># shutil.move(lujing,folder1)</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">lujing</span><span class="p">,</span><span class="n">folder3</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
 </pre></div>
 </td></tr></table>
+
+<p>exe链接地址：</p>
+<p>链接：<a href="https://pan.baidu.com/s/1v1h5yEbk6lMMTVjThHfZYA">https://pan.baidu.com/s/1v1h5yEbk6lMMTVjThHfZYA</a> 
+提取码：lg6z</p>
                 
                   
                 
